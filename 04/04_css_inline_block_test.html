@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>css_inline_block_test</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		p{background-color:yellow;}
+		h3{font-size:20;}
+		#title{width:400px; height:300px; background-color:blue; color:blue;}
+		strong{width:600px; height:500px; background-color:green; color:white;}
+		p{background-color:black; color:white; width:200px; height:150px}
+	</style>
+ </head>
+ <body>
+	<h2>inline_block</h2>
+	<p>블록요소란? 너비와 높이를 지정할 수 있고, 공간을 자유롭게 사용 할 수 있다!</p>
+	<p>
+		인라인요소란? em,strong, span, i, b, img 처럼 특징이 있는 태그들도 많고, 글씨 요소처럼 옆으로 나열 할 수 있다.
+		너비와 높이를 가질 수 없음! ( 담고 있는 글씨 크기, 객체 크기 만큼만 영역을 차지함!)
+	</p>
+	<hr/>
+
+	<h2>인라인요소와 블록요소 구분하기</h2>
+	<p>
+		1) 해당하는 태그 복사하여 붙여넣기<br/>
+		2) 옆으로 나열되면 인라인요소, 밑으로 나열되면 블록요소<br/>
+		3) 배경색상으로 확인가능<br/>
+		+	영역을 끝까지 차지하면 블록요소<br/>
+		+	영역을 타이트하게 차지하면 인라인요소
+	</p>
+	<hr/>
+
+	<h3>인라인요소 중에서 스크린리더기가 읽어주는 요소</h3>
+	<strong>아주 강하게 읽어주는 태그, style영역에서는 strong 효과로 사용하기 어려움!</strong><br/>
+	<em>반음 정도 올려 읽는 태그, style에서 단위로 사용가능</em>
+	<hr/>
+
+	<h2 id="title">응용문제</h2>
+	<p>내부적용 방식(head영역에 style영역 만들기)으로 문제 풀기</p>
+	<p>
+		p태그 호출하여 배경색상 노란색 적용하기
+	</p>
+	<p>
+		h3태그 호출하여 글자크기 20px 적용 (font-size: )
+	</p>
+	<p>
+		h2태그들 중에서 "응용문제" 라고 적혀있는 태그만 호출하여 아래와 같이 사이즈 작성하기
+	</p>
+	<p>
+		width:400px; height:300px; 적용하기<br/>
+		배경색상 파란색, 글자색상 노란색 적용하기
+	</p>
+
+	<p>
+		strong태그 호출하여 아래와 같이 사이즈 작성하기
+	</p>
+	<p>
+		width:600px; height:500px 적용하기<br/>
+		배경색상 초록색, 글자색상 하얀색 적용하기
+	</p>
+	<p>
+		현재 p태그만 호출하여 배경색상 검정색, 글자색상 하얀색 적용하기<br/>
+		200px*150px 사이즈 만들기
+	</p>
+	
+	<p>
+		매우중요) 적용한 값들 확인하고, 유일하게 적용되지 않는 값 체크하여 원인 작성하기<br/>
+		이메일에 내용 작성하고 제출하기
+	</p>
+ </body>
+</html>

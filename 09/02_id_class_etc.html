@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>id_class_etc</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*
+			문제)
+				h3 	h3 id 속성이란? /h3 
+				(validator에서 에러 발생(태그 찾는 괄호))
+
+					작성되어있는 영역 찾기
+
+					그 아래 p태그들만 배경 노란색, 글자 20px, 글자색상 파란색적용
+					(16진법사용)
+		*/
+
+		/*
+			[id로만 만들때 문제점]
+				#id_desc0{background-color:#ff0; font-size:20px; color:#00f}
+				#id_desc1{background-color:#ff0; font-size:20px; color:#00f}
+				#id_desc2{background-color:#ff0; font-size:20px; color:#00f}
+
+				:위와 같이 같은 작업을 3번에 나누어서 작업해야 함
+				:id는 개별작업이나 특수작업을 할 때 사용하는 방법으로 그룹화하여
+				표현하기가 매우 어렵다
+
+			[해결]
+				:class명으로 그룹화하여 지정하기
+				:class명은 개별작업도 가능하지만 그룹화 작업도 가능하다.
+				:같은 이름 사용가능
+
+			[호출시 주의사항]
+
+				id는 호출시			# 사용
+				class는 호출시		.(점) 사용
+
+			[그룹화 적용시 중요사항]
+
+				1) lt에 대한 이해, gt에 대한 이해 부분 아래에 strong에 id_text (class) 적용
+				2) strong에는 width, height 적용이 불가능한 것을 알 수 있음
+
+				[매우 중요]
+					그룹화 할 경우, 비슷한 속성의 값이나 태그끼리 묶어주기
+						
+						+ 블록은 블록과 연결 (div,p,headline)
+						+ 인라인은 인라인과 연결 (span,strong, em, i b...)
+		*/
+
+			.id_text{background-color:#ff0; color:#00f; font-size:20px; width:400px; height:300px;}
+
+			/*
+				문제: h2 속도가 느려지는 경우 /h2
+					아래의 p태그를 그룹화시키고, 배경색상 aqua, 글자 밑줄 만들기, 행간50px 적용하기!
+			*/
+
+			.coms{background-color:aqua; text-decoration:underline; line-height:50px;}
+	</style>
+ </head>
+
+ <body>
+	<h2>특수기호 정리</h2>
+	<h3>에러가 발생할 수 있는 특수기호</h3>
+	<p class="id_text">validator뿐 아니라 주석글 안에서도 에러가 발생할 수 있는 특수기호</p>
+	
+	<h2>특수기호 &amp; 주석글 안에서도 에러발생 할 수 있음</h2>
+	<p>
+		<!-- "&" --> 표현의 경우 어떤 값들을 연결할때 사용하는 특수기호<br/>
+		amp로 사용하게되면 아무 의미 없는 특수기호 형태로 사용할 수 있음
+	</p>
+	<p>
+		a==1 <!--&&--> a==2 : a는 1과 같아야하고 a는 2와도 같아야함<br/>
+		2가지 이상의 조건을 전부 만족해야 함
+	</p>
+	<p>
+		a==10 <!--&&--> a==100 <!--&&--> a=1000 : 나열되는 조건은 필요<br/>
+		하다면 몇 개도 더 나열할 수 있음
+	</p>
+	<p>
+		a==1 || a=="a" || a=="가" || a="헐크" : 나열된 조건들이 모두 달라도 그 중에 <br/>
+		하나가 맞으면 참으로 인식함
+	</p>
+	<hr/>
+
+	<h3>&lt;특수기호&gt;들은 "기능"을하는 기호들이 많기때문에 에러가 발생함</h3>
+	<h4><strong class="id_text">lt에 대한 이해</strong></h4>
+	<p>
+		+ 참고 사이트: 삼성엔지니어링(구형 브라우저 &amp; 반응형 페이지 제작)
+	</p>
+	<p>
+		+ 구형 브라우저에 맞추는 작업: lt와 gt를 사용함<br/>
+		+ 구형 브라우저는 "익스플로러"만 존재함!<br/>
+		+ if lt IE 7 : 만약 인스터 익스플로러 7버전 "이전 (lt)" 버전이라면....<br/>
+		+ IE 7 : 익스플로러 7버전
+	</p>
+	<h4><strong class="id_text">gt에 대한 이해</strong></h4>
+	<p>
+		+ if gt IE 8: 만약에 인터넷 익스플로러 8버전 이후 버전이라면...<br/>
+		+ IE 8: 익스플로러 8버전
+	</p>
+	<hr/>
+	
+	<h3>현재 버전, 이전, 이후 버전</h3>
+	<p>
+		+IE 11: 현재 버전을 작성할때<br/>
+		+if lt IE 10 : 10버전을 제외한 이전 버전들:9,8,7,6,5<br/>
+		+if gt IE 8: 8버전을 제외한 이후 버전들:9,10,11<br/>
+		+ 삼성엔지니어링 사이트에서 확인해보면 현재 버전들을 포함하지 않아 따로 작성한것을 확인할 수 있음
+	</p>
+	<p>
+		+ if lte IE 10: 현재 버전 10을 "포함"한 이전 버전들:10,9,8,7...<br/>
+		+ if gte IE 8: 현재 버전 8을 "포함"한 이후 버전들:8,9,10,11
+	</p>
+	<p>
+		매우중요) lte,gte는 현재 버전을 포함하지만 "인식률이 낮아" 삼성 엔지니어링 사이트처럼 따로 구분하여 사용하는 경우가 많다
+	</p>
+	<hr/>
+
+	<h2> 구형 &nbsp;브라우저 &amp; 표준&nbsp;&nbsp;&nbsp;&nbsp;브라우저</h2>
+	<p>
+		nbsp는 공백을 인식시킬때 사용하는 특수기호<br/>
+		스페이스바와 tab키로 처리 불가능한 공백들을 nbsp로 직접 입력하여 처리할 수 있음 <br/>
+		정밀하진않지만 빨리 공백을 처리해야할 때 사용하는 특수기호<br/>
+		(br태그처럼 사용하고, 기사내용이나 자주 내용이 수정되는 페이지에서 사용함)
+	</p>
+	<h3>구형 브라우저</h3>
+	<p>익스플로러 8버전,7버전, 6(x). 5</p>
+	<h3>표준 브라우저</h3>
+	<p>익스플로러 9버전, 10,11, 엣지 익스플로러, 파이어폭스, 오페라,사파리,크롬</p>
+	<p>
+		footer영역에서 가장 중요한 것은? &copy;
+	</p>
+	<hr/>
+
+	<h2>id속성 &amp; class속성</h2>
+	<h3>id 속성이란?</h3>
+	<p id="id_desc0" class="id_text">
+		<strong>네이밍을 만들때 중요사항</strong><br/>
+		id의 경우, 코드생략으로 태그를 닫았을때 id만 보고 무엇을 담고있는지<br/>
+		알 수 있어야 함
+	</p>
+	<p id="id_desc1" class="id_text">
+		1) 한 페이지에서 같은 이름을 2번 사용하기 어려움<br/>
+		2) 부모나 영역이 되는 공간에 사용, #header p<br/>
+		3) 예약된 용어들을 대신할 때 사용<br/>
+		(header, nav, gnb, container, visual, section(headline, h2~h6), aside, footer)
+	</p>
+	<p id="id_desc2" class="id_text">
+		4) 고정된 기능명으로 영역을 다룰때 (scroll_menu, click_area)<br/>
+		5) style과 script 영역에서는 id값을 한 번만 다루기때문에 가장 빠르게 인식함<br/>
+		6) body에서는 tag부터 작성되어야 id를 작성할 수 있기때문에 tag 부터 읽어들임<br/>
+		7) style에서 #으로 호출가능하고, jQuery에서도 #으로 호출가능함
+	</p>
+	<hr/>
+
+	<h3>class 속성이란?</h3>
+	<p>
+		1) id는 유일하게 한 번만 이름을 사용하기때문에 대량작업시 제약이 많음<br/>
+		2) 그룹화, 개별작업,대량작업 등 사용자가 원하는대로 만들기위하여 class를 많이 사용함<br/>
+		3) 중요) class는 같은 이름을 여러번 사용할 수 있음
+		4) 매우 중요) id는 주로 예약된 용어나 인식이 가능한 이름을 사용하지만 <br/>
+		class는 사용자가 압축해서 이름을 만들거나 기능명 등으로 사용할 수 있음(button(btn), click(clk))
+	</p>
+	<p>
+		확실하게 알아두기) id="header"	class="header", 속성이 다르기때문에 같은 이름 사용가능함<br/>
+		1) id="header", id="header", id 속성이 2번 같은 이름을 사용했기때문에 사용 불가능<br/>
+		2) class="header", class="header", class속성은 그룹화가 가능하기때문에 사용가능함
+	</p>
+	<p>
+		id는 주로 부모나 큰 영역에 지정하고, class는 자녀나 기능이 적용되어야하는 부분에 주로 많이 사용함
+	</p>
+	<hr/>
+
+	<div>
+		<h2>인식률</h2>
+		<p>
+			브라우저에서 인식할 수 있는 확률 (tag, id속성, class속성)
+		</p>
+		<p>
+			브라우저가 활성화 된 순간 읽는 순서는? (속도)
+		</p>
+		<p>
+			body가 열린부분부터, body가 닫힌 부분까지 위에서 아래로 순서대로 읽어들임<br/>
+			속도가 매우 빠르기때문에 동시에 읽는것처럼 느껴짐
+		</p>
+		<p>
+			인식률은 style, script, php, "body를 제외"하고 나머지 모든 영역에서는 id속성이 가장 빠르다.<br/>
+			작성된 이름이 하나밖에 없기때문에 인식률이 떨어질 수 없음
+		</p>
+		<p>
+			중요) body는 tag부터 읽음, id와 class는 tag가 없다면 작성이 불가능함
+		</p>
+		<p>
+			style과 script, php영역에서 class나 tag를 호출할때, 같은 이름이 많기때문에 인식률이 떨어질 수 있음<br/>
+			인식률이 떨어지면, style효과 적용 불가능, script 기능 적용 불가능, php db적용 불가능
+		</p>
+		<p>
+			정리)body는 tag, body를 제외한 나머지 영억은 id속성 제일 빠르게 읽음
+		</p>
+		<p>
+			인식률을 높이는 방법)<br/>
+			.text, 같은 이름의 class를 여러군데 설정할 수 있기때문에 어느 영역의 class인지 알기 어려움<br/>
+			+ #header .text , 어느 영역의 class인지 정확하게 작성해준다.<br/>
+			+ #header p , 어느 영역의 tag인지 정확하게 작성해준다.
+		</p>
+	</div>
+	<hr/>
+	<h2>속도가 느려지는 경우</h2>
+	<p class="coms">
+		1) body가 시작되고, 닫히는 부분까지 위에서 아래로 읽음
+	</p>
+	<p class="coms">
+		2) 태그만 있을경우, id와 class가 없기때문에 태그만 읽을 수 있음
+	</p>
+	<p class="coms">
+		3) p id="text" , 태그도 읽고, id도 읽어야하기때문에 느려질 수 있음
+	</p>
+	<p class="coms">
+		4) p id="text" class="desc" , 태그, id, class 모두 읽어야 하기 때문에 가장 느려질 수 있음
+	</p>
+	<p class="coms">
+		5) 기본적으로 느려진 페이지는 다른 것으로 속도를 보완해도 느려질 수 있기때문에 주의해야한다.
+	</p>
+	<p class="coms">
+		매우 중요) 작업중인 경우에는 많이 사용할 수 밖에 없음<br/>
+		최종적으로 확인할때 사용하지 않는 id나 class, tag가 있다면 지워주는 "경량화" 작업을한다.
+	</p>
+
+ </body>
+</html>

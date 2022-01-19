@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+  <head>
+    <title>margin_test</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      /*
+        1) 여백 초기화
+        2) margin, padding 어떤 것을 먼저 작성해도 상관없음
+        3) *은 "모든 요소"라는 의미로 사용함
+
+        4) 숫자 0은 단위 없어도 적용가능
+      */
+
+      h1 {
+        background-color: aqua;
+        width: 400px;
+        text-align: center;
+        margin: 50px auto 0;
+      }
+
+      p {
+        width: 400px;
+        background-color: pink;
+        text-align: center;
+        margin: 20px auto 0;
+      }
+      /*
+        [화면 가운데 배치하기]
+
+        1) 인라인요소를 화면 가운데 배치할경우
+          블록요소에 여백이 있는지 확인하고 text-align:center 적용하기
+
+        2) 블록요소를 화면 가운데 배치할 경우
+
+          :text-align:center는 "인라인요소"만 블록요소 가운데 둘 때 사용
+          :블록요소를 화면 가운데 둘 때는 "margin" || "position" 등으로 가운데 둘 수 있음
+
+        3) 계산하기
+
+          1)현재 사용중인 해상도, 1920px
+          2)h1의 너비, 400px
+
+            1920-400==1520
+            1520(결과값)/2(양 옆에 여백) ==760
+
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        [중요사항]
+          h1{margin:50px 760px;}
+          p{margin:0 760px}
+
+          :: h1의 margin:50px 로 인해서 위아래 모두 공간이 떨어짐 아래의 p태그까지 
+          간섭하는 문제 발생
+
+          :: margin:50px 760px 0; 아래쪽은 간섭하지 않기때문에 아래 객체가 적용가능한 값으로 배치될 수 있음
+
+          :: 좌우 배치할때도 간섭하지 않도록 설정함
+
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+          [자동으로 좌우를 배치할때]
+
+            매우 중요:
+              1) 좌우에 어떤 객체도 없을때 자동으로 계산이 가능함
+              2) 좌우에 배치된 "하나의 객체"라도 있으면 방해가되서 배치하기 어려움
+
+              3)위아래가 아닌, 좌우가 적용됨
+              4)margin:0 auto 방식이 적용되지 않으면 직접 계산하여 배치해야 함
+      */
+    </style>
+  </head>
+
+  <body>
+    <h1>margin_test</h1>
+    <p>p태그</p>
+  </body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+  <head>
+    <title>web_basic</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+
+      /*################ wrap #####################*/
+      #wrap {
+        width: 1500px;
+        background-color: pink;
+      }
+
+      /*################ header ##################*/
+      #header {
+        width: 100%;
+        height: 94px;
+        background-color: gold;
+      }
+      #header h1 {
+        width: 300px;
+        height: 30px;
+        background-color: aqua;
+        font-size: 16px;
+      }
+
+      /*################ header / nav / gnb ##################*/
+      #gnb span {
+        background-color: #ff0;
+      }
+      #gnb i {
+        font-style: normal;
+        color: #aaa;
+      }
+
+      /*################ container ##################*/
+      #container {
+        width: 100%;
+        background-color: lightblue;
+      }
+      #visual {
+        width: 100%;
+        height: 480px;
+        background-color: #000;
+        color: #fff;
+      }
+
+      /*################ container / section ##################*/
+
+      #section {
+        width: 100%;
+        background-color: #aaa;
+        text-align:center;
+      }
+      #sport {
+        width: 100%;
+        height: 300px;
+        background-color: #fff;
+      }
+      #sports h3{width:100%; background-color:pink;}
+
+
+      #football {
+        width: 300px;
+        height: 200px;
+        backgruound-color: #a00;
+      }
+      #football h3{width:100%; background-color:gold;}
+      #game {
+        width: 100%;
+        height: 300px;
+        backgruound-color: #fff;
+      }
+
+      /*################ section/ sub_vis_game ##################*/
+
+
+      #sub_vis_game {
+        width: 100%;
+        height: 300px
+        background-color: #000;
+        color: #ff0;
+      }
+
+      /*################ section/ shop ##################*/
+      #shop{width:100%; height:200px; background-color:darkblue; color:#eee; }
+
+
+
+
+      /*################ container / subVisual ##################*/
+      #sunVisual{width:100%; height:360px; background-color:#efefef; color:#000;}
+
+
+
+      /*################ footer ##################*/
+
+      #footer {
+        width: 100%;
+        background-color: #000;
+        color: #fff; text-align:center;
+      }
+      #footer span{background-color:blue;}
+
+      #footer i{font-style:normal; color:#777;}
+
+      /*
+        [단위설정의 중요성]
+
+          + px , 고정단위로 사용 (해당하는 객체를 고정시켜놓고 사용)
+
+              : 장정: 움직이지 않기때문에 가장 안전하게 사용할 수 있음
+              : 단점: 움직이지 않기때문에 하나씩 수정해야 함
+
+          + % , 항상 바뀔 수 있는 단위
+
+              : 어느 영역을 기준으로 작업하느냐에 따라서 같은 단위여도 전혀 다른 형태의 작업이 출력될 수 있음
+              : 정사각형 안에서 100%를 사용한다면 정사각형으로 표현되고,
+              : 직사각현 안에서 100%를 사용한다면 직사각형으로 표현된다.
+
+              문제)
+                sports h3
+                football h3
+                  를 각각 대상으로 작성하고, 너비는 100%, 배경색상은 각각 pink와 gold 적용하기
+
+              정리)
+                같은 너비 100% 사용했지만 부모요가 큰 sports의 경우 더 크게 표현되고,
+                football의 경우엔 더 작게 표현된다.
+
+              : wrap을 960px로 만들고, 1차 영역인 header,container,footer를 width:100% 설정하면 960px만큼 사용할 수 있음
+
+              : wrap을 1280px로 만들면 header,container,footer는 1280px만큼 사용할 수 있음
+
+              + 장점: 반응형 페이지 제작시 해당하는 거리만큼 움직이기때문에 부드럽게 사용할 수 있음
+              + 단점: 부모가 어떤 값이냐에 따라서 쉽게 깨질 수 있음
+
+            [매우중요]
+
+              현재 웹은 바깥쪽 영역은 wide처럼 보이기위하여 전부 다 사용하고, 안쪽에 실제 픽셀을 나눈 후 그 안에서 다시 %로 작업하는 게 일반적이다.
+
+            [규칙]
+              1)큰 영역이나 실제 사용하는 영역은 px로 고정
+              2)px을 고정한 후 %를 사용한다
+              3)wide처럼 사용하는 영역을 제외하고, 실제 사용영역 px 그 안에 % 작업이 일반적
+
+            [활용하기]
+              <p>
+                <img src="img/background.jpg" alt="과일이미지"/>
+              </p>
+
+              :img태그는 인라인요소 직접 너비 높이를 만드는 것이 아니라 p태그를 따라가게 만들어야 함
+
+              [가장 안전한 방법_제품 표현시]
+                액자 크기를 설정하고, 이미지는 그 안에서 다 사용할 수 있도록 배치한다.
+                %만 단독사용하는것은 금지
+
+                :p{width:400px;}
+                :p img{width:100%}
+
+          + em : 배율 (글자에 해당하는 값에 종종 사용함, 행산,자간,폰트크기 등등에서 사용)
+
+            1.5em == 원본보다 1.5배 큼
+            2em   == 2배
+            3em   == 3배
+
+          :: 애플기기에서 보이스 레코더 기능이 10배 이상 성능저하 현상이 생긴다..
+          :: 해결방법은 em을 %로 변경하기
+
+            1em   ==100%
+            1.7em ==170%
+            3em   ==300%
+
+
+
+      */
+
+      sports h3{width:100%; background-color:pink;}
+    </style>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <p>
+        body를 대신하여 각각의 영역들을 모아주는 가장 큰 영역 (wrap, wrapper,
+        naverWrap)
+      </p>
+      <div id="header">
+        <h1>로고, 상징적인 요소들, 기업의 대표이미지</h1>
+        <div id="nav">
+          <h2>네비게이션 영역 (nav태그, gnb(중요도가 높은 네비게이션))</h2>
+          <div id="gnb">
+            <span>지식인</span> <i>|</i> <span>카페</span> <i>|</i>
+            <span>스포츠</span> <i>|</i> <span>메일</span> <i>|</i>
+            <span>블로그</span> <i>|</i> <span>랭킹</span>
+          </div>
+        </div>
+      </div>
+      <div id="container">
+        <h2>홈페이지에서 보여줘야 하는 내용담기!</h2>
+        <div id="visual">
+          <h3>시선을 끄는 작업을 할때 사용되는 영역</h3>
+          <p>
+            1) xhtml에서는 동적인 값 사용불가능! (문법 맞추기)<br />
+            2) html5에서는 애니메이션 / 동영상(저작권)<br />
+            3) jQuery, javascript (슬라이딩 윈도우)<br />
+            + carousel (남들이 만들어 놓은 자료 (플로그인) , 부트스트랩)
+          </p>
+        </div>
+        <div id="section">
+          <h2>section영역은 "비슷한 정보의 값"을 모아주는 영역</h2>
+          <p>
+            비슷한 정보의 값들을 모아두었기 때문에 "제목이 없을 경우",<br />
+            어떠한 주제의 정보들인지 알기 어려움
+          </p>
+          <div id="sports">
+            <h3>스포츠</h3>
+            <p>
+              야구, 축구,볼링,곮프,농구,격투기,배구,테니스 등등 스포츠 관련
+              정보들 모아두기<br />
+              카테고리 분류별로 한 종류의 값만 모아두어도 상관없음(축구 || 야구)
+            </p>
+            <div id="football">
+              <h3>축구</h3>
+              <p>선수단 정보, 게임일정,연고지,감독</p>
+            </div>
+          </div>
+          <div id="game">
+            <h3>게임</h3>
+            <p>
+              닌텐도, ps5, xbox, pc (스팀),LOL, 배틀그라운드, 리니지.. 등등
+              게임에 해당하는 정보만 모아두기
+            </p>
+          </div>
+        </div>
+        <div id="sub_vis_game">
+          <h3>보조 비쥬얼 영역</h3>
+          <p>
+            메인이 되는 비쥬얼 영역보다 크지 않고, 간단한 광고나 제품들을
+            소개하는 영역
+          </p>
+        </div>
+        <div id="shop">
+          <h3>쇼핑</h3>
+          <p>
+            계절에 맞는 옷, 날씨에 따른 의상, 신발, 가방, 악세서리 등등 쇼핑관련
+            정보 모아두기
+          </p>
+        </div>
+        <div id="sns">
+          <h3>sns정보를 모아두는 영역</h3>
+        </div>
+      </div>
+      <div id="footer">
+        <h2>꼬릿말영역,카피라이터,법률정보들 작성</h2>
+        <div>
+          <span>담당자 이메일</span> <i>|</i> <span>개인정보취급방침</span>
+          <i>|</i> <span>제휴제안</span> <i>|</i> <span>사업자 번호</span>
+          <i>|</i> <span>회사주소</span> <i>|</i> <span>카피라이터</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!--
+	[웹 페이지 작업시 중요사항]
+
+	1) wrap, header(gnb, nav), container(visual, section), footer(카피라이터) 등 예약된 용어는 반드시 사용하기
+	2) style영역으로 넘어가기 전에 반드시 validator로 확인하기(웹 표준과 접근성에 맞아야함)
+	3) 웹 접근성 연구소나 해당하는 파일을 통해서 웹 표준법 100점을 맞아야 함
+	4) 위와 같은 검수과정을 통해서 완료가 되면 그 다음 단계로 넘어갈 수 있음
+	
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	매우중요)
+		body 영역이 고장나면 모든 영역에 문제가 생기기때문에 반드시 튼튼하게 만들어야 함
+
+
+-->

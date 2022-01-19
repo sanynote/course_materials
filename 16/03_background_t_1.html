@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>background_image_car</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		body{background-image:url("img/bg_grid.gif")}
+		/*
+			[body]
+			
+			[불가능한 작업]
+				: body는 사이즈 작업을 하지 않는다(width,height 작업하지 않음)
+				: margin, padding 작업 하지 않는다.
+
+			[가능한 작업]
+				: 배경색상 적용, 배경이미지 적용, 글자 적용
+		*/
+
+		#wrap{min-width:1025px; width:100%}
+		#container{width:100%}
+
+		/*################ content (실제 사용영역) ###################*/
+		#content{width:1280px; text-align:center; margin:0 auto;}
+		#content h2{width:100%; background-color:#a00; color:#fff; font-size:30px; text-transform:uppercase;}
+		#content p{background-color:#ccc; height:320px; width:480px; margin: 50px auto 0; background-image:url("img/car.jpg");
+		background-size:90% 90%; background-repeat:no-repeat;}
+		
+
+
+		/*
+			[주의사항]
+				배경색상이나 배경이미지가 표현되지 않는 이유는?
+					: 너비와 높이 작업이 없기 때문
+					: background 효과들을 칠하는 개념이기때문에
+					영역이 없으면 칠할 수 없음
+
+					:대다수의 문제는 높이가 없는 경우가 많음
+		*/
+		
+
+
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="content">
+				<h2>background_image_car</h2>
+				<p></p>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

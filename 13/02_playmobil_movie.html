@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>playmobil_movie</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*################ reset #################*/
+			*{margin:0; padding:0;}
+
+		/*################ wrap / container #################*/
+			#wrap{min-width:1025px; width:100%;}
+			#container{width:100%;}
+
+		/*################ movieWrap #################*/
+			#movieWrap{width:1025px; margin:0 auto;}
+
+		/*################ movieHeader ################*/
+			#movieHeader{width:100%; padding:20px 0;}
+			/*
+				1) line-height의 경우 글자와 글자 사이의 높이 간격이 만들어짐!
+				2) 현재 페이지에서 movieHeader영역을 확인 해보면, 글자만 있는 것이 아니라
+				로고에 해당하는 img가 있는 것도 알 수 있음!
+
+					: "이미지가 있다면 line-height가 적용 되지 않는 경우" 가 있어서 떨어뜨릴때
+					margin이나 padding, 높이값 등으로 떨어뜨릴 수 있다.
+			
+			*/
+			
+			/* 기존 페이지에서 사이즈 참고 : 54px * 26px */
+			#movieHeader h2{width:54px;} 
+			#movieHeader h2 img{width:100%;}
+
+			#movieHeader h3{width:100%; font-size:30px; font-weight:400;}
+			#movieHeader p{width:100%; font-size:14px; color:#777; padding-top:10px;}
+
+			/*
+				[기능이 들어갈 수 있는 이미지]
+					
+					1) 로고
+					2) 제품
+						
+						해당하는 이미지들은 영역을 너무 멀리까지 설정하면 전혀 다른 영역에서
+						기능이 되기 때문에 주의해야 한다! 
+							(링크나 클릭이 다른 곳에서 잡힐 수 있음!)
+
+						: 이미지 근처까지만 영역 설정하기 
+			*/
+		
+		
+		/*################ movieContainer ################*/
+			#movieContainer{width:100%;}
+			
+		/*################ movieNews ###############*/
+		/*
+			[남아 있는 공간 확인하기]
+
+			: 실제 사용영역으로 만들기, 이미지크기 확인(640px)
+			
+			: 옆에 공간이 비워져 있는 부분은 사이드나 다른 작업을 할 수 있기
+			때문에 채우는게 아니라 비워둬도 상관없음
+
+			: padding이나 margin으로 채울 필요없음!
+		*/
+			#movieNews{width:680px; }
+			#movieNews .desc{width:100%; font-size:17px; padding:50px 0 20px;}
+		/*
+			[웹 구조 작성시 중요사항]
+				
+				1) 화면 가운데 두는 작업도 중요하지만 읽기 위해서 작업하는 경우도
+				많기 때문에 한쪽 방향으로 많이 주고, 한쪽 방향을 적게 주어 배치하는
+				경우도 많다!
+
+				2) 제목의 경우 영역 가운데 있으면 위에 영역의 제목인지 아래 영역의 
+				제목인지 알수 없는 경우가 많아서 한쪽으로 가깝게 만들면 
+				영역과 제목을 이어서 읽을 수 있다!
+		*/
+
+			#movieNews .imgs{width:100%; text-align:center;}
+			#movieNews .comp{width:100%; font-size:13px;  padding-top:15px;
+			text-indent:16px;}
+
+			/*
+				[padding과 text-indent]
+
+					1) padding은 블록속성의 여백을 안쪽으로 밀어넣는 개념!
+						: 주의사항, 여백을 차지함!
+			
+					2) text-indent는 블록속성 안의 글자를 안으로 들여쓰기 할때 사용하는 개념!
+						: 공간을 차지 하지 않음!
+						: 한 줄일 경우 글자 들여쓰기가 편리함!
+
+						: 장문일 경우, 맨앞에 글자 한자만 안으로 들어가기 때문에
+						주의해야 함!
+			
+			*/
+
+
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="movieWrap">
+				<div id="movieHeader">
+					<h2><img src="img/logo.gif" alt="서울경제"/></h2>
+					<h3>'플레이모빌: 더 무비' 디즈니, 드림웍스의 스페셜리스트들 총집합</h3>
+					<p>최재경 기자 입력 <span>2019. 08. 07. 06:57</span></p>
+				</div>
+				<hr/>
+				<div id="movieContainer">
+					<div id="movieNews">
+						<p class="desc">
+							[서울경제] 디즈니 &lt;겨울왕국&gt; 제작진이 만든 토이 어드벤처 &lt;플레이모빌: 더 무비&gt;［주연: 다니엘 래드클리프, 안야 테일러 조이, 아담 램버트, 짐 개피건, 가브리엘 베이트먼 | 감독: 리노 디살보 | 수입/배급: ㈜올스타엔터테인먼트]가 블록버스터급 제작비와 화려한 제작진 라인업을 공개하며 화제가 되고 있다.
+						</p>
+						<div class="imgArea">
+							<p class="imgs">
+								<img src="img/movie0.jpg" alt="제작진 이미지"/>
+							</p>
+							<p class="comp">
+								/사진=㈜올스타엔터테인먼트
+							</p>
+						</div>
+						<p class="desc">
+							디즈니, 드림웍스 제작진의 합작으로 탄생한 토이 어드벤처 &lt;플레이모빌: 더 무비&gt;가 올 추석 강자다운 블록버스터급 제작진과 이에 어울리는 제작비를 공개하며 화제가 되고 있다.
+						</p>
+						<div class="imgArea">
+							<p class="imgs">
+								<img src="img/movie1.jpg" alt="포스터 이미지"/>
+							</p>
+							<p class="comp">
+								/사진=㈜올스타엔터테인먼트
+							</p>
+						</div>
+						<p class="desc">
+							&lt;플레이모빌: 더 무비&gt;는 이미 &lt;겨울왕국&gt;, &lt;라푼젤&gt;을 선보인 리노 디살보가 감독을 맡으면서 많은 기대를 받고 있는 가운데, &lt;플레이모빌: 더 무비&gt;에 참여한 화려한 제작진들이 시선을 사로잡는다. &lt;플레이모빌: 더 무비&gt; 각본으로는 82회 아카데미 시상식 장편 애니메이션 부문에 노미네이트 된 디즈니 애니메이션 &lt;공주와 개구리&gt;의 각본가 그렉 어브와 제이슨 옴랜드가 함께했으며, 프로듀서로는 91회 아카데미 시상식에서 장편 애니메이션상을 수상한 &lt;스파이더맨: 뉴 유니버스&gt;의 감독 밥 퍼시케티와 아트 부문의 스테판 프랭크가 합류해 완성도를 높였다.<br/><br/>
+
+							이뿐 아니라 &lt;겨울왕국&gt;, &lt;모아나&gt;, &lt;주먹왕 랄프&gt;를 비롯해 &lt;슈퍼배드&gt; 시리즈, &lt;미니언즈&gt;, &lt;마이펫의 이중생활 2&gt;, &lt;인사이드 아웃&gt; 등 최고의 애니메이션에서 활약한 제작진들이 &lt;플레이모빌: 더 무비&gt;에서 실력을 발휘하면서 최고의 퀄리티를 이뤄냈다.<br/><br/>
+
+							게다가 &lt;슈퍼배드&gt;, &lt;미니언즈&gt;보다 높은 7천5백만불의 제작비는 차세대 추석 애니블록버스터로 &lt;플레이모빌: 더 무비&gt;를 주목해야 하는 이유 중 하나다. 이로써 &lt;플레이모빌: 더 무비&gt;는 보도스틸을 통해 공개한 매력 넘치는 판타지 월드와 등장인물뿐 아니라 최고 제작진이 선보일 높은 완성도까지 관객들의 많은 궁금증을 불러 일으키고 있다.<br/><br/>
+
+							1974년 시작해 전 세계 100개국, 30억 개 이상의 판매량을 기록하고 있는 장난감 ‘플레이모빌’ 의 첫 극장판 &lt;플레이모빌: 더 무비&gt;는 1도 상상할 수 없었던 진짜 장난감 세계에 빠지게 되며 벌어지는 토이 어드벤처를 담을 예정이다.<br/><br/>
+
+							매력적인 장난감들과 애니메이션 스페셜리스트들이 이뤄낸 높은 퀄리티까지 어느 하나 빠지지 않는 &lt;플레이모빌: 더 무비&gt;는 지금껏 전혀 상상하지 못한 판타지한 세상으로 관객들을 초대할 예정이다.<br/><br/>
+
+							블록버스터급 제작비와 그에 어울리는 환상적인 제작진 라인업으로 기대를 한껏 끌어올리고 있는 &lt;플레이모빌: 더 무비&gt;는 올 추석 상상 초월의 매력으로 관객들을 찾아갈 예정이다.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>ol li</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ </head>
+
+ <body>
+	<div>
+		<h2>ul(unordered list) : 순서가 없는 리스트</h2>
+		<ul>
+			<li>ul 다음에 사용할 수 있는 태그는 li 밖에 없음</li>
+			<li>li 태그 다음에 사용할 수 있는 태그는 li 밖에 없음</li>
+			<li>ul은 li태그들의 부모역할만 담당함</li>
+		</ul>
+	</div>
+	<hr/>
+	<div>
+		<h2>ol(ordered list) : 순서가 있는 리스트</h2>
+		<div>
+			<h3>블릿기호</h3>
+			<p>순서가 없는 리스트의 경우, 앞에 점이 붙어있음</p>
+			<p>순서가 있는 리스트의 경우, 앞에 숫자가 붙어있음</p>
+			<p>리스트 앞에 점, 숫자, 사각형, 다른 기호들이 붙어있을경우 이를 "블릿기호"라고 한다.</p>
+		</div>
+	</div>
+	<hr/>
+
+	<div>
+		<h3>ol list 활용하기</h3>
+		<ol>
+			<li>ul처럼 ol리스트를 사용할때는 반드시 li태그가 우선된다.</li>
+			<li>ul과 마찬가지로 ol은 li밖에 담을 수 없음</li>
+			<li>li 다음에 사용할 수 있는 태그는 li로 사용방법이 동일하다.</li>
+		</ol>
+		<ol>
+			<li>ol이 작성되고 li태그 사용하면 무조건 1번부터 시작</li>
+			<li>list는 하나만 사용하는것이 아니라 여러장의 페이지를 구성하려고 작성함</li>
+			<li>list를 다룬다면 2개 이상의 비슷한 영역이 필요함</li>
+		</ol>
+		<ol>
+			<li>ul li를 사용할경우, 앞에 점이 붙어있음</li>
+			<li>ol li를 사용할경우, 앞에 숫자가 붙어있음</li>
+			<li>기호나 숫자는 사용자가 원하는대로 바꿔서 사용이 가능하다.</li>
+			<li>앞에 붙어있는 기호들을 "블릿기호" 라고 한다.</li>
+		</ol>
+		<h3>overflow 기능들</h3>
+		<ol>
+			<li>
+				overflow 기능들 중, hidden을 제일 많이 사용함<br/>
+				(넘치는 객체, 넘치는 내용, 넘치는 이미지, 넘치는 영역)
+			</li>
+			<li>
+				overflow 기능들 중, scroll<br/>
+				웹은 정보 전달의 목적도 있기때문에 읽을 수 있어야한다.
+			</li>
+			<li>
+				overflow 기능들 중, auto<br/>
+				scroll이 넘치는 방향으로만 보이도록 만들기
+			</li>
+			<li>
+				실제 면접에 나왔던 문제<br/>
+				:: auto와 scroll중 많이 사용하는것은? (디자인 부서에서 나온 문제)<br/>
+				:: auto는 어느 방향으로 늘어날지 알 수 없기때문에 미리 대비하기 어려움<br/>
+				:: scroll은 사용하지않아도되는 scroll을 표현하지만 어느 정도 공간을 사용할지<br/>
+				알 수 있기때문에 정확한 픽셀을 알 수 있음
+			</li>
+		</ol>
+	</div>
+	<hr/>
+
+	<div>
+		<h3>(웹 분야) 구분하기</h3>
+		<ol>
+			<li>웹 디자인 / 디자인 + 퍼블리셔(디퍼블리셔)</li>
+			<li>개발자 + 퍼블리셔 (개퍼블리셔)</li>
+			<li>프론트엔드</li>
+			<li>프론트엔드, 프론트엔드 + 디자인</li>
+			<li>프론트엔드, 프론트엔드 + script 개발자</li>
+			<li>서버사이드 (.js(서버에 맞춰서 사용하는 script들), 노드, 앵귤러, 리액트)</li>
+			<li>프론트엔드 + script + database (세미풀스텍)</li>
+			<li>백엔드 (php, jsp, asp)</li>
+			<li>풀스텍 개발자 : 웹 퍼블리셔 + 백엔드 (php, jsp, asp) + 보안</li>
+		</ol>
+	</div>
+
+	<hr/>
+
+	<div>
+		<h2>웹 순서 나누기</h2>
+		<ol>
+			<li>자료수집(이미지 촬용, 스케치, 비율에 맞는 이미지)</li>
+			<li>관련 사이트 조사(url,기획,구성)</li>
+			<li>멘트작성</li>
+			<li>
+				[마크업] wrap, header, container (section 몇 개?, side), footer 영역 나누기<br/>
+				해당하는 영역에서 어떤 태그를 사용할것인지 이미지 비율은 어떻게 될 것인지 구상하는 단계
+			</li>
+			<li>
+				[header] 영역 설계<br/>
+				+ 상징적인 요소들 h1 || div(id="logo", class="logo")<br/>
+				+ 로고를 만들때 : 로고 이미지, 상징적인 폰트, 대표 상품이미지<br/>
+				+ 네비게이션 제작: nav, gnb, ul li, ol li 태그들 구성 확인<br/>
+				+ 기능은? "세로로 한줄씩 떨어지는 기능", "한줄이 가로로 길게 나오는 기능", "전부 보여주는 기능"
+			</li>
+			<li>
+				[container] 영역 설계<br/>
+				+ section 은 몇 개로 구분할지 설계<br/>
+				+ side 메뉴 설계?? side가 있는 페이지와 없는 페이지가 있음<br/>
+				+ visual 영역은 한 장면에 2단? 3단 어떤 구조로 만들지 설계<br/>
+				+ visual 영역의 기능? (동영상, html5를 이용한 애니메이션, script를 이용한 슬라이딩 윈도우 구현)
+			</li>
+			<li>
+				[footer] 영역 설계<br/>
+				카피라이터, 제휴업체(스폰서), 2중 구조, 3중 구조<br/>
+				footer영역에 로고 제공
+			</li>
+			<li>
+				[wrap] 영역 설계<br/>
+				전체를 사용하는 영역과 실제 사용영역으로 구분하기<br/>
+				2016년 960px, 1025px, wrap에 의존하는 페이지들이 많았음<br/>
+				현재의 페이지들은 각각 영역에 의존하는 페이지가 많음<br/>
+				: 전체 사용하는 영역 width:100%를 구성하여 "와이드"하게 사용<br/>
+				: 실제 사용하는 영역 px로 구분되는 영역을 구성하여 가운데 배치함<br/>
+				매우중요) 마우스로만 되는것이 아니라 키보드로도 조작이 가능해야 함
+			</li>
+		</ol>
+	</div>
+	<div>
+		<h3>웹 페이지 설계(실무 기준)</h3>
+		<ol>
+			<li>
+				xhtml 페이지 만들기(웹 표준, 웹 접근성을 고려하는 "정적인 페이지" 제작)<br/>
+				+ 정적인 페이지: 링크요소 설정, 동적인 기능은 제공하지 않음<br/>
+				+ css3, script: 애니메이션, 동영상 기능, 움직이는 기능, 애니메이트
+			</li>
+			<li>
+				xhtml 페이지 제작 완료 + script로 기능만들기<br/>
+				xhtml(정적인 페이지) + jQuery, javascript(동적인 페이지) 제작<br/>
+				: html5는 제외!<br/>
+				문제점: script 영역에 대한 의존도가 매우 높아서 기능이 매우 느리게 표현되는 문제가 발생함<br/>
+				페이지를 읽어주는 속도는 빠르지만 기능은 매우 느림
+			</li>
+			<li>
+				html5(페이지 만들기) "표준 브라우저 전용으로 만들기 시작함"
+				html5는 웬만해서는 오류가 발생하지 않음<br/>
+				문법이 틀리고있지만 고장이 나지 않아서 모바일이나 태블릿pc에서
+				쉽게 고장이 발생함
+			</li>
+			<li>
+				html5로만 만들 경우 "css3를 받아들이지 못하는 익스플로러에서는 최하의 성능을 보임"
+			</li>
+			<li>
+				html5의 빠른 css3 효과와 script의 기능을 함께 섞어서 사용하면 느려지는 속도를<br/>
+				보완할 수 있음 (xhtml에 대한 기초가 중요함)
+			</li>
+			<li>
+				*css3에서 배우는 동적인 요소들<br/>
+				(트랜스폼, 장면전환, 멀티기능,애니메이션,반응형, 절대형, 적응형)
+			</li>
+			<li>
+				html5 필수! (유효성 검사, 로그인, 회원가입)<br/>
+				+ 유효성 검사(아이디 입력, 비밀번호 입력, 필수 입력사항 반드시 기입)
+			</li>
+			<li>
+				html5 필수_2 (반응형, 절대형,적응형) + script 만들기
+			</li>
+			<li>
+				[정리] html5의 구조에 맞춰서 페이지를 제작하고,<br/>
+				javascript + jQuery 로만 기능을 만들던것을 서로 보완하여 사용함<br/>
+				:: css3와 script를 섞어서 사용하는것을 매우 어려워함<br/>
+				:: css3와 script를 섞어서 기능이나 웹 페이지를 만들어야 속도를 보완할 수 있음
+			</li>
+			<li>
+				html5문서가 웹 표준문서로 승인된 것은 2014년 10월 28일 승인 받음<br/>
+				:: xhtml을 사용하는 이유는 제대로 된 문법을 사용할 수 있음<br/>
+				:: html5를 사용하는 이유는 css3의 효과들을 사용할 수 있음
+			</li>
+			<li>
+				++++++++++++++++ 웹 퍼블리셔, 디퍼블리셔 + javascript 기본 ++++++++++++
+			</li>
+			<li>
+				script 1단계 (jQuery + css3), javascript 제어문, 반복문은 제외<br/>
+				jQuery (javascript + query 합성어), slidem fade toggle "animate(핵심기능)"<br/>
+				매우중요) "키보드와 마우스를 동시에 사용하는 웹 접근성 기능"을 배움
+			</li>
+			<li>
+				script 2단계 jQuery, javascript, css3, tag 모두 섞어서 사용함
+			</li>
+			<li>
+				+ ++++++++++++++ 디퍼블리셔 (고급) + 프론트엔드 기준 +++++++++++++++++
+			</li>
+			<li>
+				mysql, mysqli(최신버전), database 만들기 (db/ cmd(table)만들기 )<br/>
+				mysql(mariaDB 사용)
+			</li>
+			<li>
+				phpMyAdmin(mysql 관리도구)
+			</li>
+			<li>
+				php 핵심, database + 페이지로 출력받거나 입력받을 수 있음<br/>
+				회원가입, 로그인(1차 과정), (텍스트 위주의 수정 삭제, 조회수 올리기 등 게시글 올리는 페이지 제작)
+			</li>
+		</ol>
+	</div>
+ </body>
+</html>

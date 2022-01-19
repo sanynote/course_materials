@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title> new document </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		p{width:200px; height:80px; background-color:pink; margin:20px 0;}
+		.hidden{overflow:hidden;}
+		.scroll{overflow:scroll;}
+		.auto{overflow:auto;}
+
+		/*위에 만들어진 모든 속성들을 해제할때 사용하는 매우 중요한 효과*/
+		/* 보여주는 효과 */
+		.visible{overflow:visible;}
+	</style>
+ </head>
+
+ <body>
+	<h2>overflow</h2>
+	<p>내용이 넘치거나 객체가 넘쳤을때 처리하는 효과</p>
+	<p class="hidden">
+		웹은 브라우저가 활성화되고, 읽어줄때 body가 시작된 부분부터<br/>
+		body가 끝나는 부분까지 위에서 아래로 읽어준다.<br/>
+		역방향으로 읽지 않음, 순서대로 위에서 아래로 하나씩 읽기때문에<br/>
+		"절차지향"이라고한다.
+	</p>
+
+	<p class="scroll">
+		웹은 아무데서나 원하는 태그(객체)를 만들어서 사용할 수 있기때문에 "객체지향"으로 본다.<br/>
+		원하는 위치에서 아무 태그나 사용할 수 있음
+	</p>
+	<p class="auto">
+		정해진 위치에 사용할 태그를 미리 작성하고 사용했다면 절차지향으로 본다<br/>
+		웹은 이렇게 사용되지는 않음
+	</p>
+	<p class="visible">
+		frontend, 퍼블리셔 +php 개발자 과정을 학습한다.
+		
+	</p>
+ </body>
+</html>

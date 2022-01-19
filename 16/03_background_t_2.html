@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title> new document </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		#wrap{min-width:1025px; width:100%}
+		#container{width:100%}
+
+		#content{width:1025px; margin:0 auto;}
+		#content h2{width:100%; background-color:#000; color:#fff; text-align:center; padding:20px 0;}
+
+		#content p{width:100%; height:30px; background-image:url("img/pattern.png"); background-repeat:repeat-x;}
+
+		/*
+			[background-image 활용하기]
+
+				1) 영역부터 설계하기(높이가 없을 경우, 표현되지 않음)
+				2) 칠하는 영역이 반드시 필요함
+
+			[높이를 임의로 설정할 경우]
+
+				: background-image 가 왼쪽 상단에서부터 영역에 칠해지기때문에
+				반복이 x,y 방향 모두 생길 수 있음
+
+				: 현재 페이지에서는 x축으로만 반복이 일어나기때문에 높이에 따른 
+				변화가 없도록 repeat-x를 설정해주어야한다.
+
+				정리) 높이를 13px로 설정하게되면 해당하는 이미지의 높이가 13px이기때문에
+				칠해지는 범위가 없어서 잘 못 표현되지는 않음
+					(공간을 타이트하게 설정하는것도 한 가지 방법이 됨)
+
+			[매우중요: 실선이 생김]
+				
+				1) 부모요소와 자녀요쇼는 구조를 만들때 들여쓰기에 의하여 빈 공간이 생긴다
+				2) 담아주는것이 아니라 나열될때 태그끼리 분해되면서 위아래 빈 공간이 생긴다.
+
+				중요) DOM 구조에 의하여 생기는 현상으로 문제점이 절대 아님 (빈칸도 객체라는 개념)
+
+		*/
+		
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="content">
+				<h2>background_image_pattern</h2>
+				<p></p>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

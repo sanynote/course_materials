@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>font</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ </head>
+
+ <body>
+	<h2>font속성</h2>
+	<p>inline-style 방식으로 작업하기 (태그에 직접 적용하기)</p>
+	<hr/>
+	<p style="color:red;">현재 p태그의 글자색상 빨간색 변경하기</p>
+	<p style="font-size:14px;">글자 기본크기는? 16px / 기본 크기보다 줄이기:14px</p>
+	<p style="font-style:italic">글자 기울이기(em / i태그), style에서 em은 단위 / i는 css 효과로 사용가능</p>
+	<p style="background-color:yellow;">font-style:italic(기울일때) , <span style="background-color:aqua; font-style:italic;">normal(기울이지 않을때)</span>의 속성을 사용할 수 있다.</p>
+
+	<p>문제) 위 태그에서 span태그에 글자 기울이기 적용, 배경색상 아쿠아 적용</p>
+
+	<p style="font-weight:bold;">글자 굵게 표현하기 (strong / b태그), bold</p>
+	
+	<p style="font-family:gulim,sans-serif">*글꼴, gulim, sans-serif 적용하기</p>
+	<p style="line-height:400%;">***행간 400%, 글자와 글자사이의 높이간격</p>
+	<p>중요) 영역에 따라서 %값은 모두 다르게 출력되기 때문에 화면을 보면서 작업해야 한다.</p>
+
+	<p style="letter-spacing:20px;">자간:20px 적용하기, 글자와 글자 사이의 너비간격</p>
+
+	<h3>응용문제, inline-style(태그에 직접 적용하는 방식)으로 문제풀기</h3>
+
+	<p style="background-color:yellow; text-align:center;">
+		현재 p태그에 배경색상 노란색 적용하기, 글자 가운데 정렬하기(text-align:center;)
+	</p>
+	<p style="background-color:black; color:white; text-align:right;">
+		현재 p태그에 배경색상 검정색 적용하기, 글자는 하얀색 적용하기, 글자 오른쪽 정렬하기
+	</p>
+	<p style="background-color:pink; text-align:right;">
+		<span style="background-color:green; color:yellow; text-align:right;">현재 span태그에 배경색상 초록색 적용하기, 글자색상 노란색 적용하기, 글자 오른쪽 정렬하기</span>
+	</p>
+	<p>
+		중요)이메일로 제출하기 (어떤 값이 적용되지 않는지 확인해서 제출하기)
+	</p>
+	<hr/>
+	
+	<h3>블록요소 인라인요소 정리</h3>
+	<p>1) text-align은 "글자와 인라인요소들"을 영역,가운데,오른쪽,왼쪽 모두 배치할 수 있다</p>
+	<p>2) 인라인요소 strong, em, i, b, span, img...</p>
+	<p>3) 블록속성은 "여백"의 장점을 이용할 수 있고, 인라인 속성은 "특징"을 이용할 수 있다.</p>
+	<p>4) 활용하기, 인라인요소를 블록에 담아주는 이유는 서로 필요한 부분을 섞어서 사용할 수 있음</p>
+	<p>5) 인라인요소는 불필요한 여백을 만들지 않고 공간의 낭비가 없음 (여백이 없기 때문에 정렬작업이 어려움)</p>
+	<p>6) 블록 속성은 영역을 차지하는 값이 크기 때문에 공간의 낭비가 있을 수 있음 (직접 사이즈 작업이 필요함)</p>
+	<hr/>
+
+	<h3>아래 내용에서 대문자는 소문자로, 소문자는 대문자로 변형하기</h3>
+	<p style="text-transform:uppercase">***대문자로 변형하기 : photoshop, javascript</p>
+	<p style="text-transform:lowercase">***소문자로 변형하기 : WEB, FRONTEND</p>
+	<p style="text-transform:capitalize">앞 글자만 대문자로 변형하기 : photoshop</p>
+
+	<p>tip) 소문자로만 만드는 strict.dtd에서 대문자로 표현해야 할때 주로 많이 사용하는 방법</p>
+	<p>upper는 대문자,lower는 소문자로 javascript에서도 나오기 때문에 매우 중요 부분</p>
+
+	<h2>글자에 줄 긋기</h2>
+	<h3 style="text-decoration:underline;">*글자에 밑줄 만들기</h3>
+	<h3 style="text-decoration:overline;">글자에 윗줄 만들기</h3>
+	<h3 style="text-decoration:line-through;">글자 가운데 줄 긋기</h3>
+
+	<p>
+		매우 중요) 사용자가 어디를 선택하고 있는지 정확하게 알 수 있어야 함<br/>
+		사각형으로 공간이 잡히거나, 밑줄이 만들어지거나 색상이 변경되는 것을 작업 해주어야 함!!
+	</p>
+	
+ </body>
+</html>
