@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>icecream</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*########## 여백 초기화 #############*/
+			*{margin:0; padding:0;}
+			body{font-family:"Nanum Barun Gothic","나눔고딕","NanumGothic","돋움","Dotum",sans-serif;}
+
+			/*
+				[body영역에서 셋팅 가능한 값들]
+					
+					1) font 셋팅
+ 					2) background-color, background-image
+
+				[font 관련]
+
+					1) 저작권
+					2) 출처중요 (html5(구글폰트))
+					3) 주의 (개인사이트, 카페, 블로그)
+					4) 도장폰트
+
+				[font가 화면에 출력되지 않는 이유]
+
+					1) 시스템에 없는 경우
+					2) 브라우저가 지원하지 않는 경우
+					
+					: 지원되지 않을 경우, 브라우저의 기본 글꼴로 변경됨
+			*/
+
+		/*########## wrap #############*/
+			#wrap{min-width:1025px; width:100%;}
+
+
+		/*########## container #############*/
+			#container{width:100%;}
+
+
+		/*########## content #############*/
+			#content{width:400px; height:750px; margin:0 auto; background-color:pink; background-image:url("img/ice_con.png"); background-repeat:no-repeat; background-position:center bottom;}
+
+		/*
+			: background-position, 해당하는 위치에 고정시키는 개념
+			: position이란 효과 자체가 해당하는 영역에 고정시킬때 사용하는 효과로
+			영역이 좁아지면 좁아지는만큼, 넓어지면 넓어지는만큼 좌표를 따라다닌다.
+		*/
+
+
+		/*########## cont_title #############*/
+
+			#content .cont_title{width:100%; text-align:center;}
+			/*
+				[작업정리]
+					개별적으로 text-align:center 작업을 하다가 전체를 보고 공통해서 적용
+					가능한 상태라면 공통 영역에서 한 번에 해결하기
+			
+			*/
+			#content .cont_title h2{padding-bottom:10px;}
+			#content .cont_title h3{font-size:40px; font-weight:400;}
+			#content .cont_title p{font-size:12px; color:#cc9b3b;}
+			#content .cont_title .desc{color:#948780;}
+
+
+		/*########## ice_cream #############*/
+		/*
+			아이스크림 사이즈 : 400px * 400px
+				: background-image 를 다룰 경우, 칠할 수 있는 영역 필수
+				: 높이가 없는 부분을 많이 실수함
+
+			실제 사용중인 영역의 크기: 400 * 750
+
+		*/
+			#content .ice_cream{width:100%; height:400px; background-image:url("img/ice_cream.png"); background-repeat:no-repeat;}
+
+		/*
+			[background-image 적용 후 확인하기]
+				: 영역이 커지면 이미지가 반복될 수 있기때문에 반복하지 않으려면
+				공간을 타이트하게 사용해고 "반복제어"를 해주는 것이 효과적이다.
+		*/
+
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="content">
+				<div class="cont_title">
+					<h2>
+						<img src="img/icon.png" alt="베스킨 숟가락 이미지"/>
+					</h2>
+					<p>RAINBOW SHERBET</p>
+					<h3>레인보우 샤베트</h3>
+					<p class="desc">상큼한 파인애플, 오렌지, 라즈베리 샤베트</p>
+				</div>
+				<div class="ice_cream">
+				</div>
+			</div>
+		</div>
+	<div/>
+ </body>
+</html>

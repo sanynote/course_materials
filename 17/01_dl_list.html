@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>dl_list</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ </head>
+
+ <body>
+	<h2>태그 사용하기</h2>
+	<div>
+		<h3>div태그는 폴더처럼 사용</h3>
+		<p>파일처럼 사용하는 태그</p>
+		<div>현재 div태그에서부터 확인해보면, p h3 div 모두 나란히 놓여있음</div>
+		<ul>
+			<li>h3 p div ul 모두 나란히 놓여있지만 닮지 않았기때문에 "친구요소""독립요소"라고 한다</li>
+			<li>현재 ul은 h3 p div와 친구요소, "ul은 li라는 자녀를 가지고있는 친구"</li>
+			<li>현재 li태그는 나란히 놓여있고 닮았기때문에 "형제요소"라고한다.</li>
+			<li>연결해야하는 "기능구현" 시 매우 중요하게 사용한다.</li>
+			<li>슬라이딩 윈도우 구현 시 매우 중요하게 사용됨</li>
+		</ul>
+	</div>
+	<hr/>
+
+	<h2>순서가 있는 리스트</h2>
+	<div>
+		<ol>
+			<li>블릿기호가 숫자로 생성되는것이 ol list</li>
+			<li>네이버 실시간 랭킹, 전자제품 판매순위, "조리법", "설계도"</li>
+			<li>설계도를 확인해보면 1~10번까지 나열되어있을경우, (중간에 번호가 없으면 만들지 못함)</li>
+			<li>1,2,3(X),4,5,6,7(X),8,9,10/ 절차대로 만들다가 3번부터 없기때문에 기능 멈춤</li>
+			<li>위와 같은 경우를 "절차지향"이라고 한다.</li>
+			<li>
+				없는 3번 객체와 7번 객체를 만들 수 있을 경우, 없는 객체를 만들어서 사용할 수 있기때문에<br/>
+				객체지향이라고 한다.( c++, java )
+			</li>
+		</ol>
+		<ol>
+			<li>ol, ul 모두 다시 생성하게되면 처음부터 시작됨, ol의 경우 "숫자1부터 다시 시작"</li>
+			<li>list 항목은 하나만 사용하기 위해서 사용하는 태그가 아니라 "2개 이상의 자녀"를 만들기위하여 사용</li>
+		</ol>
+	</div>
+	<hr/>
+	<div>
+	<h2>순서가 없는 리스트</h2>
+		<ul>
+			<li>*모든 "공간은 0번"부터 시작, "숫자는 1번"부터 시작</li>
+			<li>ul은 블릿기호가 "점"으로 되어있음</li>
+			<li>ul, ol 모두 블릿기호를 제외하는 경우가 많기때문에 블릿기호에 크게 의미를 두지 않음</li>
+			<li>블릿기호는 사용자가 원하는 모양으로 바꿀 수 있음(교육에 나오는 부분)</li>
+		</ul>
+	</div>
+	<hr/>
+
+	<div>
+		<h3>dl (definition list): 사용자가 직접 정의 내린 리스트</h3>
+		<dl>
+			<dt>
+				<!--<h2>사용자가 직접 정의내린 제목(definition term)</h2>-->
+				<strong>사용자가 직접 정의내린 제목(definition term)</strong>
+			</dt>
+			<dd>
+				<h3>dd (definition "desc"ription) 제목에 따른 설명글</h3>
+			</dd>
+			<dd>
+				ul li, ol li 모두 블록요소(div도 담을 수 있을 정도로 큰 블록요소)
+			</dd>
+		</dl>
+	</div>
+	<hr/>
+	
+	<h3>dl list 정리 1</h3>
+	<dl>
+		<dt>
+			<strong>dt는 dl list의 필수인 제목에 해당함 (인라인요소)</strong>
+		</dt>
+		<dd>
+			사용자가 "dt 제목 맞춰서 설명글을 작성"하는 부분 dd(블록요소)
+		</dd>
+		<dd>
+			1) dl의 dd는 ul li, ol li처럼 블록요소로 사용가능함
+		</dd>
+		<dd>
+			2) dd는 여러가지 객체를 다룰 수 있고, 설명글을 완성해야하기때문에<br/>
+			div, p, headline, list 등등의 블록요소를 담을 수 있음
+		</dd>
+		<dd>
+			<h3>dd에 블록요소 사용가능</h3>
+			<div>
+				li와 마찬가지의 큰 영역으로 모두 담을 수 있음
+			</div>
+		</dd>
+		<dd>
+			중요) 제품이나 새로운 캐릭터 등을 소개하는 상세페이지를 구성할때 많이 사용함
+		</dd>
+	</dl>
+	<hr/>
+
+	<dl>
+		<dt>리스트 안에 리스트 담기</dt>
+		<dd>
+			<ul>
+				<li>list 안에 list 사용가능</li>
+				<li>매우중요) list 안에 list 담을때 .. dl? ol? ul? 어떤 리스트 담을 것인지 작성하기</li>
+			</ul>
+			<ol>
+				<li>ul li, ol li, dl dt dd 안에 리스트 다시 담을 수 있음</li>
+				<li>ol의 두번째 li</li>
+				<li>
+					<ul>
+						<li>ol li 태그 안에 있는 ul li</li>
+						<li>리스트는 서로 담아주는 구조를 몇 단계로 만들 수 있음</li>
+					</ul>
+				</li>
+			</ol>
+		</dd>
+		<dd>
+			<h3>리스트 안에 리스트 작성 시 주의사항</h3>
+			<div>
+				dl 리스트를 제외하고 ul ol 은 같은 자녀 li를 가지고있기때문에
+				상속을 주는 문제가 발생함 (네이밍 규칙, id, class 속성 부여가 매우 중요함)
+			</div>
+		</dd>
+	</dl>
+	<hr/>
+
+	<dl>
+		<dt>dl list 정리 2</dt>
+		<dd>	
+			dt는 인라인 요소 : dl list 페이지 작성시 제목부분이 항상 앞에 작성되어야 함	
+		</dd>
+		<dd>
+			제목에 따른 설명글을 구성하는 리스트이기때문에 dd는 dt보다 뒤에 배치되어야 함
+		</dd>
+		<dd>
+			<h3>* 아래 규칙 확인하기</h3>
+			<p>
+				dd다음에 dt 올 수 없음(설명글 다음에 제목이 오는 변칙 구조는 만들지 못함)
+			</p>
+			<p>
+				dt는 인라인요소이기때문에 headline 태그나 블록요소 사용 불가능
+			</p>
+			<p>
+				dt는 제목 역할을 담당해야 하기때문에 strong이나 em을 작성하는 경우가 많음
+			</p>
+		</dd>
+	</dl>
+	<hr/>
+
+	<dl>
+		<dt>dl list 활용하기</dt>
+		<dd>
+			제목 dt를 작성하면 반드시 dd 필수!
+		</dd>
+		<dd>
+			dl 리스트로 만들 수 있는 페이지, 제품 상세페이지<br/>
+			컴퓨터 사양 확인표, 게임 사양표, 기업의 사이트 맵<br/>
+			제목에 따른 설명글 페이지를 만들때 주로 많이 사용
+		</dd>
+		<dd>
+			dl은 제목에 따른 설명글이 나뉜다면 다시 dl 새로 만들기
+		</dd>
+		<dt>dt 와 dd 사용하기</dt>
+		<dd>
+			1) dt를 100번 사용하고, dd를 마지막에 한 번만 작성해도 구조가 맞다면 문제 없음<br/>
+			2) dd만들고 dt를 만들수는 없음(순서 바꾸지 않도록 주의)<br/>
+			3) 매우중요) dt dd, dt dt dt dt dd, dt dd dt dd<br/>
+		</dd>
+		<dd>
+			<h2>각각의 리스트 활용하기</h2>
+			<ol>
+				<li>ol li는 조리법이나 설계도처럼 정확하게 순서가 있는 페이지 제작시 사용</li>
+				<li>ul li는 순서 상관없이 비슷한 객체들을 나열할 때 사용(주로 페이지 구조 작성시)</li>
+				<li>상세페이지, 뉴스기사 페이지, dl dt dd로 만들기</li>
+			</ol>
+		</dd>
+	</dl>
+ </body>
+</html>
