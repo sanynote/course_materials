@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>maserati</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    #wrap{min-width:720px; width:100%;}
+
+    /*###### container ######*/
+    /*
+      [중요]
+        header, container, footer : wrap 다음에 오는 1차 공간들로
+        가장 큰 영역을 가져야하기때문에 너비 100%를 지정한다.
+    */
+    #container{width:100%;}
+
+    /*####### car_content #######*/
+    /* 실제 사용영역: 800px */
+    #car_content{width:800px; margin:0 auto;}
+    #car_content .title{font-size:17px; padding:20px 0 10px;}
+
+    /*######## desc_area ########*/
+      #desc_area{width:100%; height:70px;}
+
+      /*
+        [desc_area 영역의 로고와 정보영역 붙이기]
+          1) h2 로고 영역
+          2) h3, p영역으로 구분되어있음
+
+          [중요]
+            h2가 h3와 p를 붙이려면 1:다수가 되기때문에 붙이기어려움
+            h3와 p가 있는 영역을 div로 만들어서 "1:1" 붙이도록 만드는 것이 안전함
+
+            h2, div(desc) 붙이기
+          3) 로고 크기 확인하기 : 62 * 62
+            1) 로고에 기능 없음(영역을 조금 더 사용할 수 있는지 확인)
+            2) 기능이 있다면 무조건 액자 만들고 img태그 width:100% 설정
+
+            * 3) 로고에 기능이 없기때문에 margin이나 padding으로 작업한것이 아니라
+            너비와 높이로 공간을 확장하여 제작함
+      */
+
+      /* 사용가능한 너비 800px */
+      #desc_area h2{width:70px; height:100%; float:left;}
+
+      /*
+        1) 높이는 70
+        2) 높이는 50px로 수정하고, padding:10px 0 으로 채움
+        3) 글자는 2줄
+            line-height:25px씩 각각 적용되도록 만듦
+
+        정리)
+          글자가 3줄이었다면 60px로 높이를 설정하고 line-height:20으로 나눠서 사용
+          4줄이었다면 80으로 높이설정, line-height:20으로 나눠서 사용
+      */
+      #desc_area .desc{width:730px; height:50px; padding:10px 0; line-height:25px; float:left;}
+      #desc_area h3{font-size:16px;}
+      #desc_area p{font-size:13px; color:#00f;}
+      #desc_area p .color{color:#333;}
+      #desc_area p i{font-style:normal; color:#ddd;}
+
+    /*######## select_area ########*/
+      #select_area{width:798px; border:1px solid #ccc; height:30px;}
+      #select_area ul{width:540px; height:100%;}
+      #select_area li{width:90px; height:100%; float:left;}
+      #select_area select{width:100%; height:100%; text-indent:10px; border:none;}
+
+    /*
+      [select_area 정리]
+
+        1) ul의 경우, width:100% 로 지정하면 li를 관리할 수 없음
+        2) 해상도를 따라가게하는 작업은 div 태그로 가능하기때문에 ol ul dl 등은
+        자녀요소를 담을 수 있도록 만들어야한다
+
+        3) select_area 맞춰서 ul의 너비를 100% 설정하면 li들을 가운데 배치할 수 있는 
+        요소가 아무것도 없음
+
+        :: li의 부모는 ul 이나 ol 밖에 없음
+
+        4) li태그들을 담을 수 있도록 ul의 크기를 설정하는것이 좋다
+          li가 5개가 있고, li의 크기가 200px이라면 ul의 크기는 1000px로 만드는 것이 맞다
+          : li 한 칸 크기가 1000* 5 있을경우, ul의 너비는? 5000px
+          : 자녀가 배치될 수 있는 공간을 부모가 제공해야 함
+
+        단! 실제 쓰는 div 가 따로 있다면 ul은 너비 100%, 높이 100% 설정이 가능하다.
+
+      [자주하는 실수]
+        width:100%설정 + border:1px solid #ccc;
+          : 너비 100% 사용했기때문에 사용가능한 공간이 없음
+          : border로 인하여 2px이 넘치고있는 상태
+
+    */
+
+    /*########## car_area ##########*/
+      #car_area{width:100%;}
+
+      /**/
+      #car_area ul{width:100%; height:167px; /*overflow:hidden;*/}
+      #car_area li{width:200px; float:left;}
+
+      /*
+        1) 실제 사용중인 너비: 800px
+        2) li의 갯수 : 4개
+        3) li의 너비 : 200px
+
+      ++++++++++++++++++++++++++++++++++++++++++++
+        [이미지의 크기]
+          : 128px, 76px
+          : 이미지를 확인했을때 8,9px은? border를 사용할 수 있음
+
+        [실제로 담고있는 dl 설계하기]
+
+        1) dl의 너비: 130px
+        2) dl의 너비: 130px은 이미지도 담을 수 있고, 글자도 원본처럼 떨어지기 좋은 값이기 때문에 사용함
+
+      */
+
+      #car_area dl{width:130px;}
+      #car_area dd{font-size:13px; color:#333;}
+      #car_area dd h4{font-weight:400; font-size:15px; color:#00f;}
+      #car_area dd .like i{font-style:normal; color:#f00;}
+
+
+
+  </style>
+ </head>
+
+ <body>
+  <div id="wrap">
+    <div id="container">
+      <div id="car_content">
+        <h2 class="title">자동차 정보</h2>
+        <div id="desc_area">
+          <h2>
+            <img src="img/car_logo.jpg" alt="마세라티 로고"/>
+          </h2>
+          <div class="desc">
+            <h3>마세라티</h3>
+            <p>
+              <span class="color">1600-0036</span>&nbsp;<i>|</i>&nbsp;<span>공식사이트</span>&nbsp;<i>|</i>&nbsp;<span>서비스센터</span>&nbsp;<i>|</i>&nbsp;<span>보증안내</span>&nbsp;<i>|</i>&nbsp;<span>전시장</span>
+            </p>
+          </div>
+        </div>
+
+        <div id="select_area">
+          <ul>
+            <li id="market">
+              <select>
+                <option value="판매">판매</option>
+                <option value="국내시판">국내시판</option>
+                <option value="국내전체">국내전체</option>
+                <option value="해외시판">해외시판</option>
+                <option value="해외전체">해외전체</option>
+              </select>
+            </li>
+
+            <li id="car_type">
+              <select>
+                <option value="외형">외형</option>
+                <option value="세단">세단</option>
+                <option value="헤치백">헤치백</option>
+                <option value="컨버터블">컨버터블</option>
+                <option value="쿠페">쿠페</option>
+                <option value="왜건">왜건</option>
+                <option value="SUV">SUV</option>
+                <option value="RV">RV</option>
+                <option value="벤">벤</option>
+                <option value="트럭">트럭</option>
+              </select>
+            </li>
+
+            <li id="car_size">
+              <select>
+                <option value="차종">차종</option>
+                <option value="경형">경형</option>
+                <option value="소형">소형</option>
+                <option value="준중형">준중형</option>
+                <option value="중형">중형</option>
+                <option value="준대형">준대형</option>
+                <option value="대형">대형</option>
+                <option value="스포츠카">스포츠카</option>
+              </select>
+            </li>
+
+            <li id="price">
+              <select>
+                <option value="가격">가격</option>
+                <option value="천만 원 이하">천만 원 이하</option>
+                <option value="1천만 원대">1천만 원대</option>
+                <option value="2천만 원대">2천만 원대</option>
+                <option value="3천만 원대">3천만 원대</option>
+                <option value="4천만 원대">4천만 원대</option>
+                <option value="5천만 원대">5천만 원대</option>
+                <option value="1억 원 이상">1억 원 이상</option>
+              </select>
+            </li>
+
+            <li id="level">
+              <select>
+                <option value="연비">연비</option>
+                <option value="1등급">1등급</option>
+                <option value="2등급">2등급</option>
+                <option value="3등급">3등급</option>
+                <option value="4등급">4등급</option>
+                <option value="5등급">5등급</option>
+              </select>
+            </li>
+
+            <li id="income">
+              <select>
+                <option value="국산_수입">국산/수입</option>
+                <option value="국산">국산</option>
+                <option value="수입">수입</option>
+              </select>
+            </li>
+
+          </ul>
+        </div>
+
+        <div id="car_area">
+          <ul>
+            <li>
+              <dl>
+                <dt>
+                  <img src="img/car0.jpg" alt="2022 마세라티 MC20"/>
+                </dt>
+                <dd>
+                  <h4>2022 마세라티 MC20</h4>
+                  <p>210,000달러</p>
+                  <p>11.6/100km</p>
+                  <p class="like"><i>♡</i>&nbsp;20</p>
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>
+                  <img src="img/car1.jpg" alt="2021 마세라티 르반떼"/>
+                </dt>
+                <dd>
+                  <h4>2021 마세라티 르반떼</h4>
+                  <p>정보없음</p>
+                  <p>12.5/100km</p>
+                  <p class="like"><i>♡</i>&nbsp;9</p>
+                </dd>
+              </dl>
+            </li>
+            
+            <li>
+              <dl>
+                <dt>
+                  <img src="img/car2.jpg" alt="2020 마세라티 콰트로포르테"/>
+                </dt>
+                <dd>
+                  <h4>2021 마세라티 르반떼</h4>
+                  <p>정보없음</p>
+                  <p>13.7/100km</p>
+                  <p class="like"><i>♡</i>&nbsp;9</p>
+                </dd>
+              </dl>
+            </li>
+
+            <li>
+              <dl>
+                <dt>
+                  <img src="img/car3.jpg" alt="2020 마세라티 콰트로포르테"/>
+                </dt>
+                <dd>
+                  <h4>2021 마세라티 르반떼</h4>
+                  <p>정보없음</p>
+                  <p>6.6~9.4/100km</p>
+                  <p class="like"><i>♡</i>&nbsp;9</p>
+                </dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

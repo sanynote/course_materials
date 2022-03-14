@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>overflow</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+
+		p{width:200px; height:80px; background-color:#abcdef; margin:20px 0;}
+
+		/* 해당하는 영역에서 넘치는 값 숨기기 */
+		.hidden{overflow:hidden;}
+		/*hidden을 사용하면 내용 전달의 문제가 생김, scroll 설정*/
+		.scroll{overflow:scroll}
+
+		/*넘치는 방향으로만 scroll이 나타나도록 만듦, 넘치지 않는 부분에도 scroll이 나타나기때문에 auto설정*/
+
+		.auto{overflow:auto;}
+
+		/*
+			매우 중요) 유일하게 모든 overflow의 속성들을 해제할 수 있음
+
+			1) 반응형 페이지의 경우, 각각의 버전(pc, 태블릿pc, 스마트폰)이 다르기때문에 
+				보여줄때와 해제할때를 고려할 수 있어야 함
+
+			2) script로 해제해야 할 때도 사용됨
+		*/
+
+		.visible{overflow:visible}
+
+	
+	</style>
+
+ </head>
+
+ <body>
+	<h2>overflow</h2>
+	<h3>:해당하는 영역, 객체만큼 보여주는 속성</h3>
+	<hr/>
+
+	<p class="hidden">
+		모든 객체는 왼쪽에서 오른쪽으로 늘어나고,<br/>
+		위에서 아래로 늘어나는것이 일반적이다.<br/>
+		역방향으로 적용될때 margin, padding 사용
+	</p>
+
+	<p class="scroll">
+		line-height의 경우, 글자와 글자 사이의 높이 간격을 만드는<br/>
+		속성이지만 글자가 한 줄일 경우 y축 가운데로 배치할때<br/>
+		사용하기도한다.
+	</p>
+	<p class="auto">
+		margin, padding, border 의 경우 영역을 차지하는 값으로
+		해당하는 값만큼 빼주지 않으면 1px때문에 문제가 발생할 수도있다.
+	</p>
+	<p class="visible">
+		script때 필수기능은 '아코디언', tab menu, 슬라이딩 윈도우, 모달팝업등이 있다.<br/>
+		색상을 바꾸는 기능, 한 대상을 2번 클릭하는 기능 등을 배우게된다.<br/>
+		javascript에서는 계산식 페이지 필수
+	</p>
+ </body>
+</html>

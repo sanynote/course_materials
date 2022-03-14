@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>car</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    #wrap{width:100%;}
+    #container{width:100%;}
+
+    /* 실제사용영역 */
+    #car{width:600px; margin:50px auto 0;}
+    h2{font-size:16px; padding-bottom:10px;}
+
+    /*####### head ######*/
+      #head{width:100%; height:60px; padding-bottom:10px;}
+      #head h3{width:60px; float:left;}
+      #head h3 img{width:100%;}
+
+      #head .info{width:540px; float:left;}
+      /* 전체너비 600 - 60(로고크기) == 540 */
+
+      /* info 내부 개별 작업 */
+      #head .info p{width:100%; font-weight:700; padding:5px 0;}
+      #head .info span{font-size:13px; color:blue;}
+      #head .info .gray{color:gray;}
+      .info i{font-style:normal; color:#ccc;}
+
+
+    /*########### selectArea ##########*/
+      #selectArea{width:100%;}
+      #selectArea ul{width:100%; height:25px; border:1px solid #ccc;}
+
+      #selectArea li{width:90px; float:left;}
+      #selectArea select{width:90px; padding-left:10px; border:0;}
+
+
+    /*###### carArea ######*/
+      #carArea{width:100%; height:166px;}
+      #carArea ul{width:100%; height:100%;}
+      #carArea li{width:125px; height:100%; float:left; padding-right:25px;}
+      /* 
+      이미지크기 128
+      나는 125로 가기로 결정
+      */
+
+      /* dl dt dd 영역 작업 */
+      #carArea dl{width:100%; height:100%;}
+      #carArea dt{float:left;}
+      #carArea dt img{width:100%;}
+      #carArea dd{float:left;}
+
+      /* dd안의 글씨 개별작업 */
+      #carArea dd h4{font-weight:400; color:#00f;}
+      #carArea dd p{font-size:12px;}
+      #carArea dd span{color:#f00;}
+
+
+
+
+
+  </style>
+ </head>
+
+ <body>
+  <div id="wrap">
+    <div id="container">
+      <div id="car">
+        <h2>자동차 정보</h2>
+        <div id="head">
+          <h3>
+            <img src="img/car_logo.jpg" alt="마세라티 로고이미지"/>
+          </h3>
+          <div class="info">
+            <p>마세라티</p>
+            <span class="gray">1600-0036</span><i>&nbsp;|&nbsp;</i><span>공식사이트</span><i>&nbsp;|&nbsp;</i><span>서비스센터</span><i>&nbsp;|&nbsp;</i><span>보증안내</span><i>&nbsp;|&nbsp;</i><span>전시장</span>
+          </div>
+        </div>
+
+        <div id="selectArea">
+          <ul>
+            <li>
+              <select>
+                <option value="판매">판매</option>
+                <option value="국내시판">국내시판</option>
+                <option value="국내전체">국내전체</option>
+                <option value="해외시판">해외시판</option>
+                <option value="해외전체">해외전체</option>
+              </select>
+            </li>
+            <li>
+              <select>
+                <option value="외형">외형</option>
+                <option value="세단">세단</option>
+                <option value="헤치백">헤치백</option>
+                <option value="컨버터블">컨버터블</option>
+                <option value="쿠페">쿠페</option>
+                <option value="왜건">왜건</option>
+                <option value="SUV">SUV</option>
+                <option value="RV">RV</option>
+                <option value="벤">벤</option>
+                <option value="트럭">트럭</option>
+              </select>
+            </li>
+            <li>
+              <select>
+                <option value="차종">차종</option>
+                <option value="경형">경형</option>
+                <option value="소형">소형</option>
+                <option value="준중형">준중형</option>
+                <option value="중형">중형</option>
+                <option value="준대형">준대형</option>
+                <option value="대형">대형</option>
+                <option value="스포츠카">스포츠카</option>
+              </select>
+            </li>
+            <li>
+              <select>
+                <option value="가격">가격</option>
+                <option value="천만 원 이하">천만 원 이하</option>
+                <option value="1천만 원대">1천만 원대</option>
+                <option value="2천만 원대">2천만 원대</option>
+                <option value="3천만 원대">3천만 원대</option>
+                <option value="4천만 원대">4천만 원대</option>
+                <option value="5천만 원대">5천만 원대</option>
+                <option value="1억 원 이상">1억 원 이상</option>
+              </select>
+            </li>
+            <li>
+              <select>
+                <option value="연비">연비</option>
+                <option value="1등급">1등급</option>
+                <option value="2등급">2등급</option>
+                <option value="3등급">3등급</option>
+                <option value="4등급">4등급</option>
+                <option value="5등급">5등급</option>
+              </select>
+            </li>
+            <li>
+              <select>
+                <option value="국산/수입">국산/수입</option>
+                <option value="국산">국산</option>
+                <option value="수입">수입</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+
+        <div id="carArea">
+          <ul>
+            <li>
+              <dl>
+                <dt>
+                  <img src="img/car0.jpg" alt="2022 마세라티 MC20"/>
+                </dt>
+                <dd>
+                  <h4>2022 마세라티 MC20</h4>
+                  <p>30,900만원</p>
+                  <p>출시 2021년 11월</p>
+                  <p><span>♡</span> 20</p>
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>
+                  <img src="img/car1.jpg" alt="2021 마세라티 콰트로포르테"/>
+                </dt>
+                <dd>
+                  <h4>2021 마세라티 콰트로포르테</h4>
+                  <p>16,730~28,360만원</p>
+                  <p>출시 2021년 7월</p>
+                  <p><span>♡</span> 9</p>
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>
+                  <img src="img/car2.jpg" alt="2021 마세라티 르반떼"/>
+                </dt>
+                <dd>
+                  <h4>2021 마세라티 르반떼</h4>
+                  <p>11,800~23,910만원</p>
+                  <p>출시 2021년 7월</p>
+                  <p><span>♡</span> 9</p>
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+                <dt>
+                  <img src="img/car3.jpg" alt="2021 마세라티 기블리"/>
+                </dt>
+                <dd>
+                  <h4>2021 마세라티 기블리</h4>
+                  <p>11,450~18,050만원</p>
+                  <p>출시 2021년 7월</p>
+                  <p><span>♡</span> 20</p>
+                </dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

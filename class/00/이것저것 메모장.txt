@@ -1,0 +1,18 @@
+
+검사 띄웠는데 사진 안 나올 때 : ctrl + r
+
+내가 좋아하는 색상
+연보라색 #caf -> c부분만 바꾸면 보라색 계열에서 움직임
+청록색 #0dd -> 0부분만 바꿔도 색감 괜찮음
+
+validator에서 "missing" 이런식으로 나오면 대부분 블록과 인라인이 맞지않다는 이야기
+-> document type does not allow element "div" here; missing one of "object", "applet", "map", "iframe", "button", "ins", "del" start-tag
+
+왜 이렇게 id를 많이 쓰셨어요?
+->저는 퍼블리셔가 아니라 개발자이기때문에, id를 통해 script에 접근하는 방식을 공부하기 위해서 id를 사용해봤습니다.
+
+https://meetup.toast.com/posts/106
+-> 깃허브 커밋메세지 참고사항
+
+https://4z7l.github.io/2020/12/04/github-private-contribution.html
+-> 깃허브 프라이빗으로도 공개잔디 채우기

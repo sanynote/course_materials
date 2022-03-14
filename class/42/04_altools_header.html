@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>altools_header</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+        *{margin:0; padding:0;}
+        body{background-color:#efefef;}
+        li{list-style-type:none;}
+		a:link, a:visited{text-decoration:none; color:#fff;}
+		a:hover, a:focus{text-decoration:underline;}
+
+        /*############## wrap #############*/
+        #wrap{min-width:700px; width:100%;}
+		#headerWrap{width:100%; height:80px; background-color:#24303e;}
+        #header{width:1000px; margin:0 auto; position:relative;}
+
+        /*
+            [이미지 로고의 크기]
+                111*69
+
+            [로고 배치하기_position, float]
+
+                1) 로고를 float나 position 어떤 것으로 배치할 것인지에 따라서
+                배치하는 방법이 바뀔 수 있음
+                2) float 정교하게 붙이고 나열할 때 사용하는 방법(기능이 적용되는 페이지)
+                3) position은 빠르게 왼쪽이나 오른쪽, 위쪽 아래쪽으로 움직이기 위해서
+                사용하는 배치 방법으로 "주로 단독" 으로 사용함
+
+                    * 서로 층이 달라져서 겹칠 수 있음 매우 주의해야함
+
+                4) position을 사용했다면 margin으로 움직이는것이 아니라
+                position의 속성을 보고 left, right, top, bottom 값을 이용할 수 있음
+
+                * 상대와 겹치지 않는지 확인하기
+                * 부모 바깥으로 나가지 않는지 확인하기
+        */
+
+        h1{width:111px; position:absolute; left:10px; top:9px;}
+
+        /*
+            [infoMenu 나열하기]
+                실제너비: 1000
+                로고크기: 111 + left:10 ==121
+
+                1000-121 == 879
+
+                absolute와 겹치는 공간은 결국 absolute가 먼저 클릭되거나
+                기능이 되기때문에 margin으로 제대로 버리기
+        */
+        #infoMenu{width:879px; margin-left:121px; text-align:right;}
+        #infoMenu li{display:inline; font-size:0.8em;}
+        #infoMenu li a{color:#aaa; padding:0 10px;}
+
+        /*
+            [속성바꾸기]
+
+                매우중요)
+                    1) 담고있는 자녀요소 중에 하나라도 블록이 있으면 사용 불가능
+                    2) 같은 너비, 같은 사이즈로 제공될 경우에도 사용불가 (닌텐도 헤더)
+
+                * form은 절대로 inline 구성하지 않는다. 속성을 가지는 block요소로 
+                database로 연동하고 사용자의 정보들을 다루기때문에 block구성으로만
+                작업이 가능하다.
+
+                * ul ol dl은 절대 inline으로 바꾸지않는다.
+                li나 dt,dd가 인라인으로 바뀌면 공간을 가질 부모가 없음
+
+            [a 태그에 padding 활용하기]
+
+                1) li태그인 부모에 padding을 작업해도 상관은 없으나 의미도 없음
+                    (inline으로 바꿨기때문에 더더욱)
+
+                2) a태그에 padding을 작업하는 이유
+
+                    : a태그는 링크 영역을 가지고있기때문에 면적이 넓어지면
+                    링크영역도 넓어져서 손이 불편하거나 타점이 불편하신분들에게
+                    좋은 작업으로 표현될 수 있음
+
+                [정리]
+                 
+                    li태그에 padding을 사용할 경우, a태그처럼 링크영역이 커지는 것이
+                    아니라 면적만 넓어져서 의미가 없음
+                    a에 padding을 사용하면 링크영역 자체가 넓어져서 의미가 있게 사용됨
+                    자녀인 인라인 요소가 커지면 부모인 인라인도 같이 커짐
+
+                [gnb 높이]
+
+                    1) infoMenu의 높이가 21 정도 되고 실제 픽셀이 80으로 되어있음
+                    2) line-height:59~60 정도로 구성함
+        */
+
+        #gnb{width:879px; margin-left:121px; line-height:60px; text-align:right;}
+        #gnb li{display:inline;}
+        #gnb li a{padding:0 10px 0 30px;}
+</style>
+	
+ </head>
+
+ <body>
+    <div id="wrap">
+        <div id="headerWrap">
+            <div id="header">
+                <h1>
+                    <a href="https://www.altools.co.kr/Main/Default.aspx" title="알툴즈">
+                        <img src="img/logo.png" alt="알툴즈로고"/>
+                    </a>
+                </h1>
+                <ul id="infoMenu">
+                    <li><a href="#" title="로그인">로그인</a></li>
+                    <li><a href="#" title="회원가입">회원가입</a></li>
+                    <li><a href="#" title="블로그">블로그</a></li>
+                    <li><a href="#" title="페이스북">페이스북</a></li>
+                </ul>
+                <ul id="gnb">
+                    <li><a href="#" title="다운로드">다운로드</a></li>
+                    <li><a href="#" title="모바일">모바일</a></li>
+                    <li><a href="#" title="알툴즈 BLOG">알툴즈 BLOG</a></li>
+                    <li><a href="#" title="고객센터">고객센터</a></li>
+                    <li><a href="#" title="구매">구매</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+ </body>
+</html>
+<!--
+    [header 사용시 용어정리]
+        : 전체 사용영역명 지정하기
+
+        1) headerWrap으로 시작한다면...
+            실제 사용하는 영역명을 header를 사용할 수 있음
+        
+        2) header로 시작한다면...
+            더 이상 headerWrap을 사용할 수 없고, header_inner로 작성해야 함
+
+        * container는 containerWrap 없음, container가 가장 큰 영역
+        * bestArea는 section 영역을 구분하는 영역명 (마디구분)
+        * header 용어는 빠질 수 없는 정식명칭 (header 태그도 있음)
+
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        3) 로그인, 회원가입, 블로그, 페이스북
+            topMenu, infoMenu (info 어떤 정보를 가질 때 쓰는 용어)
+
+            * 애플 사이트처럼 일렬 구조라면 topMenu가 아닌 infoMenu로 구성함
+            * 현재 알툴즈사이트처럼 메뉴가 위에 있다면 topMenu || infoMenu 사용가능함
+
+        4) 다운로드, 모바일 ...
+
+            해당하는 페이지의 목적은 다운받는 게 목적이고 크게 구성되어있기때문에
+            gnb 영역 || nav 영역으로 구성한다
+
+
+-->

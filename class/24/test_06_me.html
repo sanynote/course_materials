@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>test_06</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+
+    /*############# ts_11 #############*/
+        .ts_11 ul{width:640px; height:200px;overflow:hidden;margin:0 auto;}
+        .ts_11 li{width:286px; height:186px;background-color:peru; margin-right:2px; padding:5px; border:2px solid red; text-align:center;line-height:186px;float:left;}
+
+    /*############# ts_17 #############*/
+        .ts_17 {letter-spacing:10px;}
+
+    /*############# ts_33 #############*/
+        .ts_33{width:400px; height:200px; text-align:center; line-height:200px; background-color:#00f; color:#fff; overflow:scroll;margin:0 auto;}
+        
+    </style>
+ </head>
+
+ <body>
+    <h2>문제01) .dtd 문서 중 호환에 관련된 문서는?</h2>
+    <p>transitional.dtd 입니다. 이 문서는 모든 언어를 호환할 수 있고, charset은utf-8이어야합니다.</p>
+    <h2>문제02) 엄격에 해당하는 문서는?</h2>
+    <p>strict.dtd 문서가 엄격에 해당합니다.</p>
+    <h2>문제03) 엄격에 관련된 문서에서 사용할 수 있는 언어는?</h2>
+    <p>영어소문자만 사용할 수 있습니다.</p>
+
+    <h2>문제04) charset="euc-kr"일 경우 압축방식은? (인코딩방식)</h2>
+    <p>ANSI 방식으로 압축됩니다.</p>
+    <h2>문제05) 영역을 나눌때 사용하는 제목 태그는?</h2>
+    <p>headline태그가 영역을 나눌때 사용됩니다.</p>
+    <h2>문제06) * section 영역을 나누었을때 반드시 사용해야하는 태그와 이유는?</h2>
+    <p>headline태그를 반드시 사용하여 해당하는 영역에 어떤값을 모아두었는지 "제목작성"을 해야 함. 사용하지 않으면 오류가 난다.</p>
+
+    <h2>문제07) 인라인 요소 중 선택할 때 사용한 태그는? (예) 자동차선택, 언어선택</h2>
+    <p>select 태그를 사용합니다.</p>
+    <h2>문제08) 문제 07에서 사용한 태그의 중요"속성"은? (태그 아님)</h2>
+    <p>value속성과 selected 속성</p>
+    <h2>문제09) * 전역과 지역의 차이점 작성하기</h2>
+    <p>
+        전역의 예) h2 로 호출하면 영역과 상관없이 모든 h2가 호출된다 (전체)
+        지역의 예) .divArea h2를 호출하면 class이름이 divArea인 곳의 h2만 호출된다. (일정지역내에서)
+    </p>
+
+    <h2>문제10) float 작업시 끊어지지 않았을경우 생길 수 있는 문제 2가지만 작성하기 (부모,자녀 상관없음)</h2>
+    <p>
+        하위객체에 margin-top적용이 어려워진다. 위의 객체가 공중에 떠있기 때문에.
+        올라오면 안되는 값들이 빈칸을 타고 올라오게된다.(예) header영역에서 카피라이터가 보이는 현상)
+    </p>
+
+    <h2>문제11) 아래 순서에 따라 문제 풀기</h2>
+    <ul>
+        <li>1) 여백 초기화, 블릿기호 초기화하고, 문제와 답 읽을 수 있도록 적당히 간격 조절하기</li>
+        <li>2) 현재 ul이 끝난 부분 아래에 div태그 만들기</li>
+        <li>3) div태그 안에 ul li 태그 제작하기 (li태그는 2개 작성하기)</li>
+        <li>4) 작성된 li태그의 크기는 300*200 으로 만들기</li>
+        <li>5) li태그는 오른쪽 방향으로 margin-right:2px 적용하기</li>
+        <li>6) li태그 4방향 모두 padding:5px 적용하기</li>
+        <li>7) li태그 border:2px solid red 적용하기</li>
+        <li>8) 글자 x,y축 가운데 오도록 만들기, 내용은 ul li0, ul의 li1 작성하기</li>
+        <li>9) 위에 만들어진 li태그들은 옆으로 나열되도록 만들기</li>
+        <li>중요) 부모요소인 ul의 너비와 높이 확인하기, 화면 가운데 오도록 만들기</li>
+        <li>매우중요) li태그의 사이즈 유지하기</li>
+    </ul>
+    <div class="ts_11">
+        <ul>
+            <li class="li0">li0</li>
+            <li class="li1">li1</li>
+        </ul>
+    </div>
+
+    <h2>문제12) font 축약형 표현방법은 순서가 필요하다. 어떠한 순서로 축약형이 작성되는지 나열하기</h2>
+    <h2>문제13) 상위객체에 float를 적용하였다. 하위객체가 따라올라갔을경우 따라 올라가지 못하도록 하는 방법 작성하기</h2>
+    <p>부모를 찾아 overflow:hidden을 적용시킨다.</p>
+    <h2>문제14) 시선을 끄는 영역으로 주로 광고를 다루는 영역명은?</h2>
+    <p>visual영역</p>
+    <h2>문제15) 카피라이터를 작성하려한다. 어느 영역에 작성되어야할까?</h2>
+    <p>footer영역에 작성되어야 한다.</p>
+    <h2>문제16) 글자 정렬시 수평정렬에 해당하는 속성은?</h2>
+    <p>text-aling:center</p>
+
+    <h2>문제17) 자간에 해당하는 효과는?</h2>
+    <p class="ts_17">letter-spacing</p>
+    <h2>문제18) 문제 17에 해당하는 값만 자간 10px 적용하기</h2>
+    <h2>문제19) 크로스 브라우징이란?</h2>
+    <p>화면에 x자를 그려놓고 가운데를 중심으로 빠져나간 객체들을 제대로 배치하는 작업이다.</p>
+    <h2>문제20) 모바일 세로 크기에 해당하는 해상도는?</h2>
+    <p>320px~480px</p>
+
+    <h2>문제21) 아래 순서에 따라 문제 풀기</h2>
+    <ul>
+        <li>1) ul이 끝난 부분 아래에 div태그 만들기</li>
+        <li>2) 선택할 때 사용하는 인라인태그 사용하기</li>
+        <li>3) 국어, 영어, 수학,과학,사회 작성하여 기입하기</li>
+        <li>4) 필수 속성 반드시 작성하기 (수학 부분이 미리 선택되어있도록 만들기)</li>
+        <li>5) validator 확인하고 오류 없는 지 확인하기</li>
+    </ul>
+    <div>
+        <select id="subj">
+            <option value="국어">국어</option>
+            <option value="영어">영어</option>
+            <option value="수학" selected="selected">수학</option>
+            <option value="과학">과학</option>
+            <option value="사회">사회</option>
+        </select>
+    </div>
+
+    <h2>문제22) 상세 리스트를 만들때 적절한 리스트는?</h2>
+    <p>ul_li (unordered list)</p>
+    <h2>문제23) 숫자가 표기되어야하는 리스트를 만들때 사용하는 리스트는?</h2>
+    <p>ol_li (ordered list)</p>
+    <h2>문제24) 블릿기호의 위치변경을할때 사용하는 효과는?</h2>
+    <p>list-style-position</p>
+    <h2>문제25) 지금까지 배운 background 효과들 중 구형 브라우저에서 사용가능한것들 나열하기</h2>
+    <p>background-color, background-image, background-position, background-repeat (background-size 제외한것들 모두)</p>
+
+    <h2>문제26) css3 버전에서만 사용가능한 background 효과는?</h2>
+    <p>background-size</p>
+    <h2>문제27) 문제 26번의 효과를 구형 브라우저에서 사용할경우 나타날 수 있는 문제는?</h2>
+    <p>이미지가 원래의 크기고 돌아간다.</p>
+    <h2>문제28) background가 반복될때 반복제어하는 효과는?</h2>
+    <p>background-repeat:no-repeat</p>
+
+    <h2>문제29) float 적용시 부모요소에 배경색상이 나타나지 않았다. 원인은?</h2>
+    <p>부모영역이 제대로 설정되어있지 않아서 담기는 객체가 없을경우, 높이가 없어서 배경색상이 나타나지 않았을것이다.</p>
+    <h2>문제30) header 영역에 필수로 작성하는 영역으로 목적지 역할을하는 영역명은?</h2>
+    <p>네비게이션</p>
+
+    <h2>문제31) title과 headline 태그의 용도 작성하기</h2>
+    <p>title은 문서의 제목을 표기, headline은 영역의 제목을 표기하는 용도로 사용된다.</p>
+    <h2>문제32) body 영역에서 size 작업을 하면 안되는 이유는?</h2>
+    <p>body는 모든 영역을 담아주기때문에, 브라우저를 일부만 사용하지 않기위하여 size 작업을 하지 않는다.</p>
+
+    <h2>문제33) 아래 순서대로 문제 풀기</h2>
+    <ul>
+        <li>1) 현재 ul이 끝난 부분 아래에 전체 다 사용할 수 있는 div 만들기</li>
+        <li>2) div태그 안에 다시 div만들고 사이즈는 400*200 작성하기</li>
+        <li>3) div태그의 내용은 divTest 라고 작성하기</li>
+        <li>4) 글자 x,y축 가운데 오도록 만들고, div안에 있는 div박스 화면 가운데 오도록 만들기</li>
+        <li>5) 배경색상은 파란색, 글자색상은 하얀색 적용하기(16진법 사용하기)</li>
+        <li>6) div안에 담겨진 div박스에 scroll 나타나도록 만들기</li>
+    </ul>
+    <div>
+        <div class="ts_33">
+            divTest
+        </div>
+    </div>
+
+    <h2>문제34) 인라인요소를 화면 가운데 둘 때 사용하는 효과는?</h2>
+    <p>인라인요소를 블록요소에 담고, margin:0 auto를 사용한다.</p>
+    <h2>문제35) background-image를 화면 가운데 둘 때 사용하는 효과는?</h2>
+    <p>background-position:center 를 적용한다.</p>
+    <h2>문제36) overflow들을 해제할때 사용하는 효과는?</h2>
+    <p>overflow:visible을 적용한다.</p>
+    <h2>문제37) 구형 브라우저와 표준 브라우저 구분하기</h2>
+    <p>구형브라우저는 익스플로러 8 이하, 익스플로러 8,7,6,5</p>
+    <p>표준브라우저는 익스플로러 9,10,11,엣지,사파리,크롬,파이어폭스 ...</p>
+
+    <h2>문제38) **웹 접근성과 웹 표준 설명하기</h2>
+    <p>웹 접근성이란, 웹에 접근하는 방법이다.(키보드,마우스,언어지원)</p>
+    <p>웹 표준이란 웹 세계에서 어떻게 사용하겠다는 규칙 같은 것이다.</p>
+
+    <h2>문제39) script문제 ) a=0이란?</h2>
+    <p>0은 a에 담겨있다.</p>
+
+    <h2>문제40) script 문제)<br/>
+        a=2;<br/>
+        b=3;<br/>
+        c=0;<br/><br/>
+
+        a=b+c;<br/>
+        a는?
+    </h2>
+    <p>a=3</p>
+
+    <h2>문제41) script 문제)<br/>
+        a=10;<br/>
+        b=a+10;<br/>
+        c=b+a;<br/>
+        c는?
+    </h2>
+    <p>c=30</p>
+
+    <h2>문제42) script 문제)<br/>
+        z=0;<br/>
+        c=z+3;<br/>
+        z는?
+    </h2>
+    <p>z=0</p>
+
+    <h2>문제43) script 문제)<br/>
+        a=4;<br/>
+        b=5;<br/>
+        c=a+6;<br/>
+        c는?
+    </h2>
+    <p>c=10</p>
+
+    <h2>문제44) body, script, style 중 브라우저가 가장 빠르게 읽는 순서대로 나열하기</h2>
+    <p>body-style-script 순서대로 읽는다.</p>
+    <h2>문제45) jQuery가 javascript보다 반박자정도 느린 이유는?</h2>
+    <p>jQuery는 javascript와 Query의 합성이기때문에 javascript를 읽고 또 하나를 더 읽어야하기때문에 늦게 읽힌다.</p>
+
+ </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>daum_content</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+		a:link,a:visited{text-decoration:none;}
+		a:hover,a:focus{text-decoration:underline;}
+
+		/*######## wrap ########*/
+			#wrap{min-width:300px; width:100%;}
+			#container{width:100%; padding-top:50px;}
+
+		/*######## side ########*/
+		/* side의 너비: 300 사용하기 */
+			#side{width:300px; margin:0 auto; border:1px solid #ccc;}
+			#title{width:100%; height:40px; line-height:40px; font-size:11px;}
+
+			/*
+				[% 사용 시 주의사항]
+					1) % 사용의 경우, px처럼 정교하게 작업하기 어려움
+					2) 1%는 1px이 아님
+						1200 의 1% / 120의 1% 다름
+
+					3) "%는 움직이기 위하여 사용" 하는 값이고, 
+					대략 해당하는 영역에서 어느정도 사용하겠다고 지정하는 값
+
+					4) px은 고정된 값으로 움직이지 않기때문에 안전하게 사용할 수 있음
+					단, 반응형, 기능 작업 시 객체가 영역을 따라가지 않기때문에 동적인 작업이 어려움
+
+					* px은 고정된 영역 (제품) 에서 사용하고, 이미지는 해당하는 영역을
+					따라가도록 %로 채워서 사용함
+					* %는 px이 얼마든 100%를 기준으로 작성이 되고, 큰 값을 적용해도
+					"정확하게 알기 어렵기때문에" 직접 어느정도 영역을 차지하는지 확인할 필요가 있음
+
+					* [매우 중요]
+						
+						% 값은 부모가 작든 크든, 자녀가 볼 때는 무조건 100%로 인지함
+						부모가 작아져도 자녀가 %로 구성되어있다면 작아진 영역안에서
+						해당하는 %만큼 공간을 차지하려고 함
+
+					[계산하기]
+						px로 계산이 필요하다면 px로 계산하여 작성하고
+						%로 계산이 필요하다면 %로 계산하여 작성하기
+
+						%는 100%를 기준으로 작성되고, px은 해당하는 px안에서 구성되어야한다.
+			*/
+			#title a{display:block; width:100%; height:100%;}
+			/*
+				[a태그를 display:block으로 변경한 이유]
+					
+					1) a가 담고있는 자녀요소들 strong, span이 각각 display:block으로 변경됨
+
+					* 2) strong과 span이 display:block으로 변경되었을 때
+					
+					"a태그가 파란색 영역이 잡히지 않아도," 
+					너비와 높이가 잡힌다면 display:block으로 변경하지 않아도 크게 문제 없음
+
+					* 클릭하거나 기능을 작성했을 때 a태그 주변으로 또는 a태그 안쪽으로 
+					노이즈 현상이나 깨지는 현상이 발생한다면 영역을 정확하게 인지하지 못하는 문제로 
+					display:block 설정을 해주어야 함
+
+					3) 필수) strong과 span을 display:block으로 변경한 후 float
+					* float나 position을 사용했다면 반드시 부모의 영역이 필요함
+						: 부모의 너비와 높이 모두 필수 작성
+					* a태그에 검사를 띄우고 확인하면 0*0으로 영역이 확인됨
+					display:block으로 변경한 후 사이즈 작업이 필수로 작성되어야함
+			*/
+			#title a strong{display:block; width:80%; float:left;}
+			#title a span{display:block; width:20%; color:#aaa; float:left;}
+
+		/*
+			[매우중요_부모와 자녀]
+				: style 영역에서는 부모에서 자녀만 관리할 수 있음
+				: 자녀에서 부모, 자녀에서 자녀, 형제끼리 컨트롤 불가능
+				: 바로가기 span에서 strong 형제요소 관리할 수 없음!
+
+			style에서 기본기능
+				1) 해당하는 영역에 올렸을 때 담고있는 요소들 중에 나타나게 만들기
+				2) 부모에 마우스 올리면 자녀에 나타나게 만들기
+				3) 자녀에 올렸을때 직접 나타나게 만들기
+
+			[기능적용하기]
+				1) 부모와 자녀는 다른 요소
+				2) a에 마우스 올린다고 strong 자녀에 밑줄이 나타나는것은 아님
+				3) 누구 밑에 어떤 작업을 할 것인지 빨리 찾아서 해결하는 게 매우 중요 
+				
+
+				#title a:hover #title a strong{}
+
+		*/	
+			#title a:hover strong{text-decoration:underline;}
+
+		/*####### side #########*/
+			#list{width:100%; background-color:aqua; }
+
+			#list ul{width:100%;}
+			#list li{width:100%; height:60px;}
+
+			#list .img{width:40%; height:100%; overflow:hidden; float:left;}
+			#list .img a img{width:100%;}
+			/*
+				[검사]
+					
+					이미지 영역 40%를 따라서 줄어든 img 의 높이를 확인하면 65.45로 확인됨
+					2) 소수점 제외하고 60~65 사용
+			*/
+
+			#list .text{width:56%; padding-left:4%; height:100%; font-size:12px; float:left;}
+			#list .text .title{width:100%; height:20px; line-height:20px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+			#list .text .title a{color:#333;}
+			#list .text em{font-style:normal; color:#aaa;}
+
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="side">
+				<div id="title">
+					<a href="#" title="위메프 추천 상품">
+						<strong>위메프-위메프 추천 상품</strong>
+						<span>바로가기</span>
+					</a>
+				</div>
+				<div id="list">
+					<ul>
+						<li>
+							<p class="img">
+								<a href="#" title="상품주소0">
+									<img src="img/d0.jpg" alt="상품이미지0"/>
+								</a>
+							</p>
+							<div class="text">
+								<p class="title">
+									<a href="#" title="상품주소0">
+										프렌치카페 커피믹스 300T...
+									</a>
+								</p>
+								<p>
+									<strong><span>18,500</span>원</strong>
+								</p>
+								<p>
+									<em>GS샵</em>
+								</p>
+							</div>
+						</li>
+						<li>
+							<p class="img">
+								<a href="#" title="상품주소1">
+									<img src="img/d1.jpg" alt="상품이미지1"/>
+								</a>
+							</p>
+							<div class="text">
+								<p class="title">
+									<a href="#" title="상품주소1">
+										달콤하고 촉촉한 꿀고구마...
+									</a>
+								</p>
+								<p>
+									<strong><span>79,000</span>원</strong>
+								</p>
+								<p>
+									<em>인터파크</em>
+								</p>
+							</div>
+						</li>
+						<li>
+							<p class="img">
+								<a href="#" title="상품주소2">
+									<img src="img/d2.jpg" alt="상품이미지2"/>
+								</a>
+							</p>
+							<div class="text">
+								<p class="title">
+									<a href="#" title="상품주소2">
+										국내산 무안 자색양파 5kg...
+									</a>
+								</p>
+								<p>
+									<strong><span>10,900</span>원</strong>
+								</p>
+								<p>
+									<em>G마켓</em>
+								</p>
+							</div>
+						</li>
+						<li>
+							<p class="img">
+								<a href="#" title="상품주소3">
+									<img src="img/d3.jpg" alt="상품이미지3"/>
+								</a>
+							</p>
+							<div class="text">
+								<p class="title">
+									<a href="#" title="상품주소3">
+										[20%쿠폰+사은품] 콜핑 FW...
+									</a>
+								</p>
+								<p>
+									<strong><span>89,000</span>원</strong>
+								</p>
+								<p>
+									<em>옥션</em>
+								</p>
+							</div>
+						</li>
+						<li>
+							<p class="img">
+								<a href="#" title="상품주소4">
+									<img src="img/d4.jpg" alt="상품이미지4"/>
+								</a>
+							</p>
+							<div class="text">
+								<p class="title">
+									<a href="#" title="상품주소4">
+										더안 EMF 탄소매트 전기장...
+									</a>
+								</p>
+								<p>
+									<strong><span>49,800</span>원</strong>
+								</p>
+								<p>
+									<em>인터파크</em>
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

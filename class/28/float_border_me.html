@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>float_border</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    #wrap{min-width:1025px; width:100%;}
+    h2{background-color:#caf; text-align:center; line-height:50px;}
+
+    /*######### sold #########*/
+    #sold{width:100%; height:500px; text-align:center; background-color:#efefef; overflow:hidden;}
+    /* ul태그에 width 1000px 적용했다가 추후 li태그마다 border:1px씩 적용하느라 2px*5 해서 width:1010px로 수정함.*/
+    #sold ul{width:1010px; height:250px; margin:50px auto 0; background-color:#fff;}
+
+    /*######## sold / li ########*/
+    #sold li{width:200px; border:1px solid #eaf; float:left;}
+    #sold div{width:100%; height:100%;}
+    #sold h3{height:40px; line-height:40px; background-color:#caf;}
+    #sold .imgArea{height:130px; background-image:url("img/s1.jpg"); background-repeat:no-repeat; background-position:center center;}
+    #sold .desc{font-size:20px; height:80px; line-height:80px;}
+    #sold .tue{background-color:red; color:#fff;}
+
+    /* sold / background 작업 */
+    #sold .li0 .imgArea{background-image:url("img/s0.jpg");}
+    #sold .li2 .imgArea{background-image:url("img/s2.jpg");}
+    #sold .li3 .imgArea{background-image:url("img/s3.jpg");}
+
+    /*###### border ######*/
+    #border{width:100%; height:400px; background-image:url("img/bg_grid.gif");margin-bottom:50px; overflow:hidden;}
+    /* .ul0 width:600px로 설정했으나 border 넣으면서 4px+ 8px 하여 612px로 늘림*/
+    #border .ul0{width:612px; height:300px; margin:50px auto 0;}
+    
+    #border li{width:100px; height:200px; float:left;}
+
+    /* 원래 .li1에 width:400 주었으나, border를 추가하면서 408로 늘림*/
+    #border .li1{width:408px; height:200px;}
+
+    /*####### border .ul0안의 li 개별작업 #######*/
+    #border .ul0 .ul1{width:100%; height:100%;}
+    #border .ul1 li{height:100px; border-bottom:2px solid #000; border-right:2px solid #000;}
+
+    /*####### border .ul0안의 li border 작업 #######*/
+    #border .li0{border-bottom:2px solid #000; border-right:2px solid #000;}
+    #border .li2{border-top:2px solid #000; border-right:2px solid #000;}
+
+    #border .ul1 .ul1_li0{border-top:2px solid #000; border-bottom:0;}
+
+  </style>
+
+ </head>
+
+ <body>
+	<div id="wrap">
+    <h2>soldOut 만들기</h2>
+		<div id="sold">
+      <ul>
+        <li class="li0">
+          <div>
+            <h3>2월 7일(월)</h3>
+            <p class="imgArea">
+              <img src="img/soldout.png" alt="soldout이미지"/>
+            </p>
+            <p class="desc">kfc핫윙</p>
+          </div>
+        </li>
+        
+        <li class="li1">
+          <div>
+            <h3 class="tue">2월 8일(화)</h3>
+            <p class="imgArea"></p>
+            <p class="desc">버거세트</p>
+          </div>
+        </li>
+
+        <li class="li2">
+          <div>
+            <h3>2월 9일(수)</h3>
+            <p class="imgArea"></p>
+            <p class="desc">우유식빵</p>
+          </div>
+        </li>
+
+        <li class="li3">
+          <div>
+            <h3>2월 10일(목)</h3>
+            <p class="imgArea"></p>
+            <p class="desc">영화예매권</p>
+          </div>
+        </li>
+
+        <li class="li4">
+          <div>
+            <h3>2월 11일(금)</h3>
+            <p class="imgArea"></p>
+            <p class="desc">버거세트</p>
+          </div>
+        </li>
+      </ul>
+		</div>
+
+
+    <h2>border와 float</h2>
+		<div id="border">
+      <ul class="ul0">
+        <li class="li0"></li>
+        <li class="li1">
+          <ul class="ul1">
+            <li class="ul1_li0"></li>
+            <li></li>
+            <li class="ul1_li0"></li>
+            <li></li>
+          </ul>
+        </li>
+        <li class="li2"></li>
+      </ul>
+
+		</div>
+
+	</div>
+ </body>
+</html>

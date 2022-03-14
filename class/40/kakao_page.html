@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>document</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+        *{margin:0; padding:0;}
+		li{list-style-type:none;}
+		a:link,a:visited{text-decoration:none; color:#555;}
+
+        /*##### kakao_cont ######*/
+            #kakao_cont{width:1020px; height:350px; margin:0 auto; padding-top:50px;}
+            #kakao_cont ul{width:100%; height:100%;}
+            /* 이미지 크기 : 320 * 250 */
+            /* 글자영역의 높이 : 100px; */
+            #kakao_cont li{width:320px; height:350px; margin-left:15px; border:1px solid rgba(0,0,0,0); background-color:#fffccc; float:left;}
+
+            /*######## li에 올리면 border 나타나게 만들기 #######*/
+            #kakao_cont li:hover{border:1px solid rgba(255,0,0,1);}
+
+            /*
+                [기능 만들기]
+                    1) hover 했을때 border가 생성되면서 영역을 차지하기 때문에 움직임
+                    2) 잘못 배치할 경우 아래로 떨어질 수 있음
+
+                    3) border로 객체가 움직이기때문에 기존에 투명으로 설정하고
+                    올렸을 때 영역을 차지하는것이 아니라 색상만 변경하기
+            */
+            #kakao_cont a span{display:block; width:100%;}
+
+            /*####### text 영역 높이 100px #######*/
+            #kakao_cont a .text{height:60px; padding:30px 0 10px; text-align:center;}
+
+
+	</style>
+	
+ </head>
+
+ <body>
+    <div id="kakao_cont">
+        <ul>
+            <li>
+                <a href="#" title="카카오">
+                    <span class="text">
+                        상품 알아보기<br/>
+						<strong>카카오스토리 광고의 특징</strong>
+                    </span>
+                    <span class="img">
+                        <img src="img/source0.png" alt="카카오"/>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="카카오">
+                    <span class="text">
+                        상품 소개서<br/>
+						<strong>상품에 대한 자세한 정보</strong>
+                    </span>
+                    <span class="img">
+                        <img src="img/source1.png" alt="카카오"/>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="카카오">
+                    <span class="text">
+                        상품 알아보기<br/>
+						<strong>성공적인 비즈니스 사례</strong>
+                    </span>
+                    <span class="img">
+                        <img src="img/source2.png" alt="카카오"/>
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+ </body>
+</html>

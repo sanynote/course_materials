@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+	<title> floatTest </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+   <style type="text/css">
+   /* ################ reset ############## */
+      *{margin:0; padding:0;}
+      li{list-style-type:none;}
+
+   /* ################ wrap ############## */
+      #wrap{min-width:1025px; width:100%;}
+
+   /* ################ container ############## */
+      #container{width:100%;}
+      #container h2{text-align:center; border-bottom:2px solid #ccc; padding:20px 0; margin-bottom:20px;}
+
+   /* ################ con1 ############## */
+      #con1{width:1152px; height:300px; margin:0 auto 40px;}
+      #con1 ul{width:100%; height:100%;}
+      #con1 ul li{width:275px; height:100%; line-height:300px; float:left; background-color:#ccc; text-align:center;}
+
+   /* ################ con1 / .fl_box ############## */
+      #con1 .fl_box{width:600px; height:100%; margin-right:1px;}
+      #con1 .fl_box ul{float:left;}
+
+   /* ################ con1 / .ul0(왼쪽 영역 420px;) ############## */
+      #con1 .fl_box .ul0{width:420px; height:100%;}
+      #con1 .fl_box .ul0 li{width:140px; height:50%; float:left; background-color: #ff0; line-height:150px;}
+      #con1 .fl_box .ul0 .ul0_li0{background-color:#ff0;}
+      #con1 .fl_box .ul0 .ul0_li1{background-color:#ee0;}
+      #con1 .fl_box .ul0 .ul0_li2{background-color:#e70;}
+      #con1 .fl_box .ul0 .ul0_li3{width:100%; height:50%; background-color:#aa0;}
+
+   /* ################ con1 / .ul1(오른쪽 영역 180px) ############## */
+      #con1 .fl_box .ul1{width:180px; height:100%;}
+      #con1 .fl_box .ul1 li{width:90px; height:100%; float:left; background-color:#770; line-height:300px;}
+      #con1 .fl_box .ul1 .ul1_li1{background-color:#990;}
+   /* ################ con1 / fl(개별 작업) ############## */
+      #con1 .fl{margin-right:1px;}
+
+   /* ################ con2 ############## */
+      #con2{width:1600px; height:220px; margin:0 auto 40px;}
+      #con2 ul{width:100%; height:100%;}
+      #con2 ul li{width:380px; height:200px; line-height:200px; float:left;text-align:center;}
+      #con2 ul .fl{border:10px solid #333; }
+   /* ################ con2 / .fl_box1 ############## */   
+      #con2 .fl_box1{width:400px; height:220px;}
+      #con2 .fl_box1 ul{width:100%; height:100%;}
+      #con2 .fl_box1 li{width:100px; height:50%; float:left; line-height:110px; color:#fff;}
+      #con2 .fl_box1 .ul_li0{background-color: #0a0;}
+      #con2 .fl_box1 .ul_li1{background-color: #990;}
+      #con2 .fl_box1 .ul_li2{background-color: #930;}
+      #con2 .fl_box1 .ul_li3{background-color: #a00;}
+      #con2 .fl_box1 .ul_li4{width:100%; background-color: blue;}
+      
+   /* ################ con3 ############## */
+      #con3{width:1800px; height:40px; margin:0 auto;}
+      #con3 ul{width:100%; height:100%;}
+      #con3 li{height:100%; line-height:40px;float:left;margin-right:1px; padding-left:12px; color:#fff;}
+      #con3 .fl0{width:70px; background-color:#002;}
+      #con3 .fl1{width:110px; background-color:#005;}
+      #con3 .fl2{width:150px; background-color:#007;}
+      #con3 .fl3{width:190px; background-color:#009;}
+      #con3 .fl4{width:230px; background-color:#00a;}
+      #con3 .fl5{width:270px; background-color:#00c;}
+      #con3 .fl6{width:310px; background-color:#00e;}
+      #con3 .fl7{width:360px; background-color:#00f;}
+
+   </style>
+</head>
+
+<body>
+   <div id="wrap">
+      <div id="container">
+
+         <h2>test4 width : 1152px</h2>
+         <div id="con1">
+            <ul>
+               <li class="fl_box">
+                  <ul class="ul0">
+                     <li class="ul0_li0">ts4_ul0_li0</li>
+                     <li class="ul0_li1">ts4_ul0_li1</li>
+                     <li class="ul0_li2">ts4_ul0_li2</li>
+                     <li class="ul0_li3">ts4_ul0_li3</li>
+                  </ul>
+                  <ul class="ul1">
+                     <li>ts4_ul1_li0</li>
+                     <li class="ul1_li1">ts4_ul1_li1</li>
+                  </ul>
+               </li>
+               <li class="fl">float2</li>
+               <li>float3</li>
+            </ul>
+         </div>
+
+         <h2>test5 width : 1600px</h2>
+         <div id="con2">
+            <ul>
+               <li class="fl">float0</li>
+               <li class="fl_box1">
+                  <ul>
+                     <li class="ul_li0">ts5_ul_li0</li>
+                     <li class="ul_li1">ts5_ul_li1</li>
+                     <li class="ul_li2">ts5_ul_li2</li>
+                     <li class="ul_li3">ts5_ul_li3</li>
+                     <li class="ul_li4">ts5_ul_li4</li>
+                  </ul>
+               </li>
+               <li class="fl">float2</li>
+               <li class="fl">float3</li>
+            </ul>
+         </div>
+
+         <h2>test6 width : 1800px</h2>
+         <div id="con3">
+            <ul>
+               <li class="fl0">float0</li>
+               <li class="fl1">float1</li>
+               <li class="fl2">float2</li>
+               <li class="fl3">float3</li>
+               <li class="fl4">float4</li>
+               <li class="fl5">float5</li>
+               <li class="fl6">float6</li>
+               <li class="fl7">float7</li>
+            </ul>
+         </div>
+
+      </div>
+   </div>
+</body>
+</html>

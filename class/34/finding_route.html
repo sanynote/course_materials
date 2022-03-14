@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>a_tag2</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ </head>
+
+ <body>
+  <dl>
+    <dt>상대경로 이해하기</dt>
+    <dd>상대가 있는 장소 찾아서 링크 연결하기</dd>
+    <dd>
+      <ol>
+        <li>현재 위치에 "새폴더" sub 만들기</li>
+        <li>sub 폴더 안에 01_living.html 복사해서 붙여넣기</li>
+        <li>문제1) 아래 li태그 하나 더 만들기. sub 폴더 안에 있는 01_living.html 파일에 링크 연결하기</li>
+        <li>
+          <a href="sub/01_living.html" title="living 페이지">living 페이지</a>
+        </li>
+      </ol>
+    </dd>
+    <dd>
+      <ol>
+        <li>문제2) 현재 위치에 만들어진 sub 폴더 안에 sub2 폴더 만들기</li>
+        <li>02_a_tag.html 복사하여 sub2 폴더 안에 붙여넣기</li>
+        <li>아래 li태그 하나 더 만들기 sub2 폴더 안에있는 02_a_tag.html 파일에 링크 연결하기</li>
+        <li>현재 작업중인 폴더 모두 압축해서 이메일로 제출</li>
+        <li>
+          <a href="sub/sub2/02_a_tag.html" title="tag2">a_tag 페이지</a>
+        </li>
+      </ol>
+    </dd>
+  </dl>
+  <hr/>
+  <dl>
+    <dt>상대경로 활용하기</dt>
+    <dd>
+      * 주소줄을 확인하면서 작업하기 (현재 문서에서부터 상대가 있는 위치를 확인할 때 매우 중요함)
+    </dd>
+    <dd>
+      * php 문서의 경우, 주소줄이 연결되는 부분이 매우 중요함(문서에서 문서를 연결하는 경우가 많음)
+    </dd>
+    <dd>
+      img/t0.jpg, 들어가는 구조로 페이지를 만듦
+    </dd>
+    <dd>
+      image의 경우, 용량이 큰 이미지를 다뤄야하는 경우가 많기때문에 여러장을 활용하고싶어도
+      서버에서 용량이 부족할 수 있음
+    </dd>
+    <dd>
+      * 반대로 나오는 경로 설정 이해하기
+    </dd>
+    <dd>
+      ./ : 1)현재 폴더(현재 위치) 에서 찾을 때 (window에서는 생략, mac 에서는 셋팅 작업이 필요할때가 있음)
+    </dd>
+    <dd>
+      ../ : 2)현재 폴더에서 한 번 나가서
+    </dd>
+    <dd>
+      ../../ : 3)현재 위치에서 폴더 두 번 나가서
+    </dd>
+    <dd>
+      .././ : 4)현재 폴더에서 한 번 나가서 그 위치에서 찾기 (2번과 같은 내용)
+    </dd>
+    <dd>
+      ../../../ : 5)현재 위치에서 폴더 세 번 나가서
+    </dd>
+    <dd>
+      ../../img/ : 6)현재 위치에서 폴더 두 번 나가서 img 폴더에 들어가서
+    </dd>
+  </dl>
+  <hr/>
+
+  <h2>아래 문제 풀기</h2>
+  <ol>
+    <li>sub/subpage 폴더 만들기</li>
+    <li>img 파일은 현재 위치에 그대로 하나만 두기, sub/subpage 안에 붙여넣지말기</li>
+    <li>중요) img 폴더는 그대로 두기</li>
+    <li>참고 이미지대로 만들기</li>
+  </ol>
+ </body>
+</html>

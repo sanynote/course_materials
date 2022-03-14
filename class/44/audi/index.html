@@ -1,0 +1,527 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>audi</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<!--
+		[style의 3가지 종류]
+		
+		1) 태그 내부에 직접 적용하는 방식 : inline 적용방식
+		2) 내부 적용 방식 : internal-style 적용방식
+		3) 외부 적용 방식 : external-style 적용방식
+
+		[*] 외부 적용방식을 작성하는 이유?
+			
+			:: 각각에 목적에 맞춰서 분해하여 작업하기 때문에 일에 능률을 올릴 수 있음!
+			:: header.css,	best.css,  footer.css
+			
+		[*] 전체 페이지를 모두 배포하는 것이 아니라 일부만 제공
+			
+			+ header.html, header.css, header.js		, 필요한 파일만 분해하여 제공!
+
+		[매우중요]
+
+			1) inline-style 
+			2) internal-style
+			3) external-style 
+			
+				: 같은 값을 적용하면 가장 강력하게 적용되는 값은? 
+					inline-style 적용방식이 가장 강력함!
+
+				: internal-style, external-style 중에는 internal-style 적용방식이 강력함!
+
+			* 자주 변경을 할때는 internal 방식으로 작업하고, 작업이 완료 되었을 경우엔
+			external 방식으로 분해한다!
+
+			* 모니터가 여러개가 있다면 external 방식을 많이 사용함!
+				: 한쪽은 body 영역을 보고, 한쪽은 style 영역을 보면서 작업할 수 있음!
+
+			* 지금 포폴 작업은 reset.css만 분해하기!
+
+		++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+			[link 태그 확인하기]
+				
+				1) rel		: 연결할 문서의 종류 작성 (stylesheet, javascript)
+				2) type		: 문서의 타입 (type="text/css" , type="text/javascript" )
+				3) href		: 외부에 문서파일 연결할때 사용하는 속성!
+
+
+		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+			: link의 경우, 필요에 따라 css뿐 아니라 script도 분해하여 연결 할 수 있음!
+			
+			: 내부 적용방식의 경우 , 자주 수정이 되기 때문에 외부파일로 분해 하여 사용하다보면
+			안쪽과 외부 파일이 같은 작업을 진행하는 경우가 생김!
+
+				: 작업이 혼란스럽기 때문에 한쪽에서 작업하는 것이 좋다!
+	-->
+	<style type="text/css">
+		/*############ wrap ############*/
+			#wrap{min-width:1025px; width:100%;}
+		
+		/*########### header (전체 사용 중) ###########*/
+			#header{width:100%;}
+
+		/*########### header_inner (실제사용) #############*/
+		/*
+			1) 실제 사용영역  : 1025px
+			2) gnb 영역 : 785px * 70px
+			3) 로고 영역 : 240px * 70px
+		*/
+
+			#header_inner{width:1025px; height:70px;  margin:0 auto;}
+		
+		/*############ gnb ###########*/
+		/*
+			: line-height를 사용하여, 글씨 위치 배치 조절가능,
+			70px은 가운데 배치가 되지만, 조금더 적용하면 조금더 아래로 , 덜 주면 조금더 위로
+			배치가 가능함!
+		*/
+			#gnb{width:785px; line-height:90px; height:100%; float:left;}
+			#gnb li{display:inline; font-size:13px;}
+			#gnb li a{padding:0 30px 0 10px;}
+			
+		/*############ logo ############*/
+			#logo{width:240px; height:100%; float:left;}
+
+		/*############# navArea ##############*/
+			#navArea{width:100%; height:30px; background-color:#00162b;}
+		
+		/*############# nav ############*/
+			#nav{width:1025px; height:100%;  margin:0 auto;}
+		
+		/*
+			1) li가 더 늘어날 수 있기 때문에 lnb 영역을 조금더 크게 설계함,  860px
+			2) schArea 영역은 165px 사용
+		
+		*/
+			
+		/*########## lnb ##########*/
+			#nav .lnb{width:860px; height:100%; float:left;}
+			#nav .lnb li{display:inline; font-size:13px;}
+			#nav .lnb li a{color:#ccc; padding:0 30px 0 10px;}
+
+		
+		/*########## schArea ##########*/
+			#nav .schArea{width:165px; height:100%; float:left;}
+			#nav .schArea form{width:100%; text-align:right;}
+
+			#nav .schArea fieldset{border:none;}
+			#nav .schArea legend{display:none;}
+
+			#nav .schArea input{width:148px; height:24px; text-indent:10px;
+			border:1px solid #aaa; margin:2px 0;
+			background-image:url("img/btn_search.jpg");
+			background-repeat:no-repeat;
+			background-position:right;}
+
+			/*
+				[background-image 사용하기]
+			
+					: 장점, 빠르게 배치가 가능하다!
+					: 단점, 이미지 태그가 아닌 background-image로 배치했기 때문에
+					실제 기능을 만들기 어려움!
+
+					: 화면에 표기할때만 사용하는 효과!
+
+					* 실제로 기능을 만들것이라면 태그로 배치하기!
+			*/
+
+		/*################# container ################*/
+			#container{width:100%;}
+			#visual{width:100%;}
+
+			#visual ul{width:100%;}
+			#visual li{width:100%;}
+			#visual li img{width:100%;}
+
+			/*
+				[슬라이딩 윈도우 구현시 중요사항]
+					
+					1) visual 영역에 ul li로 형태 잡아주기
+					2) li의 갯수 4개 이상 사용하기 어려움! ( 반응형 작업시 어려움) 
+						
+						ul의 크기는 1920px  * 10  장,  19200으로 설계 해야 함!
+			*/
+
+		/*############### desc #############*/
+			#desc{width:100%; height:380px; background-color:#00162d; overflow:hidden;}
+		
+		/*############# carDesc ##############*/
+			#carDesc{width:1025px; margin:80px auto 0; font-size:12px;}
+			#carDesc h3{width:100%; height:20px; color:#fff; border-left:5px solid #c2c2c2;
+			text-indent:15px; font-size:16px;}
+
+		/*############ infoArea ##############*/
+		/*
+			1) infoMain과 infoSub 붙이기
+			2) 실제 사용가능한 너비 : 1025px
+			3) infoMain	:	805px
+			4) infoSub		:	220px
+		*/
+
+			#infoArea{width:100%;}
+
+		/*############ infoMain ############*/
+		/*
+			1) 사용가능한 너비 : 805px
+			2) 4방향 모두 border 적용, 왼쪽 방향 제외!  (겹치는 문제로 한쪽 방향만 사용!)
+				
+				: 오른쪽 방향만 적용된 형태!
+
+			[적용된 값]
+				805px 유지  : width:804px + border-right:1px 적용되어 있음!
+			
+			++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+			[li태그 3개 배치하기]
+
+			1) 804px  / 3개 == 268px
+			2) li한칸당 268px 사용
+			3) border-left:1px 사용
+
+			[적용된 값]
+				268px 유지 : width:267px + border-left:1px 적용되어 있음!
+		*/
+
+		/* 사용가능한 너비 : 805px */
+			
+			#infoMain{width:804px; height:178px; border:1px solid #ccc; border-left:none; background-color:#fff; float:left;}
+			#infoMain li{width:267px; height:100%; border-left:1px solid #ccc; float:left;}
+		
+		/*########### car_news (class 영역) ###########*/
+		/*이미지 크기 218px * 60px  */
+
+			#infoMain .car_news{width:220px; margin:0 auto;}
+			#infoMain .car_news h4{line-height:50px;}
+
+			#infoMain .car_img{height:60px;}
+			#infoMain .car_text{height:60px; padding-top:8px;}
+			#infoMain .car_text span{color:#f00;}
+			
+
+		/* 사용가능한 너비 : 220px */
+			#infoSub{width:219px; border:1px solid #ccc; border-left:none; background-color:#fff; float:left;}
+	
+		/*실제 사용가능한 높이 : 178px */
+			#infoSub li{height:88px; border-top:1px solid #ccc;}
+
+			#infoSub .car_news{width:200px; margin:0 auto; }
+			#infoSub .car_news h4{line-height:40px;}
+			#infoSub .car_news span{color:#f00;}
+
+
+		/*########### infoMain과 infoSub 끊어주기 (가상객체) #############*/
+			#infoArea:after{content:""; display:block; clear:both;}
+
+		/*############# footer 영역 ##############*/
+			#footer{width:100%; font-size:12px;}
+
+		/*############ footer_nav #############*/
+			.footer_nav{width:100%; background-color:#999; height:30px; line-height:30px;
+			border-top:2px solid #555; border-bottom:1px solid #777;}
+
+			.footer_nav ul{text-align:center;}
+			.footer_nav li{display:inline;}
+			.footer_nav li a{padding:0 10px 0 20px; color:#fff;}
+
+		/*############ footer_desc / copy #############*/
+			.footer_desc{width:100%; height:100px; line-height:100px; background-color:#aaa;}
+			.footer_desc ul{text-align:center;}
+			.footer_desc li{display:inline;}
+			.footer_desc li a{padding:0 10px 0 20px; color:#eee;}
+
+			.copy{width:100%; height:24px; line-height:24px; text-align:center;
+			background-color:#00162d; color:#fff;}
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="header">
+			<h1>아우디</h1>
+			<div id="header_inner">
+				<ul id="gnb">
+					<li><a href="#" title="A3">A3</a></li>
+					<li><a href="#" title="A4">A4</a></li>
+					<li><a href="#" title="A5">A5</a></li>
+					<li><a href="#" title="A6">A6</a></li>
+					<li><a href="#" title="A7">A7</a></li>
+					<li><a href="#" title="A8">A8</a></li>
+					<li><a href="#" title="Q3">Q3</a></li>
+					<li><a href="#" title="Q5">Q5</a></li>
+					<li><a href="#" title="Q7">Q7</a></li>
+					<li><a href="#" title="TT">TT</a></li>
+					<li><a href="#" title="R8">R8</a></li>
+				</ul>
+				<div id="logo">
+					<a href="01_audi_new_참고이미지.jpg" title="아우디 참고이미지">
+						<img src="img/logo.gif" alt="아우디 로고"/>
+					</a>
+				</div>
+			</div>
+			<div id="navArea">
+				<h2>네비게이션 영역 and 검색영역</h2>
+				<div id="nav">
+					<div class="lnb">
+						<h2>local nav bar</h2>
+						<ul>
+							<li><a href="#" title="home">Home</a></li>
+							<li><a href="#" title="models">Models</a></li>
+							<li><a href="#" title="gallery">gallery</a></li>
+							<li><a href="#" title="qna">Q&amp;A</a></li>
+							<li><a href="#" title="multimedia">Multimedia</a></li>
+							<li><a href="#" title="company">company</a></li>
+						</ul>
+					</div>
+					<div class="schArea">	<!--search-->
+						<h2>검색영역</h2>
+						<form action="#" method="get">
+							<fieldset>
+								<legend>검색</legend>
+								<input id="search" type="text" name="search" title="차량검색"/>
+								<!--
+									1) label 대신하여 사용하는 대체텍스트는 title
+									2) label 이 없을 경우, 감점의 원인이 됨!
+									3) label 은 display:none으로 처리할 경우, 읽을 수 없음!
+								-->
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="container">
+			<h2>광고 정보를 다루는 영역</h2>
+			<div id="visual">
+				<ul>
+					<li>
+						<img src="img/main2.jpg" alt="아우디메인"/>
+					</li>
+				</ul>
+			</div>
+			<div id="desc">
+				<h2>정보 제공 영역</h2>
+				<div id="carDesc">
+					<h3>NEWS</h3>
+					<div id="infoArea">
+						<ul id="infoMain">
+							<li>
+								<div class="car_news">
+									<h4>아우디 코리아 디젤관련</h4>
+									<p class="car_img">
+										<a href="#" title="아우디 코리아 디젤관련">
+											<img src="img/140213_magazine.jpg" alt="아우디 코리아 디젤관련"/>
+										</a>
+									</p>
+									<p class="car_text">
+										<a href="#" title="아우디 코리아 디젤관련">
+											<span>▶</span> 타입 EA 089 디젤 엔진 관련 안내 드립니다.
+										</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="car_news">
+									<h4>We Care Campaign</h4>
+									<p class="car_img">
+										<a href="#" title="We Care Campaign">
+											<img src="img/140423_banner_01.jpg" alt="We Care Campaign"/>
+										</a>
+									</p>
+									<p class="car_text">
+										<a href="#" title="아우디 코리아 디젤관련">
+											<span>▶</span> 아우디 고객님께 드리는 "We Care Campaign" 고객 안내문
+										</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="car_news">
+									<h4>Audi Financial Services</h4>
+									<p class="car_img">
+										<a href="#" title="Audi Financial Services">
+											<img src="img/audi_financial_service.jpg" alt="Audi Financial Services"/>
+										</a>
+									</p>
+									<p class="car_text">
+										<a href="#" title="Audi Financial Services">
+											<span>▶</span> Audi Financial Services의 스페셜 금융 프로그램을 만나보실 수 있습니다.
+										</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+						<ul id="infoSub">
+							<li>
+								<div class="car_news">
+									<h4>Audi News</h4>
+									<p class="car_text">
+										<a href="#" title="Audi News">
+											<span>▶</span> 아우디 코리아, '아우디 서비스 인천' 확장 이전 오픈
+										</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="car_news">
+									<h4>Dealer Network</h4>
+									<p class="car_text">
+										<a href="#" title="Dealer Network">
+											<span>▶</span> 아우디 전시장과 서비스센터를 안내해 드립니다.
+										</a>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<h2>개인정보, 법률정보, 카피라이터 영역</h2>
+			<div class="footer_nav">
+				<ul>
+					<li><a href="#" title="개인정보 취급방침">개인정보 취급방침</a></li>
+					<li><a href="#" title="e-뉴스레터신청">e-뉴스레터신청</a></li>
+					<li><a href="#" title="e-카달로그신청">e-카달로그신청</a></li>
+					<li><a href="#" title="시승신청">시승신청</a></li>
+					<li><a href="#" title="부정제보">부정제보</a></li>
+				</ul>
+			</div>
+			<div class="footer_desc">
+				<ul>
+					<li><a href="#" title="Audi Financial Services">Audi Financial Services</a></li>
+					<li><a href="#" title="quattro Cup">quattro Cup</a></li>
+					<li><a href="#" title="Configurator">Configurator</a></li>
+					<li><a href="#" title="Sitemap">Sitemap</a></li>
+				</ul>
+			</div>
+			<p class="copy">
+				&copy;2022. Audi Korea. All Rights reserved
+			</p>
+		</div>
+	</div>
+ </body>
+</html>
+<!--
+	
+	1) 프로젝트 진행시, 폴더명 (영문 소문자 사용)
+	2) 중요)
+			: 한글, 한자, 불어, 일어.. 등등 다른 언어들은 서버 주소가 읽지 못 할 수 있음!
+			: 대문자는 프로그램상 "예약어" 가 많기 때문에 서버 작업이 매우 어려움!
+
+	3) 웹의 표준언어 : 영문 소문자
+
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	[확장자와 파일명_서버에 업로드 했을 경우]
+		
+		1) "pc"에서 코딩작업 ,		img/best.jpg 로 코딩 작업을 함,  
+			
+			:: 파일명 확인, best.JPG로 되어 있음
+			:: pc에서는 출력이 가능함!
+			:: "서버" 에서는 출력이 불가능함!
+
+
+			중요) 서버나 다른 환경에서 작업할 경우
+				대문자는 대문자로 작성해야 하고, 소문자는 소문자로 작성해야 한다!
+
+			* "소문자" 사용 권장!
+
+		
+		2) "pc"에서 코딩작업,	img/best.jpg 로 코딩 작업을 함
+
+			:: 파일명 확인, beSt.jpg로 되어 있음
+			:: pc에서는 출력이 가능함!
+			:: "서버" 에서는 출력이 불가능함!
+
+			매우중요)
+
+				: 파일명, 대문자, 소문자 전부 정확하게 맞아야 한다..
+				: 코딩작업과 파일명, 확장자가 모두 맞아야 한다!
+				: 소문자로 맞혀주기!
+
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		
+		[매우중요_확장자]
+
+			: 확장자도 틀리지 않고, 코딩도 맞으나 서버에서 출력되지 않는 이유?
+
+			1) 사용자가 임의로 확장자를 바꿨을 경우
+				
+				:	색상수나 픽셀의 문제가 발생함!
+				:	그래픽도구를 이용하여 다시 저장해야 안전하게 저장이 가능함!
+
+			2) 파일이 이미 깨져 있을 경우
+				
+				: 픽픽, 포토샵, 일러스트 등에서 불러오기 불가능! (경고창이 출력됨)
+
+			
+			tip) 이미 깨져 있는 이미지를 사용하고 싶을때는 해당하는 영역만큼 지정하여
+			캡쳐 하고 저장하면 사용이 가능하다!
+
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		[매우중요_공간값]
+			
+			: index 라는 명칭이 매우 중요함!
+			: 모든 페이지들은 폴더명(프로젝트명) 으로 만들고, 
+				index.html 파일로 메인 페이지를 저장함!
+
+			: 모든 공간값은 0번으로 시작함!
+			
+
+			* index  == 공간 0 과 같음!
+			
+				: script에서 배열과 연관성이 매우 높기 때문에 매우 중요한 부분!
+				: 배열(공간)은 0번 부터 시작함
+
+
+			* 서버에서 공간을 셋팅하고 나면 반드시 "0번 공간"은 자동으로 생성됨!
+			
+			* index.html은 서버를 통해서 업로드 할 경우, 주소줄에 기입하지 않아도
+			자동으로 읽을 수 있음!
+
+	[주의사항]
+
+		1) 포폴(폴더명),  한글명 금지!
+			kakao		, 영문으로 폴더명 사용하기!
+
+		
+		2) 자동으로 읽게 만들 경우
+
+			1) main.html, index1.html	( index == 0, 01.html 과 같음)
+				index_audi.html, index_portfolio.html
+
+			1) index.html 만 자동으로 인식함, index 뒤에 아무것도 작성되지 않도록 한다!
+			2) index.html로 저장하는 이유는? 자동으로 인식하기 때문에 페이지를 읽는 속도가
+			다른 페이지를 읽는 속도 보다 매우 빠름!
+
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		[h1 사용하기]
+
+		1) 목차 생성시 가장 중요도가 높은 위치에 작성함!
+		2) header를 작성하자마자 작성하는 것이 h1
+			: 구조상 가운데 배치 될 경우, h1이 아닌 div id="logo" 형태로 배치함!
+
+
+		3) headerWrap 작성하자 마자 사용가능한 것도 h1이다!
+
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		[서버에서 필요한 폴더]
+			
+			audiㄴ
+				sub (서브페이지 폴더)
+				img (이미지 파일 폴더)
+				css ( style 모아두는 폴더)
+				db		(databases 저장해두는 폴더)
+				js		(script 파일 모아두는 폴더)
+
+				index.html
+
+-->

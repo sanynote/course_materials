@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>css_test2</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*
+			1번의 경우, 어떤 회색인지 알 수 없음(밝은 회색?, 어두운 회색?)
+				:이럴 경우, 웹표준, 웹접근성에 맞는 색상 적용하기
+				:#333, 검정색과 어두운회색을 구분하는 기준
+				:#ccc, 하얀색과 밝은 회색을 구분하는 기준
+		*/
+		#ts1{background-color:#ccc;}
+
+		/*
+			굵기 표현
+				: light "100" 200 300
+				: normal "400" 500 600
+				: bold "700" 800 900
+
+				normal 400부터 앞뒤로 +300 굵은 범위, -300 얇은 범위로 나뉜다.
+		*/
+		#ts2{font-size:24px; font-weight:700; color:#00f}
+
+		/*
+			두께 있는 서체를 얇게 만들때는 기본값은 400부터 적용하고, 더 얇게 만들때 100부터 시작함
+			:: 100부터 적용하고 700으로 만들게되면 숫자범위의 차이가 너무 크기때문에 극단적인 표현이 나올 수 있음
+		*/
+		#ts3 strong{background-color:pink; color:#0a0; font-style:italic; font-weight:400;}
+
+		#ts4 strong{text-transform:uppercase; font-weight:400;}
+		#ts4 em{text-transform:lowercase; font-style:normal;}
+		#ts4 span{text-transform:capitalize;}
+
+		/*
+			[순서 매우중요]
+				1) 웹은 설계 시 부모부터 설계하고, 자녀를 구성한다.
+				2) 웹은 위에서 아래로 읽는것이 기본 순서
+				3) 웹은 왼쪽에서 오른쪽으로 읽는것이 기본 순서
+
+			[현재 문제의 문제점]
+				1) 문제대로 만들면 부모가 자녀 밑에 만들어지는 상황
+				2) 꾸며줄때 부모가 먼저 생성되어있기때문에 부모부터 꾸며주고
+				그 안에 자녀를 꾸며야하기때문에 순서를 바꿔서 표현해야 함
+
+				3) 자녀요소를 꾸며줄때도 왼쪽에 있는 요소가 먼저 작성되어야하고,
+				그 다음 오른쪽으로 꾸며준다..
+
+				4) 자녀요소를 꾸며줄때도 위에 있는 요소가 먼저 작성되어야 하고,
+				그 다음 아래쪽으로 꾸며준다.
+		*/
+
+		/*중요:한글은 대문자 소문자 표현이 없기때문에 전체 영역에서 대문자나 소문자로 바뀌는 값을 적용하면 영어가 알아서 변경됨*/
+		#ts5{line-height:70px; text-transform:uppercase;}
+		#ts5 span{font-style:italic; text-decoration:underline; background-color:#ff0; color:#f00;}
+		#ts5 em{background-color:#ccc; font-style:normal;}
+
+		#ts6 span{font-size:12px}
+
+		#ts7{text-transform:uppercase;}
+		#ts7 span{background-color:#ff0;}
+
+
+	</style>
+ </head>
+
+ <body>
+	<h1>++++++++++ head 영역에 style영역 만들어서 문제 풀기 ++++++++++++</h1>
+	<p id="ts1">현재 p태그 호출하여 배경색상 밝은 회색 적용하기 (16진법 사용하기)</p>
+	<p id="ts2">
+		현재 p태그 호출하여 글자크기 24px 적용, 글자 굵게 만들기 (숫자로 표현), 글자 파란색 만들기(16진법 사용)
+	</p>
+
+	<h2>
+		아래 p태그 안의 strong 태그에 배경색상 핑크, 글자색상 초록색 적용(16진법), 글자 기울이기 적용, 글자 두께 빼주기(숫자적용)
+	</h2>
+	<p id="ts3">
+		div태그와 div태그는 서로 담아주는데 문제가 없지만 <strong>p태그는 파일처럼 사용</strong>하기 때문에 같은 p태그를 담을수 없다.
+	</p>
+
+	<h2>아래 순서에 따라 문제 풀기</h2>
+	<p>
+		1) 첫번째 줄에 나열된 값들 대문자로 변경하기(가장 강하게 읽어주는 태그로 담아주기)<br/>
+		2) 두번째 줄에 나열된 값들 소문자로 변경하기(반음 올려주는 태그로 담아주기)<br/>
+		3) 세번째 줄에 나열된 값들 앞글자만 대문자 변경하기(아무 특징이 없는 인라인태그로 담아주기)<br/>
+		4) 강하게 읽어주는 태그는 두께 빼주기, 반음정도 올려주는 태그는 기울어지지 않도록 만들기
+	</p>
+	<p id="ts4">
+		<strong>kakao, naver, daum. google, samsung, apple</strong><br/>
+		<em>STARBUKCS, HOLLYS, COFFEEBEAN, EDIYA</em><br/>
+		<span>max, indesign, html5, frontend, backend, web</span>
+	</p>
+
+
+	<h2>
+		아래 나열된 값들 중 span 태그에 속해있는 값들은 글씨 기울이기, 글씨 아랫쪽에 밑줄 만들기
+		배경색상은 16진법으로 노란색 만들기, 글자색상은 16진법으로 빨간색 적용
+	</h2>
+	<h2>아래 나열된 값들 행간 70px 적용하기</h2>
+	<h2>
+		아래 나열된 값들 중 em에 속해있는 값에 배경색상 회색적용(16진법), 글씨 기울어지지 않도록 만들기, 
+		영문은 대문자로 나오도록 만들기
+	</h2>
+
+	<p id="ts5">
+		기본적으로 <span>xhtml 문법에 따라 정적인 페이지를 구성</span>하고, jQuery , javascript를 활용하여 기능을 
+		부여하는 것이 웹의 정석이었으나...<em>현재는 html5의 동적인 요소를 활용하여 javascript, jQuery의 
+		속도를 보완</em>하는 작업이 많아졌다.
+	</p>
+
+	<h2>아래 나열된 값들 중에서 영문인 값만 찾아서 font-size:12px 적용하기</h2>
+	<p id="ts6">글꼴은 <span>arial, gulim, sans-serif</span> 등 여러개를 작성할 수 있다.</p>
+
+	<h2>아래 나열된 값들 중에서 영문만 골라내어 대문자로 변경하기</h2>
+	<p>firefox만 골라내고 배경색상 노란색 적용하기</p>
+	<p id="ts7">
+		국내에서 explorer 사용자는 적다고 볼 수는 없지만, 국내와 세계적으로 제일 많이 사용하는
+		브라우저는 chrome 이다. <span>firefox</span>의 경우 일부 유럽국가 개발자들이 많이 활용하고 있는데
+		이는 <span>firefox</span>만 mini-server를 가지고 있기 때문이다.
+	</p>
+	
+	<h2>문제 풀때 중요사항</h2>
+	<p>1) 부모에 자녀 접근하는 방식으로 문제 풀기, #p0 strong</p>
+	<p>2) 들여쓰기, validator 확인하기</p>
+	<p>3) 전체적으로 확인한 후 제출하기</p>
+ </body>
+</html>

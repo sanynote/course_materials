@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>position_1</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/* float 나 position의 경우 여백 초기화 필수 */
+
+		*{margin:0; padding:0;}
+		div{width:600px; height:600px; border:2px solid #333;}
+		p{width:150px; height:150px; line-height:150px; background-color:#ccc; text-align:center; color:#fff;}
+
+		.red{background-color:#f00; left:0; top:0; position:absolute;}
+		.green{background-color:#0a0; left:0; top:0; position:absolute;}
+		.blue{background-color:#00f; left:0; top:0; position:absolute;}
+
+	</style>
+ </head>
+
+ <body>
+	<div>
+		<p class="red">red</p>
+		<p class="green">green</p>
+		<p class="blue">blue</p>
+	</div>
+ </body>
+</html>
+<!--
+	[ 1 ] margin
+
+		margin의 경우 "바깥쪽 영역을 기준"으로 top right bottom left 방향으로 움직일 수 있음
+		1) 바닥에 있는 객체들끼리 서로 밀고다닌다.
+		2) 바깥쪽 영역을 버리면서 버리는 영역을 그대로 두고 다닌다.
+			+ padding은 채우면서 용량을 차지하지만, margin은 버리면서 용량을 차지함
+
+		3) 똑같이 용량을 차지한다면 margin으로 버리기보다 padding으로 채우기
+
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	[ 2 ] left, top, right, bottom 해당하는 값들이 적용되려면?
+		
+		1) 단독으로 left, top, right, bottom 어떤 값을 적용해도 적용되지 않음
+		2) margin (바깥쪽) 처럼 기준점이 없음
+		3) 어디를 기준으로 left 적용? 어디를 기준으로 right 적용?
+
+	[ 3 ] position의 의미
+		
+		1) 어떠한 객체를 원하는 위치에 배치하는 효과! (기준점 역할을 만듦)
+		2) left, right, top, bottom 을 사용하기 위해서는 "기준"이 필요함
+		
+		3) 매우 중요) float보다 강력함 (float는 같은 하늘에 배치되지만, position은 우주로 날아가는 개념)
+			: float보다 훨씬 윗 공간을 사용한다. 사용하는 층이 다름.
+
+		[정리_매우중요]
+
+			: css에서 감점이 크게 되는 요인
+			: 같은 대상에 float와 position사용 "불가능"
+			* 기준점 역할을 하는 position은 상관없지만, 이동하기 위하여 사용하는 position은
+			float의 성질을 무너뜨리기 때문에 사용에 의미가 없음
+
+			div{float:left; position:absolute; left:200px;}
+				position을 사용하고, 이동했기때문에 float가 무시당함
+
+			: position은 어떤 기준을 만들기위해 사용하고, float보다 강력하기때문에
+			페이지에서 너무 많이 사용하게되면 구조가 쉽게 깨질 수 있다.
+
+			: 상대와 겹칠 수 있기때문에 주의해야한다.
+		
+	[4] position의 종류(기준점 역할)
+		
+		+ relative (상대고정, 상대좌표)
+			: 상대는 고정시켜놓고 자신만 움직이기
+
+			중요) 
+				기준점: 자신이 있던 공간 "왼쪽상단"에서부터 움직임
+
+				: left top right bottom 좌표적용이 가능함
+				: 상대와 겹칠 수 있음 (position은 적용된 객체가 항상 공중에 떠서 돌아다님)
+
+				장점: 상대가 빈 공간을 채우지않기때문에 웹의 구조가 깨지지않는다.
+				단점: 빈 공간을 그대로 두고 사용함
+					(쓸모없는 공간이 만들어지고, 여백처리에 문제가 발생함, 용량이 몇 배로 커질 수 있음)
+				
+				기본좌표: 자신이 있던 공간을 기준으로 왼쪽 상단에서부터 움직임
+
+
+		+ absolute(절대고정, 절대좌표)
+			: 자신이 있던 공간을 바로 아래의 객체가 채우러 올라감
+			: 절대 빈공간을 두지 않음
+
+			: 지정된 좌표에 고정시켜놓고 사용함
+				(브라우저를 줄여도 계속 같은 값을 (좌표)를 유지함)
+
+			기준점: 브라우저를 중심으로 따라다님
+				
+				left right top bottom 좌표 적용이 가능함
+
+				장점: 빈 공간을 두지 않고 배치되기때문에 쓸 데 없는 여백을 만들지 않음
+				단점: 브라우저를 중심으로 움직이기때문에 작은 값으로도 크게 움직일 수 있음
+
+		[매우중요]
+			1) position 구조는 "모두가 다른 층에 쌓이기때문에" 객체들끼리 겹치는 문제가 발생함
+			2) float는 같은 층에 쌓이기때문에 단단하게 붙일 수 있고, 부모가 담아줄 수 있음
+			3) position은 다른 층에 쌓이기때문에 부모가 높이를 만들기 어려울 수 있지만
+				너비 높이를 만들지못하면 더 큰 문제가 발생하기때문에 부모에 사이즈를 제작하여
+				만들어야한다. (자녀가 빠져나가는 문제를 막아주어야 한다.)
+
+		[구조확인]
+			웹은 header container footer 순으로 만들게되고, 
+			position으로 화면에 띄워놓고보면 footer가 가장 위에 쌓임
+				: header는 가장 하단에 쌓이게된다.
+
+			웹의 구조를 만들때는 position을 사용하는 것이 아니라 "기능이나 기술을 적용"할 때 
+			극단적으로 "왼쪽이나 오른쪽"으로 배치할때 "자유분방한 구조" 를 만드는 영역에서만 position을 사용한다.
+
+			ex) 베라, 스벅 visual 부분 등이 position:absolute 구조로 만든다.
+
+		+ fixed
+		+ static
+		
+
+
+
+-->

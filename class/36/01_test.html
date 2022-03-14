@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>test09</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    a:link, a:visited{text-decoration:none; color:#00f;}
+
+    /*########## 20 번 문제 ##########*/
+    #formArea{width:100%;}
+    #formArea div{width:400px; background-color:#caf; margin:0 auto;}
+
+    /*########## 27 번 문제 ##########*/
+    #linkArea{width:100%;}
+    #linkArea div{width:600px; margin:0 auto;}
+
+    #linkArea ul{width:100%; height:21px;}
+    #linkArea li{width:200px; line-height:21px; text-align:center; background-color:#eaf; float:left;}
+    #linkArea .link0{background-color:#caf;}
+    #linkArea .link1{background-color:#cdf;}
+    #linkArea li a{color:#ff0;}
+  
+    /*######### 30번 문제 #########*/
+    #pArea{width:100%;}
+    #pArea p{width:200px; height:200px; margin:0 auto; background-color:gold; color:#000;}
+    #pArea p:hover{background-color:#000; color:gold;}
+    
+
+    /*###### 36,37번 ########*/
+    #inline{background-color:#ff0; display:inline;}
+    #over{width:400px; height:20px; background-color:aqua; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+  </style>
+ </head>
+
+ <body>
+	<h1>아래 지시사항 확인하기</h1>
+  <p>
+    1) style문제 풀 때, 블릿기호 초기화, a태그, 여백 초기화 적용하기
+    2) 문제와 답 읽을 수 있도록 간격 조절하기
+    3) h1태그는 font-size "기본"으로 바꾸기
+  </p>
+
+  <h2>01) 스크린리더기가 가장 강하게 읽어주는 태그는?</h2>
+  <p>strong 태그입니다.</p>
+  <h2>02) 인라인 요소들 중에서 처음부터 너비와 높이를 가지는 인라인요소 나열하기</h2>
+  <p>img, select, input 태그가 처음부터 너비와 높이를 가지는 인라인요소입니다.</p>
+
+  <h2>03) 02번에 나열된 객체들에 display:block이 필요할까? 필요하지 않다면 이유는?</h2>
+  <p>
+    필요하지 않습니다. 그 이유는 문제에 나와있습니다. 
+    2번에 나열된 태그들은 처음부터 높이와 너비를 가지기때문에 
+    굳이 블록속성으로 바꿀 필요가 없습니다.
+  </p>
+
+  <h2>04) 인라인 요소들 중 속성을 가지는 인라인 요소들 나열하고, 속성도 작성하기</h2>
+  <p>img(src alt) select(value) input(id type name)</p>
+
+  <h2>05) dl 리스트에서 유일하게 인라인요소인 태그는?</h2>
+  <p>dl의 자녀요소인 dt가 유일하게 인라인요소입니다.</p>
+  <h2>06) 05번의 태그가 너비와 높이를 설정할수 있는 이유는?</h2>
+  <p>부모인 dl이 블록이기때문에 dt본인이 스스로 블록이라고 착각을 해서 너비와 높이가 형성됩니다.</p>
+
+  <h2>07) 비표준과 표준을 호환하는 .dtd 문서는?</h2>
+  <p>호환하는 dtd 문서는 transitional.dtd 입니다. 호환이 되지 않는 문서는 strict.dtd 문서입니다.</p>
+  <h2>08) form 태그 작성 시 필수 속성 작성하고, 각각의 역할 작성하기</h2>
+  <p>
+    action : db나 페이지를 주소줄로 연결해주는 역할을 합니다.
+    method  :
+            - get : 주소줄에 보여줘도 되는 정보들을 다룰 때 사용됩니다.(맛집, 날씨)
+            - post: 주소줄에 보여주면 안되는 정보들을 다룰 때 사용됩니다 (로그인, 회원가입)
+  </p>
+
+  <h2>09) input 태그 작성 시 필수 속성 3가지 작성하고, 각각의 역할 작성하기</h2>
+  <p>
+    1) id : input을 지칭하는 이름
+    2) type: input 공간을 어떻게 사용할 지 결정하는 속성
+    3) name: input에 입력된 정보를 name 속성에 담아서 action줄을 통해 넘겨주는 역할을 한다.
+
+  </p>
+
+  <h2>10) input 태그와 짝을 맞추는 태그와 해당하는 속성 작성하기</h2>
+  <p>label 태그, label태그에는 항상 for속성이 함께 다닌다. for을 사용하여 input 의 id 와 이름을 맞춘다.</p>
+
+  <h2>11) * 문제 10번의 짝을 맞추는 태그가 필요한 이유는?</h2>
+  <p>input 태그의 대체텍스트 역할을 수행하기 위한 태그가 10번에 나온 label태그이다.</p>
+
+  <h2>12) * 브라우저에서 읽어주는 1차,2차,3차,4차 영역 순서대로 나열하기</h2>
+  <p>
+    1) body
+    2) style
+    3) javascript
+    4) jQuery
+  </p>
+
+  <h2>13) charset="euc-kr"일 경우, 인코딩 저장방식은?</h2>
+  <p>ANSI 방식</p>
+
+  <h2>14) "파편화"란?</h2>
+  <p>h5,h6처럼 폰트사이즈가 너무 작아지면 화면에 깨져보이는 것을 파편화 현상이라고 한다.</p>
+
+  <h2>15) span 태그를 display:block으로 바꿀 생각으로 자녀로 p 태그를 작성하였다. 몇 차 영역에서 깨질 수 있을까?</h2>
+  <p>1차 영역인 body에서부터 깨지기때문에 style 영역에서 속성을 바꿀 생각이더라도 1차에서부터 그렇게 작성하면 사고가 된다.</p>
+
+  <h2>16) a태그에 사용된 속성 2가지 중, 대체텍스트 역할을 하는 속성은?</h2>
+  <p>title이 a태그에서 대체텍스트 역할을 수행한다.</p>
+
+  <h2>17) form태그 안에서 주제별로 그룹으로 묶을 때 사용하는 태그는?</h2>
+  <p>fieldset 태그</p>
+  <h2>18) 17번의 제목을 작성할때 필요한 태그는?</h2>
+  <p>fieldset의 제목을 작성하기 위해서는 legend 태그가 필요하다.</p>
+
+  <h2>19) 전송 역할을 하려면 type은 어떻게 작성되어야 할까?</h2>
+  <p>type="submit"</p>
+
+  <h2>20) 아래 순서에 따라 문제 풀기</h2>
+  <ol>
+    <li>현재 ol이 끝난 부분 아래에 전체 사용하는 div 영역 만들기</li>
+    <li>실제로 사용하는 div 영역 만들기, 너비 400px</li>
+    <li>div 영역 안에 form 작성하기</li>
+    <li>form 안에 field 영역 구성하고 제목은 간편로그인 작성하기</li>
+    <li>p태그 2개 작성하고, 첫번째 p태그는 아이디 입력받는 공간 만들기</li>
+    <li>두번째 p태그는 비밀번호 공간 만들기</li>
+    <li>세번째 p태그는 전송버튼 만들기(로그인)</li>
+  </ol>
+  <div id="formArea">
+    <div>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>간편로그인</legend>
+          <p>
+            <label for="userid">id:</label><input id="userid" type="text" name="userid"/>
+          </p>
+          <p>
+            <label for="userpw">password:</label><input id="userpw" type="password" name="userpw"/>
+          </p>
+          <p>
+            <input id="btn" type="submit" value="로그인"/>
+          </p>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <h2>21) * form 안에서 a태그 작성 시 어떤 속성과 어떤 속성의 충돌이 생길까?</h2>
+  <p>form 태그 안에 a태그 작성 시, action 속성이 a 태그의 href 와 충돌이 생긴다.</p>
+
+  <h2>22) * 21번 문제의 어떤 부분이 작동되면서 a태그와 충돌이 생길까?</h2>
+  <p>form태그 내의 action 속성이 주소줄을 연결하는 역할을 하기때문에 a 태그의 href 와 충돌이 생긴다.</p>
+
+  <h2>23) * form 안에서 a태그는 사용하지 못할까? 사용가능하다면 어떨 때 사용이 가능할까?</h2>
+  <p>
+    사용가능하다. form의 action은 page나 db를 연결하는것이고
+    a태그의 href는 서버를 이용하지 않더라도 이미지,페이지 등등 어떤 값도 연결이 가능하기때문에
+    a태그가 서버를 이용하지 않을 때 함께 사용가능하다.
+  </p>
+
+  <h2>24) * action 줄을 이용하여 타고 넘어갈 정보가 없다면 input에서 제외가능한 속성은?</h2>
+  <p>name 속성이 제외가능하다.</p>
+
+  <h2>25) 절대경로와 상대경로에 대하여 각각 내용 작성하기</h2>
+  <p>
+    절대경로: 주소가 변하는 일이 거의 없는 절대적인 경로다. 주로 기업에서 많이 사용한다.
+    상대경로: "현재위치"에서 상대가 있는 경로를 찾아 링크를 걸어주는 작업.
+  </p>
+
+  <h2>26) a태그의 대체 텍스트 역할을 하는 값이 필요한 이유는?</h2>
+  <p>title이 a태그의 대체텍스트 역할을 하는데, 어느 페이지로 연결되는지 명시를 해두어야하기때문에 필요하다.</p>
+
+  <h2>27) 아래 순서에 따라 문제풀기</h2>
+  <ol>
+    <li>현재 ol이 끝난 부분 아래에 전체 사용하는 영역 만들기</li>
+    <li>실제로 사용하는 div 만들기 600px</li>
+    <li>ul li li li 만들기, 내용은 link0,link1,link2 작성하기</li>
+    <li>link0에는 구글 링크걸기, link1에는 네이버 링크걸기, link2에는 다음 링크걸기</li>
+    <li>* 대체텍스트 반드시 신경써서 작성하기</li>
+    <li>글자들 x,y축 가운데 배치되도록하고, li태그들의 배경색상 3개 모두 다르게 설정하기</li>
+    <li>li 태그들 옆으로 배치되도록 만들고, 부모의 높이 확인하기</li>
+    <li>글자색상도 변경되도록 만들기(노란색이나 하얀색 적용)</li>
+  </ol>
+  <div id="linkArea">
+    <div>
+      <ul>
+        <li class="link0">
+          <a href="http://www.google.com" title="구글페이지">link0</a>
+        </li>
+        <li class="link1">
+          <a href="http://www.naver.com" title="네이버페이지">link1</a>
+        </li>
+        <li class="link2">
+          <a href="http://www.daum.net" title="다음페이지">link2</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <h2>28) a태그 작성시 사용가능한 기능은?</h2>
+  <p>focus기능</p>
+  <h2>29) 28번의 기능은 다른 태그에서 적용이 가능할까? 불가능하다면 이유는?</h2>
+  <p>
+    이 기능은 a 태그가 있을 경우에"만" 사용가능하다. 
+    키보드 사용이 가능해야 focus를 사용할 수 있는데, a태그가 있을 경우에만 키보드사용이 보장된다.
+    키보드 기능 중 "tab"으로 사용가능하다.
+  </p>
+
+  <h2>30) 아래 순서에 따라 문제풀기</h2>
+  <ol>
+    <li>현재 ol이 끝난 부분 아래에 전체 사용영역 만들기</li>
+    <li>p태그 만들고 화면 가운데 두기 (200*200)</li>
+    <li>p태그 안의 글자는 "p태그" 작성하기</li>
+    <li>배경색상은 gold로 작성하고 글자 색상은 검정색 작성하기</li>
+    <li>p태그에 마우스 올리면 배경색상은 검정색, 글자색상 골드로 변경하기</li>
+  </ol>
+  <div id="pArea">
+    <p>
+      p태그
+    </p>
+  </div>
+
+  <h2>* 31) 링크가 걸려있을 때 밑줄이나 확대, 글자색상등이 변경되어야 하는 이유는?</h2>
+  <p>
+    해당 사이트에 재방문하거나 불법적인 접근을 막기위해 흔적을 남기는 작업을 진행해야하기때문에 색상과 밑줄 등이 변경되어야한다.
+  </p>
+
+  <h2>* 32) script에서 빈칸을 담았을 때 출력되는 단어는?</h2>
+  <p>NULL</p>
+  <h2>* 33) script에서 알 수 없는 문자를 담았을 때 출력되는 단어는?</h2>
+  <p>NaN</p>
+
+  <h2>34) 자녀가 block으로 바뀌었다. 이 때 확인해봐야 하는 대상과 그 이유는?</h2>
+  <p>부모를 확인해봐야한다. 부모가 인라인일 경우 너비와 높이를 형성하지 못해서 담아주지 못 할 가능성이 크기때문이다.</p>
+  <h2>35) ../.././의 뜻은?</h2>
+  <p>현재 폴더에서 두 번 나가서 그 위치에서 시작</p>
+
+  <h2 id="inline">36) 현재 h2 태그만 호출하여 배경색상 노란색(16진법) 인라인 속성으로 변경하기</h2>
+  <h2 id="over">37) 현재 h2 태그만 호출하여 너비:400px 높이:20px 배경색상 아쿠아 적용, 글자가 넘치면 ... 만들기</h2>
+
+  <h2>38) 글자가 ...으로 나오게 처리하는 이유는?</h2>
+  <p>글자를 한 줄로 표현하기 위해서</p>
+
+  <h2>39) 아래 순서대로 문제 풀기</h2>
+  <ol>
+    <li>현재 폴더에 sub 폴더 만들기</li>
+    <li>sub 폴더 안에 headline.html 파일 만들기</li>
+    <li>headline.html 파일에 h2 제목 작성하고, home이라는 내용 기입하기</li>
+    <li>headline.html 파일에 h2 태그 너비 100px 배경색상 핑크 글자색상 파란색 작성하기</li>
+    <li>h2태그 화면 가운데 두고 글자도 가운데 두기</li>
+    <li>*home 글씨 클릭하면 현재 01_test.html 파일과 연결되도록 만들기</li>
+    <li>*아래 li태그 만들고, sub 폴더 안의 headline.html 파일과 연결되도록 만들기</li>
+    <li>
+      <a href="./sub/headline.html" title="headline.html 파일">headline.html 파일</a>
+    </li>
+  </ol>
+
+  <h2>40) project kakao 옆에 글자는 몇 개로 나뉘어져 있는지 작성하기</h2>
+  <p>3개</p>
+
+  <h2>41) display:inline-block을 사용하기 어려운 이유는?</h2>
+  <p>
+    대충 빨리 끝낼때 사용할 수는 있지만
+    구형 브라우저에서 사용 시 더블패딩,더블마진현상이 발생하여 옆으로 떨어질 수가 있다.
+    공간의 낭비가 심하고 얼마나 떨어질 지 예측하기도 어려움
+  </p>
+
+  <h2>42) * display:block으로 변경하기 전 확인해봐야 하는것은?</h2>
+  <p>부모가 inline 인지 확인하고 inline이라면 부모도 block으로 변경해주어야한다.</p>
+
+  <h2>43) overflow를 해제하려할때 사용하는 속성은?</h2>
+  <p>overflow:visible</p>
+
+  <h2>44) 압축할 때 문자열이 깨졌다. 확인해봐야하는것은?</h2>
+  <p>
+    문서형식과 압축방식이 맞는 지 확인해봐야한다.
+    utf-8은 utf-8로 저장되어야하고,
+    ecu-kr은 ANSI 방식으로 저장되어야 문자열이 깨지지 않는다.
+  </p>
+
+  <h2>45) select 태그 사용시 매우 중요도가 높은 속성은?</h2>
+  <p>value 속성의 중요도가 매우 높다.</p>
+
+
+ </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>position_2</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+
+		/* wrap에 높이를 나누는것이 아니라 position 사용시 가장 상단에 존재하는것이 footer 라는것을 알려주기위하여 작성함 */
+		#wrap{width:600px; height:600px; border:5px solid #333; position:relative;}
+		#wrap div{width:150px; height:150px; line-height:150px; background-color:#ccc; text-align:center; color:#fff;}
+
+		#wrap #header{background-color:#f00;}
+		#wrap #container{background-color:#0f0; position:absolute; right:0; bottom:0;}
+		#wrap #footer{background-color:#00f;}
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="header">header</div>
+		<div id="container">container</div>
+		<div id="footer">footer</div>
+	</div>
+ </body>
+</html>
+<!--
+	[1] margin의 경우, 기준점은?
+		: "바깥쪽" 여백을 기준으로 배치함
+		: 상대를 밀고다니기때문에 주의해야한다.
+
+	[2] position 경우
+		: "position" 종류에 따라서 기준점이 모두 다름
+		: "03_position_기본모양"을 확인해보면 서로 다른 층에 나열되는것을 알 수 있음
+
+		: 층이 서로 다르기때문에 상대를 밀 수 없음
+		: 상대와 겹칠 수 있기때문에 주의해야 함
+
+	+++++++++++++++++++++++++++++++++++++++++++++
+
+	[1] position의 종류
+
+	[2] position:relative , 상대는 고정시켜두고, 자신만 움직일때 사용하는 효과
+
+		+ 상대고정, 상대좌표
+		+ [기준점] , 자신이 있던 곳을 중심으로 움직임
+		+ 자신이 있던 공간을 그대로 두고 움직이기때문에 공간의 낭비가 심함
+		+ margin처럼 사용하지 못하는 공간을 놔두고 다님
+
+	[3] position:absolute , 절대 빈공간을 두지 않고 움직이는 효과
+
+		+ 절대고정, 절대좌표
+		+ [기준점] , 브라우저를 중심으로 움직임
+		+ 빈 공간을 두지 않고 움직이기때문에 공간에 낭비가 없음
+
+		중요) 
+			1) 작은 값에도 브라우저를 따라서 크게 움직일 수 있음
+			2) 기본적으로 브라우저 왼쪽 상단으로 돌아가려는 특징이 있음
+
+	[4] position:fixed , "전체 브라우저를 상대로 어딘가에 객체나 영역을 고정" 시킬때 사용하는 효과
+		
+		+ 움직이기위해 사용하기보다 브라우저 어딘가에 고정시키기위하여 사용
+		+ 전체 브라우저를 상대로할때 fixed 효과를 많이 사용함 (modal popup(반투명 배경))
+		
+		+ 매우 중요)
+			부모, 자녀, 형제, 친구 등등 어떤 것도 고려하지 않음! 해당하는 위치에 무조건 고정
+		+ 어딘가에 담아서 사용하는 값이 아니라 독립요소로 사용하는 효과
+
+	[5] position:static
+
+		+ position 중에 유일하게 어떤 좌표값도 적용되지 않음
+		+ 유일하게 position 모든 속성을 해제할 수 있음
+
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	[position과 float]
+
+		1) 같은 대상에 position과 float를 사용할경우...
+				: 좌표를 이동한다면 float가 모두 깨져버리는 문제가 발생함
+				: 좌표를 이동하지않고 고정하는 값으로 사용한다면 괜찮지만 이동하는 순간 
+				float보다 position이 강력하기때문에 css, css3 에 무리가 발생한다.
+
+		2) position의 경우 float의 값과 다른 층에 쌓이기때문에 float가 무시당한다.
+
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+	[index.html, 메인 페이지 제작 시 사용하는 용어]
+
+		: 모든 공간은? 0번부터 시작
+		: 서버에서 모든 0번 공간을 자동으로 읽음
+		: index == 0 
+
+		: index.html 은 서버에서 "무조건 0번으로 인식"하기때문에 매우 빠르게 읽음
+		: 주소줄에 기입하지않아도 읽을 수 있는 유일한 용어
+		
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+	[z-index]
+
+		: z-index는 공간의 순서를 바꿀때, 층을 바꿀때 사용하는 속성
+
+		매우중요) 
+			position 이 없으면 다른 층을 만들수가 없기때문에 
+			z-index는 층을 바꿀때 사용하는 효과
+
+		: 뒤에 숫자가 클수록 앞에 표현됨
+
+	[사용 시 주의사항]
+		: 순서를 모르고 사용할경우, 마크업순서가 모두 깨질 수 있음
+		: 특징이 있는 일부 영역에서만 사용가능한 효과
+
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	[position:relative와 absolute]
+
+		1) position:absolute는 기본적으로 브라우저를 따라다님
+		2) 부모요소에 position:relative를 사용하면 absolute의 기준점 역할을 할 수 있음
+
+		[참고] 네이버
+			h1 로고에 주로 position:absolute , 빠르게 오른쪽이나 왼쪽으로 배치할 수 있음
+			h1은 header 영역에 만드는데 부모인 header 영역안에서 움직일 수 있도록
+			position:relative 가 설정되어야 함
+
+		3) relative와 absolute를 친구요소로 사용할 경우엔 하나는 상대고정, 하나는 절대고정의 역할만 담당함
+
+		4) relative를 부모로 사용하고 absolute를 자녀로 사용할 경우, 기준점 안에서 움직일 수 있도록 만들어 줌
+
+			relative 인 부모요소는 상대고정 역할과 absolute의 기준점 역할도 담당함
+
+		[absolute와 fixed의 차이점]
+
+			+ absolute는 relative에 의하여 컨트롤이 가능함 (부모 자녀 역할을 할 경우 기준점 역할)
+			+ fixed는 relative가 있어도 전혀 영향을 받지 않음, 영역 바깥으로 나가서 해당하는 좌표에 고정됨
+
+			+ "fixed"와 "absolute"는 전체 브라우저를 상대로 한다는 공통점은 있지만 부모요소에 
+			의해 컨트롤이 되느냐 안되느냐의 큰 차이가 있어서 기능을 만들때 적절히 사용해야 함
+-->

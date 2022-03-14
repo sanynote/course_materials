@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>playBtn</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		#wrap{min-width:700px; width:100%;}
+		#container{width:100%;}
+
+		#content{width:700px; height:750px; margin:0 auto; background-image:url("img/main.jpg");
+		background-repeat:no-repeat; overflow:hidden;}
+
+		/* playBtn 크기: 156*156 */
+		/*
+
+			[사이즈 계산하기]
+
+				전체높이 : 750px
+				액자크기 : 150px
+
+				750-150 == 600
+				위 아래 배분하기 == 600 / 2 (300)
+
+			[매우중요_기능적용]
+				기능 적용시 해당하는 영역에서만 기능이 적용되어야 함
+					(영역이 정확해야 하기때문에 margin 사용하기)
+
+			[margin-top의 문제]
+
+				자녀요소에 margin-top을 적용할 경우, 부모, 할머니, 할아버지, 더 큰 부모까지 간섭하게 됨
+
+				: 자녀요소의 부모 찾아서 넘친 여백 막아주기 overflow:hidden 사용
+				: 객체, 이미지, 공간 등이 넘치면 overflow:hidden으로 해결 가능
+
+		*/
+		#content p{width:150px; height:150px; background-color:gold; margin:300px auto;}
+		#content p img{width:100%;}
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="content">
+				<p>
+					<img src="img/playBtn.png" alt="플레이 버튼"/>
+				</p>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

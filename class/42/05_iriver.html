@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>iriver</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+		a:link, a:visited{text-decoration:none;}
+		a:hover, a:focus{text-decoration:underline; color:#caf;}
+
+        /*############## wrap #############*/
+            #wrap{min-width:700px; width:100%;}
+            #headerWrap{width:100%; border-bottom:2px solid red;}
+            #header{width:1000px; height:90px; margin:0 auto;}
+
+        /*#### topMenu #####*/
+            #topMenu{width:100%; height:30px; position:relative;}
+            #topMenu ul{width:202px; height:21px;position:absolute; right:80px; top:5px; padding-right:5px;}
+            #topMenu li{width:80px; display:inline;}
+            #topMenu li a{font-size:0.7em;}
+
+            #topMenu p{width:80px; height:20px; position:absolute; right:0; top:5px; border:1px solid #ccc;}
+            #topMenu p a{font-size:0.8em; padding-left:7px;}
+            #topMenu p a span{color:#f00; padding:3px;}
+
+            #topMenu p:hover a{color:#caf;}
+
+        /*##### menu #####*/
+            #menu{width:100%; height:60px;}
+            #logo{width:86px; height:24px; padding-top:18px; float:left;}
+            #logo img{width:100%;}
+
+        /*###### menu / gnb ######*/
+            #gnb{width:340px; height:40px; padding-top:20px; float:left;}
+            #gnb li{display:inline;}
+            #gnb li a{padding-left:22px;}
+
+        /*###### menu / infoMenu ######*/
+            #infoMenu{width:340px; height:40px; padding-top:20px; float:left;}
+            #infoMenu li{display:inline;}
+            #infoMenu li a{font-size:0.8em; padding-left:18px;}
+
+            #menu form{width:234px; float:left; padding-top:15px;}
+           
+
+
+
+	</style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<div id="header">
+				<div id="topMenu">
+					<ul>
+						<li><a href="#" title="로그인">로그인</a></li>
+						<li><a href="#" title="회원가입">회원가입</a></li>
+						<li><a href="#" title="마이페이지">마이페이지</a></li>
+						<li><a href="#" title="공지사항">공지사항</a></li>
+					</ul>
+					<p>
+						<a href="#" title="전체보기">
+							<span>+</span>전체보기
+						</a>
+					</p>
+				</div>
+				<div id="menu">
+					<div id="logo">
+						<img src="img/iriver_logo.gif" alt="아이리버로고"/>
+					</div>
+					<ul id="gnb">
+						<li><a href="#" title="제품">제품</a></li>
+						<li><a href="#" title="콘텐츠">콘텐츠</a></li>
+						<li><a href="#" title="커뮤니티">커뮤니티</a></li>
+						<li><a href="#" title="고객지원">고객지원</a></li>
+					</ul>
+					<ul id="infoMenu">
+						<li><a href="#" title="쇼핑몰">쇼핑몰</a></li>
+						<li><a href="#" title="아이리버블랭크">아이리버블랭크</a></li>
+						<li><a href="#" title="그루버스">그루버스</a></li>
+						<li><a href="#" title="아스텔앤컨">아스텔앤컨</a></li>
+					</ul>
+					<form action="#" method="get">
+						<fieldset>
+                            <legend></legend>
+                                <input id="search" type="text" name="search"/>
+                                <a href="#" title="검색">
+                                    <img src="img/search.gif" alt="검색"/>
+                                </a>
+						</fieldset>
+					</form>
+                    
+				</div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>position smart phone</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		h2{text-align:center; text-transform:uppercase; padding:30px 0 10px;}
+
+		#bgWrap{min-width:720px; width:100%;}
+
+		/*########### 배경이미지 크기 확인 ##########*/
+		#bg{width:966px; height:604px; background-image:url("img/background.jpg"); position:relative; margin:0 auto;}
+
+		/* 손 이미지 크기 : 680 * 482 */
+		#bg .hand{width:680px; height:482px; position:absolute; right:0; bottom:0;}
+
+		/* 핸드폰 이미지 크기 : 220 * 440 */
+		#bg .phone{width:220px; height:440px; position:absolute; right:345px; bottom:45px;}
+
+	</style>
+	
+ </head>
+
+ <body>
+	<div id="bgWrap">
+		<h2>position smart phone</h2>
+		<div id="bg">
+			<p class="hand">
+				<img src="img/hand.png" alt="손 이미지"/>
+			</p>
+			<p class="phone">
+				<img src="img/phone.png" alt="폰 이미지"/>
+			</p>
+		</div>
+	</div>
+ </body>
+</html>
+
+<!--
+	[position 작성 시 참고사항]
+		
+		1) 기준이 되는 영역의 너비와 높이 반드시 (필수) 작성하기
+		2) position의 absolute의 경우, 기준점이 없으면 브라우저를 따라다님
+
+			* 부모영역을 정확하게 만들지 않으면 right:0; bottom:0이 어디까지 작성되어야 할 지 알 수 없음
+
+			right와 bottom은 무한대의 영역
+-->

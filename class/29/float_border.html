@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>float_border</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+
+    body{font:20px gulim,'굴림', arial, sans-serif;}
+    /*
+      [font 축약형 사용하기]
+        font:italic bold 12px/1.5em gulim,'굴림','굴림체',sans-serif;
+
+        1) font-style
+        2) font-weight: 위치가 달라질 수 있기때문에 따로 사용하는 경우가 많음
+        3) font-size / line-height (행간)
+        4) font-family
+
+        : 각각을 호출하는 방식은 다른 값을 확인하지 않기때문에 빠름
+        : 축약형 표현방법은 그 위치에 해당하는 값이 있는지 없는지 확인하고 처리하기때문에 느림
+
+        font:12px;
+          : 위처럼 하나만 작성할것이라면 축약형에서 읽고 없애야하는값들이 너무 많기때문에 효과적이지않음
+
+        font-size: 12px;
+          : 정확한 값을 읽기때문에 느리지않음
+
+      [축약형 표현방법의 필수]
+        font:12px gulim,batang, sans-serif;
+        : 축약형은 적어도 2개 이상의 효과를 묶어서 사용하려고 하기때문에 필수로 font-size와 font-family는 사용한다.
+    */
+    #wrap{min-width:1025px; width:100%;}
+    h2{text-align:center; padding:10px 0; background-color:#ccc;}
+
+  /*########## contSold #########*/
+  /*
+    [이미지를 다루는 영역]
+      매우 중요)
+        : 원본의 이미지가 깨지지 않고, 의미가 달라지지 않도록 비율 유지하기
+
+        1) 너비만 맞추면 높이가 알아서 바뀜
+        2) 높이를 맞추면 너비가 알아서 바뀜
+      
+      사이즈 확인)
+        1) 제품이미지 : 174px * 90px
+        2) soldOut 이미지 : 194px * 162px
+          : soldOut 이미지를 확인해보면 남아있는 영역이 많음
+          : 타이트하게 사용한다면 용량도 적어지고, 필요 없는 공간을 전부 사용할 필요가 없음
+
+    [공간 설계하기]
+      1) 공통으로 사용하는 174px에 맞추기
+      2) soldout 이미지가 있는 194px을 담기위해 타이트하게 사용하거나 크게 사용하기!?
+      3) 1025px에 맞추는 작업하기 (일반 pc에 맞추는 작업)_ 0
+
+    [계산하기]
+      1) 실제 사용너비:1025px
+      2) li의 갯수 : 5개
+
+        1025 / 5 == 205
+      3) border:1px solid #ccc가 적용됨
+        width:205px - border:1px(양쪽) == 203 px로 변경
+  */
+  #contSold{width:100%; height:500px; background-color:#eee;}
+  #contSold ul{width:1025px; height:207px; margin:50px auto 0;}
+  #contSold li{width:203px; height:100%; border:1px solid #ccc; text-align:center; float:left;}
+
+  /*####### li 안의 h3 태그 작업하기 #######*/
+  #contSold li h3{width:100%; height:35px; line-height:35px; background-color:#aaa; font-size:15px;}
+
+  /*########*/
+  #contSold .color h3{background-color:#a00; color:#fff;}
+
+  /*######## li안의 img와 desc, 공통 p태그 작업하기 #######*/
+  /*
+    [작업순서]
+      1) 공통작업을 우선시함
+      2) 개별작업은 달라지는것만 작업
+
+      : 공통 p 태그 이미지 영역을 기준으로 작업함
+      : soldOut 이미지가 높이 가운데 보이도록 높이값을 조절하여 맞춤
+
+      3) 액자크기를 만들고 해당하는 값만큼만 사용하겠다고 높이값 : 120px 지정
+
+      * 높이를 120px 만들고 overflow:hidden을 하지 않으면, 이미지는 빠져나가고 액자는 모자르게 사용한 상황
+      * overflow:hidden은 넘치는 객체 잘라내는 의미와 같음!
+  */
+  #contSold li p{width:100%; height:120px; background-color:#fff; overflow:hidden; background-repeat:no-repeat; background-position:center center;}
+
+  /*######### 글씨 p태그 (desc) 개별작업 #########*/
+  #contSold .desc{height:50px;}
+
+  /*
+    [마무리]
+      1) 부모요소인 ul에 overflow:hidden을 대신하여 높이값 만들기
+      2) overflow:hidden은 기능을 만들때 넘치는 객체들을 숨기기 때문에 넘치는 기능에서는 문제임
+      3) 검사창을 띄워서 전체 높이값 확인한 후, ul에 작성하기
+  */
+
+  /*### p (img) 영역에 배경이미지 호출하기 (개별작업) ####*/
+  /*
+    [정리]
+
+        contSold li .img0{background-image:url("img/s0.jpg"); background-repeat:no-repeat; background-position:center center;}
+
+        contSold li .img1{background-image:url("img/s01jpg"); background-repeat:no-repeat; background-position:center center;}
+
+        : 위 처럼 background-repeat와 background-position이 2번 이상 반복이 되면 반드시
+        공통에서 사용할 수 있는지 확인하기!
+
+        : .img0 , .img1 , .img2 (공통 p태그)
+
+        : 개별 작업은 공통에서 달라지는 것만 작업함!
+   */
+  
+  #contSold li .img0{background-image:url("img/s0.jpg");}
+  #contSold li .img1{background-image:url("img/s1.jpg");}
+  #contSold li .img2{background-image:url("img/s2.jpg");}
+  #contSold li .img3{background-image:url("img/s3.jpg");}
+  #contSold li .img4{background-image:url("img/s4.jpg");}
+
+  /*########### contBorder ##########*/
+  #contBorder{width:100%; height:400px; background-image:url("img/bg_grid.gif");}
+
+  #contBorder ul{width:600px; height:200px; margin-top:45px; margin-left:400px;/*overflow:hidden;*/}
+  #contBorder li{width:100px; height:100%; float:left;}
+
+  /*
+    [첫번째 li태그]
+      li의 기본크기: 100 * 200
+      : border의 위치값, 아래쪽과 오른쪽
+
+      border-bottom: 2px
+      border-right: 2px
+
+      [계산하기]
+
+      width:100 - 2 == 98
+      height:200 - 2 == 198
+  */
+  #contBorder .li1{width:98px; border-right:2px solid #000; height:198px; border-bottom:2px solid #000;}
+
+  /*
+    [두번째 li태그]
+      너비: 100
+      높이: 200의 절반인 100
+
+      border-right, border-top 적용 (2)
+
+      [수정된 크기]
+      width: 98px
+      height: 98px
+
+  */
+  #contBorder .li2{width:98px; border-right:2px solid #000; height:98px; border-top:2px solid #000;}
+
+  /*
+    [세번째 li태그]
+
+      너비: 100px
+      높이: 100px
+
+      border-right , border-bottom 적용 (2px)
+
+      [수정된 크기]
+
+      width: 98px
+      height: 98px
+  */
+
+  #contBorder .li3{width:98px; border-right:2px solid #000; height:98px; border-bottom:2px solid #000;}
+
+  /*
+    [네번째 li]
+
+        : 네번째 li 만들기
+        : 오전 실습 압축해서 이메일로 보내기!
+
+        border-top , border-right (적용된 2px)
+
+        [수정된 크기]
+          width:98px
+          height:198px
+  */
+  #contBorder .li4{width:98px; border-right:2px solid #000; height:198px; border-top:2px solid #000;}
+  /*
+    [마무리]
+    1) overflow:hidden으로 작업되어있는 부모요소,높이값으로 변경하기
+    2) overflow:hidden이 적용된 부모 ul에 마우스 올리면 검사창에서 최종적으로 높이값을 확인할 수 있음
+    3) 해당하는 값 부모에 적용하기
+    4) 자녀요소중에 동일한 높이값 100% 변경하기
+  */
+
+  </style>
+ </head>
+
+ <body>
+  <div id="wrap">
+    <!--
+      [contSold_이미지 확인하기]
+
+      1) 겹쳐있을경우, 어떤 방식으로 배치할것인지 분석하기
+      2) 매우중요) 기능이 되는 부분과 그냥 화면에 보여주는 부분 구분하기
+
+      3) 기능이 되는 부분은 "img 태그"를 주로 사용
+        * img태그에는 src와 alt라는 속성이 있어서 script로 접근할 수 있음
+
+      4) background-image는 영역이 없으면 칠 할 수도 없음
+
+      [정리_겹쳐있을때]
+        :기능이 필요한 이미지는 img태그로 작성
+        :화면에 보여주는 용도로 사용된다면 background-image로 작성
+
+    -->
+    <div id="contSold">
+      <h2>soldOut 만들기</h2>
+      <ul>
+        <li>
+          <h3>2월 14일(월)</h3>
+          <p class="img0">
+            <img src="img/soldout.png" alt="soldout_이미지"/>
+          </p>
+          <p class="desc">
+            KFC 핫윙
+          </p>
+        </li>
+
+        <li class="color">
+          <h3>2월 15일(화)</h3>
+          <p class="img1">
+          </p>
+          <p class="desc">
+            버거 세트
+          </p>
+        </li>
+
+        <li>
+          <h3>2월 16일(수)</h3>
+          <p class="img2">
+          </p>
+          <p class="desc">
+            우유식빵
+          </p>
+        </li>
+
+        <li>
+          <h3>2월 17일(목)</h3>
+          <p class="img3">
+          </p>
+          <p class="desc">
+            영화예매권
+          </p>
+        </li>
+
+        <li>
+          <h3>2월 18일(금)</h3>
+          <p class="img4">
+          </p>
+          <p class="desc">
+            버거 세트
+          </p>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div id="contBorder">
+      <h2>border와 float</h2>
+      <ul>
+        <li class="li1"></li>
+        <li class="li2"></li>
+        <li class="li3"></li>
+        <li class="li2"></li>
+        <li class="li3"></li>
+        <li class="li4"></li>
+      </ul>
+    </div>
+
+  </div>
+ </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>inline_text_img</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		h2{/*background-color:pink;*/ text-align:center;}
+		
+		/*
+			#imgs{background-color:#ff0; text-align:center;}
+			#imgs img{text-align:center;}
+			
+			: 위 와 같은 방법으로 제작 할 경우, 
+				#imgs img는 불필요한 상황!
+			
+			: #imgs 공간안에 있는 img 인라인요소를 선택하고 있음!
+			: 인라인요소는 공간을 가지고 있을 수 없음!
+			: "공간" 을 가지고 있는 #imgs 에서 text-align:center를 적용해야 가운데 배치가 가능함!
+
+			[중요] img태그 다룰때 중요사항
+				
+				1) 액자크기를 만들고, 그 안에 img태그는 width:100%를 지정하는 것이 일반적이다!
+					: p{ width:300px; }
+					: p img{width:100%;}
+
+				2) 블록요소를 컨트롤 하지 못하면 생각하지 못한 공간에서 작동이 되기 때문에
+				여러가지 문제가 생길 수 있음!
+
+					: 블록요소의 공간을 컨트롤하지 않고 사용하게 되면 DB나 script 영역에서
+						빈공간으로 인한 문제가 발생할 수 있음
+						(사용하지 않은 공간을 빈칸이 전부 채움!)
+
+					[문제점]
+
+						p img{width:300px;}
+
+						: 위와 같이 만들경우, p태그를 컨트롤 하지 않았기 때문에 너비를
+						전부 사용하고 있는 상황! (빈칸에 대한 문제가 생길 수 있음)
+
+
+				3) 아래 와 같은 경우!
+					
+					p{width:300px}
+					p img{width:100%;} 
+						: 이미지 크기가 400px인 상황 
+						: 줄여도 해상도가 깨지는 문제는 없음!
+
+
+					img 크기 400px 이라면 400px을 유지하고, 
+					액자 크기가 조금더 크게 만들어지도록 한다!
+
+				[권장_액자에 맞추기 어려울 경우]
+
+						p{width:420px; text-align:center;}
+
+						: 이미지 크기를 액자에 전부 넣을수 있는 상황은 아니기 때문에
+						width:100%를 설정하지 않고 이미지는 400px로 유지!
+
+						: 액자 크기를 조금더 여유롭게 만들도록 한다!
+						: 사용자가 직접 알고 사용했기 때문에 컨트롤이 가능하고, 끝에서 끝까지 사용하지
+						않았기 때문에 알지 못하는 공간에 대한 문제도 적어진다!
+
+			[이미지 태그 다루기_총정리]
+				
+				1) 액자 크기 만들고, 너비 100% 설정하기 (안전하게 사용하는 방법)
+					
+					p{width:400px;}
+					p img{width:100%;}
+
+				2) 이미지를 가운데 배치해야 할 경우
+						: 원본 이미지 보다 영역을 조금 크게 설정하고 가운데 배치하기!
+					
+					p{width:420px; text-align:center;} 
+		*/
+		
+		/*원본 이미지 크기 :640px * 480px*/
+		/*
+			원본 이미지 크기보다 크게 영역을 설정하여 만들면 
+			공간이 남았기 때문에 left, right, center 작업이 가능하다!
+		*/
+		#imgs{width:700px; /*background-color:pink;*/ text-align:right;}
+		
+
+		#text{ /*background-color:gold;*/ text-align:center;}
+		#text span{background-color:aqua;}
+	</style>
+ </head>
+
+ <body>
+	<h2>인라인 요소 화면 가운데 배치하기(이미지)</h2>
+	<p id="imgs">
+		<img src="img/m0.jpg" alt="둥근 구조물 이미지"/>
+	</p>
+	
+	<h2>인라인 요소 화면 가운데 배치하기(태그와 글씨)</h2>
+	<p id="text">
+		<span>span태그는 아무 특징이 없는 인라인 요소</span>
+	</p>
+	<hr/>
+ </body>
+</html>

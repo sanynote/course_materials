@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>layout</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+      *{margin:0;padding:0;}
+      li{list-style-type: none;}
+      
+      #wrap{min-width:1020px;width:100%;}
+      
+      /* ################ test4  ################# */
+      #layout0{width:100%;height:100%;margin:0 auto;text-align:center;}
+      #layout0 h2{width:1020px;font-size:20px;margin:0 auto;padding:20px 0;border-bottom:1px solid #ccc;}
+      #test4{width:1152px;height:300px;margin:20px auto 40px;}
+      /* 첫번째 ul li*/
+      #test4 .first{width:345px;height:100%;float:left;line-height:150px;}
+      #test4 .first ul{width:100%;height:100%;}
+      #test4 .first li{width:115px;height:150px;background:#ff0;float:left;}
+      #test4 .first .no1{background-color:#ed0;}
+      #test4 .first .no2{background-color:#ea0;}
+      #test4 .first .no3{width:100%;background-color:#ec0;}
+      /* 두번째 ul li */
+      #test4 .second{width:230px;height:100%;float:left;line-height:300px;}
+      #test4 .second ul{width:100%;height:100%;}
+      #test4 .second li{width:115px;height:100%;background-color:#e70;float:left;}
+      #test4 .second .no1{background-color:#e90;}
+      /* float */
+      #test4 .float{width:286px;height:100%;float:left;background-color:#ccc;margin-left:2px;line-height:300px;}
+
+
+      /* ################ test5  ################# */
+      #layout1{width:100%;height:100%;margin:0 auto;text-align:center;}
+      #layout1 h2{width:1020px;font-size:20px;margin:0 auto;padding:20px 0;border-bottom:1px solid #ccc;}
+      #test5{width:1600px;height:140px;margin:20px auto 80px;}
+      /* 첫번째 float */
+      #test5 .first{width:340px;height:100%;float:left;border:30px solid #444;line-height:140px;}
+      /* 두번째 float */
+      #test5 .second{width:400px;height:200px;float:left;background:pink;}
+      #test5 .second ul{width:100%;height:100px;line-height:100px;color:#fff;}
+      #test5 .second li{width:100px;height:100%;background-color:#cc0;float:left;}
+      #test5 .second .no1{background-color:#f00;}
+      #test5 .second .no2{background-color:#a00;}
+      #test5 .second .no3{background-color:#c00;}
+      #test5 .second .no4{background-color:#700;}
+      #test5 .second .no5{width:100%;height:100%;background-color:#cc0;}
+      /* 세번째 float */
+      #test5 .third{width:340px;height:170px;float:left;border-left:30px solid #444;border-bottom:30px solid #444;line-height:170px;}
+      /* 네번째 float */
+      #test5 .fourth{width:340px;height:140px;float:left;border-left:30px solid #444;border-bottom:30px solid #444;border-top:30px solid #444;line-height:140px;}
+
+
+      /* ################ test6  ################# */
+      #layout2{width:100%;height:100%;margin:0 auto;text-align:center;}
+      #layout2 h2{width:1020px;font-size:20px;margin:20px auto;padding:20px 0;border-bottom:1px solid #ccc;}
+      #test6{width:1800px;height:25px;margin:20px auto 40px;color:#fff;text-align:left;text-indent:20px;}
+      #test6 ul{width:100%;height:100%;}
+      #test6 li{margin-right:2px;float:left;}
+      #test6 #no1{width:98px;background-color:#000;}
+      #test6 #no2{width:118px;background-color:#002;}
+      #test6 #no3{width:138px;background-color:#004;}
+      #test6 #no4{width:158px;background-color:#006;}
+      #test6 #no5{width:208px;background-color:#008;}
+      #test6 #no6{width:258px;background-color:#00a;}
+      #test6 #no7{width:358px;background-color:#00c;}
+      #test6 #no8{width:445px;background-color:#00d;}
+      
+   </style>
+</head>
+<body>
+   <div id="wrap">
+      <div id="layout0">
+         <h2>test4 width:1152px</h2>
+         <ul id="test4">
+            <li>
+               <ul class="first">
+                  <li>test4 ul1 li1</li>
+                  <li class="no1">test4 ul1 li2</li>
+                  <li class="no2">test4 ul1 li3</li>
+                  <li class="no3">test4 ul1 li4</li>
+               </ul>
+               <ul class="second">
+                  <li>test4 ul2 li1</li>
+                  <li class="no1">test4 ul2 li2</li>
+               </ul>
+            </li>
+            <li class="float">
+               <ul>
+                  <li>float2</li>
+               </ul>
+            </li>
+            <li class="float">
+               <ul>
+                  <li>float3</li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <div id="layout1">
+         <h2>test5 width:1600px</h2>
+         <ul id="test5">
+            <li class="first">
+               <ul>
+                  <li>float1</li>
+               </ul>
+            </li>
+            <li class="second">
+               <ul>
+                  <li class="no1">test5 ul1 li1</li>
+                  <li class="no2">test5 ul2 li2</li>
+                  <li class="no3">test5 ul3 li3</li>
+                  <li class="no4">test5 ul4 li4</li>
+                  <li class="no5">test5 ul5 li5</li>
+               </ul>
+            </li>
+            <li class="third">
+               <ul>
+                  <li>float3</li>
+               </ul>
+            </li>
+            <li class="fourth">
+               <ul>
+                  <li>float4</li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+      <div id="layout2">
+         <h2>test6 width:1800px</h2>
+         <ul id="test6">
+            <li id="no1">
+               <ul>
+                  <li>float1</li>
+               </ul>
+            </li>
+            <li id="no2">
+               <ul>
+                  <li>float2</li>
+               </ul>
+            </li>
+            <li id="no3">
+               <ul>
+                  <li>float3</li>
+               </ul>
+            </li>
+            <li id="no4">
+               <ul>
+                  <li>float4</li>
+               </ul>
+            </li>
+            <li id="no5">
+               <ul>
+                  <li>float5</li>
+               </ul>
+            </li>
+            <li id="no6">
+               <ul>
+                  <li>float6</li>
+               </ul>
+            </li>
+            <li id="no7">
+               <ul>
+                  <li>float7</li>
+               </ul>
+            </li>
+            <li id="no8">
+               <ul>
+                  <li>float8</li>
+               </ul>
+            </li>
+
+         </ul>
+      </div>
+
+   </div>
+</body>
+</html>

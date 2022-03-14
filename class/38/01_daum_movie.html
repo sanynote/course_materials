@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>daum_movie</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*########## 초기화 "reset" #########*/
+			*{margin:0; padding:0;}
+			li{list-style-type:none;}
+			a:link, a:visited{text-decoration:none; color:#000;}
+		
+		/*########## 선택사항 ##########*/
+		/*
+			[대상 선택시 밑줄이나 글자색상을 변경하는 이유]
+
+				: 사용자가 어떤 곳을 선택하는지 표기가 매우 중요함! 
+					
+					1) 글자라면 밑줄 만들기
+						: 글자에 확대 축소를 하지 않는 이유는 읽기가 어려워 질 수 있고
+						float로 나열된 구조가 옆으로 떨어 질 수 있음!
+
+					2) 글자의 경우, 밑줄 만들기, 글자 색상 변경
+					
+					3) img라면 확대 축소를 만들 수 있음 (시각적인 효과가 필요함!)
+						: 이미지는 읽는 것이 아니라 보여지는 값이기 때문에
+						효과 적용이 많이 들어감!
+
+				* 보여지는 값과 읽는 값 구분하기!
+		*/
+			a:hover, a:focus{text-decoration:underline; color:#00f;}
+
+		/*########### wrap ##########*/
+			#wrap{min-width:1025px; width:100%;}
+		
+		/*
+			[header, container, footer]
+
+				1차 공간들 header, container, footer  영역은 전부 사용하기!
+				: 잘라서 사용할 경우 브라우저나 body에 공간을 빼앗기고 담겨야 하는
+				자녀들에 모자란 영역에 대한 상속을 줄 수 있음!
+		*/
+			#container{width:100%;}
+
+		/*########### movieArea ##########*/
+			#movieArea{width:100%;}
+			#movieArea h2{ text-align:center; padding:30px 0 20px; text-transform:uppercase;}
+
+		/*########### movie ###########*/
+		/*
+			[정리]
+				
+				: 실제로 사용가능한 크기 630px
+
+				전체 650px로 설계함, 왼쪽과 오른쪽 간격을 맞추기 위하여 
+				오른쪽으로 20px 더 사용하여 맞춤!
+
+				: ver영역에 float:right 적용하면 650px의 너비 끝에가서 붙어버리는 문제가 발생함
+
+				: 630px로 수정하고 padding-right:20px로 간격 맞추면서 공간을 채우면 
+				padding-right:20px 안쪽으로 float:right 가 적용됨!
+		*/
+			#movie{width:630px; padding-right:20px; margin:0 auto; border:1px solid #ccc;}
+			#movie ul{width:100%;  overflow:hidden;}
+
+		/*
+			[설계 순서]
+				
+				1) 실제 사용 너비는? 얼마를 사용해야 할지 결정하지 못함
+				2) m2.jpg 의 너비는? 190 * 285
+					
+					: 다른 이미지들은 너비가 넓기 때문에 너비가 작은 190px을 기준으로 제작하기
+					: 이미지가 커질 경우 깨져 보일 수 있음!
+				
+				[li 한칸 설계하기]
+
+					width: 188px + border (2px) + margin-left:20px == 210px
+					height: 158px + border (2px) + margin-top:20px == 180px
+
+				3)  현재 만드는 페이지는 경계가 정확하고, 너비와 높이가 정확하게 맞아 떨어지기
+				때문에 너비와 높이가 "정밀해야 함!"
+		*/
+			#movie li{width:188px; height:158px; margin-left:20px; margin-top:20px; border:1px solid #ccc; float:left;}
+
+		/*########### li(ver) 개별작업 ##########*/
+		/*
+			ver 영역은, li 높이 2개를 더한 크기 : 160px + 160px + margin-top: 20px
+				
+			:: height:340px;
+
+			[문제점]
+			
+				float로 나열된 객체들이 ver 영역때문에 위로 올라오지 못함!
+				ver 영역을 오른쪽으로 보내서 해결
+
+				오른쪽으로 ver을 보내면 나머지 왼쪽으로 움직여야 할 객체들이
+				올라갈 수 있음!
+				
+			[정리]
+
+				웹은 왼쪽에서 오른쪽으로 배치하기 때문에 float:right의 경우
+				완전히 오른쪽으로 보내야 하는 객체 한 두개에서만 사용함!
+		
+		
+			[해결, 문제점]
+				아래 있는 객체들이 위로 올라갔으나 ver 영역이 완전히 오른쪽으로
+				붙어 버리는 문제가 발생함!
+
+			[해결]
+				실제 사용 중인 영역 확인하기
+		*/
+			#movie .ver{height:338px; float:right;}
+		
+
+		/*############ movie a 태그 #############*/
+		/*
+			자녀요소인 span의 .img와 strong의 .text가 공간을 가지기 위하여
+			display:block 설정이 되어 있기 때문에 a태그가 공간을 잡는지 확인하기
+
+			: 파란색 공간으로 잡히지 않는다면 block으로 변경한 후 작업하기
+		*/
+			#movie li a{display:block; width:100%; height:100%;}
+
+			
+		/* 공통영역에서 액자 크기를 105px로 설계 함, ver 영역의 이미지 높이는 285px*/
+			#movie .ver .img{height:285px;}
+			
+			/* .img(span) 인라인 요소 */
+			/*
+				[매우중요]
+					같은 인라인 요소여도 처음부터 너비와 높이를 가지는 인라인과
+					그렇지 않은 인라인이 존재함!
+
+					1) span, strong, em, i, b 등은 처음부터 너비와 높이가 없음!
+					2) img, select, input 처음 부터 너비와 높이가 있음
+
+					1번에 나열된 인라인 요소들은 display:block이 필요하지만
+					2번에 나열된 인라인 요소들은 display:block이 필요없음!
+
+
+				[중요]
+					: 현재 페이지에서는 "너비와 높이" 를 지정해놨기 때문에 해당하는 너비와
+					높이에 맞춰서 작업이 진행되어야 함!
+
+					: 높이는 정해져 있고, 이미지는 너비에 따라서 비율에 맞춰 높이 값이 소수점으로
+					표현되기 때문에 적절하게 사용하도록 구성하기!
+
+						: 105px로 높이 나누고, overflow:hidden 넘치는 이미지 잘라내기
+			*/
+			#movie a .img{display:block; width:100%; height:105px; overflow:hidden;}
+			#movie a .img img{width:100%;}
+
+
+			/* .text (strong) 인라인요소 */
+			/* 
+				사용가능한 너비:  188px
+					188px - padding 양쪽 (20px) == 168px
+			*/
+			/*
+				가용가능한 높이 : 158px - 이미지의 높이 105px == 53px
+
+				: padding-top 부분 : 5px로 고정하고 2줄로만 나올 수 있도록
+				높이값 수정하기 (방향키로)
+			*/
+			#movie a .text{display:block; width:168px; height:36px; padding:5px 10px 0; font-size:13px; 
+			overflow:hidden;}
+
+
+		/*############### btnArea ##############*/
+			#btnArea{width:100%; height:40px; line-height:40px; text-align:center; }
+			#btnArea button{width:30px; height:20px;}
+
+	</style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="movieArea">
+				<h2>daum moive content</h2>
+				<div id="movie">
+					<ul>
+						<li>
+							<a href="#" title="영화 관련 링크0">
+								<span class="img">
+									<img src="img/m0.jpg" alt="영화 관련 이미지0"/>
+								</span>
+								<strong class="text">
+									국내외 호평받고 있는 놀라운 '한국 영화'의 정체
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="영화 관련 링크1">
+								<span class="img">
+									<img src="img/m1.jpg" alt="영화 관련 이미지1"/>
+								</span>
+								<strong class="text">
+									'피그' 소중한 것을 잃은 자들의 숭고한 여정[노컷 리뷰]
+								</strong>
+							</a>
+						</li>
+						<li class="ver">
+							<a href="#" title="영화 관련 링크2">
+								<span class="img">
+									<img src="img/m2.jpg" alt="영화 관련 이미지2"/>
+								</span>
+								<strong class="text">
+									[최초] 한석규 김래원 범죄 액션 '프리즌' 예고편
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="영화 관련 링크3">
+								<span class="img">
+									<img src="img/m3.jpg" alt="영화 관련 이미지3"/>
+								</span>
+								<strong class="text">
+									'뜨거운 피' 정우·김갑수·최무성·지승현·이홍내, 폭발적인 열연 시너지
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="영화 관련 링크4">
+								<span class="img">
+									<img src="img/m4.jpg" alt="영화 관련 이미지4"/>
+								</span>
+								<strong class="text">
+									'이상한 나라의 수학자' 무채색 교실→과학관 아지트..볼거리 더한 콘셉트 
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="영화 관련 링크5">
+								<span class="img">
+									<img src="img/m5.jpg" alt="영화 관련 이미지5"/>
+								</span>
+								<strong class="text">
+									2천만 명의 팬들 앞에서 남친과 결혼 서약 예정인 월드 스타
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="영화 관련 링크6">
+								<span class="img">
+									<img src="img/m6.jpg" alt="영화 관련 이미지6"/>
+								</span>
+								<strong class="text">
+									"송가인 특별출연"..'매미소리' 관전 포인트 3
+								</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="영화 관련 링크7">
+								<span class="img">
+									<img src="img/m7.jpg" alt="영화 관련 이미지7"/>
+								</span>
+								<strong class="text">
+									유랑극단 독심술사가 성공을 위해 벌인 일..'나이트메어 앨리'[리뷰]
+								</strong>
+							</a>
+						</li>
+					</ul>
+					<p id="btnArea">
+						<span><strong>4</strong> / 10</span>
+						<button>&lt;</button><button>&gt;</button>
+						<span>영화 홈</span>
+					</p>
+				</div>
+				<!--
+					[strong 태그 사용하기]
+						<strong><span>4</span> / 10</strong>
+
+							: strong이 바깥에서 크게 작성되어 있기 때문에 안에 담겨 있는
+							span 의 값들까지 전부 읽을 수 있음!
+
+						<span><strong>4</strong> / 10</span>
+							
+							: strong이 있는 4 부분만 읽을 수 있음!
+				-->
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

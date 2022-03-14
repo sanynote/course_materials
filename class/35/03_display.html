@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>display</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    /*
+      1) 여백초기화
+      2) h2 태그를 대상으로 글자 가운데 정렬, 행간 60px
+      3) p태그는 300*400 적용, 배경색상 pink 적용
+      4) span 태그는 300*200 적용 후, 배경색상 gold적용
+      5) b 태그는 400*200 적용, 배경색상 aqua
+      6) i태그는 600*500 적용, 배경색상 #ff0 적용
+
+    */
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+   /*
+    h2{text-align:center; line-height:60px;}
+    p{width:300px; height:400px; background-color:pink; display:inline;}
+    span{width:300px; height:200px; background-color:gold; display:block;}
+    b{width:400px; height:200px; background-color:aqua;display:block;}
+    i{width:600px; height:500px; background-color:#ff0;display:block;}
+*/ 
+    /* inlineArea */
+
+    #inlineArea{width:200px; height:200px; background-color:pink; display:block;}
+    #inlineArea span{width:100%; height:100%; background-color:#00f; color:#fff; display:block;}
+
+
+
+  </style>
+ </head>
+
+ <body>
+	<h2>웹을 읽는 순서</h2>
+  <ol>
+    <li>body영역(구조물 작성, 기본적인 기초작업)</li>
+    <li>style영역 (기초작업에 꾸며주는 작업, body 없으면 style 영역은 꾸미기 어려움)</li>
+    <li>script영역 (javascript, jQuery)</li>
+    <li>javascript (jQuery보다 빠름)</li>
+    <li>jQuery(javascript + query의 약자표현)</li>
+    <li>db 작업(mysql, php 작업)</li>
+  </ol>
+  <hr/>
+
+  <h2>display 사용하기(display는 style효과)</h2>
+  <p>
+    영역을 연결하여 붙일때 사용하는 속성으로 float라는 속성을 사용한다.
+    주로 블록요소를 연결할 때 사용
+    : 계단현상이 생기는 원인은 ? 높이값이 제대로 설정되지않아서
+  </p>
+  <span>
+    글자를 ...으로 만드는 이유는? 한 줄 표현이 넘쳤을때 글자를 ...으로 표기함
+  </span>
+  <b>
+    b태그는 strong태그처럼 글자를 두껍게 표현하지만, 스크린리더기가 읽을수는 없다.
+  </b>
+  <i>
+    최근의 웹에서는 i태그를 icon을 담을 때 사용하지만, 기본값은 font-style:italic과 같다.
+  </i>
+  <h2>inlineArea 값 확인하디</h2>
+  <div id="inlineArea">
+    <strong>
+      <span>strong안에 span 담기</span>
+    </strong>
+  </div>
+ </body>
+</html>
+<!--
+  [매우중요_속성바꾸기]
+    1) "style 영역은 2차 과정"으로 display는 style에서 사용하는 효과
+    2) display 효과는 inline은 block 속성으로, block 은 inline 으로 변경이 가능함
+      : style에서 화면에 보여지는 방법을 바꾸는 효과
+
+      : style 영역에서만 display효과로 block과 inline으로 바뀜
+      : body 영역에서는 inline은 inline으로 block은 block으로 사용됨
+
+  [활용하기]
+    1) body영역은 "1차 과정"
+
+      <span>
+        <p>인라인 요소안에 p(블록요소) 태그 만들기</p>
+      </span>
+
+      *2차 과정인 style 영역에서 span 태그를 display:block으로 바꿀 생각으로 만들 경우
+      위와 같이 코딩이 되어짐
+
+      여기서 문제는 body인 1차 과정에서 문제가 되기때문에 
+      validator에서 문제가 나타남
+
+    2) validator는 2차 과정인 style 영역을 검토하는것이 아니라 1차 과정인 body 영역을
+    우선으로 검사하기때문에 에러가 발생할 수 밖에 없음
+
+    중요) 인라인을 블록으로 바꾸려하기보다는 블록은 지금처럼 블록으로 담아주는 것이 좋다.
+    : 인라인을 어쩔 수 없이 블록으로 바꿔야할때는 사용하는것이 좋다.(사이즈 작업)
+
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    [인라인과 인라인 사용하기]
+      : 인라인 안에 인라인 사용하기
+      
+      <strong>
+        <span>strong 안에 담겨있는 span 태그를 display:block으로 변경할 경우</span>
+      </strong>
+
+    :: style 영역에서 inlineArea  확인하기
+      1) 자녀인 span태그를 block으로 바꾸고 strong 검사 띄우면 영역이 제대로 잡히지 않는 것 확인
+      2) 문제는 자녀인 span 태그가 block이 되면서 부모인 strong 인라인 요소가 자녀를 담지 못하는 문제 발생함
+
+      :: 자녀인 인라인요소가 block 변경되었다면 부모 확인해야함.
+      부모가 인라인이면 담지 못할 수 있기때문에, 부모인 인라인요소도 block 변경해야 함
+
+      :: 검사창 띄워서 담아주는지 "무조건" 확인해야 함
+
+    [스스로 너비와 높이를 만들지 못하는 인라인요소] 
+      : a span strong 등등 인라인을 블록으로 사용하기 위하여 미리 선언하지 않는다!
+      꼭 필요한 순간에만 변경해야 함
+
+      :공간을 만들지 못하기때문에 display:block이 필요함
+
+    [스스로 너비와 높이를 가지는 인라인요소]
+      : img 태그, select태그, input태그, video(html5)
+      : display:block으로 바꾸지 않아도 너비와 높이 설정이 가능함
+
+  [display_block 안전하게 사용하기]
+
+    [안전하게 사용하는 방식_1]
+
+    <p>  
+      <a href="" title="">
+        <span>span태그</span>
+      </a>
+    </p>
+
+    : span 태그가 블록으로 바뀔 경우
+
+    1) 부모인 a이 막지 못함
+    2) a 태그가 블록으로 변경되지못해도 바깥쪽에 p나 div 처럼 블록이 있는지 확인하기
+
+    : 부모인 a 태그가 막지못해도 그 위에 p 나 블록요소가 있기때문에 문제가 커지지는 않음
+
+    [안전하게 사용하는 방식_2_권장하는 방식]
+
+      1) 자녀인 span 태그가 display:block으로 변경된 경우
+      2) 부모인 a태그를 검사로 확인한 후, 영역이 잡히는지 확인하기
+        영역이 (파란색)으로 잡히지 않는다면 display:block이 되는지 확인하기
+
+      3) 부모인 a도 막을 수 있지만 그 위의 p도 막을 수 있기때문에 안전하게 방어가 가능
+
+    [아래의 경우 작업금지]
+      
+      1) 초기화 부분에서 a태그를  display:block으로 변경하지 않는다.
+        a를 display:block으로 많이 바꾼다고해도 전체 영역을 대상으로 a를 display:block으로 바꾸지않는다.
+        :a는 인라인이고, 인라인의 특성을 따라야하는 경우가 많음
+
+      2) 인라인요소 어떤값들도 display:block으로 바꾸려고 하기보다
+        지금처럼 블록속성 안에 인라인요소로 만들면서 꾸며준다.
+        : 인라인요소가 사이즈 만들기 어려울때 바꿔주기
+
+      [tip]
+
+        : 기능을 만들다보면 노이즈현상이 발생하거나 균열의 모양이 생긴다
+        : 이럴경우 inlineArea 영역을 확인해보면
+          : span이 block이 되고 부모인 strong이 담지 못하는 현상이 발생하는것처럼
+          부모 인라인이 담지 못해서 생기는 문제
+
+        * 검사창으로 자녀를 담는지 확인하기
+
+      [권장]
+        * 블록속성은 블록으로 인라인은 인라인으로 사용하기
+        * 자녀를 담고 부모가 영역을 만들지 못할때 display:block 활용하기
+-->

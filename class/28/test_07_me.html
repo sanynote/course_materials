@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>test</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    h2{padding-top:30px;}
+
+    /*##### 문제11 #####*/
+    #no11{width:100%;}
+    #no11 h3{width:603px; text-align:center; height:30px; margin:0 auto;}
+
+    /* 각 li크기 200*3 == 600 + margin-right:1px*3== 603px 적용*/
+    #no11 .div0{width:603px; height:100px; margin:0 auto;}
+    #no11 .div0 ul{width:100%; height:100%;}
+    #no11 li{width:200px; height:100px; line-height:100px; text-align:center; margin-right:1px; float:left; background-color:blue; color:#ff0;}
+
+    /*##### 문제17 #####*/
+    #no17{width:100%;}
+    #no17 .div1{width:830px; background-color:blue;}
+    /* 원래 width:800으로 설정했으나, li 에 각각 border를 적용하여 넓이가 넓어졌다. 5px*2 + 10px*2 == 30px을 추가해 830px로 변경함.*/
+    /* 각 li의 높이가 다르고 얼마나 더 늘어날 지 모르니 부모요소에 overflow:hidden을 적용시킴*/
+    #no17 .div1 ul{width:100%; height:100%;overflow:hidden;}
+    #no17 li{width:400px; height:300px; text-align:center; float:left; background-color:#caf;}
+    #no17 .li0{border:5px solid red; line-height:310px; }
+    #no17 .li1{border:10px solid #ff0; line-height:320px; }
+
+
+    /*##### 문제19 #####*/
+    #no19{width:100%;}
+    #no19 .div2{width:1000px; background-color:#caf;}
+    #no19 h3{width:200px; float:left; background-color:aliceblue;}
+
+    #no19 h4{width:100px; float:right; background-color:#0af;}
+    #no19 p{width: 100%; clear:both;}
+
+    
+  </style>
+ </head>
+
+ <body>
+  <h2>문제1) 인라인 요소중에 가장 강하게 읽어주는 태그는?</h2>
+  <p>strong 태그입니다.</p>
+  <h2>문제2) 블릿기호의 위치를 변경할 때 사용하는 효과는?</h2>
+  <p>list-style-position</p>
+  <h2>문제3) % 사용시 반드시 먼저 사용되어야하는 단위는? 그 이유는?</h2>
+  <p>px이 먼저 지정되어야합니다. 그래야 그 px을 기준으로 % 값을 낼 수 있기때문입니다.</p>
+
+  <h2>문제4) section 영역을 만들었다면 반드시 작성해야하는 태그는? 그 이유는?</h2>
+  <p>headline태그, 비슷한 값끼리 모아놓은 영역이 section이기때문에 무슨값들끼리 모아두었는지 영역의 제목을 반드시 작성해야한다.</p>
+  <h2>문제5) ul li에 padding-right:20px 을 적용하였다. ul li ul li에서 상속받은 값을 해제하려면?</h2>
+  <p>ul li ul li를 호출한 후, padding-right:0 을 적용한다.</p>
+
+  <h2>문제6) oveflow:hidden의 사용용도 아는대로 작성하기</h2>
+  <p>
+    1) margin-top을 사용하는것에 문제가 생겼을 때 부모 찾아서 적용<br/>
+    2) 자녀요소들의 높이가 얼마나 줄어들고 늘어날지 확실하지 않은 경우,<br/>
+    부모요소를 찾아 overflow:hidden을 적용시키면 알아서 높이값을 준다.<br/>
+    그러나 가끔 배신하는 경우도 있기때문에 너무 의존해서는 안된다.
+  </p>
+
+  <h2>문제7) 공통과 개별 영역중 가장 먼저 작성되어야하는 영역은? 이유는?</h2>
+  <p>
+    공통영역이 먼저 작성되어야한다. 브라우저는 위에서 아래로 읽고, 아래값이 최신값으로 적용되기때문에,<br/>
+    개별을 먼저 작성하고 아래에 공통을 적용하면 결국 브라우저가 공통값을 한 번에 적용하여 개별값은 소용이 없게된다.
+  </p>
+
+  <h2>문제8) float를 상위객체와 하위객체에 적용하였지만 나열되지않았다. 원인은?</h2>
+  <p>부모요소에 높이가 제대로 설정되지 않았을것이다.</p>
+  <h2>문제9) float를 끊어주지 않았을때 생길 수 있는 문제들 나열하기</h2>
+  <p>
+    1) 하단의 객체들이 다른 객체들의 밑으로 딸려올라간다.(객체들끼리 겹침)<br/>
+    2) 부모요소가 자녀들을 담아주지 못하는 현상이 발생된다.
+  </p>
+  <h2>문제10) section,container 처럼 값이 얼마나 늘어날지 모르는 영역에 float를 적용하였다. float를 끊어주기위한 효과적인 방법은?</h2>
+  <p>부모를 찾고 overflow:hidden을 적용하여 알아서 높이값을 주도록한다.</p>
+
+  <h2>문제11) 아래 순서에 따라 문제풀기</h2>
+  <ul>
+    <li>01) 여백초기화,블릿기호 초기화하기</li>
+    <li>02) 현재 ul이 끝난부분 아래에 전체 다 사용하는 영역만들기</li>
+    <li>03) h3 태그를 작성하고, floatTest라는 내용 기입하기, 가운데 배치하기</li>
+    <li>04) 해당영역안에 실제 사용할 div태그 만들고 안에 ul li li li 작성하기</li>
+    <li>05) li의 너비는 200px * 100px, 배경색상은 blue, 글자는 노란색(16진법)</li>
+    <li>06) li들마다 margin-right:1px 적용하기, float로 옆으로 나열되도록 만들기</li>
+    <li>07) 나열된 li들 확인하고, 부모요소 크기 설정하기</li>
+    <li>08) 중요) 부모의 높이를 지정할 수 있다면 최대한 overflow:hidden 사용하지않도록 함</li>
+    <li>09) 부모요소와 실제사용 div 화면 가운데 있도록 만들기</li>
+    <li>10) li태그의 내용은 li0, li1,li2... 작성하기, x,y축 가운데 두기</li>
+  </ul>
+  <div id="no11">
+    <h3>floatTest</h3>
+    <div class="div0">
+      <ul>
+        <li>li0</li>
+        <li>li1</li>
+        <li>li2</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>문제12) 전역이란?</h2>
+  <p>모든 지역에 공통의 값을 적용하는 것, 날씨로 비유한다면 전국에 비가 내리는 느낌, 지역은 서울에 비가 내리는 느낌</p>
+  <h2>문제13) li{list-style:none} 이 위험한 이유에 대하여 작성하기</h2>
+  <p>
+    list style은 한 가지가 아니라 type,position 등등 여러가지가 있는데,<br/>
+    저렇게 적용해버리면 list style의 효과들을 한 번에 다 꺼버린다.
+  </p>
+  <h2>문제14) font 축약형 사용시, 적용되는 순서 나열하기</h2>
+  <p>
+    font-style,weight, size/line-height, font-family <br/>
+    font 축약형은 순서가 정해져있어서, 순서가 바뀌어 적용되면 적용이 안된다.
+  </p>
+
+  <h2>문제15) meta 태그란?</h2>
+  <p>문서의 사용용도를 표기하는 태그이다.</p>
+	<h2>문제16) overflow를 해제할때 사용하는 속성은?</h2>
+  <p>overflow:visible</p>
+
+  <h2>문제17) 아래 순서에 따라 문제 풀기</h2>
+	<ul>
+		<li>01) 현재 ul이 끝난 부분 아래에 전체 다 사용하는 영역 만들기</li>
+		<li>02) 실제로 사용하는 div 만들고 너비 : 800 , 높이 :300px 적용하기</li>
+		<li>03) 실제 사용하는 div안에 ul li li 만들기 , 400px * 300px 로 양옆에 배치하기</li>
+		<li>
+			04) 배경색상은 알아서 적용하고, 왼쪽 li에는 border:5px solid red<br/> 
+			오른쪽 li에는 border:10px solid #ff0 적용하기
+		</li>
+		<li>
+			05) 부모요소 확인하고 실제 사용하는 div도 문제 없이 사이즈 잡히는지 확인하기
+		</li>
+		<li>06) li 태그의 내용은 li0 태그, li1 태그 작성하기, 글자 x,y축 가운데 배치되도록 만들기</li>
+	</ul>
+  <div id="no17">
+    <div class="div1">
+      <ul>
+        <li class="li0">li0</li>
+        <li class="li1">li1</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>문제18) a == 200 || a>=500 의 뜻은?</h2>
+  <p>200은 a에 담겨있다. 500은 a와 같거나 a보다 작다. 둘 중 하나라도 맞으면 참이다.</p>
+
+  <h2>문제19) 아래 순서에 따라 문제 풀기(floatTEST4 3번째영역 참고하기)</h2>
+  <ul>
+    <li>01) 현재 ul이 끝난 부분 아래에 전체 사용하는 영역 만들기</li>
+    <li>02) 실제 사용하는 div 만들기: 1000 적용하기, 높이 지정 없음</li>
+    <li>03) 실제 사용하는 div에 h3태그로 "div영역" 글 작성하기</li>
+    <li>04) h3의 너비는 200px 작성하기</li>
+    <li>05) 실제 사용하는 div에 h4태그로 "h4태그 사용" 글 작성하기</li>
+    <li>06) 실제 사용하는 div에 p태그로 "아래 p태그"글 작성하기</li>
+    <li>07) h4태그의 너비는 : 100px 작성하기</li>
+    <li>08) 아래 p태그의 너비는 100% 사용하기</li>
+    <li>09) 배경색상은 각각 전부 다르게 적용하기</li>
+    <li>10) h3는 왼쪽배치, h4는 오른쪽배치, p태그는 아래 있을 수 있도록 배치하기</li>
+    <li>11) 중요) 부모요소 높이 나올 수 있도록 float 확인하기</li>
+  </ul>
+  <div id="no19">
+    <div class="div2">
+      <h3>div영역</h3>
+      <h4>h4태그 사용</h4>
+      <p>아래 p태그</p>
+    </div>
+
+  </div>
+
+  <h2>문제20) 부모요소에서 float가 끊어졌는지 확인하는 방법은?</h2>
+  <p>검사창을 띄워서 부모의 높이가 제대로 잡혔는지 확인한다.</p>
+  <h2>문제21) 자녀요소에서 float를 끊으려면? (문제 19번과 연관있음)</h2>
+  <p>
+    부모에 높이를 적용해서 해결할 수 없는 경우라면, 자녀요소들끼리 해결을 해야한다.<br/>
+    float를 끊을 하위객체에 clear:both를 적용하여 float을 끊어주는 방법이 있다.
+  </p>
+
+  <h2>문제22) 영역에 제목을 작성할때 사용하는 태그는?</h2>
+  <p>headline태그, 참고로 문서의 제목을 작성할 때 사용하는 것으로는 title이 있다.</p>
+  <h2>문제23) background-image의 사이즈를 조절할때 사용하는 효과는?</h2>
+  <p>background-size효과, 그러나 구형브라우저에서는 원본사이즈로 돌아갈 수 있기때문에 영역에 맞춰서 사이즈 작업이 되어야한다.</p>
+
+  <h2>문제24) 문제 23번에 적용한 효과는 css 몇부터 사용되는지 작성하기</h2>
+  <p>css3부터 사용된다.</p>
+  <h2>문제25) 문제 24번을 지원하는 브라우저들 나열하기</h2>
+  <p>익스플로러 9,10,11,엣지,크롬,사파리,파이어폭스,오페라</p>
+
+  <h2>문제26) 문제 25번에 나열된 브라우저들은 표준과 구형 어디에 속하는지 작성하기</h2>
+  <p>표준브라우저에 속한다.</p>
+  <h2>문제27) 태블릿 pc 해상도의 범위 작성하기</h2>
+  <p>768px~1024px</p>
+
+  <h2>문제28) 아래 나열된 길이 값 작성하기</h2>
+	<p>abc : 2</p>
+	<p>a b c : 6</p>
+	<p>ab c : 4</p>
+	
+	<h2>문제29) 현재 영역 아래에 전체 다 사용하는 영역 만들고 select 태그 작성하기 (자동차 종류 3개 정도 나열하기)</h2>
+  <div>
+    <select>
+        <option value="벤츠">벤츠</option>
+        <option value="페라리">페라리</option>
+        <option value="테슬라">테슬라</option>
+    </select>
+  </div>
+
+	<h2>문제30) font-family를 여러개 작성하는 이유와 폰트를 지원하지 않을 경우 어떻게 되는지 작성하기</h2>
+  <p>
+    그 사이트에 글꼴이 없을 경우를 대비하여 그 다음 원하는 글꼴들을 순서대로 나열한다. 폰트들이 다 없을경우에는<br/>
+    사이트마다 설정해놓은 기본글꼴이 적용된다.
+  </p>
+  
+ </body>
+</html>

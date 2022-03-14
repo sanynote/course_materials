@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>html5_basic</title>
+	<meta charset="utf-8"/>
+	<style>
+		/*
+			1) #header영역 호출하여 배경색상 노란색 16진법으로 적용하기
+			2) section안의 h2 태그 호출하여 배경색상 pink 적용하기
+			3) validator확인 하고, 어떤 에러가 발생하는지 , 단톡방에 작성하기
+		*/
+
+		#header{background-color:#ff0;}
+		section h2{background-color:pink;}
+
+	</style>
+ </head>
+ <body>
+	<div id="wrap">
+		1) body를 대신하는 가장 큰 영역 , body는 브라우저 전체를 담당하기 때문에 사이즈 작업은 하지 않는다.<br/>
+		2) wrap은 사용자가 직접 만들때 사용하는 이름, 기업명_wrap, 프로젝트명Wrap<br/>
+		3) wrapper은 자동화되어 있는 이름이 많음! (사용자가 이름을 바꾸면 자동화가 적용되기 어려움!) 
+		<header id="header">
+			<h1>상징적인 요소, 페이지의 가장 대표적인 "제목" 다룰 때 사용</h1>
+			<nav id="gnb">
+				<ul>
+					<li><a href="#" title="login">login</a></li>
+					<li><a href="#" title="join">join</a></li>
+					<li><a href="#" title="mypage">mypage</a></li>
+					<li><a href="#" title="sns">sns</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="container">
+			<h2>비쥬얼 영역 and 여러가지 정보를 다루는 영역!</h2>
+			<div id="visual">
+				<p>
+					visual영역은 시멘틱 태그가 없음<br/>
+					실제로 "광고를 다루는 경우가 많은 영역이 visual영역" 으로 태그로 만들면<br/>
+					반드시 광고를 제공해야 하기 때문에 문제가 발생함!
+				</p>
+				<p>
+					div태그에 id="visual"을 주로 사용함<br/>
+					* 권장) 반드시 광고를 하는 것 보다 애니메이션, 애니메이트, "슬라이딩 윈도우"<br/>
+					적용이 가능한 영역으로 구성하는 것을 권장한다!
+				</p>
+			</div>
+			<section id="content">
+				<h2>시멘틱 태그 정리</h2>
+				<ol>
+					<li>비슷한 정보의 값을 모아주는 영역명은? section</li>
+					<li>비슷한 정보의 값들을 모아두었기 때문에 반드시 작성해야 하는 태그는? headline</li>
+					<li>validator 확인하기!</li>
+					<li>headline태그 작성한 후, 다시 확인하기</li>
+					<li>h2~h6까지 요구함! (시멘틱 태그를 사용하면 필수작성!)</li>
+				</ol>
+			</section>
+			<section>
+				<h2>기존의 웹과 현재의 웹 (시멘틱 태그)</h2>
+				<div>
+					"기존의 웹" 은, 대다수 div 태그에 대한 의존도가 매우 높았음<br/>
+					모든 영역, 모든 객체를 div 태그로 만들어서 제작함(네이버(현재))
+				</div>
+				<div>
+					div태그를 사용하면 어떤 목적으로 작성이 된 영역인지 확인이 필요함!<br/>
+					이때 등장한 값이 목차 생성(headline 태그 작성 권장)
+				</div>
+				<div>
+					div태그를 사용하고, 목차를 만들지 않는 경우가 많아져서 div태그에 대한<br/>
+					이해도가 매우 떨어지는 문제 발생!
+				</div>
+				<div>
+					* 시멘틱태그는 "이유가 있는 태그" 를 만들고, div태그에 대한 의존도 낮추기가 핵심!
+				</div>
+				<div>
+					* 시멘틱태그를 사용하면서 어떤 목적으로 만들었는지 목차를 만드는 것이 중요한<br/>
+					역할이 되어버림
+				</div>
+				<div>
+					* html5는 목차생성을 필수로 작성한다.<br/>
+					* 목차생성 페이지 : outliner (html5, 메인페이지)
+				</div>
+			</section>
+			<section>
+				<h2>시멘틱 태그란?</h2>
+				<ol>
+					<li>무분별하게 사용되는 div태그의 사용용도 낮추기</li>
+					<li>* 약속된 작업을 하기위한 "이유있는 태그!"</li>
+					<li>div, p 태그의 경우 제목이 없다면 왜 사용되었는지 알기 어려움!</li>
+					<li>header, footer, section, nav 등만 봐도 뭐를 해야 할지 알 수 있는 태그들이 시멘틱 태그!</li>
+				</ol>
+			</section>
+			<section>
+				<h2>header태그 || header 영역</h2>
+				<ol>
+					<li>header 영역에서 가능한 작업? h1 로고 작업가능, 네비게이션 작업</li>
+					<li>아래 항목 주의사항!</li>
+					<li>
+						<dl>
+							<dt>html5, 반응형 (부트스트랩 , 자동으로 만들어진 템플릿)</dt>
+							<dd>
+								사용자가 직접 id나 class명을 기입하기 어려움!<br/>
+								이유는? 자동화 도구로 만들어져 있어서 교체하거나 변경하는 작업이 어려움!
+							</dd>
+							<dd>
+								[실제 생겼던 문제점]<br/>
+								: header 영역안에 nav태그를 사용할 수 없는 문제가 발생함!<br/>
+								: a태그에 링크가 걸리지 않는 문제가 발생함<br/>
+								(header 영역안에 기본적으로 nav를 못 받아주는 문제발생)<br/>
+								: 자동화에 성립되지 않는 문법은 고장날 확률이 매우 높음!
+							</dd>
+							<dd>
+								해결1: header영역 바깥에 nav영역을 따로 만들어서 해결함!
+							</dd>
+							<dd>
+								해결2: header태그를 div로 변환하면 해결이 가능했지만, 자동화가<br/>
+								깨지는 문제가 발생함!
+							</dd>
+							<dd>
+								* 자동화 도구는 언어바뀌거나, 문법이 달라지면 자동화가 쉽게 깨지기<br/>
+								때문에 구조를 보고 직접 작성하는 것을 권장한다!
+							</dd>
+						</dl>
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h3>중요사항</h3>
+				<div>
+					1) header, footer 영역은 한 페이지에서 한번밖에 사용하지 못함!<br/>
+					2) header태그를 2번 사용하는 것은 머리 2개 만드는 것과 같음<br/>
+					3) footer태그가 늘어나는 것은 다리갯수를 늘리는 것과 같음<br/>
+					4) header와 footer 영역안에는 아주 특별한 이유가 없다면 section태그를 사용하지 않는다!<br/>
+					5) section 태그는 주로 테마나 주제에 맞춰서 영역 구분할때 사용하기 때문에 container에서 자주 사용된다.
+				</div>
+			</section>
+			<section>
+				<h2>section 영역에 대한 이해</h2>
+				<ol>
+					<li>container영역은 다양한 주제를 다룰때 사용하는 영역</li>
+					<li>visual영역은 주로 광고 목적으로 사용하기 때문에 section처럼 연결해서 사용하지 않음(독립요소)</li>
+					<li>visual은 마디역할로 구분하기 보다 하나의 주제를 다루는 독립요소로 div태그를 주로 사용한다!</li>
+					<li>* 전체 사용 영역을 주제별로 나열할때 section 태그 사용!</li>
+					<li>* 비슷한 정보의 값들을 모아둔 영역이기 때문에 제목을 보고도 어떤 작업을 하는지 알 수 있어야 함!</li>
+					<li>* section영역안에 section 태그 사용가능</li>
+					<li>큰 주제로 묶어주고, 그안에서 비슷한 정보를 세분화여 보관할때 section안에 다시 section태그 사용가능함!</li>
+					<li>* h1은 사용은 할 수 있으나.. header에서 주로 사용하는 중요도가 높은 태그가 h1</li>
+					<li>
+						section은 비슷한 주제를 계속 연결하는 개념으로 "형제 요소처럼 나열" 되는 경우가 많은데<br/>
+						h1을 어느 영역에 사용하게 되면 해당하는 영역만 중요도가 높아져서 문제가 될 수 있다!
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h2>html5문서의 특징</h2>
+				<ol>
+					<li>기본 원칙, 한 줄짜리 태그는 끝나는 부분에 "/" 사용 필수</li>
+					<li>html5 문서는 한 줄짜리 태그에 닫는 "/" 가 없어도 가끔 고장나지 않는 경우가 있음</li>
+					<li>validator에서 오류로 잡지 않을때가 있음! html5는 매우 융통성이 좋음!</li>
+					<li>안드로이드, 아이폰, 윈도우, mac , 운영체제가 모두 다름!</li>
+					<li>* html5가 뛰어나지만 모든 운영체제를 받아들이기는 어려움!</li>
+					<li>
+						매우중요) 웹 점검도구나 디바이스기기들에서 "/" 닫는 부분이 없다면 감점요인이 되거나
+						기능이 고장나는 문제가 될 수 있기 때문에 필수 작성되어야 한다!
+					</li>
+					<li>
+						* html5는 주로 문제점을 error 보다는 warning이 자주 발생함!
+					</li>
+					<li>
+						* html5에서 에러가 발생한다면 반드시 수정하고 고쳐야 디바이스 기기들에 문제가 발생하지 않는다
+					</li>
+					<li>
+						중요) html5 문서로 작성하다 보면 validator 작업시 warning 이라는 경고가 뜨지만...<br/>
+						실제로 보이지 않는 경우가 발생함!
+					</li>
+					<li>
+						validator에서 몇 번째 줄에서 에러가 발생했는지 알 수 없는 경우가 발생하는데..<br/>
+						이유는? html5는 광범위한 작업이 가능하기 때문에 "위험할 수 있다" 라는 경고를 보여주는 부분!
+					</li>
+					<li>
+						정확하게 어디에서 에러가 발생했는지 , 위험요소가 어디에서 나타났는지 알 수 없을 경우,<br/>
+						무시하고 작성해도 상관없음
+					</li>
+					<li>
+						정리) html5는 스스로 에러나 오류를 어느정도 해결 할 수 있지만, 에러나 오류가 보인다면 치명적인<br/>
+						부분으로 다가올 수 있기 때문에 반드시 수정해야 한다!
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h2>xhtml vs html5 버전의 차이 (style 문제풀기)</h2>
+				<ol>
+					<li>xhtml 에서는 validator를 확인하면 style에  type="text/css" 작성하기!</li>
+					<li>html5 에서는 type="text/css"를 작성하면 에러가 발생함!</li>
+					<li>
+						+ xhtml에서 사용하는 css 버전은? css1 || css1.0 || css 버전
+					</li>
+					<li>
+						+ xhtml에서 사용하는 문서의 버전은? xml1.0	|| xml1<br/>
+						+ html 문서 버전은 4.0 || 4<br/>
+						+ xml + html 문서 합쳐서 5.0이 아니라 transition.dtd 문서를 사용하여<br/>
+						호환하도록 만듬!
+					</li>
+					<li>
+						+ html5에서 사용하는 css 버전은? css3 || css3.0 || css3+
+					</li>
+					<li>
+						<h3>xhtml에서는 type="text/css" 작성했지만, html5에서 작성하지 않는 이유는?</h3>
+						<p>
+							작성을 할 경우, 에러가 발생함! (2018년도 하반기 까지는 작성하는 것을 권장!)
+						</p>
+						<p>
+							html5는 스스로 장착하고 있는 요소가 많고, 광범위하게 사용되는 문서로 미리 저장되어<br/>
+							있는 값들이 많이 있음!
+						</p>
+						<p>
+							html5는 보이지 않지만 type="text/css"를 장착하고 있기 때문에 type="text/css"를<br/>
+							작성하면 2번 작성한 것과 같음! (에러가 발생함)
+						</p>
+					</li>
+					<li>
+						* html5와 xhtml은 독타입 (선언문) 부터 다르기 때문에 작성되는 형태도 달라질 수 있다<br/>
+						* 독타입을 확인하고 적절한 버전의 값을 작성해야 한다!
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h2>인식률</h2>
+				<div>
+					div, p, ul li, ol li, a, img 등등의 태그들은 초반부터 만들어진 태그들로 웹에서 사용되는 인식률이 매우 높음!
+				</div>
+				<div>
+					시멘틱태그는 처음부터 만들어진 태그가 아니라 목적에 의하여 나중에 만들어진 태그들로, <br/>
+					웹에서 인식률이 떨어지는 문제가 발생함! (class 적용했으나 적용되지 않는 느낌과 비슷함)
+				</div>
+				<div>
+					<h3>매우중요</h3>
+					시멘틱 태그들을 사용할 경우, 인식률이 저하되는 원인을 막기 위하여 id나 class를 사용한다!<br/>
+					style에서도 태그로 호출하지 않고, #header  || .header<br/>
+					id나 class로 호출함!
+				</div>
+				<div>
+					* 인식률이 떨어질 때는 css는 물론 script 영역에서도 문제가 되어 기능이 적용되지 않는다!
+				</div>
+			</section>
+			<article>
+				<div>
+					<h2>article에 대한 정보</h2>
+					<p>article 태그 작성하고, vaildator 확인하기</p>
+					<p>section 태그 처럼 , headline (h2~h6)태그를 요구함!</p>
+				</div>
+				<dl>
+					<dt>article (기본내용: 기사를 다루는 영역)</dt>
+					<dd>
+						네이버, 다음의 경우, 기사를 다루는 영역이 매우 많음<br/>
+						article태그가 많은지 확인하기(중요)
+					</dd>
+					<dd>
+						매우중요) article 영역에 작업된 모든 내용은 복사가 가능하고, "재배포" 가 가능하다!
+					</dd>
+					<dd>
+						article태그를 사용하는 이유는? "재배포" 를 목적으로 함!
+					</dd>
+					<dd>
+						맛집정보, 날씨정보, 영화정보, 패션정보, article은 정보를 교환하고, 재배포를 위해 만든 영역!
+					</dd>	
+				</dl>
+			</article>
+			<article>
+				<h2>매우중요) article과 section 영역중 어떤 영역이 더 클까?</h2>
+				<div>
+					서로 크기가 같기 때문에 서로 담을 수 있음<br/>
+					* 어떤 태그로 담아주는지에 따라서 내용이 달라짐!
+				</div>
+				<div>
+					+ article 영역안에 section 영역이 있다면 section 영역까지 모두 복사가능하고, 재배포가능함<br/>
+					+ section 영역안에 article이 있다면 section안에 article 영역만 재배포가능함!
+				</div>
+			</article>
+			<section>
+				<h2>쇼핑에 관련된 정보를 다루는 영역!</h2>
+				<article>
+					<h3>쇼핑에 관련된 기사내용</h3>
+					<p>
+						article 태그로 만들었기 때문에 배포가 가능함<br/>
+						단! 태그가 아니라 class="article" , id="article" 이라면 배포불가능!
+					</p>
+				</article>
+				<section>
+					<h3>section 영역안에서는 다시 section 영역 사용가능!</h3>
+					<p>
+						section은 주제에 따라 대분류, 중분류, 소분류 형태로 담을 수 있음<br/>
+						article은 태그만 재배포 가능, class나 id 명으로 만들어진 값은 불가능!
+					</p>
+				</section>
+			</section>
+			<section>
+				<h2>여러번 다시 사용가능한 태그와 한번만 사용가능한 태그 (시멘틱 태그)</h2>
+				<p>
+					header, footer는 같은 페이지에서 한번 밖에 사용할 수 없음<br/>
+					* main 태그 (사용하기가 조금 어려움 , div id="container" 나 div id="main" 사용하기)
+				</p>
+				<p>
+					section, article은 주제나 기사내용이 다양하기 때문에 여러번 영역을 사용할 수 있음!
+				</p>
+			</section>
+			<section>
+				<h2>사용을 권장하는 시멘틱 태그</h2>
+				<p>
+					html5문서로 만든다면 기본적으로 시멘틱 태그 사용을 원칙으로 한다!
+				</p>
+				<p>
+					필수) header, section, footer는 필수! (시멘틱태그)
+				</p>
+				<p>
+					주의) section 태그는 마디를 나눌때 사용하는 태그로, 절대 id="container"를 만들지 않는다.<br/>
+					:: div id="container"가 기본원칙으로 만드는 형태
+				</p>
+				<p>
+					마디를 나누는 section 태그로 몸통의 역할을 담당하는 container를 만들지 못한다!
+				</p>
+				<p>
+					id="container" 영역에 article 작업을 할 경우, container 영역 모두 재배포가능하기 때문에<br/>
+					해당하는 자료를 버려 버릴 수 있음!
+				</p>
+				<p>
+					권장) 사용이 필수는 아니지만 사용했으면 하는 시멘틱 태그<br/>
+					nav 태그 (ul li, div 도 담을 수 있을 정도로 큰 태그)<br/>
+					많이 사용하는 형태 div id="gnb"  ||  div id="nav"
+				</p>
+				<p>
+					권장) article (재배포가 가능한 영역에 사용)
+				</p>
+				<p>
+					권장) footer 영역안에서 사용가능한 address태그(사업자 주소) 
+				</p>
+				<p>
+					address 태그의 경우, 기업에서 많이 사용되는 태그로 주로 class="address"나<br/>
+					id="address" 형태로 많이 사용되지만, 태그를 사용해달라는 요청도 많음!
+				</p>
+			</section>
+			<article>
+				<h2>xhtml과 html5의 필수 항목(가지고 있어야 하는 자료)</h2>
+				<dl>
+					<dt>xhtml 필수 항목</dt>
+					<dd>웹 점검도구 100 점 (접근성과 규칙을 맞춘 표)</dd>
+					<dd>index.html 에 해당하는 validator( 1.0 호환하는 것 중요 )</dd>
+					<dd>xhtml 버전의 index.html 파일 백업(url 가지고 있어야 함!)</dd>
+				</dl>
+				<dl>
+					<dt>html5의 필수 항목</dt>
+					<dd>outliner 사이트에서 목차생성 (메인 페이지)</dd>
+					<dd>메인과 서브페이지에 기능이 들어가는 작업</dd>
+					<dd>: 기능을 구분하여, 모든 기능이 들어가는 서브가 아니라 1~2 가지로 만들어지는 서브</dd>
+					<dd>: 확대 축소가 있는 서브페이지 / 회전되는 객체가 있는 서브페이지 / 소개가 있는 서브페이지</dd>
+					<dd>
+						매우중요) form을 이용한 "로그인"과 "회원가입" 페이지
+					</dd>
+					<dd>
+						애니메이션으로 제작된 페이지 (gif에 대신에 만드는 페이지)
+					</dd>
+					<dd>
+						* gif 자료는 사용자가 직접 멈춤, 재생등을 할 수 없기 때문에 사용을 금지한다!
+					</dd>
+					<dd>
+						* html5의 필수, 반응형 || 절대형 || 적응형
+					</dd>
+				</dl>
+			</article>
+			<aside>
+				<h2>side 메뉴</h2>
+				<p>
+					: side는 메인이 아님, 메인의 보조 역할을 담당함<br/>
+					: side가 있는 페이지가 있고, 없는 페이지가 있음<br/>
+					반드시 작성해야 하는 영역은 아님!
+				</p>
+				<p>
+					div id="side"		||	 div id="sideArea" 작성하는 경우가 더 많음!
+				</p>
+				<p>
+					: aside도 시멘틱 태그이기 때문에 aside 태그를 사용했다면 headline 태그는 필수가 아닌 권장!
+				</p>
+			</aside>
+		</div>
+		<footer id="footer">
+			<h3>꼬릿말 영역</h3>
+			<dl>
+				<dt>꼬릿말 영역에서 필수, 카피라이터</dt>
+				<dd>
+					카피라이터에 담당자 이메일 작성(a태그 활용)
+				</dd>
+				<dd>
+					footer 부분에 로고 작성가능 (h2~h3)
+				</dd>
+				<dd>
+					<h3>* 매우 중요</h3>
+					<p>
+						시멘틱 태그들은 html5부터 만들어진 태그들로 인식률이 떨어지는 부분이<br/>
+						분명히 있음, 하지만 class나 id로 해당하는 단점을 극복 할 수 있어서 현재에는<br/>
+						시멘틱 태그 사용시 불편함은 없음!<br/>
+						(footer 는 가끔 인식률이 떨어지는 문제로 id를 작성한다)
+					</p>
+				</dd>
+			</dl>
+			<div>
+				<h2>html5 문서의 사용목적</h2>
+				<p>
+					html5를 사용하는 이유는? 모든 디바이스들과 호환이 가능한 확장성을 가지고 있음
+				</p>
+				<p>
+					xhtml은 버전의 한계가 있으나 html5는 한계가 없음!
+				</p>
+				<p>
+					* html5의 css 버전은? css3 || css3.0 || css3++
+				</p>
+				<p>
+					css3의 장점은 동적인 기능을 많이 가지고 있음 (움직이는 효과를 만들 수 있음)<br/>
+					중요) script의 느려지는 부분을 css3로 보완할 수 있음!
+				</p>
+				<p>
+					단점: 호환성이 뛰어나기 때문에 문법을 html5로만 사용하게 되면 쉽게 고장남<br/>
+						: 구형브라우저는 고려하지 않음!
+				</p>
+				<p>
+					장점: 표즌 브라우저를 기준으로 css3의 모든 장점을 사용할 수 있음!<br/> 
+					script와 호환성이 매우 뛰어남
+				</p>
+				<p>
+					참고) html5가 "웹 표준 문서" 로 승인을 받은 연도와 날짜..?<br/>
+					2014년 10월 28일
+				</p>
+				<address>
+					address 태그 확인하기, em태그나 i태그처럼 기울어지는 태그<br/>
+					주소, 사업자 번호 등등 (기업에서 주로 사용하는 태그)<br/>
+					* 카피라이터는 주소가 아니기 때문에 address 태그에 작성하지 않음!
+				</address>
+			</div>
+			<div>
+				<h2>footer 영역을 시멘틱태그로 제작할 경우</h2>
+				<p>
+					지금 현재는 문제 없으나, 인식률이 떨어질 경우를 대비하여 footer 필수로 id="footer" 작성
+				</p>
+				<p>
+					header 태그 사용시에도 id="header"	, id="footer" (section은 id로 주제를 다룸)<br/>
+					section id="best"	/	section id="sale"	
+				</p>
+				<p>
+					tip) 시멘틱 태그와 id를 사용했음에도 문제가 발생할 경우 (거의 없는 문제)<br/>
+					시멘틱 태그를 div로 변경하기 , div id="header"	, div id="footer"
+				</p>
+				<p>
+					html5에서 목차생성, 시멘틱태그에는 headline 태그 (h2~h6) 사용을 필수로 한다!
+				</p>
+			</div>
+		</footer>
+	</div>
+ </body>
+</html>

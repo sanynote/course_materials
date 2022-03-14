@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>floatTEST03</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*############### reset ##############*/
+			*{margin:0; padding:0;}
+			li{list-style:none;}
+		/*
+			[참고사항]
+				
+				1) 대상을 li로 작성할 경우, ul li, ol li(블릿기호) 모두 사용하지 않는 것과 같음!
+				2) list-style:none로 작성할 경우, list-style-type, list-style-image, list-style-position
+					모두 사용하지 않는 것과 같음!
+
+				3) style이나 script "모두 없는 객체를 생성" 시키기에는 매우 어렵기 때문에 정확하게 
+				어떤 값을 사용할 것인지 없앨 것인지 구분하는 것이 좋음!
+		*/
+
+		/*################# wrap #################*/
+			#wrap{min-width:1025px; width:100%;}
+			
+			/* 현재 h2태그는 전역으로 사용 */
+			h2{border-bottom:2px solid #ccc; text-align:center; line-height:60px; text-transform:uppercase;}
+
+		/*################## section_cont0 ##################*/
+			#section_cont0{width:100%; height:500px; }
+		
+		/*######### ts4 (실제 사용영역 만들기 / 1152) ###########*/
+		/*
+			1) 실제 사용 너비 : 1152px
+			2) 바깥쪽에 있는 li의 갯수 : 3개
+
+				1152 / 3 == 384px
+
+
+				:: 384px 사용하기?
+				:: 첫번째 부분이 크기 때문에 첫번째 영역을 만들고 나머지 배분?
+
+			+++++++++++++++++++++++++++++++++++++++++++++++++++
+			
+			1) 첫번째 공간을 미리 설계하고, 나머지 공간 배분하기
+			2) ul은 2개로 배치되어 있지만, li는 나란히 5개가 놓여있음!
+			
+			3) 자녀로 사용하는 li의 크기는 100px로 설정하고
+				첫번째 li 공간 500px 사용하기!
+
+			[중요]
+				첫번째 공간 : 500px 사용!
+				나머지 두번째와 세번째  : 1152px - 500px 에서 나머지 값 배분하기
+					: 652px
+
+				배분해야하는 li태그 2개 : 652 / 2
+					: 326px
+		
+		
+			[매우중요]
+				현재 예제에서는 ul과 li태그가 많기 때문에 id나 class 명으로 호출하여
+				공통과 개별 작업을 적절히 만들어야 한다!
+		
+			4) margin-right:1px이 적용되면서 영역을 차지함
+				공통은 326px을 사용하고 있기 때문에 
+					: 325px로 변경하기
+			
+
+			[매우중요]
+				개별 작업을 한 첫번째 li의 경우에도 li태그 이기 때문에
+				공통의 영향을 받음!
+					
+					500px + margin-right:1px이 적용되어 501px이 되어 있음
+					499px + margin-right:1px을 적용하면 500px을 유지 할 수 있음!
+			
+			[매우중요]
+				 
+				: 첫번째 공간을 499px로 변경하면, 안에 담겨야 하는 ul 태그와 li 태그들은
+				계산하기가 어려움! 
+				
+				: 공통이나 복잡하지 않는 값들에서 영역을 조금 덜 사용 하는 것이 효과적임!
+				: 공통의 너비를 325px 에서 324px로 변경!
+		*/
+
+		.ts4{width:1152px; height:300px; margin:50px auto 0; }
+		.ts4 li{width:324px; margin-right:1px; height:100%; line-height:300px; background-color:#ccc;
+		text-align:center; float:left;}
+
+		/*######## "첫번째 li" 태그 개별 작업 (500px) #########*/
+		.ts4 .li0{background-color:gold; width:500px;}
+
+		/*
+			[작업순서]
+				
+				1) ul0 공간 300px로 설계하기
+				2) ul1 공간 200px로 설계하기
+
+				3) ul0은 주석글 풀고, ul1은 닫아두고 먼저 작업하기
+				4) ul0과 ul1 완료되면 float 붙이기
+				5) 부모찾아서 확인하기
+		*/
+		/*############ 첫번째 li의 ul0 영역 만들기 #############*/
+		/*
+			[ .ul0 li 상속 받는 부분 확인하기]
+
+				1) 검사를 통해서 확인해보면 공통영역의 영향을 받는 것을 알 수 있음!
+				2) .ts4 li 작업한 부분이 " .ul0 안에 담겨있는 li 까지 영향" 을 주는 상태!
+				3) .ul0 li 부분 다시 작업하기!
+
+			[문제점]
+				
+				1) .ul0 공간 너비 300px
+				2) .ul0 li를 3개 배치하기 위하여 너비 100px로 변경
+				3) li태그들 마다 간격 확인!
+			
+			[매우중요]
+
+				1) 검사를 확인해보면 공통에서 적용되는 값과 변경된 값을 확인 할 수 있음!
+				2) "검사창을 활용" 하여 적용되는 것과 바뀌어야 하는 값 확인하면서 작업하기
+
+				공통에서 margin-right:1px이 적용되는 것을 확인 할 수 있음!
+				공통에서 영향을 받지 않기 위하여 초기값인 0을 적용하여 "해제" 하기
+
+				참고)
+					overflow를 해제하는 속성은? visible
+
+				: 0이라는 숫자는 단위를 설정하지 않아도 사용가능함!
+				: px, % 등 단위를 알아서 인식함!
+		*/
+		.ts4 .ul0{width:300px; height:100%; float:left;}
+		.ts4 .ul0 li{width:100px; margin-right:0; height:50%; line-height:150px;}
+		
+		/*######### ts4의 ul0의 li들 배경색상 변경하기 ###########*/
+		.ts4 .ul0 .ul0_li0{background-color:#ef0;}
+		.ts4 .ul0 .ul0_li1{background-color:#ed0;}
+		.ts4 .ul0 .ul0_li2{background-color:#ea0;}
+
+		/*######### ts4의 ul0의 마지막 li 개별작업 ###########*/
+		.ts4 .ul0 .ul0_li3{width:100%; background-color:#ee0;}
+
+
+		/*############ 첫번째 li의 ul1 영역 만들기 #############*/
+		/* 
+			문제) ul1영역 주석글 풀고 작업하기!
+			
+				1) ul0 영역 처럼 ul1 영역 만들기
+				2) 검사창을 이용하여 상속되는 값 확인하면서 작업하기
+				3) ul0영역과 ul1 영역 붙이기
+				4) 부모찾아서 해결하기
+				5) 이메일로 제출하기
+		*/
+		/* ul1 영역 너비: 200px로 만들기 */
+		.ts4 .ul1{width:200px; height:100%; float:left;}
+
+		/*
+			ul1의 li2개 너비: 100px 설계하기
+			: 공통영역의 margin-right:0 해제하기 
+		*/
+		.ts4 .ul1 li{width:100px; margin-right:0; background-color:#e70;}
+
+		/*######### ul의 li태그 개별작업 (배경색상 변경) ########*/
+		.ts4 .ul1 .ul1_li1{background-color:#e90;}
+
+		/*################## section_cont1 ##################*/
+		#section_cont1{width:100%; height:500px;}
+
+		/*
+			문제)
+				1) 실제 사용영역 ts5 : 1600px * 200px
+				2) li의 갯수 4개
+				3) li들 float로 붙이고, 부모요소 사이즈 확인하기 (검사창으로 확인)
+				4) li태그 배경색상 적용, line-height, text-align 작업하기
+
+		*/
+
+		/*######## 실제 사용영역 (1600px) ########*/
+		.ts5{width:1600px; height:200px; margin:50px auto 0;}
+		.ts5 li{width:400px; height:100%; line-height:200px; background-color:aquamarine; text-align:center; float:left;}
+
+		/*######## li태그 (첫번째) 개별작업 ########*/
+		/*
+			[매우중요]
+				1) margin, padding, border 항상 공간을 차지하는 값
+				2) li의 한 칸 크기:400*200
+				3) border의 두께는 30px
+
+				[계산하기]
+				width: 400 - border(양쪽) 60px == 340px
+				height: 200 - border(위아래) 60px == 140px
+
+				4) line-height 문제 발생
+					border가 차지하는 부분은 실제 사용영역이 아니라 프레임이 생성되는 부분으로 실제 사용높이만큼으로 바꿔줘야 함
+		*/
+		.ts5 .li0{width:340px; height:140px; line-height:140px; border:30px solid #333;}
+
+		/*
+			문제)
+				1) li1 공간 참고 이미지보고 배치하기
+					: 부모요소 확인하면서 작업하기
+					: 검사창 보면서 상속받는값과 해제할 값이 있는지 확인하면서 작업하기
+
+				2) li2 공간 border 왼쪽과 아래쪽 배치되어있음
+				3) li3 공간 border 위쪽 왼쪽 아래쪽 배치되어있음
+
+				4) 1,2,3 풀고 제출하기
+		*/
+
+		/*######## li태그 (두번째) 개별작업 ########*/
+
+		/*
+			[담고있는 자녀요소 ul li 작업하기]
+				1) li태그는 총 5개
+				2) li 한 칸 크기는 400 * 200
+				3) 위에 4개, 아래 1개 배치
+				4) li 한 칸 크기는 100px 사용
+		*/
+
+		.ts5_ul{width:100%; height:100%;}
+		.ts5 ul li{width:100px; height:50%; line-height:100px; background-color:#ee0;}
+
+		/*###### li태그들 배경색상 변경 #####*/
+		.ts5 ul .ts5_ul_li1{background-color:#cc0;}
+		.ts5 ul .ts5_ul_li2{background-color:#ea0;}
+		.ts5 ul .ts5_ul_li3{background-color:#aa0;}
+
+		/*############# ts5_ul li 마지막부분 개별작업 #############*/
+		.ts5 ul .ts5_ul_li4{width:100%; background-color:#ec0;}
+
+
+		/*######## li태그 (세번째) 개별작업 ########*/
+		.ts5 .li2{width:370px; height:170px; line-height:170px; border-left:30px solid #333; border-bottom:30px solid #333;}
+
+
+		/*######## li태그 (네번째) 개별작업 ########*/
+		.ts5 .li3{width:370px; height:140px; line-height:140px; /*border-left:30px solid #333; border-top:30px solid #333; border-bottom:30px solid #333;*/ border:30px solid #333; border-right:none;}
+
+		/*
+			[매우중요]
+				웹은 위에서 아래로 읽는 값이 최신, 왼쪽에서 오른쪽으로 읽는 값이 최신
+
+				border:30px solid #333을 적용하면 4방향에 대해 테두리를 적용할 수 있음
+
+				border:30px solid #333; border-right:none; 을 적용하면 4방향
+				적용하고 오른쪽만 해제할 수 있음
+				
+					: 각각 3군데 지정하는것보다는 전체 적용하고 한군데만 해제할때 사용하기 좋은 효과
+
+				[순서에 따라 적용이 안될 수 있으므로 주의]
+					: border-right:none; border:30px solid #333; 을 적용하면, 해제하고 다시 적용했기때문에 해제가 되지 않음
+					
+		*/
+
+		/*####### section_cont2 ######*/
+		#section_cont2{width:100%; height:500px;}
+		.ts6{width:1800px; height:30px; margin:20px auto 0;}
+		
+		/*
+			1) 실제 사용 너비: 1800px
+			2) li의 갯수 : 8개
+
+				[계산하기]
+					1800 / 8 == 225px
+
+				:: width:225px 유지, == 223px + margin-right:2px (1px이 잘 안보여서 2px)
+		*/
+		.ts6 li{width:223px; height:100%; margin-right:2px; line-height:30px; background-color:pink; text-indent:20px; color:#fff; float:left;}
+
+		/*########## 사이즈 배분하기 ###########*/
+		/*li의 기본크기: 223px */
+		.ts6 .li0{width:123px; background-color:#000;}	/* 100px 남음 */
+		.ts6 .li1{width:143px; background-color:#002;}	/* 기존의 100px + 80px 남음 ==180px */
+		.ts6 .li2{width:163px; background-color:#004;}	/* 기존의 180px + 60px 남음 ==240px */ 
+
+		.ts6 .li3{width:183px; background-color:#006;}	/* 기존의 240px + 40px 남음 ==280px */ 
+		.ts6 .li4{width:203px; background-color:#008;}	/* 기존의 280px + 20px 남음 ==300px */ 
+		.ts6 .li5{background-color:#00a;}	/* 원본의 크기과 동일, 총 300px */
+		
+		.ts6 .li6{width:343px; background-color:#00c;}	/* 원본의223px + 남은 300px 중에 120px 사용 == 180px 남음 */ 
+		.ts6 .li7{width:403px; background-color:#00f;}	/* 원본의223px + 180px (총 남은 값) == 403px */
+
+
+
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="section_cont0">
+			<h2>test4 width:1152px</h2>
+			<ul class="ts4">
+				<li class="li0">
+					
+					<ul class="ul0">
+						<li class="ul0_li0">ts4_ul0_li0</li>
+						<li class="ul0_li1">ts4_ul0_li1</li>
+						<li class="ul0_li2">ts4_ul0_li2</li>
+						<li class="ul0_li3">ts4_ul0_li3</li>
+					</ul>
+					<ul class="ul1">
+						<li class="u1_li0">ts4_ul1_li0</li>
+						<li class="u1_li1">ts4_ul1_li1</li>
+					</ul>
+					
+				</li>
+				<li>float2</li>
+				<li>float3</li>
+			</ul>
+		</div>
+
+		<div id="section_cont1">
+			<h2>test5 width:1600px</h2>
+			<ul class="ts5">
+				<li class="li0">float0</li>
+				<li class="li1">
+					<ul class="ts5_ul">
+						<li class="ts5_ul_li0">ts5_ul_li0</li>
+						<li class="ts5_ul_li1">ts5_ul_li1</li>
+						<li class="ts5_ul_li2">ts5_ul_li2</li>
+						<li class="ts5_ul_li3">ts5_ul_li3</li>
+						<li class="ts5_ul_li4">ts5_ul_li4</li>
+					</ul>
+				</li>
+				<li class="li2">float2</li>
+				<li class="li3">float3</li>
+			</ul>
+		</div>
+
+		<div id="section_cont2">
+			<h2>test6 width:1800px</h2>
+			<ul class="ts6">
+				<li class="li0">float0</li>
+				<li class="li1">float1</li>
+				<li class="li2">float2</li>
+				<li class="li3">float3</li>
+				<li class="li4">float4</li>
+				<li class="li5">float5</li>
+				<li class="li6">float6</li>
+				<li class="li7">float7</li>
+			</ul>
+		</div>
+	</div>
+ </body>
+</html>
+
+<!--
+  1) float를 어디에 줘야하는것인지? ul1에만? 아님 ul전체? -> ul전체이긴한데 이 부분이 항상 헷갈리는 느낌
+  2) 효과들 나열하는 순서 (사이즈, 색상 등등...)
+
+-->
+<!--
+/*####### section_cont2 ######*/
+		#section_cont2{width:100%; height:300px;}
+		.ts6{width:1800px; height:50px; margin:50px auto 0;}
+		.ts6 li{height:30px; line-height:30px; margin-right:1px; text-align:center; float:left; color:#fff; background-color:#00f;}
+
+		/*####### li 사이즈 작업 ######*/
+		.ts6 .li0{width:100px;}
+		.ts6 .li1{width:120px;}
+		.ts6 .li2{width:150px;}
+		.ts6 .li3{width:180px;}
+		.ts6 .li4{width:200px;}
+		.ts6 .li5{width:250px;}
+		.ts6 .li6{width:350px;}
+		.ts6 .li7{width:442px;}
+
+-->

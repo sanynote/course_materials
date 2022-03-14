@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>float_test_8</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    #wrap{min-width:1025px; width:100%;}
+
+    /*####### nav #######*/
+    #nav{width:400px; height:100px; background-color:aqua; margin:30px auto 0;}
+    #nav h1{width:100px; height:60px; float:left; background-color:#fff;}
+    #nav h1 img{width:100%; height:100%;}
+
+    /* nav / float 영역작업 */
+    #nav .rig{width:100px; float:right; color:#fff; background-color:#f00;}
+    #nav .bot{width:100%; height:40px; line-height:40px; clear:both; background-color:#ff0;}
+
+
+    /*####### tit #######*/
+    #tit{width:500px; height:60px; background-color:#f00; margin:30px auto 0;}
+    #tit .div0{width:100%; height:50%; background-color:#777;}
+
+    /* tit / float 영역작업 */
+    #tit h2{width:100px; height:100%; float:left; background-color:#ccc;}
+    #tit .div0 p{width:80px; float:left; margin-left:5px; background-color:#efefef;}
+    #tit .p0{background-color:#fff;}
+    #tit .flo{color:#fff; clear:both;}
+
+
+    /*####### lay0 #######*/
+    #lay0{width:500px; height:200px; background-color:aquamarine; color:#fff; overflow:hidden; text-indent:10px; margin:30px auto 0;}
+    #lay0 h3{width:200px; height:50px; line-height:50px; float:left;color:#fff; background-color:#00f;}
+
+    /* lay0 / float 영역작업 */
+    #lay0 .p0{width:200px; height:80px; float:right; background-color:#0c0;}
+    #lay0 .p1{width:100%; height: 60px; line-height:60px; margin-top:140px; clear:both; text-indent:0; background-color:#c00;}
+
+
+    /*####### lay1 #######*/
+    #lay1{width:500px; height:200px; background-color:#f00; margin:30px auto 0;}
+
+    /*####### lay1 개별작업 #######*/
+    #lay1 h3{width:100px; height:100px; padding-top:20px; padding-left:20px; float:left;background-color:antiquewhite;}
+    #lay1 .p0{width:200px; font-size:14px; float:left; margin-left:30px; background-color:antiquewhite;}
+    #lay1 .p1{width:100px; height:120px; padding-top:20px; padding-right:20px; float:right;background-color:antiquewhite;}
+
+
+    /*####### ul0 #######*/
+    #ul0{width:300px; height:300px; background-color:aquamarine; margin:30px auto 0;}
+
+    #ul0 li{width:100px; height:100px; line-height:100px;  text-align:center; float:left;}
+
+    /*####### ul0 개별 색상작업 #######*/
+    #ul0 .li0{background-color:#5ee1b5}
+    #ul0 .li1{background-color:#5aa1b5}
+    #ul0 .li2{background-color:#5bb1b5}
+    #ul0 .li3{background-color:#5cc1b5}
+    #ul0 .li4{background-color:#5ee1e5}
+    #ul0 .li5{background-color:#9ee1af}
+    #ul0 .li6{background-color:#7fe1bf}
+    #ul0 .li7{background-color:#5ee1fa}
+
+
+
+
+    /*####### ul1 #######*/
+    #ul1{width:300px; height:300px; background-color:#caf; margin:30px auto 30px;}
+
+    #ul1 li{width:100px; height:100px; line-height:100px;  text-align:center; float:left;}
+
+    /* 색상작업 */
+    #ul1 .li0{background-color:#a373eb;}
+
+
+
+
+  </style>
+ </head>
+
+ <body>
+  <div id="wrap">
+    <div id="nav">
+      <h1>
+        <img src="img/logo.png" alt="다음 로고 이미지"/>
+      </h1>
+      <p class="rig">search</p>
+      <p class="bot">네비게이션</p>
+    </div>
+
+    <div id="tit">
+      <div class="div0">
+        <h2>영역제목</h2>
+        <p class="p0">로그인</p>
+        <p class="p1">갤러리</p>
+      </div>
+      <p class="flo">float</p>
+    </div>
+
+    <div id="lay0">
+      <h3>레이아웃연습1</h3>
+      <p class="p0">size (width, height) 2.float</p>
+      <p class="p1">3.margin(바깥쪽여백) 4.padding(안쪽여백)</p>
+    </div>
+    
+    <div id="lay1">
+      <h3>레이아웃연습2</h3>
+      <p class="p0">clear:both 사용하지않아도될때</p>
+      <p class="p1">size가 있을때 overflow:hidden</p>
+    </div>
+
+    <ul id="ul0">
+      <li class="li0">0</li>
+      <li class="li1">1</li>
+      <li class="li2">2</li>
+      <li class="li3">3</li>
+      <li class="li4">4</li>
+      <li class="li5">5</li>
+      <li class="li6">6</li>
+      <li class="li7">7</li>
+      <li class="li8">8</li>
+    </ul>
+
+    <ul id="ul1">
+      <li>0</li>
+      <li class="li0">1</li>
+      <li>2</li>
+      <li class="li0">3</li>
+      <li>4</li>
+      <li class="li0">5</li>
+      <li>6</li>
+      <li class="li0">7</li>
+      <li>8</li>
+    </ul>
+  </div>
+ </body>
+</html>

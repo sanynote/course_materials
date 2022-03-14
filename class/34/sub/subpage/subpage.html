@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>document</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    #wrap{min-width:1025px; width:100%;}
+
+    /*######## container ########*/
+    #container{width:100%;}
+    h2{font-size:14px; padding:30px 0 20px; text-align:center; text-transform:uppercase;}
+
+    /*##### content ######*/
+    #content{width:1025px; border:1px solid #ccc; margin:0 auto;}
+    #content ul{width:100%; height:130px;}
+
+    /* li 크기 == 340*130 */
+    #content li{width:340px; height:90px; padding:20px 0; float:left;}
+
+    /* 이미지 영역 160 */
+    #content .img{width:160px; height:100%; float:left;}
+    #content .img img{width:100%;}
+
+    /* 글씨 영역 180 */
+    #content .text{width:170px; padding-left:10px; height:100%; font-size:12px; float:left;}
+    #content .color{color:#21a900; font-size:11px; padding:10px 0;}
+
+    /* 마지막 li 345 줌(5 남아서) */
+    /* 적용중인 li의 padding 해제, 높이값, 재설정하기 */
+    #content .last{width:345px; height:100%; padding:0; text-align:right;}
+
+  </style>
+ </head>
+
+ <body>
+	<div id="wrap">
+    <div id="container">
+      <h2><a href="../../01_living.html" title="리빙페이지">living page</a></h2>
+      <div id="content">
+        <ul>
+          <li>
+            <p class="img">
+              <img src="../../img/sum0.jpg" alt="소스이미지0"/>
+            </p>
+            <div class="text">
+              <h3 class="color">프라이버시 TV 라이브 방송</h3>
+              <div>
+                <h4>현직 변호사가 알려주는</h4>
+                <p>
+                  캘리포니아 프라이버시 보호법<br/>
+                  재방은 없다! 오늘 11시
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <p class="img">
+              <img src="../../img/sum1.jpg" alt="소스이미지1"/>
+            </p>
+            <div class="text">
+              <h3 class="color">대한민국 정부</h3>
+              <div>
+                <h4>대한민국 동행세일</h4>
+                <p>
+                  최대 40% 온라인 할인<br/>
+                  6개 권역별 현장 판매
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li class="last">
+            <img src="../../img/sum2.jpg" alt="소스이미지"/>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

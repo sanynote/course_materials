@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+  <head>
+    <title>padding</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+      /*
+		[웹을 읽는 순서]
+
+			1) body, script, style 모두 위에서 아래로 읽어들임
+			2) 중요!) 절대 역순으로 읽지 않음
+			
+			3) 같은 대상에 같은 효과를 적용할 경우, "마지막에 적용된 값이 최신" 이다.
+
+			: 왼쪽에서 오른쪽, 위에서 아래로 읽을수록 최신
+
+			ex)
+				p{background-color:red;}
+				p{background-color:gold;}
+
+				: 아래 값이 최신이기때문에 gold 색상 적용
+
+				p{font-size:12px; font-size:20px; font-size:16px;}
+
+				:왼쪽에서 오른쪽으로 읽는 값이 최신이기때문에 font-size 16px이 마지막에 읽는 값
+
+		[공통과 개별작업]
+
+			+공통작업이란? 모두가 같은 값을 적용받아야 할 때 작업하는 것을 말함
+			+개별작업? 공통에서 만들다가 달라지는것만 수정하는 작업
+	  */
+      /*공통작업:화면에 있는 p태그에 모두 같은 작업이 적용되도록 만듦*/
+
+      p {
+        width: 400px;
+        height: 100px;
+        background-color: #00f;
+        color: #fff;
+      }
+      /*
+	 	개별작업: 공통 p태그에서 바뀌는 값만 바꾸는 작업
+		 
+		: 검사를 통해서 확인해보면 공통영역에 지워진 값들 확인가능
+		: 개별 작업에서 바뀐 값들이 지워진 것처럼 보임
+
+		[매우중요]
+	  		공통영역에서 바뀌는 값만 적용하기
+	  */
+
+      /*
+	 	[개별작업과, 공통작업 잘 못된 표현방법과 올바른 표현방법]
+
+	  		1)공통작업부터 진행
+			2)개별작업 진행
+
+			중요: 공통에서 바뀌는 값만 변경하기
+
+		[올바른 표현방법]
+
+			p{width:200px; height:200px; background-color:blue;}:공통작업
+			.box1{width:400px;}
+	  			:공통에서 바뀐 값만 적용하기
+				:id나 class로 호출한 이유는 해당하는 객체만 따로 지정하기 위하여 호출
+
+		[잘못된 표현방법]
+	  		:개별작업 밑으로 공통영역을 만들지 않음, 가장 아래가 최신이기때문에
+			개별작업한 값들이 공통값으로 바뀔 수 있음
+
+	  		.box1{width:400px;}
+			.box2{width:1500px;}
+			p{width:200px; height:200px;}
+
+			: 화면에 제대로 표현되더라도 고장날 확률이 너무 높음
+	  */
+      .box1 {
+        width: 100px;
+        padding-top: 50px;
+        padding-right: 40px;
+        padding-bottom: 60px;
+        padding-left: 70px;
+      }
+      .box2 {
+        width: 100px;
+        background-color: darkblue;
+        padding: 70px 60px 80px 90px;
+      }
+      /*축약형 표현방법: top,right,bottom,left(시계방향)*/
+      /*
+			축약형:압축해서 표현하는 방식으로 해당하는 좌표를 작성할때 띄워쓰거나 ,(콤마)로 나누어서 표현한다.
+		*/
+      .box3 {
+        width: 150px;
+        background-color: gold;
+        color: #000;
+        padding: 50px 70px;
+      }
+
+      /*
+	 	padding:50px 70px 50px 70px;
+	  		:읽는 순서: top 50px right 70px bottom 50px left 70px;
+			:축약형 표현방법: 위 아래가 같고 좌우가 길기때문에 한번씩만 사용한다.
+	  */
+
+      .box4 {
+        width: 120px;
+        background-color: #ccc;
+        color: #000;
+        padding: 50px;
+      }
+
+      /*
+	 	padding : 50px 50px 50px 50px , 4 방향이 모두 같으면 한 번만 사용
+	  */
+
+      .box5 {
+        width: 100px;
+        background-color: #aaa;
+        color: #000;
+        padding: 50px 70px 80px;
+      }
+      /*
+	 	중요) 좌우는 같고, 위 아래 값이 다를때 사용하는 방법 
+	  */
+    </style>
+  </head>
+
+  <body>
+    <h2>padding</h2>
+    <p>대상의 여백 만들기 : 안쪽으로 여백만들기</p>
+
+    <div>
+      <h3>주의사항!</h3>
+      <h4>1)padding이 적용된 객체는 원본크기보가 커질 수 있음</h4>
+      <h4>
+        2)padding값은 객체 안쪽으로 여백을 채우는 개념(빈칸 없이 채우는 작업)
+      </h4>
+      <!--외장하드 시켰는데 뾱뾱이 없이 온 느낌-->
+      <h4>
+        3)해당하는 객체에서 검사를 띄우고 computed를 확인해보면 padding 값
+        확인가능
+      </h4>
+      <h4>4)객체의 기본 크기와 padding 값을 확인할 수 있음</h4>
+    </div>
+
+    <p class="box1">padding값 설정하기</p>
+    <p class="box2">padding값 설정하기</p>
+    <p class="box3">padding값 설정하기</p>
+    <p class="box4">padding값 설정하기</p>
+    <p class="box5">padding값 설정하기</p>
+  </body>
+</html>

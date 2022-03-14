@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title> new document </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+
+		#wrap{min-width:1025px; width:100%;}
+		#container{width:100%;}
+		h2{text-align:center; line-height:80px; text-transform:uppercase;}
+
+		/*
+			[실제사용영역 만들기]
+
+				1) 이미지 크기 확인하기
+					: 너비는 640px로 모두 같지만, 높이는 모두 다름
+					: 높이가 모두 다르기때문에 나중에 잘라내는 작업 (overflow:hidden)이 필요할 수 있음
+						: 높이가 작은 값을 찾아서 기준을 만들고 잘라내기
+						: 높이가 긴 값을 기준으로 만들면 작은 값이 늘어나는 문제가 발생함
+						
+				2) 매우중요)
+					이미지를 다룰때 width나 height : 100%만 사용하기. 나머지 px이나 padding,margin 값은 script나 css 기능만들때 방해가 너무 큼
+
+				3) 이미지가 크기때문에 공간에 맞추는 작업하기
+				
+				4) 공통크기 만들기
+					li의 크기를 240px로 설정함 (width 200 / padding 40)
+		
+					[매우 중요]
+					영역은? 오른쪽으로 늘어남
+					왼쪽으로 늘어날 수 있는 방법이 없기때문에 margin-left, padding-left 사용
+					-> 같은 의미로, 위가 아닌 아래로 늘어나기때문에 margin-top, padding-top 사용
+
+				[실제 사용 너비]
+
+					1) li는 총 4개
+					2) width:240 / 240 * 4 == 960
+					3) 글씨영역은? 420
+		*/
+
+		/*###### content (ul태그) ######*/
+		/*
+			[부모인 ul 크기 설정하기]
+
+			1) 자녀요소를 배치하고, 나중에 설정이 가능함
+			2) 처음엔 크게 설정하고 자녀를 배치함
+			3) 모두 배치가 끝난 다음 방향키를 확인하면서 작업하기
+				: 공간은 1140px까지 사용할 수 있음 (1140px 아래로가면 객체가 떨어짐)
+				: 좌우 간격을 위해 오른쪽으로 늘어나는 속성을 활용하여 너비 40px 추가함
+				: width:1180px로 수정
+
+				[매우중요]
+					방향키를 사용할때는 숫자가 없으면 적용이 어렵기때문에 반드시 1px이라도 적용하고 확인하기
+
+					100%는 px이 아니기때문에 방향키 조절할때 다른 값이 나올 수 있으므로 px로 변환하고 확인하는것도 좋은 방법
+
+			[정리]
+				content 영역에 padding-top:25px
+				높이 간격을 위해 175px 로 수정했으나 li의 높이를 100%로 설정했기때문에 
+				따라오는 문제가 발생함
+
+				간격조절만 빠르게하면 되기때문에 padding:25px 0 으로 위아래 막아주고 정리함
+		*/
+		#content{width:1180px; height:150px; padding:25px 0; margin:0 auto; border:1px solid #ccc;}
+
+		#content h3{color:#1a559b;}
+
+		/* li 공통값 만들기 */
+		#content li{width:200px; padding-left:40px; height:100%; overflow:hidden; float:left;}
+		#content li .news_img{width:100%;}
+		#content li .news_img img{width:100%;}
+
+		/* li 두번째 (news) 공간 개별 작업 */
+		/* 
+			width: 420px
+			수정하기 : width:380 + padding-left:40 
+		*/
+
+		#content .news{width:380px;}
+		#content .news .title{font-weight:700; padding-top:25px;}
+		#content .news .text{font-size:15px;}
+
+		/*###### 3번째 4번째 영역 subTitle 꾸미기 #######*/
+		#content .subTitle{width:100%; height:20px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+		/*
+			[정리_overflow:hidden 사용하기]
+				1) .subTitle 공간에서 이미지를 숨기고 확인해보면 높이 값에 의해 글자가 넘쳐있는것을 확인할 수 있음
+				2) 부모는 작고, 담겨있는 자녀가 크다면 영역에서 넘치는 문제가 발생함
+				* soldOut 이미지를 액자에서 잘라주지 않으면 지금 글자처럼 넘치는 문제가 발생함
+				* 높이값을 작게 사용하거나 너비값을 작게 사용했다면 넘치는 값 반드시 해결해주기
+				* 공간에 맞추는 작업을 하거나 overflow:hidden으로 막아주기
+
+			[글자가 공간에 넘쳤을때 ...으로 표현하기]
+				매우중요) 한 줄로 만들때 글자가 넘치면 ...으로 표기하기
+				두 줄 이상 일때는 사용자가 타이핑으로 ...작성한 값
+
+				[작업순서]
+					1) 한 줄로 표현할 수 있는 너비와 높이로 만들어져야 함
+					2) 글자가 넘치면 숨기기, overflow:hidden 작성하기
+					3)"한 줄" 표현을 위해서 빈공간을 사용하지 않도록 만들기
+						: 글자가 아래로 떨어지는것은 아래로 공간이 남아있기때문에 아래 영역으로 표현이 되는것이다.
+						: 완벽하게 아래 공간 사용하지 않고, 한줄로만 나올 수 있도록 표현하기
+						: white-space:nowrap;
+
+					4) 글자가 넘치면 ...으로 표현하기
+						text-overflow:ellipsis;
+		*/
+
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<h2>samsung content</h2>
+			<ul id="content">
+				<li class="first">
+					<h3>NEWS</h3>
+					<p class="news_img">
+						<img src="img/sam0.jpg" alt="NEWS 관련 이미지"/>
+					</p>
+				</li>
+
+				<li class="news">
+					<p class="title">
+						Samsung Engineering secures $1.23 billion major Jafurah Gas treatment facility c
+					</p>
+					<p class="text">
+						December 1, 2021 - Samsung Engineering, one of the world’s leading engineering, procurement, construction and project management (EPC&amp;PM) companies, announced, that it received a contract for the $1.23 billion Jafurah Gas Process Package #1 Project from Aramco at kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+					</p>
+				</li>
+
+				<li>
+					<h3>CSR ACTIVITES</h3>
+					<p class="subTitle">
+						Samsung Engineering launched the Eco-generation School in Abu Dhabi, UAE
+					</p>
+					<p class="news_img">
+						<img src="img/sam1.jpg" alt="CSR ACTIVITES 관련 이미지"/>
+					</p>
+				</li>
+
+				<li>
+					<h3>MEET OUR PEOPLE</h3>
+					<p class="subTitle">
+						Alvi Ovais / HSE Manager
+					</p>
+					<p class="news_img">
+						<img src="img/sam2.jpg" alt="MEET OUR PEOPLE 관련 이미지"/>
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+ </body>
+</html>

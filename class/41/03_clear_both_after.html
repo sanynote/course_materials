@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>clear_both_after</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		div{width:800px; background-color:pink; font-size:14px;}
+		.box1{width:240px; height:200px; background-color:gold; float:left;}
+		.box2{width:150px; height:150px; background-color:aqua; float:right;}
+
+		div:after{content:""; display:block; clear:both;}
+
+		/*
+			[float 성질 끊어주기]
+				
+				1) 너비와 높이 지정 (부모요소)
+				2) overflow:hidden 적용하기
+				3) 하위객체가 따라 올라간다면 clear:both 적용하기
+					(floatTEST4.html 파일 참고하기)
+
+			[문제점]
+				
+				1) overflow:hidden으로 넘치는 객체를 숨겨버리기때문에
+					더 이상 float를 끊기위해 사용하기 어려움
+
+				2) 부모요소에 높이를 강제로 지정하면 넘치는 자녀를 담지 못함
+
+			++++++++++++++++++++++++++++++++++++++++++++++
+
+				[clear:both]
+				: 따라 올라가는 하위객체에 clear:both 적용하여 float 끊어주기
+			
+			++++++++++++++++++++++++++++++++++++++++++++++
+
+				[가상객체]
+					style에서 사용자 상상에 의하여 만들어진 객체
+						(태그가 아니고, 태그에 붙어서 나타나는 객체)
+
+				[실존하는 객체]
+					ul li, dl dt dd, div, p, strong...
+
+			++++++++++++++++++++++++++++++++++++++++++++++
+
+				[clearfix:after]
+					
+					: 대상을 선택하여 하단에 가상객체를 만들고 float를 끊어주는 작업
+					: clearfix, float를 끊어 줄 대상을 선택하는 부분인데 
+					대다수 "부모요소" 를 찾아서 연결하면 해결이 가능함
+
+				[대상:after]
+					
+					1) content:"";
+						: 내용이 있는 박스를 만들거나 내용이 없는 박스를 만들때 사용하는 중요 속성
+
+						""		: 비어있음
+						" "	: 공백표현
+						"hi"	: 내용이 비어있지않고 출력이 가능함
+
+					2) display:block
+
+						: 가상의 객체를 인라인으로 만들거나, 블록으로 만들때 지정
+						: float를 끊기 위해서는 block으로 표현함 (박스 형태일때 끊기가 편리함)
+
+					3) clear:both
+
+						: 대상:after 일때만 사용이 가능함
+						: clear:both는 하단의 객체에서 끊어주는 속성으로 대상 : before 에서는 사용하기 어렵다
+
+						* 대상: after에서는 clear:both 가 선택사항
+							: float를 끊기위해서 하단에 객체를 만들어서 사용가능함
+							: float를 끊지 않고 간단하게 하단에 객체를 이어붙일때 사용하기도 함
+
+			++++++++++++++++++++++++++++++++++++++++++++++
+
+				[대상:before]
+
+				대상:before에서는 대상의 앞에서 float를 끊을 수 없기때문에 clear:both사용이 불가능함
+
+				: 대상의 앞에 객체를 이어서 연결할 때 사용함
+				: content:""; 
+				: display:block || display:inline || display:inline-block 선택사항!
+				: 대상:before는 상위객체이기때문에 clear:both 필요없음
+		*/
+	</style>
+ </head>
+
+ <body>
+	<div>
+		<p class="box1">
+			1) body 영역 (구조영역, 구조파트)<br/>
+			2) style 영역	 (표현영역, 표현파트)<br/>
+			3) script 영역 (javascript, jQuery)
+		</p>
+		<p class="box2">
+			float와 position 사용시 주의사항, position으로 위치 이동이 되면 float는 구조가
+			깨지기때문에 사용하기 어렵다.
+		</p>
+	</div>
+ </body>
+</html>

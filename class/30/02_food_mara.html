@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>food_mara</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+
+    #wrap{min-width:1025px; width:100%;}
+    #container{width:100%;}
+
+    h2{text-align:center; line-height:60px; border-bottom:2px dotted #333; color:#333;}
+    /*
+      검정색과 어두운 회색을 구분할때 기준이 되는 색상이 #333
+      : 웹 표준에 지정되어있는 색상임
+    */
+
+    /*######## food ########*/
+    /*
+      [설계하기]
+      
+      1) 부모크기 확인하기
+      2) 부모크기는 얼마를 사용할지 모르겠음
+        : 이미지크기는? 700px
+      3) li의 한 칸 크기는 300px
+    */
+
+    /*###### food (ul) #######*/
+    #food{width:1200px; height:300px; margin:20px auto 0;background-color:pink;}
+    /*
+      [마무리작업]
+
+      1) 높이는 항상 "가장 마지막" 에 수정하기
+      2) 안에 담고있는 객체들이 어떻게 변경이 될 지 모르기때문에 
+        미리 수정하면 계속 바꿔야하는 문제가 발생함
+
+      3) overflow:hidden 모든 객체를 숨기기때문에 필요하지 않다면 반드시 지우기
+        * 부모에 너비와 높이가 설정되어있다면 필요없기때문에 지워주는것이 효과적임
+    */
+
+    /*
+      기본 li 크기 : 300px
+        : padding 좌우 (20px) + width:280 
+    */
+    #food li{width:280px; padding:10px; float:left;}
+
+    /*####### li 안에있는 dl #######*/
+    #food dl{width:100%;}
+
+    /*######## dt #########*/
+    /*
+      dt는 인라인이지만 부모인 dl의 영향을 받아서 블록속성을 이용할 수 있음
+        : 액자 먼저 설정하고, img 태그 따라가도록 만들기
+        : width:100%만 지정하면 높이는 자동으로 바뀜 (비율에 맞춰서 변경됨)
+        : height:100%만 지정하면 높이는 자동으로 바뀜 (비율에 맞춰서 변경됨)
+    */
+    #food dt{width:100%;}
+    #food dt img{width:100%;}
+
+    /*######### dd 공통 #########*/
+    #food dd{width:100%; height:20px; line-height:20px; text-align:center; font-size:12px;}
+
+    /* 공통에서 바뀌는 값만 작업하기 (title) */
+    #food .title{height:40px; line-height:40px; font-size:16px; background-color:#333; color:#fff;}
+
+  </style>
+ </head>
+
+ <body>
+  <div id="wrap">
+    <div id="container">
+      <h2>마라탕</h2>
+      <ul id="food">
+        <li>
+          <dl>
+            <dt>
+              <img src="img/mara0.jpg" alt="마라탕 이미지"/>
+            </dt>
+            <dd class="title"><h3>마라탕</h3></dd>
+            <dd class="desc">마라소스로 맛을 낸 중국의 대표적 먹거리</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>
+              <img src="img/mara1.jpg" alt="마라샹궈 이미지"/>
+            </dt>
+            <dd class="title"><h3>마라샹궈</h3></dd>
+            <dd class="desc">매운맛을 중심으로 한 사천식 볶음요리</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>
+              <img src="img/mara2.jpg" alt="꿔바로우 이미지"/>
+            </dt>
+            <dd class="title"><h3>꿔바로우</h3></dd>
+            <dd class="desc">달달하고 시큼한 소스가 잘 어우러진 탕수육</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>
+              <img src="img/mara0.jpg" alt="운남 쌀국수 이미지"/>
+            </dt>
+            <dd class="title"><h3>운남 쌀국수</h3></dd>
+            <dd class="desc">고기등심과 쫄깃한 면발이 특징인 국수</dd>
+          </dl>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+ </body>
+</html>

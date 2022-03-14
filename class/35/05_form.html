@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>document</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ </head>
+
+ <body>
+	<form action="#" method="post">
+    <fieldset>
+      <legend>로그인</legend>
+      <p>
+        <label for="userid">id:</label><input type="text" id="userid" name="userid"/>
+        <input type="checkbox" id="chk" name="chk"/><label for="chk">체크</label>
+      </p>
+      <p>
+        <label for="userpw">pass:</label><input type="password" id="userpw" name="userpw"/>
+      </p>
+      <p>
+        <input id="btn" type="submit" value="로그인"/>
+      </p>
+    </fieldset>
+  </form>
+ </body>
+</html>
+<!--
+  form에서 사용되는 2가지 속성
+
+    1) action은 주소를 연결할 때 사용하는 속성으로 a 태그의 href와는 다른 역할을 한다.
+      action은 서버를 이용하는 page (control페이지) 나 db(database) 연결
+      method 넘어가는 정보를 주소줄에 보여주거나 숨겨줄 때 사용
+
+      : a의 href는 서버를 이용하지 않는 페이지, 이미지 등 어떤 값들도 연결이 가능함
+      : form은 블록요소, a는 인라인요소
+
+    2) form 안에서 그룹을 나눌때 사용하는 태그는?
+      fieldset, fieldset의 제목을 다루는 태그는 legend
+
+    3) input 태그의 경우, xhtml에서 id, type name을 사용할 수 있고
+    이외의 속성들은 css3버전이 많기 때문에 더 이상을 사용하면 에러가 발생한다.
+
+      input,
+        id는 현재 작업중인 id와 같음, header visual side textArea
+        type은 input에 어떤 작업을 할 것인지 결정해주는 속성
+        name 주소줄에 넘어갈때 입력된 내용을 담아서 넘겨주는 속성
+
+    [submit]
+      : 제출 용도로 만들어진 "버튼"
+      : input에 기입된 정보들을 action 줄에 넘겨주는 버튼
+      : 스스로 넘길 정보가 없기때문에 name 속성 필요없음
+
+    [매우중요]
+      submit, checkbox 처럼 스스로 기능하는 input 태그들의경우 a태그를 묶을 수 없음
+      : submit의 경우 전송의 역할을 해야하는데 a태그의 href가 전송하려해서 form의 action과 충돌이 발생함
+      : checkbox의 경우, 체크된 항목을 submit 버튼에 의하여 action줄에 넘겨야하는데 
+      a 태그의 href가 href 주소로 넘기려해서 checkbox에도 a태그 사용이 어려움
+
+      * 스스로 기능하는 input에는 a를 사용하기 어려움
+
+
+-->

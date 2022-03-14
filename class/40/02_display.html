@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>display</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ </head>
+
+ <body>
+	<h2>display 속성들</h2>
+	<p>
+		중요) style이나 script 영역에서만 바꿀 수 있음<br/>
+		style영역은 2차 영역, script 영역은 3차,4차 영역
+		변경되는 영역이 1차가 아닌 2,3,4차 영역이기때문에 구성이 잘못되면
+		1차 영역에서 고장나는 문제가 발생함
+	</p>
+	<p>
+		html5는 닫지 않는 태그를 만들어도 에러가 발생하지 않지만, 다른 문서에서는
+		html5 문서를 받아들이지 못하는 경우가 있기때문에 철저히 문법을 지켜야한다.
+	</p>
+	<hr/>
+	<ol class="ol1">
+		<li>
+			display:block ("2차, 3차 영역인 style, script 영역에서 너비와 높이가 설정되지않는 인라인에서 주로 사용")
+		</li>
+		<li>
+			img 태그를 담고있는 a나 span strong 등을 확인해보면 "파란색 영역" 이 잘 잡히지 않는 경우가 있음
+		</li>
+		<li>
+			위와 같은 경우, 기능 적용시 공간이 깨져보이거나 노이즈 현상이 생길 수 있기때문에
+			고장이 날 경우 "display:block" 설정하여 해결할 수 있음
+		</li>
+	</ol>
+	<ol class="ol2">
+		<li>display:inline (블록요소를 display:inline 으로 변경할 때 사용)</li>
+		<li>display:inline-block : DOM 구조에 의해서 알지 못하는 공간이 생김</li>
+		<li>알지 못하는 공간이라기보다 부모자녀를 형성하는 들여쓰기에 의하여 공간이 생김</li>
+		<li>DOM : 부모 자녀 친구 형제를 나열하기 위하여 구조상 여백이 발생함 (공간값을 기준으로 작성됨)</li>
+		<li>index == 0 번 공간을 인지하는 명칭, 서버에서 자동으로 읽을 수 있음</li>
+		<li>
+			display:inline-block은 장점이 매우 뛰어나지만 단점이 치명적이기때문에 float를 주로 사용하여
+			여백을 붙여줘야 한다.
+		</li>
+	</ol>
+	<ol class="ol3">
+		<li>display:inline, 여백을 사용할 수 없기때문에 margin과 padding을 충분히 사용해야함</li>
+		<li>display:inline은 나열되는 특징을 가지고있기때문에 장점을 잘 활용하면 쉽게 나열하기 좋음</li>
+		<li>block으로 변경하는것보다 inline으로 변경하는것이 공간에 대한 용량을 아낄 수 있음</li>
+	</ol>
+
+ </body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>float_test_1</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+
+	/*################# 초기화 #################*/
+	/*
+		1) 초기화 작업은 가장 상단에서부터 작업함
+		2) 상단에서 하단 모든 지역에 (전역(전국)) 해당하는 값 적용
+
+		중요) 초기화 작업 (태블릿pc나 스마트폰 버전에서 따로 작업하지 않음)
+			*전역의 값을 이용할 수 있어야함
+
+		3) 일부 지역에서만 가능한 작업이 지역 (서울에서만, 경기도에서만...)
+
+		++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		[아래 항목 확인하기]
+			1) .li0 으로 대상을 잡았을경우, #ts0, #ts1, #ts2...에도 있는 모든 지역의
+			.li0을 선택하게 됨 (현재 값은 전국에 있는 li0을 호출한 개념)
+
+			2) #ts0 .li0 
+				id는 해당영역에 이름을 지정하는 속성으로 한 번만 사용할 수 있다. 같은 지역을 만들지 못함
+
+					:#ts0 .li0은 #ts0에 있는 .li0만 선택할 수 있음
+					: 현재 페이지에는 .li0이 많지만 id를 적절히 사용한다면 특별히 하나씩 선택도 가능함
+
+		++++++++++++++++++++++++++++++++++++++++++++++++++
+			[공통과 개별]
+
+			1) 공통작업은 모든 값에 공통으로 하는 작업으로 비슷한 작업이 반복될때
+				필요한 작업방식이다.
+
+			2) 개별작업은 공통에서 다른 값만 작업하는것이 개별작업방식
+				중요) 개별 작업을 진행하다가 같은값이 반복되면 공통 영역 올리기
+
+			정리) 웹은 위에서 아래로 읽기때문에 공통작업을 우선하고 바뀌는 개별작업을
+			아래에서 한다.
+			
+			ex) 아래 순서대로 작업하기
+
+			li{width:200px; height:200px; background-color:blue;} : 모든 li태그에 공통작업
+			.li{background-color:pink;}	:	아래에 바뀐 값만 적용하는 개별작업
+	*/
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+
+	/*################# wrap #################*/
+		#wrap{min-width:320px; width:100%;}
+		
+	/*
+		[기능 적용과 기능 없는 경우의 사이즈 설정]
+			1) 로고의 경우, 대다수 해당하는 로고 크기 근처에서 영역을 설정하게 됨
+				해당하는 영역보다 커지거나 다른 영역까지 영역이 확대되면
+				잘못된 기능이 출력될 수 있음
+
+				* 기능이 들어가는 부분은 로고가 아니어도 근처까지만 영역을 잡아주어야 한다
+
+			2) 기능이 없을경우, 영역을 빼앗기지 않기위하여 width:100% 설정하고
+				가운데 배치하고 끝내는 작업을 한다. 
+	*/
+
+	/*
+		"기능이 없기때문에" 필요한 부분만 만들어주고 작업을 완료함
+		"기능이 없을때는" 높이작업보다 line-height (기둥)만 세우는 작업을 진행함
+
+		"기능이 있을경우" 사이즈 작업 (너비,높이, line-height 등의 작업) 필수
+	*/
+		h2{width:100%; text-align:center; line-height:60px;}
+
+	/*################# ts0 (지역) #################*/
+	/*
+		1) 전체너비 : 1000px
+		2) li의 갯수 : 5개
+
+		[계산하기]
+
+			1000 / 5 == 200px
+
+	*/
+
+		#ts0{width:1000px; height:100px; background-color:#000; margin:50px auto 0;}
+		#ts0 li{width:200px; height:100%; line-height:100px; background-color:#00f; color:#fff; text-align:center; float:left;}
+
+	/*################# ts0의 개별작업 #################*/
+		#ts0 .li1{background-color:#00c;}
+		#ts0 .li2{background-color:#00a;}
+		#ts0 .li3{background-color:#007;}
+		#ts0 .li4{background-color:#005;}
+
+
+	/*################# ts1 (지역) #################*/
+	/*
+		1) 전체너비 : 600px
+		2) li의 갯수 : 3개
+
+		[계산하기]
+
+			600px / 3 == 200px
+
+		[정리]
+			위에 객체의 부모요소가 자녀요소의 float를 끊지않으면
+			하단의 객체에서 margin 값 적용이 어려움
+
+			상단의 객체가 공중에 떠 있는 상태로 그 아래 겹치게 됨
+	*/
+
+		#ts1{width:600px; height:200px; background-color:gold; margin:50px auto 0;}
+		#ts1 li{width:200px; height:100%; line-height:200px; background-color:green; text-align:center; float:left;}
+
+	/*############# ts1에 속해있는 첫번째 li의 p 태그들 작업하기 #############*/
+	/*
+		[작업순서]
+			1) 큰 공간이 되는 li들 먼저 나열하고, 그 안에 작은 박스들 나열하기
+			2) float를 적용하면 항상 부모요소의 사이즈가 잘 잡히는지 확인하기
+
+		[p태그 배치하기]
+
+			1) li 한칸의 크기는?
+				: 200*200
+
+			2) p태그는 4개
+				: 위에 2개, 아래 2개
+
+			중요_1) line-height : % 적용이 어려움
+			중요_2) p태그도 float로 붙였기때문에 부모 찾아서 사이즈 확인하기
+	*/
+		#ts1 .li0 div{width:100%; height:100%;}
+		#ts1 .li0 div p{width:50%; height:50%; line-height:100px; background-color:#0a0; float:left;}
+
+	/*################# p태그들 배경색상 변경 #################*/
+		#ts1 .li0 div .li0_p1{background-color:#0b0;}
+		#ts1 .li0 div .li0_p2{background-color:#0c0;}
+		#ts1 .li0 div .li0_p3{background-color:#070;}
+
+
+
+	/*################# ts1의 li들 개별작업 (배경색상) #################*/
+		#ts1 .li1{background-color:#aca;}
+		#ts1 .li2{background-color:#a7a;}
+
+
+	/*################# ts2 (지역) #################*/
+	/*
+		1) 전체 너비: 1280px
+		2) li의 갯수 : 3개
+
+		[계산하기]
+
+			1280 / 3 == 426.66666..
+
+		[중요]
+			반올림하여 427로 계산
+			427*3 == 1281px
+			: 제시된 값보다 커지기때문에 문제가 발생함
+
+			*float는 1px || 0.1px이라도 넘치면 배치가 어려움
+
+		[소수점 제외하기]
+			px에서 소수점을 사용하면 배치도 어렵지만 그 안에 담겨야하는
+			자녀요소들은 더 세분화 될 수 있음
+
+		+++++++++++++++++++++++++++++++++++++++++++++++
+
+		[계산법1]
+
+			: 소수점 제외하고 사용하기
+
+			426 * 3 == 1278px, 2px 남아버림
+			: 나머지 공간에 1px을 증가시켜 배치하기..
+			
+		[계산법2]
+
+			: 첫번째 li가 크기때문에 절반으로 보면서 작업
+			
+			1280px / 2 == 640px (2군데로 배분)
+
+			: 첫번째 li가 640px 사용
+			: 두번째, 세번째 li가 320px 씩, 2군데 배분하기
+
+		[계산법3]
+
+			: 첫번째 공간을 600px 지정
+				컨텐츠 영역 200px, 글씨영역 400px
+			
+			: 680px 남은 값을 나머지 두번째, 세번째 li에 340px씩 배분하기
+			
+	*/
+		#ts2{width:1280px; height:200px; margin:50px auto 0;}
+
+		/* 첫번째 공간을 제외하고 두번째 세번째 li가 같기때문에 공통으로 사용함 */
+		/* 공통 */
+		#ts2 li{width:340px; height:200px; line-height:200px; background-color:aqua; text-align:center; float:left;}
+
+		/* 첫번째 li가 크기때문에 개별작업 (600px)*/
+		#ts2 .li0{width:600px;}
+
+		/*############ 첫번째 li의 "글씨영역"과 "컨텐츠영역" 작업하기 ##############*/
+
+		/*
+			[중요]
+
+			#ts2 .li0 div 를 작성하면 부모인 div 자녀인 div 모두 선택되는 문제 발생
+			부모의 class명부터 호출하여 작업하기
+		
+			[정리]
+
+			자녀에서 float를 사용해도 부모에서 float를 끊어주고, 그 안의 다른 자녀에 float를 
+			적용해도 그 안의 부모 찾아서 float 끊어주기
+		*/
+			#ts2 .div_parent{width:100%; height:100%;}
+			#ts2 .div_parent .li0_div0{width:200px; background-color:#fc0; float:left;}
+			#ts2 .div_parent .li0_div1{width:400px; background-color:#fa0; float:left;}
+
+		/*############ ts2의 li태그 중에 배경색상 바꾸기 (개별작업) ##############*/
+			#ts2 .li2{background-color:#ff0;}
+
+		/*#################### ts3 (지역) ###################*/
+		/*
+			1) 전체너비 :
+			2) li의 갯수 :
+
+			[계산하기]
+
+			1100 / 4 == 275px
+
+			: 절반으로 나눠서 배치하는 방식
+			: 큰 영역을 얼마로 사용할 것인지 미리 지정하는 방식
+			: 나눠진 값을 배분하는 방식__0
+		*/
+
+			#ts3{width:1100px; height:200px; margin:50px auto 0;}
+			#ts3 li{width:254px; margin-right:1px; height:100%; line-height:200px; background-color:pink; 
+			text-align:center; float:left;}
+
+		/*
+			[중요]
+				margin, padding, border 모두 영역을 차지하는 값으로 해당하는 값만큼 빼주지 않으면
+				1px때문에 공간 배치가 어렵다.
+		*/
+		/*############ ts3의 두번째 li 작업하기 ##############*/
+		/*
+			[영역 배분 받기]
+
+			1) li태그는 274px 설계가 되어있고 4개가 있음
+			2) 254px, 20px씩 남김, 총 남은 값은?
+				20px * li(4개) == 80px 남음
+
+			3) li1 공간 254 남은 값 80px 더하기
+				width: 334px;
+		*/
+			#ts3 .li1{width:334px; background-color:red; color:#fff;}
+
+		/*#################### ts4 (지역) ###################*/
+		/*
+			1) 전체 너비: 1200px
+			2) li의 갯수: 4개
+
+			[계산하기]
+				
+				1200 / 4 == 300
+		*/
+
+			#ts4{width:1200px; height:300px; margin:50px auto 0;}
+			#ts4 li{width:300px; height:100%; line-height:300px; text-align:center; background-color:aqua; float:left;}
+
+		/*################# 개별 작업하기 (두번째, 네번째)##################*/
+		/*
+			1) li크기를 300px 공통으로 만들었기때문에
+				margin, padding, border 어떤 값이 적용되도 해당 값을 유지해야 함
+
+			2) 개별작업을 하더라도 크기 유지하기
+
+			3) border: 5px solid red
+				: 4방향 모두 적용한 상태
+				: 좌우 10px
+				: 위아래 10px
+
+			4) 해당하는 li의 크기는 300*300 으로 border가 차지한만큼 빼주기
+
+			매우 중요) margin, padding, border를 사용하다보면 너비는 모두 맞추지만 
+			높이 부분을 작업하지 않아서 문제가 되는 경우가 많이 발생함
+
+			* float의 경우 계단현상이 발생하기때문에 매우 주의해야한다.
+			* float의 특징: 약간의 공간이라도 남아있으면 바로 하단의 객체를 잡아당기는
+				특징이 있어서 계단현상이 발생함
+		*/
+			#ts4 .li1{border:5px solid #f00; width:290px; height:290px;}
+			#ts4 .li3{border:5px solid #00f; width:290px; height:290px;}
+
+
+		/*#################### ts5 (지역) ###################*/
+		/*
+			1) 전체너비 : 900px
+			2) li의 갯수 : 3개
+
+			[계산하기]
+
+			900 / 3 == 300px
+
+			[border 사용시 주의사항]
+				: border로 확인하는 작업을 할 경우, 확인이 끝났으면 바로 지워주기
+				: 브라우저의 경우, 메모리와 쌓이는 값들이 있어서 border의 경우 제일 확실히 인식되는 경우가 생김
+				: 나중에 지울경우, 객체가 흘러넘치는.. 박스 안에 담지 못하는것처럼 터지는 모양이 되어버림
+		*/
+			#ts5{width:900px; height:400px; line-height:400px; margin:50px auto; background-color:pink;}
+			#ts5 li{width:300px; height:100%; line-height:400px; text-align:center; background-color:#ccc; float:left;}
+
+
+		/*#################### li태그 2번째 공간의 p태그들 작업하기 ###################*/
+		/*
+			p태그들은 위에 2개 아래 하나 배치
+
+			: 위에 2개는 절반씩 너비를 사용중
+			: 아래 하나는 전부 너비를 사용중
+		*/
+		#ts5 .ts5_parent{width:100%; height:100%;}
+		#ts5 .ts5_parent p{width:50%; height:50%; line-height:200px; background-color:green; color:#fff; float:left;}
+
+		/*#################### p태그들 작업하기 ###################*/
+		#ts5 .ts5_parent .li1_p1{background-color:pink;}
+		#ts5 .ts5_parent .li1_p2{width:100%; background-color:gold; color:#333;}
+
+		/*
+			[총 정리]
+
+				1) li태그 안에 자녀요소가 있더라도 큰 틀부터 제작하기
+				2) float를 사용했다면 반드시 "부모요소 확인" 하기
+				(border, 검사창을 이용하여 사이즈 확인)
+
+				3) 큰 틀이 만들어지면 자녀요소 만들기
+				4) 자녀요소에도 float를 사용할경우, 다시 그 자녀만 관리하는 부모가 있는지
+				확인하고 float 끊어주기
+
+				5) 기능이 적용될 수 있기때문에 float를 관리해주는 부모를 만들어주는것이
+				관리하기 편리하고 안전함
+
+			[웹의 중요부분]
+
+				1) 디버깅 작업 (오류 찾는 작업)
+				2) float, position 에 대한 "공간의 오류"가 있다면 어떠한 방법으로라도 확인을 반드시 해야함
+				3) javascript의 경우엔 "함수와 메서드"가 제대로 작동하지 않는 원인을 찾아야 함
+				4) 디버깅 작업시 중요 ("주석글" 이용하기, "display 이용"하기, console 이용하기, 알림창 이용하기)
+				5) 서버의 경우, 서버 신호 이용하기 (404 페이지 없음! 백엔드, 풀스텍에서 주로 하는 작업)
+		*/
+
+
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<h2>floatTest1 : 기본이 되는 틀은 ul li로 각각 만들기</h2>
+		
+		<!--width: 1000px로 작업하기-->
+		<ul id="ts0">
+			<li class="li0">공간0</li>
+			<li class="li1">공간1</li>
+			<li class="li2">공간2</li>
+			<li class="li3">공간3</li>
+			<li class="li4">공간4</li>
+		</ul>
+
+		<!--width: 600px로 작업하기-->
+		<ul id="ts1">
+			<li class="li0">
+				<div>
+					<p class="li0_p0">p태그 0</p>
+					<p class="li0_p1">p태그 1</p>
+					<p class="li0_p2">p태그 2</p>
+					<p class="li0_p3">p태그 3</p>
+				</div>
+			</li>
+			<li class="li1">li태그 1</li>
+			<li class="li2">li태그 2</li>
+		</ul>
+
+		<!--width: 1280px로 작업하기-->
+		<ul id="ts2">
+			<li class="li0">
+				<div class="div_parent">
+					<div class="li0_div0">
+						컨텐츠 영역
+					</div>
+					<div class="li0_div1">
+						글씨 영역
+					</div>
+				</div>
+			</li>
+			<li class="li1">li태그 1</li>
+			<li class="li2">li태그 2</li>
+		</ul>
+
+		<!--width: 1100px로 작업하기-->
+		<ul id="ts3">
+			<li class="li0">숫자 1</li>
+			<li class="li1">숫자 2</li>
+			<li class="li2">숫자 3</li>
+			<li class="li3">숫자 4</li>
+		</ul>
+
+		<!--width: 1200px로 작업하기-->
+		<ul id="ts4">
+			<li class="li0">test0</li>
+			<li class="li1">test1</li>
+			<li class="li2">test2</li>
+			<li class="li3">test3</li>
+		</ul>
+
+		<!--width: 900px로 작업하기-->
+		<ul id="ts5">
+			<li class="li0">test0</li>
+			<li class="li1">
+				<div class="ts5_parent">
+					<p class="li1_p0">p태그 0</p>
+					<p class="li1_p1">p태그 1</p>
+					<p class="li1_p2">p태그 2</p>
+				</div>
+			</li>
+			<li class="li2">test2</li>
+		</ul>
+	</div>
+ </body>
+</html>

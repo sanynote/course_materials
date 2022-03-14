@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>display2</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*
+			[1] 여백초기화
+			[2] ul li 너비 180 높이 40
+				배경색상 파란색 적용, 글자색상 16진법 (하얀색)
+				글자가운데 정렬, line-height 적용 X
+
+		*/
+		
+		li{list-style-type:none;}
+		ul li{width:180px; height:40px; line-height:40px; background-color:#00f; color:#fff; text-align:center;}
+
+		/*
+			문제점:
+				1) ul li을 설정하고, 여백을 제외한 후 확인하면 앞에 display2 영역이 display1 영역앞에 나열되어있는것을 알 수 있음
+					: 공간과 공간이 겹쳐있음 (웹은 3D)
+				2) 겹쳐서 뒤에 있는 li가 표현이 되지 않음
+
+			해결:
+				line-height 행간, 글자와 글자 사이의 높이 간격
+				line-height 글자가 한 줄일 경우, 해당하는 객체 세로 방향 가운데 배치할 때 사용
+				line-height 어떤 객체의 중심 역할, 겹쳐있을때 펼쳐보일 수 있음 (기둥역할)
+
+		*/
+
+		ul li ul{display:none;}
+		ul li:hover ul{display:block;}
+
+		/*
+			display:none은 해당객체를 화면에서 완전히 숨길 때 사용함
+			화면에서 마우스를 올리고싶어도 객체가 없음
+		*/
+
+	</style>
+ </head>
+
+ <body>
+	<ul>
+		<li>
+			display
+			<ul>
+				<li>display2</li>
+			</ul>
+		</li>
+	</ul>
+	<hr/>
+
+	<h2>display 정리</h2>
+	<div>
+		<p>display:inline</p>
+		<p>display:block</p>
+		<p>display:inline-block</p>
+		<p>display:none</p>
+	</div>
+	<hr/>
+
+	<h2>display:none과 display:block</h2>
+	<div>
+		<p>
+			display:none 화면에서 필요한 영역만 남기고 방해되는 부분을 숨길 수 있음<br/>
+			오류가 나거나 에러가 발생했을 때 화면에서 숨겨놓을 수 있음.
+		</p>
+		<p>
+			1) display:block, 인라인요소를 block으로 만들 때 사용<br/>
+			2) display:block, display:none으로 사라진 객체를 화면에 다시 나타나게 할 때 사용
+		</p>
+		<p>
+			매우중요) 숨겨진 객체는 화면에 없음, 마우스를 올릴 수 없음
+		</p>
+		<p>
+			정리) 객체를 만들때, 부모 자녀를 만들어주는 이유는? 자녀가 사라지면 부모에서 해결이 가능함
+		</p>
+		<p>
+			margin-top, float, position 화면에서 사라지는 객체 등등 , 모두 부모요소에서 해결이 가능함
+		</p>
+	</div>
+	<hr/>
+
+	<h2>display:none 사용시 주의사항</h2>
+	<p>
+		headline 태그 사용이유? html5 에서 목차생성을 위한 필수태그
+	</p>
+	<p>
+		* 해당 페이지를 검색할때도 목차와 meta 태그로 접근이 가능함
+	</p>
+	<p>
+		display:none은 화면에서 완전히 사라짐
+	</p>
+	<p>
+		h1~h6 까지 사용하는 headline 태그에서 display:none을 사용하면<br/>
+		목차생성은 물론 해당 페이지를 인지하지 못할 수 있음
+	</p>
+	<p>
+		strong, em (스크린 리더기가 읽을 수 있는 태그)<br/>
+		display:none으로 숨기고, display:block으로 다시 나타나게 할 경우<br/>
+		숨겨졌을때는 읽지 못하다가 나타날때 다시 읽음
+	</p>
+	<p>
+		display:none은 많이 사용하는 효과로 꼭 필요한 영역에서 사용중인지<br/>
+		인지가 가능해야하는 영역에 무분별하게 사용중이지 않은지 확인하면서 작업하기! <br/>
+		headline 태그, strong, em 태그에서 모두 사용가능하지만<br/>
+		다른 태그들도 숨기고 나타날 수 있기때문에 꼭 필요한 순간인지 확인하기
+	</p>
+ </body>
+</html>

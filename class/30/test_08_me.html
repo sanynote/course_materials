@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>test</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    h2{padding-top:30px;}
+    /*##### no4 ######*/
+      #no4{width:100%;}
+      #no4 div{width:630px; height:340px; background-color:pink; margin:0 auto;}
+
+      #no4 ul{width:100%; height:100%;}
+
+      #no4 li{width:200px; height:300px; line-height:340px; text-align:center; float:left; background-color:#efefef;}
+      #no4 .li0{border:20px solid #ff0; border-left:0;background-color:#caf;}
+      #no4 .li1{overflow:scroll;background-color:#aef;}
+      #no4 .li2{border-right:10px solid #00f; border-bottom:10px solid #00f;background-color:#dd0;}
+
+    /*###### no7 ######*/
+      #no7{width:100%;}
+      #no7 div{width:310px; height:310px; margin:0 auto;}
+      #no7 ul{width:100%; height:100%;}
+
+      #no7 li{width:150px; height:150px; line-height:150px; text-align:center; float:left; background-color:#ccc;}
+      #no7 .li0{border:5px solid #ff0; line-height:160px;}
+      #no7 .li1{background-color:#efefef;}
+      
+
+    /*###### no25 ######*/
+      #no25{width:100%;}
+      #no25 div{width:660px; height:200px; margin:0 auto; border:1px solid #ccc;}
+
+      #no25 ul{width:100%; height:100%;}
+      #no25 li{width:200px; padding-left:20px; line-height:200px; float:left; background-color:#caf;}
+
+
+    /*##### no31 ######*/
+    #no31{width:100%;}
+    #no31 p{width:200px; height:20px; background-color:pink; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+  </style>
+ </head>
+
+ <body>
+  <h2>문제01) 현재 사용중인 문서의 버전은? (비표준과 표준버전 구분하여 작성하기)</h2>
+  <p>현재 xhtml 을 사용중이고, xhtml은 xml1.0 과 html4.0가 합쳐진 것으로 xhtml 1.0버전이다. 즉 표준버전이다.</p>
+
+  <h2>문제02) #content h3와 h3의 차이점은?</h2>
+  <p>#content h3 는 id가 content인 영역의(지역) h3를 호출한 것이고, h3는 전역의 h3를 호출한 것이다.</p>
+
+  <h2>문제03) 웹이 읽어주는 순서는?(왼,오,위,아래 구분하여 작성)</h2>
+  <p>웹은 왼쪽에서 오른쪽으로, 위에서 아래로 읽힌다.</p>
+
+  <h2>문제04) 아래 순서에 따라서 문제 풀기</h2>
+  <ul>
+    <li>01) 현재 ul이 끝난 부분 아래에 전체 사용하는 영역 만들기</li>
+    <li>02) 실제 사용하는 div 만들기(600*300), 배경색상은 알아서 작성하기</li>
+    <li>03) 실제 사용하는 div 태그 안에 ul li li li 만들기</li>
+    <li>04) li 태그들 크기는 200*300 만들기, 옆으로 배치하기</li>
+    <li>05) 부모요소 크기 나타나는지 확인하기</li>
+    <li>06) 실제 사용하는 div 화면 가운데 이동하기</li>
+    <li>07) 첫번째 li에는 위쪽, 아래쪽, 오른쪽, border:20px solid #ff0 설정하기</li>
+    <li>08) 두번째 li에는 scroll 나타나도록 만들기</li>
+    <li>09) 세번째 li에는 아래쪽과 오른쪽만 border:10px solid #00f 설정하기</li>
+    <li>10) 글자는 x,y축 가운데 두고, li태그들마다 배경색상 각각 다르게 설정하기</li>
+  </ul>
+  <div id="no4">
+    <div>
+      <ul>
+        <li class="li0">li0</li>
+        <li class="li1">li1</li>
+        <li class="li2">li2</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>문제05) 비슷한 정보의 값들을 모아주는 영역명은?</h2>
+  <p>section영역입니다.</p>
+  <h2>문제06) 문제 05번 영역에 필수로 작성하는 태그와 이유는?</h2>
+  <p>headline 태그를 필수로 작성합니다. 그 이유는 어떤 값들을 모아두었는지 제목으로 표시해두어야하기때문입니다.</p>
+
+  <h2>문제07) 아래 순서에 따라서 문제 풀기</h2>
+  <ul>
+    <li>01) 현재 ul이 끝난 부분 아래에 전체 사용하는 영역 만들기</li>
+    <li>02) 실제 사용하는 div 만들기 (400*400), 배경색상 알아서 작성, 화면 가운데 두기</li>
+    <li>03) 실제 사용하는 div 태그 안에 ul li li li li 작성하기</li>
+    <li>04) 글자 x,y축 가운데 두기</li>
+    <li>05) li들 위에 두 개, 아래 2개 배치되도록 만들기</li>
+    <li>06) 첫번째 li와 세번째 li에는 border:5px solid #ff0 적용하기</li>
+    <li>07) 나머지 두번째와 네번째는 각각 색상만 변경하기</li>
+  </ul>
+  <div id="no7">
+    <div>
+      <ul>
+        <li class="li0">li0</li>
+        <li class="li1">li1</li>
+        <li class="li0">li2</li>
+        <li class="li1">li3</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>문제08) % 작업시 우선되어야하는 단위와 이유는?</h2>
+  <p>%를 사용하기 위해서는 기준이 되는 px가 먼저 작성되어한다.</p>
+
+  <h2>문제09) header 영역 작성 시 필수로 작성되어야하는 영역명은?</h2>
+  <p>네비게이션 영역</p>
+  <h2>문제10) container 영역에 필수로 작성되는 영역명은?</h2>
+  <p>visual 영역</p>
+
+  <h2>문제11) 문제 10번의 영역을 만드는 이유는?</h2>
+  <p>container 영역에는 시선을 끄는 영역이 필요하다.</p>
+  <h2>문제12) 카피라이터가 작성되어야하는 영역명은?</h2>
+  <p>footer 영역</p>
+
+  <h2>문제13) font 축양형 표현방법 전체 다 작성하기 (ex) font:italic bold...)</h2>
+  <p>font: italic bold 14px/1.5em arial,batang,sans-serif</p>
+  <p>font-style, font-weight, font-size/line-height, font-family</p>
+
+  <h2>문제14) select 태그에서 미리 선택되도록 만드는 속성은?</h2>
+  <p>selected="selected"</p>
+  <h2>문제15) 블록요소 중 유일하게 속성을 가지는 블록요소는?</h2>
+  <p>form 태그가 블록요소 중 유일하게 속성을 가진 태그이다.</p>
+
+  <h2>문제16) 문제 15번 태그의 중요속성 2가지 작성하기</h2>
+  <p>action속성과 method속성이 중요속성이다.</p>
+  <h2>문제17) 문제 16번의 속성 중 주소 역할을 하는 속성은?</h2>
+  <p>action속성이 주소 역할을 한다.</p>
+
+  <h2>문제18) 로그인과 회원가입 페이지를 만들었다면 문제 16번의 속성 중 무엇을 사용해야하고, 어떤 값을 기입해야할까?</h2>
+  <p>method 속성을 사용하여 post 를 기입해야한다.</p>
+
+  <h2>문제19) 입력받을 때 사용하는 태그는?</h2>
+  <p>input 태그</p>
+  <h2>문제20) 문제 19번과 짝을 맞추는 태그는?</h2>'
+  <p>label 태그</p>
+
+  <h2>문제21) 문제 20번에 사용한 태그의 중요속성은?</h2>
+  <p>for을 사용하여 input의 id와 동일하게 이름을 맞추면 되기때문에 위치가 중요하지 않다.</p>
+
+  <h2>문제22) 검색을 할 수 있도록 설정하려한다. 어떤 속성에 무슨 값을 기입해야할까?</h2>
+  <p>action 속성에 검색값을 기입해야한다.</p>
+
+  <h2>문제23) background-image와 img 중 "기능" 적용 시 적절한 요소는? 그 이유는?</h2>
+  <p>
+    기능을 적용할 시, img태그가 적절하다. 그 이유는 클릭하면 그 영역만큼 작동해야하는데 background-image는 그 영역 전체를 잡아주기때문이다.
+  </p> 
+
+  <h2>문제24) 너비 100% 영역에 margin:0 auto 사용이 어려운 이유는?</h2>
+  <p>
+    실제 사용영역이 잘려있어야 화면의 중앙으로 배치할 수 있는데, 너비 100%라는것은 영역의 처음부터 끝까지 다 차지한다는<br/>
+    뜻이기때문에 위치가 더 이동할 수 있는 너비가 없다. 그래서 margin:0 auto를 사용할 수 없다.
+  </p>
+
+  <h2>문제25) 아래 순서에 따라 문제 풀기</h2>
+  <ul>
+    <li>01) 현재 ul이 끝난 부분 아래에 전체 사용하는 영역만들기</li>
+    <li>02) 실제 사용하는 div 태그 만들기(600*200), 화면 가운데 두고, border:1px solid #ccc 적용하기</li>
+    <li>03) ul li li li 만들기</li>
+    <li>04) li 너비 200px로 만들고, padding-left:20px 적용되어있도록 만들기</li>
+    <li>05) li 배경색상은 알아서 작성하고, y축만 글씨 가운데 두기</li>
+    <li>06) 부모영역의 너비, 높이 확인하기</li>
+  </ul>
+  <div id="no25">
+    <div>
+      <ul>
+        <li>li0</li>
+        <li>li1</li>
+        <li>li2</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>문제26) 미니 서버를 가지고있는 브라우저는?</h2>
+  <p>파이어폭스</p>
+  <h2>문제27) 화면을 X자로 그려놓고 브라우저가 빠져나갔는지 확인하는 작업은?</h2>
+  <p>크로스 브라우징 작업입니다.</p>
+
+  <h2>문제28) font-weight가 700으로 적용된 값에 normal을 적용하려한다. 해당하는 값 숫자로 나열하기</h2>
+  <p>400,500,600 이 normal범주에 해당합니다.</p>
+  <h2>문제29) strong 태그 안에 em 태그 사용이 가능할까? 불가능하다면 이유는?</h2>
+  <p>strong태그는 강하게 읽어주는 인라인요소, em태그는 4~50 정도로 읽어주는 인라인요소라서 strong안에 em사용은 불가능하다.</p>
+
+  <h2>문제30) 수평정렬시 사용하는 효과명은?</h2>
+  <p>justify를 수평정렬시 사용합니다.</p>
+
+  <h2>문제31) 아래 순서에 따라 문제 풀기</h2>
+  <ul>
+    <li>01) 현재 ul이 끝난 부분 아래에 전체 사용하는 영역 만들기</li>
+    <li>02) 안에 p태그 만들고, 너비는 200px, 높이는 20px 설정하기, 배경색상은 pink 적용</li>
+    <li>03) p태그 안에, background-image는 기본적으로 반복이 일어나고, background-repeat으로 제어할 수 있다.라는 내용 붙여넣기</li>
+    <li>04) 글자가 ...으로 표현될 수 있도록 만들기</li>
+  </ul>
+  <div id="no31">
+    <p>
+      background-image는 기본적으로 반복이 일어나고, background-repeat으로 제어할 수 있다.
+    </p>
+  </div>
+
+  <h2>문제32) 아래 길이 값 작성하기</h2>
+	<p>a b c d: 7</p>
+	<p>빈칸도 객체에 포함된다: 5</p>
+	<p>글자는 띄워쓰기가 중요 하다: 7</p>
+
+	<h2>문제33) strict.dtd 에서 사용하는 언어는?</h2>
+  <p>엄격문서에서는 영어 소문자를 사용한다.</p>
+	<h2>문제34) 한국어와 영어로만 글을 작성하려 한다 charset을 무엇으로 변경해야 할까?</h2>
+  <p>euc-kr로 변경한다.</p>
+	<h2>문제35) 초기화를 작성하는 이유는?</h2>
+  <p>값을 초기화하지 않으면 화면에 빈 공간들(블릿기호, margin과 padding..)이 브라우저에 보여서 작업을 방해하기때문에 초기화해야한다.</p>
+
+ </body>
+</html>

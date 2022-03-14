@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>naver_header</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+        a:link, a:visited{text-decoration:none; color:#333;}
+        a:hover, a:focus{text-decoration:underline;}
+
+        header, nav{display:block;}
+
+        /*
+            [시멘틱태그들, 태그로 사용할 때 인식률 높이기]
+
+                1) 기본적으로 블록요소는 처음부터 끝까지 영역을 차지함
+                2) width: 100% 지정하지 않으면, 공간을 빼앗기는 것을 알 수 있음 (float)
+
+                3) 기존의 div, p, span... 등등 xhtml에서 배운 태그들은 모두 인식률이 매우 높음
+                    :: 웹 코딩이 처음 만들어질때부터 있던 태그들로 인식률이 높음
+
+                4) html5의 시멘틱 태그들은 어느 순간 갑자기 등장한 태그들로 기존의 브라우저들이 
+                인식을 못하는 문제가 발생함
+
+                * header, section, article, footer, nav 등은 모두 블록요소로 display:block을
+                설정하여 블록 속성임을 인지시킴
+
+                * video, audio, 해당하는 태그들은 인라인요소로 display:inline으로 설정하여
+                인라인 속성임을 인지시킴
+        */
+
+        /*############ wrap #############*/
+        /*
+            1) 2018년도 기준으로 웹을 구성하는 모양이 달라짐
+            2) 2018년도부터 전체 사용영역과 가운데 모아주는 영역을 구성함
+                : 필요한 영역만 새로 만들어서 조립하는 형태로 웹을 구성함
+
+            3) 구형 pc나 구형 디바이스를 사용하는 회사의 경우,
+
+                [기존의 해상도]
+                    * "960" 980 940 중에 사용하는 경우가 많음
+                    * 960px (디자인)
+
+                [현재의 해상도]
+                    * 현재는 1200~1280을 실제로 사용하는 영역으로 많이 구성함
+                    * 현재의 pc들이 해상도가 좋아졌다고 해도 기업에서 사용되는 pc는 
+                    예전의 것들이 종종 있음
+                    * 예전의 pc들은 화면을 출력했을 때 브라우저 x y 축 어디에도 스크롤이 생기지않도록 페이지를 구성함
+                    * 한 화면에 header con foo 까지 모두 보이는 페이지가 우대사항이었음
+
+            4) 현재의 페이지들은 공간을 남기기보다 전체를 사용하면서 채우는 페이지들을 구성함
+
+        */
+            #wrap{min-width:960px; width:100%;}
+
+        /*########## header (전체사용영역) ###########*/
+            #header{width:100%;}
+
+        /*########## head_inn (실제사용영역) ###########*/
+            #head_inn{width:960px; margin:0 auto; background-color:gold; position:relative;}
+
+        /*############# h1(로고) #############*/
+        /*
+            [로고 배치하기]
+
+                1) position:absolute 배치?
+                2) float 배치?
+
+                * 네이버의 경우, 전통적으로 absolute 방식을 사용함
+
+                매우중요)
+                    absolute 방식으로 사용한다면 이미지크기에 타이트하게 설정하기
+                    : position은 상대와 겹칠 수 있기때문에 항상 영역을 타이트하게
+                    사용하거나 어디까지 사용하는지 알아야한다.
+
+                * 로고크기 : 210 * 78
+                * 주의) absolute를 사용하면 이미지크기만큼 영역을 자동으로 잡아주지만
+                실제로 작성한 적이 없기때문에 공간이 커질 수 있음
+        */
+        h1{width:210px; height:78px; position:absolute; left:100px; top:0;}
+
+        /*########## form 영역 ##########*/
+        /*
+            [form 크기 설정하기]
+
+                1) 실제 사용영역 : 960
+                2) 로고가 차지하는 너비 방향 값
+                    로고의 너비 210 + left:100 == 310
+
+                3) 960-310 == 650(form 크기)
+                4) 높이는 로고 크기에 맞추기 : 78px
+        */
+
+            #head_inn form{width:650px; height:78px; background-color:pink; margin-left:310px;}
+            #head_inn form fieldset{border:none;}
+            #head_inn form legend{display:none;}
+
+            /*
+                [input 공간 호출하기]
+                    1) input 공간에 있는 id는 현재 사용했던 id와 같음
+                        #header #footer #textArea 호출한 것처럼 호출하기
+
+                    2) input 태그 사용시 주의사항
+                        : id값의 중복이 많아질 우려가 있음
+
+                [search 영역 배치하기]
+
+                    1) input태그의 경우, 자동으로 만들어진 border는 1px이 아님
+                        생각보다 영역을 크게 차지함
+                        
+                    2) 사용자가 재설정하기
+
+                    3) 실제 사용중인 높이 78
+                        설계된 search 영역의 높이 34
+
+                        :44px 남음
+            */
+
+            #head_inn form #search{width:325px; height:30px; border:2px solid #23b400; margin:22px 0;}
+            #head_inn form #button{width:50px; height:34px; border:none; background-color:#23b400; color:#fff; margin-left:5px; vertical-align:middle;}
+
+            /*
+                [vertical-align 적용하기]
+
+                    1) 적용할 대상이 "인라인요소" 일 때만 사용이 가능함
+                    2) horizontal은 가로방향, vertical은 세로방향
+
+                    * 선택한 대상이 "인라인 요소" 이어야하고, 옆에 비교대상도 "인라인"이어야 적용이 가능함
+                    * 대상의 왼쪽 값과 비교함
+
+                    : 대상이 가운데 있고 좌우에 인라인요소가 배치되어있다면 ..
+                        대상인 객체는 왼쪽의 값을 우선 확인한다.
+
+                    : 왼쪽에 비교할 대상이 없고, 오른쪽에 비교할 대상이 있다면.. 오른쪽을 비교한다.
+
+                +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                    3) vertical-align 속성은 top, middle, bottom
+
+                        중요) middle 로 중간에 맞지 않을 경우, top bottom으로 맞출 수 있음
+                            의외로 middle보다 다른 값들이 적용되는 경우가 종종 있음
+
+                    4) 숫자 적용 가능함
+                    5) 정교하게 작업할 경우, vertical-align을 사용하기보다 margin, padding position 등으로 맞춘다.
+
+                    6) vertical-align이나 line-height의 경우 세로 방향으로 빨리 맞출 때
+                    사용하는 방법으로, 나열된 객체와 비교할 객체가 인라인일때 사용하는 방식
+
+                    7) * 현재 방식은 인라인요소끼리 비교하여 빠르게 배치할 때 사용하는 방식
+
+            */
+
+        /*############# header / quick Link #############*/
+        /*
+            1) quickLink ul과 p 붙이기
+            2) 전체너비 960
+            3) float 붙이고, 부모 확인하기
+        */
+            #quickLink{width:100%; font-size:12px; height:34px; background-color:aqua;}
+            #quickLink ul{width:640px; text-align:right; float:left;}
+            #quickLink p li{display:inline;}
+            #quickLink p li a{padding:0 5px;}
+
+            #quickLink p{width:315px; padding-left:5px; float:left;}
+            /*
+                [button과 input태그]
+
+                : button으로 만든 태그나 input으로 button을 만들 경우
+                : 모깎이 현상이 나타남
+                : 해결: border로 재 설정하기
+
+                [권장]
+
+                    : form을 사용하지 않는 영역에 버튼을 만들 경우, input이나 button 태그 사용은 생각해보기
+                    : db 파트에서는 input태그와 button 태그를 중요하게 생각함
+
+                    : form이 아닌 다른 영역에서 버튼을 만들 경우, 이미지를 활용하거나 a태그를 활용하여 만들기
+            */
+            #quickLink input{background-color:#fff; border:1px solid #ccc; padding:0 3px;}
+
+        /*############# header / gnb #############*/
+        /*
+            1) 전체너비 : 960
+            2) navArea와 rank 영역 붙이기
+            3) navArea : 740
+                rank    : 220
+            4) 부모요소 확인하기
+
+        */
+            #gnb{width:100%; height:40px; background-color:#23b400;}
+
+        /*########### navArea ##########*/
+            #navArea{width:740px; font-size:12px; line-height:40px; background-color:gold; float:left;}
+            #navArea li{display:inline;}
+            #navArea li:first-child{margin-left:20px;}
+
+            /*
+                [첫번째 li 안으로 밀어넣기]
+
+                    * 부모요소에서 안으로 밀어넣는 방법을 권장함 (안전한 방식)
+                        #navArea{width:720px; padding-left:20px;}
+
+                [공간 읽는 순서]
+
+                    1)body 2)style 3)script
+
+                [공간에 대한 이해]
+
+                    1) 대상:first-child 방식은 style 영역이 아닌 script 영역에서 사용하는 방식
+                    2) 모든 영역은 body 를 읽고, style과 script 순으로 읽기때문에 
+                    script 영역이 가장 마지막에 읽는 영역
+
+                [주의]
+                    ul > li, 상속되는 값 때문에 css에서 사용은 가능하지만 script에서 주로 사용하기때문에 사용금지함
+
+                    : script 영역과 충돌이 생길 수 있는 요소
+
+                [style영역]
+                    : 대상:first-child, 대상:last-child, 대상:nth-child, style 영역에서 사용하면
+                    script 영역에서 충돌이 발생함
+
+                    : 대상: first-child, 대상:last-child의 경우, style 영역에서 알고 사용한다면 가능은 함
+
+                    *first-child나
+
+                [권장]
+
+                    : class나 id 속성을 사용하여 표현하는것을 권장한다.
+                    : style 영역에서는 주로 꾸미기때문에 script 영역에서 기능을 만들때 깨질 수 있음
+
+
+            */
+
+            #navArea li a{color:#fff; padding:0 3px;}
+            #navArea li i{color:#5e9a6b; font-style:normal;}
+
+            /*######## 노란색 글자 부분 #######*/
+            #navArea .txY a{color:#ff0;}
+
+
+        /*######### rank #########*/
+            #rank{width:220px; height:30px; padding-top:10px; text-align:center; float:left;}
+            #rank select{border:none; font-size:12px; background-color:#23b400; color:#fff;}
+
+            /*
+                [속성을 가지는 인라인요소]
+
+                    :input, a, select, button, img 등등 속성을 가지는 인라인 요소들은 직접 대상으로
+                    선택하지 않으면 변경되지 않는 값들이 많이 있음
+
+                    : 현재 select 태그의 경우, font-size:12 를 직접 설정해주지않으면
+                    적용되지 않기때문에 select 태그에 직접 기입함
+
+                    * 글자색상, 글꼴, 글자 사이즈 ... 등등 변경이 어려움
+
+            */
+
+
+    </style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <header id="header">
+            <div id="head_inn">
+                <h1>
+                    <a href="https://www.naver.com/" title="네이버">
+                        <img src="img/nlogo.gif" alt="네이버"/>
+                    </a>
+                </h1>
+                <form action="#" method="get">
+                    <fieldset>
+                        <legend>검색영역</legend>
+                        <input id="search" type="text" name="search" title="검색어 입력"/><input id="button" type="submit" title="검색버튼" value="검색"/>
+                    </fieldset>
+                </form>
+                <div id="quickLink">
+                    <ul>
+                        <li><a href="#" title="알프스산 동영상">알프스산 동영상</a></li>
+                        <li><a href="#" title="검색어로 알아보는 대한민국">검색어로 알아보는 대한민국</a></li>
+                        <li><a href="#" title="육아출산 Tip">육아출산 Tip</a></li>
+                    </ul>
+                    <p>
+                        <input type="button" id="prev" title="이전버튼" value="&lt;"/>
+                        <input type="button" id="next" title="이후버튼" value="&gt;"/>
+                    </p>
+                </div>
+                <nav id="gnb">
+                    <ul id="navArea">
+                        <li class="txY"><a href="#" title="메일">메일</a></li>
+                        <li class="txY"><a href="#" title="카페">카페</a></li>
+                        <li class="txY"><a href="#" title="블로그">블로그</a></li>
+                        <li class="txY"><a href="#" title="지식인">지식인</a></li>
+                        <li class="txY"><a href="#" title="쇼핑">쇼핑</a></li>
+                        <li class="txY"><a href="#" title="TV캐스트">TV캐스트</a><i>|</i></li>
+                        <li><a href="#" title="사전">사전</a></li>
+                        <li><a href="#" title="뉴스">뉴스</a></li>
+                        <li><a href="#" title="증권">증권</a></li>
+                        <li><a href="#" title="부동산">부동산</a></li>
+                        <li><a href="#" title="지도">지도</a></li>
+                        <li><a href="#" title="영화">영화</a></li>
+                        <li><a href="#" title="뮤직">뮤직</a></li>
+                        <li><a href="#" title="책">책</a></li>
+                        <li><a href="#" title="웹툰">웹툰</a><i>|</i></li>
+                        <li><a href="#" title="pay">pay</a></li>
+                        <li><a href="#" title="더보기">더보기</a></li>
+                    </ul>
+                    <div id="rank">
+                        <select id="rankSelect" title="국가선택">
+                            <option value="rank1">1&nbsp;한국</option>
+                            <option value="rank1">1&nbsp;미국</option>
+                            <option value="rank1">1&nbsp;캐나다</option>
+                            <option value="rank1">1&nbsp;일본</option>
+                            <option value="rank1">1&nbsp;대만</option>
+                            <option value="rank1">1&nbsp;페루</option>
+                            <option value="rank1">1&nbsp;캄보디아</option>
+                        </select>
+                    </div>
+                </nav>
+            </div>
+            
+            
+        </header>
+    </div>
+ </body>
+</html>
+<!--
+    [html5 구조 작성시 "필수" 로 사용하는 태그]
+
+    [1] 시멘틱 태그가 아닌 태그들
+        div, p, ul li, ol li, dl dt dd, span
+
+        : 태그만 보고 어떤 작업을 할 지 알 수 없기때문에 "시멘틱태그" 라고 읽을 수 없음
+        : id와 class를 작성하여 어떤 용도로 사용할 것이지 작성 (id="textArea")
+        : id와 class가 없어도 어떤 용도의 태그인지 알 수 있어야 함
+
+    [2] 시멘틱 태그들
+        header nav section (headline(h2~h6)), article(headline), footer (address)
+
+        : 태그들만 보고 어떤 작업을 할 지 알 수 없기때문에 "시멘틱태그" 라고 읽을 수 있음
+        : 시멘틱 태그들은 모두 목적을 가지고있기때문에 headline 태그 작성이 권장보다는 필수에 가깝다. 
+
+        중요) 구형 브라우저에서는 시멘틱태그들의 인식률이 매우 떨어짐
+            : 무슨 태그인지 알 수 없음
+
+        시멘틱 태그는 "표준 브라우저 전용"으로 사용되고, 구형 브라우저에서는 시멘틱 태그 활용이 어렵다.
+
+        : 구형 브라우저의 인식률을 높이기위한 방법으로 id와 class 속성을 사용함
+        (참고 : daum 사이트, header 태그에 id와 class 가 작성되어있음)
+
+    [3]  필수로 사용되는 시멘틱 태그
+
+        + header, section, footer (필수로 사용되는 태그들)
+
+    [4] 권장하는 시멘틱태그
+
+        + nav(필수이면서 권장)
+            : 처음에 인식되는 부분이 "작은 공간" 으로 인식함
+            : div 태그만큼 큰 태그들
+
+        + address (footer 영역에서 사용되는 태그)
+            : 기업형 페이지에서는 필수로 사용되는 태그
+
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    [한 페이지에서 2번 사용되기 어려운 시멘틱 태그]
+
+        header, footer, nav(2번 사용은 가능하지만 1번만 사용하려고 함)
+
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    [form 안에서 사용되는것과 아닌 것_input]
+
+        [1] form 안에서 input이 사용된다면 넘기는 정보가 있는지 없는 지 확인하기
+
+            1) form 영역 안에 있고, 넘기는 정보가 있다면 name 속성 필수
+            2) button 이나 submit, reset과 같은 버튼들은 스스로 넘기는 정보가 없기때문에 name 속성 제외
+
+        [2] form 영역 바깥에서 input을 사용했다면...
+
+            1) form 영역 바깥에 input이 있다면 form의 action을 이용할 수 없음
+            2) form 바깥에 있는 input 태그들은 name 제외
+
+        * select, input textarea 태그들은 반드시 "label" 태그 필수 작성
+        * label을 사용하기 어려운상황에서는 "title" 속성으로 대체함
+
+        [3] label이나 title을 사용하는 이유는?
+            웹 점검 도구 (100점 맞는 표) 에서도 필수이지만, 대체 텍스트로 사용되는 태그들과 
+            속성이기때문에 작성하는것이 "안전" 하다 (페이지를 읽거나 표기할때 매우 뛰어남)
+
+-->

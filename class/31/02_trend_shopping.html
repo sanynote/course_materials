@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>trend_shopping</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    #wrap{min-width:320px; width:100%;}
+		#container{width:100%;}
+
+		/*######### trendShop ########*/
+		/*
+			[작업순서]
+
+				1) 어디를 공통으로 사용할것인지 구분하기
+				2) 큰 이미지 2개, 작은 이미지 6개
+				3) 6개가 많기때문에 작은 이미지를 기준으로 작업함
+
+			[매우중요_이미지 확인하기]
+				: 모두 동일한 크기의 이미지라면 높이값을 나누지않아도
+				너비 하나만 잘 설정해도 모두 동일한 비율로 맞출 수 있다.
+
+				: 이미지 크기가 서로 다를경우, 작은 이미지를 기준으로 
+				큰 이미지를 잘라내는 작업이 필요함
+
+			[매우중요]
+
+				1) side 영역을 만드는 작업이고, 원본 이미지 크기보다 크지 않게 제작해야함
+				2) side 작업이기때문에 본문보다 커지지않도록 제작한다.
+				* 태그 참고는 무리가 있음 -> 사이즈만 참고
+				(html5버전, db에서 다루는 영역, xhtml보다는 다른 영역을 기준으로 만들수도있음)
+				* 소수점을 제외하고 해당 값보다 아래로 사용하기
+		*/
+
+		/*###### trendShop (실제사용크기) #####*/
+		/* 양 옆에 비율을 맞추기 위하여 방향키조절, 350으로 수정 */
+			#trendShop{width:350px; border:1px solid #ccc; margin:50px auto 0;}
+			#trendShop h3{font-size:14px; padding:20px 0 10px; text-align:center;}
+
+		/* 
+		전체 다 만들고, 더 이상 높이변경이 없을때 검사창 띄우고 확인 
+			: float으로 나열될때는 1px이 늘어나면 옆으로 붙지 않지만 
+			부모의 높이나 너비의 경우 담아줘야하기때문에 664.8 대신 665px 사용함
+		*/
+			#trendShop ul{width:100%; height:665px; /*overflow:hidden;*/}
+
+		/*#### 6개짜리를 기준으로 작업하기 (공통li) #####*/
+		/*
+			: 해당사이트에서 작은 이미지 한 칸의 크기 112.31
+			: 영역설계시 112px?, 110px?
+		*/
+			#trendShop li{width:110px; padding-left:5px; padding-top:5px; text-align:center; font-size:12px; float:left;}
+
+		/*##### li(big) 큰 영역 개별작업 #####*/
+		/*
+			원본의 이미지는 326px
+			165px로 설계했으나 오른쪽에 맞추기 위하여 168px로 변경함(방향키로 확인)
+		*/
+			#trendShop .big{width:168px;}
+
+		/*###### li안에 있는 p태그 공통(img,text) #####*/
+			#trendShop p{width:100%;}
+			#trendShop p img{width:100%;}
+
+			#trendShop .text{padding:15px 0 20px;}
+	</style>
+
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="trendShop">
+				<h3>트렌드 쇼핑 &gt;</h3>
+				<!--
+					[구조 확인하기]
+
+					1) 제품 아래의 글자를 읽어보면 다른 컨텐츠처럼 카테고리, 큰 제목, 설명글 형태로 구성되어있지않음
+					2) 한 줄로 써지다가 아래로 내린 것 같은 느낌으로 글이 작성되어있기때문에 인라인과 br태그 조합으로 만듦
+
+				-->
+				<ul>
+					<li class="big">
+						<p class="img">
+							<img src="img/shp0.jpg" alt="쇼핑이미지0"/>
+						</p>
+						<p class="text">
+							<strong>터졌다! 순식간에</strong><br/>
+							<span>700만 돌파!</span>
+						</p>
+					</li>
+					<li class="big">
+						<p class="img">
+							<img src="img/shp1.jpg" alt="쇼핑이미지1"/>
+						</p>
+						<p class="text">
+							<strong>3년째 사용중!</strong><br/>
+							<span>다른건 못써!</span>
+						</p>
+					</li>
+
+					<li>
+						<p class="img">
+							<img src="img/shp2.jpg" alt="쇼핑이미지2"/>
+						</p>
+						<p class="text">
+							<strong>깐달걀 피부!</strong><br/>
+							<span>확실히 다르네!</span>
+						</p>
+					</li>
+					<li>
+						<p class="img">
+							<img src="img/shp3.jpg" alt="쇼핑이미지3"/>
+						</p>
+						<p class="text">
+							<strong>나이가 거꾸로!</strong><br/>
+							<span>이것은 신세계!</span>
+						</p>
+					</li>
+					<li>
+						<p class="img">
+							<img src="img/shp4.jpg" alt="쇼핑이미지4"/>
+						</p>
+						<p class="text">
+							<strong>조심해!</strong><br/>
+							<span>한번쓰면 못끊어!</span>
+						</p>
+					</li>
+					<li>
+						<p class="img">
+							<img src="img/shp5.jpg" alt="쇼핑이미지5"/>
+						</p>
+						<p class="text">
+							<strong>이게 말이돼?</strong><br/>
+							<span>1잔에 99원!</span>
+						</p>
+					</li>
+					<li>
+						<p class="img">
+							<img src="img/shp6.jpg" alt="쇼핑이미지6"/>
+						</p>
+						<p class="text">
+							<strong>우와! 신박한데!</strong><br/>
+							<span>이걸 이제 알다니!</span>
+						</p>
+					</li>
+					<li>
+						<p class="img">
+							<img src="img/shp7.jpg" alt="쇼핑이미지7"/>
+						</p>
+						<p class="text">
+							<strong>이걸 산다고?</strong><br/>
+							<span>후기보면 사게돼!</span>
+						</p>
+					</li>
+				</ul>
+
+
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>floatTEST4</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*########### reset ###########*/
+			*{margin:0; padding:0;}
+			li{list-style-type:none;}
+			body{font:15px gulim,batang, sans-serif;}
+
+		/*############# head0 영역 ##############*/
+		/*
+			1) 전체 너비 : 400px
+			2) 구조확인
+				h1, p(search), p(네비게이션)
+		*/
+			#head0{width:400px;  background-color:#0c9; margin:20px auto 0;}
+			h1{width:100px; height:50px; overflow:hidden; background-color:#fff; float:left;}
+			h1 img{width:100%;}
+
+			/*
+				[중요]
+					
+					1) 액자에 맞춰서 너비와 높이를 따라가게 되면 한쪽 방향은 자동으로
+					비율에 맞춰서 줄어들게 된다!
+
+					2) 검사창을 활용하여 확인하면 높이가 소수점으로 나오는것 확인!
+					3) 정확한 숫자로 구분하고 넘치면 overflow:hidden으로 숨기기
+
+					+ overflow:hidden의 원래 기능은 넘쳤을때 숨기는 기능!
+			*/
+
+			/* search */
+			#head0 .head0_p1{ width:100px; background-color:#f00; color:#fff; float:right;}
+
+			/* 네비게이션 */
+			#head0 .head0_p2{width:100%; background-color:gold; clear:both;}
+
+			/*
+				[중요]
+				
+				1) h1에 float:left 설정해주지 않으면 seach 영역은 위로 올라갈 수 없음!
+				2) 상위 객체에서 잡아당겨줘야 아래 객체가 올라갈 수 있음!
+				
+				3) float를 적용하고 , 부모요소에 높이를 지정했으나 네비게이션 영역이 위로 올라감!
+
+				* 부모요소에서 해결이 되지 않을때는 하단의 따라 올라가는 객체에 clear:both를
+				적용하여 해결 할 수 있음!
+
+				* float는 부모나 따라 올라가는 하위객체에서 반드시 해결하지 않으면 그 하단에
+				등장하는 다른 객체가 따라 올라가는 문제가 발생 할 수 있음!
+			*/
+
+
+		/*############# head1 영역 ##############*/
+		/*
+			1) 전체너비 : 500px
+			2) h2 영역제목
+				head1_p1	로그인	, h2 옆에 배치
+				head1_p2 갤러리	, 로그인 옆에 배치
+				head1_p3 float		, 하단에 배치
+
+			[중요]
+				h2 영역 제목과  로그인,  갤러리,  같은 층에 있음! ( h2 부터 float 적용한 것을 알 수 있음)
+
+
+				* 현재 영역도 부모에서 해결이 불가능함!
+				* 따라 올라가는 하위객체에서 clear:both로 해결하기!
+		*/
+
+		#head1{width:500px; background-color:#333; margin:20px auto 0;}
+		
+		#head1 h2{width:100px; background-color:#ccc; float:left;}
+		#head1 .head1_p1{width:100px; margin:0 5px; background-color:#aaa; float:left;}
+		#head1 .head1_p2{width:100px; background-color:#777; float:left;}
+
+		#head1 .head1_p3{width:100%; background-color:#f00; color:#fff; font-size:20px; clear:both;}
+
+
+		/*########### head2 ##########*/
+		/*
+			1) 전체너비 : 500px
+			2) h2: 레이아웃 연습1
+			3) head2_p1		: 1.float(배치) | 2.size(width/height)
+			4) head2_p2		: 3.margin(바깥쪽 여백) | 4.padding(안쪽여백)
+
+			: h2 옆으로 head2_p1 오른쪽으로 나열되어 있음! (같은 층에 있는 것 확인!)
+		*/
+
+		#head2{width:500px; background-color:#3cf; color:#fff; margin:20px auto 0;}
+		
+		#head2 h2{width:150px; font-size:14px; padding:10px; background-color:#36f;  float:left;}
+		#head2 .head2_p1{width:150px; background-color:#096; margin-bottom:50px;  float:right;}
+
+		#head2 .head2_p2{width:100%; background-color:#636; line-height:50px; clear:both;}
+
+		/* ########### head3 ############ */
+		/* 
+			1) 전체 영역 : 500px
+			2) 구조 확인 
+				h3	: 왼쪽배치
+				center : 가운데 배치
+				right	: 오른쪽 배치
+			
+			[계산하기]
+				전체너비 : 500px
+					: h3, width: 80px
+					: center, width:340px
+				* 모든 값을 다 붙여놓고 계산하도록 한다.
+
+			[매우중요]
+				: 현재 예제에서는 float:right 설계가 가능하기때문에 float:right을 사용했지만 
+				웹은 왼쪽부터 정렬이 되기때문에 float:left를 주로 사용한다.
+
+				: 완전히 왼쪽이나 완전히 오른쪽으로 배치해야 할 경우에는 position을 사용하여 배치한다.
+				: 네이버의 로고, 알툴즈의 공공기관이미지등이 대다수 position
+
+				* h3부터 center, right가 나란히 놓여있음
+				* h3부터 float가 적용되어있음
+		*/
+
+		#head3{width:500px; height:100px; background-color:#f06; margin:20px auto 0; /*overflow:hidden;*/}
+
+		/*
+			h3의 크기: 80px
+				: padding-left 20px
+				: padding-right:20px
+		*/
+		#head3 h3{width:60px; padding-left: 20px; padding-top: 20px; background-color:#ccc; float:left;}
+		/*
+			center의 크기:340px
+				:margin:0 20px
+		*/
+		#head3 .center{width:300px; margin:0 20px; text-align:center; background-color:#ddd; float:left;}
+		/*
+			right의 크기: 80px
+				: padding-right:20px
+				: padding-top:20px
+		*/
+		#head3 .right{width:60px; padding-right:20px; padding-top:20px; background-color:#eee; float:right;}
+
+		/*
+			[중요_높이확인]
+				1) 현재 예제에서 글씨가 길어지거나 줄어들면 높이가 다르게 형성
+				될 수 있기때문에 임의로 높이를 사용하기가 어려움
+				2) *자녀를 담지 못할 수 있음
+				3) 이럴때, 부모를 찾아서 overflow:hidden 적용
+					해당영역만큼만 사용하고, 나머지 넘치는 값은 공간이나 객체,
+					이미지 등 모두 숨겨버림 (알아서 높이 적용)
+				* 높이나 영역의 크기를 설정할 수 있다면 설정하는것이 좋음
+				overflow:hidden은 넘치는 객체를 숨기기때문에 나중에
+				기능이 넘치면 표현되지않음 (overflow:hidden의 배신)
+
+			[글자가 영역에서 빠져나갔을때]
+				: 글자를 한 줄로 작성했을경우, 처음부터 끝까지 하나의 객체로 인식함
+				: 01_floatTest4, 전부 한 줄로 연결되어있기때문에 객체 하나로 인식함
+				: 01 floatTest4, 01(하나) 빈칸(하나) floatTest(하나), 빈칸까지 총 3개로 인식함
+
+				1) abcdef : 띄워쓰기 없이 작성했기때문에 하나의 객체로 인식함
+				2) abc def: abc(하나) 빈칸(하나) def(하나), 총 3개로 인식함
+				3) a bcd ef : 몇개? (script에서 입력된 데이터의 길이 값을 알아야하는 경우가있음)
+					: 총 5개
+				중요) 주민번호 13자리 입력
+							암호 8자리 입력
+							우편번호 5자리 입력
+
+							*빈칸 없이 입력이나 -없이 입력이 모두 여기에 해당함
+							(길이값에 포함되기때문에 문제가 발생함)
+		*/
+
+		/*######## cube1 #########*/
+		/*
+			li 하나의 크기: 100px * 100px
+		*/
+		#cube1{width:300px; height:300px; margin:20px auto 0;}
+		#cube1 li{width:100px; height:100px; line-height:100px; text-align:center; background-color:gold; float:left;}
+
+		/*####### 개별작업 #######*/
+		#cube1 .no0{background-color:#f90;}
+		#cube1 .no1{background-color:#f87;}
+		#cube1 .no2{background-color:#f66;}
+		#cube1 .no3{background-color:#f70;}
+		#cube1 .no4{background-color:#b87;}
+		#cube1 .no5{background-color:#b05;}
+		#cube1 .no6{background-color:#caf;}
+		#cube1 .no7{background-color:#eaf;}
+
+		/*######## cube2 #########*/
+		/*
+			li 하나의 크기: 100px * 100px
+		*/
+		#cube2{width:300px; height:300px; margin:20px auto;}
+		#cube2 li{width:100px; height:100px; line-height:100px; text-align:center; background-color:gold; float:left;}
+
+		#cube2 .color{background-color:#00f; color:#fff;}
+
+		/*
+			[float 끊어주기]
+
+			1) 부모요소에서 끊을 수 있다면 부모요소에서 너비와 높이 살펴보고 정확히 끊기
+			끊어주지 않는다면 하단에 만들어지는 객체가 위로 올라가는 문제 발생
+
+			2) 부모요소에서 해결이 어려운 경우에는 자녀요소들 중에서 하단의 따라올라가는 객체에서
+			끊어주기 (자녀들끼리 해결할때는 clear:both)
+
+			3) 부모의 사이즈를 정확하게 지정하기 어려울 때 overflow:hidden 사용
+
+				* 부모에서 끊어줄 수 있다면 너비와 높이 확인하기 (overflow:hidden)
+				* 자녀에서 끊어줄때는 clear:both (따라올라가는 객체에 적용)
+		*/
+
+		
+
+	</style>
+
+
+ </head>
+
+ <body>
+	<!--head0-->
+	<div id="head0">
+		<h1>
+			<img src="img/logo.png" alt="다음"/>
+		</h1>
+		<p class="head0_p1">seach</p>
+		<p class="head0_p2">네비게이션</p>
+	</div>
+
+	<!--head1-->
+	<div id="head1">
+		<h2>영역제목</h2>
+		<p class="head1_p1">로그인</p>
+		<p class="head1_p2">갤러리</p>
+		<p class="head1_p3">float</p>
+	</div>
+
+	<!--head2-->
+	<div id="head2">
+		<h2>레이아웃 연습1</h2>
+		<p class="head2_p1">1.float(배치) | 2.size(width/height)</p>
+		<p class="head2_p2">3.margin(바깥쪽 여백) | 4.padding(안쪽여백)</p>
+	</div>
+
+	<!--head3-->
+	<div id="head3">
+		<h3>레이아웃 연습2</h3>
+		<p class="center">clear:both 사용하지 않아도 될 때</p>
+		<p class="right">size가 있을때 | overflow: hidden</p>
+	</div>
+
+	<!--cube1-->
+	<ul id="cube1">
+		<li class="no0">0</li>
+		<li class="no1">1</li>
+		<li class="no2">2</li>
+		<li class="no3">3</li>
+		<li class="no4">4</li>
+		<li class="no5">5</li>
+		<li class="no6">6</li>
+		<li class="no7">7</li>
+		<li class="no8">8</li>
+	</ul>
+
+	<!--cube2-->
+	<ul id="cube2">
+		<li>0</li>
+		<li class="color">1</li>
+		<li>2</li>
+		<li class="color">3</li>
+		<li>4</li>
+		<li class="color">5</li>
+		<li>6</li>
+		<li class="color">7</li>
+		<li>8</li>
+	</ul>
+ </body>
+</html>

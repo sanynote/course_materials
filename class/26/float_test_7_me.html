@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>float_test7</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+
+    /*########### 전체영역 ###########*/
+    #wrap{min-width:1025px; width:100%;}
+    h3{text-align:center; line-height:60px; text-transform:uppercase;}
+
+    /*########### section_con0 큰 li작업 ###########*/
+    #section_con0{width:100%; height:700px;}
+    .ts0{width:800px; height:400px; text-align:center; background-color:aquamarine; margin:50px auto 0;}
+    .ts0 li{width:200px; height:100%; line-height:400px; float:left;}
+    .ts0 .li0{background-color :#0a0;}
+
+    /*########### .li1 속의 ul li 작업 ###########*/
+    .ts0 .li1 ul{width:400px; height:100%;}
+    .ts0 .li1 li{width:200px; height:50%; line-height:200px; background-color:#efefef;}
+    /* 보더 넣는 li 두 개 작업 */
+    .ts0 .li1 .ul0_li1{width:190px; height:190px; line-height:190px; border:5px solid red; background-color:aqua;}
+    .ts0 .li1 .ul0_li2{width:190px; height:190px; line-height:190px; border:5px solid blue; background-color:aquamarine;}
+
+
+    /*########### section_con1 큰 li작업 ###########*/
+    #section_con1{width:100%; height:500px;}
+    .ts1{width:1410px; height:300px; text-align:center; margin: 50px auto 0;}
+    .ts1 li{width:200px; height:100%; margin-right:1px; line-height:300px; background-color:bisque; float:left;}
+
+    /*########### .li1 속의 ul li 작업 ###########*/
+    .ts1 .li0{width:806px; height:100%;}
+    /* 아래 두 ul을 잘 담아서 float을 주려고 width:800 이었는데, 아래에서 추가된 6px만큼 더해서 806px로 변경함 */
+    .ts1 .li0 ul{float:left;background-color:#fff;}
+
+    /* ul0 작업 */
+    /* margin-right:1px을 하고 뚝 떨어지길래 담아주는 부모인 ul0, ul1 을 찾아 +4px, +2px 만큼 width 변경하였음*/
+    .ts1 .li0 .ul0{width:604px; height:100%;}
+    .ts1 .ul0 li{width:200px; height:50%; line-height:150px; background-color:#cc0; margin-bottom:1px;}
+
+    /* ul1 작업 */
+    .ts1 .li0 .ul1{width:202px; height:100%;}
+    .ts1 .ul1 li{width:100px; height:50%; line-height:150px; background-color:#ee0; margin-bottom:1px;}
+
+
+    /*########### section_con2 큰 li작업 ###########*/
+    #section_con2{width:100%; height:500px;}
+    .ts2{width:1300px; height:300px; line-height:300px; text-align:center; margin:50px auto 0;}
+    .ts2 li{width:198px; height:100%;background-color:#ff0; float:left; margin-right:1px;}
+
+    /*########### ts2 첫번째 li ###########*/
+    .ts2 .li0{width:200px;}
+    .ts2 .li0 ul{width:100%; height:100%; float:left;}
+    .ts2 .li0 li{width:50%; height:100%; margin-right:0; background-color:#ccc;}
+    .ts2 .li0 .ul0_li0{background-color:#eee;}
+
+    /*########### ts2 세번째 li ###########*/
+    .ts2 .li2{width:700px;}
+    .ts2 .li2 ul{float:left;}
+    .ts2 .li2 li{width:50%; height:50%; line-height:150px; margin-right:0; background-color:#0af;}
+
+    /*########### ts2 세번째 li / ul0 ###########*/
+    .ts2 .li2 .ul0{width:200px; height:100%;}
+    .ts2 .li2 .ul0_li1{background-color:#0dd;}
+    .ts2 .li2 .ul0_li2{width:100%; background-color:#0ab}
+
+    /*########### ts2 세번째 li / ul1 ###########*/
+    .ts2 .li2 .ul1{width:200px;height:100%;}
+    .ts2 .ul1 li{width:50%; height:100%; line-height:300px; background-color:#0aa;}
+    .ts2 .ul1 .li0{background-color:#caf;}
+
+
+    /*########### ts2 세번째 li / ul2 ###########*/
+    .ts2 .li2 .ul2{width:300px;height:100%;}
+
+    .ts2 .ul2 li{width:100px;height:50%;background-color:#0dd}
+    .ts2 .li2 .ul2_li3{width:100%;background-color:#eaf;}
+    .ts2 .li2 .ul2_li1{background-color:#abd;}
+    .ts2 .li2 .ul2_li2{background-color:#caf;}
+    
+
+    
+
+  </style>
+ </head>
+
+ <body>
+  <div id="wrap">
+    <div id="section_con0">
+      <h3>ul li ul li 작업하기, 너비 : 800px</h3>
+      <ul class="ts0">
+        <li>float0</li>
+        <li class="li0">float1</li>
+        <li class="li1">
+          <ul class="ul0">
+            <li>ul0_li0</li>
+            <li class="ul0_li1">ul0_li1</li>
+            <li class="ul0_li2">ul0_li2</li>
+            <li>ul0_li3</li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+
+    <div id="section_con1">
+      <h3>ul li ul li 작업하기, 너비 : 1410px</h3>
+      <ul class="ts1">
+        <li>float0</li>
+        <li>float1</li>
+        <li class="li0">
+          <ul class="ul0">
+            <li>ul0_li0</li>
+            <li>ul0_li1</li>
+            <li>ul0_li2</li>
+            <li>ul0_li3</li>
+            <li>ul0_li4</li>
+            <li>ul0_li5</li>
+          </ul>
+          <ul class="ul1">
+            <li>ul1_li0</li>
+            <li>ul1_li1</li>
+            <li>ul1_li2</li>
+            <li>ul1_li3</li>
+          </ul>
+        </li>
+        <li>float3</li>
+      </ul>
+
+    </div>
+
+    <div id="section_con2">
+      <h3>ul li ul li 작업하기, 너비 : 1300px</h3>
+      <ul class="ts2">
+        <li class="li0">
+          <ul class="ul0">
+            <li class="ul0_li0">li0_li0</li>
+            <li>li0_li1</li>
+          </ul>
+        </li>
+        <li>float1</li>
+        <li class="li2">
+          <ul class="ul0">
+            <li>ul0_li0</li>
+            <li class="ul0_li1">ul0_li1</li>
+            <li class="ul0_li2">ul0_li2</li>
+          </ul>
+          <ul class="ul1">
+            <li class="li0">ul1_li0</li>
+            <li>ul1_li1</li>
+          </ul>
+          <ul class="ul2">
+            <li>ul2_li0</li>
+            <li class="ul2_li1">ul2_li1</li>
+            <li class="ul2_li2">ul2_li2</li>
+            <li class="ul2_li3">ul2_li3</li>
+          </ul>
+        </li>
+        <li>float3</li>
+      </ul>
+
+    </div>
+
+  </div>
+ </body>
+</html>

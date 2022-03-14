@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>coffee</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+		a:link, a:visited{text-decoration:none;}
+		a:hover, a:focus{text-decoration:underline;}
+
+		/*#####  #####*/
+			#wrap{min-width:600px; width:100%; font-size:12px;}
+			#container{width:100%;}
+
+			/* [개별과 공통] */
+			/* 모든 section에 모두 적용되지않고 font-family는 brandArea 에만 적용됨 */
+			/*
+				: body에 적용하면 header, container, footer 모두 적용됨
+				: container 에 적용하면 모든 section에 적용
+				: section 하나에만 적용하면 해당하는 section에서만 적용됨
+			*/
+		/*######## brandArea(전체사용영역) ########*/
+		#brandArea{width:100%; font-family:'굴림',gulim,sans-serif;}
+		#brandArea h2{width:100%; text-align:center; padding:20px 0 10px; color:#c00;}
+
+		/*###### contArea (brand 종류가 많아서 content 영역을 나눔) #######*/
+			#contArea{width:100%;}
+			#content{width:600px; margin:0 auto; overflow:hidden;}
+
+		/*####### leftArea #######*/
+		/*
+			1) 이미지 크기 : 428 * 322
+				* 사용되어야하는 크기보다 2배 정도 큰 이미지를 제공함
+			2) 214 너비 사용하기
+		*/
+			#leftArea{width:214px; float:left;}
+			#leftArea p{width:100%;}
+			#leftArea p img{width:100%;}
+
+		/*
+			[이미지 비율 확인하기]
+				너비가 214px로 바뀌면서 높이도 161px로 변경됨
+				: 사용자가 160이나 150 정도로 공간을 나누고 overflow:hidden
+				으로 설계하거나 161 그대로 사용하면서 높이 맞추기
+
+				:161 사용
+				: 200-161 == 39
+		*/
+		/* 214*39 사용가능 */
+		#leftArea .textLink{width:212px; height:37px; line-height:37px; border:1px solid #ccc; background-color:#fff; text-align:center;}
+	
+		/*####### rightArea #######*/
+		/*
+			1) 전체너비 : 600
+			2) 왼쪽 영역의 너비 : 214
+
+			600-214 == 386
+
+			3) 하단의 이미지 3장이 있는 영역을 사용하기 위하여 
+				3으로 나눌 수 있는 너비로 설정함
+
+				:386
+				360 +26
+				360 / 3 ==120
+		*/
+			#rightArea{width:360px; padding-left:26px; float:left;}
+
+		/*###### newsArea #######*/
+			#newsArea{width:100%;}
+			#newsArea p{width:100%; padding:7px 0; border-bottom:1px solid #c5c5c5;}
+
+		/*######## linkArea #########*/
+		/*
+			* 인라인속성은 padding, margin의 값이 위아래 적용은 어렵지만
+			좌우 값 적용은 가능하다.
+			* padding과 margin을 활용하기 위하여 li || 블록요소를 활용한다.
+			* linkArea 에 마우스 올리고 높이값 확인 40~42 정도 잡혀있음
+			* 글씨가 2줄이기때문에 나누기 2해서 20~21 행간 설정하기
+
+		*/
+			#linkArea{width:100%; padding:7px 0; line-height:21px;}
+			#linkArea span{color:#777; padding-right:10px;}
+			#linkArea a{padding-right:4px;}
+
+		/*######## descArea ########*/
+		/*
+			1) 실제사용영역 : 360
+			2) li의 갯수는 3개 : 120 사용가능
+		*/
+			#descArea{width:100%;}
+			#descArea  ul{width:100%; overflow:hidden;}
+
+			/* 원본크기 120 */
+			#descArea  li{width:100px; margin-right:18px; border:1px solid #ccc; text-align:center; float:left;}
+			#descArea  p{width:100%;}
+			#descArea  p img{width:100%;}
+
+			#descArea  .desc{padding-top:2px;}
+			#descArea  .desc a{color:#000;}
+
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="brandArea">
+				<h2>[매머드]</h2>
+				<div id="contArea">
+					<div id="content">
+						<div id="leftArea">
+							<p class="imgLink">
+								<a href="#" title="이벤트페이지">
+									<img src="img/main.jpg" alt="메인이미지"/>
+								</a>
+							</p>
+							<p class="textLink">
+								<a href="#" title="공식사이트">
+									매머드 올 겨울 당충전 끝
+								</a>
+							</p>
+						</div>
+						<div id="rightArea">
+							<div id="newsArea">
+								<h3>
+									<a href="#" title="커피전문점">감성을 전달하는 커피전문점</a>
+								</h3>
+								<p>
+									모바일 앱으로 음료를 주문하고 픽업하여
+									매머드커피를 더운 안전하게 즐겨보세요
+								</p>
+							</div>
+							<div id="linkArea">
+								<p>
+									<span>매머드정보</span><a href="#" title="매머드커피">매머드커피,</a><a href="#" title="익스프레스">익스프레스,</a><a href="#" title="문의하기">문의하기</a> 
+								</p>
+								<p>
+								<span>소셜미디어</span><a href="#" title="페이스북">페이스북,</a><a href="#" title="블로그">블로그,</a><a href="#" title="인스타그램">인스타그램</a> 
+								</p>
+							</div>
+							<div id="descArea">
+								<ul>
+									<li>
+										<p>
+											<a href="#" title="창업안내">
+												<img src="img/s00.png" alt="창업안내"/>
+											</a>
+										</p>
+										<p class="desc">
+											<a href="#" title="창업안내">
+												창업안내
+											</a>
+										</p>
+									</li>
+									<li>
+										<p>
+											<a href="#" title="메뉴소개">
+												<img src="img/s01.png" alt="메뉴소개"/>
+											</a>
+										</p>
+										<p class="desc">
+											<a href="#" title="메뉴소개">
+												메뉴소개
+											</a>
+										</p>
+									</li>
+									<li>
+										<p>
+											<a href="#" title="매장찾기">
+												<img src="img/s02.png" alt="매장찾기"/>
+											</a>
+										</p>
+										<p class="desc">
+											<a href="#" title="매장찾기">
+												매장찾기
+											</a>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

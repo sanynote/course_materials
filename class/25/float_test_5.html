@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title> new document </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+    li{list-style-type:none;}
+    #wrap{min-width:320px; width:100%}
+
+    /*################ 전체사용영역(너비를 다 사용하는 영역) ################*/
+    #board{width:100%; height:600px;}
+    #board h2{text-align:center; text-transform:uppercase; padding:20px 0;}
+
+    /*######### 실제 사용영역(1020~1030px) ########*/
+    /*
+      + 완성 : padding까지 합쳐서 1025~1030 이상으로 만듦
+
+      1) 실제사용너비:1015
+      2) 높이300px로 설계했으나 li태그들 간격때문에 310px로 만듦
+    */
+
+
+
+		#layout{width:1015px; height:310px; padding:5px 5px 0; border:1px dashed #333; margin:0 auto;}
+    /*
+      [매우중요_마지막 정리하기]
+        padding:5px로 4방향 모두 정리하는데 margin-bottom:5px가 추가되는 문제 발생
+        margin-top:5px로 해도 padding 영역과 추가되는 문제 발생
+    */
+
+    /*
+      [작업순서]
+
+        1) 큰 틀부터 제작하기
+        2) left_area와 right_area 만들어서 붙이기
+
+        3) 실제 사용크기 1015px
+
+          left:
+
+        4) 왼쪽 영역 확인하기 (left_area)
+
+          margin-right:5px 유지하기
+          아래쪽 박스 3개는 width:200px
+          200 + margin-right:5px * 3개 == 615px
+
+          큰 박스들은 width:300px
+          : 300px + margin:right:5px * 2개 == 610px
+
+        * 610을 사용하면 615px 을 담을 수 없기때문에 왼쪽 영역은 615px로 만들기
+
+      [또 다른 방법]
+
+        : 왼쪽 영역을 600px로 만들고, margin-right이나 margin-left를 적용하면서 늘리기
+    */
+    /*
+      [호출 시 매우 중요]
+
+        #layout div{float:left;}
+          : 문제점, 공통div 가 몇 개 없다면 상관없지만 여러개가 있고 자녀에 자녀로 존재한다면 모두 상속받는 문제가 발생함.
+        #left_area{float:left;}
+        #right_area{float:left;}
+          : 태그로 호출한 게 아니라 유일한 값들을 호출하여 서로 붙게끔 만드는 방법
+
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        1) left_area, right_area 붙이고, 부모 확인하기
+        2) left_area 만들고, 부모 확인하기
+    */
+
+    /*############# left_area (div) ##############*/
+    #left_area{width:615px; height:100%; float:left;}
+    #left_area ul{width:100%; height:100%;}
+    #left_area li{width:300px; margin-right:5px; margin-bottom:5px; height:150px; text-align:center; line-height:150px; background-color:#ccc; float:left;}
+
+    /*########### 두번째 li 왼쪽으로 5px 돌리기 ###########*/
+    #left_area .no2{margin-left:5px;}
+
+    /*######### li 태그 3개 그룹작업하기 ########*/
+    /* 실제 사용영역 615px */
+    #left_area .wid{width:200px;}
+
+    /*############# right_area (div) ##############*/
+    #right_area{width:400px; height:100%; float:left;}
+    #right_area ul{width:100%; height:100%;}
+    #right_area li{width:100%; height:150px; line-height:150px; margin-bottom:5px; background-color:#aaa; text-align:center;}
+		
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+    <div id="board">
+      <h2>float 레이아웃</h2>
+      <div id="layout">
+        <div id="left_area">
+          <ul>
+						<li class="no1">1</li>
+						<li class="no2">2</li>
+						<li class="wid">3</li>
+						<li class="wid">4</li>
+						<li class="wid">5</li>
+          </ul>
+        </div>
+
+        <div id="right_area">
+          <ul>
+						<li>1</li>
+						<li>2</li>
+          </ul>
+        </div>
+     </div>
+
+    </div>
+  </div>
+ </body>
+</html>

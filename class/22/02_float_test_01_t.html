@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>float_test_0</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+	/*############## 초기화 ###############*/
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+
+		h2{width:400px; background-color:aqua; text-align:center;
+		text-transform:uppercase; margin:0 auto;}
+
+	/*############## divArea (width:800px) ###############*/
+		#divArea{width:800px; height:200px; background-color:pink; margin:50px auto 0; /*border:5px solid red;*/}
+		#divArea p{width:400px; height:100%; line-height:200px; background-color:#ccc; text-align:center; float:left;}
+
+		/*
+			[매우중요_script, style 모두 문제가 될 수 있음]
+
+			line-height의 경우, % 값이 적용되기 어려움
+			다른 객체들(블록요소, 인라인요소) % 값 적용이 가능하지만
+			line-height만 적용이 어려워서 px을 사용해야한다.
+
+			[float 적용시 확인하기]
+
+			1) 부모요소의 크기가 제대로 잡히는지 확인하기
+			검사창을 이용하여 확인하기
+
+			2) border를 이용하여 테두리가 전부 생기는지 확인하기
+
+			3) float 적용된 객체에서는 옆에 나열된 객체때문에 margin:0 auto 적용 불가능
+			4) margin:0 auto는 양 옆에 아무것도 없는 독립객체에서 적용이 가능함(주로 부모 활동)
+		*/
+
+	
+	/*############## 개별작업(배경색상 변경) ###############*/
+
+		#divArea .p1{background-color:#99a;}
+
+	/*
+		[float가 끊어지지 않았을때 생길 수 있는 문제]
+
+			1) 하단의 객체가 옆으로 올라올 수 있음
+			2) 하위의 객체가 margin-top 값 적용이 어려움
+				(상단의 객체가 공중에 있어서 margin-top이 적용되지 않는것처럼 느껴짐)
+
+		[float 적용하고 반드시 확인하기]
+
+			1) 자녀요소들 float으로 붙이고나면 부모 확인하기
+			2) * 검사창을 이용하여 부모의 너비와 높이 생성되는지 확인하기
+			3) 부모의 크기는 자녀를 담을 수 있어야 함
+			4) * border값을 이용하여 4방향 모두 생성되는지 확인하기
+
+			5) 마지막 정리할 때 부모요소에 높이가 만들어지면 자녀요소 높이 %로 변경하기
+				(부모요소의 크기가 변경되도 따라갈 수 있어야함)
+
+				* line-height는 % 사용 불가능
+	*/
+
+	/*############## ulArea (width:900px) ###############*/
+
+		#ulArea{width:900px; height:150px; background-color:#00f; margin:50px auto 0;}
+		
+		/* li는 3개 배치 (공통)*/
+		#ulArea li{width:300px; height:100%; line-height:150px; color:#fff; text-align:center; float:left;}
+
+		/* li 개별작업 (개별색상 변경)*/
+		#ulArea .li1{background-color:#555;}
+		#ulArea .li2{background-color:#777;}
+
+
+	</style>
+ </head>
+
+ <body>
+	<h2>float_test0</h2>
+	<div id="divArea">
+		<p class="p0">0</p>
+		<p class="p1">1</p>
+	</div>
+
+	<ul id="ulArea">
+		<li class="li0">0</li>
+		<li class="li1">1</li>
+		<li class="li2">2</li>
+	</ul>
+
+
+ </body>
+</html>

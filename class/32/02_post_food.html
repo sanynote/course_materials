@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>post_food</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    /*########## reset #########*/
+      *{margin:0; padding:0;}
+      li{list-style-type:none;}
+      #wrap{min-width:480px; width:100%;}
+
+    /*####### container #######*/
+      #container{width:100%;}
+
+    /*######### content (실제사용영역) ########*/
+    /*
+      이미지 크기 550px
+    */
+
+    #content{width:700px; margin:0 auto;}
+
+    /*######### food_head ########*/
+      #food_head{width:100%; text-align:center;  padding-top:50px;}
+      
+    /*####### food_head / title #######*/
+      #food_head .title{width:100%;}
+      #food_head h4{color:#05c;}
+      #food_head h2{font-size:40px; font-family:batang;}
+
+      /*
+        [font 작업하기]
+
+          1) font-weight로 두께를 수정해야 할 경우, font-family부터 변경해보기
+            : font 모양들 중에는 기본적으로 얇은 폰트가 존재함
+            : 두께를 빼주지 않아도 폰트가 얇아서 얇게 표현이 가능함
+
+          2) headline이나 인라인요소 중 속성을 가지는 요소는
+          직접 적용하지 않으면 변경되지 않는 것들이 많이 있다
+            : font-family, color, font-weight 등 공동영역의
+            영향을 받지 못함
+      */
+      #food_head h3{font-size:17px; font-family:batang; font-weight:100;}
+
+    /*####### food_head / imgDesc #######*/
+      #food_head .imgDesc{padding-top:20px;}
+      #food_head .imgDesc p{width:100%;}
+      #food_head .imgDesc .text{font-size:13px; padding:20px 0 40px;}
+
+    /*####### hr구분선 (공통) #######*/
+      .hr1{border:1px solid #000;}
+
+    /*
+      [border 활용하기]
+
+        : 기본적으로 border는 안에 담고있는 객체의 테두리 역할을 담당함
+        : hr 구분선은 얇은 실선으로 만들어지고 해당하는 값에 border를 적용하면
+        테두리가 만들어진다 (4방향으로 테두리가 만들어지기때문에 두껍게 처리됨)
+    */
+
+    /*####### food_cont #######*/
+      #food_cont{width:100%;}
+
+    /*####### food_cont / source1 #######*/
+      #food_cont .source1{width:100%; padding:10px 0;}
+      #food_cont .source1 span{font-size:13px; color:#999;}
+
+    /*####### food_cont / hr2 #######*/
+      #food_cont .hr2{border:1px dashed #ccc;}
+
+      /* 중요) hr구분선은 border로 모양을 바꿀 수 있음 */
+
+    /*####### food_cont / source2 #######*/
+      #food_cont .source2{width:100%; padding:60px 0; font-size:14px;}
+      #food_cont .source2 i{font-style:normal; color:#ccc;}
+
+
+    /*####### food_cont / rice #######*/
+      #food_cont .rice{width:100%; padding-bottom:40px;}
+      #food_cont .rice b{color:#aaa;}
+      #food_cont .rice span{color:#00f;}
+
+    /*########### food_cont / food_list orange (공통) ##########*/
+      .orange{color:orange;}
+
+    /*######## food_list #########*/
+    /*
+      전체너비 : 700px
+    */
+    #food_list{width:100%;}
+    #food_list h4{padding:40px 0 10px;}
+    #food_list h4 span{font-weight:400; font-size:13px; color:#777;}
+
+    /*###### food_list / ul li #######*/
+      #food_list ul{width:100%;}
+
+      /* 높이값 200px을 적용하면 간격이 붙어서 10px만큼 더 적용하여 덜어뜨림 */
+      #food_list li{width:100%; height:210px;}
+
+      /* img와 text 공통 p 태그 */
+      /* 이미지 크기 : 300px */
+      #food_list p{width:350px; height:100%; float:left;}
+
+      /*
+        [문제점]
+          1) 계단현상이 발생함
+          2) 영역을 만들때 높이값이나 비워진 값이 있으면
+          float의 경우 비워진 영역을 찾아서 채우려고 함
+
+          그래서 margin을 사용하면 영역을 버리기때문에 버려진 영역으로 객체가 보이는 문제가 생김
+     
+        [해결]
+          : 담아주는 영역의 높이값 확인하기
+          : 높이값이 전부 다르기때문에 아래의 객체가 비워진 영역으로 채우고 올라옴
+          : li의 높이
+      */
+
+      /*########### p 태그 개별 작업 ##########*/
+      #food_list .img{width:315px;}
+
+      /*
+        [너비,높이 활용하기]
+
+          [기능 없이 화면에서 빠르게 배치할 때]
+          : 모든 웹의 객체들은 왼쪽에서 오른쪽, 위에서 아래로 늘어나기때문에
+          공간을 활용하여 넓힐 수 있다.
+
+            [주의사항]
+              img{width:100%;} 적용할 경우, 공간이 넓어지면 따라가는 문제가 발생할 수 있음
+              이미지가 깨지는 문제가 발생하기때문에 이미지를 원본크기로 사용해야 가능한 작업
+
+          [기능 적용시}
+          : 기능이 적용될 경우, 공간을 타이트하게 사용하는것이 안전하다.
+            img{width:100%} 지정해서 사용해야 공간을 따라 변화가 일어날 수 있다.
+      */
+
+      #food_list .text{width:385px;}
+
+
+
+  </style>
+ </head>
+
+ <body>
+	<div id="wrap">
+    <div id="container">
+      <div id="content">
+        <div id="food_head">
+          <div class="title">
+            <h4>[&nbsp;이밥차&nbsp;]</h4>
+            <p>봄을 담은 한입 요리</p>
+            <h2>딸바요구르트 컵샐러드</h2>
+            <h3>상큼한 도시락 후식</h3>
+          </div>
+          <div class="imgDesc">
+            <p>
+              <img src="img/main0.jpg" alt="딸바요구르트 컵샐러드"/>
+            </p>
+            <p class="text">
+              4월의 대표 과일 딸기와 언제나 구하기 쉬운 바나나를<br/>
+              플레인요구르트에 버무려 상큼하게 즐겨요.
+            </p>
+          </div>
+        </div>
+        <hr class="hr1"/>
+
+        <div id="food_cont">
+          <p class="source1">
+            <strong>재료</strong><br/>
+            <span>2인분</span>
+          </p>
+          <hr class="hr2"/>
+
+          <p class="source2">
+            <strong class="orange">필수재료</strong><br/>
+            <span>딸기(10개) <i>|</i> 바나나(1개) <i>|</i> 플레인요구르트(1개) <i>|</i> 아몬드(적당량)</span>
+          </p>
+          <p class="rice">
+            <b>(숫자)</b>는 <span>밥 숟가락 계량 기준</span>입니다.
+          </p>
+        </div>
+        <hr class="hr1"/>
+
+        <div id="food_list">
+          <h4>
+            만들기<br/>
+            <span>(총 3단계)</span>
+          </h4>
+          <ul>
+            <li>
+              <p class="img">
+                <img src="img/s0.jpg" alt="소스 이미지0"/>
+              </p>
+              <p class="text">
+                <strong class="orange">STEP 1</strong>
+								딸기와 바나나는 먹기<br/>
+								좋은 크기로 썰고,<br/><br/>
+
+								<span class="orange">Tip.</span> 바나나는 통으로 가져가서 먹기 직전에 포크로 조각내도 좋아요.
+              </p>
+            </li>
+            <li>
+              <p class="img">
+                <img src="img/s1.jpg" alt="소스 이미지1"/>
+              </p>
+              <p class="text">
+                <strong class="orange">STEP 2</strong>
+								컵에 과일과 아몬드,<br/>
+								플레인요구르트를 각각<br/>
+								담아 준비하고,<br/><br/>
+								<span class="orange">Tip.</span> 요구르트는 시판 제품 그대로 가져가도 좋아요.
+              </p>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/s2.jpg" alt="소스 이미지2"/>
+              </p>
+              <p class="text">
+                <strong class="orange">STEP 3</strong>
+								먹기 직전 과일에 아몬드와<br/>
+								플레인요구르트를 뿌려 마무리.
+              </p>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/s3.jpg" alt="소스 이미지3"/>
+              </p>
+              <p class="text">
+                <strong class="orange">TIP</strong>
+                딸기와 바나나, 플레인요구르트를<br/>
+								믹서에 갈면 달콤하고 부드러운<br/>
+								딸바요구르트 주스가 돼요.<br/>
+								기호에 따라 설탕이나 꿀을 첨가하세요.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

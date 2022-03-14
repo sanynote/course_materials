@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>float_test_6</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+    
+    /*######### 공통영역 ##########*/
+    #wrap{min-width:320px; width:100%;}
+    #container{width:100%;}
+    h2{width:1000px; height:70px; line-height:70px; border-bottom:1px solid peru; 
+      text-align:center; text-transform:uppercase; margin:0 auto;}
+
+    /* test 4 */
+    #ts4{width:1152px; height:300px; margin:50px auto 0;}
+    #ts4 .parent{width:100%; height:100%;}
+
+    #ts4 .ts4_li0{width:500px;}
+    #ts4 .ts4_li0 ul{width:100%; height:100%; float:left;}
+    #ts4 .ts4_li1{width:325px; height:100%; line-height:300px; margin-left:1px; float:left; background-color:#ccc;}
+    
+    #ts4 .ts4_li0 li{width:100px; height:300px; float:left;}
+    #ts4 .ts4_ul0 li{width:100px; height:150px;}
+    #ts4 .ts4_li0 .li4{width:300px;}
+    #ts4 .ts4_ul1 li{background-color:red; float:left;}
+
+  </style>
+ </head>
+
+ <body>
+  <div id="wrap">
+    <div id="container">
+      <h2>test4 width:1152px</h2>
+      <div id="ts4">
+        <ul class="parent">
+          <li class="ts4_li0">
+            <ul class="ts4_ul0">
+              <li class="li1">ts4 ul1 li1</li>
+              <li class="li2">ts4 ul1 li2</li>
+              <li class="li3">ts4 ul1 li3</li>
+              <li class="li4">ts4 ul1 li4</li>
+            </ul>
+            <ul class="ts4_ul1">
+              <li>ts4 ul2 li1</li>
+              <li>ts4 ul2 li2</li>
+            </ul>
+          </li>
+          <li class="ts4_li1">float2</li>
+          <li class="ts4_li1">float3</li>
+        </ul>
+      </div>
+
+      <h2>test5 width:1600px</h2>
+      <div id="ts5">
+        <div class="div_pa">
+          <ul class="parent">
+            <li class="li0">float0</li>
+            <li class="pa_li">
+              <ul>
+                <li class="li1">ts5 ul1 li1</li>
+                <li class="li2">ts5 ul1 li2</li>
+                <li class="li3">ts5 ul1 li3</li>
+                <li class="li4">ts5 ul1 li4</li>
+                <li class="li5">ts5 ul1 li5</li>
+              </ul>
+            </li>
+            <li class="li1">float2</li>
+            <li class="li2">float3</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>test6 width:1800px</h2>
+      <div id="ts6">
+        <ul>
+          <li>float1</li>
+          <li>float2</li>
+          <li>float3</li>
+          <li>float4</li>
+          <li>float5</li>
+          <li>float6</li>
+          <li>float7</li>
+          <li>float8</li>
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+ </body>
+</html>
+<!--
+    
+    
+    /*########## test 4 ##########*/
+    
+    #ts4 .ts4_div .ts4_li0{width:500px; height:100%; float:left; background-color:peru;}
+    #ts4 .ts4_li0 ul{width:100%; height:100%;}
+    #ts4 .ts4_div .ts4_li1{width:324px; height:100%; line-height:300px; margin-left:1px; float:left;}
+
+
+    /*########## test 4 / 첫번째 li ##########*/
+    #ts4 .ts4_ul1 li{width:100px; height:300px; float:left; background-color:red;} 
+
+-->

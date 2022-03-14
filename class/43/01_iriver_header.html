@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>iriver_header</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+        li{list-style-type:none;}
+		a:link, a:visited{text-decoration:none; color:#000;}
+		a:hover, a:focus{color:#f30;}
+
+		/*########## wrap #########*/
+			#wrap{min-width:1025px; width:100%;}
+			/*
+				전체 다 사용하는 영역으로 마디를 나누면 border나 background-color등등의 작업을 할 경우 모든 영역에 쉽게 처리가 가능하다
+			*/
+            #headerWrap{width:100%; height:90px; border-bottom:1px solid #f30;}
+            #header{width:1025px; margin:0 auto;}
+
+			/*
+				[로고 배치 작업시, 선택사항]
+
+					1) 로고영역 float사용?
+					2) 로고영역 position:absolute 사용?
+
+				[absolute 사용시 주의사항]
+
+					1) absolute의 특징: 공중에 띄워지면서 객체의 크기만큼 타이트하게 영역이 설정됨
+					2) 중요) 직접, 너비와 높이를 설정하지 않았기때문에 다른 영역에 쉽게 겹칠 수 있음
+
+					중요) header를 공중에 띄우고, 하단의 객체가 위로 올라오도록 만드는 방법으로
+					container (visual) 위에 header를 띄울 때 종종 사용됨
+				
+				[header 영역에 로고 사용하기]
+
+					1) header 영역 사용하자마자 작성가능한 태그는 h1
+					2) 로고가 중간에 있다고해도 h1은 필수로 먼저 작성되어야한다
+					제목이 영역 중간에 나타나게 할수는 없음
+
+					* headline 태그들은 모두 목차 생성에 필수 요소
+
+				[목차생성하고 화면에는 보이지 않도록 만들기]
+
+					1) display:none, 목차생성시 보이지않음
+
+			*/
+			/*
+				[버리는 영역 만들기_임시보관소]
+					: 보이지 않는 영역 활용하기
+
+					1) position:absolute 사용하기, 빈공간을 두지않고 버릴 수 있어야 함
+					2) left:-9999px; 마이너스를 사용하지 않고 9999px을 사용하면
+					오른쪽으로 스크롤이 생김
+					3) 왼쪽 영역은 스크롤을 사용하지 않고, 보이지 않는 공간으로 사용가능함
+
+					* 블록요소라면 사이즈를 1px 만들기, 0으로 되어있을경우 읽지못할수있음
+					* 인라인요소라면 폰트 사이즈를 1px만들기, 0으로 되어있을경우, 읽지 못할수있음
+					* line-height는 1px을 작성하면 1px씩 높이간격이 생길 수 있음
+
+				[매우중요]
+					목차생성시 headline 태그를 작성한것만 읽기때문에 화면에 있기만 하면 상관없음
+					font-size와는 관련 없음
+
+					* 0이나 display:none 으로 되어있지 않으면 읽기 가능
+			*/
+
+		/*############ 버리는 영역 (임시보관소) ############*/
+			h1{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; overflow:hidden;}
+
+		/*########### topMenu ##########*/
+		/*
+			1) 전체너비: 1025
+			2) topMenu
+				+ infoMenu	: 955
+				+ allMenu	: 70
+		*/
+			#topMenu{width:100%; height:30px; font-size:10px;}
+
+			/*######## infoMenu #######*/
+			#infoMenu{width:955px; height:30px; line-height:30px; text-align:right; float:left;}
+			#infoMenu li{display:inline;}
+			#infoMenu li a{color:#999; padding:0 6px 0 3px;}
+
+			/*######## allMenu #######*/
+			#allMenu{width:70px; float:left;}
+			#allMenu span{color:#f30; font-weight:700;}
+
+			/*###### topMenu 가상객체 ######*/
+			#topMenu:after{content:""; display:block; clear:both;}
+
+			/*######## gnb #########*/
+			/*
+				1) 전체높이 90
+				2) topMenu 30
+				3) gnb의 사이즈
+					1025 * 60 사용가능
+			*/
+			#gnb{width:100%; height:60px; line-height:60px; font-family:"돋움",dotum, sans-serif;}
+
+			/*
+				[gnb 영역안에 "4개의 영역" 배치]
+
+					:1025 안에서 구분하기
+
+					1) logo			:86
+					2) gnb_service	:390
+					3) gnb_shop		:350
+					4) search		:199
+			*/
+			#logo{width:86px; padding:18px 0; float:left;}
+			/*
+				1) 높이 : 60
+				2) 이미지 높이 : 24
+
+				60-24 == 36
+				
+				위아래높이: 18
+			*/
+
+			/*###### gnb_service ######*/
+			#gnb_service{width:390px; text-align:center; float:left;}
+			#gnb_service li{display:inline; font-size:15px;}
+			#gnb_service li a{color:#333; font-weight:700; padding:0 5px;}
+
+			#gnb_shop{width:350px; float:left;}
+			#gnb_shop li{display:inline; font-size:13px;}
+			#gnb_shop li a{color:#777; font-weight:700; padding:0 5px;}
+			
+
+			/*######### search #########*/
+			#search{width:199px; float:left;}
+
+			/*
+				[매우중요: form]
+					:form은 절대 inline으로 작업하지않는다
+					: form을 inline으로 작업할경우, 담아서 넘겨야하는 정보들이
+					모두 누락될 수 있음
+
+				* fieldset는 선을 없애고싶은 부분으로 display:none을 하면 담고있는 모든 객체가 사라짐
+				* legend는 form에서 그룹의 제목을 담당하는 부분으로 strong이나
+				em처럼 읽지는 못함
+				* legend는 목차생성에도 중요도가 낮음
+				*display:none으로 사용해도 문제가 없음
+				+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+				[input 태그]
+					1) img태그, a태그, input태그, select태그 모두 속성을 가지는 인라인요소
+					2) 1번에 나열된 모든 인라인요소들은 각각 블록요소에 담아서 표현해야한다.
+					3) 속성을 가지는 중요요소이기때문에 블록이 하나씩 보호해주어야한다.
+
+					* input은 필요에 따라 속성을 3개 이상 사용할 수 있기때문에 반드시
+					각각 블록에 묶어서 사용해야한다.
+
+					* 스스로 너비와 높이를 가지는 태그들은 자동으로 크기를 가지고있기때문에 
+					이미지 태그처럼 관리해주지않으면 공간보다 크게 차지하는 경우가 많음
+
+					* input btn 나열하고 btn을 화면에서 숨긴 후 확인해보면 input이 넘치는것을 알 수 있음
+
+			*/
+
+			#search form{width:100%; height:20px; padding:20px 0;}
+			#search fieldset{border:none;}
+			#search legend{display:none;}
+
+			/*####### input 영역과 btn 영역 붙이기 #######*/
+			/*
+				1) 사용가능한 너비 199
+				2) 돋보기 이미지 크기
+				3) 199-47 input 사용가능한 너비는? 152
+
+			*/
+			#search .input{width:152px; float:left;}
+			#search .input input{width:150px; height:18px; border:1px solid #ccc;}
+			/*
+				[input태그 사용시 주의사항]
+
+					1) input 태그는 img 태그처럼 처음부터 너비와 높이를 가지고있음
+						직접 변경하지않으면 부모를 뚫고 나오는 문제가 발생함
+
+					2) input 태그에는 처음부터 border가 설정되어있음
+						대다수 사용자들은 border의 값을 1px로 인지함
+						자동으로 만들어진 border는 사용자가 생각한것보다 큰 값을 차지하기때문에
+						직접 1px로 설정해주어야한다.
+					
+					정리)
+						input 태그의 경우, 너비 100%를 해도 부모보다 커지기때문에
+						border:1px 방식으로 한 번 처리하고 너비를 맞춰서 사용하는것이 안전하다
+
+					공간이 넘쳐버리면 내용이 누락되어 database로 넘기지 못하는 문제가 발생한다.
+			*/
+			#search .btn{width:47px; float:left;}
+
+
+
+
+			#gnb:after{content:""; display:block; clear:both;}
+
+	</style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<div id="header">
+				<h1>아이리버</h1>
+				<div id="topMenu">
+					<ul id="infoMenu">
+						<li><a href="#" title="로그인">로그인</a></li>
+						<li><a href="#" title="회원가입">회원가입</a></li>
+						<li><a href="#" title="마이페이지">마이페이지</a></li>
+						<li><a href="#" title="공지사항">공지사항</a></li>
+					</ul>
+					<p id="allMenu">
+						<a href="#" title="전체보기">
+							<span>+</span>전체보기
+						</a>
+					</p>
+				</div>
+				<div id="gnb">
+					<!--목차생성에서 제외시키기위하여 div태그 사용-->
+					<div id="logo">
+						<a href="#" title="아이리버">
+							<img src="img/iriver_logo.gif" alt="iriver로고"/>
+						</a>
+					</div>
+					<ul id="gnb_service">
+						<li><a href="#" title="제품">제품</a></li>
+						<li><a href="#" title="콘텐츠">콘텐츠</a></li>
+						<li><a href="#" title="커뮤니티">커뮤니티</a></li>
+						<li><a href="#" title="고객지원">고객지원</a></li>
+					</ul>
+					<ul id="gnb_shop">
+						<li><a href="#" title="쇼핑몰">쇼핑몰</a></li>
+						<li><a href="#" title="아이리버블랭크">아이리버블랭크</a></li>
+						<li><a href="#" title="그루버스">그루버스</a></li>
+						<li><a href="#" title="아스텔앤컨">아스텔앤컨</a></li>
+					</ul>
+					<div id="search">
+						<form action="#" method="get">
+							<fieldset>
+								<legend>검색</legend>
+								<p class="input">
+									<input id="text" type="text" name="text" title="검색"/>
+								</p>
+								<p class="btn">
+									<a href="#" title="">
+										<img src="img/search.gif" alt="돋보기 이미지"/>
+									</a>
+								</p>
+
+							</fieldset>
+						</form>
+						<!--
+							[웹 점검도구]
+								: 라벨 || 레이블
+								: input, select, textArea 태그를 사용했다면 반드시 짝을 맞춰서 label을 사용해야한다.
+								: 이 때 id와 for가 명칭이 맞아야한다.
+
+							[label 사용시 주의사항]
+								: label을 사용하고, display:none을 하게되면 화면에 보이지않기때문에 감점의 요인이 된다.
+
+							[label 대신에 사용가능한 속성]
+								: title, title은 label을 대신하는 대체텍스트 역할도 담당한다.
+								: label을 사용하기 어려운 상황에서는 타이틀을(title) 작성한다.
+
+						-->
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+ </body>
+</html>
+<!--
+	[로고에 position이나 float 배치]
+
+		1) position의 경우, 극단적으로 왼쪽이나 오른쪽, 위쪽이나 아래쪽으로
+		배치할 경우 많이 사용되기때문에 해당하는 영역에 "아무 객체나 컨텐츠"
+		도 없어야한다.(해당하는 객체와 겹칠 수 있음)
+
+		2) float 배치자체는 굉장히 단단하고, 움직임이 없을때 사용이 가능하다.
+			* float:right 는 거의 사용할 일이 없음
+			* 오른쪽 방향으로는 대다수 position을 사용하는 경우가 많음
+
+	[infomenu, topmenu]
+		
+		1) gnb를 기준으로 "옆"에 붙어있을경우, infomenu라고 작성한다.
+		2) gnb를 기준으로 "위"에 붙어있을경우, topmenu라고 작성한다.
+
+-->

@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>living</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+    *{margin:0; padding:0;}
+    li{list-style-type:none;}
+
+    #wrap{min-width:1025px; width:100%;}
+    #container{width:100%; padding-top:30px;}
+    #content{width:1280px; border:1px solid #ccc; height:600px; /*overflow:hidden;*/ margin:0 auto;}
+
+    /*######## happyBean (480) #######*/
+      #happyBean{width:476px; border-right:4px solid #777; height:100%; float:left;}
+      #happyBean .title{width:100%; height:150px; padding-top:100px; text-align:center;}
+      /* title */
+      #happyBean .title strong{color:#f54040;}
+      #happyBean .desc{line-height:50px;}
+      #happyBean .desc strong{color:#700;}
+
+      /* img */
+      #happyBean .img{width:100%; }
+      #happyBean .img p{width:400px; margin:0 auto;}
+      #happyBean .img p img{width:100%;}
+
+    /*######## living (800) #######*/
+      #living{width:800px; height:100%; background-color:#ccc; overflow:auto; float:left;}
+
+      /*
+        [overflow 활용하기]
+          1) hidden,scroll,auto 적용하는 값
+          2) * visible 해제하는 값
+
+          [매우중요]
+            ul ol dl 은 자녀요소를 담아야하기때문에 overflow를 직접 적용받기보다 자녀를 담아줄 수 있는 충분한 크기로 만들어져야한다.
+            해상도 크기 : 1920px
+              : li 한 칸의 크기 1000 * 5개가 있다면 ul의 크기는?
+              : ul을 100%로 제작하면 1920px을 따라가기때문에, li를 담아주기 어려움
+
+            참고) 유벤투스 페이지 확인하기
+              : 보여지는 부분과 담아주는 영역이 나뉘어져있는것을 알 수 있음 
+                (사진이 보이다가 잘려보이는 영역들)
+
+              : ul은 5000px을 사용해야 li들을 모두 담을 수 있음,
+              : 보여지는 영역은 1200px로 하고 overflow:hidden을 사용하면 이미지가 잘려보이는것처럼 만들 수 있음
+
+              * 매우 중요) sliding window의 기본모양
+            
+          [정리]
+            1) div로 보여지는 영역 나누기
+            2) ul ol dl은 자녀가 크든작든 모두 담을 수 있도록 만들기
+            :: 1920px li 가 10개라면? ul의 크기는? 19200px
+            :: div는 해상도 크기만큼 표현하고 overflow:hidden이 적용되기때문에 한 화면에 보여지는 크기는 정해져있음 
+            :: 19200px을 담당하는 ul은 필름에 해당하는 부분으로 li를 담을 수 있도록 제작하고, div는 해상도를 담당하거나, 화면에 보여지는 크기만큼을 담당하게 만듦
+      */
+
+      /*
+        [검사창으로 living과 ul 너비 확인하기]
+          1) living 부분의 너비는 800px로 확인이 가능함
+          2) ul은 너비 100%가 설정되어있고, 783px이 적용되어있는것을 알 수 있음
+
+          * width:100%는 실제로 사용가능한 너비를 알 수 있음
+            (실제 사용영역을 만들때 매우 중요)
+          * scroll 크기가 17px 차지하는 것을 알 수 있음
+          * 실제 현장에서는 scroll 너비 값때문에 17~20px 정도 빼고 시작함
+
+          3) 실제 사용가능한 너비 : 783 || 780px
+            계산하기 어렵기때문에 780px 사용
+
+      */
+      
+      #living ul{width:100%;}
+      #living li{width:100%; height:110px; margin:10px 0; font-size:12px; background-color:#fff;}
+
+      /*####### img 영역 ########*/
+      /*
+        : 기존의 예제는 너비가 2배 이상 긴 이미지를 정비율에 가까운 액자에 맞춰 넣는 작업
+        : 현재 예제에서도 이미지 너비가 조금 길게 형성되어있음
+        : 실제 사용가능한 크기는 780px
+      */
+      /* 이미지 크기는? 340*228 */
+      /*img 영역의 원본크기 150px*/
+      #living .img{width:140px; padding-left:10px; height:100%; overflow:hidden; float:left;}
+      #living .img img{height:100%;}
+
+      /*
+        [기존의 작업]
+          1) 너비: 100% 에 맞추는 작업을 진행함
+          2) * 계단현상이 생기는 이유는? 높이값에 제대로 맞지않아서 생기는 문제
+            .img와 .text의 부모가 되는 li에 높이값 만들기
+            .img와 .text도 높이값 100% 설정하기
+
+          3) width가 지나친 이미지와 정비율에 맞는 액자를 맞추면 height 부분이 많이 모자라는것을 알 수 있음
+
+            참고 이미지 확인하기) 01_living_전의 예제에서의 문제.jpg
+
+            [3번 해결]
+              1) height:100%로 맞추면 너비가 자동으로 비율에 맞춰서 줄어듦
+              2) width에 맞추면, height가 자동으로 맞춰짐
+                height에 맞추면, width가 자동으로 맞춰짐
+
+              3) 넘치는 값은 overflow:hidden으로 해결하기
+      */
+
+      /*####### text 영역 ########*/
+      /* text 영역의 원본크기 : 630px */
+      #living .text{width:620px; height:100%; padding-left:10px; float:left;}
+
+      /* title padding-left:10px로 "620px" 사용가능 */
+      /* 검사를 확인해보면 620px 사용가능함을 알 수 있음 */
+      /*
+        전체높이는 110px 사용가능
+      */
+      #living .title{width:100%; height:30px; line-height:30px;}
+      /*
+        [float 확인하기]
+        1) line-height 적용하면 세로 방향으로 글자들을 가운데 빨리 배치할때 편리함
+        2) height는 높이값이나 공간을 형성할때 매우 중요함
+        3) line-height만 가지고 공간을 형성하기 어렵기때문에 float를 끊지 못하는 것을 알 수 있음
+          : .title 영역에 높이값이 잡히지않음
+        4) *float를 끊어야할때는 부모에 너비와 높이가 정확하게 지정되어있어야함
+      */
+      /* 500 사용 */
+      #living .title h3{width:500px; height:100%; float:left;}
+      /* 120 사용 */
+      #living .title h4{width:100px; height:100%; padding-right:20px; text-align:right; float:left;}
+
+      /*############ desc / cate ###########*/
+      /*
+        실제사용높이 110
+        title 30
+        desc  50
+        cate  ? == 30
+      */
+        #living .desc{width:100%; height:50px; color:#777;  overflow:hidden;}
+        #living .cate{width:100%; line-height:30px; color:#c08d31;}
+  </style>
+ </head>
+
+ <body>
+  <div id="wrap">
+    <div id="container">
+      <div id="content">
+        <div id="happyBean">
+          <div class="title">
+            <h2><strong>오늘</strong> 가장 따뜻한 클릭</h2>
+            <p class="desc">
+              <strong>코르크 레더를 활용한 에코백과 카드지갑</strong>
+            </p>
+          </div>
+          <div class="img">
+            <p>
+              <img src="img/main.jpg" alt="메인이미지"/>
+            </p>
+          </div>
+        </div>
+        <div id="living">
+          <ul>
+            <li>
+              <p class="img">
+                <img src="img/l0.jpg" alt="리빙이미지0"/>
+              </p>
+              <div class="text">
+                <div class="title">
+                  <h3>취미이자 특기 : 가구 재배치</h3>
+                  <h4>리빙</h4>
+                </div>
+                <div class="desc">
+                  오늘, 우리 집 안녕하세요^^ 이번에 거실 인테리어 바꾸면서 사진 하나하나 차곡차곡 모아봤어요 #미드센추리 느낌은 너무 어렵고 (돈도 많이 들고요🙈) 그래서 좋아하는 이것저것 적절하게 이쁘게 배치해 봤어요 그동안 집 꾸미기 하면서 가장 멀리했던 컬러가 블랙이었는데 이번엔 모던하게 하나씩 포인트로 조금씩 넣어봤어요^^ 블랙이라고 해서 너무 시크하고 다운된 
+                </div>
+                <p class="cate">joohome</p>
+              </div>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/l1.jpg" alt="리빙이미지1"/>
+              </p>
+              <div class="text">
+                <div class="title">
+                  <h3>아름다운 집을 위한 40가지 인테리어 아이디어 ②</h3>
+                  <h4>리빙</h4>
+                </div>
+                <div class="desc">
+                  인테리어 공사나 셀프 인테리어 시공을 계획하고 있는 이들에게 빛과 소금 같은 길잡이가 될 아이디어. 복잡한 공사 없이 가구와 소품으로만 멋을 낸 스타일링 방법부터 데드 스페이스를 활용한 아이디어, 늘어난 재택근무에 맞게 활용할 수 있는 홈 오피스 아이디어, 공간을 분리하는 색다른 방식과 전형적이지 않은 아파트 평면도를 완성할 수 있는 방법 등 인테리어 디자
+                </div>
+                <p class="cate">메종</p>
+              </div>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/l2.jpg" alt="리빙이미지2"/>
+              </p>
+              <div class="text">
+                <div class="title">
+                  <h3>100여 종의 식물과 함께하는 플랜테리어 일상</h3>
+                  <h4>리빙</h4>
+                </div>
+                <div class="desc">
+                  왜 주변에서 점점 식물을 키우는 사람이 많아질까요? 그리고 그들에게는 어떤 사연과 계기가 있을까요? 정글하우스는 식물로 채워진 주거공간을 소개하고 인터뷰하는 시리즈 입니다. 아파트, 빌라, 정원 등 다양한 주거공간, 다양한 환경에서 어떤 식물을 어떻게 키우고 있는지 지금 만나보세요!인스타그램_plantlyyy 평수_48평본인소개 부탁드려요 안녕하세요. 작은
+                </div>
+                <p class="cate">월간 플로라</p>
+              </div>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/l3.jpg" alt="리빙이미지3"/>
+              </p>
+              <div class="text">
+                <div class="title">
+                  <h3>슬기로운 커피 찌꺼기 활용법</h3>
+                  <h4>리빙</h4>
+                </div>
+                <div class="desc">
+                  #원두찌꺼기활용법 #커피찌꺼기활용방법 #친환경살림팁 #커피가루그냥버리지마세요 커피에 대해서도 커피 맛도 잘 모르는 나이지만 그래도 커피를 좋아한다. 핸드드립으로 모카포트로 캡슐머신으로 그날의 컨디션과 날씨에 따라 다양한 방법으로 커피를 즐긴다. 그러다 보니 쌓여가는 원두 찌꺼기와 캡슐. 종량제 봉투에 담아 버리면 되지만 오랜 세월 나만의 방법으로 원두커피.
+                </div>
+                <p class="cate">민트향기</p>
+              </div>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/l4.jpg" alt="리빙이미지4"/>
+              </p>
+              <div class="text">
+                <div class="title">
+                  <h3>직장인 취미 생활 타피스트리 위빙, 두 달간의 기록</h3>
+                  <h4>리빙</h4>
+                </div>
+                <div class="desc">
+                  #DoluckyBlog #취미기록 타피스트리 위빙 [ tapestry weaving ] 다채로운 색실로 그림을 짜 넣은 감각을 도입한 직물을 말한다. 주로 굵은 방모사를 사용하며, 자카드기(機)에 의해서 회화적 표현을 한 것. 용도는 재킷･코드 등에 사용된다. 평일에 퇴근하고 집에 오면 영혼이 살짝 탈곡되어 있다. 직무와 상관 없이 직장생활은 에너지와 정신
+                </div>
+                <p class="cate">DOLUCKY</p>
+              </div>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/l5.jpg" alt="리빙이미지5"/>
+              </p>
+              <div class="text">
+                <div class="title">
+                  <h3>반려묘와 함께 사는 집</h3>
+                  <h4>리빙</h4>
+                </div>
+                <div class="desc">
+                  #내돈내산 #인테리어후기 #리모델링후기 20대 초부터 계속 전세로 살다가 이제는 그만 내 집이 있었으면해서 갑자기 집을 구매하게됐어요 2005년에 지어진 구축 아파트를 구매했습니다 (신축 갈 돈은 없으니까요 🥲) 크게 고치지 않아도 좋을 집을 구매했어요 (예산이 빠듯했거든요ㅋㅋㅋㅋ) 정말 운이 좋았죠 😉 그래서 최소한의 금액으로 최대한의 인테리어를 해보
+                </div>
+                <p class="cate">주아</p>
+              </div>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/l6.jpg" alt="리빙이미지6"/>
+              </p>
+              <div class="text">
+                <div class="title">
+                  <h3>나의 버킷리스트, 마당 있는 중목구조주택 #집짓기</h3>
+                  <h4>리빙</h4>
+                </div>
+                <div class="desc">
+                  안주하지 않고 변화하는 삶을 가져온 집짓기주방 창을 통해 이번 겨울 첫눈을 맞았다. 인생의 버킷리스트 중 하나였던 집짓기는 일상을 다시 설레게 하는 큰 힘을 갖고 있었다.건축주가 나이 마흔에 기록한 버킷리스트에는 ‘마당 있는 집짓기’가 있었다. 꿈을 실현하기 위해 잠시나마 주택에 전세살이를 한 적도 있었지만, 생활 여건상 다시 아파트로
+                </div>
+                <p class="cate">월간 전원속의 내집</p>
+              </div>
+            </li>
+
+            <li>
+              <p class="img">
+                <img src="img/l7.jpg" alt="리빙이미지7"/>
+              </p>
+              <div class="text">
+                <div class="title">
+                  <h3>휴양지처럼 호텔처럼, 침실 인테리어 #룸투어</h3>
+                  <h4>리빙</h4>
+                </div>
+                <div class="desc">
+                  자칫하면 지쳐 쓰러질 것 같은 시기다. 이럴때일수록 더 힘을 내어서 어려운 시기를 잘 지나가야지. 우울하거나 무기력해질 때, 이쁜 향의 바디 제품으로 뜨끈하게 목욕하고나면 기분이 훨씬 나아진다. 역시 우울은 수용성이었어. 찾아보니 침실 룸투어를 기록한지 꽤 오랜 시간이 지났다. 이번을 기점으로 세 시리즈의 침실 기록을 남겨두려한다. 시리즈1 시작 옛날 아파
+                </div>
+                <p class="cate">망고앤아보카도</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

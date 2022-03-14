@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>float_test_4</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+
+		h2{text-align:center; line-height:60px;}
+		h3{text-align:center; background-color:#ff0;}
+
+		/*
+			[전역과 지역]
+
+				1) 전역은 모든 지역에 공통으로 값을 적용할때 사용함
+				2) 지역은 해당하는 지역에서만 개별적으로 사용함
+
+				: #imgArea h3 작성할경우, imgArea라는 지역에서만 적용이 가능함
+				: h3 모든 영역에 적용이 가능함
+
+			[기능이 있는 영역과 없는 영역]
+
+				1) width를 지정해야 할 경우, 배치할경우, 기능이있는경우
+				2) width를 지정하지 않아도 될 때는 기능이 없고, 빠르게 배치만 할때
+		*/
+
+		/*############### section ##################*/
+		/*
+			wrap이나 container 등이 없을 경우, 그 다음 모든 영역을 담아주는 값으로 wrap과 container 역할을 담당해야 함
+		*/
+			#section{min-width:1025px; width:100%;}
+		/*################ imgArea (실제 사용영역:800px)#################*/
+		/* 전체 사용영역 */
+			#imgArea{width:100%; height:450px; background-color:pink;}
+
+		/* 실제 사용영역 */
+			#imgArea ul{width:804px; height:300px; margin:50px auto 0;}
+
+		/*
+			[계산하기]
+				1) 전체 너비 : 800px
+				2) li의 갯수 : 4개
+
+					800px / 4 == 200px
+
+				3) 1px을 빼주는 방법 margin-right:1px 적용하고 width : 199px 로 변경하기
+				4) 200px을 사용하고 부모를 조금 넓게 사용하는 방법
+
+				li는 4개 margin-right:1px == 4px 증가
+				: 부모를 804px로 변경
+		*/
+			#imgArea li{width:200px; margin-right:1px; height:100%; line-height:300px; text-align:center; color:#fff;background-color:darkblue; float:left;}
+
+		/*############ li 태그 안에 있는 p 태그 작업하기###########*/
+		/*
+			1) 공통으로 p태그 작업하고 개별작업 진행
+			2) 클래스명이 있기때문에 각각 작업이 가능함
+		*/
+			#imgArea li div{width:100%; height:100%;}
+			#imgArea li p{width:100%; height:200px; line-height:200px;}
+			#imgArea li .desc{height:100px; line-height:100px; background-color:#abcdef;}
+
+		/*######### descArea (실제 사용영역:900px) #########*/
+			#descArea{width:100%; height:600px;}
+
+		/* 실제사용영역 */
+			#descArea ul{width:900px; height:300px; background-color:pink; margin:50px auto 0;}
+
+		/*
+			[계산하기]
+				1) 전체너비: 900px
+				2) li의 갯수 : 3개
+		*/
+			#descArea li{width:300px; height:100%; line-height:300px; text-align:center; background-color:#aa0; float:left;}
+
+		/*
+			[li안의 검정색 박스 배치하기]
+
+			1) 어느것을 대상으로 작업하느냐에 따라서 달라질 수 있음
+			2) li에서 padding으로 밀어넣을 수 있음
+
+				div를 200*200 으로 만들경우, 100의 차이가 있기때문에 li에서 200*200 으로 만들고 padding:50px (4방향) 모두 적용하면 가운데 적용가능함
+
+			3) div에서 margin으로 작성될 수 있음
+			   div를 200*200으로 만들고, 100의 차이가 있기때문에
+			   margin:50px로 방향 모두 적용하면 가운데 배치가 가능함
+			   margin:50px auto 도 가능함
+		*/
+			#descArea li div{width:200px; height:200px; margin:50px; line-height:200px; background-color:#000; color:#fff;}
+		
+		/*######## 가운데 div태그 배경색상 개별 작업 ##########*/
+			#descArea li .desc{background-color:#aa0;}
+			
+
+		/*
+			[대상 선택의 중요]
+				#descArea li div 공통작업을했다면...
+					개별작업시 #descArea li .desc로 똑같이 흐름을 따라가야함
+					class명의 경우, 인식률이 좋지않기때문에 공통과 흐름이 달라지면 오타가 없어도 인식률이 떨어져서 적용이 안될 수 있음
+
+				script에서도 style에서 적용된 대상순서에따라 표현이 되기때문에 공통과 흐름이 달라지면 기능적용이 어려울 수 있음
+
+			++++++++++++++++++++++++++++++++++++++++++
+
+				#imgArea li p 공통으로 작업하고, #imgArea li, desc 개별 작업한것을 알 수 있음
+
+				공통의 흐름을 유지하고 개별작업할때도 똑같은 작업을 하는 게 인식률에 매우 도움이 되기때문에 "공통에서 작업한 것 반드시 확인"하기
+		*/
+			
+	</style>
+ </head>
+
+ <body>
+	<div id="section">
+		<h2>floatTEST1-1 : float 배치시 ul li로 각각 작업하기</h2>
+		<div id="imgArea">
+			<h3>전체 너비 800px 적용</h3>
+			<ul>
+				<li>test1</li>
+				<li class="img_desc">
+					<div>
+						<p class="img">image1</p>
+						<p class="desc">desc1</p>
+					</div>
+				</li>
+				<li class="img_desc">
+					<div>
+						<p class="img">image2</p>
+						<p class="desc">desc2</p>
+					</div>
+				</li>
+				<li class="img_desc">
+					<div>
+						<p class="img">image3</p>
+						<p class="desc">desc3</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div id="descArea">
+			<ul>
+				<li>
+					<div>image</div>
+				</li>
+				<li>
+					<div class="desc">desc</div>
+				</li>
+				<li>
+					<div>image</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+ </body>
+</html>
+<!--
+	[중요]
+		div를 사용하는 이유?
+			: 영역에 어떤 값이 적용될지 모를 경우, p태그보다 div 태그를 사용한다.
+			: p태그는 더 이상의 블록요소를 담지 못함
+			: database를 타고 들어오는 구조에서도 p태그는 작기때문에 들어오지 못하는 값들이 있지만 div태그는 모든 요소들을 담아줄 수 있음
+-->

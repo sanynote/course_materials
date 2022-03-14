@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>tesla</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+		a:link,a:visited{text-decoration:none; color:#000;}
+
+		#wrap{min-width:1025px; width:100%;}
+		#container{width:100%;}
+		#car{width:100%;}
+
+		/*######### 실제 사용영역 1200px #########*/
+			#tesla{width:1200px; margin:0 auto;}
+
+		/* imgArea 작업하기 */
+			#imgArea{width:100%; height:720px; background-image:url("img/bg0.jpg"); background-position:center 10%; background-size:140%; background-repeat:no-repeat;}
+			#imgArea ul{width:290px; height:100%; border-right:1px dotted #efefef;}
+			#imgArea li{width:250px; height:200px; padding:20px;}
+			#imgArea h3{width:100%; height:30px; line-height:30px; font-weight:700; background-color:pink; color:#fff; text-align:center;}
+			#imgArea .desc{color:#fff; padding-top:10px;}
+
+
+		/* textArea 작업하기 */
+			#textArea{width:100%; height:115px;}
+			#textArea .aArea{width:400px; height:100%; float:left; text-indent:20px;}
+			#textArea .text{width:740px; margin-top:30px; margin-left:28px; border-left:2px dotted #333; padding-left:30px; float:left; font-size:15px;}
+			
+		/* textArea aArea 작업하기 */
+			#textArea .cate{width:100%; height:24px; color:pink;}
+			#textArea .title{width:100%; line-height:50px; font-weight:700; font-size:25px;}
+
+			/* textArea aArea ul 작업하기 */
+				#textArea ul{width:100%; height:41px;}
+				#textArea li{width:194px; height:35px; line-height:35px; font-size:20px;  float:left;}
+				#textArea .black{border:3px solid #000; }
+				#textArea .pink{border:3px solid pink;}
+
+		/* 기능만들기 */
+			#textArea .black a span{display:block;}
+			#textArea .black a{display:block; background-color:#000; color:pink;}
+			#textArea .black a:hover, #textArea .black a:focus{background-color:pink; color:#000;}
+
+			#textArea .pink a span{display:block;}
+			#textArea .pink a{display:block; background-color:#fff; color:#333;}
+			#textArea .pink a:hover, #textArea .pink a:focus{background-color:pink; color:#fff;}
+	
+
+
+
+
+
+		
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="car">
+				<div id="tesla">
+					<div id="imgArea">
+						<ul>
+							<li>
+								<h3>3.1s</h3>
+								<p class="desc">
+									Quickest acceleration—from zero to 60 mph* in as little as 3.1 seconds
+								</p>
+							</li>
+							<li>
+								<h3>162 mph</h3>
+								<p class="desc">
+									Improved handling and aerodynamics allow for a top speed of 162 mph
+								</p>
+							</li>
+							<li>
+								<h3>AWD</h3>
+								<p class="desc">
+									Dual Motor All-Wheel Drive instantly controls traction and torque, in all weather conditions
+								</p>
+							</li>
+						</ul>
+					</div>
+					<div id="textArea">
+						<div class="aArea">
+							<p class="cate">Performance</p>
+							<p class="title">Quickest Acceleration</p>
+							<ul>
+								<li class="black">
+									<a href="#" title="learn">
+										learn more
+									</a>
+								</li>
+								<li class="pink">
+									<a href="#" title="order">
+										order now
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="text">
+							Model 3 comes with the option of dual motor all-wheel drive, 20” Überturbine Wheels and Performance Brakes for total control in all weather conditions. A carbon fiber spoiler improves stability at high speeds, all allowing Model 3 to accelerate from 0-60 mph* in as little as 3.1 seconds.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+ </body>
+</html>

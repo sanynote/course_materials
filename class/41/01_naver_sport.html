@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>naver_sports</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*######### 초기화 #########*/
+			*{margin:0; padding:0;}
+			li{list-style-type:none;}
+			a:link, a:visited{text-decoration:none; color:#000;}
+
+			a:hover, a:focus{text-decoration:underline;}
+
+		/*############ wrap ###########*/
+			#wrap{min-width:480px; width:100%;}
+			#container{width:100%;}
+
+		/*######## sportsNews (전체사용영역) #########*/
+			#sportsNews{width:100%;}
+
+		/*########## content (실제사용영역) ###########*/
+			#content{width:710px; border:1px solid #ccc; overflow:hidden;}
+
+		/*########### mainNews ##########*/
+		/*
+			: 메인으로 사용할 이미지 크기가 일정하지않음
+			: 메인으로 사용할 이미지에 맞추기 어려울 경우, 영역에 맞추는 작업하기
+		*/
+			/* 서브뉴스 영역 만들고 높이 확인하기 (다 만들고 보니 subNews 가 264였음) */
+			#mainNews{width:400px; height:264px; overflow:hidden; position:relative; float:left;}
+			#mainNews p{width:100%;}
+			#mainNews p img{width:100%;}
+
+
+		/*########### mainNews / textBox ###########*/
+			#mainNews .textBox{width:96%; padding:10px 2%; background-color:rgba(0,0,0,0.6); font-size:11px; color:#ccc; position:absolute; left:0; bottom:0;}
+
+			#mainNews .textBox a{font-size:15px; color:#fff;}
+
+		/*
+			[position 사용시 주의사항]
+
+				1) absolute의 경우, 기준이 되는 좌표부터 설정하기 (left:0; top:0;)
+				2) 기준이 되는 값은 "브라우저"
+				3) position의 경우 모든 객체와 겹칠 수 있기때문에 아래 객체가 클릭이 되지않거나 기능이 되지 않는 경우가 생김
+
+			[아래의 객체가 클릭되지않거나 기능하지 않을때]
+				
+				1) position이 겹쳐있지 않은지 확인하기
+				2) float도 공중에 뜨기때문에 확인이 필요함
+
+			[style의 감점요인]
+				
+				1) float로 붙여넣고 position으로 좌표이동을 할 때 float 가 무시당함
+				2) float를 사용한 이유는? 
+				-> 영역끼리 붙이기 위하여 사용하지만 position으로 좌표를 이동하면 붙지못하고 움직임
+
+				[올바른 사용방법]
+					float를 사용하고 relative로 absolute의 기준점 역할만 담당한다면
+					좌표를 이동하지 않았기때문에 안전하게 사용할 수 있음
+					(== float를 무시하는 좌표이동만 하지않도록 한다.)
+
+			[float와 absolute]
+				
+				1) absolute는 기본적으로 빈공간을 두지 않고 배치가 가능하기때문에 움직임이 많음
+
+				2) 기준점 역할을 담당하는 속성이 아니라 움직이려고 만드는 경우가
+				99% 이상이어서 float랑 동시에 사용이 매우 어려움
+				
+				* absolute, fixed와는 float 사용이 매우 어렵다.
+				* fixed는 부모, 자녀, 친구 요소 모두 무시하고 자신이 지정된 위치에가서 붙기때문에 float는 당연히 사용이 어려움
+
+		*/
+
+
+		/*########### subNews ###########*/
+			#subNews{width:310px; float:left;}
+			#subNews ul{width:300px; padding-left:10px;}
+
+			/* 이미지는 비율에 맞춰서 높이가 59px 이미지만 아래 방향으로 
+			간격을 떨어뜨리기 위하여 높이값을 조금 더 추가함 */
+			#subNews li{width:100%; height:66px;}
+		
+		/**/
+			#subNews a{display:block; width:100%; height:100%;}
+
+		/*###### span 공통태그 ######*/
+			#subNews a span{display:block; float:left;}
+
+		/*######## span 이미지 영역 (subImg) #########*/
+			#subNews a .subImg{width:100px;}
+			#subNews a .subImg img{width:100%;}
+
+		/*######## span 텍스트 영역 (subText) ########*/
+			#subNews a .subText{width:190px; padding-left:10px; padding-top:6px; font-size:11px;}
+			#subNews a strong{font-size:12px; color:#333;}
+		
+	</style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="sportsNews"><!--section-->
+				<div id="content">
+					<div id="mainNews">
+						<p class="img">
+							<img src="img/news_main.jpg" alt="뉴스메인"/>
+						</p>
+						<p class="textBox">
+							<a href="#" title="">
+								<strong>손흥민에게 분노한 다이어...팬들은 "충분히 화낼 수 있는 상황"</strong>
+							</a><br/>
+							<span>인터풋볼 | 프리미어리그</span>
+						</p>
+					</div>
+					<div id="subNews">
+						<ul>
+							<li>
+								<a href="#" title="">
+									<span class="subImg">
+										<img src="img/sub0.jpg" alt="뉴스이미지0"/>
+									</span>
+									<span class="subText">
+										<strong>류현진·푸이그 대전에서 재회…비극인가 희극인가 '어쨌든 관심집중'</strong><br/>
+										KBO리그
+									</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="#" title="">
+									<span class="subImg">
+										<img src="img/sub1.jpg" alt="뉴스이미지1"/>
+									</span>
+									<span class="subText">
+										<strong>하루에 2억 8천 사라져도... 슈어저 "난 괜찮다, 야구 위해서라면"</strong><br/>
+										스타뉴스
+									</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="#" title="">
+									<span class="subImg">
+										<img src="img/sub2.jpg" alt="뉴스이미지2"/>
+									</span>
+									<span class="subText">
+										<strong>맨유 충격 결정, '8000만 파운드' 야심작 DF 매각 고려</strong><br/>
+										스포츠조선
+									</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="#" title="">
+									<span class="subImg">
+										<img src="img/sub3.jpg" alt="뉴스이미지3"/>
+									</span>
+									<span class="subText">
+										<strong>"어디까지 발전할지..." 안익수 사로잡은 20살 '대형 수비수'</strong><br/>
+										스타뉴스
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

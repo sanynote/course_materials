@@ -1,0 +1,36 @@
+	
+
+		/*########## reset (초기화) #########*/
+			*{margin:0; padding:0;}
+			li{list-style:none;}
+			a:link, a:visited{text-decoration:none; color:#000;}
+			a:hover, a:focus{color:#f00;}
+			img{border:none;}
+
+			/*
+				[img태그에 대한 이해]
+					
+					* select 태그, input 태그, img 태그, video(css3) 는 기본적으로
+					속성을 가지기 때문에 보호목적으로 frame을 가지고 있음!
+
+					* select, input 태그의 경우 구형 브라우저에 border가 갑자기 생성
+					되거나 하지는 않지만, 
+						:: img태그의 경우엔 갑자기 생성되는 경우가 많음!
+
+					매우중요)
+						
+						* 대다수 a태그에 테두리가 생기는 것으로 알지만 img태그에 생기는 현상!
+						* 구형 브라우저의 경우 img태그에 생긴 frame을 제어하지 못해서 생기는 현상!
+
+						img{border:none} 을 작성하면 해결이 가능하다!
+			*/
+
+			/*########### 버리는 영역 만들기 ############*/
+			/*
+				1) 버리는 영역을 사용하는 이유는 화면에는 존재하지만, 보이지 않게 만들기
+				위하여 사용
+
+				2) 버리는 영역은 "임시보관소" 역할로 사용할 수 있음!
+			*/
+
+			h1,h2{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; overflow:hidden;}

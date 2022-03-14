@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title> new document </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+
+		h2{background-color:#ccc; font-size:26px; text-align:center;}
+
+		#container{width:600px; height:200px; background-color:pink; color:#fff;}
+
+		.red{background-color:red; width:150px; height:200px; float:left;}
+		.green{background-color:green;width:150px; height:200px; float:left;}
+		.blue{background-color:blue; width:150px; height:200px; float:left;}
+
+		#footer{background-color:#000; color:#fff; text-align:center; /*clear:both;*/}
+
+		/*
+			[float 이해하기_3]
+				1) 상위객체는 바로 아래 하위객체만 잡아당김
+
+				2) float로 나열된 객체라면 float로 나열하여 배치하기
+				매우중요) 바닥의 객체와 공중의 객체로 나뉨
+
+				3) 공중에 뜬 객체때문에 바닥에 아무것도 없는 상태가 발생하고
+				바닥에 있는 객체는 왼쪽 상단으로 올라감 (이 때 겹치는 문제 발생)
+
+					ex) blue에 float:left 적용하면 상단의 h2, red green은 그대로 두고 
+					footer만 blue 영역과 겹쳐있음
+
+				4) 너비와 높이를 적용하면 하위객체가 따라올라가지 않을때도있음
+					너비와 높이를 적용했지만 따라 올라간다면 따라 올라가는 하위객체에
+					clear:both 적용하기
+
+		+++++++++++++++++++++++++++++++++++++++++++++++++
+
+			[float 이해하기_4 부모요소]
+			
+			매우중요)
+				부모요소가 자녀요소에 상속을 주거나 담아주는것은 맞지만 공중의 모든 자녀가 
+				뜨게되면 부모는 영역을 제대로 만들지못해서 나타나지않음
+
+				중요)
+					지금까지는 바닥에 있는 자녀의 너비와 높이를 알 수 있어서 담아줄 수 있었지만
+					float로 적용된 객체의 높이까지 알기는 어려워 표현되지 않음
+
+			문제점)
+				부모요소가 제대로 표현되지 않음(배경색상, 배경이미지 보이지 않음)
+
+			해결) 
+				너비와 높이 지정하기
+
+				매우중요) 하위객체에 clear:both를 적용하지 않아도 부모요소에 "너비와 높이"
+				를 지정하면 입체감이 형성이 되어 하위객체가 따라 올라오지 않도록 만들 수 있음
+
+			정리)
+				* 자녀에 float 적용되면, 부모에 너비와 높이 지정하기
+				* 검사를 띄워서 확인해보면 부모요소에 높이가 0으로 되어있는 경우가 많음
+					(가장 큰 자녀를 기준으로 너비와 높이값 만들기)
+
+			tip) float, background-image 등등 앞으로 어떤 문제가 등장했을때 
+				부모가 제대로 표현되지 않는다면 대다수 "높이" 문제
+
+
+		[clear:both 적용하기]
+
+			1) 하위객체가 너비와 높이를 지정했는데도 따라 올라갈때 따라 올라가는 하위객체에 적용
+			2) "float로 지정된 자녀요소" 를 담고있는 "부모에 너비와 높이를 지정"했는데도 따라올라갈때
+				따라 올라간 하위객체에 적용
+
+			* 3) 형제들 중에서 float를 막지 못하거나, 부모가 막지 못할때 따라 올라가는 하위객체에
+				clear:both 적용
+
+		[float 끊어졌는지 확인하기]
+
+			하위객체에 margin-top이 잘 적용되지 않는다면 상위객체에서 float가 안 끊어졌을 가능성이
+			매우 높음
+
+				: 상위 객체의 float를 끊어주면 margin 적용이 잘 됨
+				: 상위 객체에 float가 끊어지지 않으면(부모에 너비와 높이가 없음) 모두 공중에 있기
+				때문에 margin 값 작업이 빈칸을 대상으로 작성하는것과 같음
+
+		*/
+
+	</style>
+ </head>
+
+ <body>
+	<h2>float 사용하기</h2>
+	<div id="container">
+		<p class="red">red</p>
+		<p class="green">green</p>
+		<p class="blue">blue</p>
+	</div>
+	<div id="footer">
+		footer영역
+	</div>
+ </body>
+</html>

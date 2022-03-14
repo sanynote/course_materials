@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>document</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+        *{margin:0; padding:0;}
+        #wrap{min-width:480px; width:100%;}
+        #container{width:100%;}
+
+        /*########## captainArea(전체사용영역) ###########*/
+            #captainArea{width:100%; background-color:pink;}
+            #captainArea h2{text-align:center; padding:30px 0 10px; text-transform:uppercase;}
+
+        /*########### captain (실제사용영역) ###########*/
+        /*
+            [position:absolute 사용시 중요사항]
+
+                1) 기준점 역할을 하는 영역이 매우 중요함
+                2) 기준점 역할을 하는 공간이 없다면 브라우저를 따라다니기때문에 배치 어려움 
+        */
+            #captain{width:720px; height:480px; border:1px solid darkred; margin:50px auto 0; position:relative;}
+            #captain p{position:absolute; left:0; top:0;}
+
+        /*
+            [position:absolute 사용시 중요사항_블록요소]
+
+                1) position:absolute는 이동하기 위하여 사용하고, 겹치는 현상이 매우 심함
+                2) 이미지를 다루는 영역을 만들경우, 이미지 크기에 맞춰서 액자크기 설정하기
+                3) 블록요소의 경우, 끝에서 끝까지 설정되기때문에 이미지영역보다 더 큰 영역에 
+                겹쳐있을 수 있음
+                    : 3번과 같을 경우, 다른 영역에 겹쳐서 클릭이 되지않거나 기능하지 않는 문제가 발생함
+                
+                [중요]
+                    1) position:absolute를 설정하면 영역이 이미지 크기에 맞춰서 
+                    자동으로 타이트하게 보여짐
+
+                    2) 작성을 하거나 배치하다보면 영역이 타이트하지않고, 넓어지는 경우가 생김
+                        : 이 때 다른 영역과 겹치는 문제로 공간 배치, 기능문제가 발생함
+                    
+                    3) 이미지 크기에 맞춰서 타이트하게 설정하기 (안전하게 사용가능)
+                        * 자동화에 맞추지 않도록 한다
+                        (position은 특히 영역이 겹치는 문제가 심하게 발생함)
+        */
+
+        /*################ red1 ################*/
+        /*
+            1) 사용중인 너비 (기준영역)
+                720* 480
+
+            2) red1의 이미지크기
+                358*358
+
+            [계산하기]
+
+                너비:720-358 ==362
+                높이:480-358 ==122
+
+                양쪽 너비 똑같이 배분하기 : 362 / 2 == 181
+                위 아래 :122 / 2 == 61
+        */
+
+        #captain .red1{width:358px; height:358px; left:181px; top:61px;}
+        #captain .white{width:300px; height:300px; left:210px; top:90px;}
+        #captain .red2{width:236px; height:236px; left:242px; top:122px;}
+        #captain .ryan{width:174px; height:174px; left:273px; top:153px;}
+
+        /*
+            [position 사용시 매우 중요사항]
+
+                1) img 태그를 position으로 이동하면 부모인 p나 div, li는 현재 위치에 있고
+                img 파일만 다른 영역에 배치됨
+
+                2) 이미지 따로, 액자 따로 배치되는 문제가 발생함
+
+                3) 액자를 해당하는 위치에 배치하기 (매우중요)
+                    부모를 움직여서 배치하도록 한다.
+        */
+	</style>
+	
+ </head>
+
+ <body>
+    <div id="wrap">
+        <div id="container">
+            <div id="captainArea">
+                <h2>captain</h2>
+                <div id="captain">
+                    <p class="red1">
+                        <img src="img/red1.png" alt="red1"/>
+                    </p>
+                    <p class="white">
+                        <img src="img/white.png" alt="white"/>
+                    </p>
+                    <p class="red2">
+                        <img src="img/red2.png" alt="red2"/>
+                    </p>
+                    <p class="ryan">
+                        <img src="img/ryan.png" alt="ryan"/>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+ </body>
+</html>

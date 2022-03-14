@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>display_none</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+		a:link,a:visited{text-decoration:none;}
+
+		#wrap{min-width:1025px; width:100%;}
+		#container{width:100%;}
+		#listArea{width:808px; height:42px; text-align:center;}
+		#listArea .ul0{width:100%; height:100%;}
+		#listArea .ul0 .li0{width:200px; line-height:40px; color:pink; background-color:#00f; float:left; border:1px solid pink;}
+		#listArea .ul0 ul{width:100%;}
+		#listArea .ul0 .li0 li{width:100%; height:40px; background-color:pink;}
+
+
+		/* 기능 만들기 */
+		#listArea .li0 ul{display:none;}
+		#listArea .li0:hover ul{display:block;}
+
+		#listArea li a{display:block; width:100%; height:100%;}
+		#listArea .li0 li:hover a{background-color:#00f; color:pink;}
+
+
+
+	</style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="listArea">
+				<ul class="ul0">
+					<li class="li0">
+						로그인
+						<ul>
+							<li class="li1">
+								<a href="#" title="정회원 로그인">
+									정회원 로그인
+								</a>
+							</li>
+							<li class="li2">
+								<a href="#" title="회원가입">
+									회원가입
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="li0">
+						갤러리
+						<ul>
+							<li>
+								<a href="#" title="사진갤러리">
+									사진갤러리
+								</a>
+							</li>
+							<li>
+								<a href="#" title="그림갤러리">
+									그림갤러리
+								</a>
+							</li>
+							<li>
+								<a href="#" title="아트갤러리">
+									아트갤러리
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="li0">
+						뉴스
+						<ul>
+							<li>
+								<a href="#" title="정치">
+									정치
+								</a>
+							</li>
+							<li>
+								<a href="#" title="스포츠">
+									스포츠
+								</a>
+							</li>
+							<li>
+								<a href="#" title="경제">
+									경제
+								</a>
+							</li>
+							<li>
+								<a href="#" title="날씨">
+									날씨
+								</a>
+							</li>
+							<li>
+								<a href="#" title="연예">
+									연예
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="li0">
+						기타
+						<ul>
+							<li>
+								<a href="#" title="Q&amp;A">
+									Q&amp;A
+								</a>
+							</li>
+							<li>
+								<a href="#" title="일반문의">
+									일반문의
+								</a>
+							</li>
+							<li>
+								<a href="#" title="찾아오시는 길">
+									찾아오시는 길
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+ </body>
+</html>

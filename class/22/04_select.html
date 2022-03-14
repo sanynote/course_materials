@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+	<title>select</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ </head>
+
+ <body>
+	<h2>select 태그</h2>
+	<select id="lang">
+		<option value="한국">한국</option>
+		<option value="미국">미국</option>
+		<option value="중국">중국</option>
+		<option value="일본">일본</option>
+		<option value="태국">태국</option>
+	</select>
+
+	<!--
+		1) 바로 아래 select 태그 만들기
+		2) carType이라는 id 설정하기
+		3) 아우디 벤츠 포르쉐 페라리 제네시스
+		4) 벤츠 부분에 value값 작성하고, selected 라는 속성 작성하기
+		5) validator 확인하기 (어떤 에러가 나는지 이메일에 작성해서 보내기)
+	-->
+
+	<select id="carType">
+		<option value="아우디">아우디</option>
+		<option value="벤츠" selected="selected">벤츠</option>
+		<option value="포르쉐">포르쉐</option>
+		<option value="페라리">페라리</option>
+		<option value="제네시스">제네시스</option>
+	</select>
+
+	<dl>
+		<dt>selected 태그 (선택하는 태그)</dt>
+		<dd>
+			select 태그는 img처럼 많이 사용되는 인라인 요소들 중에 하나
+		</dd>
+		<dd>
+			회원가입이나 어떤 선택하는 용도로 사용되는 대표적인 태그들 중 하나
+		</dd>
+		<dd>
+			기능을 위해 많이 사용되는 인라인요소: img, select, a
+		</dd>
+		<dd>
+			중요속성이 많기때문에 반드시 블록요소에 담아서 사용해야한다.
+		</dd>
+		<dd>
+			많이 사용되는 곳: 언어선택, 과목선택, 항공사 지역선택, 패밀리사이트(제휴), 회원가입(이메일 선택)
+		</dd>
+		<dd>
+			* select 태그 사용시 필수로 사용되는 태그는 option태그<br/>
+			자녀요소가 아니라 select가 선택하는 option<br/>
+			select option (선택불가)<br/>
+			option은 묵음처리되는 태그<br/>
+			option에서 중요한것은 "value"속성
+		</dd>
+	</dl>
+	<hr/>
+
+	<dl>
+		<dt>select 태그에 이름 지정하기(id 주로 사용)</dt>
+		<dd>
+			select 태그처럼 대표적인 인라인요소들은 부모요소에 담아서 사용해야하는 경우가 많음
+		</dd>
+		<dd>
+			부모를 통해서 #footer select 형식으로 작성되기보다 직접 #lang, #type 선택되는 경우가 많음
+		</dd>
+		<dd>
+			필수 작성, select 태그에 id값 || class 필수로 작성<br/>
+			javascript에서 태그에 직접 접근하여 option value값을 선택해야 하는 기능이 많음
+		</dd>
+		<dd>
+			option 태그에 사용할 수 있는 속성으로는 value와 selected가 있음
+		</dd>
+		<dd>
+			selected는 해당하는 option이 미리 선택되어있도록 만드는 속성
+		</dd>
+		<dd>
+			* selected를 그냥 사용하게되면 validator에서 에러가 발생함
+		</dd>
+	</dl>
+	<hr/>
+
+	<dl>
+		<dt>select 태그의 한계와 웹 표준, 웹 접근성</dt>
+		<dd>
+			img 태그에는 src와 alt 가 있음<br/>
+			select 태그에는 value와 selected가 있음
+		</dd>
+		<dd>
+			selected는 속성만 사용하면 validator에서 에러가 발생하는데 이유는?<br/>
+			style type="text/css" 어떤 용도인지 작성하지 않으면 에러가 발생하는 것처럼<br/>
+			해당하는 기능명이 무엇인지 정확하게 작성해야 함<br/>
+			selected="selected"
+		</dd>
+		<dd>
+			select태그의 한계: 지금 보여지는 용도로만 사용할 수 있음
+		</dd>
+		<dd>
+			매우 중요) select option 안에는 어떤 태그도 담을 수 없음 <br/>
+			select 태그가 가지고있는 화살표 모양도 바꾸기 어려움
+		</dd>
+		<dd>
+			사용자의 모든 조건을 만족하기 위하여 직접 만들어서 사용하는 경우가 많음<br/>
+			javascript 기술이 필요함
+		</dd>
+	</dl>
+
+ </body>
+</html>

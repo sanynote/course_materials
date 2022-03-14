@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang= "ko">
+ <head>
+	<title>tesla</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<style type="text/css">
+		/*
+			[매우중요]
+				글자색상이나 기능에 의하여 바뀌는 값의 경우
+				메인으로 사용하는 이미지에서 체크하는 게 좋다
+				: 다른 색상은 이질감이 느껴질 수 있으므로 서브이미지, 메인이미지 등에서 색상을 찾아야한다.
+		*/
+
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+		a:link,a:visited{text-decoration:none; color:#d6e6f5;}
+
+		/*########## a태그 기본기능 ###########*/
+			a:hover, a:focus{text-decoration:underline; color:#f00;}
+		
+		/*######### wrap #########*/
+			#wrap{min-width:1025px; width:100%;}
+			#container{width:100%;}
+			#carArea{width:100%;}
+
+		/*#######  carDesc (실제사용영역, 이미지 크기는 1920px) #######*/
+			#carDesc{width:1280px; margin:0 auto;}
+
+		/*######### performance (배경이미지가 처리되어야하는 영역) ###########*/
+		/* 
+			[계단현상, 배경이미지, 배경색상 출력이 되지 않는 이유] 
+
+				* 대다수 높이값이 제대로 표현되지 않는 문제
+				* float이나 position 문제
+				* 안에 담고있는 객체가 하나도 없을 때
+
+			[background-size 작업 시 중요사항]
+
+				1) img 태그처럼 width나 height 한 방향으로 맞춰줘야 비율에 맞출 수 있다.
+				2) background-size:100% 100% 설계하면 
+				이미지 자체가 눌려보일 수 있기때문에 문제가 생길 수 있음
+		
+		*/
+			#performance{width:100%; height:600px; background-image:url("img/bg0.jpg"); background-size:100%;}
+
+		/*########## spec (ul) ##########*/
+			#performance .spec{width:250px; height:100%;}
+
+			/*
+				[li크기 설정하기]
+					1) 너비 100% 설정하기
+						높이 : 전체높이 600px * li의 갯수 3개
+						250 * 200
+
+					2) li안으로 밀어넣는 작업진행
+						padding:20px 적용하기
+						width:210px 수정
+						height:160px 수정
+			*/
+			#performance li{width:210px; height:159px; padding:20px; border-bottom:1px dashed #ccc; background-color:rgba(255,0,0,0.2);}
+			#performance li h4{background-color:#d2ac88; color:#fff; text-align:center; margin-bottom:10px;}
+
+		/*####### desc #######*/
+		/*
+			1) 실제 사용중인 너비 : 1280px
+			2) title 영역의 너비: 380px
+			3) desc 영역의 너비: 900px
+		*/
+			#desc{width:100%; overflow:hidden; background-color:#fff;}
+
+		/*######## title (실제크기 380) ########*/
+		/* daum_movie 처럼 버튼이 오른쪽끝으로 가지 않도록 미리 막아둠 */
+			#desc .title{width:340px; padding-right:40px; text-indent:20px; float:left;}
+			#desc .title h4{width:100%; font-weight:400; color:#aaa;}
+			#desc .title h2{padding:5px 0 15px;}
+
+		/*####### title / btn(div)  #######*/
+			#desc .title .btn{width:100%; height:40px; line-height:40px;}
+
+		/* title / btn(div) / p(공통) */
+		/*
+			1) 실제 사용너비 340
+			2) p태그 2개
+				너비 170 || 50%
+		*/
+			#desc .title p{width:170px; height:100%; float:left;}
+
+		/*###### p 태그 중 more 개별작업 #########*/
+			#desc .title .more{background-color:#000;}
+
+			#desc .title .more a:hover{color:#f00; background-color:pink;}
+			/*
+			#desc .title .more a:hover{color:#f00;}
+			#desc .title .more:hover a{color:#f00;}
+			*/
+
+		/*
+			[기능적용]
+				1) 정적인 페이지 구성 (validator, 100점 (점검도구))
+				2) html5? script? php 통해 db 적용?
+
+			[매우 중요_부모와 자녀요소]
+				style 영역에서는 "부모에서 자녀 컨트롤 가능", 상속도 줄 수 있음
+
+				* 자녀를 통해서 부모에 영향을 주는 건 불가능 (margin-top만 공간에 대한 영향을 주게 됨)
+				* 부모가 움직인다고 자녀가 움직이지 않음
+
+			[기능 적용시 대상 선택 매우 중요]
+				#desc .title .more a:hover{}		, 자녀인 a태그에 직접 마우스 올렸을 때 기능구현
+																	, a태그에 직접 사용가능함 기능 focus
+																	* 부모인 객체들은 반응이 생기지 않음
+
+				#desc .title .more:hover a{}		, 부모인 .more 부분에 마우스 올리면 자녀인 a도 변할 수 있음
+				#desc .title .more:hover 하면, a에 상관없이 .more가 바뀔 수 있음
+
+				* 마우스를 어느 대상에 올리는지 확인하고, 변하는 값을 알아야하기때문에 근처에서 기능 적용하기
+		*/
+
+		/*###### p 태그 중 order 개별작업 #########*/
+		/* 실제너비 : 170 * 40 */
+			#desc .title .order{width:160px; height:30px; line-height:30px; border:5px solid #d2ac88; }
+
+		/* 글자가 하얀색이라 보이지 않음 */
+			#desc .title .order a{color:#000;}
+
+		/*####### 기능만들기 #######*/
+		/*
+			1) 부모인 order에 올리면 border 색상 변경
+			2) 부모인 order에 올리면 자녀인 a에 글자 색상 변경
+		*/
+			#desc .title .order:hover{border:5px aolid #700;}
+			#desc .title .order:hover a{color:#f00;}
+
+		/*######## desc ######*/
+			#desc .text{width:900px; float:left;}
+			#desc .text p{width:860px; padding-left:40px; margin-top:30px; border-left:1px dashed #aaa;}
+
+		/*
+			[margin-top인 객체 확인하기]
+				1) 자녀요소에 margin-top이 적용된다면 부모요소에서 열리지 않았는지 확인하기
+				2) 부모요소에서 공간이 열려있다면 overflow:hidden으로 해결하기
+					부모요소에서 공간이 열려있지 않다면 overflow:hidden 작업 필요 없음
+				참고예제) playBtn.html
+		*/
+	</style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<div id="carArea">
+				<div id="carDesc">
+					<div id="performance">
+						<ul class="spec">
+							<li>
+								<h4>3.1s</h4>
+								<p>
+									<a href="#" title="Quickest">
+										Quickest acceleration—from zero to 60 mph* in as little as 3.1 seconds
+									</a>
+								</p>
+							</li>
+							<li>
+								<h4>162 mph</h4>
+								<p>
+									<a href="#" title="mph">
+										Improved handling and aerodynamics allow for a top speed of 162 mph
+									</a>
+									
+								</p>
+							</li>
+							<li>
+								<h4>AWD</h4>
+								<p>
+									<a href="#" title="awd">
+										Dual Motor All-Wheel Drive instantly controls traction and torque, in all weather conditions
+									</a>
+								</p>
+							</li>
+
+						</ul>
+					</div>
+					<div id="desc">
+						<div class="title">
+							<h4>Performance</h4>
+							<h2>Quickest Acceleration</h2>
+							<div class="btn">
+								<p class="more">
+									<a href="#" title="learn_more">learn more</a>
+								</p>
+								<p class="order">
+									<a href="#" title="order_now">order now</a>
+								</p>
+							</div>
+						</div>
+						<div class="text">
+							<p>
+								Model 3 comes with the option of dual motor all-wheel drive, 20” Überturbine Wheels and Performance Brakes for total control in all weather conditions. A carbon fiber spoiler improves stability at high speeds, all allowing Model 3 to accelerate from 0-60 mph* in as little as 3.1 seconds.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>
