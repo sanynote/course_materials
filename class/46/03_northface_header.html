@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>northface</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+        a:link, a:visited{text-decoration:none; color:#000;}
+        a:hover, a:focus{text-decoration:underline; color:#f00;}
+
+        /*######### 전체 사용영역 #########*/
+            #wrap{min-width:1025px; width:100%;}
+            #header{width:100%;}
+            h1{width:1px; height:1px; line-height:0; font-size:1px; position:absolute; left:-9999px; overflow:hidden;}
+
+        /*####### logo #########*/
+            #header_inn{width:900px; position:relative;}
+            #header_inn #logo{width:82px; height:82px; position:absolute; left:0; top:0;}
+            #logo img{width:100%;}
+        
+        /*####### topMenu #########*/
+            #header_inn #topMenu{width:818px; height:30px; margin-left:82px; position:relative; background-color:#333;}
+            /* 900-82 == 818 */
+            #topMenu ul{width:290px; height:30px; position:absolute; right:0; top:0;}
+            #topMenu li{display:inline; width:25px; line-height:30px;}
+            #topMenu li a{color:#fff; padding:0 10px;}
+
+        /*######### gnb #########*/
+            #gnb{width:818px; margin-left:82px;}
+            #gnb ul{width:385px; padding-left:210px; height:52px; float:left;}
+            #gnb li{display:inline; line-height:52px;}
+            #gnb li a{padding:0 15px;}
+
+        /* formArea */
+            #gnb form{width:200px; padding-left:23px; height:52px; line-height:52px; float:left;}
+            #gnb form fieldset{border:none;}
+            #gnb form legend{display:none;}
+
+            #gnb #search{width:150px;}
+            #gnb #button{width:30px;}
+
+    </style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <header id="header">
+            <h1>노스페이스</h1>
+            <div id="header_inn">
+                <div id="logo">
+                    <img src="img/nlogo.svg" alt="노스페이스 로고이미지"/>
+                </div>
+                <div id="topMenu">
+                    <ul>
+                        <li><a href="#" title="로그인">로그인</a></li>
+                        <li><a href="#" title="회원가입">회원가입</a></li>
+                        <li><a href="#" title="주문/배송조회">주문/배송조회</a></li>
+                    </ul>
+                </div>
+                <nav id="gnb">
+                    <ul>
+                        <li><a href="#" title="신상품">신상품</a></li>
+                        <li><a href="#" title="베스트">베스트</a></li>
+                        <li><a href="#" title="아울렛">아울렛</a></li>
+                        <li><a href="#" title="기획전/이벤트">기획전/이벤트</a></li>
+                    </ul>
+                    <form>
+                        <fieldset>
+                            <legend>search 검색</legend>
+                            <input type="text" id="search" name="search" title="검색입력"/>
+                            <input type="submit" id="button" title="검색버튼" value="검색">
+                        </fieldset>
+                    </form>
+                </nav>
+            </div>
+        </header>
+    </div>
+ </body>
+</html>
