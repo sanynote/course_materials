@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> transition </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        div{width:150px; height:150px; margin:20px; background-color:pink;
+        transition:width 1s linear;}
+        div:hover{width:400px;}
+
+        /*
+            [transition 정리]
+
+                + transition: property duration timing-function delay
+                + transition: 장면전환 사용하기
+                + property: 바뀌는 속성(width)
+
+                    1) all은 바뀌지 않아도되는 속성까지 바뀌기때문에 
+                    적용하기 전에 확인해봐야함
+
+                    2) 바뀌는 속성을 작성하는 것이 가장 안전방식
+
+                + duration : 장면이 바뀌는 시간 (~동안)
+                    1초 == 1s 
+                    0.5초 == 0.5s
+                    2초 == 2s
+
+                + timing-function: 일반적인 속도(linear)
+                + delay : 지연되는 시간
+
+            [매우중요]
+                transition은 어디에 적용?
+
+                    변해가는 과정을 보여주는 효과가 transition
+                    : hover는 이미 "이렇게 만들겠다"라고 완성되어있는 모양
+                    : hover 전은 hover까지 변해가기위한 시작 단계
+
+                    * hover 전에 작성해야 과정을 보여주면서 hover까지 보여줄 수 있음
+
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                [이벤트 기능, hover]
+
+                    1) 이벤트: 어떤 대상에 자극을 주는 행위(hover, click, a 태그의 focus)
+                    2) 대상에 자극을 주고 효과가 발생하도록 만들기
+
+                [매우중요]
+                    hover나 click등의 이벤트는 기존 값에서 바뀌는 값만 작성
+
+                [중요]
+                    delay 제외가능
+
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                [문제]
+
+                    1) 현재 페이지를 05_transition2.html 파일로 저장하고 문제 풀기
+                    2) div에 마우스 올리면 너비 늘어나면서, 배경색상 파란색 변경하기
+                    글자색상은 하얀색으로 변경되도록
+
+                    * 작성된 속성들이 부드럽게 바뀌도록 만들기
+                    * all 금지
+                    * 핵심) 속성찾기
+
+        */
+    </style>
+	
+ </head>
+
+ <body>
+    <div>
+        transition:장면전환
+    </div>
+ </body>
+</html>
+<!--
+    [장면전환]
+        : 시작부터 결과까지 변해가는 과정을 만드는 효과
+        
+    [기본문법]
+        transition:property duration timing-function delay
+
+    [용어정리]
+
+        1) transition (장면전환 효과를 사용하겠다는 뜻)
+        2) property (속성관련)
+            바꿀 속성 : 너비, 높이, 글자색상, 배경색상, 폰트크기
+            -> 숫자로 되어있는 값들은 거의 모두 변경이 가능함
+
+        [매우중요]
+            1) display:none, display:block
+                : none 다음은?
+                : 중간 과정이 없기때문에 transition 불가능
+
+            2) rgba a에 해당하는 부분
+                alpha(0)    ~   alpha(100)
+
+            3) rgba(255,0,0,1)  ~   rgba(100,100,0,1)
+                : rgba는 숫자로 되어있고, 증가하거나 감소되는것이 시각적으로 확인되기때문에 변화가능
+
+            4) 16진법 
+                0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f
+                : 0~9 까지는 변화가 가능하지만 a~f까지는 숫자가 아니기때문에 적용되지 않을 수 있음
+
+            5) style은 간혹 명칭에서 명칭 변경은 가능하지만 100%는 아님
+                * none과 block은 변화 불가능
+
+        3) duration (매우중요)
+            ~~하는 동안, 장면전환이 발생하는 시간(영화 상영시간)
+
+        4) timing-function (속도관련)
+            + linear: 일반속도
+            + ease  : 느리게
+            + ease-in : 느리게 시작하는 것(시작속도느림)
+                : 처음에는 느리게 시작하다가 일정구간(중간지점) 부터는 일반적인 속도로 표현됨
+            + ease-out: 끝나는 속도가 느리게 끝남
+                : 처음에는 일반적인 속도로 시작하다가 일정구간(중간지점)부터는 속도가 점점 느려지게 표현됨
+
+            + ease-in-out: 처음과 끝이 모두 느리고, 중간지점만 일반적 속도로 표현됨
+
+        5) delay
+            마우스를 올리고 작동이 될때까지 걸리는 지연시간 (몇 초 기다렸다가 시작함)
+
+-->

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+        h2{text-align:center; text-transform:uppercase; line-height:40px;}
+        ul{width:900px; margin:0 auto;}
+        ul li{width:200px; height:200px; margin-left:20px; margin-bottom:20px; background-color:pink; float:left;}
+
+        .test1{border-radius:30px;}
+        /*
+            왼쪽 상단, 오른쪽 상단, 오른쪽 하단, 왼쪽 하단
+            모서리를 표현할 것이라면 0 기입하기
+        */
+        .test2{border-radius:20px 40px 60px 0;}
+
+        /*
+            1) 객체의 크기는 200*200
+            2) radius는 반지름 값, 100px 적용하면 완벽한 동그라미 적용 가능
+        */
+
+        .test3{border-radius:100px;}
+
+        .test4{border-radius:100px 100px 0 0; height:100px;}
+        .test5{border-radius:200px 0 0 0;}
+        .test6{border-radius:70px 0;}
+        .test7{border-radius:100px; line-height:200px; text-align:center;}
+        .test8{border-radius:100px; border:5px solid #f00; width:190px; height:190px;}
+
+
+        ul:after{content:""; display:block; clear:both;}
+
+    </style>
+	
+ </head>
+
+ <body>
+    <h2>border-radius</h2>
+    <ul>
+        <li class="test0">border-radius</li>
+        <li class="test1">1</li>
+        <li class="test2">2</li>
+        <li class="test3">3</li>
+        <li class="test4">4</li>
+        <li class="test5">5</li>
+        <li class="test6">6</li>
+        <li class="test7">7</li>
+        <li class="test8">8</li>
+        <li class="test9">9</li>
+    </ul>
+ </body>
+</html>

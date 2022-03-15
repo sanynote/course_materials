@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        section{display:block;}
+
+        /*###### rotateArea ######*/
+            #wrap{min-width:1025px; width:100%;}
+            #rotateArea{width:100%;}
+            #rotateArea h2{width:200px; line-height:50px; text-align:center; color:#ccc; margin:0 auto; transition:color 0.5s linear;}
+
+            #rotateArea h2:hover{color:#efefef;}
+
+        /*######## rotate ########*/
+            #rotate{width:240px; height:229px; padding-top:11px; background-color:pink; margin:50px auto 0; transition:transform 0.7s linear;}
+            #rotate p{width:218px; height:218px; margin:0 auto; transition:transform 1.5s ease-in;}
+            #rotate p img{width:100%;}
+
+            #rotate:hover{transform:rotate(-45deg);}
+            #rotate:hover p{transform:rotate(45deg);}
+            
+
+    </style>
+	
+ </head>
+
+ <body>
+    <div id="wrap">
+        <section id="rotateArea">
+            <h2>transform_rotate</h2>
+            <div id="rotate">
+                <p>
+                    <img src="img/basic.png" alt="score 관련이미지"/>
+                </p>
+            </div>
+        </section>
+    </div>
+	
+ </body>
+</html>

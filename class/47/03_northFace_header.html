@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>northFace_header</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+        a:link, a:visited{text-decoration:none; color:#777;}
+        a:hover, a:focus{text-decoration:underline; color:#ed3124;}
+
+        #wrap{min-width:1025px; width:100%;}
+
+        /* 로고 높이 보고 높이를 나눔 82px */
+        #headerWrap{width:100%; height:82px; border-bottom:1px solid #ccc;}
+        #header{width:1025px; height:100%; position:absolute; left:0; top:0;}
+
+        /* 1025-82 ==943 */
+
+        #infoMenu{width:943px; height:32px; line-height:32px; margin-left:82px; background-color:#000; font-size:11px; text-align:right;}
+        #infoMenu li{display:inline;}
+        #infoMenu li a{color:#fff; padding-left:10px;}
+
+        /*######### gnb #######*/
+        /* ul과 form 붙이기 */
+
+        #gnb{width:943px; margin-left:82px; height:50px;}
+        #gnb ul{width:800px; height:100%; float:left;}
+        #gnb li{display:inline; font-weight:700; font-size:14px;}
+        #gnb li a{padding:0 30px;}
+
+        #gnb form{width:143px; height:100%; float:left;}
+        #gnb form fieldset{border:none;}
+        #gnb form legend{display:none;}
+
+        #gnb form .search{width:103px; float:left;}
+        #gnb form .search input{width:100px; border:1px solid #ccc; height:18px; color:#aaa; text-indent:10px;}
+
+        #gnb form .btn{width:40px; float:left;}
+        #gnb form .btn input{width:100%; height:100%; font-size:12px;}
+
+        #gnb:after{content:""; display:block; clear:both;}
+
+
+
+    </style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <div id="headerWrap">
+            <header id="header">
+                <h1>
+                    <a href="#" title="northFace">
+                        <img src="img/nlogo.svg" alt="logo"/>
+                    </a>
+                </h1>
+                <ul id="infoMenu">
+                    <li><a href="#" title="로그인">로그인</a></li>
+                    <li><a href="#" title="회원가입">회원가입</a></li>
+                    <li><a href="#" title="주문/배송조회">주문/배송조회</a></li>
+                </ul>
+                <nav id="gnb">
+                    <ul>
+                        <li><a href="#" title="신상품">신상품</a></li>
+                        <li><a href="#" title="베스트">베스트</a></li>
+                        <li><a href="#" title="아울렛">아울렛</a></li>
+                        <li><a href="#" title="기획전/이벤트">기획전/이벤트</a></li>
+                    </ul>
+                    <form action="#" method="get">
+                        <fieldset>
+                            <legend>검색</legend>
+                            <p class="search">
+                                <input id="search" type="text" name="search" title="제품검색" value="search"/>
+                            </p>
+                            <p class="btn">
+                                <input id="btn" type="submit" title="검색" value="검색"/>
+                            </p>
+                        </fieldset>
+                    </form>
+                </nav>
+            </header>
+        </div>
+    </div>
+ </body>
+</html>
