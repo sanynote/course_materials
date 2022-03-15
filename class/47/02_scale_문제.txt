@@ -1,0 +1,11 @@
+﻿1) BASIC:TEST
+2) SCALE50%:TEST
+3) SCALE120%:TEST
+4) SCALE25%:TEST 
+	+ 마우스 올리면 75% 커짐
+
+
+5) SCALE_X50%:TEST
+6) SCALE_Y50%:TEST
+
+7) section과 article 사용해보기

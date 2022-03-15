@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transform_basic</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+        a:link, a:visited{text-decoration:none;}
+        h2{width:1px; height:1px; line-height:0; font-size:1px; position:absolute; left:-9999px; overflow:hidden;}
+        body{background-color:#333;}
+        /*####### 전체사용영역 #######*/
+            #wrap{min-width:1025px; width:100%;}
+            #container{width:100%;}
+            #transform{width:100%;}
+            #textArea{width:775px; height:60px; color:#fff; text-align:center; margin:0 auto;}
+
+        /*########## scaleArea () ##########*/
+            #scaleArea{width:775px; height:550px; padding-top:100px; margin:0 auto;}
+            #top{width:750px;}
+            #top li{width:250px; height:270px; background-color:pink; float:left;}
+            #top h4{width:100%; height:40px; text-align:center;}
+            #top p{width:218px; height:218px; overflow:hidden; margin:0 auto;}
+            #top p img{width:100%;}
+
+            #top .ts0{transform:scale(0.5,0.5);}
+            #top .ts1{transform:scale(1.2,1.2);}
+            #top .ts2{transform:scale(0.25,0.25); background-color:#caf;}
+            #top .ts3{transform:scale(0.5,1);}
+            #top .ts4{transform:scale(1,0.5);}
+            
+    </style>
+	
+ </head>
+
+ <body>
+    <div id="wrap">
+        <div id="container">
+            <section id="transform">
+                <h2>트랜스폼_스케일</h2>
+                <article id="textArea">
+                    <h2>textArea</h2>
+                    header : nav영역을 담을수 있음<br/>
+                    section : 비슷한 정보의 값들을 모아주는 영역, (필수: 헤드라인 태그)<br/>
+                    article : 배포가능한 정보들을 모아주는 영역"재배포가 가능한 영역" <br/>
+                    footer : address를 담을수 있음
+                </article>
+                <article id="scaleArea">
+                    <h2>scaleArea</h2>
+                    <ul id="top">
+                        <li><h4>basic:test</h4><p><img src="img/basic.png" alt="basic"/></p></li>
+                        <li class="ts0"><h4>scale50%:test</h4><p><img src="img/basic.png" alt="scale50%"/></p></li>
+                        <li class="ts1"><h4>scale120%:test</h4><p><img src="img/basic.png" alt="scale120%"/></p></li>
+                        <li class="ts2"><h4>scale25%:test</h4><p><a href="#" title="scale25%"><img src="img/basic.png" alt="scale25%"/></a></p></li>
+                        <li class="ts3"><h4>scale_x50%:test</h4><p><img src="img/basic.png" alt="scale_x50%"/></p></li>
+                        <li class="ts4"><h4>scale_y50%:test</h4><p><img src="img/basic.png" alt="scale_y50%"/></p></li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+    </div>
+ </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transform</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        h2{text-transform:uppercase; padding:30px 0 10px;}
+        p{width:150px; height:150px; background-color:#abcdef;}
+
+        .basic{background-color:#f00; color:#fff; left:0; top:0;}
+        /* 1) 기준점이 없기때문에 좌표 설정이 어려움 */
+
+        .relative{background-color:#000; color:#fff; left:100px; top:30px; position:relative;}
+        /*
+            2) relative도 position 효과이기때문에 상대와 겹칠 수 있음
+                : absolute처럼 브라우저 중심이 아니기때문에 좌표 움직임이 무겁게 느껴짐
+        */
+
+        .translate{background-color:aqua; transform:translate(200px,30px);}
+        /*
+            3) translate 정리
+
+                : 일반적으로 포토샵에서는 transform에 translate가 없음
+                : 코딩에서는 마우스를 잡아서 객체를 움직이기 어렵기때문에 translate로 움직임이 필요함
+                : x축, y축
+
+                * translate와 relative가 움직이는 형태가 비슷함
+
+                [중요]
+                    1) div{position:absolute; position:relative;} 를 설정할 경우
+                        * 배스킨라빈스 벽돌 배경 section 확인하기
+                        * 각각의 객체들은 absolute로 날아와서 배치됨
+                        * 안에 배치된 자녀인 이미지들은 그 안에서 다시 absolute로 배치가 되고있음
+                        * 해당하는 객체에서 absolute와 relative 둘 다 설정되어야 하는 문제가 발생함
+
+                    2) 같은 객체에 position 2번 적용하면 뒤에 있는 값이 최신이기때문에
+                        1번의 경우, relative 가 적용됨. absolute는 무시당할 수 있음
+
+                    3) transform은 position 효과가 아님
+                        : position 사용한 후, transform을 사용해도 문제가 없음
+                        : position:relative와 비슷한 움직임을 만들기 위해서 translate 사용
+
+                    매우 중요)
+                        *translare는 relative 처럼 움직이지만, absolute의 부모역할을 담당하지 않음
+                        이유는? position 효과가 아님
+
+                    div{position:absolute; transform:translate(100px, 30px);}
+                        : position은 사용하지 않았기때문에 여러번의 위치이동이 가능함
+
+                ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                    [초기값_매우중요]
+
+                        * script의 경우 style보다 자동화 개념이 별로 없어서 직접 만들어야 하는 경우가 많음
+                        * 시작 위치에서부터 움직이는 위치까지 (어디서 어디까지 움직였는지 "거리값" 중요)
+
+                            x축으로 움직일 때
+                                transform:translate(100px, 0)
+
+                            y축으로 움직일 때
+                                transform:translate(0, 100px)
+
+                        * 0의 값은 "초기값"
+                        * 이동 변현에 대한 초기값은 transform:translate(0,0)
+        */
+
+        .scale{transform:scale(1,0.5);}
+
+        /*
+            [크기변화: scale]
+                : 해당하는 객체의 크기를 변화할 때 사용
+                : x축, y축으로 구분
+                : 기본으로 장착된 단위는 "%"
+
+                rgba() alpha은 투명도를 조절한 값
+
+                    : 50%   == 0.5
+                    : 25%   == 0.25
+                    : 100%  == 1
+
+                    * 0~100 숫자는 소수점은 상관없음
+                    * 단, "마이너스" 값만 제외
+
+                초기값: 100%를 기준으로 하기때문에 1,1 이 초기값
+        */
+
+    </style>
+	
+ </head>
+
+ <body>
+	<h2>transform:html5 (css3), "변형" 할 때 사용하는 효과</h2>
+	<hr/>
+	<p class="basic">basic</p>
+	<hr/>
+	<p class="relative">relative</p>
+	<hr/>
+	<p class="translate">transform:translate 이동(x축, y축)</p>
+	<hr/>
+	<p class="scale">transform:scale 크기 변화(x축, y축)</p>
+	<hr/>
+ </body>
+</html>
