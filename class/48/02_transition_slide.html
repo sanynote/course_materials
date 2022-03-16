@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transition_slide</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        #wrap{width:100%;}
+
+        #btnArea{width:400px;}
+        h2{width:1px; height:1px; line-height:0; font-size:1px; position:absolute; left:-9999px; overflow:hidden;}
+        h3{width:100%; height:50px; text-align:center; line-height:50px; background-color:#2ef;}
+
+        #btn0{width:100%; height:50px; overflow:hidden; transition:height 0.5s linear;}
+        #btn0:hover{height:400px; background-image:url("img/chire.jpg"); cursor:pointer; background-size:150%;}
+
+        #btn1{width:100%; height:50px; overflow:hidden; transition:height 0.5s linear;}
+        #btn1:hover{height:400px; background-image:url("img/color-case.jpg"); cursor:pointer; background-size:150%;}
+
+        #btn2{width:100%; height:50px; overflow:hidden; transition:height 0.5s linear;}
+        #btn2:hover{height:400px; background-image:url("img/honda_car.jpg"); cursor:pointer; background-size:150%;}
+
+      
+
+		
+        
+
+    </style>
+	
+ </head>
+
+ <body>
+    <div id="wrap">
+        <section id="btnArea">
+            <h2>btn</h2>
+            <article id="btn0" class="b0">
+                <h3>button1</h3>
+            </article>
+            <article id="btn1" class="b1">
+                <h3>button2</h3>
+            </article>
+            <article id="btn2" class="b2">
+                <h3>button3</h3>
+            </article>
+        </section>
+
+    </div>
+ </body>
+</html>

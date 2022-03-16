@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>border-radius</title>
+	<meta charset="utf-8"/>
+	<style>	
+			*{margin:0; padding:0;}
+			li{list-style-type:none;}
+			h2{text-align:center; text-transform:uppercase; line-height:40px;}
+
+			ul{width:900px; margin:0 auto;}
+			ul li{width:200px; height:200px; margin-left:20px; margin-bottom:20px; background-color:pink; float:left;}
+
+		/*############# 개별 작업 ############*/
+			
+			.test0{background-color:gold; text-align:center; line-height:200px;
+			box-shadow:10px 10px 10px rgba(0,0,0,0.3);}
+
+			/*
+				[box-shadow]
+					
+					: 객체에 그림자 효과 적용하기
+
+					중요) margin, padding, border 처럼 영역을 차지 하지 않기 때문에 
+					그림자 효과를 적용하고 너비나 높이를 재설정 할 필요는 없음!
+
+					1) x축 밀리는 정도	: 5px
+					2) y축 밀리는 정도	: 5px
+					3) 흐림효과에 해당하는 부분 (blur)	: 5px
+
+					4) rgba로 주로 만듬, 그림자 색상에 해당하는 부분
+						그림자 효과는 투명한 정도가 있기 때문에 rgba 사용!
+
+
+					* 그림자 효과는 객체의 모양을 따라감!
+						: 사각형, 동그라미, 세모등을 만들면 그 모양대로 표현이 가능함!
+			*/
+
+			.test1{border-radius:30px;}
+			/*
+				적용되는 순서:
+					왼쪽 상단, 오른쪽 상단, 오른쪽 하단, 왼쪽 하단
+			*/
+
+			.test2{border-radius:20px 40px 60px 80px;}
+
+			/* radius는 반지름에 해당하는 부분 : 너비 200px */
+			/* 
+				border-radius:100px 100px 100px 100px; 
+				: 4방향이 모두 같으면 한번만 적용
+			*/
+			.test3{border-radius:100px;}
+
+			/*#############################################*/
+			/* 90도 각도로 표현되는 부분은 생략하는 것이 아니라 0으로 표현하기 */
+			
+			.test4{background-color:aqua; height:100px; border-radius:100px 100px 0 0;}
+
+			.test5{border-radius:200px 0 0 0;}
+
+			/*
+				기본표현 방법 :border-radius:80px 0 80px 0
+
+				축약형 표현 방법: border-radius:80px 0
+					: 크로스해서 위치값이 같을때 한번씩만 사용가능!
+
+				++++++++++++++++++++++++++++++++++++++++++++++
+
+				[매우중요]
+
+					:크로스해서 축약형으로 사용할 경우, 적용되지 않는 브라우저가 있음
+					: 파이어폭스, 익스플로러
+
+					[해결]
+						: 기본 표현방법으로 4방향 모두 작성
+						: border-radius:80px 0 80px 0 작성하기
+
+						* 일부 브라우저에서 적용되지 않는 이유는 css3 버전을 해석하지 못하는 브라우저들의 문제
+						* 브라우저에서 사용하는 "엔진명 작성"
+						* 해당하는 좌표를 직접 설정하여 사용하기
+
+			*/
+			.test6{border-radius:80px 0;}
+			/*.test6{border-top-left-radius:80px; border-bottom-right-radius:80px;}*/
+			
+			/* 
+				[정리]
+
+				border-radius는 반지름으로 둥글게 표현하기 위한 값!
+				높이 값이 변경되지 않았기 때문에 line-height 값은 도형의 크기 만큼 설정하기!
+			*/
+			.test7{border-radius:100px; text-align:center; line-height:200px; font-weight:700;}
+			
+			/*
+				[border 값 적용시 주의사항]
+					
+					1) border가 적용되면서 영역이 커짐 (검사창의 computed에서 확인가능!)
+					2) 객체가 커짐!
+					3) 200px * 200px 사용중 border:5px solid red가 적용되면서 10px씩 늘어남!
+
+						: 210px * 210px
+						: 반지름 : 105px
+
+					4) 공간이 커지지 않도록 유지하기
+						
+						: width:190px
+						: height:190px
+						: border:5px solid red
+						: border-radius:100px 적용!
+			
+			*/
+			.test8{width:190px; height:190px; line-height:190px; border:5px solid red; border-radius:100px; background-color:#000; color:#fff; text-align:center;}
+			
+			.test9{background-color:#000; color:#fff; text-transform:uppercase; text-align:center; line-height:200px; border-radius:100px; font-weight:700; box-shadow:5px 5px 20px rgba(0,0,0,0.5); text-shadow:5px 5px 20px #ff0;}
+
+			/*
+				[box-shadow와 text-shadow의 특징]
+
+					1) 영역을 차지하지 않음
+					2) 공통
+						:x축 밀리는 정도
+						:y축 밀리는 정도
+						:흐림 (blur)
+						:그림자 색상
+
+						객체적용,글자적용
+			*/
+
+			ul:after{content:""; display:block; clear:both;}
+	</style>
+ </head>
+ <body>
+	<h2>border-radius</h2>
+	<ul>
+		<li class="test0">border-radius</li>
+		<li class="test1">1</li>
+		<li class="test2">2</li>
+		<li class="test3">3</li>
+		<li class="test4">4</li>
+		<li class="test5">5</li>
+		<li class="test6">6</li>
+		<li class="test7">7</li>
+		<li class="test8">8</li>
+		<li class="test9">display:inline-block</li>
+	</ul>
+ </body>
+</html>
