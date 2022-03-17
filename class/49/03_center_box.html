@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        h2{text-align:center; padding:30px 0 10px; text-transform:uppercase;}
+        div{width:300px; height:300px; background-color:gold; margin:0 auto;}
+        div p{width:200px; height:200px; text-indent:-9999px; background-color:#000;}
+
+        /*
+            [태그 사용시 기본원칙]
+                1) 태그들 사이에는 비워두지 않도록 설정하는것을 권장
+                2) 기능적용, db에서 비워진 칸이 넘어갈 수 있기때문에 비우지 않도록 한다.
+                3) absolute, left:-9999px 태그를 화면 바깥으로 버리는 방식
+                4) text-indent 방식은 담겨있는 글자만 바깥으로 버리는 방식
+
+                * 비워져있으면 공간을 인식하기 어렵고, 교체작업이 어렵기때문에 
+                객체를 넣어두는것이 안전하다
+        */
+
+        /*########### test1 ##########*/
+            .test1{position:relative;}
+            .test1 p{position:absolute; width:10px; height:10px; left:50px; top:50px; transition:width 0.5s linear, height 0.5s linear;}
+            .test1:hover p{width:200px; height:200px;}
+
+        /*######### test2 ##########*/
+            .test2{overflow:hidden;}
+            .test2 p{margin:50px auto; transform:scale(0.1); transition:transform 0.5s linear;}
+            .test2:hover p{transform:scale(1);}
+
+        /*
+            ["transform" 이 적용된 객체와 "일반객체" 구분하기]
+                : transform이 적용된 객체는 축이 도형의 가운데 있음
+                : scale은 가운데를 중심으로 확대되거나 축소됨
+                : score402이미지 예제에서 rotate가 서로 반대로 회전되는 실습 참고
+                    : 도형의 축 가운데서부터 회전됨
+                : scale, rotate 모두 transform 속성
+
+                [일반객체]
+                    position이나 일반객체들은 모든 축이 왼쪽 상단으로 움직이기때문에 
+                    펼쳐지거나 늘어날때도 왼쪽에서부터 오른쪽으로 
+                    위에서부터 아래로 늘어나게 된다.
+        */
+    </style>
+	
+ </head>
+
+ <body>
+    <h2>box test1</h2>
+    <div class="test1">
+        <p>test1</p>
+    </div>
+    <hr/>
+    <h2>box test2</h2>
+    <div class="test2">
+        <p>test2</p>
+    </div>
+
+ </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transition_slide</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        /* display:none을  */
+        h4{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; overflow:hidden;}
+
+        /*########################*/
+        /*
+            중요) 액자를 먼저 만들고, 이미지 액자 너비 맞추기
+        */
+
+        /*
+            잘못된 방법
+                section과 article 부모요소에 아무 작성도 하지 않음
+                section과 article은 "블록요소"
+       
+        section{border:1px solid red;}
+        h3{width:400px; height:50px; line-height:50px; text-align:center; background-color:lightblue;}
+        img{width:400px; display:none;}
+
+        section:hover img{display:block;}
+
+        :: 위의 코드의 문제점, 부모가 되는 블록요소의 영역이 끝에서 끝까지 차지함
+        기능이 적용되어야하는 영역은 인접한 영역까지만 사용해야 함
+        :: 기능이 되기때문에 다른 영역에 간섭하거나 오류를 만들 수 있음
+        */
+        
+        section{width:400px; border:1px solid red;}
+        h3{width:100%; height:50px; line-height:50px; text-align:center; background-color:lightblue;}
+        article{width:100%; height:0; transition:height 0.5s ease;}
+        article img{width:100%; height:100%;}
+
+        section:hover article{height:240px;}
+
+        /*
+            [기능적용시 중요사항]
+                : display:none과 block은 중간과정이 없어서 장면전환 불가능
+                : 숫자로 표현해서 기능 만들기
+                : 높이 방향이 늘어나도록 만들기
+
+                : section에 마우스를 올렸지만 article 늘어나기때문에 장면 전환을 article에 적용하기
+                : img태그를 확인해보면 높이 : 100%를 따라가도록 지정한적이 없어서 부모를 따라가지않음
+
+                : 기능적용시 페이지 만들때 핵심은 컴퓨터가 알아들을 수 있도록 지정해주는것이 매우 중요하다
+
+            [style 영역 확인하기]
+                : h3와 article 친구 요소로 style에서는 부모에서 자녀만 관리함
+
+        */
+
+    </style>
+	
+ </head>
+
+ <body>
+    <section>
+        <h3>button1</h3>
+        <article>
+            <h4>test1</h4>
+            <img src="img/chire.jpg" alt="소스이미지1"/>
+        </article>
+    </section>
+
+    <section>
+        <h3>button2</h3>
+        <article>
+            <h4>test2</h4>
+            <img src="img/color-case.jpg" alt="소스이미지2"/>
+        </article>
+    </section>
+
+    <section>
+        <h3>button3</h3>
+        <article>
+            <h4>test3</h4>
+            <img src="img/honda_car.jpg" alt="소스이미지3"/>
+        </article>
+    </section>
+ </body>
+</html>
