@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>font-face</title>
+	<meta charset="utf-8"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Hi+Melody&family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <style>
+
+        @font-face{
+            font-family:"ts0";
+			src:url("font/NanumGothic.woff");
+		}
+
+        @font-face{
+            font-family:"ts1";
+			src:url("font/NanumGothicExtraBold.woff");
+		}
+
+        #ts0{font-family:"ts0"}
+        #ts1{font-family:"ts1"}
+        #ts2{font-family:'Dokdo', cursive;}
+        #ts3{font-family:'Hi Melody', cursive;}
+
+    </style>
+
+ </head>
+
+ <body>
+    <h3 id="ts0">test:BASIC</h3>
+    <h3 id="ts1">test:system</h3>
+    <h3 id="ts2">test:GOOGLE</h3>
+    <h3 id="ts3">테스트:한글</h3>
+ </body>
+</html>
