@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>notebook</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+        a:link, a:visited{text-decoration:none;color:#000;}
+        body{background-color:#30577E;}
+
+
+        #wrap{min-width:1025px; width:100%;}
+        #content{width:930px; margin:0 auto; padding-top:30px;}
+        #content h3{width:920px; margin-left:10px; color:#fff; height:40px; line-height:40px; text-indent:10px; border-left:5px solid #ff0;}
+        #content h3 .yellow{color:#ff0;}
+
+        #content ul{width:920px;}
+        ul:after{content:""; display:block; clear:both;}
+
+        #content li{width:200px; height:200px; padding:10px; margin-left:10px; margin-top:10px; float:left; background-color:#fff;}
+        #content h4{width:100%; line-height:30px; text-align:center; font-size:14px; transition:font-size 0.5s linear;}
+        #content li:hover h4{font-size:17px;}
+        #content a{display:block;}
+
+        /* 기능만들기 */
+        #content a:hover{color:#f00; text-decoration:underline;}
+        
+        #content a .img{width:160px;}
+        #content a .img img{width:100%;}
+        #content a .desc{display:block; width:100%; font-size:12px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+
+        /* 마지막 li 영역 */
+            #content .bgArea{width:190px; height:190px; border:5px solid aqua; transition:border 0.5s linear; 
+                background-image:url("img/main.jpg"); background-size:100%;}
+            #content .bgArea p{width:100%; font-size:20px; text-align:center; 
+                transition:font-size 0.5s linear,color 0.5s linear; font-weight:700; color:#efefef; margin-top:85px;}
+
+            #content .bgArea:hover{border:5px solid #f00;}
+            #content .bgArea:hover p{font-size:16px; color:#ff0;}
+
+        /* 맨 밑 div 영역 */
+            #content .bigArea{width:680px; margin-left:10px; height:220px; margin-top:10px; background-color:#2F3035; 
+                background-image:url("img/gram.jpg"); background-repeat:no-repeat; background-position:right;}
+            
+            #content .bigArea p{position:relative; left:10px; top:90px; font-size:20px; color:#ccc; text-decoration:underline;}
+            #content .bigArea:hover .white{color:#fff; font-size:24px; transition:color 0.5s ease-in, font-size 0.5s linear 0.5s;}
+            #content .bigArea:hover .red{color:#f00; transition:color 0.5s ease-in;}
+    </style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <div id="content">
+            <h3>노트북<span class="yellow"> / 컴퓨터</span></h3>
+            <ul>
+                <li>
+                    <h4>한성컴퓨터 올데이롱</h4>
+                    <a href="#" title="노트북">
+                        <span class="img"><img src="img/comp0.jpg" alt="노트북이미지0"/></span>
+                        <span class="desc">한성컴퓨터, 발걸음도 노트북도 가볍게! 새내기 대학생을 위한 추천 노트북</span>
+                    </a>
+                </li>
+                <li>
+                    <h4>삼성전자 갤럭시북 플렉스</h4>
+                    <a href="#" title="노트북">
+                        <span class="img"><img src="img/comp1.jpg" alt="노트북이미지1"/></span>
+                        <span class="desc">입문용노트북 추천, 삼성 갤럭시북 플렉스 NT930QCT-A38A 사용해보니</span>
+                    </a>
+                </li>
+                <li>
+                    <h4>LG전자 그램17</h4>
+                    <a href="#" title="노트북">
+                        <span class="img"><img src="img/comp2.jpg" alt="노트북이미지2"/></span>
+                        <span class="desc">[리뷰] 17인치 대화면 노트북도 ‘그램’하다</span>
+                    </a>
+                </li>
+                <li>
+                    <h4>APPLE 맥북프로</h4>
+                    <a href="#" title="노트북">
+                        <span class="img"><img src="img/comp3.jpg" alt="노트북이미지3"/></span>
+                        <span class="desc">맥북 프로 리뷰는 왜 안하는거죠? 애플의 미친 마진 정책이 싫어서?</span>
+                    </a>
+                </li>
+                <li>
+                    <h4>LG전자 그램14</h4>
+                    <a href="#" title="노트북">
+                        <span class="img"><img src="img/comp4.jpg" alt="노트북이미지4"/></span>
+                        <span class="desc">주성씨엔디, 'LG그램14 14ZD90N-VX50K' 출시 이벤트 진행</span>
+                    </a>
+                </li>
+                <li>
+                    <h4>삼성전자 갤럭시북 이온</h4>
+                    <a href="#" title="노트북">
+                        <span class="img"><img src="img/comp5.jpg" alt="노트북이미지5"/></span>
+                        <span class="desc">단 3일간 파격혜택! 삼성 갤럭시북 브랜드위크 이벤트 진행</span>
+                    </a>
+                </li>
+                <li>
+                    <h4>한성컴퓨터 언더케이지</h4>
+                    <a href="#" title="노트북">
+                        <span class="img"><img src="img/comp6.jpg" alt="노트북이미지6"/></span>
+                        <span class="desc">한성컴퓨터, 대학생과 입문자들을 위한 추천 노트북</span>
+                    </a>
+                </li>
+                <li class="bgArea">
+                    <p><i>ASUS ZEN BOOK</i></p>
+                </li>
+            </ul>
+            <div class="bigArea"><p><span class="white">No.1의 혁신</span><span class="red">LG GRAM 17</span></p></div>
+        </div>
+    </div>
+ </body>
+</html>
