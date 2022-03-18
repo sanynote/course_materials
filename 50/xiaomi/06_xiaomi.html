@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>xiaomi</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		li{list-style-type:none;}
+		a:link, a:visited{text-decoration:none;}
+
+		#wrap{min-width:1025px; width:100%;}
+		#headerArea{width:100%; background-color:#000;}
+
+		/* 실제 사용영역 1000px(header) */
+			#header{width:1000px; height:50px; margin:0 auto;}
+			h1{width:1px; height:1px; line-height:0; font-size:1px; position:absolute; left:-9999px; overflow:hidden;}
+			
+			#header ul li a{padding:0 20px; font-size:17px; color:#efefef;}
+
+			#header .left{width:80%; height:100%; float:left;}
+			#header .left li{display:inline-block; line-height:40px;}
+			#header .left li select{border:none;}
+
+			#header .right{width:20%; height:100%; float:left;}
+			#header .right li{display:inline-block; line-height:40px;}
+
+			#header:after{content:""; display:block; clear:both;}
+
+		/* nav */
+			#navArea{width:100%; background-color:#000; transition:background-color 1s linear;}
+			#nav{width:1000px; height:70px; padding-top:15px; margin:0 auto;}
+			#navArea:hover{background-color:#fff;}
+
+			h2{width:1px; height:1px; line-height:0; font-size:1px; position:absolute; left:-9999px; overflow:hidden;}
+
+			#nav .logo{width:56px; height:56px; overflow:hidden; float:left;}
+			#nav .logo img{height:100%; position:relative; right:56px; top:0; transition:right 0.3s linear;}
+			#nav .logo:hover img{right:0;}
+
+			#nav .gnb{width:944px; height:56px; float:left; position:relative;}
+			#nav .gnb ul{width:515px; line-height:56px; position:absolute; right:0; top:0;}
+			#nav .gnb li{display:inline-block;}
+			#nav .gnb li a{padding:0 5px; font-size:14px; color:#efefef;}
+
+		/* container */
+			#container{width:100%;}
+			#container #visual{width:100%; height:770px; background-image:url("img/main2.jpg"); position:relative;}
+			#visual #textBox{width:400px; height:400px; font-size:30px; color:#fff; position:absolute; left:-500px; bottom:150px; transition:left 0.3s linear, bottom 0.3s linear;}
+
+			#visual:hover #textBox{left:400px;}
+
+			#textBox h3{width:100%; height:100px; font-size:40px; line-height:100px;}
+			#textBox .str{width:300px; height:70px;}
+			#textBox .desc{width:100%; padding-top:40px; height:50px; font-size:15px;}
+			#textBox .box{width:150px; height:50px; border:2px solid #f00; margin-left:50px; margin-top:30px; font-size:15px; line-height:50px; text-align:center;}
+
+
+		/* video */
+			#video{width:790px;height:450px; margin:0 auto;}
+			#video h3{width:100%; height:50px; padding-top:30px; text-align:center;font-size:25px; color:#777;}
+
+			#video h3:before{content:"────────────"; display:inline-block; margin-right:50px;}
+			#video h3:after{content:"────────────"; display:inline-block; margin-left:50px;}
+			#video ul{width:100%; margin-top:50px;}
+			#video li{width:250px; height:250px; float:left; overflow:hidden; margin-left:10px;}
+			#video li img{height:100%; transform:scale(1); transition:transform 0.5s linear;}
+
+			#video li img:hover{transform:scale(1.2);}
+
+			#video ul:after{content:""; display:block; clear:both;}
+
+		/* footer */
+			#footer{width:100%; background-color:#000;}
+			#footer #subVisual{width:100%; height:770px; background-image:url("img/subVisual.jpg");}
+
+			#footer .extra{width:1000px; margin:0 auto;}
+			#footer .extra ul{width:800px;}
+
+			#footer .extra li{width:170px; float:left; font-size:14px; padding-left:30px; color:#fff;}
+			#footer .extra li h3{width:100%; height:80px; line-height:80px;}
+			#footer .extra li p{width:100%; height:30px;}
+			#footer .extra li p:hover{color:red;}
+
+			#footer ul:after{content:""; display:block; clear:both;}
+
+
+			
+	</style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="headerArea">
+			<header id="header">
+				<h1>top_header</h1>
+				<ul class="left">
+					<li><a href="#" title="international">international</a></li>
+					<li><a href="#" title="miui">miui</a></li>
+					<li>
+						<select>
+							<option selected="selected">International</option>
+							<option>Mainland China 简体中文</option>
+							<option>Hong Kong 繁體中文</option>
+							<option>Taiwan 繁體中文</option>
+						</select>
+					</li>
+				</ul>
+				<ul class="right">
+					<li><a href="#" title="sign in">sign in</a></li>
+					<li><a href="#" title="sign up">sign up</a></li>
+				</ul>
+			</header>
+			<div id="navArea">
+				<nav id="nav">
+					<h2>gnb</h2>
+					<div class="logo">
+						<img src="img/logo.png" alt="로고이미지"/>
+					</div>
+					<div class="gnb">
+						<ul>
+							<li><a href="#" title="Mi Phones">Mi Phones</a></li>
+							<li><a href="#" title="Redmi Phones">Redmi Phones</a></li>
+							<li><a href="#" title="스마트 기기">스마트 기기</a></li>
+							<li><a href="#" title="Mi 파워뱅크">Mi 파워뱅크</a></li>
+							<li><a href="#" title="Mi TV">Mi TV</a></li>
+							<li><a href="#" title="서비스 센터">서비스 센터</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div id="container">
+			<div id="visual">
+				<div id="textBox">
+					<h3>Redmi 7A</h3>
+					<p class="str">Bigger Battery, Faster Performance</p>
+					<p class="desc">Qualcomm® Snapdragon™ 439 processor Large 4000mAh (typ) battery 12MP AI rear camera</p>
+					<p class="box">Learn more</p>
+				</div>
+			</div>
+			<section id="video">
+				<h3>video</h3>
+				<ul>
+					<li><img src="img/sub0.jpg" alt="비디오이미지0"/></li>
+					<li><img src="img/sub1.jpg" alt="비디오이미지1"/></li>
+					<li><img src="img/sub2.jpg" alt="비디오이미지2"/></li>
+				</ul>
+			</section>
+		</div>
+		<footer id="footer">
+			<h2>footer</h2>
+			<div id="subVisual"></div>
+			<div class="extra">
+				<ul>
+					<li>
+						<h3>SHOP AND LEARN</h3>
+						<p>Xiaomi 12 Pro</p>
+						<p>Xiaomi 12</p>
+						<p>Redmi Note 11</p>
+						<p>Redmi Note 11 Pro 5G</p>
+						<p>Xiaomi Buds 3T Pro</p>
+						<p>Xiaomi Watch S1 Active</p>
+					</li>
+					<li>
+						<h3>SUPPORT</h3>
+						<p>Contact us</p>
+						<p>User Guide</p>
+						<p>Warranty</p>
+						<p>International Warranty</p>
+						<p>EU Declaration of</p>
+						<p>Conformity</p>
+						<p>Scooter Safety Notice</p>
+						<p>Android Enterprise</p>
+						<p>Recommended</p>
+					</li>
+					<li>
+						<h3>CONTACT US</h3>
+						<p>Facebook</p>
+						<p>Youtube</p>
+						<p>Instagram</p>
+						<p>Twitter</p>
+						<p>Xiaomi Studios</p>
+						<p>Xiaomi Imagery</p>
+						<p>Xiaomi Creators</p>
+					</li>
+					<li>
+						<h3>ABOUT US</h3>
+						<p>Xiaomi</p>
+						<p>Leadership Team</p>
+						<p>Privacy Policy</p>
+						<p>Integrity & Compliance</p>
+						<p>Press & Media</p>
+						<p>Xiaomi Blog</p>
+					</li>
+				</ul>
+
+			</div>
+
+		</footer>
+	</div>
+ </body>
+</html>

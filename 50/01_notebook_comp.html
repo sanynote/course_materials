@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>notebook_comp</title>
+	<meta charset="utf-8"/>
+	<style>
+			*{margin:0; padding:0;}
+			body{background-color:#30587E;}
+			li{list-style-type:none;}
+			a:link, a:visited{text-decoration:none; color:#333;}
+			a:hover, a:focus{text-decoration:underline; color:#f00;}
+
+			#wrap{min-width:720px; width:100%;}
+			#container{width:100%;}
+
+		/*################# notebookArea (전체영역) #################*/
+			#notebookArea{width:100%;  overflow:hidden; /*margin-top 해결*/}
+		
+		/*
+			[매우중요]
+				section 태그를 사용하면 바로 h2~ h6까지의 태그가 반드시 작성되어야 한다!
+		*/
+
+		/*################## notebook (실제사용 영역) ##################*/
+			
+			#notebook{width:880px; margin:100px auto 0;}
+			#notebook h3{border-left:5px solid #ff0; text-indent:10px; color:#ff0; font-size:22px;}
+			#notebook h3 span{font-weight:400; color:#fff;}
+
+			#content{width:100%;}
+
+			/*
+				[이미지 크기 확인하기]
+					160px * 120px (공통)
+
+				[매우중요]
+					1) transition_slide.html 파일 참고하기!
+					2) 이미지를 담고 있는 액자 크기를 제대로 설정하지 않으면 잘못 된 영역에서 작동이
+					발생 할 수 있음!
+
+					3) 기능이 적용된다면 영역을 정확하게 보고 작업하기!
+			*/
+			
+			/*#### content (ul) ####*/
+			#content li{width:200px; height:200px; margin-right:5px; margin-top:5px;
+			background-color:#fff; text-align:center; float:left;}
+			
+			#content li h4{font-size:13px; height:40px; line-height:40px; transition:font-size 0.3s linear;}
+
+			/*###### 기능 #####*/
+			/* li에 마우스 올리면 h4 제목 크기 커지도록 만들기*/
+			#content li:hover h4{font-size:15px;}
+
+			/*######### imgArea (div) #########*/
+			#content li .imgArea{width:100%;}
+			
+			/*######### span ########*/
+			/*
+				1) 실제 사용 높이 : 200px
+				2) h4높이 : 40px
+				3) 이미지 영역: 120px ( 160 *120)
+				4) 텍스트 영역 : 40px
+			*/
+			#content li .img{display:block; width:100%; height:120px;}
+
+			/* 사용가능한 너비 200px */
+			#content li .desc{display:block; width:180px; padding:0 10px; height:40px; line-height:40px;
+			font-size:12px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+			/*############# publ_min ############*/
+			/* 200px * 200px */
+			
+			#content .publ_min{width:192px; height:192px; border:4px solid aqua;
+				background-color:#ccc; background-image:url("img/main.jpg");
+				background-size:100%; box-shadow:0 0 0 rgba(0,0,0,0);
+				transition:border 0.5s linear, box-shadow 0.5s linear;}
+
+			
+			/*#### 기능 ####*/
+			/*
+				publ_min 영역에 마우스 올리면
+					1) border 색상 바뀌게 만들기
+					2) 그림자 효과 나타나도록 만들기
+			*/
+
+			#content .publ_min:hover{border-color:darkblue; box-shadow:2px 2px 20px rgba(255,255,255,0.5);}
+			
+			/*상속 받는 border 제외하기*/
+			#content .publ_min h3{width:100%; height:25px; line-height:192px; border:none;
+			font-style:italic;}
+
+			#content .publ_min h3 a{color:#fff; font-size:20px; transition:color 0.8s linear, font-size 0.5s linear;}
+
+			/*##### 기능 #####*/
+			/*
+				.publ_min 영역에 마우스 올리면 h3 의 a 를 대상으로 작업하기 
+				1) 글자색상 변경
+				2) font-size 줄이기
+			*/
+
+			#content .publ_min:hover h3 a{color:#ff0; font-size:16px;}
+
+
+		
+		/*############ publ_main #############*/
+			#content .publ_main{width:610px; background-color:#2f3035; 
+			background-image:url("img/gram.jpg"); background-repeat:no-repeat;
+			background-position:right;}
+			
+
+			/* 상속 되는 border 해제하기 */
+			#content .publ_main h3{width:100%; line-height:200px; text-align:left;
+			text-indent:20px; border:none;}
+
+			#content .publ_main h3 a{color:#aaa; text-decoration:underline; transition:color 0.5s ease-in;}
+
+			/*##### 기능 #####*/
+			/* publ_main에 마우스 올리면 h3의 a 글자색상 변경하기 */
+			#content .publ_main:hover h3 a{color:#f00;}
+			
+			
+			#content .publ_main a span{color:#ccc; transition:color 1s linear, font-size 0.5s linear 0.5s;}
+			
+			/*####### 기능 #######*/
+			/*publ_main 에 마우스 올리면 a span 글자 색상 변경 글자크기 변경*/
+			#content .publ_main:hover a span{color:#fff; font-size:24px;}
+
+
+
+
+
+			#content:after{content:""; display:block; clear:both;}
+
+		/*############ 버리는 영역 ############*/
+			h2{position:absolute; left:-9999px; width:1px; height:1px; line-height:0; font-size:1px; overflow:hidden;}
+	</style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="container">
+			<section id="notebookArea">
+				<h2>노트북 컴퓨터</h2>
+				<div id="notebook">
+					<h3><span>노트북</span> / 컴퓨터</h3>
+					<ul id="content">
+						<li>
+							<h4>한성컴퓨터 올데이롱</h4>
+							<div class="imgArea">
+								<a href="#" title="한성컴퓨터 올데이롱">
+									<span class="img">
+										<img src="img/comp0.jpg" alt="한성컴퓨터 올데이롱"/>
+									</span>
+									<span class="desc">
+										한성컴퓨터, 발걸음도 노트북도 가볍게! 새내기 대학생을 위한 추천 노트북
+									</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<h4>삼성전자 갤럭시북 플렉스</h4>
+							<div class="imgArea">
+								<a href="#" title="삼성전자 갤럭시북 플렉스">
+									<span class="img">
+										<img src="img/comp1.jpg" alt="삼성전자 갤럭시북 플렉스"/>
+									</span>
+									<span class="desc">
+										입문용노트북 추천, 삼성 갤럭시북 플렉스 NT930QCT-A38A 사용해보니
+									</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<h4>LG전자 그램17</h4>
+							<div class="imgArea">
+								<a href="#" title="LG전자 그램17">
+									<span class="img">
+										<img src="img/comp2.jpg" alt="LG전자 그램17"/>
+									</span>
+									<span class="desc">
+										[리뷰] 17인치 대화면 노트북도 ‘그램’하다
+									</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<h4>APPLE 맥북프로</h4>
+							<div class="imgArea">
+								<a href="#" title="APPLE 맥북프로">
+									<span class="img">
+										<img src="img/comp3.jpg" alt="APPLE 맥북프로"/>
+									</span>
+									<span class="desc">
+										맥북 프로 리뷰는 왜 안하는거죠? 애플의 미친 마진 정책이 싫어서?
+									</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<h4>LG전자 그램14</h4>
+							<div class="imgArea">
+								<a href="#" title="LG전자 그램14">
+									<span class="img">
+										<img src="img/comp4.jpg" alt="LG전자 그램14"/>
+									</span>
+									<span class="desc">
+										주성씨엔디, 'LG그램14 14ZD90N-VX50K' 출시 이벤트 진행
+									</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<h4>삼성전자 갤럭시북 이온</h4>
+							<div class="imgArea">
+								<a href="#" title="삼성전자 갤럭시북 이온">
+									<span class="img">
+										<img src="img/comp5.jpg" alt="삼성전자 갤럭시북 이온"/>
+									</span>
+									<span class="desc">
+										단 3일간 파격혜택! 삼성 갤럭시북 브랜드위크 이벤트 진행
+									</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<h4>한성컴퓨터 언더케이지</h4>
+							<div class="imgArea">
+								<a href="#" title="한성컴퓨터 언더케이지">
+									<span class="img">
+										<img src="img/comp6.jpg" alt="한성컴퓨터 언더케이지"/>
+									</span>
+									<span class="desc">
+										한성컴퓨터, 대학생과 입문자들을 위한 추천 노트북
+									</span>
+								</a>
+							</div>
+						</li>
+						<!-- publicity 광고 선전의 뜻 -->
+						<li class="publ_min">
+							<h3>
+								<a href="#" title="ASUS ZEN BOOK">
+									ASUS ZEN BOOK
+								</a>
+							</h3>
+						</li>
+						<li class="publ_main">
+							<h3>
+								<a href="#" title="LG GRAM 17">
+									<span>No.1의 혁신</span> LG GRAM 17
+								</a>
+							</h3>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</div>
+ </body>
+</html>

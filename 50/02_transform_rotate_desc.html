@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transform_rotate_desc</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		h2{text-transform:uppercase; text-align:center; padding:30px 0 10px;}
+		ol li{line-height:30px;}
+
+		p{width:150px; height:150px; background-color:aqua; margin:20px;}
+
+		/*######### rotate #########*/
+		/*
+			1) 시계방향 회전 45deg
+			2) 시계 반대방향 회전 -45deg
+		*/
+
+		.rotate{transform:rotate(-45deg);}
+
+		/*######## rotatex ########*/
+		/* 수건걸이 (철봉) */
+		.rotatex{transform:rotatex(60deg);}
+
+		/*######## rotatey #########*/
+		/* 회전문 처럼 회전이 가능함! */
+		.rotatey{transform:rotatey(60deg);}
+	</style>
+ </head>
+ <body>
+	<h2>transform:rotate(회전변형)</h2>
+	<ol>
+		<li>center_box, 일반 객체의 경우, 왼쪽상단에서 부터 늘어나거 축소됨!</li>
+		<li>transform 속성들은 가운데를 중심으로 축소되거나 확대 || 회전이 됨!</li>
+		<li>축을 확인하면 , 일반객체와 transform 객체 구분이 가능함!</li>
+	</ol>
+	<hr/>
+
+	<p class="rotate">
+		transform:rotate(45deg), 가운데서 부터 시계방향으로 회전 
+	</p>
+	<hr/>
+	<p class="rotatex">
+		transform:rotatex(45deg), x축으로 회전
+	</p>
+	<hr/>
+	<p class="rotatey">
+		transform:rotatey(45deg), y축으로 회전
+	</p>
+ </body>
+</html>

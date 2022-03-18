@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>font_face_test</title>
+	<meta charset="utf-8"/>
+	<link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Hubballi&family=Indie+Flower&display=swap" rel="stylesheet">
+	<style>
+		h3{font-size:30px;}
+		/* 구글에서 다운 받은 자료로 만들기 */
+		@font-face{
+			font-family:"syst";
+			src:url("font/Hurricane-Regular.woff");
+		}
+		.syst{font-family:"syst"}
+		.ko{font-family:'Indie Flower', cursive;}
+	</style>
+ </head>
+ <body>
+	<h3>test:BASIC</h3>
+	<h3 class="syst">test:SYSTEM</h3>
+	<h3 class="ggl">test:GOOGLE</h3>
+	<h3 class="ko">테스트:한글</h3>
+ </body>
+</html>
+<!--
+	[브라우저에서 지원되는 font]
+
+		+ 표준 브라우저
+			: 크롬, 사파리, 오페라, 익스플로러 (9,10,11), 엣지 익스플로러
+-->

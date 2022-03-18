@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>rotate</title>
+	<meta charset="utf-8"/>
+	<style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+        a:link, a:visited{text-decoration:none;}
+
+        /*#################*/
+            #wrap{min-width:1025px; width:100%;}
+            #content{width:100%;}
+            #content h2{text-align:center; text-transform:uppercase; font-weight:700;}
+
+        /*실제 사용영역*/
+            #content ul{width:940px; margin:0 auto;}
+            #content li{width:280px; margin-left:20px; margin-top:30px; float:left; border:3px solid rgba(0,0,0,0);}
+
+            #content li:hover{border-color:#000;}
+            
+            #content li a{display:block; width:100%;}
+            #content li a span{display:block; width:100%; height:185px; overflow:hidden;}
+            #content li a img{width:100%;}
+
+            #content ul:after{content:""; display:block; clear:both;}
+        
+        /* rotate 기능 만들기 */
+            .rx{transition:transform 1s linear;}
+            .rx:hover{transform:rotatex(180deg);}
+            .rx a{transition:transform 1s linear;}
+            .rx a:focus{transform:rotatex(180deg);}
+
+            .ry{transition:transform 1s linear;}
+            .ry:hover{transform:rotatey(180deg);}
+            .ry a{transition:transform 1s linear;}
+            .ry a:focus{transform:rotatey(180deg);}
+
+
+    </style>
+
+ </head>
+
+ <body>
+    <div id="wrap">
+        <section id="content">
+            <h2>rotate x and y</h2>
+            <ul>
+                <li class="rx">
+                    <a href="#" title="회전이미지0">
+                        <span><img src="img/01.jpg" alt="회전이미지0"/></span>
+                    </a>
+                </li>
+                <li class="rx">
+                    <a href="#" title="회전이미지1">
+                        <span><img src="img/02.jpg" alt="회전이미지1"/></span>
+                    </a>
+                </li>
+                <li class="rx">
+                    <a href="#" title="회전이미지2">
+                        <span><img src="img/03.jpg" alt="회전이미지2"/></span>
+                    </a>
+                </li>
+                <li class="ry">
+                    <a href="#" title="회전이미지3">
+                        <span><img src="img/04.jpg" alt="회전이미지3"/></span>
+                    </a>
+                </li>
+                <li class="ry">
+                    <a href="#" title="회전이미지4">
+                        <span><img src="img/05.jpg" alt="회전이미지4"/></span>
+                    </a>
+                </li>
+                <li class="ry">
+                    <a href="#" title="회전이미지5">
+                        <span><img src="img/06.jpg" alt="회전이미지5"/></span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+ </body>
+</html>

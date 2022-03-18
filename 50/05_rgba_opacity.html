@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8"/>
+   <title>rgba_opacity</title>
+   <style>
+      *{margin:0; padding:0;}
+      h2{text-align:center; line-height:60px;}
+      p{width:400px; height:200px; line-height:200px; margin:50px auto; font-size:20px; text-align:center;}
+      .rgba{background-color:rgba(250,250,0,1); transition:background-color 0.5s;}
+      .rgba:hover{background-color:rgba(250,250,0,0);}
+
+      .opacity{background-color:#ee0; opacity:1; transition:opacity 0.5s;}
+      .opacity:hover{opacity:0;}
+
+      /*
+         [불투명한 객체를 투명하게 만들기 rgba, opacity]
+
+            1) rgba
+               rgb + alpha (투명도 관련)
+
+            2) opacity(불투명도)
+               : 처음부터 색상이 있고, 투명하지 않음
+               : 불투명한 객체를 투명하게 만들 때 사용
+
+            [공통점]
+               100% == 1
+               30% == 0.33
+
+            [차이점]
+               1) rgba는 rgb로 만들어진 색상의 투명도를 조절할 수 있음
+                  안에 담고있는 모든 객체에 접근하는 개념이 아니라
+                  rgb 색상의 투명도만 관여함
+
+               2) opacity는 색상 뿐 아니라 담겨있는 모든 객체의 투명도를 조절할 수 있음
+                  : 색상 뿐 아니라 객체에 접근하여 모두 투명하게 만들 수 있음
+                  : img태그, span태그, strong태그, 시멘틱 태그 등 어떤 객체도 모두 투명하게 만듦
+
+      */
+   </style>
+</head>
+<body>
+   <h2>rgba and opacity</h2>
+   <p class="rgba">rgba</p>
+   <p class="opacity">opacity</p>
+</body>
+</html>
