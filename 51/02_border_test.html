@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>border_test</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		h2{width:1px; height:1px; line-height:0; font-size:1px; position:absolute; left:-9999px;}
+
+		#wrap{min-width:1025px; width:100%;}
+		#box{width:200px; height:400px; background-color:#ccc; border-top:0px solid #f00; transition:border-top 1s linear 3s;}
+		#box:hover{border-top:1px solid #f00;}
+	</style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="box">
+			<h2>box</h2>
+		</div>
+	</div>
+ </body>
+</html>

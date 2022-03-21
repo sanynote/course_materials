@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>rotate3d_card</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		p{width:400px; height:200px; line-height:200px; background-color:darkblue;
+		color:#fff; margin:100px auto 0; text-align:center; text-transform:uppercase;
+		transform:rotate3d(0,1,1,140deg); transition:transform 0.5s linear;}
+
+		p:after{content:"card";}
+
+		/*
+			[정리]
+				1) 완성된 모양 만들기
+				2) 대상:after, 대상:before , 대상의 값을 어느정도 상속받음!
+
+				3) 3d값 (0,0,0,0deg)
+						, 0deg에서 deg가 빠지면 인식이 되지 않아 validator에서 오류가 발생함!
+			
+		*/
+
+		p:hover{transform:rotate3d(0,0,0,0deg);}
+	</style>
+
+ </head>
+ <body>
+	<p>samsung</p>
+ </body>
+</html>

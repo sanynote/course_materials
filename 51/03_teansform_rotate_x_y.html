@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transform_rotate</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+        li{list-style-type:none;}
+		img{border:none;}
+
+		/*
+			[속성을 가지는 인라인요소]
+
+				: 속성을 가지는 인라인요소는 보호를 해주기위하여 보이지 않는, 또는 보이는
+				border 값, frame 값이 존재함
+
+				: img 태그도 속성을 가지는 인라인요소로 보이지않는 border 값이 있음
+				 해제해주지 않으면 구형 브라우저에서 보이는 문제가 발생함
+
+		*/
+
+		section{min-width:960px; width:100%;}
+
+		/*
+			[영역 설계하기]
+
+				: wrap에만 의존하는것이 아니라, wrap이 없다면, 화면에서 가장 큰 영역이 wrap을 대신하여 사용할 수 있음
+		*/
+
+		section h2{text-align:center; text-transform:uppercase; padding:30px 0 10px; font-size:30px;}
+
+		section ul{width:980px; margin:0 auto;}
+		section ul li{width:300px; height:200px; margin:20px; margin-right:0; overflow:hidden; float:left;}
+
+		/* a태그를 기준으로 기능이 만들어지기때문에 기능 전에 모양 만들어두기*/
+		/* 
+			단위 설정시 중요사항, px em % 등은 0만 사용해도 자동설정이 가능하지만
+			deg의 경우 html5 에서부터 사용되었기때문에 인식률이 떨어질 수 있음 
+			+ 초기값 적용시 0 보다는 0deg 적용하기
+		*/
+		section ul li a{display:block; width:100%; height:100%; transform:rotate(0deg, 0deg); transition:transform 0.5s ease-in-out;}
+
+		/*
+			[매우중요]
+
+			transform:rotate(0deg,0deg); x,y축 모두 초기값 적용가능
+		*/
+
+		/* 높이를 잘못 설계할 경우, 영역이 높이값을 잘못 표현하기때문에 이미지가 일그러지는 문제가 발생함 */
+
+		section ul li img{width:100%; /*height:100%;*/ }
+
+		section li a:hover, section li a:focus{transform:rotatex(180deg);}
+
+		/*
+			[중요사항]
+
+				1) section li a:hover라면, focus 설정시에도 동일하게 설정해주어야 한다.
+				2) focus는 기능이 다르기때문에 hover 처럼 정확하게 지정이 필요함
+
+				[주의사항]
+					section li a:hover, a:focus, focus는 기능이 다른데 hover보다 대상을 잡는 형태가 디테일하지 않음
+
+				[tab키 적용하기]
+					속서을 가지는 인라인요소로 만들기, a태그가 가장 정확함
+		*/
+
+		/*########### rotatey ##########3*/
+		/* y 축으로 회전 */
+		section .rotatey a:hover, section .rotatey a:focus{transform:rotatey(180deg);}
+
+
+		section ul:after{content:""; display:block; clear:both;}
+
+	</style>
+	
+ </head>
+
+ <body>
+	<section>
+		<h2>rotate x and y</h2>
+		<ul>
+			<li>
+				<a href="#" title="이미지1">
+					<img src="img/01.jpg" alt="이미지1"/>
+				</a>
+			</li>
+			<li>
+				<a href="#" title="이미지1">
+					<img src="img/02.jpg" alt="이미지1"/>
+				</a>
+			</li>
+			<li>
+				<a href="#" title="이미지1">
+					<img src="img/03.jpg" alt="이미지1"/>
+				</a>
+			</li>
+			<li class="rotatey">
+				<a href="#" title="이미지1">
+					<img src="img/04.jpg" alt="이미지1"/>
+				</a>
+			</li>
+			<li class="rotatey">
+				<a href="#" title="이미지1">
+					<img src="img/05.jpg" alt="이미지1"/>
+				</a>
+			</li>
+			<li class="rotatey">
+				<a href="#" title="이미지1">
+					<img src="img/06.jpg" alt="이미지1"/>
+				</a>
+			</li>
+		</ul>
+	</section>
+ </body>
+</html>

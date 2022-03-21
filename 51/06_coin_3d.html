@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>coin</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+
+        #wrap{min-width:960px; width:100%;}
+        #coin{width:500px; height:500px; position:relative; margin:0 auto;}
+
+        #coin .front{position:absolute; left:0; top:0; z-index:1; transition:left 0.5s linear;}
+        
+        #coin .back{position:absolute; left:0; top:0; transition:transform 0.5s 0.5s;}
+
+        #coin:hover .front{left:200px;}
+        #coin:hover .back{transform:rotate3d(1,0,1,360deg);}
+
+
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <div id="coin">
+            <p class="front">
+                <img src="img/won1.png" alt="동전이미지0"/>
+            </p>
+            <p class="back">
+                <img src="img/won2.png" alt="동전이미지1"/>
+            </p>
+        </div>
+    </div>
+ </body>
+</html>

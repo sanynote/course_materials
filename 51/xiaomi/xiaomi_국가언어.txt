@@ -1,0 +1,10 @@
+﻿International
+Mainland China 简体中文
+Hong Kong 繁體中文
+Taiwan 繁體中文
+Singapore
+Malaysia
+Philippines
+Bangladesh
+India
+Indonesia
