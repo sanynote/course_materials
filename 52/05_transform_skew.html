@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transform_skew</title>
+	<meta charset="utf-8"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0; padding:0;}
+
+        
+
+        h2{text-align:center; font-family: 'Nanum Pen Script', cursive;}
+
+        #box{width:250px; height:250px; position:relative; margin:0 auto;}
+
+        #box p{position:absolute;}
+        .pink{width:100px; height:100px; transform:skewy(-5deg);background-color:pink; right:2px; top:80px;}
+        .red{width:95px; height:48px; transform:skew(65deg,-5deg); background-color:#f00; right:55px; top:30px;}
+        .blue{width:100px; height:100px; transform:skewy(25deg);background-color:#0ff; left:48px; top:60px;}
+        .gray{width:80px; height:49px; transform:skew(65deg,0deg); background-color:gray; left:20px; bottom:65px;}
+    </style>
+	
+	
+ </head>
+
+ <body>
+    <h2>
+        transform &amp; skew<br/>
+        한글 폰트 서버에서 연결하기
+    </h2>
+	<div id="box">
+        <p class="pink"></p>
+        <p class="red"></p>
+        <p class="blue"></p>
+        <p class="gray"></p>
+    </div>
+ </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>form_type</title>
+	<meta charset="utf-8"/>
+	
+	
+ </head>
+
+ <body>
+    <dl>
+        <dt>html5에서 사용하는 form</dt>
+        <dd>
+            <h2>form에 대한 중요 속성들</h2>
+            <ol>
+                <li>action: 주소를 연결하기 위한 중요 속성(control페이지나 database로 넘겨줄 수 있음)</li>
+                <li>method: 주소줄에 넘어가는 정보를 보여줄지, 보여주지 않을지 결정할 때 사용</li>
+                <li>* get : 주소줄에 넘어가는 정보를 보여줘도 될 때 사용(검색이 가능한 페이지에서 사용)</li>
+                <li>get을 사용하면 몇가지의 정보를 추가로 더 가져올 수 있음</li>
+                <li>* post : 주소줄에 넘어가는 정보를 숨겨야할 때 사용 (로그인,회원가입,중소기업(페이 내 검색))</li>
+                <li>get,post,(request)</li>
+            </ol>
+        </dd>
+        <dd>
+            <h2>xhtml에서 사용한 type</h2>
+            <ul>
+                <li>type="text"</li>
+                <li>type="password"</li>
+                <li>type="button"</li>
+                <li>type="submit" (써밋, 전송, 제출)</li>
+                <li>type="reset" (다시쓰기)</li>
+                <li>type="checkbox"</li>
+            </ul>
+        </dd>
+        <dd>
+            <h2>html5에서 type 사용에 대한 목적</h2>
+            <ul>
+                <li>type을 사용하는 이유: "사용 목적에 맞춰서" 작성하기 위하여 필수 적용</li>
+                <li>
+                    [매우중요] : html5는 각종 디바이스들에서 화면에 출력되기위하여 제작이 가능함<br/>
+                    : screen + 인터넷 지원 가능한 기기들
+                </li>
+                <li>
+                    html5, 스마트폰 (세로,가로), 태블릿pc, 일반pc<br/>
+                    [매우중요] : 키패드 모양이 적절하게 출력되도록 만듦
+                </li>
+                <li>
+                    type을 제대로 적용받기위해서는 "표준 브라우저"를 사용해야 함
+                </li>
+                <li>
+                    * type (validator에서 에러가 발생할 수 있음)<br/>
+                    * 기술력은 앞서있지만, 브라우저가 따라오지 못하는 문제(크롬,사파리)
+                </li>
+                <li>익스플로러는 다른 표준 브라우저와 다르게 "표준 브라우저" 라고 해도 지원되지 않는것들이 많음</li>
+                <li>익스플로러, 몇 버전부터 표준? 익스플로러 9버전부터 표준이지만, 10버전부터 지원가능한 게 많음</li>
+                <li>10버전에서 type 지원이 어려운 것들이 많음</li>
+                <li>가장 안전한 익스플로러는 11버전</li>
+                <li>* type 지원이 어려운 브라우저라면 script에서 제작하여 만들기</li>
+            </ul>
+        </dd>
+    </dl>
+    <hr/>
+    <dl>
+        <dt>html5에서도 반드시 필요한 중요요소 : 대체텍스트</dt>
+        <dd>
+            input태그 사용시 짝을 맞추는 태그로는 label태그 (for)<br/>
+            웹 점검 도구(100점, (레이블, 라벨 체크))
+        </dd>
+        <dd>
+            label이 없거나, 필요 없는 경우, title로 대체함
+        </dd>
+        <dd>
+            중요) 위의 작업은 xhtml에서만 사용하는 방법이 아니라 form을 다루는 어떠한 문서에서도<br/>
+            표준법을 지키기위하여 매우 중요하게 사용된다.
+        </dd>
+        <dd>
+            * php에서는 (input의 id, name), (label의 for), mariaDB에서는 field 명으로 짝을 맞춰야 한다.<br/>
+            * id(userid), name(userid), for(userid), field(userid, 이름이 모두 같아야 한다)
+        </dd>
+        <dd>
+            * php에서는 화면파트, control파트, db파트가 모두 연결이 되어야 하고, db와 페이지를 연결하는<br/>
+            기술이 매우 중요하다
+        </dd>
+        <dd>
+            * html5는 스스로 가지는 기능이나 type이 매우 중요하지만, 가장 뛰어난 기술로는 어느정도의 보안을<br/>
+            가지고있어서 중요도가 매우 높은 문서이다.
+            * script에 의존하지 않아도, 자체적으로 해결가능한 요소들이 많다.
+        </dd>
+    </dl>
+    <hr/>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>type 별로 정리하기</legend>
+            <p>
+                <label for="search">검색: </label><input id="search" type="text" name="search"/>
+                <!--
+                    type="search" 는 text로 대체하는 경우가 많기때문에 중요도가 낮음
+                    검색시, text로 검색하기때문에 search를 사용하지 않아도 문제 없음
+                -->
+            </p>
+            <p>
+                <label for="email">이메일: </label><input id="email" type="email" name="email"/>
+                <!--
+                    매우중요!
+
+                        1) 예전의 페이지들은 아이디와 도메인을 따로 구성함
+                        2) 현재의 페이지들은 input 하나의 공간의 이메일을 모두 받음
+                            type="email"인 경우, text 대체하지 않음
+
+                        3) * 유효성 검사에서 type이 email인 경우, @ 형식을 요청하는 알림창이 활성화 됨
+
+                -->
+            </p>
+            <p>
+                <label for="url">사이트 주소: </label><input id="url" type="url" name="url"/>
+                <!--
+                    : 알고는 있지만 활용하지 못하는 type중에 하나
+
+                    1) 구글페이지 확인하기
+                    2) 구글 페이지의 경우, 검색창에 주소둘 기입과 검색어 입력 2개를 활용할 수 있음
+                    3) type을 url로 사용하면 "웹 주소만 연결할 수 있기때문에" 검색용도로 사용할 수 없음
+
+                    4) type="text"로 사용하는 경우가 훨씬 많음
+                -->
+            </p>
+            <p>
+                <label for="phone">전화번호: </label><input id="phone" type="tel" name="phone"/>
+                <!--
+                    매우 중요, email처럼 중요도가 매우 높음
+
+                        1) phone으로 type을 작성하면 전혀 의미가 없음
+                        2) type중에 phone이 없음
+
+                        [중요정리]
+                            : type은 tel로 작성해야 디바이스 기기들에서 숫자 키패드로 전환할 수 있음
+
+                        [주의할 점]
+                            : 어플로 다운 받아서 사용할 경우, 권한 설정이 다운받은 키패드로 넘어가는 문제가 발생함
+                            : tel 뿐 아니라 다른 type들도 영향을 받을 수 있음
+                            : 기본 기능으로 사용할 때 변화가 가능함
+                -->
+            </p>
+            <p>
+                <label for="number">숫자(수량): </label><input id="number" type="number" name="number" min="1" max="12" value="5" step="3"/>
+                <!--
+                    [type이 number일 때 사용가능한 속성]
+
+                        value="숫자" : 처음부터 시존 값을 지정할 수 있음
+                        min = "최소 값" 을 지정할 때 사용
+                        max = "최대 값" 을 지정할 때 사용
+
+                    [step]
+
+                        + 처음 value 값을 포함하고 + step 값이 계산됨
+                            : value 값이 5인 경우, 5 6 7 (step 3)
+                            : value 값이 5인 경우, 5 6 (step 2)
+
+                        + 위에처럼 포함하지 않고 계산이 되거나 조금 더 디테일하게 표현하기 위해선
+                        script 작업이 필요함
+
+                -->
+            </p>
+            <p>
+                <label for="range">범위: </label><input id="range" type="range" name="range" min="1" max="100" value="88"/>
+            </p>
+            <!--
+                [정리]
+                    1) number,range 등등 input에서 제공해주는 모양은 바꾸기 어려움
+                    2) 브라우저에서 제공해주는 모양들이 모두 다를 수 있음
+                    3) 해당하는 모양을 바꾸려면 style로 작업하고, script로 기능을 적용해야 함
+                    4) number,range 모두 min, max, value 값 설정이 가능함
+
+                    * 사용자가 입력한 정보를 가지고 number의 경우, script에서 판매 * 수량 페이지 제작 가능
+                    * javascript 버전의 판매가 * 수량 (판매 페이지 제작)
+            -->
+            <p>
+                <label for="month">월: </label><input id="month" type="month" name="month"/>
+            </p>
+            <p>
+                <label for="time">시간: </label><input id="time" type="time" name="time"/>
+            </p>
+            <p>
+                <label for="datetime-local">날짜와 시간: </label><input id="datetime-local" type="datetime-local" name="datetime-local"/>
+            </p>
+            <p>
+                <label for="week">주: </label><input id="week" type="week" name="week"/>
+            </p>
+            <p>
+                <label for="color">색상: </label><input id="color" type="color" name="color"/>
+            </p>
+
+
+        </fieldset>
+
+    </form>
+
+
+ </body>
+</html>

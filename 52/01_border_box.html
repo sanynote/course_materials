@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>border_box</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		div{width:200px; height:400px; background-color:rgba(180,180,180,0); 
+		margin:50px auto 0; position:relative;}
+
+		div span{display:block; width:1px; height:1px; background-color:red;
+		position:absolute; /*left:0; top:0;*/ transition:all 0.7s ease-in-out; }
+
+		/*
+			[border는 box가 아님!]
+				
+				: 객체에 테두리를 설정하는 개념으로, 늘어나지 않음!
+
+			[transition 사용하기]
+				
+				: transition : property	duration	timing-function		delay
+
+
+				1) transition-property: 속성만 바꿀때
+				2) transition-duration : ~~~ 하는 동안만 달라질때
+				3) transition-timing-fucntion : 속도 표현만 달라질때
+				4) transition-delay : 지연되는 속도만 달라질때
+
+
+			[position : absolute의 특징]
+
+			1) absolute의 기본 좌표 : left, top
+
+				* script에서는 left와 top으로만 만들어지는 기능이 있음!
+				* right와 bottom은 무한대의 영역으로 객체가 커지거나 값이 많아지면 
+				해당하는 영역으로 늘어나기만 함!
+
+				[초기값 설정시 중요사항]
+
+					1) position 속성중에 static을 제외하고 나머지 효과들은 "좌표충돌" 이 있을 수 있음!
+					2) 공통에서 left:0; top:0;  설정했다면 left에서 부터 움직이고, 
+						top에서 부터 움직여야 "개별 설정" 이 가능함!
+
+					3) right, bottom 적용이 불가능한 이유는? 
+					left로 설정되어 있거나 top으로 설정되어 있어서 해당하는 좌표 부터 움직여야 
+					제대로 된 설정이 가능함!
+			
+					* 공통에서 좌표를 제외하면 "개별 설정" 이 가능함!
+					* 필요에 의하여, 개별 설정과 공통 설정 활용하기
+
+			2) 
+				left에서 x축으로 늘어날 경우, 기존의 객체들 처럼 right 방향으로 움직임!
+				top에서 y축으로 늘어날 경우, 기존의 객체들 처럼 bottom 방향으로 움직임!
+
+				[특징]
+
+				* absolute는 시작하는 부분이 하단이나 오른쪽 이라면 왼쪽과 위쪽으로
+				올라가려는 성질이 있음!
+
+				right에서 x축으로 늘어날 경우, 기본 좌표인 left를 향해 움직임!
+				bottom에서 y축으로 늘어날 경우, 기본 좌표인 top을 향해 움직임!
+		*/
+
+		/*########### 개별 좌표 지정하기 (span) ############*/
+		/* 
+			[hover]
+
+				style의 효과의 hover의 장점: 초기값을 작성하지 않아도 마우스 내렸을때 자동으로 인식함!
+				style의 효과의 hover의 단점: 마우스를 내렸을때 다른 기능을 구현하려 해도, 구현이 어려움!
+					* 무조건 원래대로 돌아가려고 함!
+		*/
+		
+		div .leftT{left:0; top:0;}
+		div .rightT{right:0; top:0; transition-delay:0.7s;}
+		div .rightB{right:0; bottom:0; transition-delay:1.4s;}
+		div .leftB{left:0; bottom:0; transition-delay:2.1s;}
+
+		div:hover .leftT{width:100%;}
+		div:hover .rightT{height:100%;}
+		div:hover .rightB{width:100%;}
+		div:hover .leftB{height:100%;}
+	</style>
+ </head>
+ <body>
+	<div>
+		<span class="leftT"></span>
+		<span class="rightT"></span>
+		<span class="rightB"></span>
+		<span class="leftB"></span>
+	</div>
+ </body>
+</html>

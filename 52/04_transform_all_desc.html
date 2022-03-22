@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transform_all_desc</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none; background-color:#ff0;}
+        h2,h3{text-align:center; text-transform:uppercase;}
+        h2{padding:20px 0;}
+        h3{padding-bottom:20px; border-bottom:1px solid #f00;}
+
+        h4{padding:20px 0 10px;}
+
+        p{width:200px; height:200px; background-color:aqua; margin-bottom:20px; transition:transform 0.7s linear 0.3s;}
+
+        /*
+            delay를 사용한 이유는?
+                : hover는 자신의 영역에서 마우스가 떨어지면 돌아가려고 함
+                : 마우스가 다시 객체 위에 있으면 기능을 하려고 함
+
+                * 왔다갔다 하는 문제로 인해 깜빡이는 문제가 발생함
+
+                : 0.2s, 0.3의 delay를 사용하면, 돌아가거나 기능하려는 게 조금 늦어져서
+                깜빡이는 증상이 많이 감소됨
+        */
+
+        /*######## translate (이동) #########*/
+        /*
+            1) 매우 중요: hover 전의 초기값 작성하기
+            2) translate1 에 마우스 올리면 x축 200px, y 축 50px 장면전환되면서 이동하도록 만들기
+            3) translate2 에 마우스 올리면 x축으로만 300px 이동하도록 만들기
+            4) translate3 에 마우스 올리면 y축으로만 70px 이동하도록 만들기
+        */
+
+        .translate1{transform:translate(0,0);}
+        .translate1:hover{transform:translate(200px, 50px);}
+
+        .translate2{transform:translatex(0);}
+        .translate2:hover{transform:translatex(300px);}
+
+        .translate3{transform:translatey(0);}
+        .translate3:hover{transform:translatey(70px);}
+
+        
+
+        /*######## scale (크기변형) #########*/
+        /*
+            1) 매우 중요: hover 전의 초기값 작성하기
+            2) scale1 에 마우스 올리면 x축 50%, y 축 50% 줄어들도록 만들기
+            3) scale2 에 마우스 올리면 x축으로만 120% 커지도록 만들기
+            4) scale3 에 마우스 올리면 y축으로만 60% 줄어들도록 만들기
+        */
+        .scale1{transform:scale(1,1);}
+        .scale1:hover{transform:scale(0.5,0.5);}
+
+        .scale2{transform:scalex(1);}
+        .scale2:hover{transform:scalex(1.2);}
+
+        .scale3{transform:scaley(1);}
+        .scale3:hover{transform:scaley(0.6);}
+
+        /*######## rotate (회전변형) #########*/
+        /*
+            1) 매우 중요: hover 전의 초기값 작성하기
+            2) rotate1 에 마우스 올리면 시계 반대방향으로 45도 회전되도록 만들기
+            3) rotate2 에 마우스 올리면 x축으로만 80도 회전되도록 만들기
+            4) rotate3 에 마우스 올리면 y축으로만 120도 회전되도록 만들기
+            5) rotate4 에 마우스 올리면 y와 z축을 사용하고, 140도 회전되도록 만들기
+        */
+
+        .rotate1{transform:rotate(0deg);}
+        .rotate1:hover{transform:rotate(-45deg);}
+
+        .rotate2{transform:rotatex(0deg);}
+        .rotate2:hover{transform:rotatex(80deg);}
+
+        .rotate3{transform:rotatey(0deg);}
+        .rotate3:hover{transform:rotatey(120deg);}
+
+        .rotate4{transform:rotate3d(0,0,0,0deg);}
+        .rotate4:hover{transform:rotate3d(0,1,1,140deg);}
+
+        /*######## skew (기울이기) #########*/
+        /*
+            1) 매우 중요: hover 전의 초기값 작성하기
+            2) skew1 에 마우스 올리면 x축으로 15도, y축으로 30도 기울어지도록 만들기
+            3) skew2 에 마우스 올리면 x축으로만 40도 기울어지도록 만들기(정방향과 반대방향 모두 확인하기)
+            4) skew3 에 마우스 올리면 y축으로만 30도 올라가도록 만들기(정방향과 반대방향 모두 확인하기)
+        */
+        
+        .skew1{transform:skew(0deg,0deg);}
+        .skew1:hover{transform:skew(15deg,30deg);}
+
+        .skew2{transform:skewx(0deg);}
+        .skew2:hover{transform:skewx(-40deg);}
+
+        .skew3{transform:skewy(0deg);}
+        .skew3:hover{transform:skewy(30deg);}
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<h2>transform: "변형"할 때 사용하는 효과</h2>
+    <h3>"transform"은 변형 시 모든 축이 가운데 있음</h3>
+    <h3>"transform"이 적용되지 않은 객체들은 "왼쪽상단" 을 기준으로 움직임</h3>
+    <hr/>
+
+    <h4>이동 "변형" : translate(기본단위 px)</h4>
+    <p class="translate1">이동 x and y : transform:translate(x축 y축)</p>
+    <p class="translate2">이동 x 축 : transform:translatex(x축으로 이동)</p>
+    <p class="translate3">이동 y 축 : transform:translatey(y축으로 이동)</p>
+    <hr/>
+
+    <article>
+        <h2>transform 사용 시 중요사항</h2>
+        <ul>
+            <li>transform은 "모든 축이 가운데" 있음, 기능이나 반응형 작업 시 "초기값" 필수</li>
+            <li>style의 경우, 스스로 초기값을 인식할 수 있음</li>
+            <li>script의 경우, 스스로 초기값을 인식할 수 없어서, 사용자가 직접 만들어야 함</li>
+            <li>기본 크기: font-size:16px; font-weight:400</li>
+            <li>* transform:translate, position:fixed는 자신의 위치값을 저장할 수 있음</li>
+            <li>* transform:translatex, translatey(scroll로 기능 만들때 중요한 효과)</li>
+        </ul>
+    </article>
+
+    <h4>크기 변형 : scale (100% == 1, 단위 없음)</h4>
+    <p class="scale1">크기변형 x and y transform:scale(x축 (1), y축 (1))</p>
+    <p class="scale2">크기변형 x 축 : transform:scalex(0.5)</p>
+    <p class="scale3">크기변형 y 축 : transform:scaley(0.7)</p>
+
+    <article>
+        <h2>transform, scale 사용 시 주의사항</h2>
+        <ul>
+            <li>초기값, 대다수 0,0으로 작업함</li>
+            <li>100%를 기준으로 만드는 것이 scale, 100% == 1</li>
+            <li>scale은 기본적으로 100%를 기준으로 만들기때문에 초기값 1</li>
+        </ul>
+    </article>
+
+    <h4>회전 변형: rotate(45deg)</h4>
+    <p class="rotate1">회전변형 2d(평면) : transform:rotate(45deg)</p>
+    <p class="rotate2">회전변형 x축 (3d) : transform:rotatex(60deg)</p>
+    <p class="rotate3">회전변형 y축 (3d) : transform:rotatey(80deg)</p>
+    <p class="rotate4">회전변형 3d축 : transform:rotate3d(x축 y축 z축 각도)</p>
+    <hr/>
+
+    <h4>기울이기 : skew(x축 각도(deg), y축 각도(deg))</h4>
+    <p class="skew1">기울이기 변형: transform:skew(x축 각도, y축 각도)</p>
+    <p class="skew2">기울이기 변형: transform:skewx(x축 각도)</p>
+    <p class="skew3">기울이기 변형: transform:skewy(y축 각도)</p>
+ </body>
+</html>
