@@ -1,0 +1,6 @@
+1) 유효성 검사
+2) type 설정
+3) datalist 부분 book, game, music
+4) address , input으로 만들기
+5) company 부분 지워지지 않음
+6) submit 버튼 buy it!

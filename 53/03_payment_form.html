@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>payment_form</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+        legend{border:none; margin-left:5%;}
+
+        form{width:400px; background-color:#ccc; border:none;}
+        input{border-radius:3px;}
+
+        fieldset{width:400px; margin:0 auto; border:none;}
+        
+        fieldset p{width:90%; height:40px; margin-left:5%; border:1px solid #fff; line-height:40px;}
+        fieldset p input{margin-left:40px; }
+
+        .addressArea {height:70px;}
+        .addressArea input{height:50px; margin-top:10px;}
+
+        .cardArea{width:100%;}
+        .cardArea h4{text-align:center;}
+        .cardArea ul{width:90%; height:50px; font-size:13px; margin:0 auto;}
+        .cardArea li{width:100px; height:30px; float:left; display:inline;}
+        .cardArea li p{border:none; float:left;}
+        .cardArea .img{width:25px;}
+        .cardArea .img img{width:100%;}
+
+        .cardArea .chk{width:25px;}
+        .cardArea .chk input{width:10px; height:10px;}
+
+        .cardArea ul{content:""; display:block; clear:both;}
+
+        .btn{width:80px; margin:0 auto;}
+        .btn input{width:50px; border-radius:20px; background-color:#333; color:#efefef;}
+        
+        
+
+        
+
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<h2>payment form</h2>
+    <form action="#" method="post">
+        <fieldset>
+			<div id="selArea">
+				<datalist id="selMenu">
+					<option value="봄">봄</option>
+					<option value="여름">여름</option>
+					<option value="가을">가을</option>
+					<option value="겨울">겨울</option>
+				</datalist>
+			</div>
+        </fieldset>
+        <fieldset class="first">
+            <legend>step:your details</legend>
+            
+            <p>
+                <label for="name">name: </label><input id="name" type="text" name="name" placeholder="first and last name" required autocomplete="off"/>
+            </p>
+            <p>
+                <label for="email">email: </label><input id="email" type="email" name="email" placeholder="example@domain.com" required autocomplete="off"/>
+            </p>
+            <p>
+                <label for="phone">phone: </label><input id="phone" type="tel" name="phone" placeholder="010-123-4567" required autocomplete="off"/>
+            </p>
+            <p>
+                <label for="sel">datalist: </label>
+                <input id="sel" type="text" name="sel" list="selMenu"/>
+            </p>
+           
+        </fieldset>
+
+        <fieldset>
+            <legend>step: delivery address</legend>
+            
+            <p class="addressArea">
+                <label for="address">address: </label><input id="address" type="text" name="address"/>
+            </p>
+            <p>
+                <label for="postcode">postcode: </label><input id="postcode" type="number" name="postcode" placeholder="숫자만 입력"/>
+            </p>
+            <p>
+                <label for="country">country: </label><input id="country" type="text" name="country"/>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>step: card details</legend>
+            <div class="cardArea">
+                <h4>step: card type</h4>
+                <ul>
+                    <li>
+                        <p class="img">
+                            <img src="img/visa.gif" alt="카드이미지0"/>
+                        </p>
+                        <p class="chk">
+                            <input id="chk0" type="checkbox" name="chk0"/>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="img">
+                            <img src="img/amex.gif" alt="카드이미지1"/>
+                        </p>
+                        <p class="chk">
+                            <input id="chk1" type="checkbox" name="chk1"/>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="img">
+                            <img src="img/mastercard.gif" alt="카드이미지2"/>
+                        </p>
+                        <p class="chk">
+                            <input id="chk2" type="checkbox" name="chk2"/>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <p>
+                <label for="cardnumber">cardnumber: </label><input id="cardnumber" type="number" name="cardnumber" placeholder="-을 넣고 입력" required autocomplete="off"/>
+            </p>
+            <p>
+                <label for="company">company: </label><input id="company" type="text" name="company" value="APPLE" readonly="readonly"/>
+            </p>
+            <p>
+                <label for="security">security code: </label><input id="security" type="number" name="security"/>
+            </p>
+            <p>
+                <label for="namecard">namecard: </label><input id="namecard" type="text" name="namecard" placeholder="exat name as on the card" required autocomplete="off"/>
+            </p>
+
+        </fieldset>
+        <p class="btn">
+            <input id="btn" type="submit" name="btn" value="Buy it!"/>
+        </p>
+    </form>
+ </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transform_skew</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        h1{text-align:center; padding:20px 0 10px; letter-spacing:-2px;}
+        h2{text-align:center; padding-bottom:20px; color:#333; font-family: 'Nanum Pen Script', cursive;}
+
+        div{width:600px; height:500px; position:relative; border:2px solid red; margin:0 auto;}
+
+        p{text-indent:-9999px; position:absolute;}
+
+        .top{width:200px; height:98px; background-color:red; position:absolute; left:198px; top:81px; transform:skew(60deg,-10deg);}
+        .front{width:200px; height:200px; background-color:pink; position:absolute; left:284px; top:180px; transform:skewy(-10deg);}
+        .side{width:170px; height:200px; background-color:blue; position:absolute; left:114px; top:149px; transform:skewy(30deg);}
+        .shadow{width:110px; height:98px; background-color:rgba(0,0,0,0.5); position:absolute; left:90px; top:310px; transform:skew(60deg,-10deg);}
+
+
+      
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<h1>transform &amp; skew</h1>
+    <h2>
+        한글 폰트 서버에서 연결하기
+    </h2>
+	<div>
+        <p class="top"></p>
+        <p class="front"></p>
+        <p class="side"></p>
+        <p class="shadow"></p>
+    </div>
+ </body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>form_chk</title>
+	<meta charset="utf-8"/>
+	<style>
+		#price{border:none; text-align:right;}
+	</style>
+ </head>
+ <body>
+	<form action="#" method="post">
+		<fieldset>
+			<legend>유효성 검사 : required="required"</legend>
+			<ol>
+				<li>필수 정보 입력공간이 빈칸인지 아닌지 확인하는 작업</li>
+				<li>문법 맞는지 확인하기 (숫자, 문자, 한글, 영문인지 체크(대문자, 소문자))</li>
+				<li>문법에 맞지 않을 경우, 알림창이나 경고창을 활성화 시킴!</li>
+				<li>input에서 제공하는 그외의 작업을 필요로 할 경우, "자바스크립트"나 "제이쿼리" 를 이용함!</li>
+				<li>문자열의 길이나, 대소문자 구분, 다른나라 언어구분 등은 script 작업을 필요로 함!</li>
+				<li>input의 number의 경우, 뒤에 ▲ 형태가 있음, 기본 제공 하는 값 외에 다른 것을 사용할 경우 증감문을 이용한 script 필수</li>
+			</ol>
+		
+			<div id="datalistArea">
+				
+				<datalist id="selMenu">
+					<option value="봄">봄</option>
+					<option value="여름">여름</option>
+					<option value="가을">가을</option>
+					<option value="겨울">겨울</option>
+				</datalist>
+
+				<datalist id="carDesc">
+					<option value="아우디">아우디</option>
+					<option value="gv70">gv70</option>
+					<option value="bmw">bmw</option>
+					<option value="벤츠">벤츠</option>
+				</datalist>
+			</div>
+			
+			
+			
+			<ul>
+				<li>
+					<label for="name">name: </label><input id="name" type="text" name="name"/>
+					<!--
+						1) for, id, name은 각각 속성이 다르기 때문에 같은 이름을 사용해도 충돌이 생기지 않음!
+						2) 속성이 다를때는 같은 이름을 사용해도 문제가 없음!
+							class="name"	을 사용해도 문제 없음 / class 속성과 id 속성은 다르기 때문에 같은 이름을
+							사용해도 문제 없음!
+
+						* label				for
+						* input				id, name
+						* datatabase		field
+
+						* 표시의 속성들은 id봐도 name 뭔지 알 수 있어야 하고, name을 보면 for나 id, field 등이 어떤 이름인지
+						알 수 있도록 "동일하게 이름" 을 지정해야 한다!
+
+						+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+						[응용문제]
+
+						1) 각각 li태그 만들기, input, label 태그 만들기
+						2) password 입력공간 만들기, type 맞혀주기	(userpw)
+						3) phone 입력공간 만들기,		type 맞혀주기 (phone)
+						4) email 입력공간 만들기,		type 맞혀주기 (email)
+					-->
+				</li>
+				<li>
+					<label for="userpw">password: </label><input id="userpw" type="password" name="userpw"/>
+				</li>
+				<li>
+					<label for="phone">phone: </label><input id="phone" type="tel" name="phone"/>
+				</li>
+				<li>
+					<label for="email">email: </label><input id="email" type="email" name="email"/>
+				</li>
+			</ul>
+			<p>
+				<input type="submit" value="전송" title="전송"/>
+			</p>
+			<!--
+				1) submit 버튼은 form 영역 어디에 둬도 상관없음!
+				2) 가장 상단, 중간, 가장 하단 어디에 있어도 form 영역안에 작성된 내용을 
+				action 줄로 보낼 수 있음!
+			-->
+		</fieldset>
+		<fieldset>
+			<legend>예시문 힌트주기 : placeholder="예시문"</legend>
+			<p>value는 인식이 되는 값으로 script에서 비교대상의 속성으로 설정이 가능함! (인식이 되기 때문에 비교대상으로 만들 수 있음)</p>
+			<p>placeholder는 가상의 값으로 클릭하고 입력받으면 사라지기 때문에 비교의 값으로 만들 수 없음! (화면에 보이는 용도로만 사용)</p>
+			<p>
+				[매우중요] : required, placeholder 모두 속성이 다르기 때문에 사용자의 목적에 맞춰서 함께 사용이 가능함!<br/>
+				필수정보이면서 , 예시문까지 만들때 사용가능!
+			</p>
+			<ul>
+				<li>
+					<label for="phone0">phone0: </label><input id="phone0" type="tel" name="phone0" value="010-123-4567"/>
+				</li>
+				<li>
+					<label for="phone1">phone1: </label><input id="phone1" type="tel" name="phone1" placeholder="010-123-4567"/>
+				</li>
+				<li>
+					<input id="search" type="text" name="search" title="검색하기" placeholder="search"/>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend>자동완성 기능 사용하기 : autocomplete( 기본상태 on, off)</legend>
+			<ol>
+				<li>문제 풀기 (응용문제)</li>
+				<li>현재 ol 태그가 끝난 부분 아래에 ul li 태그 만들기</li>
+				<li>각각의 li 태그들 마다 id, phone, email 만들기, type맞추기</li>
+				<li>phone 부분에 해당하는 input에 유효성 검사와 예시문 작성하기</li>
+				<li>* id 중복되지 않도록 주의하기</li>
+				<li>필수) 만들어진 공간에 정확한 정보를 기입하고, 전송해 보기</li>
+			</ol>
+			<hr/>
+			<ul>
+				<li>
+					<label for="userid">userid: </label><input id="userid" type="text" name="userid"/>
+				</li>
+				<li>
+					<label for="phone2">phone2: </label><input id="phone2" type="tel" name="phone2" placeholder=" - 을 넣고 기입"
+					autocomplete="off"/>
+				</li>
+				<li>
+					<label for="email0">email0: </label><input id="email0" type="email" name="email0"c/>
+				</li>
+			</ul>
+			<hr/>
+			<dl>
+				<dt>"전송 기능을 활성화" 한 후 확인하기 (전송을 했을때만 확인가능)</dt>
+				<dd>
+					: 전송이 이루어지면 정보가 브라우저에 쌓이기 때문에 기본적으로 자동완성 기능이 가능하다!
+				</dd>
+				<dd>
+					: 브라우저는 메모리를 가지고 있기 때문에 잘 못 인식되는 값이 저장되면 계속해서 잘못 저장되는 문제가 발생함
+				</dd>
+				<dd>
+					: 브라우저를 활성화 하는 순간 (ctrl + b), 메모리가 쌓이게 됨, 잘 못 된 정보로 출력되는 경우, 쿠키나 캐시 삭제하기
+				</dd>
+				<dd>
+					tip) required는 필수 정보 입력공간으로 , 비워진 채로 넘길 수가 없음<br/>
+					빈칸인 채로 넘길수 없기 때문에 항상 기록이 남아있는 공간!<br/>
+					* required로 저장되어 있는 공간은 autocomplete="off"를 사용하여 막아두는 것이 보안에 안전하다!
+				</dd>
+				<dd>
+					required (필수정보입력) , placeholder="예시문", autocomplete="off"(자동완성 끄기)<br/>
+					input 태그하나에 위의 속성들이 필요하다면 모두 작성가능! (모든 속성이 다르고, 목적이 다르기 때문에 한번에 적용가능!)
+				</dd>
+			</dl>
+			<p><input type="submit" value="전송" title="전송"/></p>
+		</fieldset>
+		<fieldset>
+			<legend>포커스 자동선택 : autofocus ="autofocus"</legend>
+			<p>
+				autofocus의 경우, 가장 먼저 입력받아야 하는 공간이나 중요도가 높은 공간에서 활용!<br/>
+				필수로 입력이 되어야 하는 공간에 많이 활용<br/>
+				* 대다수는 처음 입력되는 공간에 focus가 있는 경우가 많음!
+			</p>
+			<p>
+				중요) input 태그는 여러군데 만들 수 있지만 다중으로 focus를 만들기는 어려움!
+			</p>
+			<ul>
+				<li>
+					<label for="name0">name: </label><input id="name0" type="text" name="name0"/>
+				</li>
+				<li>
+					<label for="userid0">id: </label><input id="userid0" type="text" name="userid0" autofocus="autofocus"/>
+				</li>
+				<li>
+					<label for="pass">pass: </label><input id="pass" type="password" name="pass"/>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend></legend>
+			<p>
+				<label for="company">회사이름: </label><input id="company" type="text" name="company" value="apple" readonly="readonly"/>
+			</p>
+			<p>
+				<label for="price">판매가격: </label>
+				<input id="price" type="text" name="price" value="18000" readonly="readonly"/>원
+				<!-- style 영역에서 처리하기 -->
+			</p>
+			<!--
+				[매우중요]
+
+					판매가 * 수량 페이지의 경우, 판매가 부분이 지워지면... 빈공간이 발생함!
+					이때, 계산되는 공간이 알수 없는 공간으로 표현되기 때문에  NULL이 출력됨!
+				
+				[input 활용하는 이유]
+
+					다른 태그의 숫자 * 수량 가능은 하지만 input에는 스스로 보호하는 readonly 같은
+					속성이 있기 때문에 비어져 있지 않은 칸이나,  필수 입력 required등을 활용 할 수 있음!
+			-->
+		</fieldset>
+		<div>
+			<section>
+				<h2>: script 항목 정리</h2>
+				<h3>알 수 없는 공백 (NULL)</h3>
+				<ol>
+					<li>script에서는 price.value * 수량 , 계산식 페이지를 만드는 경우가 많음</li>
+					<li>계산이 되어야 하는 판매가나 수량 부분이 비워져 있다면 계산을 할 수 없음 (비워져 있기 때문에 알수 없는 공백이 발생함)</li>
+					<li>총 합계 부분에 알 수 없는 공백 NULL로 나올 확률이 높음!</li>
+					<li>******************* 빈칸 content:"";  / 공백 content :" ";  빈칸과 공백</li>
+				</ol>
+			</section>
+			
+			<section>
+				<h3>php 에서 공백처리하기</h3>
+				<p>
+					* php에서는 빈칸, 공백으로 처리되어 있으면 아무 데이터도 입력받지 못 함!
+				</p>
+				<p>
+					********** not null , 비워져 있지 않도록 표현두면, 당장에는 아무것도 입력하지 않아도 나중에 채울 수 있음!<br/>
+					위와 같이 표현해두지 않으면 100* 0 처럼 어떤 데이터도 입력받지 못 함!
+				</p>
+			</section>
+			
+			<section>
+				<h3>placeholder VS value</h3>
+				<p>
+					placeholder는 화면에서 인식하는 값이 아니라 가상의 값<br/>
+					마우스 클릭하면 블록으로 잡히 않고, 입력되는 순간 값이 사라짐!<br/>
+					실존하는 값이 아니기 때문에 계산식 페이지를 만들기 어려움
+				</p>
+				<p>
+					value 값은 매우중요한 속성<br/>
+					select 태그, input 태그에서 활용도가 매우 높고, 클릭하면 블록으로 잡힘<br/>
+					인식되는 값이기 때문에 계산식 페이지 만들때 매우 중요한 속성으로 사용됨!
+				</p>
+				<p>
+					*  readonly를 설정하여 지워지지 않도록 표현해야 null 값이 표현되지 않는다!
+				</p>
+			</section>
+		</div>
+		<fieldset>
+			<legend>select 태그</legend>
+			<div>
+				<label for="sct">계절선택: </label>
+				<select id="sct" name="sct">
+					<option value="봄">봄</option>
+					<option value="여름">여름</option>
+					<option value="가을">가을</option>
+					<option value="겨울">겨울</option>
+				</select>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<legend>datalist</legend>
+			<p>
+				<label for="sel">사용자 선택: </label>
+				<input id="sel" type="text" name="sel" list="selMenu"/>
+			</p>
+		</fieldset>
+
+		<section>
+			<h2>select 태그 VS datatlis 태그</h2>
+			<ol>
+				<li>공통으로 option과 value 속성을 사용함!</li>
+				<li>select 태그의 장점: 여러번 재선택 가능함!</li>
+				<li>datalist는 input 공간에 한번 인식이 되면 재선택이 어려움!</li>
+				<li>select태그는 화면 어디에든 만들 수 있는 태그가 아니라 필요한 위치에서 만들어야 함!</li>
+				<li>datalist는 화면 어디에 만들어도 input 공간과 datalist의 id값만 있다면 얼마든지 호출이 가능함!</li>
+				<li>datalist를 호출하기 위해서는 반드시 id값이 작성되어야 한다!</li>
+				<li>
+					select 태그는 사용자가 자주 재선택 되어야 항목에서 사용하는 경우가 많고,<br/>
+					datalist는 한번 선택하고 변경하지 않아야 할때 사용한다!
+				</li>
+				<li>
+					select 태그를 더욱 많이 사용하는 이유는?<br/>
+					과목선택이나, lang 선택, 여행지 선택등 사용자가 얼마든지 변경해야 하는 경우가 많기 때문에 <br/>
+					현장에서 || 회원가입이나 선택에 관련된 form을 작성할때는 주로 select 태그를 활용한다!
+				</li>
+				<li>
+					datalist의 option태그와 select태그의 option 태그는 동일한 태그로 인식이 불가능함<br/>
+					datalist와 select 태그 모두 value 값으로 인식함!
+				</li>
+			</ol>
+		</section>
+		<fieldset>
+			<legend>pattern</legend>
+			<p>
+				<input type="submit" value="전송" title="전송"/>
+			</p>
+			<p>
+				<label for="phone3">전화번호: </label>
+				<input id="phone3" type="tel" name="phone3" pattern="\d{3}-\d{3,4}-\d{4}"/>
+			</p>
+
+			<p>
+				<label for="email5">이메일: </label><input id="email5" type="email" name="email5"/>
+			</p>
+			<p>
+				<label for="email6">멀티 이메일: </label><input id="email6" type="email" name="email6" multiple="multiple"/>
+			</p>
+			<p>
+				multiple로 이메일을 설정할 경우<br/>
+				아이디1@naver.com, 아이디2@duam.net 과 같이 연결이 가능함<br/>
+				,(콤마)인 상태로 연결했다면 끝까지 전부 작성하고, 마지막은 콤마 제외하기
+			</p>
+			<p>
+				multiple이 없는 이메일의 경우<br/>
+				(콤마) 사용이 되지 않음!
+			</p>
+			<p>
+				<label for="file">파일첨부: </label><input id="file" type="file" name="file"/>
+			</p>
+		</fieldset>
+	</form>
+ </body>
+</html>

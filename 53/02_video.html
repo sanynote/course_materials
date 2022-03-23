@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>video</title>
+	<meta charset="utf-8"/>
+
+ </head>
+ <body>
+	
+	<div id="video">
+		<video controls poster="img/03.jpg" autoplay muted loop>
+			<source src="video/apple.mp4" type="video/mp4"/>
+		</video>
+	</div>
+
+	<hr/>
+	<dl>
+		<dt>video 다운 받기 (유튜브)</dt>
+		<dd>1) 해당하는 동영상 클릭</dd>
+		<dd>2) 주소줄 확인: youtube.com/동영상 파일명</dd>
+		<dd>3) 다운받기 : youtubepp.com/동영상 파일명</dd>
+		<dd>4) 팝업창 처럼 다른 페이지가 열리면 전부 끄기!</dd>
+	</dl>
+	<hr/>
+	
+	<dl>
+		<dt>단위설정시 주의사항 (너비 높이가 설정가능한 인라인요소)</dt>
+		<dd>브라우저가 가장 좋아하는 단위는 px</dd>
+		<dd>img, select, video... 등등 style 효과가 아니라 width, height 직접 지정하여 설정이 가능함!</dd>
+		<dd>style이 아니기 때문에 width="640px", height="480px"로 설정하면 단위에서 오류가 발생함</dd>
+		<dd>기본적으로 장착되어 있는 단위는 px로 , style을 이용하여 설정하지 않으면 pxpx로 인식하는 문제가 발생한다!</dd>
+	</dl>
+	<hr/>
+
+	<dl>
+		<dt>지원 가능한 포맷</dt>
+		<dd>mp4, ogg, webM	, 브라우저가 인식가능한 확장자</dd>
+		<dd>mp4의 경우, 모든 브라우저에서 활용이 가능함!</dd>
+		<dd>
+			* 모바일 기종에서는 mp4 형식으로 되어 있어도, 모바일용이 아니라면<br/>
+			재생이 불가능할 수 있음!<br/>
+			: 모바일용 인코딩을 해야 재생이 가능할 수 있음
+		</dd>
+	</dl>
+	<hr/>
+
+	<dl>
+		<dt>video에서 활용가능한 속성</dt>
+		<dd>
+			재생을 위한 controls ( 설정되어 있지 않으면, 재생할 수 없음)<br/>
+			브라우저들마다 위치가 다를 수 있기 때문에 script도 같은 위치에서 재생할 수 있도록 만드는 것을 권장한다!
+		</dd>
+		<dd>
+			* poster, 동영상 재생되지 않을때 input, a태그의 title이나 img태그의 alt 처럼 대체용으로 활용할 수 있음!
+		</dd>
+		<dd>
+			* poster는 동영상 연관있는 자료료 대체함 (이미지)
+		</dd>
+		<dd>
+			* autoplay는 모든 브라우저에서 지원하지 않는 속성이었으나..음소거를 할 경우, 사용할 수 있게 풀어주고 있음!<br/>
+			* 사용자의 권한을 빼앗는 부분때문에 제외시켰음<br/>
+			* 영상이 갑자기 재생될 경우, 소리때문에 위험할 수 있음<br/>
+			* muted (음소거) 를 해주는 대신에 autoplay 사용가능!
+		</dd>
+		<dd>
+			무한재생(loop) , 음소거가 되었을때만 가능함<br/>
+			* loop는 무한으로 재생시킴 (게임 회사에서 많이 활용함!)
+		</dd>
+	</dl>
+ </body>
+</html>
