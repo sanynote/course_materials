@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>transform_last</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+
+        /*
+            웹은 3d / transform의 효과들도 3d가 있음
+                : 화면의 뒷 공간을 사용하여 입체감 표현이 가능함
+        */
+
+        div{perspective:100px;}
+        /* 
+            보여지는 거리가 가까울수록 입체감 표현이 나타남, 멀어질수록 입체감 표현이 떨어짐
+                : 시선이 가까워지면서 scroll이 나타나기때문에 주의
+         */
+        p{width:300px; height:300px; background-color:aqua; margin:50px auto 0;
+        transform:rotatex(60deg);}
+
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<div>
+        <p>transform</p>
+    </div>
+ </body>
+</html>
