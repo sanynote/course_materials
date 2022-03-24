@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>gradient</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        body{background-image:-webkit-linear-gradient(top,blue,gray);}
+        #wrap{min-width:1025px; width:100%;}
+
+        #movieArea{width:310px; height:400px; margin:0 auto; position:relative;}
+
+        #movie .big{width:200px; height:100px; position:absolute; left:0; top:40px; transform:skewy(10deg);}
+        #movie .big video{width:100%;}
+        #movie .small{width:105px; height:110px; position:absolute; right:5px; top:50px;; transform:skewy(-10deg); background-image:-webkit-linear-gradient(left,white,gray); font-size:12px;}
+
+        #grad .big{width:200px; height:100px; position:absolute; left:0; top:152px; transform:skewy(10deg); background-image:-webkit-linear-gradient(top,gray,rgba(255,255,255,0));}
+        #grad .small{width:105px; height:115px; position:absolute; right:5px; top:160px; transform:skewy(-10deg); background-image:-webkit-linear-gradient(top,gray,rgba(255,255,255,0));}
+
+
+    </style>
+	
+	
+ </head>
+
+ <body>
+    <div id="wrap">
+        <div id="movieArea">
+            <div id="movie">
+                <div class="big">
+                    <video controls>
+                        <source src="video/apple.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <div class="small">
+                    APPLE CF: transform:Skew, 2021
+                </div>
+            </div>
+
+            <div id="grad">
+                <div class="big">
+
+                </div>
+                <div class="small">
+
+                </div>
+            </div>
+        
+        </div>
+    </div>
+ </body>
+</html>

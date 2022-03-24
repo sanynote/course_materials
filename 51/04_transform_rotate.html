@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        h2{text-align:center; padding:10px 0 30px; text-transform:uppercase;}
+        p{width:150px; height:150px; background-color:aqua; margin:20px;}
+
+        /*############## rotate3d ###############*/
+            .rotate3d{background-color:#0f0; margin:50px auto; transform:rotate3d(0,0,0,60deg);}
+
+            /*
+                [rotate3d 사용방법]
+
+                    1) 숫자 0은 해당하는 축을 사용하지 않을때 적용
+                    2) 숫자 1은 해당하는 축을 사용할 때 적용
+
+                    적용순서
+                        1) x축
+                        2) y
+                        3) z
+                        4) 각도
+
+                    3) 3d를 사용하는 이유는?
+                        : x y z 축 모두 사용할 수 있음
+                        : 원하는 축만 선택하여 사용이 가능함
+
+                    4) 주로 많이 사용되는 축
+                        : z축은 예측이 불가능하기때문에 주로 x,y로 사용하는 경우가 많다.
+            */
+
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<h2>transform:rotate</h2>
+    <hr/>
+
+    <p class="rotate">transform:rotate(45deg), 가운데 축을 이용하여 회전</p>
+    <p class="rotatex">transform:rotatex(45deg), x축 가운데를 이용하여 회전</p>
+    <p class="rotatey">transform:rotatey(45deg), y축 가운데를 이용하여 회전</p>
+    <p class="rotate3d">transform(3d회전),rotate3d</p>
+ </body>
+</html>
