@@ -10,140 +10,161 @@
 		#wrap{min-width:480px; width:100%;}
 		h1{font-size:28px; margin-bottom:28px; text-indent:20px;}
 
-		#payment{width:400px; padding:20px; background-color:#9cbc2c; border-radius:5px;}
-        
+		#payment{width:400px; padding:20px; margin:20px; background-color:#9cbc2c; 
+		border-radius:5px;}
+
 		#payment fieldset{border:none; margin-bottom:10px;}
-		#payment fieldset:last-child{margin-bottom:0;}
+		#payment fieldset:last-child{ margin-bottom:0;}
 
 		#payment fieldset fieldset legend{font-size:13px;}
-		#payment li{list-style:none; background-color:#b9cf6a; background-color:rgba(255,255,255,0.3); border-width:2px; border-style:solid; border-color:#e3ebc3; border-radius:5px; line-height:30px; padding:5px 10px; margin-bottom:2px;}
+		#payment li{list-style:none; 
+			background-color:#b9cf6a; 
+			background-color:rgba(255,255,255,0.3);
+			
+			border-width:2px;
+			border-style:solid;
+			border-color:#e3ebc3;
+			border-radius:5px;
 
-		/*
+			line-height:30px;
+			padding:5px 10px;
+			margin-bottom:2px;
+		}
+
+		/* 
 			border:5px solid red;
-
+			border-left
+			border-top
+			border-right
+			border-bottom
 		*/
 
 		#payment ol li ol li{border:none; float:left; background:none;}
 		/*
-			1) background-color의 경우, rgba라면 투명도 조절하여 사용가능
-			2) b-c 의 투명도가 없는 값을 해제할때는?
-				b-c:none 해제 불가능
+			1) background-color의 경우, rgba라면 투명도 조절하여 사용가능!
+			2) background-color의 투명도가 없는 값을 해제할 때는?
+				background-color:none 해제 불가능
 
-				+ background:none은 색상뿐아니라 모든 background 해제 가능
+				+ background: none은 색상뿐 아니라 모든 background 해제가능!
 		*/
 
-		#payment label{width:110px; float:left;}
+		#payment label{display:block; width:110px; float:left;}
 		#payment input{width:205px; border-radius:3px; height:24px; border:1px solid #555;}
 
 		#payment input[type="radio"]{width:16px; float:left; margin-right:5px; margin-top:5px;}
 
 		/*
 			[매우중요_괄호표현]
+				
+				{ } : 기능적용시 사용하는 괄호
+				( ) : 조건을 물어보는 괄호
+				[ ] : 속성을 물어보는 괄호
+				
+				( ){ }	: 조건에 맞을때만 기능구현!
+						: 조건에 맞지 않으면 기능이 되지 않음!
 
-			{}: 기능적용시 사용하는 괄호
-			(): 조건을 물어보는 괄호
-			[]: 속성을 물어보는 괄호
-
-			(){}: 조건에 맞을때만 기능구현
-				: 조건에 맞지 않으면 기능이 되지 않음
-
-			({}): 조건 자체가 기능이 되는 괄호로 == {} 와 같음
+				({ })	: 조건 자체가 기능이 되는 괄호로 == { }와 같음!
+		
 		*/
-		#payment fieldset fieldset label{width:auto; padding-left:25px; background-repeat:no-repeat; background-position:left;}
+
+		#payment fieldset fieldset label{width:auto; padding-left:25px;
+		background-repeat:no-repeat; background-position:left;}
 
 		/*
 			[width:auto]
-
-				: form 이나 table처럼 감싸고있는 블록요소 안에서 너비를 자동으로 맞출때 사용하는 속성
-
-				: 적용이 안되는 경우가 많기때문에 px이나 %로 만드는것이 안전함
-				: 디테일한 작업,기능 작업이 어려움
+				
+				: form이나 table 처럼 감싸고 있는 블록요소 안에서 너비를 자동으로 맞출때 사용하는 속성!
+				
+				: 적용이 안되는 경우가 많기 때문에 px 이나 %로 만드는 것이 안전함!
+				: 디테일한 작업, 기능 작업이 어려움!
 		*/
-		/*########### icon 가져오기 ############*/
-		#payment label[for="visa"]{background-image:url("img/visa.gif");}
-		#payment label[for="amex"]{background-image:url("img/amex.gif");}
-		#payment label[for="mastercard"]{background-image:url("img/mastercard.gif");}
+		/*################ icon 가져오기 #################*/
+		#payment label[for="visa"]{background-image:url("img/visa.gif"); }
+		#payment label[for="amex"]{background-image:url("img/amex.gif"); }
+		#payment label[for="mastercard"]{background-image:url("img/mastercard.gif"); }
+
 
 		#payment textarea{width:200px; border-radius:5px;}
 		#payment fieldset:last-child{text-align:center;}
+		
 		#payment button{background-color:#384313; color:#fff; padding:7px 25px;
 		border:none; border-radius:20px;}
 
 		#payment button:hover{background-color:green; cursor:pointer;}
 
 		#payment fieldset legend:before{content:"step: ";}
-
-
 	</style>
-	
-	
  </head>
-
  <body>
 	<div id="wrap">
 		<h1>payment form</h1>
 		<form id="payment" action="#" method="post">
 			<fieldset>
-				<legend>Your details</legend>
+				<legend>Your detalis</legend>
 				<ol>
 					<li>
-						<label for="username">name: </label><input id="username" type="text" name="username" required placeholder="first and last name" maxlength="3" title="8자 까지 입력" autofocus="autofocus"/>
+						<label for="username">name: </label><input id="username" type="text" name="username" required 
+						placeholder="First and last name" maxlength="8" minlength="3" title="8자 까지 입력" autofocus="autofocus"/>
 						<!--
 							[참고사항]
 
-								* minlength, 익스플로러에서는 적용불가능
-								* 다른 브라우저들에서도 적용이 가능한 속성과 불가능한 속성이 있기때문에 반드시 확인해야 함
+							* minlength, 익스플로러에서는 적용불가능!
+							* 다른 브라우저들에서도 적용이 가능한 속성과 불가능한 속성이 있기 때문에 반드시 확인해야 함!
 
-								* maxlength는 예전부터(xhtml) 사용했던 속성으로 모든 브라우저에서 적용이 가능함
-								minlength는 적용이 불가능한 브라우저들이 많기때문에 script의 제어문을 통해서 만들게 된다.
+							* maxlength는 예전 부터(xhtml) 사용했던 속성으로 모든 브라우저에서 적용이 가능함!
+							minlength는 적용이 불가능한 브라우저들이 많기 때문에 script의 제어문을 통해서 만들게 된다!0
 						-->
 					</li>
 					<li>
 						<label for="email">email: </label><input id="email" type="email" name="email" required placeholder="example@domain.com"/>
 						<!--
 							[tip]
-								1) 이메일을 로그인 아이디나 개인정보 보호를 위해 사용한다면 autocomplete를 꺼두는것이 효과적
-								2) 이메일을 이메일로만 사용한다면 autocomplete를 꺼두는 건 좋지 않음
-
+								1) 이메일을, 로그인 아이디나 개인정보 보호를 위해 사용한다면 autocomplete를 꺼두는 것이 효과적
+								2) 이메일을 이메일로만 사용한다면 autocomplete를 꺼두는 건 좋지않음!
 						-->
 					</li>
 					<li>
-						<label for="phone">phone: </label><input id="phone" type="tel" name="phone" required placeholder="010-123-4567" pattern="\d{3}-\d{3,4}-\d{4}" title="'─'"/>
+						<label for="phone">phone: </label><input id="phone" type="tel" name="phone" required
+						placeholder="010-123-4567" pattern="\d{3}-\d{3,4}-\d{4}" title=" '─' 을 넣고 입력"/>
 						<!--
-							[문자열 작성 시 매우중요_프로그램명]
+							
+							[문자열 작성시 매우중요_프로그램밍]
 
-								1) "abc" : 옆에와 같은 형태로 작성한 것을 "문자열"이라고 부름
+								1) "abc" : 옆에와 같은 형태로 작성한 것을 "문자열" 이라고 한다!
 								2) "가나다라" : 문자열
-								3) "A" : 문자
 
-								* 문자열은 더블커텐셜으로 담아주고, 문자는 싱글커텐셜으로 담아준다
+								3) 'A' : 문자
 
-								* 문자열,문자, javascript에서는 더블이나 싱글 구분없이 담아주면 문제없이 사용할 수 있음
-								* php에서는 담는다는 표현으로 더블이나 싱글로 담아주게 됨
+							[매우중요]
 
-								* 프로그래밍에서도 javascript를 어려워 함 (태그, style과 같은 객체들이 있기때문에 어려워함)
-
+								* 문자열은 더블커텐션으로 담아주고, 문자는 싱글 커텐션으로 담아준다!
+								
+								* 문자열, 문자 , javascript에서는 더블이나 싱글 구분없이 담아주면 문제없이 사용할 수 있음!
+								* php에서는 담는다는 표현으로 더블이나 싱글로 담아주게 됨!
+								
+								* 프로그래밍 에서도 javascript를 어려워 함 (태그, style 과 같은 객체들이 있기 때문에 어려워 함!)
+								
 							[문자열 표현방법]
-
+								
 								[문자열이 끊긴 표현]
+								
+								" "A "BC"	: 옆에 처럼 사용한다면 문자열이 끊겨 표현됨
+									: A 앞에서 " " 공백으로 묶여 있고, A 뒤에서 "BC" 로 묶여 있음!
 
-								""A"BC" : 옆에처럼 사용한다면 문자열이 끊겨 표현됨
-									: A 앞에서 "" 공백으로 묶여있고, A 뒤에서 "BC"로 묶여있음
+								' A' B 'C ' :  옆에 처럼 사용한다면 싱글과 싱글끼리 묶여서 문자열이 끊겨서 표현됨!
 
-								'A' B 'C' : 옆처럼 사용한다면 싱글과 싱글끼리 묶여서 문자열이 끊겨서 표현됨
 
 								[문자열 연결하여 표현하기]
 
-									"'A'B C"	: 바깥쪽이 더블이니, 안쪽을 싱글로 표현
-										: 문자열이 끊기지않고 표현됨
-
-									'"A" BC'	: 바깥쪽이 싱글로 시작했기때문에 안쪽을 더블로 표현하기
-										: 문자열이 끊기지않고 표현됨
-
+									" 'A' B C" : 바깥쪽이 더블이기 때문에 안쪽을 싱글로 표현하기!
+										: 문자열이 끊기지 않고 표현됨!
+									
+									' "A" BC ' : 바깥쪽이 싱글로 시작했기 때문에 안쪽을 더블로 표현하기!
+										: 문자열이 끊기 않고 표현됨!
 						-->
 					</li>
 					<li>
-						<label for="list">datalist</label><input id="list" type="text" name="list" required/>
+						<label for="list">datalist</label><input id="list" type="text" list="selects" name="list" required/>
 						<datalist id="selects">
 							<option value="book">book</option>
 							<option value="game">game</option>
@@ -151,67 +172,68 @@
 						</datalist>
 						<!--
 							[datalist와 select 태그]
+								
+								1) 공통으로 option 태그와 value 속성을 사용함!
+								2) 공통으로 option 태그는 읽지 않고, value를 인식함!
 
-								1) 공통으로 option 태그와 value 속성을 사용함
-								2) 공통으로 option 태그는 읽지않고, value를 인식함
+								3) datalist는 input태그에 value 인식시키면 더이상 "재선택" 이 어려움!
+								4) select 태그는 "재선택" 이 가능함!
 
-								3) datalist는 input 태그에 value 인식시키면 더 이상 "재선택" 이 어려움
-								4) select 태그는 "재선택" 이 가능함
-
-								* 여러번 재선택을 하기위하여 select 태그를 많이 활용함
-
+								* 여러번 재선택을 하기 위하여 select 태그를 많이 활용함!
 						-->
 					</li>
 				</ol>
 			</fieldset>
-			<fielsset>
+			<fieldset>
 				<legend>Delivery Address</legend>
 				<ol>
 					<li>
 						<label for="address">address</label>
 						<textarea id="address" name="address" required rows="5"></textarea>
 						<!--
-							[textArea 정리]
+							[textarea 정리]
 
-								1) textarea는 기본적으로 글자만 작성 가능한 영역 (총 255자까지 입력가능)
-								2) textarea는 글자만 입력받기때문에 type은 생략
-									: textarea는 글자만 입력받는 영역으로 type을 이용하여 button, reset, submit 등등으로 활용할 수는 없음
+								1) textarea는 기본적으로 글자만 작성 가능한 영역 (총 255자 까지 입력가능)
+								2) textarea는 글자만 입력받기 때문에 type은 생략
+									
+									: textarea는 글자만 입력받는 영역으로 type을 이용하여 button, reset, submit
+									등등으로 활용할 수는 없음!
 
-									: button태그는 반대로 text로 활용할 수 없음
+									: button태그는 반대로 text로 활용할 수 없음!
 
 								3) textarea는 상세주소, 자기소개, 긴 내용을 담을 때 사용
-								4) row는 "가로방향"
+								4) row는 "가로방향"	
 									* hr 구분선 (가로방향으로 선이 만들어짐, horizontal row)
-									* php에서는 가로방향으로 작성된 데이터들을 읽어야 함
+									* php에서는 가로방향으로 작성된 데이터들을 읽어야 함!
 
 									col은 "세로방향"
 
 								5) 웹 표준, 웹 접근성에서 필수
-									textarea, select,input 모두 label 태그를 요구함
+									textarea, select, input 모두 label 태그를 요구함!
 
 								6) label을 대체하는 속성은 title 속성
 
-							++++++++++++++++++++++++++++++++++++++++++++++++++++++
+							+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 								[input태그 활용하기]
+									
+									: textarea 처럼 전체 공간을 상대로 긴 글을 작성할 수는 없음!
+									: input태그는 button태그 처럼 제한적이지 않음!
 
-									: textarea 처럼 전체 공간을 상대로 긴 글을 작성할 수는 없음
-									: input 태그는 button태그처럼 제한적이지 않음
-
-									: input, 한 줄짜리 글을 담을 수 있고, button으로도 활용이 가능함
-
+									: input , 한 줄 짜리 글을 담을수 있고, button으로도 활용이 가능함!
 						-->
 					</li>
 					<li>
-						<label for="postcode">postcode</label><input id="postcode" type="text" name="postcode" required placeholder="숫자만 입력" maxlength="5"/>
+						<label for="postcode">postcode</label><input id="postcode" type="text" name="postcode" required
+						placeholder="숫자만 입력" maxlength="5"/>
 					</li>
 					<li>
 						<label for="country">country</label><input id="country" type="text" name="country" required/>
 					</li>
 				</ol>
-			</fielsset>
+			</fieldset>
 			<fieldset>
-				<legend>card details</legend>
+				<legend>card detalis</legend>
 				<ol>
 					<li>
 						<fieldset>
@@ -231,54 +253,53 @@
 								</li>
 							</ol>
 							<!--
-								[checkbox와 radio 버튼]
+								[checkbox 와 radio 버튼]
+									
+									1) checkbox는	사각형 모양
+									2) radio는			동그라미 모양
 
-									1) checkbox는 사각형모양
-									2) radio는 동그라미모양
-
-									: 모양때문에 사용하지는 않음
+									: 모양 때문에 사용하지는 않음!
 
 								[checkbox 사용하기]
-
-									: 중복선택이 가능한 부분에서는 체크박스 사용
-									: 과목선택,취미,쇼핑정보,관심분야...
+									
+									: 중복선택이 가능한 부분에서는 체크 박스 사용
+									: 과목선택, 취미, 쇼핑정보, 관심분야....
 
 								[radio 사용하기]
-
-									: 나열된것들 중에서 하나만 선택할 때
-									: 성별, 결제시스템 (핸드폰,카드,계좌,상품권,포인트)
+									
+									: 나열 된 것들 중에서 하나만 선택할 때
+									: 성별, 결제시스템 (핸드폰, 카드, 계좌, 상품권, 포인트)
 
 								[name의 중요성]
-
+									
 									form의 action 줄을 타고 넘어갈 때 사용되는 속성은 name
-
+										
 										name="a"
 										name="b"
 										name="c"
 
-										name이 각각 다를 경우, 이름이 다른 상자 3개가 각각 있어서 
-										내용을 하나씩 저장할 수 있음
-											: 3개 모두 저장가능
+										name 이 각각 다를 경우, 이름이 다른 상자가 3개가 각각 있어서
+										내용을 하나씩 저장할 수 있음!
+											: 3개 모두 저장가능!
 
 										name="a"
 										name="a"
 										name="a"
 
-										name이 모두 같을 경우, 하나의 상자라고 인식하고 하나만 저장할 수 있음
-
+										name이 모두 같을 경우, 하나의 상자라고 인식하고 하나만 저장할 수 있음!
 							-->
 						</fieldset>
 					</li>
 					<li>
 						<label for="cardnumber">cardnumber</label>
-						<input id="cardnumber" type="text" name="cardnumber" placeholder="'─' 을 넣고 입력"/>
+						<input id="cardnumber" type="text" name="cardnumber" placeholder=" '─' 을 넣고 입력"/>
 					</li>
 					<li>
-						<label for="company">company</label>
+						<label for="compnay">company</label>
 						<input id="company" type="text" name="company" value="APPLE" readonly/>
 					</li>
 					<li>
-						<label for="securitycode">securitycode</label>
+						<label for="securitycode">security code</label>
 						<input id="securitycode" type="text" name="securitycode"/>
 					</li>
 					<li>
@@ -287,37 +308,36 @@
 					</li>
 				</ol>
 			</fieldset>
-			<filedset>
+			<fieldset>
 				<button type="submit">Buy it!</button>
-			</filedset>
-
+			</fieldset>
 		</form>
 	</div>
 	<!--
 		[정리]
-
+		
 			[1] name
 
-			: form은 안에 담고있는 정보를 action줄을 통해서 넘겨줄 수 있음
-			: name 속성만 타고 넘어갈 수 있음
+			: form은 안에 담고 있는 정보를 action 줄을 통해서 넘겨줄 수 있음!
+			: name 속성만 타고 넘어갈 수 있음!
 
-			: select 태그에서도 넘길 정보가 있다면 name 작성
-			: textarea 태그에서도 넘길 정보가 있다면 name 작성
-			: input  태그에서도 넘길 정보가 있다면 name 작성
+			: select 태그에서도 넘길 정보가 있다면 name  작성
+			  textarea에서도 넘길 정보가 있다면 name 작성
+			  input 태그에서도 넘길 정보가 있다면 name 작성
+			
+			[2] form안에 그룹화 시킬때는 fieldset을 무조건 사용함!
+				* 한 주제로 그룹화 시킬때 fieldset을 사용하여 묶어줌!
+				* fieldset 안에서는 제목을 다룰때 headline 태그를 사용하는 것이 아니라 legend 태그를 활용함!
+				
+				* legend 태그는 목차에 생성되지 않음!
+					form안에서 주제별로 제목을 다룰때는 필수!
+				
+				* fieldset 영역안에서 제목이 필요없을 경우, legend 태그 제외가능!
+			
 
-			[2] form 안에 그룹화 시킬때는 fieldset을 무조건 사용함
-
-				* 한 주제로 그룹화 시킬 때 fieldset을 사용하여 묶어줌
-				* fieldset 안에서는 제목을 다룰 때 headline 태그를 사용하는것이 아니라 legend 태그를 활용함
-				* legend 태그는 목차에 생성되지 않음
-					form 안에서 주제별로 제목을 다룰 때는 필수
-
-				* fieldset 영역 안에서 제목이 필요없을 경우, legend 태그 제외가능
-
-			[3] form 에서는 section, article, 시멘틱 태그들처럼 
-				headline 태그를 필수로 작성하지는 않음
-				단, fieldset을 사용하고 제목이 필요하다면 headline 태그로 제목을 작성하는것이 아니라 legend 태그 사용
-
+			[3] form에서 
+				section, article 태그 , 시멘틱 태그들 처럼 headline태그를 필수로 작성하지는 않음
+				fieldset을 사용하고 제목이 필요하다면 headline 태그로 제목을 작성하는 것이 아니라 legend 태그 사용!
 	-->
  </body>
 </html>
