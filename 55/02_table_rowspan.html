@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>table_rowspan</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		table{width:600px;}
+		table, th, td{border:1px solid #333;}
+	</style>
+
+ </head>
+ <body>
+	<table>
+		<caption>table 사용하기</caption>
+		<tr>
+			<th>company</th>
+			<td>apple</td>
+		</tr>
+		<tr>
+			<th rowspan="3">model</th>
+			<td>macBook</td>
+		</tr>
+		<tr>
+			<!--<th>model</th>-->
+			<td>macAir</td>
+		</tr>
+		<tr>
+			<!--<th>model</th>-->
+			<td>iPhone</td>
+		</tr>
+	</table>
+ </body>
+</html>
+<!--
+	[용어정리]
+
+	1) row 가로 줄 표기할때 사용
+	2) tr은 li처럼 한줄 한줄 영역을 구분할때 사용
+	3) th는 label처럼 (머릿글)
+	4) td는 머릿글에 맞는 데이터 작성
+	5) rowspan 가로줄 합칠때 사용 (자신을 포함해서 합칠 수 있음!)	
+-->

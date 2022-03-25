@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>book</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+
+        #wrap{min-width:1025px; width:100%;}
+        #container{width:100%;}
+
+        #book{width:480px; height:250px; position:relative;}
+        #book p{width:240px; height:250px; float:left; overflow:hidden;}
+        #book p img{height:100%;}
+
+
+        #rotate{width:480px; height:250px; transition:transform 1s linear; position:absolute; left:0; top:0;}
+        #rotate:hover{transform:rotatey(180deg);}
+        #roteta:hover .left{background-image:url("img/04.jpg");}
+        #roteta:hover .left img{display:none;}
+
+        #rotate p{width:240px; height:250px; float:left; overflow:hidden;}
+        #rotate p img{height:100%;}
+
+        #rotate .blank{background-color:rgba(255,255,255,0);}
+
+      
+
+    </style>
+    
+	
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <div id="container">
+            <div id="book">
+                <p>
+                    <img src="img/03.jpg" alt="이미지0">    
+                </p>
+                <p>
+                    <img src="img/02.jpg" alt="이미지1">    
+                </p>
+            </div>
+            <div id="rotate">
+                <p class="left">
+                    <img src="img/01.jpg" alt="이미지0">    
+                </p>
+                <p class="blank">
+                        
+                </p>
+            </div>
+            
+        </div>
+    </div>
+ </body>
+</html>
