@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>animation_test</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		h2{font-family:gulim, sans-serif;}
+
+		p{width:200px; height:200px; line-height:200px; background-color:gold; text-align:center;}
+
+		.ani1{animation:ani1 5s infinite alternate;}
+		
+		@keyframes ani1{
+			0%{width:200px; height:200px; background-color:gold;}
+			50%{width:200px; height:180px; background-color:blue; color:#fff;}
+			100%{width:290px; height:290px; border:5px solid red; border-radius:150px;
+			background-color:#ff0; }
+		}
+
+		/*
+			[매우중요]
+				1) keyframes 사이에서 없던 효과를 만들기 어려움!
+				2) style 효과가 매우 뛰어나지면서 가능하게 만들어짐!
+
+				: 100% 지점에서 border:5px solid red가 적용되지 않았으나 현재는 가능함!
+				: 없던게 만들어지기 때문에 자연스럽지 않음!
+
+				권장방식) 기존에 있는 값에서 변화를 시켜야 자연스럽게 사용이 가능함!
+		*/
+
+		.ani2{animation:ani2 6s infinite alternate;}
+		@keyframes ani2{
+		
+			0%{width:200px; height:200px; background-color:gold;}
+			50%{width:150px; height:100px; line-height:100px; border-radius:20px; background-color:aqua;}
+			70%{width:220px; height:200px; line-height:200px; border-radius:60px;
+			background-color:darkblue; color:#fff;}
+			
+			100%{width:240px; height:240px; line-height:240px; border-radius:120px; background-color:pink;
+			color:#333; margin-left:500px;}
+		}
+	</style>
+ </head>
+ <body>
+	<h2>animation_test</h2>
+	<p class="ani1">ani1</p>
+	<p class="ani2">ani2</p>
+ </body>
+</html>

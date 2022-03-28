@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+
+        div{width:1280px; height:768px; 
+        background-image:url("img/background.jpg");
+        background-repeat:no-repeat; position:relative;}
+
+        div p{width:213px; height:224px; border:1px solid red; position:absolute;
+        left:400px; top:300px; animation:moves 25s infinite alternate;}
+
+        @keyframes moves{
+            0%{left:-300px;}
+            20%{left:150px;}
+            50%{left:450px;}
+            100%{left:750px;}
+        }
+
+        /*
+            [keyframes 활용하기]
+
+                : keyframes 많이 나눠놓을수록 해당 지점을 반드시 멈추기때문에 덜재 부드럽지않음
+                : 0% 20% 50% 70% 80% 100% 프레임을 6개로 나누었기때문에 모두 멈췄다가 진행함
+
+                : 0% 100%를 나누면 중간에 멈추는 영역이 없기때문에 부드럽게 처리가 가능함
+
+            * 가장 부드럽게 표현하는 방법은 frames을 적게 사용하면서 구현하는 것이 좋다.
+        */
+        /*
+            [position:absolute 작업시 중요사항]
+
+                1) position:absolute를 사용하면 담고있는 객체만큼 크기가 자동으로 설정됨
+                2) float처럼 width:100%를 지정하지 않으면 공간을 빼앗기거나 쉽게 영역이 겹칠 수 있음
+        */
+
+        div p img{width:70%; opacity:0.7; position:absolute; left:-10px; bottom:0;
+        animation:ball 3s infinite alternate;}
+
+        @keyframes ball{
+            0%{left:-10px; bottom:10px;}
+            50%{left:10px; bottom:30px;}
+            100%{left:20px; bottom:15px;}
+        }
+
+        /*
+            absolute의 경우, 서로 부모역할, 자녀역할을 담당할 수 있음
+                :relative가 가장 안전함
+
+            [% 사용시 주의사항]
+
+                1) div p img{width:70%;}
+
+                    : div p img{width:70px;}
+                    : div 도 없다면 브라우저를 따라감
+
+                2) 안전하게 사용하기
+
+                    : 부모요소 || 실제 사용하는 영역의 픽셀 작업하기
+                    : %는 쉽게 깨질 수 있기때문에 반드시 px 작업이 우선되어야한다.
+
+        */
+    </style>
+	
+	
+ </head>
+
+ <body>
+    <div>
+        <p>
+            <img src="img/airball.png" alt="풍선이미지"/>
+        </p>
+    </div>
+ </body>
+</html>
