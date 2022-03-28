@@ -1,0 +1,13 @@
+rotate1, rotate2, rotate3
+
+1) rotate1
+	x축으로 회전 이동하면서 커짐
+
+2) rotate2 
+	y축으로 회전 이동하면서 커짐
+
+3) 전체 회전되면서 이동하면서 커짐
+
+4) hover, focus 모두 적용
+
+5) hover, focus하면 background-image가 움직이도록 만들기

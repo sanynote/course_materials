@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>animation</title>
+	<meta charset="utf-8"/>
+	<style>
+        *{margin:0; padding:0;}
+        h2{text-transform:uppercase; padding:20px 0 10px; text-indent:10px;}
+
+        p{width:200px; height:180px; background-color:aqua; margin-left:20px; animation:myani 5s infinite alternate;}
+
+        @keyframes myani{
+
+            0%{width:200px; height:180px; background-color:aqua;}
+            50%{width:300px; height:220px; background-color:darkblue;}
+            100%{width:400px; height:400px; background-color:pink;}
+        }
+
+        /*
+            [animation 정리]
+
+            [1] animation과 transition
+
+                + animation의 경우, 이벤트 (hover, focus, click, mouseover)가 없어도 부드럽게 표현이 가능함
+                + transition의 경우, 이벤트가 없을 경우 작동되지 않음, 필수(대상과 해당하는 이벤트가 필요함)
+
+            * [2] animation VS gif
+
+                + animation은 사용자가 조작할 수 있고 자동으로 움직일 수 있음
+                + gif 사용자가 컨트롤할 수 없음 (어떤 gif의 경우 깜빡이는 문제가 있음, 웹표준에 문제 있을 수 있음)
+
+            ++++++++++++++++++++++++++++++++++++++++++++++++
+
+            [animation 활용하기]
+
+            [1] animation 제목
+
+                [이름 작성 시 주의사항]
+
+                    : 대문자 (예약어) 주의
+                    : 1myani 숫자를 가장 앞에 작성하면, 시간이나 공간으로 인식할 수 있음(반복횟수)
+                    : 올바른 표현방법
+                        myAni, myAni0 (숫자 적용시 뒤에 붙이기), myani...
+
+            [2] duration (~~ 하는동안, 작동이 일어나고 있는 시간)
+            [3] 반복횟수, 1(한 번), 2(두 번)
+                : infinite (무한반복)
+
+            [4] 문제점: 끝나는 부분은 중간지점이 없음
+            
+                시작할때 0%~50%~100%
+                끝날때 100% ~50%(?) ~ 0%
+
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            [animation 작성 시, keyframes 작성하기]
+
+                1) 0% ~ 100%까지 범위 안의 어떤 숫자도 적용이 가능함
+                    * 마이너스 값은 적용되기 어려움
+
+                2) 0% 50% 100%
+                    0%~100% 까지의 숫자는 모두 사용가능 
+
+                3) 1% 씩 100%까지 프레임 나눠서 사용가능
+
+                4) 아래처럼 필요한만큼 키프레임 세분화하여 적용가능
+
+                    0%{}
+                    20%{}
+                    67%{}
+                    100%{}
+
+                매우중요) keyframes은 0%보다 20가 최신 50가 최신 100% 마지막 (결과값)
+        */
+
+
+    </style>
+	
+ </head>
+
+ <body>
+	<h2>animation</h2>
+    <p>animation-keyframe</p>
+ </body>
+</html>

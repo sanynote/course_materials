@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>ratate_all</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        a:link, a:visited{text-decoration:none;}
+
+        div{width:800px; margin:50px auto 0; background-color:pink;}
+
+        div a{display:block; width:150px; height:150px; margin-right:80px; border-radius:75px; background-color:#fff; color:#fff; 
+        box-shadow:0 0 20px rgba(0,0,0,0.3); text-shadow:0 0 5px rgba(0,0,0,0.8); text-align:center; line-height:150px; float:left;
+        transition:all 0.4s linear 0.2s;}
+
+        /* 중요) 초기값 작성하기, 시작과 결과에 해당하는 과정만들기 */
+        /* 이동하면서, x축으로 회전시키면서 커지도록 만들기 */
+
+        .rotate1{transform:translate(0px, 0px) rotatex(0deg) scale(1);}
+        .rotate1:hover, .rotate1:focus{transform:translate(240px, 360px) rotatex(360deg) scale(1.5); background-image:url("img/image01.jpg"); background-position:center;}
+
+        /* 이동하면서, y축으로 회전시키면서 커지도록 만들기 */
+
+        .rotate2{transform:translatey(0px) rotatey(0deg) scale(1);}
+        .rotate2:hover, .rotate2:focus{transform:translatey(360px) rotatey(360deg) scale(1.5); background-image:url("img/image02.jpg"); background-position:center;}
+
+        .rotate3{transform:rotate(0deg) translate(0px, 0px) scale(1);}
+        .rotate3:hover, .rotate3:focus{transform:rotate(360deg) translate(-240px, 360px) scale(1.5); background-image:url("img/image03.jpg"); background-position:bottom;}
+
+        /*
+            [매우중요]
+
+                transform은 작성되는 순서에 따라서 결과로 나오는 부분이 다르기때문에 순서배치가 매우 중요하다
+            
+        */
+
+        div:after{content:""; display:block; clear:both;}
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<div>
+        <a href="#" title="rotate1" class="rotate1">
+            rotate1
+        </a>
+        <a href="#" title="rotate2" class="rotate2">
+            rotate2
+        </a>
+        <a href="#" title="rotate3" class="rotate3">
+            rotate3
+        </a>
+    </div>
+ </body>
+</html>
