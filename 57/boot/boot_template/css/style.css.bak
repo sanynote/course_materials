@@ -1,0 +1,43 @@
+#wrapper{ 
+	background-image:-webkit-linear-gradient(top,black 0%, darkred 50%, black 100%);
+		}
+@media(min-width:960px){
+li{list-style:none;}
+.heade{ border:1px solid blue;}
+.heade ul li{text-align:right;
+			 margin-right:5%;
+			}
+
+/*슬라이드 전체 영역
+  width:사이즈를 %로 하면 브라우저의 크기만큼 넓어져서 좌우 버튼이넓이미지 밖으로 벗어난다.
+*/
+
+#myCarousel{width:800px; margin:10px auto;}
+
+
+/*슬라이드의 캡션*/
+.carousel-caption{width:100%; height:10%; margin:0 auto;
+				  background-color:rgba(0,0,0,0.3);
+				}
+
+.carousel-inner div img{ 
+					margin:0 auto;
+					border:1px solid red;}
+.carousel-caption h1{
+						text-align:left;
+						line-height:10%;
+						color:white;
+				}
+}
+
+
+
+
+/* 이미지에 들어오는 캡션영역 */
+
+@media(min-width:0) and (max-width:480px){
+	
+	#myCarousel{width:100%; height:30%; 
+					  margin:0 auto;}
+
+}
