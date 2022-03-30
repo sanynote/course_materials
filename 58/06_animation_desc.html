@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>animation_desc</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;} /* (*)은 브라우저를 담당함, pc버전 초기화 */
+        body{margin:0; padding:0;} /* pc mobile 모두 초기화 */
+
+        div, ul, ul li{margin:0; padding:0;}
+        /* 어떤 모바일 기기에서 초기화가 적용되지 않을 수 있기때문에 이 때는 사용중인 블록요소는 모두 초기화하기 */
+
+        li{list-style-type:none;}
+
+        #content{width:100%;}
+        #content ul{width:1280px; margin:80px auto 0; position:relative;}
+
+        #content li{width:100px; height:100px; background-color:gold;
+        border-radius:50px; text-align:center; line-height:100px;
+        position:absolute; left:0; top:0; color:#fff;
+        
+        animation:circles 3s infinite alternate;}
+
+
+        /*
+            [문제]
+
+                .red 제외하고 .brown부터 purple까지 높이간격 100px 씩 차이나도록 배치하기
+                해당하는 색상으로 배경색상 적용하기
+        */
+
+        /*
+            keyframes 에서 0%를 사용하지 않으면 공통이 시작점되고, 100%까지 움직임
+                : animation은 0%로 시작해서 100%로 끝나기때문에 100% 지점이 중요
+                : keyframes 많이 사용할수록 해당하는 위치를 반드시 멈췄다가 가기때문에 부드럽게 표현되지 않는다. 
+            
+        */
+        
+        @keyframes circles{
+            100%{left:99%; transform:rotate(360deg);}
+        }
+
+        #content .red{background-color:red;}
+        #content .brown{background-color:brown; top:100px;}
+        #content .green{background-color:green; top:200px;}
+        #content .blue{background-color:blue; top:300px;}
+        #content .pink{background-color:pink; top:400px;}
+        #content .purple{background-color:purple; top:500px;}
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<div id="content">
+        <ul>
+            <li class="red">red</li>
+            <li class="brown">brown</li>
+            <li class="green">green</li>
+            <li class="blue">blue</li>
+            <li class="pink">pink</li>
+            <li class="purple">purple</li>
+        </ul>
+    </div>
+ </body>
+</html>

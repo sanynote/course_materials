@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>card</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+
+        #container{min-width:1025px; width:100%;}
+
+        #cardArea{width:249px; height:347px; position:relative;}
+
+        #cardArea p{width:100%; height:100%; perspective:1000px; transform:rotatex(0deg); transition:transform 1s linear;}
+        #cardArea p img{width:100%}
+
+        #cardArea:hover p{transform:rotatex(180deg);}
+
+
+        #cardArea .front{opacity:1;}
+        #cardArea .back{position:absolute; left:0; top:0;}
+
+
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<div id="container">
+        <div id="cardArea">
+            <p class="back">
+                <img src="img/back.png" alt="카드1"/>
+            </p>
+            <p class="front">
+                <img src="img/front.png" alt="카드0"/>
+            </p>
+        </div>
+    </div>
+ </body>
+</html>

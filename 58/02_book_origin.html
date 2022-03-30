@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>book_origin</title>
+	<meta charset="utf-8"/>
+	<style>
+			*{margin:0; padding:0;}
+			body{margin:0; padding:0;}
+			h2{text-align:center; padding:50px 0; color:#aaa; text-transform:uppercase;}
+			
+
+			#container{width:100%; overflow:hidden;}
+
+			#content{width:600px; height:300px; margin:100px auto 0; position:relative; }
+
+			/*
+				[perspective 활용하기]
+
+				1) 회전이 적용되는 객체 부모에 작성하기!
+				2) origin 전 페이지에서는 section이 회전이 되기 때문에 #content에 perspective 작성
+				3) 현재 origin 페이지의 경우, 
+					회전 축이 p태그에 작성되어 있기 때문에 perspective는 부모인 section 태그에 활용하기!
+
+			
+			*/
+			section{width:100%; height:100%; position:absolute; left:0; top:0; perspective:1000px;}
+			section p{width:50%; height:100%; float:left; position:relative; background-color:#fff;}
+			section p img{width:100%; height:100%; transition:opacity 0.5s ease-in;}
+
+
+			/*.front_img{position:relative; background-color:#fff;}*/
+			/*.front_img img{position:absolute; left:0; top:0; }*/
+
+		/*############### 움직이는 페이지 만들기 (기능) _ origin으로 바꾸기 ##############*/
+		/*########## section 태그 #########*/
+
+		/*
+			[정리]
+			
+			1) box2의 p태그 앞면만 사용하기 위하여, 뒷면은 주석글을 처리함!
+			
+			2) transform-origin 사용하기
+
+				[rotate 회전축이 y축 일 경우]
+					
+					transform-origin:right				, 기준점이 오른쪽으로 변경됨!
+					transform-origin:left					, 기준점이 왼쪽으로 변경됨!
+					transform-origin:center				, 기준점이 가운데로 변경됨!
+
+
+				[rotate 회전축이 x축 일 경우]
+					
+					transform-origin:top						, 기준점이 위로 변경됨
+					transform-origin:bottom				, 기준점이 아래로 변경됨
+					transform-origin:center					, 기준점이 가운데로 변경됨
+				
+				[매우중요]
+
+					1) 기본적으로 transform의 모든 좌표는 가운데 있음
+					2) 마우스 올렸을때 transform-origin을 사용하면 , 올렸을때만 축이 바뀜!
+						내렸을때는 원래의 가운데로 이동되기 때문에 문제가 생김!
+
+					* hover 하기전에 미리 축을 바꿔두는 것이 좋다!
+
+		*/
+			
+			.box2 p{transform-origin:right;  transition:transform 0.5s linear 0.2s;}
+			.box2:hover p{transform:rotatey(180deg); }
+
+			.box2 p img{position:absolute; left:0; top:0;}
+
+
+
+
+
+		/*########### 겹쳤을때 이미지 작업하기 ###########*/
+		/*
+			화면에 뒷면이 먼저 나타나 있기 때문에 돌렸을때를 미리 작업해두고, 
+			투명도로 사라져 있도록 만들기 */
+			
+			.front_img .back{transform:rotatey(180deg); opacity:0;}
+
+			.box2:hover .front{opacity:0;}
+			.box2:hover .back{opacity:1;}
+
+
+		section:after{content:""; display:block; clear:both;}
+
+		
+		h3{position:absolute; left:-9999px; width:1px; height:1px; line-height:0; font-size:1px; overflow:hidden;}
+
+	</style>
+
+ </head>
+ <body>
+	<h2>perspective를 이용한 book 만들기</h2>
+	<div id="container">
+		<div id="content">
+			<section class="box1">
+				<h3>기본페이지</h3>
+				<p class="left_img"><img src="img/03.jpg" alt="왼쪽 기본이미지"/></p>
+				<p class="right_img"><img src="img/02.jpg" alt="오른쪽 기본이미지"/></p>
+			</section>
+			
+			<section class="box2">
+				<h3>중간페이지</h3>
+				<p class="front_img">
+					<img class="front" src="img/01.jpg" alt="앞면 이미지"/>
+					<img class="back" src="img/04.jpg" alt="뒷면 이미지"/>
+				</p>
+				<!--<p class="back_img"></p>-->
+			</section>
+
+		</div>
+	</div>
+ </body>
+</html>

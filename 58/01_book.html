@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>book</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		h2{text-align:center; padding:50px 0; color:#aaa; text-transform:uppercase;}
+		
+
+		#container{width:100%; overflow:hidden;}
+
+		#content{width:600px; height:300px; margin:100px auto 0; position:relative; perspective:1000px;}
+
+		section{width:100%; height:100%; position:absolute; left:0; top:0;}
+		section p{width:50%; height:100%; float:left;}
+		section p img{width:100%; height:100%;}
+
+		/*############ [front_img] 중간 페이지 img 태그 앞뒤로 붙이기 ###########*/
+		/*
+			p태그 영역
+		*/
+
+			/* 
+				1) 이미지 두장이 앞뒤로 겹쳐셔.. 투명도가 중간에 중복으로 투명하게 표현되는 부분이 있음! 
+				2) 아랫부분이 비추는 부분이 생김!
+				3) background-color로 투명 부분이 나타나는 부분을 해결할 수 있음!
+			*/
+			.front_img{position:relative; background-color:#fff;}
+			.front_img img{position:absolute; left:0; top:0; transition:opacity 0.5s ease-in;}
+
+		/*############### 움직이는 페이지 만들기 (기능) ##############*/
+		/*########## section 태그 #########*/
+			
+			.box2{transform:rotatey(0deg); transition:transform 0.5s linear 0.2s;}
+			.box2:hover{transform:rotatey(180deg);}
+
+		/*########### 겹쳤을때 이미지 작업하기 ###########*/
+		/*
+			화면에 뒷면이 먼저 나타나 있기 때문에 돌렸을때를 미리 작업해두고, 
+			투명도로 사라져 있도록 만들기 */
+			
+			.front_img .back{transform:rotatey(180deg); opacity:0;}
+
+			.box2:hover .front{opacity:0;}
+			.box2:hover .back{opacity:1;}
+
+
+		section:after{content:""; display:block; clear:both;}
+
+		
+		h3{position:absolute; left:-9999px; width:1px; height:1px; line-height:0; font-size:1px; overflow:hidden;}
+
+	</style>
+
+ </head>
+ <body>
+	<h2>perspective를 이용한 book 만들기</h2>
+	<div id="container">
+		<div id="content">
+			<section class="box1">
+				<h3>기본페이지</h3>
+				<p class="left_img"><img src="img/03.jpg" alt="왼쪽 기본이미지"/></p>
+				<p class="right_img"><img src="img/02.jpg" alt="오른쪽 기본이미지"/></p>
+			</section>
+			
+			<section class="box2">
+				<h3>중간페이지</h3>
+				<p class="front_img">
+					<img class="front" src="img/01.jpg" alt="앞면 이미지"/>
+					<img class="back" src="img/04.jpg" alt="뒷면 이미지"/>
+				</p>
+				<p class="back_img"></p>
+			</section>
+
+		</div>
+	</div>
+ </body>
+</html>

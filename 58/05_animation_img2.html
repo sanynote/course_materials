@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		div{width:700px; height:400px; border:3px dotted #fcf; margin:100px auto 0; position:relative;}
+
+		div p{width:600px; height:300px; overflow:hidden; position:absolute; left:50px; top:50px;
+		animation:ani 3s infinite alternate; background-image:url("img/b01.jpg");}
+
+
+        @keyframes ani{
+            0%{background-image:url("img/b01.jpg");}
+            50%{background-image:url("img/b02.jpg");}
+            100%{background-image:url("img/b03.jpg");}
+        }
+		
+        /*
+            [animation 정리하기]
+
+                01) 04_animation_img.html 방식은 opacity를 활용함
+                    05_animation_img2.html 방식은 background-image를 활용함
+
+                02) 05_animation_img2.html 방식의 문제점
+
+                    : img 태그가 아니기때문에 모든 브라우저에서 인식률이 높지는 않음
+                    : webkit 엔진을 사용하는 브라우저: 크롬, 사파리, 오페라미니(모바일버전)
+
+                [중요]
+                    keyframes에서 background-image로 가져오는 방식의 문제점
+
+                        1) 이미지 태그처럼 객체가 아니기때문에 인식률이 떨어짐
+                        2) 모든 브라우저들은 객체를 만들어놓고, 
+                            사라지게하거나 나타나게 하는것을 표현하는것이 안전하다
+
+                        3) keyframes에서는 "객체" 를 사라지게 하는 개념이 아니기때문에 
+                            background-image(객체가 아니라 효과)를 호출하는 방식이 적용되지 않는 경우가 생김
+
+                [정리]
+
+                    크롬, 안드로이드    구글에서 만듦
+                    사파리, ios        애플에서 만듦
+
+                        : background-image 방식으로 호출이 가능함
+
+
+        */
+
+	</style>
+	
+	
+ </head>
+
+ <body>
+	<div>
+		<p></p>
+	</div>
+ </body>
+</html>

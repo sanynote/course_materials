@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		div{width:700px; height:400px; border:3px dotted #fcf; margin:100px auto 0; position:relative;}
+
+		div p{width:600px; height:300px; overflow:hidden; position:absolute; left:50px; top:50px;
+		animation:img1 3s infinite alternate;}
+		div p img{width:100%;}
+
+		/*
+			[animation 적용 전 구조 확인하기]
+
+				1) position:absolute로 겹쳐놓았기때문에 순서가 매우 중요함
+				2) header, container, footer 겹쳐놓으면 footer가 가장 상단에 존재함
+
+				3) 현재 예제에서는 img1, img2, img3 중에 img3이 가장 위에 표현됨
+
+					: img3번을 숨기면 img2번 나오고..
+					: img2번을 숨기면 img1번이 나오게 만들기
+
+		*/
+
+		@keyframes img1{
+			0%{opacity:1;}
+			50%{opacity:0;}
+			100%{opacity:0;}
+		}
+
+		.img2{animation-name:img2;}
+		@keyframes img2{
+			0%{opacity:0;}
+			50%{opacity:1;}
+			100%{opacity:0;}
+		}
+
+		.img3{animation-name:img3;}
+		@keyframes img3{
+			0%{opacity:0;}
+			50%{opacity:0;}
+			100%{opacity:1;}
+		}
+
+
+	</style>
+	
+	
+ </head>
+
+ <body>
+	<div>
+		<p class="img1">
+			<img src="img/b01.jpg" alt="이미지1"/>
+		</p>	
+		<p class="img2">
+			<img src="img/b02.jpg" alt="이미지2"/>
+		</p>	
+		<p class="img3">
+			<img src="img/b03.jpg" alt="이미지3"/>
+		</p>	
+	</div>
+ </body>
+</html>
