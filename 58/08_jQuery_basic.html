@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>jQuery_basic</title>
+	<meta charset="utf-8"/>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <script src="js/jquery-1.12.4.js"></script>
+	
+	
+ </head>
+
+ <body>
+	<h1>jQuery_basic</h1>
+
+    <p>
+        javascript + query 합성: jQuery
+        jQuery는 script 영역에서 사용하는 script 용어
+        script에서는 처음에 오는 "합성어"는 모두 "대문자" 로 표현
+    </p>
+    <hr/>
+
+    <h2>jQuery VS javascript</h2>
+    <p>
+        jQuery 영역 안에 javascript 넣을 수 있을까?
+        공간의 크기가 다르기때문에 불가능함
+    </p>
+    <p>
+        javascript : 우주와 같은 개념
+        jQuery : 지구와 같은 개념
+        .js 각각의 별 (javascript에 해당하는 일부 영역)
+
+    </p>
+    <p>
+        jQuery를 사용하는 이유는? javascript "조금 편리" 하게 사용하기 위한 목적을 가짐
+    </p>
+    <p>
+        jQuery 1 단계 : style영역 사용하는 css와 + body의 태그 + jQuery 함께 사용하기
+    </p>
+    <p>
+        * jQuery 2단계 : 태그(인라인과 블록요소) + style + jQuery + javascript (제어문, 반복문, 배열...)
+    </p>
+
+    <h2>웹에서 읽어주는 순서</h2>
+    <ol>
+        <li>body 영역을 가장 우선적으로 읽는다.</li>
+        <li>style 영역을 body에 읽어준다.</li>
+        <li>script, javascript 영역은 style 영역보다 훨씬 느림</li>
+    </ol>
+    <hr/>
+
+    <dl>
+        <dt>jQuery 활용하기</dt>
+        <dd>jQuery의 단점, 스스로 작동하지 못함</dd>
+        <dd>
+            javascript 언어를 사용하기때문에 javascript 소스가 없다면 사용하기가 어려움
+        </dd>
+        <dd>
+            script 영역 2개 필요, 첫번째 script는 javascript 를 사용할 수 있도록 연결하는 주소가 필요함
+            두번째 script는 기능구현을 하기위한 영역이 필요함
+        </dd>
+    </dl>
+    <hr/>
+
+    <dl>
+        <dt>소스가 되는 script 연결하기</dt>
+        <dd>1) jQuery.com 연결하기</dd>
+        <dd>2) download 메뉴 클릭하기</dd>
+        <dd>
+            <h2>javascript 소스줄 연결하기 첫번째 (CDN) 연결하기</h2>
+            <p>
+                CDN(Contents Delivery Network), 컨텐츠 전송 네트워크 약자
+            </p>
+            <p>
+                3) 화면 중간 하단쯤에 있는 googleCDN 클릭하기
+                (여기서 가져올 수 있음)
+            </p>
+        </dd>
+        <dd>
+            바로 위와 같은 CDN 방식의 단점은 font-face 처럼 서버에서 가져다쓰기때문에 
+            서버 속도로 인하여 느려질 수 있음
+        </dd>
+        <dd> *google이나 ms가 제일 안전하게 사용할 수 있음</dd>
+        <dd>
+            4) 구글에서 연결하지 못할경우, 인터넷 환경에 접속하지 못할경우 CDN을 사용할 수 없음
+            * 파일로 다운받아서 사용하기 (javascript 소스를 사용할 수 있는 파일)
+        </dd>
+        <dd>
+            5) 화면 가장 하단으로 내리기 (파일로 다운받기)
+        </dd>
+        <dd>
+            Past Releases
+            All past releases can be found on the jQuery CDN.
+        </dd>
+        <dd>
+            jQuery CDN 부분 클릭하기
+        </dd>
+        <dd>
+            6) 중요) jQuery 1.x 버전 확인하기
+            :: 익스플로러 구형 브라우저에서 적용이 가능함
+        </dd>
+        <dd>
+            7) uncompressed, minified 2가지 버전 다운받기
+            크롬 브라우저일 경우, 해당하는 버전에서 노른쪽 마우스 누른 후
+            "다른 이름으로 링크 저장" 클릭
+        </dd>
+        <dd>
+            매우중요) js 폴더 만들어서 저장하기 (인터넷이 되지 않는 환경에서도 사용할 수 있음)
+        </dd>
+        <dd>
+            *javascript 소스줄을 연결할 경우, 가장 상단에 장착하기
+            가장 상단에서부터 아래로 script를 적용할 수 있음 (모든 지역에 영향을 줄 수 있음)
+        </dd>
+    </dl>
+
+    <h3>jQuery_basic_test</h3>
+    <script>
+        // 제이쿼리의 문서가 준비가 되면 기능구현 해주세요
+        // h3를 대상으로 선택하고, 글자색상 빨간색
+        jQuery(document).ready(function(){
+            jQuery("h3").css("color","red");
+
+        });
+    </script>
+ </body>
+</html>
