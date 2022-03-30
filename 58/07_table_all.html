@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>table_all</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        table{width:600px;}
+        table, th, td{border:1px solid #333;}
+        td{text-align:center;}
+
+
+    </style>
+	
+	
+ </head>
+
+ <body>
+	<table title="기업별, 모델, 사양, 스펙">
+        <caption>기업별 모델</caption>
+        <thead>
+            <tr>
+                <!--공책 줄부터 나누기 tr
+                공책 칸 나누기 th-->
+                <th>apple</th>
+                <th>samsung</th>
+                <th>lg</th>
+                <th>htc</th>
+                <th>asus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ipad</td>
+                <td>galaxy tab</td>
+                <td>g pad</td>
+                <td>정보없음</td>
+                <td>정보없음</td>
+            </tr>
+            <tr>
+                <td>iphone12</td>
+                <td>galaxy s22</td>
+                <td>lg wing</td>
+                <td colspan="2">정보없음</td>
+                <!--<td>정보없음</td>-->
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">copyright</td>
+                <!--<td>copyright</td>
+                <td>copyright</td>
+                <td>copyright</td>
+                <td>copyright</td>-->
+            </tr>
+        </tfoot>
+    </table>
+ </body>
+</html>
+<!--
+
+    [table 정리]
+
+        1) summary는 해당하는 테이블의 내용을 어떻게 사용할 것인지 정리
+            : 에러가 발생하기때문에 title 속성으로 바뀜
+
+        2) 가로방향으로 정리할 경우
+            rowspan
+
+        3) 세로방향으로 정리할 경우
+            colspan
+
+        4) thead는, 큰 머릿글을 다루는 영역
+            th는 작은 머릿글을 다룰때 사용하는 태그
+
+        5) 테이블 구조 작성시
+
+            table
+                thead
+                tbody
+                tfoot
+
+            : 작성할 수 있음
+            : thead tfoot이 필요없을 경우, 본문을 다루는 tbody만 사용가능
+
+        [매우중요]
+
+            1) th가 적용된 방향으로 td가 작성됨     form_table의 경우 th에 따라서 row 배치됨
+            2) 현재 페이지에서는 th를 따라서 아래 방향으로 적용됨, col 방향 배치
+
+        [정리]
+            : table의 경우, db파트에서 연결된 자료를 화면에 출력해주는 양식서 위주로 주로 사용
+            : 제품사양, 옷 정보, 게임소개 (spec)
+
+        * 5칸 중에 4칸을 합치고 한 칸을 남겨두었다면.. 남아있는 한 칸은 사용하지 못하는 공간이 되기때문에
+        남겨두어야 공간과, 합쳐야하는 공간을 정확하게 구분할 수 있어야 한다.
+
+
+
+        
+-->

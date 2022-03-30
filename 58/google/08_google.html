@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>google</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style-type:none;}
+
+        #wrap{width:100%; padding-top:100px;}
+        
+
+        /*########## header ###########*/
+            #header{width:100%;}
+            #header h1{width:300px; margin:0 auto;}
+            #header h1 img{width:100%;}
+
+        /*########## container ##########*/
+            #container{width:100%;}
+            #videoArea{width:1000px; height:700px; margin:50px auto;}
+            #videoArea iframe{border:none; width:100%; height:100%;}
+
+            #container form{width:1200px; height:40px; margin:50px auto;}
+            form fieldset{width:100%; height:100%; border:none;}
+            form legend{position:absolute; left:-9999px;}
+            form p{width:100%; height:100%;}
+            form input{width:100%; height:100%; text-indent:10px; font-size:18px; border-color:#ccc;}
+
+
+            #section{width:1200px; margin:0 auto;}
+            #section ul{width:100%; height:100%;}
+            #section h2{width:1px; height:1px; font-size:1px; line-height:0; overflow:hidden; position:absolute; left:-9999px;}
+            #section li{width:300px; float:left;}
+            #section li a img{width:100%;}
+
+
+            #section ul:after{content:""; display:block; clear:both;}
+            
+
+        /*########## footer ##########*/
+            #footer{width:100%; margin:30px 0;}
+            #footer h3{text-align:center; color:#ccc;}
+
+
+        @media all and (min-width:768px) and (max-width:1024px){
+            #container{width:740px; margin:0 auto;}
+            #videoArea{width:740px;}
+            #container form{width:740px;}
+
+            #section{width:740px;}
+            #section li{width:230px; float:left;}
+            #section .none{display:none;}
+		}
+
+        @media all and (min-width:481px) and (max-width:767px){
+            #videoArea{width:460px; height:300px;}
+            #container form{width:460px;}
+            #section{width:460px;}
+            #section li{width:230px; float:left;}
+		}
+
+        @media all and (min-width:320px) and (max-width:480px){
+            #videoArea{width:340px; height:200px;}
+            #container form{width:340px;}
+            #section{width:340px;}
+            #section li{width:340px; float:none;}
+		}
+
+
+    </style>
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <header id="header">
+            <h1>
+                <img src="img/logo.png" alt="구글 로고"/>
+            </h1>
+        </header>
+        <div id="container">
+            <div id="videoArea">
+                <iframe src="https://www.youtube.com/embed/93iQRtqhWPM" title="YouTube video player"></iframe>
+            </div>
+            <form method="get" action="#">
+                <fieldset>
+                    <legend>ulArea</legend>
+                    <p>
+                        <input id="search" type="text" name="search" title="search" placeholder="Google 검색 또는 URL 입력"/>
+                    </p>
+                </fieldset>
+            </form>
+            <section id="section">
+                <h2>ulArea</h2>
+                <ul>
+                    <li>
+                        <a href="#" title="페이지이미지">
+                            <img src="img/audi.jpg" alt="페이지이미지0"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="페이지이미지">
+                            <img src="img/daum.jpg" alt="페이지이미지1"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="페이지이미지">
+                            <img src="img/lg.jpg" alt="페이지이미지2"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="페이지이미지">
+                            <img src="img/naver.jpg" alt="페이지이미지3"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="페이지이미지">
+                            <img src="img/nintendo.jpg" alt="페이지이미지4"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="페이지이미지">
+                            <img src="img/samsung.jpg" alt="페이지이미지5"/>
+                        </a>
+                    </li>
+                    <li class="none">
+                        <a href="#" title="페이지이미지">
+                            <img src="img/sony.jpg" alt="페이지이미지6"/>
+                        </a>
+                    </li>
+                    <li class="none">
+                        <a href="#" title="페이지이미지">
+                            <img src="img/w3c.jpg" alt="페이지이미지7"/>
+                        </a>
+                    </li>
+                </ul>    
+            </section>
+            
+        </div>
+        <footer id="footer">
+            <h3>GOOGLE:MEDIAQUERY</h3>
+        </footer>
+    </div>
+ </body>
+</html>

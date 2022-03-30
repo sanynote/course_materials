@@ -19,7 +19,15 @@
         border-radius:50px; text-align:center; line-height:100px;
         position:absolute; left:0; top:0; color:#fff;
         
-        animation:circles 3s infinite alternate;}
+        /*animation:circles 3s infinite alternate ease;*/
+            
+            animation-name:circles;             /* 애니메이션 이름 지정 */
+            animation-duration:3s;              /* 애니메이션 작동되는 시간, ~~하는동안 */
+            animation-iteration-count:infinite; /* 애니메이션 반복횟수 */
+            animation-direction:alternate;      /* 애니메이션 방향설정 */
+            animation-timing-function:ease;     /* 애니메이션 속도설정 */
+    
+        }
 
 
         /*
@@ -40,12 +48,12 @@
             100%{left:99%; transform:rotate(360deg);}
         }
 
-        #content .red{background-color:red;}
-        #content .brown{background-color:brown; top:100px;}
-        #content .green{background-color:green; top:200px;}
-        #content .blue{background-color:blue; top:300px;}
-        #content .pink{background-color:pink; top:400px;}
-        #content .purple{background-color:purple; top:500px;}
+        #content .red{background-color:red; animation-timing-function:linear; /*일반적인속도*/}
+        #content .brown{background-color:brown; top:100px; animation-timing-function:ease; /*느리게*/}
+        #content .green{background-color:green; top:200px; animation-timing-function:ease-in; /*처음에 느리게 시작함*/}
+        #content .blue{background-color:blue; top:300px; animation-timing-function:ease-out; /*뒤가 느리게 표현됨*/}
+        #content .pink{background-color:pink; top:400px; animation-timing-function:ease-in-out; /*ease 효과와 비슷함*/}
+        #content .purple{background-color:purple; top:500px; animation-direction:alternate-reverse;}
     </style>
 	
 	
