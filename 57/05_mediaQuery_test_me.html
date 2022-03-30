@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>mediaQuery_reset</title>
+	<meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+
+	<style>
+        *{margin:0; padding:0;} /* 초기화 */
+        body{margin:0; padding:0;} /* pc와 모바일 기기 모두 초기화 */
+        li{list-style-type:none;}
+
+        ul, ol, li, dl, div, section, article, nav, h1, h2, h3, h4, strong, em, a, i, span{margin:0; padding:0;}
+
+        /* 공통 지역에서 숨기기 */
+        .resp{display:none;}
+
+       
+
+        /*############## [전역, 지역] #############*/
+        /*
+            1) media의 쿼리의 각각의 해상도는 지역
+                : 세로버전 지역, 가로버전 지역, 태블릿 pc 버전 지역
+                : 해당하는 지역에서만 해당하는 디자인, 기능이 표현됨
+
+            2) 초기화 부분들은 모든 지역에 영향을 주기때문에 전역(모든지역)이라고 본다
+            3) pc버전으로 만든 작업물들은 모두 전역으로 본다
+
+            * 공통에서 만들어진 style 효과들을 지역으로 가져와서 해당하는 지역에 맞게 변경함
+            * 세로버전에 맞춰서 작업, 가로버전에 맞춰서 작업, 태블릿 pc 버전에 맞춰서 작업
+
+                ex) 공통에서 실제 사용크기가 1200px이라면 세로버전에서는 320px이기때문에
+                너비를 수정해야 함
+
+            [매우중요_작업순서]
+
+                1) 중간중간 미디어쿼리를 나누지않는다
+                2) style 효과는 아래로 갈수록 최신이고, 주로 공통에서 달라진 부분을 수정하고 
+                표현하는것이 미디어쿼리이다
+
+                : 공통을만들고, 마지막에 미디어 쿼리 영역을 만들어서 해당하는 지역에 맞게 작업하기
+        */
+
+        /*########## [미디어쿼리 제작방법] ###########*/
+
+        /*
+            [현장에서 요구되는 방법]
+
+                1) pc버전의 웹 페이지
+                2) "스마트폰 세로버전" 제작
+                3) "스마트폰 가로버전" 제작
+                4) 태블릿 pc 제작
+
+            [정리]
+                : 스마트폰 세로버전, 스마트폰 가로버전과 같고, 스마트폰 가로버전은 태블릿 pc와 같음!
+        */
+
+        /*############### pc버전 해상도 ###############*/
+
+        /*
+            [1] pc버전의 최소 해상도 : 1025
+            [2] pc해상도 실제 사용크기
+
+                + 1200
+                + 1280
+
+                + 1366
+                + 1440
+                + 1500
+                + 1600
+
+            [3] 괄호정리
+
+                + {}, 기능을 적용 괄호
+                + (), 조건을 물어보는 괄호
+                + [], 속성을 물어보는 괄호
+                + (){}, 조건에 맞으면 기능 구현하기
+                + ({}), 조건이 기능이 되는 괄호, {}와 같음
+
+        */
+
+        /*################# 미디어쿼리 분기 나누기 ###############*/
+        /*
+            중요: 미디어쿼리는 공통에서 바뀌는 값만 해당하는 해상도에 호출하여 변경
+
+                : 아래로 갈수록 최신이기때문에 미디어 쿼리 분기도 가장 하단에 작업한다.
+
+            중요: min-width:1025px을 나누고 max-width를 나누지않으면 공통 범위까지 pc버전에 만들어짐
+        
+        */
+        /*############### pc 해상도 ###############*/
+        @media all and (min-width:1025px){
+            #headerWrap {background-color:blue; text-align:center; color:#fff;}
+            #banner h3{line-height:100px; font-size:25px; text-align:center;}
+            #banner ul{width:972px; margin:0 auto; padding:50px 0;}
+            #banner li{width:324px; height:114px; float:left;}
+            #banner ul:after {content:""; display:block; clear:both;}
+        }
+
+
+        /*############### 태블릿 pc 해상도 ###############*/
+        /*
+            태블릿 pc : 아이패드, 갤럭시 탭
+
+                중요) 스마트폰 가로버전과 태블릿 pc의 해상도가 비슷하기때문에
+                스마트폰 가로버전과 동일하게 맞추는 작업이 많음
+
+        */
+        @media all and (min-width:768px) and (max-width:1024px){
+
+            #headerWrap {background-color:#333; color:#fff;}
+            header{width:768px; background-color:gold; color:#aaa; text-align:center; margin:0 auto;}
+            .resp{display:block;}
+            #banner h3{line-height:100px; font-size:25px; text-align:center;}
+            #banner ul{width:648px; margin:0 auto; padding:50px 0;}
+            #banner li{width:324px; height:114px; float:left;}
+            #banner .last{margin-left:162px;}
+            #banner ul:after {content:""; display:block; clear:both;}
+        }
+
+        /*############### 스마트폰 가로버전 ###############*/
+        @media all and (min-width:481px) and (max-width:767px){
+            #headerWrap{background-color:gold; color:#333; text-align:center;}
+            header{width:481px; margin:0 auto;}
+            #banner h3{line-height:100px; font-size:25px; text-align:center;}
+            #banner ul{width:324px; margin:0 auto; padding:50px 0;}
+            #banner li{width:324px; height:114px; float:left;}
+            #banner ul:after {content:""; display:block; clear:both;}
+        }
+
+        /*############### 스마트폰 세로버전 ###############*/
+        @media all and (min-width:320px) and (max-width:480px){
+            #headerWrap{background-color:pink;}
+            header{width:320px; background-color:aqua; margin:0 auto; text-align:center;}
+
+            #banner h3{line-height:100px; font-size:25px; text-align:center;}
+            #banner ul{width:324px; margin:0 auto; padding:50px 0;}
+            #banner li{width:324px; height:114px; float:left;}
+            #banner ul:after {content:""; display:block; clear:both;}
+
+            section{background-color:aqua; text-align:center; line-height:30px;}
+            footer{background-color:#333; text-align:center; color:#ccc;}
+        }
+
+
+
+
+
+    </style>
+ </head>
+
+ <body>
+	<div id="wrap">
+        <div id="headerWrap">
+            <header id="header">
+                <h1>media Query</h1>
+                <nav id="gnb">
+                    1) gnb 중요도가 높은 네비게이션 작성 시 사용<br/>
+                    2) 자동화 프로그램을 사용할경우, 예약어, 기능명에 주의해야 함(부트스트랩)<br/>
+                    3) 예약어 (이미 정해놓은 용어) <br/>
+                    4) script 에서 예약어, "clear" 라는 명칭을 사용하여 기능이 적용불가능한 경우가 실제로 있었음<br/>
+                    5) nav는 반드시 header 영역에 장착하기
+                </nav>
+            </header>
+        </div>
+        <div id="container">
+            <div id="banner">
+                <h3>banner영역_풀이</h3>
+                <ul>
+                    <li>
+                        <a href="#" title="카메라0">
+                            <img src="img/banner01.jpg" alt="카메라0"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="카메라1">
+                            <img src="img/banner02.jpg" alt="카메라1"/>
+                        </a>
+                    </li>
+                    <li class="last">
+                        <a href="#" title="카메라2">
+                            <img src="img/banner03.jpg" alt="카메라2"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="visual">
+                <p>
+                    + visual은 시멘틱 태그로 활용하지 않음<br/>
+                    매우중요) 시멘틱 태그는 어떤 목적을 위해 작성되는 태그들로 visual 영역을 시멘틱 태그로 만들 경우<br/>
+                    반드시 광고를 제공해야하는 문제가 발생한다.
+                </p>
+                <p>
+                    + 슬라이딩 윈도우 (사용자가 만들때 사용되는 이름)
+                    + carousel (예약된 기능명, 부트스트랩에서 슬라이딩 윈도우 작성 시 사용되는 명칭)
+                    주의) 직접 만들 경우, carousel 이라는 용어보다 사용자가 직접 작성한 용어 사용하기
+                    직접 만들었다기보다 가져다 붙여넣었다고 생각할 수 있음
+                </p>
+                <p>
+                    광고영역: 슬라이딩 윈도우, carousel, 비디오, 이미지, 애니메이션 등등으로 활용
+                </p>
+            </div>
+            <section>
+                <h2>section 영역은 headline 태그 사용 (h2~h6)</h2>
+                <p>
+                    section article aside container : 영역 안에서 사용가능한 시멘틱 태그들로 h1을 사용하지 않는다
+                </p>
+                <article>
+                    <h3>기사 내용을 다루는 재배포가 가능한 영역</h3>
+                    <dl>
+                        <dt>재배포가 가능한 정보를 다루는 영역</dt>
+                        <dd>
+                            section 영역은 비슷한 정보의 값들을 다루는 영역(제목 필수)
+                        </dd>
+                        <dd>
+                            section 영역 안에 article 이 있을 경우
+                            : 비슷한 정보의 값들을 다루는 영역 안에 재배포가 가능한 내용을 다루고 있다는 뜻
+                        </dd>
+                        <dd>
+                            article 영역 안에 section 이 있을 경우
+                            : 재배포가 가능한 영역 안에 비슷한 정보를 다루고있음, 
+                            article이 부모로 있기때문에 section까지 모두 재배포가 가능함
+                        </dd>
+                        <dd>
+                            매우중요) div id="article" , section class="article" 이어도...
+                            태그가 "article"이 아니기때문에 재배포가 불가능함
+                        </dd>
+                    </dl>
+                </article>
+            </section>
+            <section class="resp">
+                <h2>반응형 VS 절대형 VS 적응형</h2>
+                <p>
+                    반응형, 절대형, 적응형 모두 통합해서 반응형 페이지라고 읽음
+                </p>
+                <p>
+                    핵심: 반응형,절대형,적응형 모두 x축으로 scroll이 나타나지 않도록 설계해야 함
+                </p>
+                <dl>
+                    <dt>반응형</dt>
+                    <dd>정리: 작은 움직임에도 반응하는 페이지가 반응형 페이지</dd>
+                    <dd>
+                        주로 % 단위로 작업함, 작은 단위의 값들도 따라다닐 수 있도록 만듦
+                    </dd>
+                    <dd>
+                        단점: %위주로 작업하기때문에 해당하는 영역이나 객체, 이미지가 쉽게 깨질 수 있음 (비율)
+                        : 목적이 상실됨, 제품을 표현하는 영역에서 깨지면 안되는 이미지나 설명글들이 제대로 확인이 불가능함
+                    </dd>
+                    <dd>
+                        장점: 모든 해상도를 따라서 움직이기때문에 해상도가 변화될 때 부드럽다
+                    </dd>
+                    <dd>
+                        %를 잘못사용하는 경우, animation 풍선 예제
+                        부모가 없거나 px로 고정된 영역이 없을 경우, 더 큰 부모를 따라다니는 문제 발생
+                    </dd>
+                    <dd>
+                        매우중요) %를 사용하기 전에, 담아주는 대상에 px이 있는지 반드시 확인하기
+                    </dd>
+                </dl>
+                <hr/>
+                <dl>
+                    <dt>절대형(적응형)</dt>
+                    <dd>
+                        정리: 정확한 크기를 고정시켜두고 사용하는 페이지
+                    </dd>
+                    <dd>
+                        반응형 페이지는 주로 % 위주로 작업함
+                    </dd>
+                    <dd>
+                        절대형 페이지는 주로 px로 작업함
+                    </dd>
+                    <dd>
+                        절대형 페이지: 반응형 페이지보다 실제로 더 많이 사용되는 페이지
+                        제품을 판매하는 사이트의 경우, 이미지가 늘어나거나 축소되면서 원본의 형태가
+                        깨질 수 있기때문에 절대형 작업을 많이 한다
+                    </dd>
+                    <dd>
+                        장점: * 팀 작업시 매우 빠른 작업이 가능하다
+                        이미지나 어떤 대상의 값이 쉽게 변형되지 않음
+                    </dd>
+                    <dd>
+                        단점: 움직임 없기때문에 브라우저를 줄이거나 늘릴때 변화되는 요소가 없음
+                        매우중요) 모바일 기기에서는 브라우저를 줄일 수 없기때문에 해당하는 해상도에 맞추는 작업을 많이 함
+                    </dd>
+                </dl>
+                <hr/>
+                <dl>
+                    <dt>적응형</dt>
+                    <dd>
+                        정리: 반응형과 절대형을 섞어서 만드는 페이지
+                        (적절한 반응형 and 적절한 절대형)
+                    </dd>
+                    <dd>
+                        +headerWrap (전체사용영역), header(실제사용영역)
+                        + container, section id="bestArea" (100%), best(실제사용영역)
+                        + footerWrap (전체사용영역, 100%), footer(실제사용영역)
+                    </dd>
+                    <dd>
+                        중요) 실제로 사용하는 영역은 주로 절대형 작업으로 제작함 (상품이나 이미지의 비율을 유지해야 함)
+                    </dd>
+                    <dd>
+                        중요) 바깥쪽에 전체 사용하는 % 영역 만들고, 실제로 사용하는 px 영역 만들어서 움직일 수 있도록 표현하기
+                        (참고, 알툴즈페이지, wide 로 표현되어있지만 실제로는 안에 고정된 영역이 있어서 깨지지않음)
+                    </dd>
+                </dl>
+            </section>
+            <section>
+                <h2>xhtml 페이지 and html5 페이지에서의 필수요소</h2>
+                <dl>
+                    <dt>xhtml에서의 중요요소</dt>
+                    <dd>웹 점검도구 100점, validator</dd>
+                    <dd>xhtml용 index.html 페이지 필수</dd>
+                </dl>
+                <dl>
+                    <dt>html5에서의 중요요소</dt>
+                    <dd>시멘틱 태그 사용한 페이지 (사용할 수 있음을 확인할 수 있어야 함)</dd>
+                    <dd>transition, transform, animation을 활용한 페이지</dd>
+                    <dd>
+                        시멘틱 태그를 사용했기 때문에 목차생성 필수 outliner에서 확인
+                        index 페이지에서 주로 확인
+                        목차생성은 자주 물어보는 질문과 필수항목
+                    </dd>
+                    <dd>font-face를 작성한 페이지</dd>
+                    <dd>form의 유효성 검사가 작성된 페이지, "로그인", "회원가입"</dd>
+                    <dd>반응형, 절대형, 적응형 중에 하나라도 되어있는 페이지</dd>
+                </dl>
+            </section>
+        </div>
+        <hr/>
+        <footer id="footer">
+            <h2>footer, 카피라이터, 개인정보 취급방침, 법률정보</h2>
+            <p>
+                반응형: 버튼처럼 클릭하면 해당하는 내용만 열리고 닫히면서 나타나도록 구현이 가능해야함
+            </p>
+            <address>
+                회사주소, 사업자번호, 이메일 등의 주소 정보가 다뤄지는 영역
+            </address>
+        </footer>
+    </div>
+ </body>
+</html>

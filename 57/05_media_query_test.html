@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>mediaQuery</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+	<style>
+		*{margin:0; padding:0;} /* pc버전만 초기화*/
+		body{margin:0; padding:0;}/* pc와 모바일 기기 모두 초기화*/
+
+		li{list-style-type:none;}
+		ul, ol, li, dl, div, section, article,nav, h1, h2, h3, h4, strong, em, a, i,span{margin:0; padding:0;}
+
+		#wrap{width:100%;}
+
+		#headerWrap{width:100%; background-color:gold; }
+		#header{width:1025px;  margin:0 auto; text-align:center;}
+
+		#container{width:100%;}
+		#container h2{text-align:center; padding:30px 0 10px;}
+
+		/* 공통영역에서 숨기기*/
+		#visual{display:none;}
+		.resp{display:none;}
+
+		/*################### banner 영역 ###################*/
+			.banner{width:100%;  padding:50px 0;}
+
+		/*
+			li 한칸 크기 설정하기 
+				
+				[참고]
+					1) 이미지 크기 : 324px * 113px
+
+
+					2) li 한칸 : 
+						324px * 3개의 li == 972px
+
+					3) margin-left:6px
+						
+						6px * 3개의 li == 18px
+
+					4) ul의 크기 990px	
+						: 좌우 간격을 위하여 996px 사용
+		*/
+
+			.banner ul{ width:996px; margin:0 auto;}
+			.banner li{width:322px; border:1px solid #ccc; margin-left:6px; float:left;}
+			.banner li img{width:100%;}
+
+
+			/*
+				[부모가 되는 ul이나 dl 설정하기]
+				
+
+					1) 해상도를 대비하는 태그는 ul아니어도, dl아니어도 div가 담당할 수 있음!
+						container영역이라면 section, article이 모두 담당 할 수 있음!
+
+					2) li의 부모는 ul || ol
+							dt dd의 부모는 dl		정해져 있음
+
+
+					[매우중요]
+
+						: li의 한칸 크기가 200px이고 5개 있다면 ul은 li를 담기 위하여  1000px 사용하기
+						: li의 한칸 크기가 1920px 이고 10개가 있다면.. ul의 크기는?
+							담기위하여 19200px 사용가능!
+
+
+						: div로 화면 해상도 해당하는 영역을 만들고 overflow:hidden을 설정하면
+							객체의 너비가 아무리 커져도 보여줄 수 있는 영역만큼만 보여주기 때문에 "프레임저하" 현상이 없음!
+			*/
+
+
+			.banner ul:after{content:""; display:block; clear:both;}
+
+			section{background-color:#ccc; text-align:center; padding-bottom:20px;}
+			footer{background-color:#333; color:#fff; text-align:center;}
+			footer address{font-style:normal;}
+
+		/*
+			[매우중요]
+
+				1) pc의 header, container, footer 까지 공통 영역 제작 한 다음 가장 하단에 
+				미디어 쿼리 영역을 만들어서 제작하는 것이 안전한 방식이다!
+
+
+				2) 브라우저가 줄어들면서 차지하는 너비가 달라질 수 있음!
+					
+					: 검사창의 경우, 분해하여 사용하기!
+						+ 반응형 페이지 제작시 검사창이 왼쪽이나 오른쪽에 붙어 있다면 너비가 달라질 수 있음!
+						+ 검사창을 아래에 장착한다면 scroll 높이값이 달라 질 수 있음!
+
+					: 검사창과 scroll의 경우 브라우저의 영역을 차지하기 때문에 분해해서 사용해야 
+					제대로 사용할 수 있다!
+			
+				3) 스크롤이 차지하는 너비 17px~ 20px을 차지함! (living.html 페이지에 있음!)
+
+				4) 브라우저를 줄이다보면 결국 지역의 최소 해상도에 맞추는 작업을 하게 됨!
+					: 최소너비 디자인 || 최소너비 "마크업" 이라고 한다!
+
+				5) 공통에서 달라지는 것만 미디어 쿼리에서 제작!
+
+				tip)
+					* 공통에서 달라지는 것만 하단의 미디어 쿼리에서 제작하기!
+		*/
+
+
+	
+
+
+		/*############# 태블릿 pc 해상도 ############*/
+		/*
+			태블릿pc : 아이패드, 갤럭시 탭
+				
+				중요) 스마트폰 가로버전과 태블릿 pc 의 해상도가 비슷하기 때문에
+				스마트폰 가로버전과 동일하게 맞추는 작업이 많음!
+
+			[매우중요]
+				브라우저는 줄이고 줄이다보면 해당 해상도의 가장 작은 범위까지 떨어지기 때문에
+				그 지역의 가장 작은 해상도를 기준으로 작업함!
+		*/
+
+		@media all and (min-width:768px) and (max-width:1024px){
+			
+			#header{width:740px; background-color:red;}
+
+			/*###### banner 영역 ######*/
+			/*
+				1) li태그가 위에 2개, 아래 1개 배치
+				2) 부모요소가 li태그 2개를 담을 수 있도록 너비 설계하기
+
+				li하나가 : 324px + margin-left:6px
+
+				li태그 2개  :: 330px *2  == 660px
+			
+			*/
+			.banner ul{width:666px; margin:0 auto; }
+			.banner li:last-child{margin:10px 171px 0;}
+
+			/*
+				[li들 중, 마지막 요소 가운데두기_margin:0 auto가 적용되지 않을때]
+
+					1) float 연결되어 있다면 margin:0 auto 적용 불가능!
+					2) float가 잡아당기고 있기 때문에 적용되지 않음!
+
+				[해결1_px방식]
+
+					ul의 크기: 666px
+					li의 크기 : 324px
+
+					666px - 324px == 342px
+					342px / 2 == 171px
+
+				[해결2_%방식]
+					
+					1) 부모 공간을 100%보고 아래 , 객체 하나가 있기 때문에 50%로 보고 작업함!
+					2) 남아있는 공간이 50%이기 때문에, 25%로 나누어서 설정함!
+			
+			*/
+
+			section{display:none;}
+
+
+		}
+
+
+		/*############### 스마트폰 가로버전 ################*/
+		@media all and (min-width:481px) and (max-width:767px){
+			
+			#header{width:460px;}
+
+			/*###### banner 영역 ######*/
+			.banner ul{width:300px; margin:0 auto;}
+			.banner li{width:298px; border:1px solid #ccc; margin-left:0px; float:none;}
+			
+
+			section{display:none;}
+		
+		}
+
+
+		/*############## 스마트폰 세로버전 #############*/
+		@media all and (min-width:320px) and (max-width:480px){
+			
+			
+			#header{width:300px;}
+
+			/*###### banner 영역 ######*/
+			.banner ul{width:300px; margin:0 auto;}
+			.banner li{width:298px; border:1px solid #ccc; margin-left:0px; float:none;}
+			
+
+			section{display:none;}
+		
+		}
+
+	</style>
+
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>mediaQuery</h1>
+				<nav id="gnb">
+					1) gnb 중요도가 높은 네비게이션 작성시 사용<br/>
+					2) 자동화 프로그램을 사용할 경우, 예약어, 기능명에 주의해야 함! (부트스트랩)<br/>
+					3) 예약어 (이미 정해놓은 용어)<br/>
+					4) script 에서 예약어, "clear" 라는 명칭을 사용하여 기능 적용불가능 한 경우가 실제로 있었음!<br/>
+					5) nav는 반드시 header 영역에 장착하기!
+				</nav>
+			</header>
+		</div>
+		<div id="container">
+			<!--
+				banner 영역 만들어서 문제 풀기!
+					div, ul li , a, img 태그 사용하기
+			
+			-->
+			<h2>banner_문제풀이</h2>
+			<div class="banner">
+				<ul>
+					<li>
+						<a href="#" title="이미지1">
+							<img src="img/banner01.jpg" alt="베너이미지1"/>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="이미지2">
+							<img src="img/banner02.jpg" alt="베너이미지2"/>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="이미지3">
+							<img src="img/banner03.jpg" alt="베너이미지3"/>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div id="visual">
+				<p>
+					+ visual은 시멘틱 태그로 활용하지 않음!<br/>
+					매우중요) 시멘틱 태그는 어떤 목적을 위해 작성되는 태그들로 visual 영역을 시멘틱 태그로 만들 경우<br/>
+					반드시 광고를 제공해야 하는 문제가 발생한다.
+				</p>
+				<p>
+					+ 슬라이딩 윈도우 (사용자가 만들때 사용되는 이름)<br/>
+					+ carousel(예약된 기능명, 부트스트랩에서 슬라이딩 윈도우 작성시 사용되는 명칭)<br/>
+					주의) 직접 만들 경우, carousel 이라는 용어보다 사용자가 직접 작성한 용어 사용하기<br/>
+					직접 만들었다기 보다 가져다 붙여 넣었다고 생각할 수 있음!
+				</p>
+				<p>
+					광고영역 : 슬라이딩 윈도우 , carousel, 비디오, 이미지, 애니메이션 등등으로 활용!
+				</p>
+			</div>
+			<section>
+				<h2>section 영역은 headline 태그 사용 (h2~h6)</h2>
+				<p>
+					section, article, aside , container 영역안에서 사용가능한 시멘틱 태그들로 h1을 사용하지 않는다.
+				</p>
+				<article>
+					<h3>기사 내용을 다루는 재배포가 가능한 영역!</h3>
+					<dl>
+						<dt>재배포가 가능한 정보를 다루는 영역</dt>
+						<dd>
+							section 영역은 비슷한 정보의 값들을 다루는 영역 (제목 필수)
+						</dd>
+						<dd>
+							section 영역안에 article이 있을 경우<br/>
+							: 비슷한 정보의 값들을 다루는 영역안에 재배포가 가능한 내용을 다루고 있다는 뜻!
+						</dd>
+						<dd>
+							article 영역안에 section이 있을 경우<br/>
+							: 재배포가 가능한 영역안에 비슷한 정보를 다루고 있음<br/>
+							article이 부모로 있기 때문에 section 까지 모두 재배포가 가능함!
+						</dd>
+						<dd>
+							매우중요) div id="article", section class="article" 이어도..<br/>
+							태그가 article이 아니기 때문에 재배포가 불가능함!
+						</dd>
+					</dl>
+				</article>
+			</section>
+			<section class="resp">
+				<h2>반응형 VS 절대형 VS 적응형</h2>
+				<p>
+					반응형, 절대형, 적응형, 모두 통합해서 반응형 페이지라고 읽음!
+				</p>
+				<p>
+					핵심: 반응형, 절대형, 적응형 모두 x축으로 scroll이 나타나지 않도록 설계해야 함!
+				</p>
+				<dl>
+					<dt>반응형</dt>
+					<dd>
+						정리: 작은 움직임에도 반응하는 페이지가 반응형 페이지!
+					</dd>
+					<dd>
+						주로 %단위로 작업함, 작은 단위의 값들도 따라다닐 수 있도록 만듬!
+					</dd>
+					<dd>
+						단점: %위주로 작업하기 때문에 해당하는 영역이나 객체, 이미지가 쉽게 깨질 수 있음(비율)<br/>
+						: 목적이 상실 됨, 제품을 표현하는 영역에서 깨지면 안되는 이미지나 설명글들이 제대로 확인이 불가능함!
+					</dd>
+					<dd>
+						장점: 모든 해상도를 따라서 움직이기 때문에 해상도가 변화될 때 부드럽다!
+					</dd>
+					<dd>
+						%를 잘 못 사용하는 경우, animation 풍선 예제<br/>
+						부모가 없거나 px로 고정된 영역이 없을 경우, 더 큰 부모를 따라다니는 문제 발생!
+					</dd>
+					<dd>
+						매우중요) %를 사용하기 전에 , 담아주는 대상에 px이 있는지 반드시 확인하기!
+					</dd>
+				</dl>
+				<hr/>
+				<dl>
+					<dt>절대형(적응형)</dt>
+					<dd>
+						정리 :정확한 크기를 고정시켜 두고 사용하는 페이지
+					</dd>
+					<dd>
+						반응형 페이지는 주로 %위주 로 작업함
+					</dd>
+					<dd>
+						절대형 페이지는 주로 px로 작업함
+					</dd>
+					<dd>
+						절대형 페이지 : 반응형 페이지 보다 실제로 더 많이 사용되는 페이지<br/>
+						제품을 판매하는 사이트의 경우, 이미지가 늘어나거나 축소 되면서 원본의 형태가<br/> 
+						깨질 수 있기 때문에 절대형 작업을 많이 한다.
+					</dd>
+					<dd>
+						장점: * 팀 작업시 매우빠른 작업이 가능하다!<br/>
+						이미지나 어떤 대상의 값이 쉽게 변형되지 않음!
+					</dd>
+					<dd>
+						단점: 움직임 없기 때문에 브라우저를 줄이거나 늘릴때 변화되는 요소가 없음!
+						매우중요) 모바일 기기에서는 브라우저를 줄일 수 없기 때문에 해당하는 해상도에 맞추는<br/>
+						작업을 많이 함!
+					</dd>
+				</dl>
+				<hr/>
+				<dl>
+					<dt>적응형</dt>
+					<dd>
+						정리: 반응형과 절대형을 섞어서 만드는 페이지!<br/>
+						(적절한 반응형 and 적절한 절대형)
+					</dd>
+					<dd>
+						+ headerWrap (전체 사용영역) , header(실제 사용영역)<br/>
+						+ container , section id="bestArea"	(100%) , best( 실제 사용 영역)<br/>
+						+ footerWrap ( 전체 사용영역 , 100%) , footer(실제 사용영역)
+					</dd>
+					<dd>
+						중요) 실제로 사용하는 영역은 주로 절대형 작업으로 제작함! (상품이나 이미지의 비율을 유지해야 함)
+					</dd>
+					<dd>
+						중요) 바깥쪽에 전체 사용하는 %영역 만들고, 실제로 사용하는 px영역 만들어서 움직일 수 있도록 표현하기!<br/>
+						(참고, 알툴즈 페이지, wide로 표현되어 있지만 실제로는 안에 고정된 영역이 있어서 깨지지 않음!)
+					</dd>
+				</dl>
+			</section>
+			<section>
+				<h2>xhtml 페이지 and html5 페이지에서의 필수요소</h2>
+				<dl>
+					<dt>xhtml에서의 중요요소</dt>
+					<dd>웹 점검도구 100점, validator</dd>
+					<dd>xhtml용 index.html 페이지 필수</dd>
+				</dl>
+				<dl>
+					<dt>html5에서의 중요요소</dt>
+					<dd>시멘틱 태그 사용한 페이지 (사용 할 수 있음을 확인할 수 있어야 함)</dd>
+					<dd>transition, transform, animation을 활용한 페이지</dd>
+					<dd>
+						시멘틱 태그를 사용했기 때문에 목차생성 필수 outliner 에서 확인<br/>
+						index페이지 에서 주로 확인!<br/>
+						목차생성은 자주 물어보는 질문과 필수 항목!
+					</dd>
+					<dd>font-face를 작성한 페이지</dd>
+					<dd>form의 유효성 검사가 작성된 페이지, "로그인", "회원가입"</dd>
+					<dd>반응형, 절대형, 적응형 중에 하나라도 되어 있는 페이지</dd>
+				</dl>
+			</section>
+		</div>
+		<hr/>
+		<footer id="footer">
+			<h2>footer, 카피라이터, 개인정보 취급방침, 법률정보</h2>
+			<p>
+				반응형: 버튼 처럼 클릭하면 해당하는 내용만 열리고 닫히면서 나타나도록 구현이 가능해야 함!
+			</p>
+			<address>
+				회사주소, 사업자번호, 이메일 등의 주소 정보가 다뤄지는 영역!
+			</address>
+		</footer>
+	</div>
+ </body>
+</html>
