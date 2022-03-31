@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>google</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		header, nav, section, footer, p , div, form{margin:0; padding:0;}
+
+		/* 시멘틱 태그는 인식률이 낮기 때문에 아래와 같이 인식률을 높이는 작업을 할 수 있음!*/
+		header, nav, section, footer{display:block;}
+
+		li{list-style-type:none;}
+		a:link, a:visited{text-decoration:none;}
+		a:hover, a:focus{color:#f00;}
+		
+		/*################## [스킵네비게이션] #################*/
+		/*
+			[중요]
+				skipNav는  마우스로 조작하는 네비게이션이 아니라 tab키로 접근하여 반응하는 네비게이션!
+					: tab키는 focus 기능을 이용하기 때문에 "a" 태그 필수!
+
+				위치: 브라우저 가장 상단 (삼성엔지니어링) ||  가장 왼쪽(네이버 , 다음) 에 위치한다
+				중요: 
+					1) margin 으로 만들경우, 상대를 밀고다니기 때문에 skipnav가 위로 올라가면 상대가 따라 올라가고, 
+					내려올때 밀려서 내려옴 (화면의 움직임이 심함!)
+
+					2) position:relative 로 만들경우, 상대가 비어있는 영역을 채울 수 없기 때문에 공간이 남아버리는 
+					문제가 발생함
+
+
+					* absolute 또는 fixed를 이용하여 빈 공간 없이 브라우저 상단에 위치하도록 한다!
+		*/
+
+		#skipNav, #skipNav p{width:100%;}
+		#skipNav{position:absolute; left:0; top:-30px;}
+		#skipNav p a{display:block; width:100%; background-color:#000; text-align:center;
+		line-height:30px; color:#fff; position:absolute;}
+
+
+		#skipNav p a:focus{top:30px; color:#ff0;}
+		
+		/*
+			[정리]
+				
+				skipNav의 경우 마우스에 의존하는 기능이 아니라 tab키에 반응하는 네비게이션!
+					: hover가 아닌 focus를 이용하는 기능!
+
+				tab키를 누를때마다 하나씩 화면에 나타나는 것을 확인 할 수 있음!
+					웹 의 경우 , 읽을때 body 시작하는 위치에서 한줄 씩읽고, 마지막 /body 까지 읽음!
+			
+			[절차지향, 객체지향]
+				
+				웹에서 객체 지향은? 
+					: 사용에 문제만 없다면 아무데서나 태그나 함수등을 만들 수 있음!
+
+				웹은 읽을때 body에서 한 줄 씩 읽기 때문에 "절차지향" 처럼 보이지만.
+					태그나 함수를 사용자가 마음대로 만들 수 있기 때문에 전체적으론 "객체지향" 으로 본다!
+				
+
+				객체지향
+					: 태그나, 함수 위주로 만드는 작업들
+
+				절차지향
+					: 순서대로 만드는 작업, 1~10 까지 중에 번호가 하나라도 없으면 더이상 만들지 못함!
+
+
+			[id 값 사용하기_매우중요]
+
+				: script에서 핵심!
+
+				1) #은 호출하는 기호로 사용하고, href="#" 을 사용하면 해당하는 id 영역을 이어줄 수 있음
+				2) id를 가장 큰 영역에 작성하는 이유는?
+					:	해당하는 영역을 인지하여 호출받을 수 있음!
+		*/
+
+		/*############################################################*/
+
+			#wrap{width:100%;}
+			
+		/*######### header ########*/
+			#header{width:100%;}
+			h1{width:100%; padding:40px 0 20px;}
+			h1 a{display:block; width:200px; margin:0 auto;}
+			h1 a img{width:100%;}
+
+
+		/*######### video (인라인요소) ########*/
+		/*
+			[전체 사용 영역을 이용하여 부드럽게 표현하기]
+
+				1) video에서 control를 사용하지 않으면 경계가 정확하게 보이지 않음!
+				2) 전체 사용영역에 배경색상을 사용하면 전체를 다 사용한 것처럼 보이기 때문에
+				줄어들때 부드럽게 표현이 가능함!
+
+
+				* 알툴즈 페이지를 확인해보면 바깥쪽 영역은 배경색상으로 처리하고, 안쪽은 실제 사용영역으로
+				모아둔 것을 볼 수 있음!
+
+
+				3) controls 대신에 사용자가 직접 컨트롤 값을 만들고 배경색상과 동일하게 처리하면
+				훨씬 부드럽게 처리할 수 있음!
+
+
+				* 배경이미지가 큰 것을 사용하거나 동영상을 큰 것을 사용하면 영역의 경계가 없기 때문에
+				부드러운 처리가 가능함!
+		
+		*/
+		
+		/* 배경색상을 이용하여 wide 처럼 처리함 , background-color:#000 */
+			#video{width:100%;  text-align:center; background-color:#000;}
+			#video video{width:860px;}
+
+		/*#########  nav 영역 #########*/
+			nav{width:100%; padding:40px 0; }
+			nav form{width:900px; margin:0 auto; }
+			nav input{width:99%; border:1px solid #ccc; height:42px; font-size:1.2em; text-indent:15px;}
+
+			/*
+				[% 사용시 중요사항]
+
+					* 1%는 1px과 다르기 때문에 얼마나 차지할지 예측하기 어려움!
+
+				[input태그 사용시 중요사항]
+
+					: input 태그는 기본적으로 보호하기 위한 frame이 존재함!
+						width:100%를 설정하고 확인해보면 생각보다 영역을 넘치게 차지하는 것을 알 수 있음!
+
+					: input은 스스로 차지하는 frame 값이 얼마나 큰지 알 수 없기 때문에
+						border를 직접 설정하여 만들어주는 것이 안전하다!
+
+			*/
+
+		/*############ section ###########*/
+			#section{width:100%;}
+			#section ul{width:880px; margin:0 auto; }
+			#section li{width:215px; display:inline-block;}
+			#section li a{display:block; width:100%;}
+			#section li a img{width:100%;}
+
+		/*
+			[float와 inline-block]
+				
+				1) 제품이 되는 영역은 float로 나열하는 것이 가장 안전하다!
+				
+				참고)	
+					2) 현재 페이지에서는 display:inline-block 을 해제할 수 있다면.. 해제하는 값을 
+					만들기 위하여 작성함!
+
+				3) displya:inline-block은 "대충 빨리 배치할때" 사용
+					
+					: header, footer등에서 display:inline로 바꾸고 빠르게 배치할때 안에 담고 있는 요소중에
+					block이 있다면 해당하는 값을 담기 위하여 "inline-block"을 사용함!
+
+				
+				* 매우중요)
+					display:inline-block은 간격이 얼마나 떨어지는지 알 수 없음!
+					브라우저마다 여백을 차지하는 값이 다르기 때문에 고장날 수 있는 확률이 너무 높음!
+		*/
+		
+		section li:hover img{box-shadow:2px 2px 4px rgba(0,0,0,0.3);}
+
+		/*
+			box-shadow나 text-shadow의 장점은 공간을 차지하지 않음!
+		*/
+
+
+		footer{width:100%; padding:20px 0;}
+		footer h3{text-align:center; text-transform:uppercase; letter-spacing:2px; color:#aaa;}
+
+
+		/*################# 버리는 영역 만들기 (임시보관소) ################*/
+			h2{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; 
+			overflow:hidden;}
+		
+		
+		/*
+			[현재의 웹]
+			
+				1) section 별로 주제를 구분하여 만드는 경우가 많음!
+				2) 외부에서 작업할때도 해당하는 section 요청 받아서 작업하는 경우가 많음!
+
+				3) 2번과 같은 경우
+						: 해당하는 section 의 구조를 작성한 태그!
+						: 해당하는 section을 꾸며주거나 기능을 작성한 style!
+						: 해당하는 section에 적용된 기능, script!
+
+				
+				* sikpNav도 분해하여 필요한 페이지 가져다가 적용할 수 있음!
+		*/
+
+
+		/*
+			[scroll 생기는 해상도 찾기]
+				
+				1) 검사 창 띄우기, 
+					브라우저를 줄이면 오른쪽 상단에 해상도 크기가 출력되는 것을 알 수 있음!
+
+				2) 오른쪽상단의 해상도에서 (17px ~ 20px, scroll 너비) 빼주기
+
+				ex) 916에서 부터 scroll 나타났다면 886px으로 예측하기!
+
+				* 태블릿 pc버전부터 scroll이 나타남!
+		*/
+
+		/*##################### 미디어 쿼리 영역 ####################*/
+		/*######### 태블릿 pc버전 ##########*/
+		/* 해당하는 해상도에서만 작은이미지 6개 처리*/
+
+		@media all and (min-width:768px) and (max-width:1024px){
+			
+			
+			/*######### video (인라인요소) ########*/
+			#video video{width:750px;}
+
+			/*#########  nav 영역 #########*/
+			nav form{width:750px; margin:0 auto; }
+
+
+			/*############ section ###########*/
+
+			#section ul{width:615px; margin:0 auto; }
+			#section li{width:200px; display:inline-block;}
+
+
+			/* 해당하는 해상도에서만 사라지도록 만들기*/
+			#section .sony, #section .w3c{display:none;}
+
+		}
+
+		
+		/*############ 스마트폰 가로버전 ###########*/
+		@media all and (min-width:481px) and (max-width:767px){
+			
+			
+
+			/*######### video (인라인요소) ########*/
+			#video video{width:460px;}
+
+			/*#########  nav 영역 #########*/
+			nav form{width:460px; margin:0 auto; }
+
+
+			/*############ section ###########*/
+			
+			#section ul{width:426px; margin:0 auto;}
+			#section li{width:210px; display:inline-block;}
+
+		
+		}
+
+		/*############ 스마트폰 세로버전 ###########*/
+		@media all and (min-width:320px) and (max-width:480px){
+			
+			h1 a{display:block; width:140px; margin:0 auto;}
+
+			/*######### video (인라인요소) ########*/
+			#video video{width:300px;}
+
+			/*#########  nav 영역 #########*/
+			nav form{width:300px; margin:0 auto; }
+			nav input{  font-size:1em;}
+
+			/*############ section ###########*/
+			
+			#section ul{width:260px; margin:0 auto;}
+			#section li{width:100%; display:block;}
+		}
+	</style>
+
+ </head>
+ <body>
+	<div id="skipNav">
+		<div class="skip">
+			<p class="video"><a href="#video" title="비디오 영역">비디오 영역 바로가기</a></p>
+			<p class="icon"><a href="#section" title="썸네일 영역">썸네일 영역 바로가기</a></p>
+			<p class="footer"><a href="#footer" title="꼬릿말 영역">꼬릿말 영역 바로가기</a></p>
+		</div>
+	</div>
+
+	<div id="wrap">
+		<header id="header">
+			<h1>
+				<a href="http://www.google.com" title="구글">
+					<img src="img/logo.png" alt="구글로고"/>
+				</a>
+			</h1>
+			<div id="video">
+				<!-- wide 처럼 처리하기 위하여 controls 제외-->
+				<video>
+					<source src="#" type="video/mp4"/>
+				</video>
+			</div>
+			<nav>
+				<form action="http://www.google.co.kr/search" method="get">
+					<input id="q" type="text" name="q" placeholder="Google 검색 또는 URL 입력" title="검색"/>
+				</form>
+			</nav>
+
+			<!--
+				[input 작업]
+
+				input에 내용이 기입이 되면 value 값이 없어도, value 속성에 작성이 되고,
+				name 속성을 통해서 action 줄을 이용할 수 있음!
+
+				[구글 검색 이용하기]
+
+				1) q는 query의 약자, 주소줄이나 name 속성을 확인하여 q로 되어 있다면 q로 작성!
+				query로 되어 있다면 query로 작성해야 검색 기능을 사용 할 수 있다!
+
+				2) action 줄을 이용하여 정확한 주소 기입이 필요함!
+				
+				매우중요)
+					method가 post라면 검색하기 어려울 수 있음!
+			-->
+		</header>
+		<section id="section">
+			<h2>썸네일 영역</h2>
+			<ul>
+				<li class="naver">
+					<a href="http://www.naver.com" title="네이버">
+						<img src="img/naver.jpg" alt="네이버"/>
+					</a>
+				</li>
+				<li class="daum">
+					<a href="http://www.daum.net" title="다음">
+						<img src="img/daum.jpg" alt="다음"/>
+					</a>
+				</li>
+				<li class="audi">
+					<a href="http://www.audi.net" title="아우디">
+						<img src="img/audi.jpg" alt="아우디"/>
+					</a>
+				</li>
+				<li class="nintendo">
+					<a href="http://www.nintendo.com" title="닌텐도">
+						<img src="img/nintendo.jpg" alt="닌텐도"/>
+					</a>
+				</li>
+				<li class="lg">
+					<a href="http://www.lg.com" title="엘지">
+						<img src="img/lg.jpg" alt="엘지"/>
+					</a>
+				</li>
+				<li class="samsung">
+					<a href="http://www.samsung.com" title="삼성">
+						<img src="img/samsung.jpg" alt="삼성"/>
+					</a>
+				</li>
+				<li class="sony">
+					<a href="http://www.sony.com" title="소니">
+						<img src="img/sony.jpg" alt="소니"/>
+					</a>
+				</li>
+				<li class="w3c">
+					<a href="http://www.w3c.com" title="w3c">
+						<img src="img/w3c.jpg" alt="w3c"/>
+					</a>
+				</li>
+			</ul>
+		</section>
+		<footer id="footer">
+			<h3>google:mediaQuery</h3>
+		</footer>
+	</div>
+ </body>
+</html>

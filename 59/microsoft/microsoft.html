@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>microsoft</title>
+	<meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+    <style>
+        *{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		header, nav, section, footer, p , div, form, img, h2, ul, li, span{margin:0; padding:0;}
+
+		/* 시멘틱 태그는 인식률이 낮기 때문에 아래와 같이 인식률을 높이는 작업을 할 수 있음!*/
+		header, nav, section, footer{display:block;}
+
+		li{list-style-type:none;}
+		a:link, a:visited{text-decoration:none;}
+		a:hover, a:focus{color:#f00;}
+
+        #wrap{width:100%;}
+
+
+        /*######### header #########*/
+
+            #headerWrap{width:100%; padding-top:30px;}
+            #header{width:1200px; height:45px; margin:0 auto; position:relative;}
+            #header h1{width:200px; left:0; top:0;}
+            #header h1 img{width:100%;}
+
+            #header form{width:300px; position:absolute; right:0; top:3px;}
+            #header form p{float:left;}
+            #header form .search{width:250px;}
+            #header form .search input{width:100%; height:35px;} 
+            #header form .btn{width:30px; padding-top:5px; padding-left:7px;}
+            #header form .btn img{width:100%;}
+
+            #header form:after{content:""; display:block; clear:both;}
+
+            #nav{width:1200px; height:30px; padding-top:20px; margin:0 auto;}
+            #nav ul{width:100%;}
+            #nav li{display:inline-block;}
+            #nav li span{padding-right:30px;}
+
+            #nav li:hover{text-decoration:underline; color:#00f;}
+        
+
+        /*######### container ##########*/
+
+            #container{width:100%; padding-top:30px;}
+            #visual{width:1600px; height:540px; background-image:url("img/main.jpg"); margin:0 auto; position:relative;}
+
+            #visual .textBox{width:240px; height:240px; padding:30px; color:#fff; position:absolute; left:10%; top:20%; background-color:#00f;}
+            #visual .textBox .top{width:100%; height:60px; font-size:35px; line-height:50px;}
+            #visual .textBox .mid{line-height:22px;}
+            #visual .textBox .bot{height:40px; line-height:40px;}
+            #visual .textBox .bot a{color:#fff;}
+
+            #section{width:100%; padding-top:50px;}
+            #section ul{width:1080px; margin:0 auto;}
+            #section li{width:350px; margin-left:10px; float:left;}
+            #section li .img{width:100%;}
+            #section li .img a img{width:100%;}
+
+            #section li .text{width:100%; height:50px;}
+
+
+            #section ul:after{content:""; display:block; clear:both;}
+
+
+        /*############ footer #############*/
+
+            #footer{width:100%; padding:30px 0;}
+            #footer ul{width:1010px; margin:0 auto;}
+            #footer li{display:inline-block;}
+            #footer li a{padding:0 15px;}
+
+
+        /* 임시보관소 */
+            h2{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; 
+			overflow:hidden;}
+
+
+
+        /*##################### 미디어 쿼리 영역 ####################*/
+		/*######### 태블릿 pc버전 ##########*/
+
+		@media all and (min-width:768px) and (max-width:1024px){
+			
+            
+            #header{width:750px;}
+            #header form{width:300px;}
+            #nav{width:750px; margin:0 auto;}
+            #visual{width:750px; height:250px; margin:0 auto; background-size:100%; background-position:center center; position:relative;}
+            #visual .textBox{width:140px; height:140px; padding:10px; left:0;}
+            #visual .textBox .top{height:40px; font-size:20px; line-height:30px;}
+            #visual .textBox .mid{line-height:20px;}
+            #visual .textBox .bot{height:30px; line-height:30px;}
+            #section ul{width:750px; margin:0 auto;}
+            #section li{width:230px; margin-left:10px; float:left;}
+            #footer ul{width:750px; margin:0 auto;}
+
+
+		}
+
+        /*######### 스마트폰 가로버전 ##########*/
+
+		@media all and (min-width:481px) and (max-width:767px){
+
+            #header{width:460px;}
+            #header h1{width:200px;}
+            #header form{width:200px;}
+            #header form .search{width:150px;}
+            #nav{width:460px; background-color:#1570A6; color:#fff;}
+            #nav ul{width:360px; margin:0 auto;}
+
+            #container{padding-top:10px;}
+            #visual{width:460px; height:150px; background-size:100%;}
+            #visual .textBox{width:456px; height:40px; padding:2px; left:0; top:150px; background-color:#1570A6;}
+            #visual .textBox .top{width:100%; font-size:12px; height:12px; line-height:12px;}
+            #visual .textBox .mid{font-size:10px;line-height:10px;}
+            #visual .textBox .bot{font-size:10px;height:10px; line-height:10px;}
+
+            #section{width:100%; padding-top:80px;}
+            #section ul{width:460px; margin:0 auto;}
+            #section li{width:100%; margin-left:0; float:none;}
+            #section li .text{height:30px;}
+        
+            #footer ul{width:460px; margin:0 auto;}
+		}
+
+        /*############ 스마트폰 세로버전 ###########*/
+		@media all and (min-width:320px) and (max-width:480px){
+            #header{width:300px; height:100px;}
+            #header h1{width:150px; margin:0 auto;}
+
+            #header form{width:250px; position:static; margin:0 auto;}
+            #header form .search{width:220px;}
+            #header form .btn{width:20px;}
+
+            #nav{width:100%; height:140px;}
+            #nav ul{width:100%;}
+            #nav li{width:100%; height:34px; line-height:35px; border-bottom:1px solid #fff; text-align:center; display:block; float:none; background-color:#1570A6; color:#fff;}
+        
+            #container{width:100%; padding-top:30px;}
+            
+            #visual{width:300px; height:100px; background-size:100%;}
+            #visual .textBox{width:100%; height:50px; padding:0; left:0; top:100px; background-color:#1570A6;}
+            #visual .textBox .top{width:100%; font-size:12px; height:12px; line-height:12px;}
+            #visual .textBox .mid{font-size:10px;line-height:10px;}
+            #visual .textBox .bot{font-size:10px;height:10px; line-height:10px;}
+
+            #section{width:100%; padding-top:70px;}
+            #section ul{width:300px;}
+            #section li{width:300px; float:none;}
+            #section li .text{width:100%; height:35px; font-size:12px; text-align:center;}
+
+            #footer ul{width:300px; margin:0 auto;}
+            #footer li{display:inline; margin:0 auto; text-align:center;}
+            #footer li a{padding:0 3px;}
+		}
+    </style>
+    
+
+	
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <div id="headerWrap">
+            <h2>헤더</h2>
+            <header id="header">
+                <h1>
+                    <img src="img/mslogo.png" alt="로고이미지">
+                </h1>
+                <form action="http://google.com/search" method="get">
+                    <p class="search"><input id="ms" type="text" name="ms" placeholder="Microsoft.com 검색" title="검색"/></p>
+                    <p class="btn">
+                        <img src="img/search.ltr.png" alt="돋보기 이미지"/>
+                    </p>
+                </form>
+            </header>
+            <nav id="nav">
+                <ul>
+                    <li><span>구매 V</span></li>
+                    <li><span>제품 V</span></li>
+                    <li><span>다운로드 V</span></li>
+                    <li><span>지원 V</span></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div id="container">
+            <div id="visual">
+                <div class="textBox">
+                    <p class="top">surface</p>
+                    <p class="mid">기존의 노트북을 바꿀만한 가치의 태블릿을 만나보세요 Surface Pro7.</p>
+                    <p class="bot">
+                        <a href="#" title="자세히">
+                           자세히 보기 
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <section id="section">
+                <h2>섹션</h2>
+                <ul>
+                    <li>
+                        <p class="img">
+                            <a href="#" title="썸네일0">
+                                <img src="img/b01.png" alt="썸네일 이미지0"/>
+                            </a>
+                        </p>
+                        <p class="text">
+                            올해 최고의 게임
+                        </p>
+                    </li>
+                    <li>
+                        <p class="img">
+                            <a href="#" title="썸네일1">
+                                <img src="img/b02.jpg" alt="썸네일 이미지1"/>
+                            </a>
+                        </p>
+                        <p class="text">
+                            이제 office 문서를 iPad와 phone에서 무료로 만들고 편집하세요
+                        </p>
+                    </li>
+                    <li>
+                        <p class="img">
+                            <a href="#" title="썸네일2">
+                                <img src="img/b03.jpg" alt="썸네일 이미지2"/>
+                            </a>
+                        </p>
+                        <p class="text">
+                            microsoft Store에서 멋진 선물을 쇼핑하세요
+                        </p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <footer id="footer">
+            <h2>푸터</h2>
+            <ul>
+                <li>
+                    <a href="#" title="문의0">문의처 (고객지원센터 : 1577-9700)</a>   
+                </li>
+                <li>
+                    <a href="#" title="문의1">개인정보취급방침 및 청소년 보호정책</a>   
+                </li>
+                <li>
+                    <a href="#" title="문의2">사용약관</a>   
+                </li>
+                <li>
+                    <a href="#" title="문의3">상표</a>   
+                </li>
+                <li>
+                    <a href="#" title="문의4">광고정보</a>   
+                </li>
+                <li>
+                    <a href="#" title="문의5">2021 Microsoft</a>   
+                </li>
+            </ul>
+        </footer>
+    </div>
+ </body>
+</html>
