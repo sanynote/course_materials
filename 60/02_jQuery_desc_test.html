@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>jQuery_test</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	
+ </head>
+
+ <body>
+	<h2>아래 문제 풀기</h2>
+    <hr/>
+
+    <h3>jQuery_basic1</h3>
+    <div>
+        1) 순서대로 문제 풀기
+        2) script 영역 만들고, 제이쿼리 문법 사용하기
+        3) h3에 글자 색상, 빨간색 적용하기
+        4) 제이쿼리의 문서가 준비가 되면 기능구현하기 (문법만들기 ver1)
+        5) 매우 중요) 대상, 이벤트, 이벤트핸들러 먼저 작성한 후, 실습하기
+    </div>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery("h3").css("color","red");
+        });
+
+        /*
+            대상:			h3
+			이벤트:			style(css)
+			이벤트 핸들러:	h3(대상과 같음, 자기자신)
+        */
+    </script>
+
+    <h3>jQuery_basic2</h3>
+    <div>
+        1) 순서대로 문제풀기
+        2) ver-1에 대한 문법내용 작성하고, 기본 문법 기입하기
+        3) h3에 배경색상 노란색 적용하기
+        4) 매우중요) 대상, 이벤트, 이벤트 핸들러 먼저 작성한 후, 실습하기
+    </div>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery("h3").css("background-color","yellow");
+
+        });
+
+        /*
+            대상:			h3
+			이벤트:			style(css)
+			이벤트 핸들러:	h3(대상과 같음, 자기자신)
+        */
+    </script>
+
+
+    <h4>TEST_JQuery1</h4>
+    <div>
+        1) 순서대로 문제풀기
+        2) ver-1에 대한 기본 문법 작성하고, 기본 문법 기입하기
+        3) h4 태그에 테두리 3px dotted pink 적용하기
+        4) 매우중요) 대상, 이벤트, 이벤트 핸들러 먼저 작성한 후, 실습하기
+    </div>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery("h4").css("border","3px dotted pink");
+        });
+
+        /*
+            대상:			h4
+			이벤트:			style(css)
+			이벤트 핸들러:	h4(대상과 같음, 자기자신)
+        */
+    </script>
+ </body>
+</html>
