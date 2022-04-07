@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>microsoft</title>
+	<meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+	
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+        <header id="header">
+            <div id="head">
+                <h1 id="logo">
+                    <a href="http://www.microsoft.com" title="마이크로소프트">
+                        <img src="img/mslogo.png" alt="마이크로소프트"/>
+                    </a>
+                </h1>
+                <div id="search">
+                    <form action="https://www.microsoft.com/ko-kr/search/result.aspx" method="GET">
+                        <div class="schArea">
+                            <input id="schText" type="text" name="q" placeholder="Microsoft.com" title="Microsoft 검색" maxlength="20" autocomplete="off"/>
+                            <input id="schBtn" type="image" name="schBtn" src="img/search.ltr.png" alt="돋보기 이미지" title="돋보기 이미지"/>
+                        </div>
+                    
+                    </form>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#none" title="구매">구매<span>V</span></a></li>
+                    <li><a href="#none" title="구매">구매<span>V</span></a></li>
+                    <li><a href="#none" title="다운로드">다운로드<span>V</span></a></li>
+                    <li><a href="#none" title="지원">지원<span>V</span></a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="container">
+            <div id="visual">
+                <h2>비쥬얼 영역</h2>
+                <p>
+                    <a href="#none" title="비쥬얼이미지">
+                        <img src="img/main.jpg" alt="메인이미지"/>
+                    </a>
+                </p>
+                <div>
+                    <h3>Surface</h3>
+                    <p class="text">
+                        기존의 노트북을 바꿀만한 가치의 태블릿을 만나보세요. Surface Pro 7.
+                    </p>
+                    <p class="link">
+                        <a href="#" title="자세히보기">자세히보기</a>
+                    </p>
+                    
+                </div>
+            </div>
+            <section id="content">
+                <h2>컨텐츠영역</h2>
+                <ul>
+                    <li>
+                        <p class="img">
+                            <a href="#none" title="이미지1">
+                                <img src="img/b01.png" alt="이미지1"/>
+                            </a>
+                        </p>
+                        <p class="desc">
+                            xBox One 올해 최고의 게임
+                        </p>
+                    </li>
+                    <li>
+                        <p class="img">
+                            <a href="#none" title="이미지2">
+                                <img src="img/b02.jpg" alt="이미지2"/>
+                            </a>
+                        </p>
+                        <p class="desc">
+                            이제 Office 문서를 iPad와 phone에서 무료로 만들고 편집하세요
+                        </p>
+                    </li>
+                    <li>
+                        <p class="img">
+                            <a href="#none" title="이미지3">
+                                <img src="img/b03.jpg" alt="이미지3"/>
+                            </a>
+                        </p>
+                        <p class="desc">
+                            microsoft Store에서 멋진 선물을 쇼핑하세요
+                        </p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <footer id="footer">
+            <div id="footerLink">
+                <ul>
+                    <li><a href="#" title="문의처 (고객 지원 센터 : 1577-9700)">문의처 (고객 지원 센터 : 1577-9700)</a></li>
+                    <li><a href="#" title="개인정보취급방침 및 청소년보호정책">개인정보취급방침 및 청소년보호정책</a></li>
+                    <li><a href="#" title="사용약관">사용약관</a></li>
+                    <li><a href="#" title="상표">상표</a></li>
+                    <li><a href="#" title="광고정보">광고정보</a></li>
+                    <li><a href="#" title="사용약관">사용약관</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+ </body>
+</html>
+<!--
+    [#none 활용하기]
+
+        1) jQuery, javascript에서 tab_basic || tab_menu 기능 만들기 가능
+
+            : a 태그 필수 사용
+            : a의 href에 #을 사용하면 왼쪽 상단으로 올라가려고 함
+            : #은 호출하는 기호로 연결하는 대상이 없으면 왼쪽상단이 기준점이 됨
+
+        정리) 
+            : 왼쪽 상단을 향해 올라가는 강제 작동을 막기 위하여 js 요소를 사용하여 막았으나..
+            기능 자체가 워낙 강력하기때문에 제대로 기능되지 않는 문제가 발생함
+
+            : #none 을 사용하면 js의 기능을 사용하지 않아도 강제 기능을 막아줄 수 있음
+            : 단, #none을 사용하지 못 할 경우, js로 막아야 함
+
+            : href 역할은?
+                주소 연결이 기본, #none이 기본이 아님
+
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    [form 활용하기]
+
+        1) action : 주소줄을 이용할 수 있음
+        2) method : 주소줄에 넘어가는 정보를 보여줄 것인지 아닌지 결정할 수 있음
+
+            tip) 다른 기업의 search를 사용하기 위하여 method를 확인했을 때, 
+            post로 되어있다면,, 사용이 불가능함 form일 수 있으니 주의
+
+    [input 태그 이미지로 활용하기]
+
+        1) input 태그는 type에 맞춰서 어떤 대상으로든 사용할 수 있음
+        2) type="image"로 바꾸면 image로 사용할 수 있음
+
+            장점: input 의 id, type, name을 사용할 수 있음
+                img 태그로 활용이 가능함
+
+            단점: input 태그의 역할도 담당해야하고, 0 img 태그의 역할도 닫ㅁ당해야 함
+                * alt와 title 모두 가지고있어야 "접근성" 이나 "표준법"에 문제가 되지 않는다.
+
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    [삼성 엔지니어링 미디어 쿼리 분기 방법]
+
+    * 기업이나 사용환경에 따라서 미디어 쿼리 분기 방법이 조금씩 다름
+    * 매우 중요)
+        ratio (비율값 계산하기)
+
+        16:9 == 1280 : y (해상도 크기 계산하기)
+
+
+    ########################### pc 버전
+
+        @media screen and (min-width:1280px) and (max-width:1600px){}
+        @media screen and (min-width:1140px) and (max-width:1279px){}
+        @media screen and (min-width:1070px) and (max-width:1139px){}
+        @media screen and (min-width:1025px) and (max-width:1069px){}
+
+
+    ########################### 기업형, 관공서에서 많이 사용되는 pc 해상도 (960px)
+
+        정리) 관공서 페이지를 반응형 작업을 해야 할 경우
+            : 960px || 940px 부터 제작이 가능해야 함
+
+        + media screen and (min-width:960px) and (max-width:1069px){}
+        + media screen and (min-width:940px) and (max-width:1069px){}
+
+    ########################### 태블릿 pc (스마트폰 가로버전을 포함)
+
+        @media screen and (min-width:768px) and (max-width:1024px){}
+
+
+    ########################### 스마트폰 제작시 사용하는 버전
+
+        @media screen and (min-width:481px) and (max-width:767px){}
+        @media screen and (min-width:320px) and (max-width:480px){}
+
+
+    [스마트폰 기준_해상도 확인]
+
+        * 스마트폰 화면 해상도와 브라우저 해상도의 크기 다름
+        * 스마트폰으로 확인하기 (주의사항)
+
+            1) 검사창을 활성화하고, 왼쪽 상단의 모바일 아이콘을 눌러서 각각의 기종 해상도 확인가능
+            2) 중요) window, mac 에서 확인한다면 해당하는 디바이스에서 확인하는 작업임
+                : 모바일용으로 확인하는 작업이 아님
+                : 기종별 각각의 해상도만 참고하기
+
+            3) 모바일 해상도와 브라우저 해상도는 다르다
+            4) 가독성에 문제가 있기대문에 브라우저의 해상도가 작게 잡힘
+
+            
+    [매우중요]
+
+        1) pc에서 브라우저를 줄이면서 확인하는 작업이 아니라 반응형 작업은 모바일에 맞추기 위한 작업이 대다수
+        2) pc에서 맞추는 작업은? 
+        해상도가 커지면서 누락된 정보를 맞추기 위하여, 깨지는 작업물들을 안전하게 처리하기 위하여 맞추는 작업을 진행함
+
+        3) "각각의 디바이스" 에서 직접 확인하면서 작업해야 제대로 된 결과물을 출력받을 수 있음
+        4) android, ios, window 모두 운영체제가 다르기때문에 출력되는 결과물도 다를 수 있음
+
+        * 320px, 360px, 420px, 450px
+
+
+-->
