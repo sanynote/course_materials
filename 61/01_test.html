@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>test</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		li{list-style:none;}
+
+		#h2Area{width:100%;}
+		#h2Area h2{width:300px; height:200px; background-color:gold; text-align:center; line-height:200px; transition:background-color 0.5s linear, color 1s ease-in 0.3s;}
+
+		/*
+			+ section 영역에 마우스 올리면 h2태그 배경색상 blue 적용, 글자 색상은 하얀색
+				: 장면전환 적용
+
+				대상:section 태그가 아니라 id 명 h2Area
+					:section 태그가 중복될 수 있기때문에 id명 작성함
+				이벤트: hover (style에서는 마우스 올리는 이벤트가 hover 만 존재함)
+				이벤트 핸들러: 모든 h2가 아니라 h2Area 영역 안에있는 h2
+							: style 효과로 배경색상 변경, 글자색상변경, 장면전환
+
+		*/
+
+		#h2Area:hover h2{background-color:blue; color:#fff;}
+
+		article{width:100%;}
+		article p{background-color:pink; border:5px solid red; width:200px; height:200px; transition:border-radius 0.5 ease-in 0.2, border-color 1s linear;}
+
+		/*
+			p태그에 마우스 올리면 완전한 동그라미가 되도록 만들고, border 색상은 blue로 변경하기 (장면전환사용)
+
+			대상: 모든 영역의 p태그가 아니라 article안에 있는 p태그
+			이벤트: hover
+			이벤트핸들러: article안에 p태그 (대상과 같음) , 동그라미만들기,border색상변경
+		*/
+
+		article p:hover{border-radius:105px; border-color:blue;}
+	</style>
+
+
+ </head>
+ <body>
+	<h2>문제1) 호환이 가능한  .dtd 문서는?</h2>
+	<p>
+		: transitional (비표준언어와 표준언어를 호환함)
+		: 표준언어:영어소문자
+		: 표준버전 1.0 || 1 + 비표준버전: 4.0 || 4
+	</p>
+	<h2>문제2) display:inline-block 사용시 주의해야 할 점 작성하기</h2>
+	<p>
+		1) 알 수 없는 간격이 생기기때문에 구형 브라우저에서 떨어질 수 있음
+		2) display:inline을 대신하여 사용할 수 있으나 담고있는 객체들 중에 블록이 있을때만 사용가능
+		매우중요) 블록을 담고있을때보다, 인라인요소중에 너비와 높이를 가지고있는 객체들 담고있을때
+		display:inline-block을 활용함
+	</p>
+
+	<h2>문제3) 시멘틱 태그란?</h2>
+	<p>
+		약속된 태그
+		: 해당하는 역할을 담당하기위한 태그
+		div라고 작성했을경우, 무엇을 하기위해 사용하는지 알 수 없음
+		header라고 작성했을경우, header 역할들 담당하기위하여 사용한것을 알 수 있음
+	</p>
+	<h2>문제4) 시멘틱 태그의 종류 나열하고, 각각의 역할 작성하기 (section 비슷한 정보의 값들을 모아두는 영역...)</h2>
+	<p>
+		header : 페이지 제작시 머리에 해당하는 부분으로 주로 로고나 네비게이션을 작성할 수 있음
+		nav : 목적지 역할을 담당하는 영역(갤러리, 이메일, 카페, 블로그 해당하는 페이지로 이동할 수 있음)
+		section : 비슷한 정보의 값들을 모아주는 영역(h2~h6 까지 제목이 필요함)
+		article: 재배포가 가능한 영역(h2~h6 까지 제목이 필요함)
+		aside : 사이드 영역 제작시 사용(side가 필수가 아니듯, headline 태그는 필수가 아님)
+		footer: 꼬릿말영역 (법률정보, 카피라이터 등을 모아두는 영역)
+		address: 주로 꼬릿말 영역에 사용하고, 기업형 페이지의 경우, 주소 작성시 필수
+	</p>
+	<h2>문제5) 시멘틱 태그들이 인식률이 떨어질 경우, style에서 해결하는 방법 작성하기</h2>
+	<p>
+		1) header,section,article,footer{display:block}
+		2) 시멘틱 태그 자체의 인식률이 떨어지기때문에 id명으로 영역명을 다시 한 번 작성함
+		(header id="header", footer id="footer")
+	</p>
+
+	<h2>문제6) 이동 "변형" 을 할때 사용하는 효과는?</h2>
+	<p>
+		: scroll 기능을 작성할때 매우 많이 사용되는 효과
+		: 외국의 자료를보면 해당하는 효과를 이용하여 scroll이 떨어지도록 만듦
+		: transform:translate()
+		: 매우중요) 자신이 있는 위치값을 적용할 수 있어서 매우 특별하게 사용됨
+	</p>
+
+	<h2>문제7) 어떤 영역을 "브라우저 전체를 상대"로 고정하려 한다. 이때 적절한 position 효과와 이유 작성하기</h2>
+	<p>
+		1) absolute의 경우, 부모요소에 relative가 장착되는 순간, 기준점이 브라우저가 아닌 해당하는 영역으로 바뀜
+		2) fixed는 부모와 자녀요소 고려하지 않고 배치되기때문에 전체 브라우저를 상대로 작업이 가능함
+	</p>
+
+	<h2>문제8) position과 overflow 각각 해제하는 효과 작성하기</h2>
+	<p>
+		position:static
+		overflow:visible
+	</p>
+	
+	<h2>문제9) 학습한 내용들 중 익스플로러 4.0 부터 사용가능한 background 효과 작성하기</h2>
+	<p>
+		background-color
+		background-image
+		background-repeat
+		background-position
+
+		background-size (익스플로러 9.0 + / 표준브라우저 전용)
+	</p>
+
+	<h2>문제10) 현재 위치 값을 저장가능한 position 효과 나열하기</h2>
+	<p>
+		absolute는 현재 위치값을 저장할 수 없음 (left,top이 기준 / 0,0이 기준)
+		relative 자신이 있던 영역을 기준으로 움직이기때문에 위치값을 알 수 있음
+		fixed 브라우저 전체를 상대하기때문에 자신의 위치값을 알 수 있음
+	</p>
+	<h2>문제11) 아래 순서에 따라 문제 풀기</h2>
+	<ol>
+		<li>여백 초기화 작성하기</li>
+		<li>현재 ol이 끝난 부분 아래에 section 태그 만들기</li>
+		<li>section 영역안에 h2태그 작성하고 "가운데 배치" 라는 글 작성하기</li>
+		<li>section 영역은 전체 다 사용하고, h2태그는 300*200으로 만들기</li>
+		<li>h2 배경색상 골드, 글자 x ,y축 모두 가운데 두기, h2 박스도 영역 가운데 두기</li>
+		<li>section 영역에 마우스 올리면 h2 태그 배경색상 blue로 바꾸고, 글자 색상은 하얀색으로 바꾸기 (장면전환 적용)</li>
+		<li>
+			매우중요)style 영역에서 주석글안에 대상, 이벤트, 이벤트 핸들러 반드시 작성하기 
+		</li>
+	</ol>
+	<section id="h2Area">
+		<h2>가운데 배치</h2>
+	</section>
+
+	<h2>문제12) overflow 효과들중 scroll을 만드는 방법은?</h2>
+	<p>
+		scroll, auto(넘치는 값이 있을때만 만들 수 있음)
+	</p>
+	<h2>문제13) z-index를 많이 사용했을 경우, 생길 수 있는 문제점 작성하기</h2>
+	<p>header부터 footer 까지 마크업 설계해 둔 순서가 모두 깨져버릴 수 있음</p>
+
+	<h2>문제14) 글씨가 넘치면 ... 으로 만들려고 한다. 아래 ol태그 만들고 순서대로 작성하기</h2>
+	<ol>
+		<li>너비와 높이가 한 줄로 표현될 수 있도록 영역설계하기</li>
+		<li>해당하는 영역에서 넘치면 숨기기 overflow:hidden</li>
+		<li>한 줄 표현하기 (빈공간이 있어도 사용하지않음) white-space:nowrap</li>
+		<li>글자가 넘치면 ...으로 만들기 text-overflow:ellipsis</li>
+	</ol>
+
+	<h2>문제15) 태그안에 글자만 버릴때 사용하는 방법은? (임시저장소 사용법 아님)</h2>
+	<p>
+		text-indent:-9999px, 태그안에 글자를 비워두지않는게 권장이기때문에
+		필요한 태그에는 글자를 작성하고 버리는 방법이 text-indent 방법
+	</p>
+	<h2>문제16) 재배포가 가능한 시멘틱 태그명은?</h2>
+	<p>article (태그일 경우에만 재배포가 가능함, id class명은 해당하지않음)</p>
+
+	<h2>문제17) script 문제) 2가지 조건들중 하나만 맞을 경우에 대한 수식을 만드는 기호는?</h2>
+	<p>1 || 1.0 || (or 또는), 나열된 조건들 중에서 하나만 맞아도 참</p>
+
+	<h2>문제18) script 문제) 나열된 조건들이 모두 동시에 맞춰야 하는 기호는? (에러가 발생할 수 있으므로 주석글 안에 작성하기)</h2>
+
+	<!--&&-->
+	
+	<h2>문제19) script 문제)<br/>
+		a="";<br/>
+		b=5;<br/>
+		c = a*5<br/>
+		c의 값은?
+	</h2>
+	<p>
+		0이 출력되거나 NULL 값이 출력될 수 있음
+		a=""; 빈칸표현
+		빈칸과 0은 값이 다름
+		빈칸과 계산이 어렵기때문에 NULL이 출력됨
+	</p>
+
+	<h2>문제20) script 문제) 빈칸 표현과 공백 표현 구분하여 작성하기<h2>
+	<p>
+		content:"";		,	내용이 없는 빈칸의 객체 만들때 a="";
+		content:" ";	,	공백이 있는 표현 a=" "
+	</p>
+
+	<h2>문제21) script 문제) 알수 없는 문자가 발견되었을때 출력되는 값은?</h2>
+	<p>isNaN (입력된 문자를 알아내는 값이 아니라 문자가 있는데 어떤 문자인지 알 수 없음)</p>
+	<h2>
+		문제22) script 문제) 아래 순서에 따라 괄호 표현하기<br/>
+		1) 조건 괄호 : ()	<br/>
+		2) 기능 괄호 : {}	<br/>
+		3) 조건이 맞으면 기능구현 하는 괄호 : (){}<br/>
+		4) 속성 괄호 : []<br/>
+		5) 조건이 기능이 되는 괄호: ({})
+	</h2>
+	<h2>
+		문제23) script 문제)<br/>
+		a=3;<br/>
+		b=4;<br/>
+		c=10;<br/>
+		a = a*b<br/>
+		a = b*c<br/>
+		a는?
+	</h2>
+	<p>
+		웹은 아래로 읽을수록 최신의 값을 저장하기때문에
+		a=a*b 로 12에 담겨있어도 그 아래
+		a=b*c로 40이 담겨서 위의 값은 의미가 없어짐
+		: a는 40
+	</p>
+
+	<h2>
+		문제24 script 문제)<br/>
+		border-radius를 표현하려 한다. 적절하게 작성하려면?
+	</h2>
+	<p>
+		js에서는 문법상 border-radius처럼, -이 적용되지않음
+		합성어표현으로 표현해야 함
+		borderRadius
+	</p>
+
+	<h2>문제25) form에서 반드시 필요한 속성 2가지 중,  주소 줄을 연결하는 속성은?</h2>
+	<p>action (control.php로 연결하거나 db파트로 연결할 수 있음)</p>
+
+	<h2>문제26) 너비와 높이를 가지는 인라인 요소 나열하기</h2>
+	<p>
+		img select video input button audio
+	</p>
+
+	<h2>문제27) 구형 브라우저에서 img태그에 frame을 제외시키는 방법은?</h2>
+	<p>img{border:none;}, reset.css에 반드시 들어가는 부분</p>
+
+	<h2>문제28) form에서 그룹을 묶을때 사용하는 태그와 제목을 작성하는 태그는?</h2>
+	<p>
+		form에서 주제마다 그룹을 묶을때 사용하는 태그는 fieldset,
+		제목은 legend
+	</p>
+
+	
+	<h2>문제29) 아래 순서에 따라 문제 풀기</h2>
+	<ol>
+		<li>현재 ol이 끝난 부분 아래에 article 영역 만들기</li>
+		<li>h3태그 작성하고, border-radius 작성하기</li>
+		<li>article 영역 안에 p태그 작성하고, circle 작성하기</li>
+		<li>p태그의 배경색상은 pink, border:5px solid red 적용하기 , 200px * 200px 적용하기</li>
+		<li>p태그에 마우스 올리면 완전한 동그라미가 되도록 만들고, border 색상은 blue로 변경하기(장면전환 사용)</li>
+		<li>매우중요) 주석글안에 대상, 이벤트, 이벤트 핸들러 구분하기</li>
+	</ol>
+	<article>
+		<h3>border-radius</h3>
+		<p>circle</p>
+	</article>
+	
+	<h2>문제30) opacity와 rgba의 차이점 작성하기</h2>
+	<p>
+		rgba는 모든 객체의 투명도를 조절하는것이 아니라 rgb로 만들어진 색상의 투명도만 조절함
+		opacity는 색상뿐아니라 담겨있는 모든 객체, 지정된 객체의 투명도에 관여하기때문에 차이점이 매우 중요
+	</p>
+
+	<h2>문제31 script 문제) a==1  || b=="abc" 의 뜻은?</h2>
+	<p>나열된 조건이 같지않아도 나열된 조건들 중에서 하나라도 맞으면 참으로 인식함</p>
+
+	<h2>문제32) 장면전환 속성에서 ~~ 하는 동안만 바꾸는 방법은?<h2>
+	<p>transition-property, 변하는 속성만 작성</p>
+	<p>transition-duration, ~~하는 동안만 바꿀때</p>
+	<p>transidion-timing-function, 속도만 바꿀때</p>
+	<p>transition-delay, 지연되는 시간만 바꿀때</p>
+
+	<h2>문제33) 글자에 그림자 효과를 적용하려 한다. 적용되는 순서 나열하기</h2>
+	<p>
+		x축 밀리는 정도, y축 밀리는 정도, "blur 흐림효과", 그림자색상 (box-shadow와 같음)
+	</p>
+	<h2>
+		문제34) rotate3d를 사용하려한다. x축은 사용하지 않고,<br/>
+		y축은 반대축으로 사용하고, z축은 정방향으로 사용하고, 각도는 40도를 만드는 방법은?
+	</h2>
+	<p>
+		rotate3d(x축, y축, z축, 각도 (deg))
+		rotate3d(0,-1,1,40deg)
+		:0일때는 해당하는 좌표를 사용하지않을때
+		:1일때는 정방향으로 사용할때
+		:-1일때는 반대방향으로 사용할 때
+	</p>
+	<h2>
+		문제35) font-face를 사용하는 가장 큰 이유는?
+	</h2>
+	<p>
+		1) font-face 예쁘게 만들려고 사용하는것이 아니라 해당하는 목적에 맞는 font 모양을 사용하기 위하여 적용
+		2) * 모든 브라우저에서 동일한 폰트를 제공받기위하여 사용
+	</p>
+	<h2>
+		문제36) video태그는 인라인과 블록중 어디에 속하는지 작성하고, autoplay가 되기 위하여 반드 필요한 속성 작성하기
+	</h2>
+	<h2>
+		문제37) video태그 사용시, 소스를 연결할때 사용하는 태그는?
+	</h2>
+	<h2>
+		문제38) video태그에서 영상이 나오지 않을 경우를 대비하여 사용하는 대체 속성은?
+	</h2>
+	<h2>
+		문제39) 매우중요) background-image가 화면에 출력되지 않을 경우, 대체하는 효과는?
+	</h2>
+	<h2>문제40) footer 영역에서 사업자 번호나 주소가 작성되는 태그는?</h2>
+	<h2>문제41) 아래 순서에 따라 문제풀기</h2>
+	<ol>
+		<li>현재 ol이 끝난 부분 아래에 div영역 만들기</li>
+		<li>div태그안에 form 태그 작성하기</li>
+		<li>아이디, 비밀번호, 전화번호, 이메일 input과 label 만들기, 각각 p태그에 묶어두기</li>
+		<li>필수정보 라는 제목 작성하기!(그룹 묶어주기)</li>
+		<li>전송 버튼 만들기</li>
+		<li>전화 번호 공간에는 pattern 사용하기</li>
+		<li>필요 부분에 placeholder와 maxlength, type 부분 중요하게 작성하기</li>
+		<li>div 너비는 전체 다 사용하고 form 너비는 400px 작성하기</li>
+	</ol>
+	<hr/>
+	
+	<h2>script: jQuery 문제1)  첫번째 문법으로 문제 풀기</h2>
+	<ol>
+		<li>현재 ol이 끝난 부분 아래에 script 영역 만들기</li>
+		<li>첫번째 문법 내용 주석글에 작성하기</li>
+		<li>h2 태그에 padding:30px  0 10px 작성하기</li>
+		<li>대상, 이벤트, 이벤트 핸들러 작성하기</li>
+	</ol>
+
+	<h3>script: jQuery 문제2) 두번째 문법으로 문제풀기</h3>
+	<ol>
+		<li>현재 ol이 끝난 부분 아래에 script 영역 만들기</li>
+		<li>두번째 문법 내용 주석글에 작성하기</li>
+		<li>h3 태그에 padding:50px 0 10px 작성하기</li>
+		<li>h3 태그에 아래쪽 선, 1px , red 적용하기</li>
+		<li>매우중요) 대상, 이벤트, 이벤트 핸들러 작성하기</li>
+		<li>
+			* h3 2개 각각 작성해도 상관없음!<br/>
+			문법은 다시 만들필요 없고 두번째 문법이나 첫번째 문법 하나만 사용해도 여러가지 효과 적용가능함!
+		</li>
+		<li>
+			* 같은 대상에 여러가지 효과주는 것은 실습에 있으므로, 현재 예제에서는 각각 분해하여 사용해도 상관없음!
+		</li>
+	</ol>
+
+	<h3>script : jQuery 문제3) 첫번째 문법으로 문제풀기</h3>
+	<ol>
+		<li>현재 ol이 끝난 부분 아래에 script 영역 만들기</li>
+		<li>주석글에 첫번째 문법에 대한 내용 작성하기</li>
+		<li>li 태그의 글자색상 #555 적용하기</li>
+		<li>매우중요) 대상, 이벤트, 이벤트 핸들러 작성하기</li>
+		<li>현재 문제의 h3 태그만 호출하기 (class 속성 활용하기)</li>
+		<li>배경색상 노란색 적용, (합성어 처리하는 방법으로 표현하기)</li>
+		<li>매우중요) 대상, 이벤트, 이벤트 핸들러 작성하기</li>
+	</ol>
+ </body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>test</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style-type:none;}
+
+
+        /*######## 문제 11번 #######*/
+            section{width:100%;}
+            section h2{width:300px; height:200px; background-color:gold; text-align:center; line-height:200px; margin:0 auto; transition:all 0.5s linear;}
+
+            section h2:hover{background-color:blue; color:#fff;}
+            /*
+                대상: h2 태그
+                이벤트: style(css)
+                이벤트핸들러: 자기자신과 같음, 배경색상,글자색상
+            */
+
+        /*######## 문제 29번 #######*/
+        
+            article p {width:200px; height:200px; background-color:pink; border:5px solid red; transition:all 0.5s linear;}
+
+            article p:hover{border-color:blue; border-radius:100px;}
+            /*
+                대상: p 태그
+                이벤트: style(css)
+                이벤트핸들러: 자기자신과 같음, 보더색상, border-radius
+            */
+
+
+        /*############## 문제 41번 ############*/
+
+            form{width:400px;}
+
+        
+
+
+    </style>
+	
+	
+ </head>
+
+ <body>
+	
+    <h2>문제1) 호환이 가능한 .dtd문서는?</h2>
+    <p>transition.dtd</p>
+    <h2>문제2) display:inline-block 사용시 주의해야 할 점 작성하기</h2>
+    <p></p>
+    <h2>문제3) 시멘틱 태그란?</h2>
+    <p>사용목적이 정해져있는태그</p>
+    <h2>문제4) 시멘틱 태그의 종류 나열하고, 각각의 역할 작성하기 (section 비슷한 정보의 값들을 모아두는 영역..)</h2>
+    <p>
+        header: header영역에 사용하는 태그
+        nav : nav 영역에 사용하는 태그
+        footer : footer영역에 사용하는 태그
+    </p>
+    <h2>문제5) 시멘틱 태그들이 인식률이 떨어질 경우, style에서 해결하는 방법 작성하기</h2>
+    <p>시멘틱태그에 id를 부여해서 그것으로 호출한다.</p>
+    <h2>문제6) 이동 "변형"을 할 때 사용하는 효과는?</h2>
+    <p>translate</p>
+    <h2>문제7) 어떤 영역을 "브라우저 전체를 상대" 로 고정하려한다. 이 때 적절한 position 효과와 이유 작성하기</h2>
+    <p>position:absolute</p>
+    <h2>문제8) position과 overflow 각각 해제하는 효과 작성하기</h2>
+    <p>static, hidden</p>
+    <h2>문제9) 학습한 내용들 중 익스플로러 4.0부터 사용가능한 background 효과 작성하기</h2>
+    <p>
+        background-size를 제외한 모든 효과
+    </p>
+    <h2>문제10) 현재 위치 값을 저장가능한 position 효과 나열하기</h2>
+    <p>position:relative</p>
+    <h2>문제11) 아래 순서에 따라 문제풀기</h2>
+    <ol>
+        <li>여백 초기화 작성하기</li>
+        <li>현재 ol이 끝난 부분 아래에 section 태그 만들기</li>
+        <li>section 영역 안에 h2 태그 작성하고 "가운데 배치" 라는 글 작성하기</li>
+        <li>section 영역은 전체 다 사용하고, h2 태그는 300*200 으로 만들기</li>
+        <li>h2 배경색상 골드, 글자 x,y축 모두 가운데 두기, h2 박스도 영역 가운데 두기</li>
+        <li>section 영역에 마우스 올리면 h2 태그 배경색상 blue로 바꾸고, 글자 색상은 하얀색으로 바꾸기 (장면전환 적용)</li>
+        <li>
+            매우중요) style 영역에서 주석글안에 대상, 이벤트, 이벤트 핸들러 반드시 작성하기
+        </li>
+    </ol> 
+    <section>
+        <h2>가운데배치</h2>
+    </section>
+
+
+    <h2>문제12) overflow 효과들 중 scroll을 만드는 방법은?</h2>
+    <p>
+        scroll,auto
+    </p>
+    <h2>문제13) z-index를 많이 사용했을 경우, 생길 수 있는 문제점 작성하기</h2>
+    <p>
+        
+    </p>
+    <h2>문제14) 글씨가 넘치면 ... 으로 만들려고 한다. 아래 ol태그 만들고 순서대로 작성하기</h2>
+    <ol>
+        <li>white-space:nowrap</li>
+        <li>text-overflow:ellipsis</li>
+        <li>overflow:hidden</li>
+    </ol>
+
+    <h2>문제15) 태그 안에 글자만 버릴때 사용하는 방법은? (임시저장소 사용법 아님)</h2>
+    <p>text-indent:-9999px</p>
+    <h2>문제16) 재배포가 가능한 시멘틱 태그명은?</h2>
+    <p>article</p>
+    <h2>문제17) script 문제) 2가지 조건들 중 하나만 맞을 경우에 대한 수식을 만드는 기호는?</h2>
+    <p>||</p>
+    <h2>문제18) script 문제) 나열된 조건들이 모두 동시에 맞춰야하는기호는? (주석글 안에 작성하기)</h2>
+    <!--&&-->
+    <h2>문제19) script 문제)
+        a=""
+        b=5
+        c=a*5
+        c의 값은?
+    </h2>
+    <p>0</p>
+
+
+    <h2>문제20) script 문제) 빈칸 표현과 공백표현 구분하여 작성하기</h2>
+    <p>" " , null</p>
+    <h2>문제21) script 문제) 알 수 없는 문자가 발견되었을 때 출력되는 값은?</h2>
+    <p>NaN</p>
+    <h2>
+        문제22) script 문제) 아래 순서에 따라 괄호 표현하기
+        1) 조건 : ()
+        2) 기능: {}
+        3) 조건이 맞으면 기능구현:(){}
+        4) 속성: []
+        5) 조건이 기능이되는 : ({})
+
+    </h2>
+    <h2>
+        문제23) script 문제)
+        a=3
+        b=4
+        c=10
+        a=a*b 
+        a=b*c
+        a는?
+    </h2>
+    <p>40</p>
+    <h2>
+        문제24) script 문제) 
+        border-radius를 표현하려한다. 적정하게 작성하려면?
+    </h2>
+    <p>borderRadius</p>
+    <h2>문제25) form에서 반드시 필요한 속성 2가지 중, 주소줄을 연결하는 속성은? </h2>
+    <p>action</p>
+    <h2>문제26) 너비와 높이를 가지는 인라인 요소 나열하기</h2>
+    <p>img, video, input</p>
+    <h2>문제27) 구형 브라우저에서 img 태그에 frame을 제외시키는 방법은?</h2>
+    <p>img{border:none;}</p>
+    <h2>문제28) form태그에서 그룹을 묶을때 사용하는 태그와 제목을 작성하는 태그는?</h2>
+    <p>fieldset, legend</p>
+    <h2>
+        문제29) 아래 순서에 따라 문제 풀기
+    </h2>
+    <ol>
+        <li>현재 ol이 끝난 부분 아래에 article 영역 만들기</li>
+        <li>h3 태그 작성하고 border-radius 작성하기</li>
+        <li>article 영역 안에 p 태그 작성, circle 작성하기</li>
+        <li>p태그의 배경색상은 pink, border:5px solid red 적용하기, 200*200 적용</li>
+        <li>p태그에 마우스 올리면 완전한 동그라미가 되도록 만들고, border 색상은 blue로 변경하기 (장면전환 사용)</li>
+        <li>매우중요) 주석글안에 대상,이벤트,이벤트핸들러 구분하기</li>
+    </ol>
+    <article>
+        <h3>borde-radius</h3>
+        <p>circle</p>
+    </article>
+
+    <h2>문제30) opacity와 rgba의 차이점 작성하기</h2>
+    <h2>문제31) script문제) a==1 || b=="abc" 의 뜻은?</h2>
+    <p>a가 1을 담고있거나 b가 abc를 담고있는 것 둘 중 하나만 참이면 참</p>
+    <h2>문제32) 장면전환 속성에서 ~~하는 동안만 바꾸는 방법은?</h2>
+    <p>duration</p>
+    <h2>문제33) 글자에 그림자 효과를 적용하려한다. 적용되는 순서 나열하기</h2>
+    <p>x축,y축,z축</p>
+    <h2>문제34) rotate3d를 사용하려한다. x축은 사용하지않고, y축은 반대축으로 사용하고, z축은 정방향으로 사용하고, 각도는 40도를 만드는 방법은?</h2>
+    <p>rotate3d{0,180deg,360deg}</p>
+    <h2>문제35) font-face를 사용하는 가장 큰 이유는?</h2>
+    <p>폰트를 보기좋게 바꾸기위해서</p>
+    <h2>문제36) video태그는 인라인과 블록 중 어디에 속하는지 작성하고, autoplay가 되기위하여 반드시 필요한 속성 작성하기</h2>
+    <p>인라인속성, muted 속성이 필요하다</p>
+    <h2>문제37) video 태그 사용시, 소스를 연결할 때 사용하는 태그는?</h2>
+    <p>controls</p>
+    <h2>문제38) video 태그에서 영상이 나오지 않을 경우를 대비하여 사용하는 대체 속성은?</h2>
+    <p>poster</p>
+    <h2>문제39) 매우중요) backgroun-image가 화면에 출력되지 않을 경우, 대체하는 효과는?</h2>
+    <p>background-color</p>
+    <h2>문제40) footer 영역에서 사업자 번호나 주소가 작성되는 태그는?</h2>
+    <p>address</p>
+    <h2>문제41) 아래 순서에 따라 문제풀기</h2>
+    <ol>
+        <li>현재 ol이 끝난 부분 아래에 div 영역 만들기</li>
+        <li>div 태그 안에 form태그 작성하기</li>
+        <li>아이디,비밀번호,전화번호,이메일 input과 label만들기, 각각 p태그에 묶어두기</li>
+        <li>필수정보라는 제목 작성하기 (그룹 묶어주기)</li>
+        <li>전송버튼 만들기</li>
+        <li>전화번호 공간에는 pattern 사용하기</li>
+        <li>필요부분에 placeholder와 maxlength,type 부분 중요하게 작성하기</li>
+        <li>div 너비는 전체 다 사용하고 form 너비는 400px 작성하기</li>
+    </ol>
+    <div>
+        <form>
+            <fieldset>
+                <legend>필수정보</legend>
+                <p>
+                    <label for="userid">ID</label><input id="userid" type="text" name="userid" maxlength="20">
+                </p>
+                <p>
+                    <label for="userpw">PW</label><input id="userpw" type="text" name="userpw" maxlength="20">
+                </p>
+                <p>
+                    <label for="phone">phone</label><input id="phone" type="tel" name="phone">
+                </p>
+                <p>
+                    <label for="email">email</label><input id="email" type="email" name="email" placeholder="hello@google.com">
+                </p>
+            </fieldset>
+            <fieldset>
+				<button type="submit">전송</button>
+			</fieldset>
+        </form>
+    </div>
+    <hr/>
+
+    <h2>script jQuery 문제1) 첫번째 문법으로 문제풀기</h2>
+    <ol>
+        <li>현재 ol 이 끝난 부분 아래에 script 영역 만들기</li>
+        <li>첫번째 문법 내용 주석글에 작성하기</li>
+        <li>h2 태그에 padding:30px 0 10px 작성하기</li>
+        <li>대상,이벤트,이벤트핸들러 작성하기</li>
+    </ol>
+    <script>
+        /* 제이쿼리 문서가 준비되면 기능구현해주세요 */
+        jQuery(document).ready(function(){
+
+            jQuery("h2").css("padding","30px 0 10px");
+
+            /*
+                대상 :h2태그
+                이벤트 : style(css)
+                이벤트핸들러 : padding값
+            */
+        })
+    </script>
+
+    <h3>script jQuery 문제2) 두번째 문법으로 문제풀기</h3>
+    <ol>
+        <li>현재 ol 이 끝난 부분 아래에 script 영역 만들기</li>
+        <li>두번째 문법내용 주석글에 작성하기</li>
+        <li>h3 태그에 padding:50px 0 10px 작성하기</li>
+        <li>h3 태그에 아래쪽 선, 1px, red 적용하기</li>
+        <li>
+            * h3 2개 각각 작성해도 상관없음
+            문법은 다시 만들 필요 업고 두번째 문법이나 첫번째 문법 하나만 사용해도 여러가지 효과 적용가능함
+        </li>
+        <li>
+            * 같은 대상에 여러가지 효과주는것은 실습에 있으므로, 현재 예제에서는 각각 분해하여 사용해도 상관없음
+        </li>
+    </ol>
+    <script>
+        /* 선택한 문서가 준비가 되면 기능구현 해주세요 */
+        $(document).ready(function(){
+
+            $("h3").css("padding","50px 0 10px");
+            $("h3").css("border-bottom","1px solid red");
+
+            /*
+                대상 :h3태그
+                이벤트 : style(css)
+                이벤트핸들러 : padding값, border값
+            */
+        })
+    </script>
+
+
+    <h3 class="h3">script jQuery 문제3) 첫번째 문법으로 문제풀기</h3>
+    <ol>
+        <li>현재 ol이 끝난 부분 아래에 script 영역 만들기</li>
+        <li>주석글에 첫번째 문법에 대한 내용 작성하기</li>
+        <li>li 태그의 글자색상 #555 적용</li>
+        <li>매우중요) 대상,이벤트,이벤트핸들러</li>
+        <li>현재 문제의 h3 태그만 호출하기 (class 속성 활용)</li>
+        <li>배경색상 노란색 적용(합성어 처리하는 방법으로 표현하기)</li>
+        <li>매우중요) 대상 이벤트 이벤트핸들러</li>
+    </ol>
+
+    <script>
+        /* 제이쿼리 문서가 준비되면 기능구현해주세요 */
+        jQuery(document).ready(function(){
+
+            jQuery("li").css("color","#555");
+
+            /*
+                대상 :h2태그
+                이벤트 : style(css)
+                이벤트핸들러 : padding값
+            */
+
+            jQuery(".h3").css("backgroundColor","#ff0");
+
+            /*
+                대상 :.h3
+                이벤트 : style(css)
+                이벤트핸들러 : backgroundColor
+            */
+        })
+    </script>
+ </body>
+</html>
