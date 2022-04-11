@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        /* ver-1 : 첫번째 문법 사용하여 문제풀기 */
+
+        /*
+            [매우중요]
+
+                jQuery 문법은 해당 페이지마다 하나 정도만 사용함,
+                jQuery 문법 하나가 굉장히 큰 영역을 담당하기때문에 특별한 이유가 없다면 여러개를 사용할 필요가 없음
+
+            [정리]
+                1) 제이쿼리의 문서가 준비가 되면
+                2) 선택한 문서가 준비가 되면
+
+                * 한 페이지에서 문서를 2개나 준비해야되기때문에 빠른 작업도 느려질 수 있음
+            
+            [중요]
+                바로 앞전의 02_jQuery_document_desc.html 문서는 굉장히 위험한 문서
+
+                    * 기능이 많지않기때문에 고장나지않음
+                    * 첫번째 문법, 두번째 문법 : 문서를 준비시킴
+                    * 세번째 문법, 네번째 문법 : 문서를 준비시키지않음
+                    
+                    : 해당하는 페이지에서는 문법을 위해 문서를 준비해야하는것인지..
+                    아니면 문서를 준비시키지 않아도 되는것인지 "알 수 없음"
+
+                    * 위의 내용이 한 페이지당 문서를 하나만 준비하는 이유가 될 수 있음
+        
+        */
+
+        jQuery(document).ready(function(){
+            /*
+                문제1: 전체를 대상으로 글자색상 gray 적용하기
+
+                대상: 전체를 대상으로 작성하려면 ? body || *
+                이벤트: style(css)
+                이벤트핸들러: body 영역 안의 모든 요소 || * 모든 요소 안의 객체들
+                    (안에 담고있는 값들이 없다면 적용 불가능)
+            */
+            jQuery("*").css("color","gray");
+
+
+            /*
+
+                대상: class 속성의 title
+                이벤트: style(css)
+                이벤트핸들러: class 속성의 title(대상과 같음), border-left 적용
+            */
+            jQuery(".title").css("borderLeft","10px solid red");
+
+
+            /*
+
+                대상: class 속성의 title
+                이벤트: style(css)
+                이벤트핸들러:  class 속성의 title(대상과 같음), border-bottom 적용
+            */
+           jQuery(".title").css("borderBottom","1px solid red");
+           
+
+            /*
+
+                대상: class 속성의 title
+                이벤트: style(css)
+                이벤트핸들러:  class 속성의 title(대상과 같음), text-indent 적용
+            */
+            jQuery(".title").css("textIndent","1em");
+            
+
+            /*
+
+                대상: id 속성의 idTest
+                이벤트: style(css)
+                이벤트핸들러:  class 속성의 title(대상과 같음), text-indent 적용
+            */
+            jQuery("#idTest").css("color","orange");
+        });
+
+    </script>
+	
+ </head>
+
+ <body>
+	<h3 class="title"><span>#</span> jQuery(기본요소)선택자</h3>
+    <p id="idTest">기본(요소,속성) 선택자: 태그,id, class 선택자</p>
+    <hr/>
+
+    <h4>아래 문제풀기</h4>
+    <div>
+        <p>중요 각각마다 : 대상 이벤트 이벤트핸들러 구분하기</p>
+        <p>전체를 대상으로 글자색상 gray 적용하기</p>
+        <p>class명이 title인 값 선택하고 왼쪽 10px solid red 적용하기</p>
+        <p>class명이 title인 값 선택하고, 아래쪽 선 1px solid red 적용하기</p>
+        <p>class명이 title인 값 건택하고, 글자 들여쓰기 1em 적용하기</p>
+        <p>중요) 대상이 같아도 그냥 나열해서 사용하기 (합치는 부분 진도에 있음)</p>
+    </div>
+    <script>
+        jQuery(document).ready(function(){
+            /*
+                대상 : body
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자색상 gray
+            */
+            jQuery("body").css("color","gray");
+
+            /*
+                대상 : .title
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 보더왼쪽
+            */
+            jQuery(".title").css("borderLeft","10px solid red");
+
+            /*
+                대상 : .title
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 보더아래쪽
+            */
+            jQuery(".title").css("borderBottom","1px solid red");
+
+            /*
+                대상 : .title
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자 들여쓰기
+            */
+            jQuery(".title").css("textIndent","1em");
+           
+
+            /*
+                대상 : #idTest
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자색상orange
+            */
+            jQuery("#idTest").css("color","orange");
+
+            /*
+                대상 : h4
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자색상 purple
+            */
+            jQuery("h4").css("color","purple");
+
+            /*
+                대상 : h2와 span
+                이벤트 : style(css)
+                이벤트핸들러 : 2개를 한꺼번에 선택한다면 대상과 같음, "예약어" 사용어려움, 글자색상 green
+
+                [중요]
+                    대상과 같음의 "예약어"는 "대상이 하나" 일때만 사용가능
+                    대상과 이벤트핸들러가 같아도 대상이 2개 이상일 경우, "예약어" 사용 불가능
+
+            */
+            /*
+                [정리_대상과 같음에 해당하는 예약어]
+
+                    1) jQuery("h2,span").css("color","green"); , 대상을 한꺼번에 2개로 선택했기ㅣ때문에 "예약어" 사용이 어려움
+
+                    2) 아래처럼 대상을 각각 하나씩 선택한다면 "예약어" 사용이 가능
+
+                        jQuery("h2").css("color","green");
+                        jQuery("span").css("color","green");
+            */
+            jQuery("h2,span").css("color","green");
+
+
+            /*
+                대상 : h2와 span
+                이벤트 : style(css)
+                이벤트핸들러 : 2개를 한꺼번에 선택한다면 대상과 같음, "예약어" 사용어려움, 글자밑줄만들기
+            */
+            jQuery("h2,span").css("textDecoration","underline");
+
+           
+            /*
+                대상 : strong
+                이벤트 : style(css)
+                이벤트핸들러 : strong태그, 배경색상 aqua
+            */
+            jQuery("strong").css("backgroundColor","aqua");
+
+            /*
+                대상 : strong
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자두께빼주기
+
+                [매우중요]
+
+                    1) font-weight의 경우, normal, light,bold 형태로 두께 설정을 할 수 있음
+                    2) script의 경우, 변화되는 과정이나 기능적용이 되어야하기때문에 숫자로 사용하는것이 효과적이다.
+            */
+            jQuery("strong").css("fontWeight","400");
+
+            /*
+                대상 : em
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음,기울기빼기
+            */
+            jQuery("em").css("fontStyle","normal");
+
+            /*
+                대상 : article (시멘틱태그)
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 배경색상, 글자색상
+            */
+            jQuery("article").css("backgroundColor","yellow");
+            jQuery("article").css("color","blue");
+
+            /*
+                [body and * ]
+
+                    1) 모든 요소에 접근할때 *
+                    2) 브라우저의 모든 객체에 접근할 때 : body
+
+                    * DOM (합성어)
+                        : 화면에 등장하는 모든 객체에 접근할 수 있음
+                        
+                        매우중요) js가 뛰어난것은 w3c의 규칙을 지키면서 객체에 접근하기때문에 안정성이 높음
+                        jQuery도 js 언어를 사용하기 때문에 w3c의 규칙을 지킬 수 있음
+                        1.x 버전의 경우엔 익스플로러 구형 브라우저까지 맞출 수 있기때문에 활용도가 높음
+            */
+
+
+        });
+
+
+
+    </script>
+
+    <h2>아래 문제 풀기</h2>
+    <div>
+        <ol>
+            <li>idTest인 값을 선택하고, 글자색상 오렌지 색상으로 변경하기</li>
+            <li>h4 태그 선택하고, 글자색상 보라색으로 변경하기</li>
+            <li>h2,span 태그 선택하고 글자색상 초록색 변경하기</li>
+            <li>h2,span 태그 선택하고, 글자 밑줄 만들기</li>
+            <li>strong 태그 선택하고 배경색상 아쿠아 적용하기</li>
+            <li>strong 태그 선택하고 두께 빼주기</li>
+            <li>em태그 호출하여 글자 기울이지 않도록 만들기</li>
+            <li>article 영역 호출하여 배경색상 노란색, 글자색상 파란색 적용하기</li>
+        </ol>
+    </div>
+    <script>
+        jQuery(document).ready(function(){
+            /*
+                대상 : #idTest
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자색상orange
+            */
+           jQuery("#idTest").css("color","orange");
+
+           /*
+                대상 : h4
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자색상 purple
+            */
+            jQuery("h4").css("color","purple");
+
+            /*
+                대상 : h2
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자색상 green
+            */
+            jQuery("h2").css("color","green");
+
+            /*
+                대상 : span
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자색상 green
+            */
+            jQuery("span").css("color","green");
+
+            /*
+                대상 : h2
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자밑줄만들기
+            */
+            jQuery("h2").css("textDecoration","underline");
+
+            /*
+                대상 : span
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자밑줄만들기
+            */
+            jQuery("span").css("textDecoration","underline");
+
+            /*
+                대상 : strong
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 배경색상 aqua
+            */
+            jQuery("strong").css("backgroundColor","aqua");
+
+            /*
+                대상 : strong
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자두께 100
+            */
+            jQuery("strong").css("fontWeight","100");
+
+            /*
+                대상 : em
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음,기울기빼기
+            */
+            jQuery("em").css("fontStyle","normal");
+
+            /*
+                대상 : article
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 배경색 노란색
+            */
+            jQuery("article").css("backgroundColor","yellow");
+
+            /*
+                대상 : article
+                이벤트 : style(css)
+                이벤트핸들러 : 대상과 같음, 글자색상 blue
+            */
+            jQuery("article").css("color","blue");
+        
+        });
+    </script>
+    <div>
+        <p>
+            <strong>
+                + script는 2개의 영역이 필요함
+                + 모든 페이지에 js를 사용하기 위한 소스줄 필수
+                + 기능이 되는 script 작성하기
+                + 문제풀기) 첫번째 문법으로 문제풀기
+            </strong>
+        </p>
+        <article>
+            <h3>body 영역에 script를 작성하는 이유는?</h3>
+            <h4>브라우저에서 읽어주는 순서 필수로 확인하기</h4>
+            <p>
+                <em>
+                    1) body영역
+                    2) style 영역
+                    3) js영역
+                    4) jQuery는 js 없으면 사용하지 못함, 마지막에 읽는 영역
+                </em>
+            </p>
+            <p>
+                <em>
+                    body 영역은 브라우저 활성화시 브라우저가 준비가 되어야하기때문에 가장 빠르게 읽는 영역
+                    * script영역을 body 영역에 작성하면 어느정도 속도를 보완할 수 있음
+                    * body 영역은 가장 상단이나 하단에 작성함
+                </em>
+            </p>
+            <p>
+                1) script는 style처럼 분해하여 사용이 가능함
+                2) body에서 소스줄만 연결해서 사용하는 경우도 많음
+                3) body 영역에서는 여러가지 소스들이 연결되어 꼬여있을 수 있기때문에 중간에 작성하는것은 굉장히 위험함
+            </p>
+        </article>
+        <hr/>
+
+        <dl>
+            <dt>기본 요소 선택자</dt>
+            <dd>tag,id,class 접근하기</dd>
+            <dd>모든 "공간"은 0번부터 시작함</dd>
+            <dd>모든 "숫자"은 1번부터 시작함</dd>
+
+            <dt>영억순서_활용하기</dt>
+            <dd>1) body부터 읽음</dd>
+            <dd>2) style</dd>
+            <dd>3) script 영역 (js, jQuery)</dd>
+            <dd>
+                <em>
+                    body 1차 영역, style 2차 영역, script 3차 4차 영역
+                    기능이나 효과를 적용하면 script영역이 가장 마지막이기때문에 최신의 값을 담당하는 경우가 많음
+                </em>
+            </dd>
+            <dd>
+                script의 느려지는 효과를 html5의 동적인 요소와 섞어서 사용할 수 있다면 안전하고 빠르게 만들 수 있음
+            </dd>
+
+        </dl>
+        <hr/>
+
+        <div id="basicWrap">
+            <h2>부모 자녀 요소 선택자</h2>
+            <ul class="ulParent">
+                <li>
+                    03) ulParent의 자녀요소 중 li요소
+                    <ul>
+                        <li>MO_0의 객체 (손자요소)</li>
+                        <li>MO_1의 객체 (손자요소)</li>
+                        <li>MO_2의 객체 (손자요소)</li>
+                        <li>MO_3의 객체 (손자요소)</li>
+                        <li>MO_4의 객체 (손자요소)</li>
+                    </ul>
+                </li>
+                <li class="theSon">04) 자녀요소 테스트 중입니다.</li>
+                <li>05) 선택한 요소를 기준으로 자녀요소들 선택</li>
+                <li>06) 선택한 요소를 기준으로 부모요소 선택</li>
+                <li>07) 태그명의 하위요소 중 h3 요소 선택</li>
+
+            </ul>
+
+            <h3><b>*</b>08) 형, 동생 요소 선택자</h3>
+            <ul>
+                <li>첫째</li>
+                <li class="no2">09) 현재 선택한 요소를 기준으로 형제요소중 "다음요소" 선택</li>
+                <li>셋째</li>
+                <li>넷째</li>
+                <li class="no5">10) 현재 선택한 요소를 기준으로 형제요소중 "이전요소" 선택</li>
+            </ul>
+
+            <h3>형제들 선택</h3>
+            <ul>
+                <li>형제1</li>
+                <li>형제2</li>
+                <li>형제3</li>
+                <li class="lis">형제4: 선택한 요소를 기준으로 형제들 선택</li>
+                <li>형제5</li>
+            </ul>
+        </div>
+    </div>
+ </body>
+</html>

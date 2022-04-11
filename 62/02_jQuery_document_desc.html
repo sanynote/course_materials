@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>jQuery_document_desc</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	
+ </head>
+
+ <body>
+	<dl>
+        <dt>문제1: 첫번째 문법 사용하기 jQuery 구현하기</dt>
+        <dd>
+            <h2>h2 태그에 배경색상 빨간색 적용하기 (합성어 사용하기)</h2>
+            <p>: 대상, 이벤트, 이벤트핸들러 구분하기</p>
+            <ul>
+                <li>장점1: $(셀렉터)를 사용되는하지않기때문에 php와 충돌우려가 없음</li>
+                <li>장점2: 문서가 준비되면 가장 안전함, 복잡한 기능도 안전하게 처리가 가능함</li>
+                <li>단점1: 문서가 준비되지않으면 화면에 아무것도 나타나지 않음, loop(무한로딩현상)</li>
+                <li>단점2: 대상 선택시 jQuery로 선택하기때문에 대상을 구분하는데 오래 걸림</li>
+            </ul>
+        </dd>
+    </dl>
+    <p>
+        * 첫번째 문법이 제이쿼리 4개의 문법중에 가장 느림
+    </p>
+    <script>
+        // ver-1 : 제이쿼리의 문서가 준비되면 기능구현 해주세요
+        jQuery(document).ready(function(){
+
+            /*
+
+                문제: h2 태그에 배경색상 빨간색 적용하기
+
+                대상: h2 태그
+                이벤트: style(css)
+                이벤트핸들러: h2 태그 (자기자신과 같음), 배경색상 빨간색 적용
+            */
+            jQuery("h2").css("backgroundColor","red");
+        });
+    </script>
+    <hr/>
+
+    <dl>
+        <dt>문제2: 두번째 문법 사용하기 jQuery 구현하기</dt>
+        <dd>
+            <div>div 태그에 배경색상 pink 적용하기 (합성어 사용하기)</div>
+            <p>: 대상, 이벤트, 이벤트핸들러 구분하기</p>
+            <ul>
+                <li><strong>장점1: </strong> 세번째 문법에서 준비가 되지않아 깨질때 사용할 수 있는 안전한 문법</li>
+                <li><strong>장점2: </strong> 문서가 준비되면 기능을 안전하게 구현할 수 있음</li>
+                <li><strong>장점3: </strong> 
+                   jQuery로 선택하면 기능인지? 문서인지? 다른 효과들인지 구분이 필요함 (인지속도가 느림)
+                    $(셀렉터) 기호는 선택만 하기때문에 대상을 인지하는 속도가 "매우빠름"
+                    두번쨰 문법의 장점: 대상은 빠르게 선택하고, 문서는 안전하게 사용할 수 있음 (외국자료들이 2번때 문법이 많음)
+                </li>
+
+                <li><strong>단점1: </strong>대상을 $(셀렉터)로 사용하기때문에 php 문서와 충돌이 발생함</li>
+                <li>
+                    <strong>단점2: </strong>문서가 준비되지않으면 무한루프현상에 빠질 수 있음
+                    문서를 준비하는 과정자체가 느려질 수 있음
+                </li>
+                <li>
+                    * 현재의 pc들은 처리속도가 빨라져서 무한 loop 현상에 빠질 우려가 
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <script>
+        // ver-2 : 선택한 문서가 준비가 되면 기능구현 해주세요
+        $(document).ready(function(){
+
+            /*
+                대상: div 태그
+                이벤트: style(css)
+                이벤트핸들러: div 태그 (자기자신과 같음), 배경색상 pink 적용
+            */
+            $("div").css("backgroundColor","pink");
+        });
+    </script>
+
+    <dl>
+        <dt>문제3: 두번째 문법 사용하기 jQuery 구현하기</dt>
+        <dt>수정된 문제3: 세번째 문법 사용하기 jQuery 구현하기</dt>
+        <dd>
+            <p class="pTag">현재 p태그에만 border:1px solid blue 적용하기</p>
+            <p>: 대상, 이벤트, 이벤트핸들러 구분하기</p>
+            <ul>
+                <li>
+                    <strong>장점1:</strong> 
+                </li>
+                <li>
+                    <strong>장점2:</strong> 문서를 준비하지않고, 기능을 구현하기때문에 문서가 준비될 시간이 필요없음
+                    jQuery중에서 가장 빠름
+                </li>
+                <li>
+                    <strong>단점1: </strong> php 문서에서는 선택자로 $(셀렉터)만 사용함
+                    한 문서에 php와 jQuery를 함께 사용할 경우, 공통의 $(셀렉터)로 인해 오류가 발생함
+                    (jQuery와 php 구분이 어려움)
+                    <strong>단점2: </strong> 브라우저를 활성화 하자마자 기능을 구현하기때문에 기능이나 문서가 째딜 확률이 매우 높음
+                    화면에 아무것도 출력되지 않거나(white-space) , 이벤트 기능들이 전부 작동되지 않을 수 있음 (hover,focus,click...)
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <script>
+        // ver-2 : 선택한 문서가 준비가 되면 기능구현해주세요
+        /* ver-2에 대한 풀이
+            $(document).ready(function(){
+                
+
+                    문제: 현재 p태그만 ..(id? class?) class명 pTag만 선택하여 border 적용
+
+                    대상: .pTag (class 속성)
+                    이벤트: style(css)
+                    이벤트핸들러: .pTag (대상과 같음), border 적용
+                
+                $(".pTag").css("border","1px solid blue");
+            });
+        */
+
+       // ver-3: 선택한 기능구현하기
+
+        $(function(){
+
+            $(".pTag").css("border","1px solid blue");
+        });
+    </script>
+
+    <dl>
+        <dt>문제4:세번째 문법으로 사용하기 jQuery 구현하기</dt>
+        <dt> 수정된 문제4:네번째 문법으로 사용하기 jQuery 구현하기</dt>
+        <dd>
+            <h3>text headline h3</h3>
+            <p>h3 호출하여 글자크기 26px 변경하기 (합성어 표현하기)</p>
+            <p>: 대상, 이벤트, 이벤트 핸들러 구분하기</p>
+            <ul>
+                <li><strong>장점1: </strong> 선택하는 대상이 $가 아니기때문에 세번째 문법보다 조금 느리지만 php와 충돌이 없음</li>
+                <li><strong>장점2: </strong> 세번째 문법처럼 문서를 준비하지 않기때문에 기능구현이 빠름</li>
+                <li><strong>단점: </strong> 준비없이 만들어지기때문에 기능구현, 대상선택등에 문제가 발생할 수 있음</li>
+            </ul>
+        </dd>
+    </dl>
+    <p>정리) php가 없다면 두번째 문법 || 세번째 문법의 활용도가 매우 높음</p>
+
+    <script>
+        // ver-3 : 셀렉터를 이용한 기능 구현하기
+        /*
+        $(function(){
+            
+                문제: h3 태그 호출하여 글자크기 26px 적용하기
+                대상: h3 태그
+                이벤트: style(css)
+                이벤트핸들러: h3 태그(대상과 같음) , 글자크기 변경
+            
+            $("h3").css("fontSize","26px");
+        });
+        */
+
+        // ver-4 : jQuery를 이용한 기능구현하기
+        jQuery(function(){
+            jQuery("h3").css("fontSize","26px");
+        })
+    </script>
+
+ </body>
+</html>
