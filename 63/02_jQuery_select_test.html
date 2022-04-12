@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>jQuery_select_test</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	
+ </head>
+
+ <body>
+    <h3>jQuery 실습문제1 (jQuery, 선택자)</h3>
+    <p>
+        필수) 대상, 이벤트, 이벤트핸들러 작성하기
+    </p>
+    <ol>
+        <li>현재 ol태그가 끝난 아래 부분에 script 영역 만들기</li>
+        <li>첫번째 버전에 해당하는 jQuery 문법 사용하기 (주석글에 내용작성)</li>
+        <li>body를 기준으로 글자색상 파란색 적용하기</li>
+        <li>h3의 글자색상 123456 적용하기</li>
+        <li>
+            <h4>h4 태그에 아래스타일효과 적용하기</h4>
+            <p>+ 외곽선 왼쪽 10px dashed 골드 적용하기</p>
+            <p>+ 글자 들여쓰기 10px 적용하기</p>
+            <p>중요) 합성어일때 대문자 표현해주기</p>
+        </li>
+    </ol>
+    <!-- 기능이 되는 script 영역 아래에 만들기 -->
+    <script>
+        // ver-1 : 제이쿼리의 문서가 준비되면 기능구현 해주세요
+        jQuery(document).ready(function(){
+
+            /*
+				대상:			body
+				이벤트:			style (css)
+				이벤트 핸들러 :	body (대상과 같음)	, color 적용
+			*/
+            jQuery("body").css("color","#00f");
+
+            /*
+				대상:			h3태그
+				이벤트:			style (css)
+				이벤트 핸들러 :	h3 (대상과 같음)	, color 적용
+			*/
+            jQuery("h3").css("color","#123456");
+
+            /*
+				대상:			h4
+				이벤트:			style (css)
+				이벤트 핸들러 :	h4 (대상과 같음)	, border,textIndent 적용
+			*/
+            jQuery("h4").css("borderLeft","10px dashed gold").css("textIndent","10px");
+
+        })
+    </script>
+
+    <h3>jQuery 실습문제2 (선택자)</h3>
+    <ol class="using">
+        <li>현재 ol태그가 끝나는 영역 아래에 script 영역 만들기</li>
+        <li>두번째 문법 사용하기, 문법의 내용 작성하기 (주석글)</li>
+        <li>using 의 배경색상 abcdef 적용하기</li>
+        <li>using 의 글자 밑줄 만들기</li>
+        <li>using 의 블릿기호 없애기</li>
+        <li class="last">현재 요소의 부모요소의 다음요소 그 다음요소에 글자 윗줄 만들기(누가 바뀌는지 정확하게 확인하기)</li>
+    </ol>
+    <!-- 기능이 되는 script 영역 아래에 만들기 -->
+    <script>
+        // ver-2 : 선택한 문서가 준비가 되면 기능구현해주세요
+        $(document).ready(function(){
+
+            /*
+				대상:			class명 .using (ol태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.using (대상과 같음)	, 배경색상,글자밑줄,블릿기호 제외 적용
+			*/
+            $(".using").css("backgroundColor","#abcdef").css("textDecoration","underline").css("listStyleType","none");
+
+            /*
+				대상:			class명 .last (li태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.last의 부모요소의 다음요소 그 다음요소	, 글자 윗줄 만들기
+			*/
+            $(".last").parent().next().next().css("textDecoration","overline");
+        })
+    </script>
+
+    <h2 id="basic">jQuery 실습문제3 (선택자)</h2>
+    <ul>
+        <li id="one">3번째 문법 사용하기 (주석글에 내용 작성하기)</li>
+        <li id="two">id가 basic인 값을 찾아서 아래쪽 선 10px 파란색 적용하기</li>
+        <li>id가 basic인 값 찾아서 왼쪽선 10px 파란색,글자 들여쓰기 15em 적용</li>
+        <li>id가 one인 값 찾아서 글자 가운데 정렬, 글자색상 red 적용</li>
+        <li>id가 two인 값 찾아서 글자 사이즈 22px 글자 초록색 적용</li>
+        <li>id가 two인 값 찾아서 다음요소에 배경색상 초록색, 글자색상 핑크색 적용하기</li>
+        <li>id가 basic인 값 찾아서 이전요소에 배경색상 노란색 적용하기</li>
+    </ul>
+    <!-- 기능이 되는 script 영역 아래에 만들기 -->
+    <script>
+        // ver-3 : 셀렉터를 이용한 기능 구현하기
+        $(function(){
+
+            /*
+				대상:			id명 basic (h2태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	#basic, 아래쪽 선 10px 파란색
+			*/
+            $("#basic").css("borderBottom","10px solid blue").css("borderLeft","10px solid blue").css("textIndent","15em");
+
+            /*
+				대상:			id명 one (li태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	#one, 글자 가운데 정렬, 글자색상 red
+			*/
+            $("#one").css("textAlign","center").css("color","red");
+
+            /*
+				대상:			id명 two (li태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	#two, 글자 크기, 글자색상 green
+			*/
+            $("#two").css("fontSize","22px").css("color","green");
+
+            /*
+				대상:			id명 two (li태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	#two의 다음요소
+			*/
+            $("#two").next().css("backgroundColor","green").css("color","pink");
+
+            /*
+				대상:			id명 basic (h2태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	#basic의 이전요소, 배경색상 변경
+			*/
+            $("#basic").prev().css("backgroundColor","#ff0");
+
+
+
+            // ++++++++++++++++++++++++++++++++++++ 여기부터 아래 문제
+
+
+            /*
+				대상:			class명 using2 (ul태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.using2의 다음요소, 배경색상 글자크기 변경
+			*/
+            $(".using2").next().css("backgroundColor","#ff0").css("fontSize","30px");
+
+            /*
+				대상:			class명 theSon (li태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.theSon의 부모요소, 배경색상 오렌지
+			*/
+            $(".theSon").parent().css("backgroundColor","orange");
+
+            /*
+				대상:			class명 using2 (ul태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.using2의 이전요소, 테두리 생성
+			*/
+            $(".using2").prev().css("border","2px solid red");
+
+            /*
+				대상:			class명 using2 (ul태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.using2의 1차 자녀요소, 글자크기 13 적용
+			*/
+            $(".using2 li").css("fontSize","16px");
+            $(".using2 > li").css("fontSize","13px");
+
+
+            /*
+				대상:			id명 parent (ul태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	#parent, 배경색상 아쿠아 적용
+			*/
+            $("#parent").css("backgroundColor","aqua");
+
+            /*
+				대상:			class명 only (li태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.only 의 형제요소, 외곽선아래 적용
+			*/
+            $(".only").siblings().css("borderBottom","1px dotted brown");
+
+            /*
+				대상:			class명 only (li태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.only 의 다음요소, 배경색, 글자색 변경
+			*/
+            $(".only").next().css("backgroundColor","#000").css("color","#fff");
+
+            /*
+				대상:			id명 parent (ul태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	#parent 의 자녀요소인only, 글자크기 변경
+			*/
+            $("#parent").children(".only").css("fontSize","16px");
+
+
+            /*
+				대상:			class명 now1 (li태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.now1 의 부모요소의 이전요소, 보더적용
+			*/
+            $(".now1").parent().prev().css("border","3ps solid red");
+
+            /*
+				대상:			class명 now2 (li태그) 의 부모요소
+				이벤트:			style (css)
+				이벤트 핸들러 :	.now2 부모요소를 기준으로 이전의 이전요소, 배경색 핑크
+			*/
+            $(".now2").parent().prev().prev().css("backgroundColor","pink");
+
+            /*
+				대상:			class명 now3 (p태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.now3, 글자크기 굵기 배경색상 변경
+			*/
+            $(".now3").css("fontSize","30px").css("fontWeight","700").css("backgroundColor","#ff0");
+
+
+            /*
+				대상:			class명 now3 (p태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.now3의 형제요소, 글자색상 배경색상 변경
+			*/
+            $(".now3").siblings().css("color","#fff").css("backgroundColor","green");
+            
+
+            /*
+				대상:			class명 now3 (p태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.now3의 이전의 이전요소, border 변경
+			*/
+            $(".now3").prev().prev().css("border","1px solid #000");
+            
+
+            /*
+				대상:			class명 now3 (p태그) 
+				이벤트:			style (css)
+				이벤트 핸들러 :	.now3의 형제요소, 배경색상,글씨색상 변경
+			*/
+            $(".now3").siblings().css("color","#000").css("backgroundColor","#efefef");
+        });
+    </script>
+
+    <h2 id="h2">using2Test</h2>
+    <ul class="using2">
+        <li>
+            <ul>
+                <li>using2를 기준으로 다음요소에 배경색상 노란색, 글자크기 30px 적용</li>
+                <li class="theSon">현재 요소를 기준으로 부모요소에 배경색상 오렌지 적용</li>
+            </ul>
+        </li>
+        <li>using2를 기준으로 이전요소에 테두리 생성하기 2px 빨간 실선</li>
+        <li>using2를 기준으로 "1차 자녀요소" 까지만 접근하여 글자크기 13px 적용(중요) 단독사용이 안 될 수 있음</li>
+    </ul>
+    <ul id="parent">
+        <li>parent 영역에 배경색상 아쿠아 적용하기</li>
+        <li class="only">only 요소의 "형제요소만" 외곽선 아래쪽 dotted 브라운 적용하기</li>
+        <li>only의 다음요소에 배경색상 검정색, 글자색상 하얀색 적용하기</li>
+        <li>parent를 기준으로 "자녀요소인 only를 정확하게 선택"하고, 글자크기 16px 적용하기</li>
+        <li class="now1">현재 li 태그를 기준으로 부모요소의 이전요소에 접근하여 테두리 적용, 3px 빨간색 실선 적용하기</li>
+        <li class="now2">현재 요소의 부모요소를 기준으로 이전의 이전요소에 접근하여 배경색상 pink 적용하기</li>
+        <li>매우중요) 아래에 script 영역을 만드는 것이 아니라 h2 태그 id="h2" 태그 위의 script 영역에 문제풀기</li>
+    </ul>
+    <p>
+        매우중요) 문제풀 때 매우 중요사항
+        1) 적용하`고 확인하면서 작업하기 (적용 후, 새로고침을 이용하여 부모와 자녀, 친구 요소의 적용되는 것 확인하기)
+        2) 이슈문제발생: 영역에 대한 문제
+        * 2번에 발생한 문제가 어떤 문제인지 이메일에 작성하여 제출하기 (이슈문제 발견이 중요사항)
+
+    </p>
+    <p class="now3">
+        현재 문제들 전부, 대상,이벤트,핸들러 나누기. 대상이 같으면 메서드체인 사용하기
+    </p>
+    <p>
+        위에 만들어진 now3를 호출하여 배경색상 노란색, 글자크기 30px 글자 굵게
+    </p>
+    <hr/>
+
+    <p>
+        now3의 형제 요소들을 선택하여 배경색상 초록색, 글자색상 하얀색
+        형제 요소에 적용이 잘 되는지 확인해서 제출하는데 hr 를 기준으로 위까지 적용되는지
+        아래까지 적용되는지 확인하기
+    </p>
+    <p>
+        추가) 
+        1) now3 이전의 이전요소에 border:1px solid #000 적용하고, 어떤 객체가 적용되는지 확인하기
+        2) now3의 형제요소들 배경색상 #efefef 적용하고 글자색상 검정색 적용하기
+            (위의 정리와 아래 중에 어떤 것 적용되는지 확인하기)
+ 
+    </p>
+ </body>
+</html>
