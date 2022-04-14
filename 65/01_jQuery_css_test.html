@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>jQuery_css_test</title>
+   <meta charset="utf-8"/>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+   <style>
+      *{margin:0; padding:0;}
+      body{margin:0; padding:0;}
+
+
+      /* 첫번째 실습문제 */
+      #wrap{max-width:1920px; width:100%;}
+      /* pc 버전 */
+         #media{width:100%; background-color:#efefef;}
+         #media p{width:1025px; background-color:#caf; margin:0 auto;}
+      /*############### 태블릿 pc버전 #################*/
+		@media all and (min-width:768px) and (max-width:1024px){
+         #media{width:100%; background-color:#efefef;}
+         #media p{width:768px; background-color:#caf; margin:0 auto;}
+         
+      }
+      /*############### 스마트폰 가로버전 #################*/
+		@media all and (min-width:481px) and (max-width:767px){
+         #media{width:100%; background-color:#efefef;}
+         #media p{width:481px; background-color:#caf; margin:0 auto;}
+         
+      }
+
+      /*############### 스마트폰 세로버전 #################*/
+		@media all and (min-width:320px) and (max-width:480px){
+         #media{width:100%; background-color:#efefef;}
+         #media p{width:320px; background-color:#caf; margin:0 auto;}
+         
+      }
+
+
+      /* 두번째 실습문제 */
+      #pArea{width:100%; height:700px; background-color:#00f; overflow:hidden;}
+      #pArea p{width:300px; height:300px; background-color:#ff0; text-indent:-9999px; margin:200px auto 0;}
+
+      /* 세번째 실습문제 */
+      #abs{width:100%; height:700px; background-color:gold; position:relative;}
+      #abs p{width:400px; height:200px; background-color:pink; text-align:center; line-height:200px; position:absolute; left:50%; top:50%;}
+   </style>
+
+ </head>
+
+ <body>
+   <h2 id="basic">jQuery_part1 에서 배울 내용들 정리</h2>
+   <ol>
+      <li>선택자, 기본요소 선택자 (id, class, tag)</li>
+      <li>선택자, 부모, 자녀, 다음요소, 이전요소 ...</li>
+      <li>DOM을 포함한 선택자는 계속해서 진행함!</li>
+      <li>effect (효과), 슬라이드, 페이드(인, 아웃), 기타등등...</li>
+      <li>event (자극을 주는 기능), css에서는 hover, a태그를 이용한 focus, jQuery (클릭)</li>
+      <li>* event 핵심 : 마우스와 키보드 동시에 사용하는 기능 만들기</li>
+      <li>* 상대크기와 상대 위치에 맞추는 작업</li>
+      <li>DOMControl 파트_jQuery(핵심)</li>
+      <li>animate(jQuery의 가장 뛰어난 기능, 뛰어난 효과)</li>
+   </ol>
+   <hr/>
+   <h2>이론문제</h2>
+   <h3>문제1) animation과 transition의 차이에 대하여 작성하기</h3>
+   <p>
+      animation vs gif
+
+      animation : "이벤트가 없어도" 작동하는 효과
+      (gif):"이벤트가 없어도" 움직이는 이미지
+      : 사용자가 직접 컨트롤 할 수 있는지 확인이 필요함
+      : gif 사용자가 직접 컨트롤 "할 수 없음 (웹 접근성과 연관이 없음)"
+      : animation (hover에 작동 부분을 만들면 "컨트롤이 가능함")
+      : ex) 대상:hover{animation:myani 1s 1;}: hover 했을때만 작동할 수 있도록 만듦
+      * animation은 hover에 작동값을 만들 수 있지만, hover에 작성하지 않아도 animation은 작동이 가능함
+   </p>
+   <p>
+      transition: 자동으로 움직이지 않음, "이벤트"가 있어야만 작동이 가능함
+   </p>
+   <h3>문제2) 반응형, 절대형, 적응형에 대하여 구분하고 내용작성하기</h3>
+   <p>
+      반응형: 작은 움직임에도 반응하는 페이지 (주로 % 사용)
+      절대형: 정확한 크기를 고정시켜두고 사용하는 페이지 (주로 px 사용)
+      적응형: 반응형과 절대형을 섞어서 만드는 페이지 (px, % 섞어 사용)
+
+   </p>
+   <h3>문제3) 스킵네비를 만드는 이유와 필수로 사용되는 태그 작성하기</h3>
+   <p>
+      몸이 불편한 사람들이 탭으로 이동할 수 있게 하려고 , a태그
+   </p>
+
+   <h3>문제4) 비디오 태그 사용시 음소거를 작성하는 이유는?</h3>
+   <p>
+      갑자기 소리가 재생되어서 발생하는 문제들을 페이지 만든 사람이 책임져야해서 그 문제를 미연에 방지하려고
+   </p>
+   <h3>문제5) 모바일 브라우저와 액정 해상도의 크기가 다른 이유는?</h3>
+   <h3>문제6) 엔진명을 작성하는 작업을 무엇이라고 할까?</h3>
+
+   <h3>문제7) jQuery 사용시 script 영역이 2개가 필요한 이유는?</h3>
+   <p>
+      전체영역에 js 소스를 제공받기 위한 script 작성
+      기능적용이 필요한 script 작성
+   </p>
+   
+   <h3>문제8) form 태그 사용시 유효성검사에 해당하는 부분으로 빈칸이지 않도록 설정하는 방법은?</h3>
+   <p>#none</p>
+   <h3>문제9) form 에서 자동완성 기능을 막는 방법은?</h3>
+   <p>autocomplete="off"</p>
+   <h3>문제10) 제이쿼리 문법중 2번째 문법의 장.단점 작성하기</h3>
+   <p>
+      장점: 안전하다.
+      단점: php와 같이 사용했을때 셀렉터때문에 충돌할 수 있다.
+
+   </p>
+   <h3>문제 11) $(셀렉터) 특수기호 사용시 장점과 단점 작성하기</h3>
+   <p>
+      장점: 
+      단점: php와 사용시 충돌할 수 있다
+   </p>
+   <h3>문제12) script영역을 body 영역에 작성하는 이유는?</h3>
+   <p>가장 빠르게 읽히기때문에</p>
+   <h3>문제13) 문제12번과 같이 작성할 경우 생길수 있는 문제점은?</h3>
+   <p>선택자를 사용할때 인식이 되어, 방해가 될 수 있다</p>
+
+   <h3>문제14) (){} 괄호와 ({}) 괄호의 뜻은?</h3>
+   <p>
+      (){}: 조건이 맞으면 기능적용해주세요
+      ({}): 조건이 기능이 되는 괄호
+   </p>
+   <h3>문제15) input태그를 img태그처럼 사용할때 반드시 작성되어야 하는 속성들 나열하기</h3>
+   <p>id type name</p>
+   <h3>매우중요 ) 문제16) form태그에서 기입된 내용을 넘겨줄떄 반드시 필요한 버튼과 속성들 나열하고, 이유 작성하기 (db영역에 많이 나오는 문제)</h3>
+   <p>action, name줄을 타고 정보를 넘겨준다</p>
+
+   <h3>문제17) datalist와 select태그의 차이점은?</h3>
+   <p>datalist는 영역 어디에나 작성 가능하다 (멀어도 가능)</p>
+   <h3>문제18) select태그에서 사용하는 중요 속성들 나열하기 (이유 작성하기)</h3>
+   <p>selected, option</p>
+   <h3>문제19) [] 괄호의 뜻은?</h3>
+   <p>속성괄호</p>
+   <h3>문제20) () 괄호의 2가지 사용방법 작성하기</h3>
+   <p></p>
+   <hr/>
+
+   <h2>실습문제</h2>
+   <h4>여백초기화 작성하기 (*과 body 모두 사용하여 초기화 하기)</h4>
+   <h4>아래 순서에 따라 문제풀기</h4>
+   <ol>
+      <li>현재 ol이 끝난 부분 아래에 div태그 만들기 (전체 영역 전부 사용하기)</li>
+      <li>div태그 영역안에 p태그 담고, content 라는 내용 작성하기 , p태그는 해당하는 영역의 최소 크기에 맞추기</li>
+      <li>미디어 쿼리 범위를 pc, 태블릿 pc, 스마트폰 가로 , 세로 버전으로 나누고 각각의 버전마다 바뀌도록 만들기</li>
+      <li>div는 자연스럽게 움직이도록 만들고, P태그는 화면 가운데 있도록 설정하기</li>
+   </ol>
+   <div id="media">
+      <p>content</p>
+   </div>
+
+   <h4>아래 순서에 따라 문제 풀기</h4>
+   <ol>
+      <li>현재 ol이 끝난 부분 아래에 div 태그 만들기 (전체 영역 사용하기) , 높이는 700px , 배경색상 파란색 적용</li>
+      <li>div 태그 안에 p태그 만들고 300*300px 박스 만들기 (배경색상 노란색 적용), 글자는 p태그 작성하고, 내용만 버리기</li>
+      <li>p태그 margin을 이용하여 div 태그 영역 가운데 두기 (x,y축 가운데 두기)</li>
+   </ol>
+   <div id="pArea">
+      <p>p태그</p>
+   </div>
+
+   <h4>아래 순서에 따라 문제 풀기</h4>
+   <ol>
+      <li>현재 ol이 끝난 부분 아래에 div 태그 만들기 (전체 영역 사용하기) , 높이는 700px , 배경색상 골드 적용</li>
+      <li>div태그 안에 p태그 만들고 400*200px 박스 만들기 (배경색상 pink 적용), 글자는 p태그 작성하고 , x y 축 가운데 두기</li>
+      <li>p태그 absolute 를 이용하여 div 태그 영역 가운데 두기</li>
+      <li>* 중요) 바로 위의 margin 방법 현재의 absolute 방법 모두 화면을 줄여도 p태그 객체가 가운데 있어야 함!</li>
+   <ol>
+   <div id="abs">
+      <p>p태그</p>
+   </div>
+
+   <h4>아래 순서에 따라 문제 풀기</h4>
+   <ol>
+      <li>현재 ol이 끝난 부분 아래에 div 태그 만들기 , 너비는 전체 사용하고, 높이는 임의 설정, 배경색상 pink적용</li>
+      <li>
+         div 태그 안에 p태그 만들고 , 200*200 박스 만들기 (배경색상 red 적용)<br/>
+         글자는 transform 작성하고, 하얀색 적용한 후, xy 가운데 두기
+      </li>
+      <li>위에 만들어진 p태그 absolute 방식과 translate 방식을 사용하여 화면 가운데 두기 (화면을 죽여도 가우데 둬야 함!)</li>
+   </ol>
+   <hr/>
+
+   <h4>아래 순서에 따라 문제 풀기 (jQuery로 문제 풀기)</h4>
+   <ol>
+      <li>head 영역에 제이쿼리 첫번쨰 문법 사용하기</li>
+      <li>h4태그 들에 배경색상 밝은 회색 나오도록 만들기</li>
+      <li>현재 ol이 끝난 부분 아래에 p태그 만들기 (100px* 30px 만들고, 내용은 button 작성하기)</li>
+      <li>p태그의 글자는 x, y 축 가운데 두고, 배경색상은 아쿠아 적용하기</li>
+      <li>button으로 만든 p태그 클릭하면 h2 태그들의 글자 크기 16px로 변경되도록 만들기</li>
+      <li>button 클릭하면 h4태그들의 들여쓰기 16px 적용하기</li>
+   </ol>
+
+   <h4>아래 순서에 따라 문제풀기 (jQuery문제 풀기)</h4>
+   <ol>
+      <li>현재 ol이 끝난 부분 아래에 input태그 만들기 (form 은 필요없음)</li>
+      <li>input태그 버튼으로 만들고 내용은 클릭이 나오도록 작성하기</li>
+      <li>input태그 아래에 div 태그 만들기, 내용은 jQuery Box 작성하기</li>
+      <li>input태그 클릭하면 div 태그가 400* 200이 되도록 만들고, 배경색상 노란색 적용하기</li>
+      <li>input 태그 클릭하면 div 태그 4방향 모서리가 동그랗게 표현되도록 만들기</li>
+   </ol>
+ </body>
+</html>
