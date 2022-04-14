@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>accordian</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <style>
+        *{margin:0; padding:0;}
+        li{list-style:none;}
+
+        h2, h3{text-align:center;}
+        div{width:100%;}
+        ul{width:400px; padding-top:50px; margin:0 auto;}
+        ul li{width:400px;}
+        li h4{width:100%; height:40px; line-height:40px; background-color:#efefef; text-align:center; border-bottom:2px solid #aaa;}
+        li p{width:100%; color:#fff; background-color:purple; display:none;}
+
+
+    </style>
+
+    <script>
+        $(function(){
+
+            /*
+                애플을 클릭하면 해당하는 아래 설명 나타나도록 만들기
+
+                대상:			.app h4
+                이벤트:			click 
+                이벤트 핸들러 :	.app p (display:block)
+
+            */
+
+            $(".app h4").click(function(){
+                $(".app p").css({"display":"block"});
+            });
+
+            /*
+                삼성을 클릭하면 애플 부분 닫히고, 엘지 부분 닫히고 삼성 부분 나타나도록 만들기
+
+                대상:			.sam h4
+                이벤트:			click 
+                이벤트 핸들러 :	.app p{display:none}
+                                .sam p{display:blcok}
+                                .lg p{display:none}
+
+            */
+
+            $(".sam h4").click(function(){
+                $("li p").css({"display":"none"});
+                $(".sam p").css({"display":"block"});
+            });
+
+            /*
+                엘지 클릭하면 애플, 삼성 닫히고, 엘지 부분 설명 나타나도록 만들기
+
+                대상:			.lg h4
+                이벤트:			click 
+                이벤트 핸들러 :	.app p{display:none}
+                                .sam p{display:none}
+                                .lg p{display:block}
+
+            */
+
+            $(".lg h4").click(function(){
+                $("li p").css({"display":"none"});
+                $(".lg p").css({"display":"block"});
+            });
+
+        });
+    </script>
+	
+	
+ </head>
+
+ <body>
+	<h2>accordian</h2>
+    <h3>제한된 공간에서 정보를 제시하는 콘텐츠, 패널을 접을 수 있도록 사용하는 위젯</h3>
+    <div>
+        <ul>
+            <li class="app">
+                <h4>애플</h4>
+                <p>
+                    사용한 ‘애플컴퓨터(Apple Computer, Inc.)’란 회사명을 2007년 ‘애플(Apple Inc.)’로 바꾸었다. 
+                    2008년 경제 전문 &lt;포춘&gt; 지에 의해 미국에서 가장 존경받는 기업으로 선정되었으며, S&amp;P 지수를 구성하는 기업이다.
+                </p>
+            </li>
+            <li class="sam">
+                <h4>삼성</h4>
+                <p>
+                    삼성은 1990년대 초 수십 개의 계열사와 복잡한 사업구조로 인해 기업 이미지는 전혀 체계가 없이 중구난방이었다. 
+                    로고도 삼성을 한자로 표기한 것과 해외에서 쓰는 세 개의 별 마크 등 여러 가지가 공존했다. 이들 로고는 시대에 매우 뒤떨어졌으며
+                    다양한 대상에 일관되게 적용하기에도 복잡한 형태였다. 또한, CEO가 이건희로 바뀌면서 ‘제2의 삼성’이라는 슬로건을 내걸고 있었다. 
+                    이에 따라 1993년 하나의 삼성으로 통일하는 대대적인 리뉴얼이 단행되었다. 이 작업은 미국의 C I전문회사인 L&amp;M이 맡았다.
+                </p>
+            </li>
+            <li class="lg">
+                <h4>엘지</h4>
+                <p>
+                    1931년부터 1946년까지는 구인상회의 상업활동이 전개된 시기, 1947년부터 1950년까지는 락희화학에서 크림을 생산하던 시기,
+                    1951년부터 1960년까지는 락희산업(과거의 럭키금성상사주식회사)설립으로 무역업을 시작하고 주식회사 금성사 설립으로 전자공업을 시작한 시기이다.
+                </p>
+            </li>
+        </ul>
+    </div>
+ </body>
+</html>

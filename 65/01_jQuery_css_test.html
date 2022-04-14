@@ -7,49 +7,111 @@
 
    <style>
       *{margin:0; padding:0;}
+      /*전체 브라우저를 대상으로 지정할 때 body 사용*/
+      /* overflow-x || y 사용, 해당하는 브아루저의 scroll을 생성하거나 숨길때 사용*/
+      /*
+         overflow-x의 경우, 화면 해상도에 맞추고, 1~15px 정도 남았을 때 숨기기위해 정리하는 개념
+
+         * 너비에 맞춰 정확하게 작업하는 게 우선
+         * 정확하게 했는데도 잘 못 찾을 경우에만 overflow:x 사용
+         * 일부 모바일 기기에서는 이걸 사용해도 보이기때문에 너비에 정확히 맞추기
+      */
       body{margin:0; padding:0;}
 
+      .selector{width:400px; height:200px; background-color:lightblue; overflow:auto; margin:50px 0;}
 
-      /* 첫번째 실습문제 */
-      #wrap{max-width:1920px; width:100%;}
-      /* pc 버전 */
-         #media{width:100%; background-color:#efefef;}
-         #media p{width:1025px; background-color:#caf; margin:0 auto;}
+      /* margin 영역 */
+
+      #margin{width:100%; height:600px; background-color:blue; overflow:hidden;}
+      #margin p{width:300px; height:300px; background-color:#ff0; text-indent:-9999px; margin:150px auto 0;}
+
+      /* abs 영역 */
+      #abs{width:100%; height:700px; background-color:gold; position:relative;}
+      #abs p{width:400px; height:200px; background-color:pink; text-align:center; line-height:200px; position:absolute; left:50%; top:50%; margin-left:-200px; margin-top:-100px;}
+
+      /*
+         [아래 적용방식 확인하기_문제점]
+
+            #abs p{width:400px; height:200px; background-color:pink; text-align:center; line-height:200px; position:absolute; left:760px; top:250px;}
+
+            : 부모요소가 1920 * 700 일 경우에만 적용이 되는 방식
+            : 해상도가 깨지면 전부 적용되지 않음 (새로 계산하기)
+
+         [해결]
+            : 해상도 || 부모요소 아닌 객체 크기에 따라 작업하기
+
+            absolute는 left:50% top:50%   작성하면 왼쪽 상단이 중심이 돼서 오른쪽 하단에 자리함
+            객체 크기에서 margin-left, margin-top 방향으로 반씩 잡아당기기
+
+      */
+
+      /* trans 영역 */
+      #trans{width:100%; height:600px; background-color:pink; position:relative;}
+      #trans p{width:400px; height:200px; background-color:red; color:#fff; text-align:center; line-height:200px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
+
+      /*
+         [translate 활용하기]
+
+            : translate는 현재 위치값을 알 수 있어서 현재 위치에서부터 x,y 반씩 잡아당기면 가운데 배치가 가능함
+            : relative가 위와 같은 속성을 가지지만 position 효과는 2개를 동시에 사용할 수 없기때문에
+            50%로 이동하고 제자리에서 translate로 이동하는 방식을 사용함
+
+            * translate는 제자리의 값을 저장할 수 있음
+      */
+      /* media 영역 */
+      #media{width:100%; background-color:#ccc;}
+      #media p{background-color:red; width:1025px; color:#fff; text-align:center; line-height:100px; margin:0 auto;}
+
+
       /*############### 태블릿 pc버전 #################*/
 		@media all and (min-width:768px) and (max-width:1024px){
-         #media{width:100%; background-color:#efefef;}
-         #media p{width:768px; background-color:#caf; margin:0 auto;}
+         /* scroll이 가지는 17px 정도 빼고 작업하기 750px || 740px */
+         #media p{width:740px; background-color:blue; margin:0 auto;}
          
       }
       /*############### 스마트폰 가로버전 #################*/
 		@media all and (min-width:481px) and (max-width:767px){
-         #media{width:100%; background-color:#efefef;}
-         #media p{width:481px; background-color:#caf; margin:0 auto;}
+         #media p{width:460px; background-color:gold; margin:0 auto;}
          
       }
 
       /*############### 스마트폰 세로버전 #################*/
 		@media all and (min-width:320px) and (max-width:480px){
-         #media{width:100%; background-color:#efefef;}
-         #media p{width:320px; background-color:#caf; margin:0 auto;}
+         #media p{width:300px; background-color:#333; margin:0 auto;}
          
       }
 
+      .pBtn{width:100px; height:30px; background-color:aqua; text-align:center; line-height:30px;}
 
-      /* 두번째 실습문제 */
-      #pArea{width:100%; height:700px; background-color:#00f; overflow:hidden;}
-      #pArea p{width:300px; height:300px; background-color:#ff0; text-indent:-9999px; margin:200px auto 0;}
-
-      /* 세번째 실습문제 */
-      #abs{width:100%; height:700px; background-color:gold; position:relative;}
-      #abs p{width:400px; height:200px; background-color:pink; text-align:center; line-height:200px; position:absolute; left:50%; top:50%;}
    </style>
+   <script>
+      /*
+         ctrl + b 를 누르면 브라우저가 활성화 됨
+         아래의 문법을 보면 문서가 준비될 때 기능을 구현해달라는 요청을 보냄
+
+         준비가 될때 기능을 구현할 수 있도록 요청하지 않으면 본체의 파워를 누르지 않는것처럼 되기때문에
+         아무 변화도 일어나지않음
+      */
+      jQuery(document).ready(function(){
+
+         jQuery("h4").css({"backgroundColor":"#efefef","margin":"30px 0 10px"});
+
+         jQuery("pBtn").click(function(){
+            jQuery("h2").css({"fontSize":"16px","backgroundColor":"#ff0"});
+            jQuery("h4").css({"textIndent":"16px"});
+         })
+
+         jQuery("#btn").click(function(){
+            jQuery("#jQ").css({"width":"400px","height":"200px","backgroundColor":"#ff0","borderRadius":"50px"})
+         })
+      });
+   </script>
 
  </head>
 
  <body>
    <h2 id="basic">jQuery_part1 에서 배울 내용들 정리</h2>
-   <ol>
+   <ol class="selector">
       <li>선택자, 기본요소 선택자 (id, class, tag)</li>
       <li>선택자, 부모, 자녀, 다음요소, 이전요소 ...</li>
       <li>DOM을 포함한 선택자는 계속해서 진행함!</li>
@@ -77,69 +139,204 @@
    <p>
       transition: 자동으로 움직이지 않음, "이벤트"가 있어야만 작동이 가능함
    </p>
+
    <h3>문제2) 반응형, 절대형, 적응형에 대하여 구분하고 내용작성하기</h3>
    <p>
-      반응형: 작은 움직임에도 반응하는 페이지 (주로 % 사용)
-      절대형: 정확한 크기를 고정시켜두고 사용하는 페이지 (주로 px 사용)
-      적응형: 반응형과 절대형을 섞어서 만드는 페이지 (px, % 섞어 사용)
+      반응형: % 를 위주로 제작이 되는 페이지
+      브라우저를 조금만 움직여도 객체들이 반응하는 페이지를 제작할 수 있음
+      : 장점: 부드럽게 움직이기때문에 사용자가 봤을때 이질감이 없음
+      : 단점: 제품이 %로 움직이기때문에 목적이 상실될 수 있음 (제품의 원본이미지가 다르게 표현될 수 있음)
 
    </p>
+   <p>
+      절대형: 제품을 많이 다루는 페이지에서 원본의 이미지가 깨지지 않도록 만들기 위하여 많이 사용하는 방법
+      wide 화면이 많다면 %작업이 가능함 (해상도마다 이미지가 누락되어 보일 수 있기때문에 주의)
+      : 장점: 팀 작업시 정확한 수치를 알 수 있기때문에 작업 효율이 좋음
+      제품의 이미지가 깨지지 않기때문에 안전하게 사용할 수 있음
+      : 단점: 줄어들게되면 딱딱하게 표현됨
+      * 모바일 기기에서는 화면을 줄일 수 없음 (절대형으로 작업해도 문제가 없음)
+   </p>
+   <p>
+      적응형: 반응형 페이지로 아는 경우가 많음 (% 위주로 만든 페이지로 잘못알고있음)
+      : ppt나 설명서를 만들때, 와이드로 구조가 작성된 부분은 %로 사용하고,
+      제품이 되는 부분은 px로 사용했음을 명시해야한다
+
+      * 바깥쪽 전체 사용영역은 %, 안쪽 실제 사용영역은 px로 만든 이유는?
+      실제 사용하는 영역을 보호하기 위하여 px로 제작함
+
+      tip) float 구조로 어렵게 제작되어있다면 px로 수정하는것이 가장 안전함
+      : 제 pc에서는 잘 보여요(% 작업일 경우, 작업중인 화면 해상도에 따라서 다르게 보임)
+      : 단순한 작업일 경우 %를 사용하고, 복잡한 작업일수록 px 사용하기
+   </p>
+
    <h3>문제3) 스킵네비를 만드는 이유와 필수로 사용되는 태그 작성하기</h3>
    <p>
-      몸이 불편한 사람들이 탭으로 이동할 수 있게 하려고 , a태그
+      참고) 구글 반응형 페이지
+      : 스킵네비 제작
+      : 스킵네비 사용하는 이유: (웹 표준과 웹 접근성이 매우 중요함)
+      : 스킵네비는 "웹 접근성" 을 중요하게 표현함 (웹 접근성: 웹에 접근하는 방법)
+
+      * 손이 불편한 분들에게는 scroll 기능을 사용할 수 없기때문에 매우 필수가 되는 기능
+      * 키보드로 조작이 가능한 "네비게이션 제작", tab 키와 enter 키를 사용할 수 있어야 함
+      * tab키를 사용하려면? a태그 (a태그의 focus 사용하기)
    </p>
 
    <h3>문제4) 비디오 태그 사용시 음소거를 작성하는 이유는?</h3>
    <p>
-      갑자기 소리가 재생되어서 발생하는 문제들을 페이지 만든 사람이 책임져야해서 그 문제를 미연에 방지하려고
+      : 음소거 (muted)
+      "웹 표준"
    </p>
    <h3>문제5) 모바일 브라우저와 액정 해상도의 크기가 다른 이유는?</h3>
+   <p>
+      1) 액정해상도는 1920~3000 이상
+      2) 모바일 브라우저 해상도는 위와 같지 않음
+
+      * 가독성에 문제가 생기기때문에 다르게 표현됨
+      * 액정해상도를 따라가다보면 모바일 기기의 화면은 작기때문에 글자가 작게 표현될 수 밖에 없음
+   </p>
    <h3>문제6) 엔진명을 작성하는 작업을 무엇이라고 할까?</h3>
+   <p>
+      -webkit- (크롬, 사파리, 오페라 미니 (모바일 브라우저))
+      -moz- (파이어폭스, 미니서버를 장착하고있기때문에 개발자들이 테스트용으로 많이 사용함)
+      -o- (오페라)
+      -ms- (익스플로러, moz 엔진에 영향을 받음)
+   </p>
 
    <h3>문제7) jQuery 사용시 script 영역이 2개가 필요한 이유는?</h3>
    <p>
-      전체영역에 js 소스를 제공받기 위한 script 작성
-      기능적용이 필요한 script 작성
+      1) js의 무한대의 소스를 가져다 사용하기위하여 script 줄이 필요함
+      (jQuery만 속해있지않고, 수많은 js들이 포함되어있음)
+   </p>
+   <p>
+      2) 기능구현을 위한, 영역표현을 위한 script가 필요함 (1번에 해당하는 자료가 없다면 기능구현이 어려움) 
    </p>
    
    <h3>문제8) form 태그 사용시 유효성검사에 해당하는 부분으로 빈칸이지 않도록 설정하는 방법은?</h3>
-   <p>#none</p>
+   <p>
+      : 웹 접근성에는 24~27개의 규칙이 있음
+      : form 에도 유효성 검사라는 규칙이 있음
+      1) 입력받는 글자가 8자라면 8자까지만 받을 수 있도록 만들어야 함
+      2) 영문이라면 영문만 입력받도록 만들어야 함
+      3) 빈칸처리 부분도 유효성 부분에 중요부분
+      4) 띄어쓰기 금지, -사용 모두, 유효성에 해당하는 부분
+
+      required="required", input 태그에 옆에 와 같이 입력
+   </p>
    <h3>문제9) form 에서 자동완성 기능을 막는 방법은?</h3>
-   <p>autocomplete="off"</p>
+   <p>
+      autocomplete="off" 로 지정하기 (이메일, 선택)
+      : 해외자료는 이메일을 id로 사용함, on으로 사용하려고 함
+      : 국내에서는 이메일을 무분별하게 사용하기때문에 off로 막으려고 함
+   </p>
+
    <h3>문제10) 제이쿼리 문법중 2번째 문법의 장.단점 작성하기</h3>
    <p>
-      장점: 안전하다.
-      단점: php와 같이 사용했을때 셀렉터때문에 충돌할 수 있다.
+      : 선택한 문서가 준비가 되면 기능구현해주세요
+      : $(document).ready(function(){});
+      장점: 모든 대상을 선택할때 $를 사용하기때문에 대상선택이 매우 빠름
+      장점: 문서가 준비가 되면 안전하게 기능구현이 가능함
 
+      단점: 선택자가 $로 되어있기때문에 php 문서와 충돌이 발생할 수 있음
+      단점: 문서가 준비가 되지 않으면 "무한 loop" 현상에 빠질 수 있음
    </p>
    <h3>문제 11) $(셀렉터) 특수기호 사용시 장점과 단점 작성하기</h3>
    <p>
-      장점: 
-      단점: php와 사용시 충돌할 수 있다
+      장점: 대상을 선택하거나 기능을 적용할때 $로 선택했다면 인지속도가 매우 빠름
+      단점: php 가 아니더라도 $셀렉터는 모든 프로그램에서 여러가지 의미로 사용하기때문에
+      충돌이 발생할 수 있음
    </p>
    <h3>문제12) script영역을 body 영역에 작성하는 이유는?</h3>
-   <p>가장 빠르게 읽히기때문에</p>
+   <p>
+      1) body가 1차 영역으로 브라우저 활성화 시 매우 빠르게 읽을 수 있음
+      2) style 영역은 두번째로 빠르게 읽을 수 있음
+      3) script 영역은 세번째, 네번째로 읽을 수 있음
+   </p>
+   <p>
+      script가 느려지는 현상을 body 작성하면 빠르게 읽을 수 있기때문에 script가 빠르게 읽힘
+      body에 속도때문에 script나 php등의 자료를 작성한다면 느려지거나 브라우저를 준비하지 못할 수 있음
+      * 무한루프현상은 이렇나 경우에 발생함
+   </p>
    <h3>문제13) 문제12번과 같이 작성할 경우 생길수 있는 문제점은?</h3>
-   <p>선택자를 사용할때 인식이 되어, 방해가 될 수 있다</p>
+   <p>
+      1) body가 준비되지 못하기때문에 속도가 매우 느려질 수 있음
+      2) script 영역이 body 중간에 있거나 가장 상단, 하단에 있을경우
+      next, prev, siblings, first,last등의 선택자에 걸려서 문제가 될 수 있음 (인지가 불가능한 문제가 발생함)
+   </p>
 
    <h3>문제14) (){} 괄호와 ({}) 괄호의 뜻은?</h3>
    <p>
-      (){}: 조건이 맞으면 기능적용해주세요
+      (){}: 조건이 맞으면 기능적용해주세요 (조건문, 반복문에서 많이 사용)
       ({}): 조건이 기능이 되는 괄호
+      : 매우중요) 질문과 답이 한 쌍으로 만들어져야하는 괄호
+      : backgroundColor:      질문만 하면 끝나지 않음
+      : backgroundColor:red   질문과 답이 한 쌍으로 만들어져야 함
    </p>
+
    <h3>문제15) input태그를 img태그처럼 사용할때 반드시 작성되어야 하는 속성들 나열하기</h3>
-   <p>id type name</p>
+   <p>
+      input id type name, type="image"
+      img 태그로 활용하고 있기때문에 src, alt
+      기본 형태는 input 태그이기때문에 label 대신 title
+
+      input의 id, type, name (action줄이 필요없다면 제외가능), title, src,alt
+   </p>
    <h3>매우중요 ) 문제16) form태그에서 기입된 내용을 넘겨줄떄 반드시 필요한 버튼과 속성들 나열하고, 이유 작성하기 (db영역에 많이 나오는 문제)</h3>
-   <p>action, name줄을 타고 정보를 넘겨준다</p>
+   <p>
+      : form 태그 사용시 action 줄이 필수로 필요함, input에 기입된 name 값들을 넘겨줄 수 있음
+      : js에서 매우 중요) input에 이름을 작성했다면? 어느 속성에 저장될까? 기본값인 value에 저장이 됨
+      : value에 저장된 내용을 name 통해서 넘겨줄 수 있음
+      : input 에 기입하지 않았다면... value값은 내용이 있을까? 없을까?
+      : 빈칸 표현방법은? "" / 공백 표현 방법은? " "
+      : name input (이름 작성하는 input 공간) 이 비어있다면 표현방법은?
+         name.value == ""
+      : js 에서는 변수에 저장되는지 input 에 저장되는지 반드시 구분하기
+   </p>
 
    <h3>문제17) datalist와 select태그의 차이점은?</h3>
-   <p>datalist는 영역 어디에나 작성 가능하다 (멀어도 가능)</p>
+   <p>
+      매우중요) input 태그처럼 datalist, select 태그 모두 공통으로 value에 접근할 수 있음 (value는 기본값)
+   </p>
+   <p>
+      datalist: 한 번만 선택되고 재선택이 어려움
+   </p>
+   <p>
+      select: 여러번 재선택이 가능함
+   </p>
+
    <h3>문제18) select태그에서 사용하는 중요 속성들 나열하기 (이유 작성하기)</h3>
-   <p>selected, option</p>
+   <p>
+      select태그의 속성 (option 태그의 value)
+      select 태그의 value 값을 db를 통해서 넘길 수 있음
+      (select에 name 속성 사용가능, label 태그와 딱을 맞춰주는것이 기본)
+   </p>
    <h3>문제19) [] 괄호의 뜻은?</h3>
-   <p>속성괄호</p>
+   <p>
+      for="visa", type="button", type="text", 속성을 작성할 때 주로 사용함
+      속성괄호</p>
    <h3>문제20) () 괄호의 2가지 사용방법 작성하기</h3>
-   <p></p>
+   <p>
+      1) (), 조건을 물어볼때 사용하는 괄호
+   </p>
+   <p>
+      2) ("backgroundColor"), 조건 || 속성만 작성해도 문제가 없음
+   </p>
+   <p>
+      3) ("backgroundColor","red")  , 조건에 맞거나 속성에 대입되는 값이 있다면 짝을 맞춰주거나 
+      속성 || 조건만 사용해도 문제 없음
+   </p>
+   <p>
+      4) ({}), 질문을 했다면 답을 사용해서 반드시 짝 맞춰주기
+   </p>
+   <h3>value 값 정리</h3>
+   <p>
+      문제 16번을 확인해보면 기본값으로 value를 사용하는것을 알 수 있음
+      input태그에 어떤 값을 기입하면 value 에 저장이 됨, name을 타고 action 줄을 통해서 넘어갈 수 있음
+      * input 공간에 저장된 내용 찾으세요. value 값을 찾아서 비교하기
+      * input 공간의 기본값과 비교하세요 value 값을 찾아서 비교하기
+   </p>
+   <p>
+      select,datalist,input 모두 "value값 기본 값"과 비교하는 경우가 많기때문에 value에 대한 부분 매우 중요
+   </p>
    <hr/>
 
    <h2>실습문제</h2>
@@ -161,7 +358,7 @@
       <li>div 태그 안에 p태그 만들고 300*300px 박스 만들기 (배경색상 노란색 적용), 글자는 p태그 작성하고, 내용만 버리기</li>
       <li>p태그 margin을 이용하여 div 태그 영역 가운데 두기 (x,y축 가운데 두기)</li>
    </ol>
-   <div id="pArea">
+   <div id="margin">
       <p>p태그</p>
    </div>
 
@@ -185,6 +382,10 @@
       </li>
       <li>위에 만들어진 p태그 absolute 방식과 translate 방식을 사용하여 화면 가운데 두기 (화면을 죽여도 가우데 둬야 함!)</li>
    </ol>
+   <div id="trans">
+      <p>p태그</p>
+   </div>
+
    <hr/>
 
    <h4>아래 순서에 따라 문제 풀기 (jQuery로 문제 풀기)</h4>
@@ -196,6 +397,7 @@
       <li>button으로 만든 p태그 클릭하면 h2 태그들의 글자 크기 16px로 변경되도록 만들기</li>
       <li>button 클릭하면 h4태그들의 들여쓰기 16px 적용하기</li>
    </ol>
+   <p class="pBtn">button</p>
 
    <h4>아래 순서에 따라 문제풀기 (jQuery문제 풀기)</h4>
    <ol>
@@ -205,5 +407,9 @@
       <li>input태그 클릭하면 div 태그가 400* 200이 되도록 만들고, 배경색상 노란색 적용하기</li>
       <li>input 태그 클릭하면 div 태그 4방향 모서리가 동그랗게 표현되도록 만들기</li>
    </ol>
+   <input id="btn" type="button" value="클릭" title="클릭"/>
+   <div id="jQ">
+      jQuery
+   </div>
  </body>
 </html>

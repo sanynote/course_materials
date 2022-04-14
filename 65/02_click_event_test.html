@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        /*02) 표현파트: style(css)*/
+
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        dl{width:600px; margin:0 auto; padding:50px 0;}
+
+        h1{width:150px; height:40px; background-color:#ff0; margin:20px auto; font-size:18px; 
+        text-align:center; line-height:40px; border-radius:10px; border:2px solid red; cursor:pointer;}
+
+        h2, h3{width:200px; height:50px; line-height:50px; background-color:#f00; color:#fff; box-shadow:5px 5px 5px #000; border-radius:30px; font-size:18px; text-align:center; margin:0 auto 20px;}
+        h3{background-color:#ff0;}
+
+        ul{width:200px; margin:50px auto 0;}
+        li{width:100%; height:200px; background-color:aqua; margin-bottom:10px;}
+        p{width:300px; height:300px; background-color:pink; margin:0 auto;}
+    </style>
+    <script>
+        //03) 기능파트 (js,jQuery)
+        // ver-2, 선택한 문서가 준비가되면 기능구현해주세요
+
+        $(function(){
+
+            /*
+                h1 클릭하면 알림창 띄우기  "내가 알림창 이다!"
+
+                대상:			h1태그
+                이벤트:			click 
+                이벤트 핸들러 :	알림창
+
+                [추가작업]
+
+                    h1을 클릭하면 dl없애기
+
+                    대상:           dl
+                    이벤트:         css
+                    이벤트핸들러:   display:none; opacity:0;
+
+            */
+
+            $("h1").click(function(){
+                alert("안눙 알냐야!")
+                $("dl").css({"display":"none"});
+            });
+
+            /*
+                대상:			h2태그
+                이벤트:			click 
+                이벤트 핸들러 :	ul li
+            */
+            $("h2").click(function(){
+                $("ul li").css({"listStyle":"none"})
+            
+            });
+
+            /*
+                대상:			h3태그
+                이벤트:			click 
+                이벤트 핸들러 :	ul li
+            */
+
+            
+            $("h3").click(function(){
+                $("ul li").css({"border":"2px dotted red"})
+    
+            });
+
+            /*
+                p태그 클릭:TEST 핑크색상자 클릭하면 담고 있는 글자 x, y축 가운데 배치되도록 만들기
+
+                대상:			p태그
+                이벤트:			click 
+                이벤트 핸들러 :	p 태그 대상과 같음 (글자 x,y축 가운데 배치)
+
+            */
+
+            $("p").click(function(){
+                $("p").css({"textAlign":"center","lineHeight":"300px"})
+            
+            });
+
+           
+
+        });
+    </script>
+	
+	
+ </head>
+
+ <body>
+	<!--01) 구조파트-->
+    <dl>
+        <dt>웹 설계시 해당하는 영역 사용하기</dt>
+        <dd>1) body 영역 필수 (웹의 구조를 작성하는 영역)</dd>
+        <dd>: body 영역이 없으면 style을 만들 수 없음</dd>
+        
+        <dd>2) style 영역, body 영역을 꾸며주기위하여 작성</dd>
+        <dd>: 미디어쿼리: 반응형 페이지 만들기위하여 해상도 편집하는 작업</dd>
+        <dd>3) script 영역, 웹(브라우저)에서 사용되는 모든 기능들을 만들 수 있음</dd>
+        <dd>
+            1) xhtml(정적인페이지,표준법) + script 기능
+            : script에 기능이 모두 작성되어있기때문에 "페이지가 흔들리거나 고장나는 경우" 가 많이 발생함
+        </dd>
+        <dd>
+            2) html5(정적인 페이지,동적인 기능(transition,animation)) + script 기능
+            : script에 의존하는 기능을 html5의 동적인 부분과 합쳐서 사용할 수 있음
+            : 기능의 속도가 빠르고, 안정성이 빠름 
+        </dd>
+        <dd>
+           * 웹 분야에서는 어떤 분야도 js에 대한 이해도가 있는 경우를 선호함 
+        </dd>
+    </dl>
+    <hr/>
+    <dl>
+        <dt>(*) script의 "필수"기능</dt>
+        <dd>1) 아코디언 기능 (header, footer)</dd>
+        <dd>2) 탭 메뉴 (탭 베이직) 기능</dd>
+        <dd>
+            3) 슬라이딩 윈도우 (visual에서 사용)
+            : 슬라이딩 윈도우를 사용하는 이유는? 큰 장면을 이용할 수도 있지만 나열된 제품들을 하나씩 || 한 묶음씩 움직이게 할 수 있음
+        </dd>
+        <dd>
+            4) 모달팝업
+        </dd>
+        <dd>
+            5) js 버전 (판매가 * 수량), 계산식 페이지
+        </dd>
+        <dd>
+            6) google.com을 선택하면 옆에 input에 출력되는 페이지 만들기(도메인 선택시 input에 나타나는 기능)
+        </dd>
+        <dd>
+            7) js, 제어문(if) 반복문(for) 이용한 페이지 제작
+        </dd>
+        <dd>
+            8) 배열 (순차배열, 연관배열)
+        </dd>
+        <dd>
+            매우중요) js +jQuery + style + body 모두 섞어서 사용이 가능함
+        </dd>
+        <dd>+ 반응형 슬라이딩 윈도우</dd>
+    </dl>
+    <hr/>
+    <div>
+        <h1>h1 태그 click</h1>
+        <h2>h2 태그 clickEvent</h2>
+        <h3>h3 태그 clickEvent</h3>
+        <ul>
+            <li>box1</li>
+            <li>box2</li>
+        </ul>
+        <p>p태그 클릭 TEST</p>
+    </div>
+ </body>
+</html>
