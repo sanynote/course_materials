@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>easing_effect</title>
+	<meta charset="utf-8"/>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!--
+		[js의 적용되는 순서 중요]
+
+			1) js 전체언어를 사용하기 위해 소스줄 필요
+			2) 일부 특별한 기능을 사용할 때 아래로 script소스 가져다 사용
+
+	-->
+
+	<script>
+		$(document).ready(function(){
+			/* btn1 클릭하면 box0이 숨겨지도록 만들기 */
+/*
+			$("#btn1").click(function(){
+				$(".box0").css({"display":"none"});
+			});
+
+			$("#btn2").click(function(){
+				$(".box0").css({"display":"block"});
+
+			});
+*/
+			/*
+				[display:none,block 문제점]
+
+					+ none과 block문제점은? 변화되는 과정이 없어서 transition 사용이 어려움
+					+ opacity 0~100 까지 변하는 과정을 만들 수 있음
+					+ rgba(0,0,0,0) ~ rgba(255,255,255,1)
+						: rgb라는 숫자를 이용하거나 alpha 라는 투명도를 이용하여 색상,투명도 변경을 할 수 있음
+
+				[transition]
+					p{transition:property (속성) duration(~동안) timing-function(easing) delay(지연되는 시간)}
+
+				[script의 effect 기능_ 기본형태]
+
+					$("대상").hide(duration(~동안), "easing","function"(){});
+
+				[정리]
+
+					1) 숫자와 문자 구분하기
+					2) script 영역에서는 숫자의 경우, 증가되거나 감소가 될 수 있기때문에 문자 구분해야함
+					3) 중요) 숫자와 변수는 절대 더블커텐셜, 싱글커텐셜을 작성하지 않는다.
+					4) 단 php에서는 대입되는 값이라면 숫자나 변수도 커텐셜작업을 한다.
+			*/
+
+			/*
+				[effect 효과 활용하기]
+
+				1) btn1을 클릭하면 box0이 1초동안 사라지도록 만들기, 알림창 띄우기
+
+				effect의 기본문법)
+					$("대상").hide(duration(~하는동안),"easing",function(){});
+
+				[script에서 시간표현]
+					: 디테일한 영역까지 설정이 가능함
+
+					1초 == 1000
+					2초 == 2000
+					5초 == 5000
+			*/
+
+			$("#btn1").click(function(){
+				$(".box0").hide(1000,"linear",function(){
+					alert("class 속성의 box0인 값 숨기기");
+				});
+			});
+
+			$("#btn2").click(function(){
+				$(".box0").show(1500,"linear",function(){
+					alert("나타나기");
+				});
+			});
+
+
+			/*
+				응용문제1)
+                    inputBtn1을 클릭하면 box0이 숨겨지도록 만들기
+
+                        effect : 숨겨주는 효과 hide 사용
+                        duration : 0.7s
+                        easing : 참고사이트 활용하기
+                        function : 다시 숨기기 성공! 알림창 띄우기
+
+
+                        대상 : inputBtn1
+                        이벤트 : 클릭하면 숨겨지기
+                        이벤트 핸들러 : box0
+
+                        * 대상이 같은 경우에 해당하는 값이 있기 때문에 구분이 중요!
+			
+			*/
+			$("#inputBtn1").click(function(){
+				$(".box0").hide(700,"linear",function(){
+					alert("다시 숨기기 성공!");
+				});
+			});
+
+			/*
+				응용문제2)
+					inputBtn2를 클릭하면 box0이 나타나도록 만들기
+
+						effect: 나타나는 effect (show)
+						duration: 1초
+						easing: 선택하기 (swing,ease,ease-in,ease-in-out 중에 선택하여 사용하기)
+
+						대상:inputBtn2
+						이벤트: 클릭하면 나타나기
+						이벤트핸들러:box0
+			*/
+			$("#inputBtn2").click(function(){
+				$(".box0").show(1000,"swing",function(){
+					alert("나타나기 성공!");
+				});	
+			});
+
+
+			/*
+				응용문제3)
+					btn3을 클릭하면 box1이 숨겨졌다가 다시 클릭하면 나타나게 만들기
+
+					effect: toggle (show와 hide를 합친 기능)
+					duration: 0.5초
+					easing: 사이트 활용하기
+					function: toggle 성공 알림창 띄우기
+
+					대상 btn3
+					이벤트 숨겨졌다가 다시 클릭하면 나타나기
+					이벤트 핸들러 box1
+
+					* toggle 이라는 명칭은 항상 2가지 기능을 한꺼번에 만들 수 있음
+					정리) toggle이 있어도 기능적용에 문제가 있어서 "제어문"을 통해서 만듦
+
+					* easing 효과중에서 linear,swing을 제외하고 나머지 효과들은 jQuery_ui 소스 없으면 사용하기가 어렵다.
+
+			*/
+			$("#btn3").click(function(){
+				$(".box1").toggle(500,"ease",function(){
+					alert("toggle 성공");
+				});
+			});
+
+			/*
+				응용문제4)
+					btn4를 클릭하면 부모요소 다음다음 요소 slideUp 되도록 만들기
+
+					effect:slideUp
+					duration:1초
+					easing:swing
+					function : function 제외 가능
+
+						ex) 
+							$("대상").hide(1000,"linear");
+
+					대상 btn4를
+					이벤트 클릭하면 slideUp
+					이벤트핸들러 부모요소 다음다음요소
+
+			*/
+			$("#btn4").click(function(){
+				$("#btn4").parent().next().next().slideUp(1000,"swing");
+			});
+
+			/*
+				응용문제5)
+					btn5를 클릭하면 부모요소 다음다음 요소가 slideDown 되도록 만들기
+
+					effect:slideDown
+					duration:0.5
+					easing:swing || linear
+					function : function 제외 가능
+
+					대상 btn5
+					이벤트 클릭하면 slideDown
+					이벤트핸들러 부모요소 다음다음 요소
+			
+			*/
+			$("#btn5").click(function(){
+				$("#btn5").parent().next().next().slideDown(500,"swing");
+			});
+
+			/*
+				응용문제6)
+					btn6를 클릭하면 부모요소 이전 이전 요소가 slideToggle 되도록 만들기
+
+					effect:slideDown
+					duration:"fast"
+					easing:swing || linear
+					function : function 제외 가능
+
+					대상 btn6
+					이벤트 클릭하면 slideToggle
+					이벤트핸들러 부모요소 이전 이전 요소 
+			
+			*/
+			$("#btn6").click(function(){
+				$("#btn6").parent().prev().prev().slideToggle("fast","swing");
+			});
+
+			/*
+				응용문제7)
+					btn7를 클릭하면 부모요소 다음다음 요소가 fadeOut 되도록 만들기
+
+					effect:fadeOut
+					duration:"slow"
+					easing:swing || linear
+					function : function 제외 가능
+
+					대상 btn7
+					이벤트 클릭하면 fadeOut
+					이벤트핸들러 부모요소 다음다음 요소
+			
+			*/
+			$("#btn7").click(function(){
+				$("#btn7").parent().next().next().fadeOut("slow","swing");
+			});
+
+			/*
+				응용문제8)
+					btn8를 클릭하면 부모요소 다음다음 요소가 fadeIn 되도록 만들기
+
+					effect:fadeIn
+					duration:0.3
+					easing:swing || linear
+					function : function 제외 가능
+
+					대상 btn8
+					이벤트 클릭하면 fadeIn
+					이벤트핸들러 부모요소 다음다음 요소
+			
+			*/
+			$("#btn8").click(function(){
+				$(this).parent().next().next().fadeIn(300,"swing");
+			});
+
+			/*
+				[this 선택자]
+
+					this는 현재 선택한 대상을 지정할때 사용하는 선택자(연산자)
+
+					매우중요) 이벤트 핸들러는 주로 "대상과 같을때" 사용하는 연산자
+						1차 대상으로 지정하기에는 매우 어려움. 대상이 누군지 정확하게 알지 못하기때문에 
+						1차로 사용하기는 어려움
+						지금 선택한 대상과 같을 때 this 사용
+
+					[속도에서 매우 중요]
+
+						1) 응용문제7과 그 전의 문제들 확인하기
+							"대상과 같음"에도 불구하고 this 가 아닌, #btn7을 찾아야함
+			*/
+
+			/*
+				응용문제9)
+					btn9를 클릭하면 부모요소 이전의 이전, 이전요소가 fadeToggle 되도록 만들기
+
+					effect:fadeToggle
+					duration:"slow"
+					easing:swing || linear
+					function : function 제외 가능
+
+					대상 btn9
+					이벤트 클릭하면 fadeToggle
+					이벤트핸들러 부모요소 이전의 이전, 이전요소
+			
+			*/
+			$("#btn9").click(function(){
+				$(this).parent().prev().prev().fadeToggle("slow","swing");
+			});
+
+			/*
+				제출시 중요사항
+					1) duration 명칭과 숫자 구분하여 사용가능함
+					숫자와 명칭 사용 중 어떤것이 효과적인지 이유 작성하기
+
+					답: 
+						숫자는 변하는 과정을 만들 수 있음
+
+						"fast"로 처리하면 얼마나 빠른지 예측불가
+						문자로 되어있기때문에 "저블",'싱글' 사용해야함
+
+				
+					2) toggle 기능은 2가지 기능을 한꺼번에 만듦, 각각을 구성하는 기능도 있음
+						toggle 기능과 각각을 구성하는 기능 중에 어떤것이 효과적인지 이유 작성하기
+						(toggle(show,hide), slideToggle (slideUp,slideDown), fadeToggle(fadeIn,fadeOut))
+						
+					답: 
+						toggle 기능들은 같은 효과를 사용할때만 사용함
+
+						* 개발시에는 서로 다른 기능을 구현하기 위하여 각각을 따로 지정하는 작업을 많이 함
+						slideUp 할때는 느리게 slideDown 할때는 빠르게 적용하여 각각 다른 기능들을 적용할 수 있음
+						웬만하면 toggle보다 Up Down 따로 작업해 올 것
+			*/
+
+			/*
+				추가문제1)
+					btn10을 클릭하면 btn10의 부모요소 이전요소에 fadeOut 적용하기
+					effect:fadeOut,duration:0.8초,function:알림창(fadeOut) 띄우기
+
+					대상 btn10
+					이벤트 클릭하면 fadeOut
+					이벤트핸들러 btn10 부모요소 이전요소
+			
+			*/
+			$("#btn10").click(function(){
+				$(this).parent().prev().fadeOut(800,"ease",function(){
+					alert("알림창(fadeOut) 띄우기");
+				});
+			});
+
+			/*
+				추가문제2)
+					11번 버튼을 클릭하면 box3의 내용이 30%보이도록 만들기
+					12번 버튼을 클릭하면 box3의 내용이 100%보이도록 만들기
+			
+			*/
+			$("#btn11").click(function(){
+				$(".box3").css("opacity",0.3);
+			});
+
+			$("#btn12").click(function(){
+				$(".box3").css("opacity",1);
+			});
+
+
+			
+		});
+
+	</script>
+
+ </head>
+ <body>
+	<div id="wrap">
+		<h1>easing: ease, ease-in, ease-out...</h1>
+		<h2>style에서 제공되는 제한 적인 값들 보다 많은 값을 script로 활용할 수 있음!</h2>
+		<div>
+			<dl>
+				<dt>script를 사용하는 이유는?</dt>
+				<dd>
+					javascript가 유일하게 "w3c에서 접근할 수 있는 문법" (광범위하게 사용)
+				</dd>
+				<dd>
+					css의 부족한 event나 effect 효과를 다양하게 사용할 수 있음!
+				</dd>
+				<dd>
+					css는 event가 hover와 focus만 사용가능함!
+				</dd>
+				<dd>
+					jQuery의 가장 뛰어난 동적인 효과는 animate(animation이 매우 다름), effect(기능 적용), css의 섞어서 사용가능<br/>
+					css의 transition을 사용할 수 있음!
+				</dd>
+			</dl>
+		</div>
+		<hr/>
+
+		<h2>숨김버튼, 보이는버튼</h2>
+		<p>
+			<button id="btn1">숨김버튼</button>
+			<button id="btn2">보이는 버튼</button>
+		</p>
+		<dl class="box0">
+			<dt>jQuery의 *필수기능</dt>
+			<dd>아코디언 : 모바일용 네비게이션, 모바일용 footer, 압축한 정보를 아코디언 형태로 보여줄때 주로 사용</dd>
+			<dd>탭메뉴(탭베이직) : 메뉴를 클릭하면 해당하는 정보를 보여주는 기능</dd>
+			<dd>모달팝업: 팝업창과 다름!, 클릭한 이미지나 정보를 화면에 띄울때 사용하는 기능! (주소줄에 유무로 확인할 수 있음!)</dd>
+			<dd>
+				슬라이딩 윈도우1: 비쥬얼 영역은 반응형 작업을 위하여 주로 4개로 나열함!<br/>
+				(1920px 4개 이상 나열할 경우, frame 저하 현상과 함께 화면이 일그러져 보임!)<br/>
+				양쪽에 좌우 버튼을 사용하지 않고, 하단의 작은 버튼 4개를 사용하여 배치함!
+			</dd>
+			<dd>
+				슬라이딩 윈도우2: 반응형에 맞는 슬라이딩 윈도우 제작(javascript의 문법 중요)
+			</dd>
+			<dd>
+				javascript로 만들어야 하는 페이지( 판매가 * 수량 )<br/>
+				회원가입 페이지 (유효성 검사)<br/>
+				:required (빈칸이 없도록 만들기)
+			</dd>
+		</dl>
+		<dl class="box1">
+			<dt>script의 easing 효과를 사용하는 이유</dt>
+			<dd>transition, animation에서 사용할 수 있는 easing 효과가 제한적이거나 없음!</dd>
+			<dd>ease-in, ease-in-out,  ease-out, ease</dd>
+			<dd>css에서 숨겨주고 나타나는 기능, display:none, block / opacity:0, opacity:1</dd>
+			<dd>위의 기능들을 보완하는 효과들이 script의 effect 기능들!</dd>
+		</dl>
+
+		<h2>input을 이용한 숨김 버튼, 보이는 버튼 활용하기</h2>
+		<p>
+			<input id="inputBtn1" type="button" value="숨김버튼1" title="숨김버튼"/>
+			<input id="inputBtn2" type="button" value="보이는버튼2" title="보이는 버튼"/>
+		</p>
+		<p class="descBox">
+			1) inputBtn1을 클릭하면 box0이 숨겨지도록 만들기 (css가 아닌 effect 사용)<br/>
+			2) inputBtn2를 클릭하면 box0이 나타나도록 만들기 (css가 아닌 effect 사용)
+		</p>
+		<h2>숨겨져있는 값은 보이게만들고, 보이는 값은 숨겨지게 만들기</h2>
+		<p>
+			<button id="btn3">숨김/보이기</button>
+		</p>
+		<hr/>
+
+		<div>
+			아코디언 기능의 핵심! (css의 transition의 핵심이 아님!)
+			ul li 처럼 select의 option value 처럼 짝을 맞추는 태그가 있듯, 짝을 맞추는 효과가 필요함<br/>
+			아코디언 기능은 slideUp과 slideDown의 조합으로 만듬!
+		</div>
+
+		<h2>슬라이드 효과를 이용하는 방법</h2>
+		<p>
+			슬라이드 효과는 양옆으로 나타나는 효과가 아니라 "위쪽과 아래쪽" 으로 미끄러지듯이 나타나는 효과!
+		</p>
+		<p>
+			<button id="btn4">위쪽으로 슬라이드</button>
+			<button id="btn5">아래쪽으로 슬라이드</button>
+			<button id="btn6">상하(두방향) 슬라이드</button>
+		</p>	
+		<hr/>
+		
+		<h2>서서히 나타나거나 사라지는 효과(페이드 효과)</h2>
+		<p>
+			<button id="btn7">천천히 사라지는 버튼</button>
+			<button id="btn8">천천히 나타나는 버튼</button>
+			<button id="btn9">나타나거나 사라지는 버튼</button>
+		</p>
+
+		<hr/>
+		<h3>아래 내용 *매우매우 중요!</h3>
+		<p>
+			1) effect 기능과 transition 기능은 함께 사용할 수 없음<br/>
+			2) duration (작동되는 시간) 동안 시간이 충돌하여 서로 작동되지 않음!<br/>
+			3) transition  || effect 어떤 것으로 만들 것인지 구분하기!<br/>
+			* 시간에 의한 충돌이 발생함!
+		</p>
+
+		<h2>아래 추가 문제 풀기</h2>
+		<div>
+			<p>현재 div 태그 아래에 input 태그 만들기 (btn10)</p>
+			<p>btn10으로 만들어진 input 태그 p태그 묶어주기</p>
+			<p>btn10을 클릭하면 btn10의 부모요소 이전요소에 fadeOut 적용하기</p>
+			<p>effect:fadeOut,duration:0.8초,function:알림창(fadeOut) 띄우기</p>
+		</div>
+		<p>
+			<input id="btn10" type="button" value="fadeOut" title="fadeOut"/>
+		</p>
+
+		<h2>정해진 값 만큼 사라지는 버튼 만들기</h2>
+		<p>
+			<button id="btn11">30%만 보이도록 만들기</button>
+			<button id="btn12">100%만 보이도록 만들기</button>
+		</p>
+		<p class="box3">
+			11번 버튼을 클릭하면 box3의 내용이 30%보이도록 만들기
+			12번 버튼을 클릭하면 box3의 내용이 100%보이도록 만들기
+		</p>
+	</div>
+ </body>
+</html>
