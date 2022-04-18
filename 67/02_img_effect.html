@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>img effect</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/noodles.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+
+        #btnArea{text-align:center; line-height:100px;}
+        #btnArea button{padding:10px;}
+
+        div{width:500px; margin:20px auto; border:5px solid #fff; box-shadow:5px 5px 15px rgba(0,0,0,0.5);}
+
+    </style>
+
+	
+	
+ </head>
+
+ <body>
+    <p id="btnArea">
+        <button id="btn1">클릭1</button>
+        <button id="btn2">클릭2</button>
+        <button id="btn3">클릭3</button>
+        <button id="btn4">클릭4</button>
+    </p>
+    <!--
+        [button 태그의 용도]
+
+            1) 주로 form 안에서 button 형태로 사용하기위하여 사용
+            2) 위에처럼 button 으로 사용할 수 있지만 form 이 없다면 속성을 가지는 a나 img태그가 효과적임
+            3) a태그에는 href,title 라는 속성이 있고, 해당하는 속성으로 만들 수 있는 기능이 많음
+            4) button 태그는 submit, reset 용도로 사용함
+                : 일반적인 button으로 사용할 수 있음
+
+    -->
+	<div>
+        <p id="imgArea">
+            <img src="img/edges.gif" alt="사진"/> 
+        </p>
+        <p class="textArea">
+            <span>봄이다</span>
+        </p>
+        
+    </div>
+ </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>easing effect</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+
+        #btnArea{width:170px; margin:0 auto;}
+
+        div{width:200px; height:220px; margin:0 auto; box-shadow:5px 5px 5px 5px #333; margin-top:20px;}
+        div p{width:190px; padding-left:5px;}
+        div p img{width:100%;}
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+            $("#btn0").click(function(){
+				$("#imgArea").slideUp(1000,"swing",function(){ 
+					alert("슬라이드업 성공"); 
+				});
+			});
+
+            $("#btn1").click(function(){
+				$("#imgArea").slideDown(1000,"swing",function(){ 
+					alert("슬라이드다운 성공"); 
+				});
+			});
+
+            $("#btn2").click(function(){
+				$("#imgArea").fadeTo(1000,"0.5");
+			});
+
+            $("#btn3").click(function(){
+				$("#imgArea").fadeTo(1000,"1");
+                $("#imgArea").css({"textAlign":"center","fontSize":"18px"});
+			});
+
+
+        });
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <p id="btnArea">
+        <button id="btn0">클릭1</button>
+        <button id="btn1">클릭2</button>
+        <button id="btn2">클릭3</button>
+        <button id="btn3">클릭4</button>
+    </p>
+	<div id="imgArea">
+        <p>
+            <img src="img/season0.jpg" alt="사진"/> 
+        </p>
+        봄이다
+    </div>
+ </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>slideHeight</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+        li{list-style:none;}
+
+        #wrap{width:100%;}
+
+        ul{width:300px; height:600px; background-color:#333; margin:0 auto;}
+        li{width:100%; height:30px; line-height:30px; color:#fff; background-color:pink; box-shadow:0 3px 3px rgba(0,0,0,0.5); text-align:center; cursor:pointer;
+            transition:all 0.5s linear;}
+        /* transition이 script 영역과 연결되어있음 */
+
+        .ts1{background-color:#700;}
+        .ts2{background-color:#520;}
+        .ts3{background-color:#750;}
+        .ts4{background-color:#730;}
+
+		
+	</style>
+    <script>
+        $(document).ready(function(){
+			
+            /*
+                [기능 분석하기]
+
+                    1) imgEffect.html 파일에서는 btn1을 누르면 객체가 위로 올라감
+                        : btn1을 누르면 위로 올라가고, btn2를 누르면 아래로 부드럽게 떨어지는 형태
+
+                    2) 객체가 늘어나거나 줄어드는 부분은 transition을 사용하여 적용이 가능함
+
+                [기능만들기]
+
+                    1) li를 클릭하면 현재 클릭한 li가 늘어나도록 만들기
+                    2) 나머지 li들은 원래대로 돌아가도록 만들기
+
+                    현재 클릭한 대상이기때문에 "this" 사용하기
+
+                [순서 중요]
+
+                    1) li를 클릭하면 모든 li태그들 기본으로 돌리기
+                    2) 선택된 li태그만 적용되도록 만들기
+                */
+            
+            $("li").click(function(){
+        
+                $("li").css({"height":"30px","lineHeight":"30px","fontSize":"16px","textShadow":"0 0 0 #000"});
+                $(this).css({"height":"510px","lineHeight":"510px","fontSize":"24px","textShadow":"0 0 10px #ff0"});
+        
+            });
+            
+        
+        });
+
+    </script>
+
+ </head>
+
+ <body>
+    <div>
+        <ul>
+            <li class="ts1"><span>test1</span></li>
+            <li class="ts2"><span>test1</span></li>
+            <li class="ts3"><span>test1</span></li>
+            <li class="ts4"><span>test1</span></li>
+        </ul>
+    </div>
+ </body>
+</html>
