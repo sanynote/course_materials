@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>DOMControl</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<script>
+		// ver-2
+		$(document).ready(function(){
+			/*
+				1) DOMControl 에서 li 요소 중 "홀수" 만 선택하여 배경색상 핑크 적용하기
+
+				[정리]
+					ol li 태그는 몇 번부터 시작? 숫자 1부터 시작
+
+					대상: 어디에있는 li 태그인지 구분하기 DOMControl
+					이벤트: style
+					이벤트핸들러: DOMControl 에서 li요소 중 "홀수만" 선택
+
+					++++++++++++++++++++++++++++++++++++++++++++++
+
+					[숫자의 개념]
+						1,2,3,4,5,6,7...
+						
+					[공간의 개념]
+						0,1,2,3,4,5,6...
+
+					* 숫자나 공간 자릿수는 같으나 ... 항상 숫자가 하나 큼 
+					(배열이나 for 작업시 매우 중요)
+
+					[중요]
+						: (콜론) 대상의 값에 들어가서 찾아오는 의미
+						; (세미콜론) 마침표의 의미
+
+					+++++++++++++++++++++++++++++++++++++++++++++++++
+
+					[모든 태그들의 생성]
+						* 모든 태그들이나 객체들은 만들어질때 처음부터 공간을 가지고태어남
+
+					모든 숫자는 1부터 시작
+					모든 공간은 0부터 시작
+						0번 공간은 첫번째 공간으로 "짝수"
+						1번 공간을 두번째 공간으로 "홀수"
+						2번 공간을 세번째 공간으로 "짝수"
+						3번 공간을 네번째 공간으로 "홀수"
+				
+
+			*/
+			$("#DOMControl li:odd").css({"backgroundColor":"pink"});
+
+			/*#################### 응용문제 ###################*/
+			/*
+				문제1) DOMControl 에서 li요소 중 짝수인것만 선택하여 배경색상 lightblue 적용하기
+
+					이벤트핸들러: #DOMControl li:even(짝수)
+			
+			*/
+			$("#DOMControl li:even").css({"backgroundColor":"lightblue"});
+			
+			/*
+				문제2) DOMControl 에서 li요소 중 첫번째 요소를 클릭하면 border:1px solid red
+					글자 가운데 정렬, 그림자 적용되도록 만들기
+					* 대상과 같은 상황인지 확인하기
+					:first
+			*/
+			$("#DOMControl li:first").click(function(){
+        
+				$(this).css({"border":"1px solid red","textAlign":"center","boxShadow":"5px 5px 5px rgba(0,0,0,0.5)"});
+
+			});
+
+			/*
+				문제3) h1을 클릭하면 DOMControl 에서 li요소 중 마지막 값이 slideUp 되도록 만들기
+					* easing 효과 사용하기, duration 1.5초, 알림창 띄우기 (slideUp 성공)
+
+					* 대상과 같은 상황인지 확인하기
+						:last
+			*/
+			$("h1").click(function(){
+
+				$("#DOMControl li:last").slideUp(1500,"swing",function(){ 
+				alert("slideUp 성공");
+				});
+
+        	});
+
+
+			/*
+				문제4) DOMControl 에서 li요소 중 세번째 이전요소들에 외곽선 적용하기
+					* 중요) 0번이 첫번째 공간
+					* 참고) li:lt(1), 두번째 공간 
+
+			*/
+			$("#DOMControl li:lt(2)").css({"border":"2px solid red"});
+
+			/*
+				문제5) DOMControl 에서 li요소 중 네번째 이후 요소들에 너비 500 높이 50
+					글자 가운데 정렬, 그림자효과 적용되도록 만들기
+
+				+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+				[익스플로러 구형 브라우저 제작시 많이 사용됨]
+
+					: 크로스브라우징, 화면을 X자로 그려놓고, 가운데를 중심으로 브라우저의 제공되는 내용이나 컨텐츠들이
+					빠져나가는지 확인하는 작업
+
+					: lt, gt 이용하여 해당하는 익스플로러 버전들을 맞춰줄 수 있음
+					: lt는 현재 버전을 포함하지않은 이전 버전들
+					: gt는 현재 버전을 포함하는 이후 버전들
+
+			*/
+			$("#DOMControl li:gt(3)").css({"width":"500px","height":"50px","textAlign":"center","boxShadow":"5px 5px 10px rgba(0,0,0,0.5)"});
+
+			/*
+				문제6) DOMControl 에서 li요소 중 2번째 요소를 클릭하면 스스로
+				너비가 400 높이 20 글자크기 14 글자 그림자 적용 배경색상 노란색
+
+				중요) 진도 안에서 선택자로 해결가능함
+
+			+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+				풀이
+					$("#DOMControl li:first").next()
+					$("#DOMControl li:li(2)").prev()
+
+					+ nth-child(해당하는 번호 선택), 해당하는 "숫자"를 정확하게 선택할 수 있음
+					+ $("#DOMControl li:nth-child(2)") 정확하게 2번때 값 선택가능
+
+				[정리]
+
+					+ nth-child(2n) : 2의 배수
+					+ nth-child(3n) : 3의 배수
+					+ nth-child 는 숫자를 세어주는 개념으로, 1,2,3,4,5,6,7...
+
+				[단점]
+
+					공간으로 사용하기 어려움
+
+						0*2 == 0
+						0*3 == 0
+
+				+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+					: nth-child 는 숫자형태로 작업이 가능함
+					: eq는 해당하는 공간을 정확하게 잡을 때 사용함
+
+			
+			*/
+			/*
+				[내 정답]
+
+				$("#DOMControl li:first").next().click(function(){
+				
+				$(this).css({"width":"400px","height":"20px","fontSize":"14px","boxShadow":"0 0 10px #000","backgroundColor":"#ff0"});
+
+			});
+			
+			*/
+
+			$("#DOMControl li:eq(1)").click(function(){
+				
+				$(this).css({"width":"200px","height":"20px","fontSize":"14px","boxShadow":"0 0 10px #000","backgroundColor":"#ff0"});
+
+			});
+			
+		});
+	</script>
+	
+	
+ </head>
+
+ <body>
+	<h1>선택자, script(다양한 선택자)</h1>
+	<h2>기본요소 선택자 : id, class, tag</h2>
+	<hr/>
+	<h2>DOMControl : "공간" || 속성에 접근하여 선택이 가능한 선택자</h2>
+	<dl>
+		<dt>DOM을 이용한 접근방식</dt>
+		<dd>
+			DOM이란? 
+		</dd>
+		<dd>
+			DOM (합성어): Document Object Model 의 약자표현
+		</dd>
+		<dd>
+			중요) DOM에서는 "빈칸"도 객체로 인식함
+			"공백"도 객체로 인식함
+		</dd>
+		<dd>
+			* javascript 언어를 사용하는 수많은 .js들은 DOM 속성을 가지고있음
+		</dd>
+		<dd>
+			* javascript (script) 언어들은 문서상에 존재하는 모든 객체들을 컨트롤 할 수 있음
+		</dd>
+	</dl>
+	<ul id="DOMControl">
+		<li>0) 홀수인 것 선택하기</li>
+		<li>1) 짝수인 것 선택하기</li>
+		<li>2) 첫번째인 것 선택하기</li>
+		<li>3) 현재 id 영역을 기준으로 li 요소 중 첫번째인 것 선택하기</li>
+		<li>4) 현재 id 영역을 기준으로 li 요소 중 마지막인 것 선택하기</li>
+		<li>5) 현재 id 영역을 기준으로 3번째 이전요소 선택하기</li>
+		<li>6) 현재 id 영역을 기준으로 3번째 이후요소 선택하기</li>
+		<li>7) 현재 id 영역을 기준으로 li 요소 중 두번째 요소 선택하기</li>
+	</ul>
+ </body>
+</html>
