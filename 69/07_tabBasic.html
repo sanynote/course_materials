@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>tabBasic</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		li{list-style:none;}
+
+		#container{width:600px; margin:0 auto;}
+
+		li{width:200px; height:40px; float:left;}
+
+		.tab li a{text-decoration:none; display:block; text-align:center; line-height:40px;
+		background-image:-webkit-linear-gradient(top,#eee,#aaa);
+		background-image:-moz-linear-gradient(top,#eee,#aaa);
+		background-image:-o-linear-gradient(top,#eee,#aaa);
+		background-image:-ms-linear-gradient(top,#eee,#aaa);
+		margin-right:1px; 
+		border-radius:8px 8px 0 0;}
+		/*
+			[부무요소와 자녀요소 활용하기]
+
+			1) 부모요소는 너비 : 200px 붙임
+			2) 자녀인 a태그는 너비를 지정하지 않음!
+
+			* 정해진 부모요소 안에서 너비를 지정하지 않기 때문에 "자동으로 계산" 이 가능함!
+			* 부모는 디테일하게 작업하고, 자녀는 적당히 배치하기
+		*/
+		.panel li{width:100%;}
+
+		.tab li .selected{
+			color:#555; font-weight:700;
+			background-image:-webkit-linear-gradient(top, #aaa, #eee);
+			background-image:-moz-linear-gradient(top, #aaa, #eee);
+			background-image:-o-linear-gradient(top, #aaa, #eee);
+			background-image:-ms-linear-gradient(top, #aaa, #eee);
+		}
+
+		.tab:after{content:""; display:block; clear:both;}
+
+	</style>
+	<script>
+		/*
+		$(document).ready(function(){
+			
+			$(".panel li:not(:first)").hide();
+
+
+		
+			$(".tab li:eq(0)").click(function(){
+				$(".panel li").hide();
+				$(".panel li:eq(0)").show();
+			});
+
+			
+			
+			$(".tab li:eq(1)").click(function(){
+				$(".panel li").hide();
+				$(".panel li:eq(1)").show();
+			});
+
+			
+			$(".tab li:eq(2)").click(function(){
+				$(".panel li").hide();
+				$(".panel li:eq(2)").show();
+			});
+
+		});
+		
+		*/
+		
+		/*
+			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			[정리]
+
+				1) nav1, nav2 예제에서 nouseover와 moudeout을 사용함 (자녀에서 멈추지 않고, 사라지는 문제 발생)
+				2) focus 작성, 적용이 되지않음 (안에 있는 내용이 보이지 않음)
+
+				* 1,2번 모두 부모요소까지만 접근하고, 사라지는 기능
+
+				3) focusin은 안에 담겨있는 소스자료까지 확인을 하기때문에 내용이 바뀌는것을 알 수 있음
+				4) focus는 .tab li:eq(0) 겉까지만 접근함
+					focusin은 안에 panel li까지 모두 접근하여 내용변화를 확인할 수 있음
+
+		*/
+		$(document).ready(function(){
+			
+			$(".panel li:not(:first)").hide();
+
+
+			$(".tab li:eq(0)").bind("click focusin",function(){
+				$(".panel li").hide();
+				$(".panel li:eq(0)").show();
+			});
+
+			
+			$(".tab li:eq(1)").bind("click focusin",function(){
+				$(".panel li").hide();
+				$(".panel li:eq(1)").show();
+			});
+
+			
+			$(".tab li:eq(2)").bind("click focusin",function(){
+				$(".panel li").hide();
+				$(".panel li:eq(2)").show();
+			});
+
+		});
+	</script>
+ </head>
+ <body>
+	<div id="container">
+		<ul class="tab">
+			<li>
+				<a class="selected" href="#" title="제품소개">제품소개</a>
+			</li>
+			<li>
+				<a href="#" title="AS관련">AS관련</a>
+			</li>
+			<li>
+				<a href="#" title="웹정보">웹정보</a>
+			</li>
+		</ul>
+		<ul class="panel">
+			<li id="tab0">
+				<p>
+					마이크로소프트 서피스(Microsofot Surface)는 마이크로소프트가 직접 제작한 태블릿 PC이다. 
+					2012년 6월 18일 LA에서 스티브 말머가 발표했다. 
+					서피스는 윈도우 RT와 윈도우 8 프로 등 2가지 모델이 있다. 
+					윈도우 RT는 ARM CPU를 사용한 모델이고 윈도우 8 프로는 인텔 CPU를 사용한 모델이다. 
+					두 모델 모두 윈도우 스토어를 통하여 앱 설치가 가능하다. 
+					그리고 윈도우 8 프로는 기존의 윈도우 애플리케이션들도 설치가 가능하다.
+				</p>
+			</li>
+			<li id="tab1">
+				<p>
+					마이크로소프트(Microsoft)의 하드웨어 제품들을 AS받을수 있는 센터 안내입니다. 
+					마이크로소프트에서 판매하는 마우스, 키보드, 웹캠, 헤드셋, 엑스박스 360등의 하드웨어를 
+					A/S 받아야 할때 문의 하고 이용할 수 있는 하드웨어 전용 A/S 센터 입니다. 
+					윈도우나 오피스등의 소프트웨어적인 문제는 취급을 하지 않습니다.
+				</p>
+			</li>
+			<li id="tab2">
+				<p>
+					익스플로어 의존성이 웹 호환성 부족이라는 한국 웹의 왜곡된 현상을 낳게 되었다. 
+					이것은 웹 표준을 따르지 않고 마이크로소프트의 인터넷 익스플로어(internet Explorer, IE)에서만 
+					작동되는 비표준 기술을 남용했기 때문에 생겨난 현상이다. 그러나 구글 크롬이라는 웹브라우저를 
+					공개하고, 스마트폰 시장이 활성화 되고, 모바일 운영체제가 다양화되면서 마이크로소프트이 
+					익스플로어는 과거와 같은 지배력을 더이상 행사하지 못하게 되었다. 
+					세상이 바뀌면 기업의 위상도 바뀌는 것이다. 
+				</p>
+			</li>
+		</ul>
+	</div>
+ </body>
+</html>

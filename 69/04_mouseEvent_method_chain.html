@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>mouseEvent</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+
+		#content{padding:20px;}
+
+		p{font-size:18px; background-color:#eee; margin:20px 0;}
+
+		h2{background-color:pink; margin-top:30px; }
+		h3{margin:20px 0;}
+
+		form{width:270px; height:100px; padding:10px 10px 0;}
+
+		form p{background:none;}
+		input{border:1px solid #ccc; width:240px; height:25px;}
+
+	</style>
+	<script>
+
+		$(document).ready(function(){
+
+			/*
+				[메서드 체인 방식으로 정리하기]
+
+					: 대상은 같고, 기능이 다를 때 연결하는 방식
+					: 같은대상.기능1.기능2.기능3
+
+				[정리]
+					1) 처음부터 같은 대상에 연결하는 방식으로 사용하기위하여 만듦
+					2) "코드 정리할 때" 사용하는 방식으로 구분할 수 있음
+
+				[매우중요]
+					mouseover, mouseout을 반드시 연결하는것이 아니라
+					같은 대상이람련 다른 기능으로 연경가능함
+
+					ex) 대상.click.mouseover
+			*/
+
+			
+			$("#btn1Click").click(function(){
+				$("#Events").css({"backgroundColor":"rgb(0,0,255)","color":"#ccc"}).fadeTo(500,"0.3");
+			});
+
+			$("#btn2Mouseover").mouseover(function(){
+				$("#Events").css({"backgroundColor":"#ff0","color":"#f00"});
+			});
+			
+			$("#btn2Mouseover").mouseout(function(){
+				$("#Events").css({"backgroundColor":"#f00","color":"#ff0"});
+				
+			});
+
+			/*
+				[같은 대상, 마우스 기능끼리 연결]			
+
+				$("#btn2Mouseover").mouseover(function(){
+					$("#Events").css({"backgroundColor":"#ff0","color":"#f00"});
+				})여기부터~;
+				
+				$("#btn2Mouseover")~여기까지 없애면 연결됨.mouseout(function(){
+					$("#Events").css({"backgroundColor":"#f00","color":"#ff0"});
+					
+				});
+			
+			*/
+
+			
+			$("#btn1Click").dblclick(function(){
+				$("#title").fadeOut(500,"swing");
+				
+			});
+
+			
+			$("#btn2Mouseover").focus(function(){
+				$("#mouseTest").css({"backgroundColor":"#0f0","color":"pink"});
+				
+			});
+
+			
+			$("#btn2Mouseover").blur(function(){
+				$("#mouseTest").css({"backgroundColor":"pink","color":"#0f0"});
+				
+			});
+
+            /*
+                [반대기능들]
+
+                1) focus는 "초점이 맞았을 때", 초점이 맞으면 대상은 선명하게 보임 ("정확하게 윤곽성이 표현됨")
+                2) blur은 "초점이 흐려졌을 때", 대상이 흐려보임 ("윤곽선이 벗어남")
+                3) mouseover    ,   mouseout
+                4) focusin      ,   focusout
+                5) focus        ,   blur
+            */
+		});
+	</script>
+	
+	
+ </head>
+
+ <body>
+	<div id="content">
+		<h1>마우스와 키보드 EVENT</h1>
+		<ul>
+			<li>1) 문서세팅(문법공부: ver-1~ver-4, 장_단점이 중요)</li>
+			<li>2) cdn 연결방식, script 줄이 2개가 필요한 이유 정리</li>
+			<li>3) js 폴더 (.js 파일, 실행파일, 바이러스 || 악성코드 인식함)</li>
+			<li>4) 요소 선택자, 대상.parent(), 대상.children(), 대상.next(), 대상.prev()</li>
+			<li>5) DOM (공간과 숫자), "공간", eq, lt, gt, odd, even / nth-child(2n), 배수를 찾는 개념 "숫자"</li>
+			<li>6) mouseEvent(마우스와 키보드(웹 접근성에 매우 중요))</li>
+			<li>7) 속성관련 기능만들기 (매우중요)</li>
+			<li>* 8) 대상의 크기에 맞추거나 위치에 맞추는 기능</li>
+			<li>* 9) animate(슬라이딩 윈도우)</li>
+			
+		</ul>
+
+	
+		<div id="title">
+			<h3>xhtml과 html5에서 사용했던 기능</h3>
+			<dl>
+				<dt>xml에서 유일하게 사용가능한 문서 (xml1, html4, transitional.dtd, strict.dtd)</dt>
+				<dd>유일하게 기능을 사용할 수 있는 태그: a(hover,focus)</dd>
+				<dd>skipNav (필수요소), a태그로 만드는 네비게이션, focus로만 작동이 가능함</dd>
+				<dd>naver_movie, display:none, display:block</dd>
+				<dd>xhtml 문서의 제한적인 부분(동적인 요소가 없음)</dd>
+			
+			</dl>
+			<dl>
+				<dt>html5에서 사용했던 기능</dt>
+				<dd>대상:hover</dd>
+				<dd>transition:property "duration" timing-function (easing) delay (장면전환)</dd>
+				<dd>"애니메니션 animation" 이벤트를 적용하지 않아도 스스로 움직임이 가능함</dd>
+				<dd>transition은 "이벤트 필수", 이벤트가 없으면 변환되기 어려움</dd>
+				<dd>* transform(중심축이 전부 가운데 있음)</dd>
+				<dd>mediaQuery (반응형, 절대형, 적응형)</dd>
+				<dd>
+					<h3>* mediaQuery 해당하는 버전에 맞추기 위해서는?</h3>
+					<p>
+						1) 모바일 버전에 해당하는 영역을 만들어서 display:none, block 활용하기<br/>
+						장점: 깜빡임이 없음, style 에서 만들기때문에 "매우빠름"<br/>
+						단점: 태그가 많아지는 문제가 발생함
+					</p>
+					<p>
+						2) script 영역에서 body 사이즈를 계산하여 모바일 버전을 만들 수 있음<br/>
+						장점: 태그가 많지않기때문에 body가 가벼움<br/>
+						단점: script 영역으로 만들경우 느리기때문에 "깜빡일 수 있음"
+					</p>
+
+				</dd>
+				<dd>
+					* xhtml, html5의 전체적인 문제점: 부모에서 자녀만 관리 가능함
+				</dd>
+				<dd>
+					html5에서도 hover와 focus에 대한 의존도가 높음
+				</dd>
+			</dl>
+
+		</div>
+
+		<div id="Events">
+			<h3>대상, "이벤트", 이벤트핸들러</h3>
+			<h4>이벤트: 어떤 대상에 자극을 주는 행위 (click,hover,focus...)</h4>
+			<p>
+				1) 모바일 기기에서는 tab키? tab키가 없음, hover,click 모두 터치로 인식함<br/>
+				2) skipNav를 만들 수 없기때문에 scroll을 활용하여 기능을 구현함
+
+			</p>
+			<p>
+				3) 매우중요) 일반 pc에서 마우스로 조작이 가능하면, 키보드로도 가능하도록 만들기 (tab키 사용)<br/>
+				4) jQuery, javascript를 이용하면, 다양한 선택자와 기능을 사용할 수 있음
+
+			</p>
+			<hr/>
+
+			<h3>마우스관련 이벤트</h3>
+			<p>
+				대상.hover(css/jQuery), 대상.click, 대상.더블클릭, mouseover, mouseout...
+			</p>
+			<hr/>
+
+			<h3>키보드 관련 이벤트</h3>
+			<p>tab(focus,focusin, focusout)</p>
+
+			<h3>버튼 관련 이벤트</h3>
+			<p>type="button", 모양만 버튼으로 사용가능함</p>
+			<p>
+				type="submit", 전송버튼 (무조건 전송하는 버튼)<br/>
+				tip) script 제작시 (btn 형태 유지하다가 필수정보 확인한 후 "전송" 하는 형태로 만드는 경우가 많음)<br/>
+				* required, "빈칸과 공간"에 대한 문제 확인한 후 넘겨주도록 설정하기
+
+			</p>
+			<p>
+				type="reset", 새로고침 (무조건 새로고침하는 버튼)<br/>
+				tip) 기존에 작성된 정보를 한 번에 지워버리기때문에 문제가 많음<br/>
+				* 모든 정보가 초기화되기때문에 주의해야함 
+			</p>
+		</div>
+		<div>
+			<h3>영역 구분하기</h3>
+			<p>
+				시멘틱태그로 기능구현시, 클릭(이벤트)에 의하여 article 영역이 나타난다면 재배포가 가능하기때문에 주의해야 함
+			</p>
+			<p>
+				section 태그 사용시, headline(h2~h6), section 태그가 나타났다 사라지고, 사라졌다가 나타날때 
+				목차생성이 보여지거나 사라질 수 있기때문에 접근성이나 html5의 목차생성에 문제가 될 수 있음
+			</p>
+			<p>
+				strong과 em도 기능에 의하여 읽지못하는 문제가 발생할 수 있음 (스크린리더기의 문제가 발생함)
+			</p>
+		</div>
+		<hr/>
+		<h2>click 메서드</h2>
+		<p>
+			<button id="btn1Click">btn1Click</button>
+		</p>
+		<div id="mouseTest">
+			<h3>마우스 이벤트 확인하기</h3>
+			<div id="input">
+				현재 영역을 마우스 이벤트가 발생하도록 만들기
+			</div>
+		</div>
+
+		<h2>mouseover 메서드</h2>
+		<p>
+			<button id="btn2Mouseover">mouseover</button>
+		</p>
+		<p>
+			<strong>
+				mouseover는 대상에 마우스를 올리면 발생하는 이벤트<br/>
+				hover 다른점은?
+			</strong>
+		</p>
+		
+		<h2>hover 메서드</h2>
+		<h3>
+			<a class="hover" href="#none" title="hover">hover</a>
+		</h3>
+		<dl>
+			<dt>css의 hover와 script의 hover의 차이점</dt>
+			<dd>
+				style 영역에서 사용하는 hover와 script에서 사용하는 hover는 비슷하지만 매우 다름
+			</dd>
+			<dd>style 영역에서의 hover와 mouseover 차이점 구분하기</dd>
+			
+		</dl>
+
+		<h2>focus 메서드1</h2>
+		<p>
+			<button id="btnFocus">focus</button>
+		</p>
+		<p>
+			<strong>
+				: focus기능은 mouse와 동일한 기능을 제공하도록 만들어야 한다.
+				: a태그가 있으면 style 영역, script 영역, 어떤 영역에서도 100% focus 접근이 가능함
+				: a, button, input, select,img... (필수 속성들이 많은 인라인요소들), tab접근가능
+				: * 인라인 요소중에 속성을 가지고있다면 tab 접근가능
+				: 블록요소중에 속성을 가지는 요소는 form 태그가 있음 (tab 접근한 지 확인하기)
+			</strong>
+		</p>
+
+		<h2>focus 메서드2</h2>
+		<form action="#none" methid="post">
+			<fieldset>
+				<legend>로그인</legend>
+				<p>
+					<input id="userid" type="text" name="userid" title="아이디 입력"/>
+				</p>
+				<p>
+					<input id="userpw" type="password" name="userpw" title="비밀번호 입력"/>
+				</p>
+			</fieldset>
+		</form>
+
+	</div>
+
+ </body>
+</html>

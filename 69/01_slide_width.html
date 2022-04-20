@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>slide_width</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		li{list-style:none;}
+
+		#wrap{width:100%;}
+
+		ul{width:600px; height:300px; background-color:#333; margin:0 auto;}
+		ul li{width:10px; height:140px; text-align:center; padding:80px 10px; background-color:#777; color:#fff; text-transform:uppercase; float:left;
+		box-shadow:2px 0 3px rgba(0,0,0,0.5);  cursor:pointer; transition:all 0.5s linear;}
+
+		ul li span{word-wrap:break-word;}
+		/*
+			[word-wrap 활용하기]
+				
+				1) "한 글자만 표현할 수 있는 너비 공간"을 만들어야 함! (공간이 있다면 옆으로 나열 됨)
+				2) 글자를 담고 있는 직접 적인 영역 지정 (word-wrap 글자를 담고 있는 영역!)
+				3) break-word는 묶음으로 표현된 글자를 한글자씩 떨어뜨릴 수 있음!
+
+				* 글자를 담고 있는 영역의 글자들을 한글자 한글자씩 끊어주기 위하여 사용!
+		
+		*/
+
+		.test1{background-color:#700;}
+		.test2{background-color:#520;}
+		.test3{background-color:#750;}
+		.test4{background-color:#730;}
+	</style>
+	<script>
+        $(document).ready(function(){
+			/*
+				[작업순서]
+
+				1) ul li 클릭하면 클릭한 대상이 너비가 넓어지도록 만들기
+				2) 나머지 기존의 상태로 돌려놓기
+
+				[중요]
+
+					* 적용된 값 아래로 해제가 될 수 있기때문에 순서가 매우 중요함
+
+				[문제점]
+
+					: 클릭하고나면, css에 적용된값들이 상속되는것을 알 수 있음
+					: margin, padding, position 모두 상속될 수 있음
+
+				[해결]
+					: padding 해제하기
+
+			*/
+            
+            
+            $("ul li").click(function(){
+        
+				$("ul li").css({"width":"10px","height":"140px","padding":"80px 10px","lineHeight":"16px","fontSize":"16px","textShadow":"0 0 0 #000"});
+                $(this).css({"width":"510px","height":"300px","padding":"0","lineHeight":"300px","fontSize":"24px","textShadow":"0 0 10px #ff0"});
+        
+            });
+            
+        
+        });
+
+    </script>
+
+ </head>
+ <body>
+	<div id="wrap">
+		<ul>
+			<li class="test1"><span>test1</span></li>
+			<li class="test2"><span>test2</span></li>
+			<li class="test3"><span>test3</span></li>
+			<li class="test4"><span>test4</span></li>
+		</ul>
+	</div>
+ </body>
+</html>
