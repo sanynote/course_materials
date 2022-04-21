@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>mouseEvent</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+        a:link, a:visited{text-decoration:none; color:#fff;}
+        a:hover, a:focus{color:#f00; text-decoration:underline;}
+        li{list-style-type:none;}
+
+
+        div{width:800px; margin:0 auto;}
+        #parent{width:100%;}
+
+        #parent li{width:20%; line-height:40px; float:left; text-align:center; background-color:blue;
+            /*outline:1px solid #fff;*/ border-right:1px solid #fff; border-top:1px solid #fff; box-sizing:border-box;}
+
+        /*
+            [검사 띄우고 확인하기]
+                1) 검사해서 "computed" 에 해당하는 값을 확인해보면
+                margin padding border가 영역을 차지하는것을 알 수 있음
+
+                2) outline은 computed에 없기때문에 영역을 차지하는않는것을 알 수 있음
+        */
+
+        #parent li .son{width:100%;}
+        
+        #parent li .son li{width:100%;}
+        
+
+        #parent:after{content:""; display:block; clear:both;}
+  
+
+	</style>
+	<script>
+
+		$(document).ready(function(){
+            /*
+                [기능작업순서]
+                    1) 필수) 이벤트 전과 후 구분하기
+                    2) 이벤트 전: .son 숨기기
+                    3) 이벤트 후: 지금 올린 대상의 .son만 나타나도록 만들기
+
+                        tip) effect는 effect끼리 짝 맞추기
+
+                        display:none, effect기능을 짝을 맞출 경우, display:none에 시간개념이 없기때문에 적용되지 않을 수 있음
+
+                        hide,       slideDown       , effect 기능들이기때문에 짝을 맞춰서 사용이 가능함
+                        fadeIn,     hide               ,  effect 기능들이기때문에 짝을 맞춰서 사용이 가능함
+
+                        중요) 나타나도 사라지는 기능이 서로 달라도 effect 기능들을 서로 시간을 가지고있기때문에 사용이 가능함
+
+            */
+
+            //문제1     .son 숨기기
+            //문제2     parent에 li 마우스 올리면 (해당하는 자녀요소) slideDown으로 나타나게 만들기
+            //            parent li에서 마우스 내리면 (해당하는 자녀요소) slideUp으로 올라가도록 만들기
+
+            /*
+            
+                [outline문제점]
+
+                    : 동적인 요소에서 기능이 출력된 다음에 outline 이 생기는 "반박자" 느린 현상 발생
+                    : border는 처음부터 영역을 차지하기때문에 느리지 않음
+
+                [outline 문제점 해결하기]
+                    : border로 해결하기
+                    : box-sizing으로 해결 (border-box에 맞추는 작업)
+                        * box-sizing,outline: 모두 익스플로러4 부터 사용가능함
+
+                +++++++++++++++++++++++++++++++++++++++++++++++
+
+                [문제점 발생_wave 현상 발생]
+
+                1) parent li에 마우스를 올리면 정확하게 .son이 아래로 떨어짐
+                2) .son li에 마우스 올리는 순간 parent li에서 마우스가 떨어졌기때문에 사라지려고함
+
+                3) mouseover, mouseout, focus(부모까지만 접근하는 기능, 자녀를 보여주거나 기다리지 않음)
+
+                [해결하기_마우스 기능 바꾸기]
+                    + mouseover     , mouseenter
+                    + mouseout      , mouseleave
+
+
+                +++++++++++++++++++++++++++++++
+                [마우스 기능 정리]
+
+                    mouseover:          :   대상에 마우스를 올렸을때만 고려하기때문에 반응속도가 매우 빠름
+                                            :   단, 안에 담고있는 대상은 고려하지 않음
+
+                    mouseout            :   대상에서 마우스가 떨어졌을때만 고려함, 반응속도 매우 빠름
+                                            :   단, 안에 담고있는 대상은 고려하지 않음
+
+                    mouseenter          :   대상에 입력되고있는동안 계속해서 기다림
+                                            :   연결된 자녀요소가 속해있는 대상이 있을 경우, 입력되고있기때문에 기다려줄 수 있음
+                                            :   단, 반응속도가 느림
+
+                    mouseleave          :   대상에서 떠날때까지 기다리고있음
+                                            :   단, 반응속도가 느림
+
+
+                [매우중요]
+
+                    css(hover)
+                        1) 초기값을 지정하지않아도, 스스로 알기때문에 알아서 원래대로 돌아감
+                        2) mouseenter, mouseleave를 혼합하여 만든 기능으로 style(css)에서 hover는 자녀요소를 기다릴 수 있다
+
+                ++++++++++++++++++++++++++++++++++++++++++++
+                [문제점]
+                    1) mouseover와 mouseout을 대신하여 기다려 줄 수 있는 mouseenter와 mouseleave 사용했으나...
+                        무한으로 움직이는 wave 현상은 계속 발생함
+
+                        * fadeIn과 fadeOut을 사용해도 "무한으로 깜빡이는 증상"이 나타남
+                        * display:none 과 display:block을 사용하면 해결이 가능함
+                        
+                        * 공통점:
+                            display:none, display:block은 시간을 가지고있지않기때문에 쌓이는 메모리가 없음
+                            effect (show, hide, fadeIn, fadeOut, slideUp, slideDown, toggle) 시간이 쌓임
+
+                    2) 브라우저에는 메모리가 있기때문에 시간이 쌓이는 문제가 발생함
+
+                    [해결]
+
+                        : 시간이 쌓이지 않도록 만들기
+
+                        : 시간을 가지고있어도 멈췄다가 움직이게만들면 "시간이 쌓여도" 멈출 수 있음
+                        : 무한 wavw 현상, 무한으로 깜빡이는 현상등을 해결할 수 있음
+                        : .stop()
+
+                    [매우중요]
+
+                        stop 은 멈추는 기능으로 무한으로 움직이거나 무한으로 깜빡이는 증상을 해결할 때 사용할 수 있음
+                        규칙) 시간을 가지는 효과 앞에 사용하는 기능
+                        mouse 기능들은 시간을 가지고있지않기때문에 사용할 이유가 없음
+
+                    [정리]
+                        1) mouseenter, mouseleave, focusin, focusout 모두 안에 담겨있는 자녀나 객체까지 접근하는 기능들
+                        2) mouseover, mouseout, focus, blur는 겉까지만 접근하는 기능들
+                        3) $(this li), this 연산자는 속해있는 개념을 잡을때 옆에처럼 잡을 수 없기때문에
+                            $(this).children("자녀요소") 의 표현을 많이 활용한다
+
+
+
+            */
+			
+
+            $(".son").hide();
+
+			$("#parent li").bind("mouseover focusin",function(){
+                $(this).children(".son").stop().slideDown(500);
+				
+			}).bind("mouseout focusout",function(){
+                $(this).children(".son").stop().slideUp(500);
+				
+			});
+
+
+
+		});
+	</script>
+	
+	
+ </head>
+
+ <body>
+	<div id="content">
+		<ul id="parent">
+            <li>
+                <a href="#none" title="로그인">로그인</a>
+                <ul class="son">
+                    <li><a href="#none" title="로그인">정회원</a></li>
+                    <li><a href="#none" title="로그인">비회원</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#none" title="로그인">뉴스</a>
+                <ul class="son">
+                    <li><a href="#none" title="로그인">정치</a></li>
+                    <li><a href="#none" title="로그인">경제</a></li>
+                    <li><a href="#none" title="로그인">스포츠</a></li>
+                    <li><a href="#none" title="로그인">주식</a></li>
+                    <li><a href="#none" title="로그인">부동산</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#none" title="로그인">갤러리</a>
+                <ul class="son">
+                    <li><a href="#none" title="로그인">정회원 갤러리</a></li>
+                    <li><a href="#none" title="로그인">비회원 갤러리</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#none" title="로그인">게시판</a>
+                <ul class="son">
+                    <li><a href="#none" title="로그인">정치 게시판</a></li>
+                    <li><a href="#none" title="로그인">경제 게시판</a></li>
+                    <li><a href="#none" title="로그인">스포츠 게시판</a></li>
+                    <li><a href="#none" title="로그인">주식 게시판</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#none" title="로그인">상세문의</a>
+                <ul class="son">
+                    <li><a href="#none" title="로그인">정치 문의</a></li>
+                    <li><a href="#none" title="로그인">경제 문의</a></li>
+                    <li><a href="#none" title="로그인">스포츠 문의</a></li>
+                    <li><a href="#none" title="로그인">주식 문의</a></li>
+                    <li><a href="#none" title="로그인">부동산 문의</a></li>
+                </ul>
+            </li>
+            
+        </ul>
+	</div>
+
+ </body>
+</html>

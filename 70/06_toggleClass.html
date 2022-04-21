@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>toggleClass</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+         *{margin:0; padding:0;}
+         body{margin:0; padding:0;}
+
+         div{width:200px; height:150px; margin:0 auto;}
+         .box1{background-color:gold; font-size:14px; line-height:150px; text-align:center; transition:all 1s;}
+
+         /*################ 이벤트클래스 ################*/
+         /*
+            : 이벤트클래스: 처음부터 화면에 만들어지는 class 객체가 아니라 어떤 이벤트에 의하여
+            변화를 줄 때, 기능을 만들때 사용하는 class 명
+
+            1) 처음에는 화면에 보이지 않음
+            2) script 의하여 event 가 발생함
+         */
+         .box2{background-color:green; font-size:20px; width:300px; height:300px; border-radius:150px; line-height:300px; }
+
+         
+      </style>
+      <script>
+         $(document).ready(function(){
+            /*
+                  [effect 기능들]
+                     : duration 이라는 시간을 가지고있음
+                     :
+                    
+            */
+            $(".box1").click(function(){
+               $(this).toggleClass("box2");
+            });
+
+            /*
+               [정리]
+
+                  1) toggleClass의 경우, 복잡한 작업에서 진행하는 효과가 아니라
+                  하나의 객체에 클래스를 적용했다가 해제하는 개념으로 많이 사용함
+
+                  2) 원하는 클래스를 추가하거나 원하는 클래스를 지워야할때는
+                  addClass, removeClass를 사용한다.
+
+               ++++++++++++++++++++++++++++++++++++++++++
+
+                  1) toggleClass(적용되어있는 class만 적용했다가 해제할 수 있음)
+                     : 단순한 작업시에 빠르게 작업할 수 있음
+
+                     ex) .box1과 .box2(toggleClass)가 적용되었을때,     .box1을 선택하여 지울 수 없음
+
+                  2) addClass 방식
+                     : 화면 안에있는 클래스들 중에서 사용자가 직접 지정하여 적용할 수 있음
+                     : 화면 안에
+                        .box1, .box2, .box3, .sct, .ani     나열되어있다면 ...
+
+                        $("대상").addClass("ani") 형태로 나열된 클래스중에 선택하여 적용할 수 있음
+
+                  3) removeClass 방식
+
+                     :  $("대상").removeClass();
+                     :  해당하는 대상의 class 명을 지울때 사용하는 속성
+                     :  (), class 명 없음, 대상 안의 class명이 몇개든 전부 지울 수 있음
+
+                  [기업에서 사용하는 형태]
+
+                     li class="kakao header no1"
+
+                        : 호출시
+                           .kakao      :  큰 프로젝트명 (회사이름)
+                           .header     :  섹션명, 그룹명(header, best, sale)
+                           .no1         :    개별이름
+
+                        : class는 한 대상에 여러개를 사용할 수 있기때문에 기능적용시 꼬여버리는 문제가 발생함
+                        : removeClass() 적용시 위에 3개의 class명이 모두 사라질 수 있음
+
+                        : 꾸며주기 위하여 사용한 class들이 사라지기때문에 페이지의 출력에 문제가 발생함
+
+                        [2] $("대상").removeClass("no1");
+
+                              모두를 지우는것이 아니라 해당하는 클래스만 지울 수 있음
+
+                  * 기능적용이 많이 되는 페이지에서는 꾸며주더라도 클래스명은 하나 || 두개 안에서 해결하는것이 가장 안전하다
+
+                  * 기능에 의하여 class명이 추가될 수 있기때문에 한 대상에 클래스명이 4개 이상, 5개 이상이 되어버릴 수 있음
+            */
+
+            
+
+         });
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div class="box1">textBox</div>
+ </body>
+</html>

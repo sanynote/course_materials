@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> outline_border</title>
+	<meta charset="utf-8"/>
+   <style>
+      *{margin:0; padding:0;}
+
+      p{width:200px; height:200px; background-color:gold; margin:50px auto; text-align:center; line-height:200px;}
+      .border{border-radius:100px; border:10px solid blue}
+      .outline{border-radius:100px; outline:10px solid blue}
+
+      /*################## 문제 ###################*/
+      /*
+         1) 각각 완벽한 동그라미 형태로 만들기
+         2) border는 border:1px solid blue 적용
+         2) outline는 outline:1px solid blue 적용
+      */
+      /*
+         [outline, border]
+
+         border는 4방향 10px씩 적용되어 20px 커진것을 알 수 있음
+         outline은 영역을 차지하지 않기때문에 200px 유지
+            : 영역을 차지하지않기때문에 %작업을 할 경우, 많이 사용됨
+
+         [중요]
+            border 객체의 모양이 달라져도 형태대로 변형가능
+            outline 객체의 모양대로 만들어지지않을때가 있다.
+
+      ++++++++++++++++++++++++++++++++++++++++++++++
+
+      [border,outline 이해하기]
+
+         1) border 영역 차지하는 값
+            : 어떤 형태로 만들것인지 틀을 눌러놓은 상태
+         2) outline 영역을 차지하지 않음
+            : 어떤 형태로 만들것인지 틀만 올려놓은상태
+      */
+   </style>
+	
+	
+ </head>
+
+ <body>
+	<p class="border">border</p>
+   <p class="outline">outline</p>
+ </body>
+</html>

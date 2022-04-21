@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>addClass</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style-type:none;}
+
+        div{width:630px;}
+        div ul{width:100%;}
+        div ul li{width:200px; height:200px; line-height:200px; margin-left:10px; text-align:center; margin-bottom:10px; float:left; background-color:pink;}
+
+        div ul .li0{border-radius:100px; background-color:orange; transition:all 0.5s linear;}
+        div ul .li0:hover{transform:rotate3d(-1,1,0,360deg);}
+
+        div ul:after{content:""; display:block; clear:both;}
+
+
+    </style>
+    <script>
+        $(document).ready(function(){
+        
+            $("li").click(function(){
+                $("li").removeClass("li0");
+                $(this).addClass("li0");
+            });
+
+        });
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div>
+        <ul>
+            <li class="li0">01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+            <li>05</li>
+            <li>06</li>
+        </ul>
+    </div>
+ </body>
+</html>

@@ -43,70 +43,96 @@
 
 	</style>
 	<script>
-		/*
 		$(document).ready(function(){
+			/*############ 클릭 전 #############*/
+			/*
+				문제)
+					첫번째 내용만 남기고 나머지 내용들 숨기기
+					effect(show, hide 사용하기)
+
+				정리)
+					: show, hide의 경우, duration과 easing을 빼는 경우가 있음!
+					: 브라우저가 제공하는 애니메이션 기능을 따라가는 문제가 생길수 있음!
+					: 이럴 경우, 빠른속도로 만들기 위하여 0이나 1을 적용할 필요가 있음!
+					: display:none과 block을 대신하여 사용할 수 있음! 
+			*/
+
+			// ver-1
+			/*
+				$(".panel li").hide();
+				$(".panel li:first").show();
+			*/
 			
+			// ver-2
 			$(".panel li:not(:first)").hide();
 
+			/*################ 클릭 후 ###############*/
 
-		
-			$(".tab li:eq(0)").click(function(){
-				$(".panel li").hide();
-				$(".panel li:eq(0)").show();
-			});
+			/*
+				문제2)
+					
+					1) AS관련 메뉴를 클릭하면 AS관련 내용만 보이도록 만들기
+					2) 웹 정보 메뉴를 클릭하면 웹 정보 관련 내용만 보이도록 만들기
+					3) 제품 소개 메뉴를 클릭하면 제품소개 내용만 보이도록 만들기
 
+				* 공간으로 선택하기)
+					tip) tab, panel이 있음, 0번 공간 클릭하면 0번 공간 보이도록 만들기
+				
 			
+				* 숨겨주기는 공통태그로 사용하기
+					siblings 제외!
 			
-			$(".tab li:eq(1)").click(function(){
-				$(".panel li").hide();
-				$(".panel li:eq(1)").show();
-			});
 
-			
-			$(".tab li:eq(2)").click(function(){
-				$(".panel li").hide();
-				$(".panel li:eq(2)").show();
-			});
-
-		});
-		
-		*/
-		
-		/*
-			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			[정리]
-
-				1) nav1, nav2 예제에서 nouseover와 moudeout을 사용함 (자녀에서 멈추지 않고, 사라지는 문제 발생)
-				2) focus 작성, 적용이 되지않음 (안에 있는 내용이 보이지 않음)
-
-				* 1,2번 모두 부모요소까지만 접근하고, 사라지는 기능
-
-				3) focusin은 안에 담겨있는 소스자료까지 확인을 하기때문에 내용이 바뀌는것을 알 수 있음
-				4) focus는 .tab li:eq(0) 겉까지만 접근함
-					focusin은 안에 panel li까지 모두 접근하여 내용변화를 확인할 수 있음
-
-		*/
-		$(document).ready(function(){
-			
-			$(".panel li:not(:first)").hide();
+				[매우중요]
+					1) li:first,	li:last	, li:eq(1)	나열되어 있는 속성들의 문제는 증가 되거나 감소되는 값을 만들기 어려움!
+					2) li:eq(0), li:eq(1), li:eq(2)	 나열되어 있는 값들이 숫자이기 때문에 증가되거나 감소되는 값을 만들 수 있음!
 
 
+				+++++++++++++++++++++++++++++++++++++++++++++++++
+
+				[정리]
+					
+					1) nav1, nav2 예제에서 mouseover와 mousout을 사용함! (자녀에서 멈추지 않고, 사라지는 문제 발생!)
+					2) focus 작성, 적용이 되지 않음 (안에 있는 내용이 보이지 않음!)
+
+					* 1, 2번 모두 부모요소 까지만 접근하고, 사라지는 기능!
+
+
+					3) focusin은 안에 담겨 있는 소스 자료까지 확인을 하기 때문에 내용이 바뀌는 것을 알 수 있음!
+					
+				[매우중요]
+
+					4) focus는 .tab li:eq(0) , .tab li:eq(1), .tab li:eq(2)	 겉에 까지만 접근함!
+						focusin은 안에 panel li 까지 모두 접근하여 내용 변화를 확인할 수 있음!
+			*/
+
+			/*제품소개 관련*/
 			$(".tab li:eq(0)").bind("click focusin",function(){
 				$(".panel li").hide();
 				$(".panel li:eq(0)").show();
 			});
 
 			
+			/*AS관련*/
 			$(".tab li:eq(1)").bind("click focusin",function(){
 				$(".panel li").hide();
 				$(".panel li:eq(1)").show();
 			});
 
-			
+			/*웹정보 관련*/
 			$(".tab li:eq(2)").bind("click focusin",function(){
 				$(".panel li").hide();
 				$(".panel li:eq(2)").show();
 			});
+
+			/*
+				[전체적인 문제점]
+					
+					1) 탭 메뉴가 많다면, 코드가 길어지는 문제점이 발생함 (탭이 10개라면...)
+					2) 클릭과 탭 기능이 적용되지 않음 (마우스와 키보드 기능이 함께 사용되기 어려움!, "웹 접근성"의 부재)
+					3) 선택된 모양이 클릭 될 때 마다 바뀌지 않음!
+			*/
+			
 
 		});
 	</script>

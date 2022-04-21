@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>addClass</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body, h2, div, p{margin:0; padding:0;}
+
+        .sct{width:150px; height:150px; line-height:150px; background-color:pink; text-align:center; animation:myani 5s 1;}
+
+        @keyframes myani{
+            0%{width:150px; height:150px; background-color:pink;}
+            50%{width:200px; height:100px; background-color:darkblue; color:#fff;}
+            100%{width:200px; height:200px; border-radius:100px; background-color:gold;}
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            /*
+                [작업순서]
+                    div태그를 클릭하면 p태그가 동일하게 보이도록 만들기
+                        : div 클릭하면 해당하는 클래스 속성 p태그에 붙이기
+            */
+           $("div").click(function(){
+               $("p").addClass("sct");
+           });
+
+           /*
+            [참고사항 정리]
+                1) css 영역의 경우
+                    : script 처럼 class 속성 자체를 호출하는 개념이 없음
+                        css 영역에 없는 속성 : $("대상").addClass()
+
+                2) script에서는 addClass라고해서 class를 추가하는 개념이 있기때문에 
+                    "class 이름만" 호출하여 사용이 가능함
+                    
+                    jQuery는 class 추가 개념이 있음
+                    javascript는 class을 바꾸는 개념이 있음
+
+                정리) 
+                    css에서는 addClass처럼 호출하는 속성이 없기때문에 호출시 id라면 #, class라면 .
+                    script에서는 addClass처럼 직접적으로 class명을 호출하는 개념이 있기때문에 
+                    .을 붙이지않아도 문제없이 사용할 수 있다.
+                        
+           */
+
+        });
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <h2>대상을 선택하여 "class" 이어주기</h2>
+    <div class="sct">class 전달하는 객체</div>
+    <p>"class"를 이어받는 객체</p>
+ </body>
+</html>

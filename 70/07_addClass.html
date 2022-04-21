@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>addClass</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		h2{width:700px; margin:20px; text-align:center; background-color:#a3a; color:#fff;}
+		
+		ul{width:700px; margin:0 0 20px 20px;}
+		li{list-style:none; width:200px; height:200px; background-color:#aaa;
+		margin-right:5px; margin-bottom:5px; text-align:center; line-height:200px; float:left;}
+		
+		.circle{border-radius:100px; background-color:orange; cursor:pointer; transition:all 1s;}
+		.circle:hover{transform:rotate3d(1,1,0,360deg);}
+		
+
+		/*######### [이벤트 클래스] #########*/
+
+		.normal{width:200px; height:200px; border-radius:0; background-color:#aaa;}
+
+		ul:after{content:""; display:block; clear:both;}
+	</style>
+	<script>
+		$(document).ready(function(){
+			
+			/*
+				[작업순서]
+
+				1) li를 클릭하면 현재 클릭된 li( this ) 가 class속성(circle) 이어받기
+				2) ++ 해제하는 이벤트 사용해보기 (normal)
+
+				[문제점: 이벤트 클래스로 원래로 돌리기 어려움!]
+
+					: addClass는 특히, 클래스를 추가해서 적용하는 개념으로 
+					해제하는 클래스, 적용하는 클래스 모두 동시에 사용될 수 있기 때문에 
+					기능 적용시 "검사를 통해" 확인하는 것이 필수!
+
+				3) 해결:
+					클래스명 지우기 
+						대상.removeClass()	: 이렇게 설정할 경우, class가 모두 삭제됨!
+						대상.removeClass("circle")		: 작성된 class만 삭제됨!
+
+
+				+++++++++++++++++++++++++++++++++++++++++++++++
+
+				[매우중요]
+					
+					css의 hover와 script의 이벤트는 함께 사용이 가능함!
+						
+					* javascript 이벤트 + jQuery 이벤트 + css hover 모두 섞어서 사용가능함!
+			*/
+
+			$("ul li").click(function(){
+				// $("ul li").addClass("normal");
+				$("ul li").removeClass();
+				$(this).addClass("circle");
+			});
+		
+		});
+	</script>
+ </head>
+ <body>
+	<h2>대상.addClass(클래명 작성하기)</h2>
+	<ul>
+		<li class="circle">01</li>
+		<li>02</li>
+		<li>03</li>
+		<li>04</li>
+		<li>05</li>
+		<li>06</li>
+	</ul>
+ </body>
+</html>
