@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>tooltip</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+        color: #fff;
+      }
+      a {
+        color: #f90;
+      }
+
+      h1 {
+        text-align: center;
+        padding: 20px 0;
+        text-decoration: uppercase;
+      }
+      p {
+        width: 600px;
+        margin: 20px auto;
+      }
+
+      .tooltip {
+        width: 280px;
+        height: 80px;
+        background-color: #060;
+        padding: 10px;
+        font-size: 0.8em;
+        line-height: 25px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      /*
+        [position:absolute_특징]
+
+            1) 좌표를 설정하지않으면 처음에 만든 위치에서부터 시작됨
+            2) 부모에 relative가 없다면 브라우저를 따라가는 게 기본
+
+        ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        [필수내용정리]
+
+            : position:absolute는 상대와 겹칠 수 있기때문에 이동 시 주의하기
+            :
+                * 어느 영역에 포함하거나 빈공간을 띄우고 사용한다면, "해당하는 공간만큼 상속받기"때문에 
+                대상의 좌표값이 제대로 표현되지않음
+
+                * 절대적으로 브라우저 중심으로 움직일 수 있도록 "독립"시켜서 사용해야한다.
+                여백없이 가장 상단이나 하단에 만들어서 간섭받지않도록 만들어야 한다.
+
+                    : 처음부터 떨어진 여백이 있다면 해당하는 여백만큼 담고 시작함
+                    : 상황에 따라서는 wrap 영역 안에 포함시키지 못할수도 있음
+
+      */
+    </style>
+    <script>
+      $(document).ready(function () {
+        /*
+            [1] 마우스를 대상에 올리기전에 tooptip박스 숨기기
+
+            [2] a태그중에 link1에 마우스를 올리면 tooltip 박스가 해당하는 위치에 나타나게 만들기
+
+                대상:           link1 (class명)
+                이벤트:         mouseover(담겨있는 내용이 없고, 기다릴 필요가 없기때문에 반응속도가 빠름)
+                                mouseenter(담겨있는 내용이 있고, 기다려야 할 때 사용)
+                이벤트핸들러:    tooltip 박스가 지금 올린 link1 옆에 나타나게 만들기
+
+            [3] 내용을 바꾸면 위치가 바뀌기때문에 정확한 좌표를 만들기가 어려움
+            [4] 상대가 있는 거리만큼 움직일 수 있도록 설정하기
+
+                + offset은 일정한 간격만큼 띄울 때 사용하는 속성
+
+                대상.offset().left      , 대상의 간격만큼 왼쪽에서부터 이동시 사용
+                대상.offset().top      , 대상의 간격만큼 위쪽에서부터 이동시 사용
+
+            [중요]
+                : 오른쪽과 하단의 무한대의 영역으로 기준을 만들기 어려움
+
+            [매우중요_1]
+                javascript에서는 문자와 숫자를 구분함
+                    문자는, 사칙연산으로 계산을 만들기가 어려움
+                    숫자는, 사칙연산이 가능함
+
+                    jQuery에서는 "20px"로 사용해도 적용이 되지만 jQuery에서도
+                    계산값이 필요하다면 숫자와 문자를 구분하는 부분이 반드시 필요함
+
+            [매우중요_2]
+
+                상대를 이용하는 좌표와 상대를 이용하는 거리를 만들기 위해서는 정확하게
+                마우스가 어떤 기능을 가지고있으며, "어떤 대상에 올라가 있는지" 를 구분해야 함
+                
+        
+        */
+        $(".tootip").hide();
+
+        $("a")
+          .mouseover(function () {
+            $(".tooltip")
+              .stop()
+              .fadeIn(500)
+              .css({
+                left: $(this).offset().left + $(this).width() + "px",
+                top: $(this).offset().top - 20 + "px",
+              });
+          })
+          .mouseout(function () {
+            $(".tooltip").stop().fadeOut(500);
+          });
+
+        /*###########################################*/
+        /*
+            문제1) fade로 깜빡이는 현상 제어하기
+            문제2) link2에 마우스 올리면 tooltip 박스가 해당하는 객체 옆에 나타나도록 만들기
+                (상대의 거리를 이용해야 함)
+
+            문제3) link3에 마우스 올리면 tooltip 박스가 해당하는 객체 옆에 나타나도록 만들기
+                (link1,link2,link3 깜빡이지 않도록 표현하기)
+
+            제출하기1) tooltip.html 파일 제출하기
+            제출하기2) tabBasic_com.html파일 제출하기
+        
+        */
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>company 찾아오시는 길</h1>
+    <p>
+      자사 <a class="link1" href="http://google.com" title="구글">company</a>는
+      프로그래밍에 필요한 code를 작업하는 기업으로 c/c++ 웹표준 모바일 웹,
+      javascript, jQuery등을 다루는
+      <a class="link2" href="http://google.com" title="구글">company</a>입니다.
+      이 외에 php jsp asp 등의 DB(database) 개발을 할 수 있는
+      <a class="link3" href="http://google.com" title="구글">company</a>입니다.
+    </p>
+
+    <div class="tooltip">
+      <h3>상세주소</h3>
+      <strong>찾아오시는길</strong>
+      <em>서울시 강남구 역삼로 D빌딩</em>
+    </div>
+  </body>
+</html>

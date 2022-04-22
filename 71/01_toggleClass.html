@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>toggleClass</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
+        width: 200px;
+        height: 150px;
+        margin: 50px auto 0;
+      }
+
+      /*############### 기본 클래스 (test1) : 기능전의 모양 만들기 ###############*/
+      .test1 {
+        background-color: gold;
+        font-size: 14px;
+        line-height: 150px;
+        text-align: center;
+        transform: translatey(50px);
+        transition: all 1.5s linear 0.2s;
+      }
+
+      /*####################### 이벤트클래스 (test2) : 기능이 되는 모양 만들기 #####################*/
+
+      .test2 {
+        background: url("img/background.png") no-repeat bottom;
+        background-size: cover;
+        color: #fff;
+        height: 360px;
+        border-radius: 100px;
+        box-shadow: 10px 0 20px rgba(30, 30, 155, 0.5);
+      }
+
+      /*
+         [background 설명]
+
+            1) background-color
+            2) background-image
+            3) background-repeat
+            4) background-position
+
+            * 익스플로러 4.0 || 4버전부터 적용이 가능한 효과들
+
+            5) background-size
+            * css3 에서 사용가능한 효과 (표준버전용(익스플로러 9버전 이상 ~))
+
+
+         [background 축약형 설명]
+
+            1) background: url("img/background.png") no-repeat bottom;
+            2) 공통점: 익스플로러4버전부터 적용가능한 효과만 묶어줄 수 있음
+            3) background-size는 포함되지않음 (css3버전용)
+
+            장점: 한 번에 background 효과들을 읽을 수 있기때문에 정리할 때 매우 좋음
+            단점:
+               background: 라고 호출하면 너무 많은 background를 한 번에 읽기때문에
+               브라우저에서 읽는 속도가 매우 느림
+
+               color image repeat position attachment size?
+               어떤 효과를 호출했는지 알 수 없기때문에 매우 느려짐
+
+         background-size (css3)
+
+            : px, %, em 단위 사용가능
+            : cover        (해당하는 영역에 가로 부분을 맞출 때 사용)
+            : contain      (해당하는 영역에 세로부분을 맞출 때 사용)
+
+      
+      */
+
+      /*########################### 이벤트클래스 (back) 기능이 되는 모양 (body에 붙이기) #########################*/
+      .back {
+        background-image: -webkit-linear-gradient(
+          top,
+          rgba(30, 65, 110, 1) 10%,
+          rgba(123, 158, 183, 1) 60%,
+          rgba(177, 182, 172, 1) 100%
+        );
+        background-image: -moz-linear-gradient(
+          top,
+          rgba(30, 65, 110, 1) 10%,
+          rgba(123, 158, 183, 1) 60%,
+          rgba(177, 182, 172, 1) 100%
+        );
+        background-image: -ms-linear-gradient(
+          top,
+          rgba(30, 65, 110, 1) 10%,
+          rgba(123, 158, 183, 1) 60%,
+          rgba(177, 182, 172, 1) 100%
+        );
+        background-image: -o-linear-gradient(
+          top,
+          rgba(30, 65, 110, 1) 10%,
+          rgba(123, 158, 183, 1) 60%,
+          rgba(177, 182, 172, 1) 100%
+        );
+      }
+    </style>
+    <script>
+      /*
+         [작업순서]
+
+            1) test1이 클릭되면 현재 자기자신이 test2 로 변경되도록 만들기
+               + test1이 스스로 변경되기때문에 this 사용하기
+
+            2) test1을 클릭하면 body에 back이 적용되도록 만들기
+               + boddy에 back이 적용되도록 만들기
+
+            * toggleClass로 만들기
+
+         [추가문제]
+
+            1)    02_tabBasic.html파일, 03_tabBasic.html 파일로 하나 더 만들기
+            2)    03_tabBasic.html 파일에서 메뉴를 선택하면 선택된 모양으로 연결되도록 만들기
+                  (selected로 만들어놓은 작업 확인, 선택되지 않은 나머지는 원래대로 돌려놓기)
+
+            3) addClass,removeClass로 해결하기
+
+            4) toggleClass_test와 tabBasic.html 파일 제출하기
+       
+       */
+      $(document).ready(function () {
+        $(".test1").click(function () {
+          $(this).toggleClass("test2");
+          $("body").toggleClass("back");
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="test1">textBox</div>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>attr_css</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        /*
+            문제1)
+            p태그에 속해있는 img 태그를 대상으로 image02.jpg로 바꿔보기 (css활용하기)
+
+            [문제점]
+                + $("p img").css({}); 어떤 식으로 접근해야할지 알기 어려움
+                + css의 한계, tag,id,class 방식은 쉽게 가능하지만 "속성에 접근하여 바꾸는 방식"은 어려움
+
+            [해결]
+                img 태그의 속성은?
+                    : src와 alt 있음
+                    : 이미지 소스파일은 연결할 때 사용한 속성, src
+                    : 설명글을 표기하는 부분, alt
+
+                * 속성을 가지는 모든 태그는 중요도가 높음
+
+        */
+
+        $("p img").attr("src", "img/image02.jpg");
+
+        /*############### [문제풀이] #############*/
+        /*
+            1) 대상이 a img 클릭
+                스스로 바뀌기때문에 this적용가능
+
+            2) a태그가 구글로 넘어가지 않도록 만들기
+
+        */
+
+        $("a img").click(function () {
+          $(this).attr("src", "img/image01.jpg");
+          $("a").attr("href", "#none");
+
+          // $(this).parent().attr("href", "#none"); 다른방식
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>css VS attr</h1>
+    <h3>문제1) script 영역에서 문제풀기</h3>
+    <p><img src="img/image01.jpg" alt="이미지" /></p>
+
+    <dl>
+      <dt>css와 attr</dt>
+      <dd>
+        css는 꾸며주거나 편집할때 사용하는 작업 (미디어쿼리(해상도별로작업))
+      </dd>
+      <dd>css는 속성에 접근하여 바꾸는것이 불가능하다</dd>
+      <dd>
+        attr은 꾸며주는 작업이 아니라 해당하는 태그의 속성에 접근하는 작업
+      </dd>
+    </dl>
+    <hr />
+
+    <h2>아래 내용 매우 중요(attr 활용하기)</h2>
+    <p>1)$("대상").attr("접근할속성","바꿔야할값 입력");</p>
+    <p>2)$("대상").attr("속성에만 접근");</p>
+    <hr />
+
+    <h2>문제2) [body와 script 영역에서 문제풀기]</h2>
+    <ol>
+      <li>[body] 영역에서 해야할 작업</li>
+      <li>
+        현재 ol태그가 끝난 부분 아래에 a태그 만들기, a태그 안에 img 태그
+        담아주기
+      </li>
+      <li>필수) a태그에 주소는 구글 연결하기</li>
+      <li>img태그는 image03.jpg 연결하기</li>
+
+      <li>[script]영역에서 해야 할 작업</li>
+      <li>a태그 안에 속해있는 img 태그를 클릭하도록 만들기</li>
+      <li>image03.jpg를 image01.jpg로 교체되도록 만들기</li>
+      <li>매우중요) a태그가 구글주소로 넘어가지않도록 만들기</li>
+    </ol>
+    <a href="http://google.com" title="구글"
+      ><img src="img/image03.jpg" alt="이미지"
+    /></a>
+  </body>
+</html>
