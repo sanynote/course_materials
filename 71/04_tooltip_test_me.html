@@ -104,35 +104,7 @@
         */
         $(".tootip").hide();
 
-        $(".link1")
-          .mouseover(function () {
-            $(".tooltip")
-              .stop()
-              .fadeIn(500)
-              .css({
-                left: $(this).offset().left + $(this).width() + "px",
-                top: $(this).offset().top - 20 + "px",
-              });
-          })
-          .mouseout(function () {
-            $(".tooltip").stop().fadeOut(500);
-          });
-
-        $(".link2")
-          .mouseover(function () {
-            $(".tooltip")
-              .stop()
-              .fadeIn(500)
-              .css({
-                left: $(this).offset().left + $(this).width() + "px",
-                top: $(this).offset().top - 20 + "px",
-              });
-          })
-          .mouseout(function () {
-            $(".tooltip").stop().fadeOut(500);
-          });
-
-        $(".link3")
+        $("a")
           .mouseover(function () {
             $(".tooltip")
               .stop()

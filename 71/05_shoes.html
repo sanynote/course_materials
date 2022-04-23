@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>shoes</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
+        width: 600px;
+        height: 555px;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      #main {
+        width: 600px;
+      }
+      #main img {
+        width: 100%;
+      }
+
+      dl {
+        width: 300px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+      dt {
+        width: 100%;
+
+        right: 0;
+        bottom: 100px;
+      }
+      dd {
+        width: 100%;
+
+        right: 0;
+        bottom: 0;
+      }
+
+      #tooltip {
+        width: 200px;
+      }
+      #tooltip img {
+        width: 100%;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        //$("dd").hide();
+        /*
+        $("dt")
+          .mouseover(function () {
+            $("dd")
+              .stop()
+              .slideDown()
+
+          })
+          .mouseout(function () {
+            $("dd")
+              .stop()
+              .slideUp()*/
+        //$("#tootip").hide();
+        /*
+        $(".link1")
+          .mouseover(function () {
+            $(".tooltip")
+              .stop()
+              .fadeIn(500)
+              .css({
+                left: $(this).offset().left + $(this).width() + "px",
+                top: $(this).offset().top - 20 + "px",
+              });
+          })
+          .mouseout(function () {
+            $(".tooltip").stop().fadeOut(500);
+          });*/
+      });
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <p id="main">
+        <img src="img/shoesMain.jpg" alt="신발메인이미지" />
+      </p>
+      <dl>
+        <dt>민첩성과 통기성 그리고 안정성까지</dt>
+        <dd>
+          FKFQ40 [판지오] 아라크네 니트 슈즈는 100% 니트소재 및 파이론 중창으로
+          제작되었습니다. 아라크네 니트 슈즈를 통해 가벼운 민첩성, 시원한
+          통기성, 발과 무릎의 안정성 그리고 스포츠와 캐주얼에서의 뛰어난
+          패션성까지 느낄 수 있습니다.
+        </dd>
+      </dl>
+      <p id="tooltip">
+        <img src="img/shoes.png" alt="신발이미지" />
+      </p>
+    </div>
+  </body>
+</html>
