@@ -14,7 +14,7 @@
         padding: 0;
       }
 
-      div {
+      #content {
         width: 600px;
         height: 555px;
         position: relative;
@@ -28,19 +28,16 @@
         width: 100%;
       }
 
-      dl {
+      #content div {
         width: 300px;
-        position: absolute;
-        right: 0;
-        bottom: 0;
+        position: fixed;
+        right: 670px;
+        bottom: 400px;
       }
-      dt {
+      #content div h3 {
         width: 100%;
-
-        right: 0;
-        bottom: 100px;
       }
-      dd {
+      #content div p {
         width: 100%;
 
         right: 0;
@@ -56,24 +53,21 @@
     </style>
     <script>
       $(document).ready(function () {
-        //$("dd").hide();
-        /*
-        $("dt")
-          .mouseover(function () {
-            $("dd")
-              .stop()
-              .slideDown()
+        $("#content div p").hide();
 
+        $("#content div h3")
+          .mouseover(function () {
+            $("#content div p").stop().slideDown();
           })
           .mouseout(function () {
-            $("dd")
-              .stop()
-              .slideUp()*/
-        //$("#tootip").hide();
-        /*
-        $(".link1")
+            $("#content div p").stop().slideUp();
+          });
+
+        $("#tootip").hide();
+
+        $("#content div h3")
           .mouseover(function () {
-            $(".tooltip")
+            $("#tooltip")
               .stop()
               .fadeIn(500)
               .css({
@@ -82,26 +76,26 @@
               });
           })
           .mouseout(function () {
-            $(".tooltip").stop().fadeOut(500);
-          });*/
+            $("#tooltip").stop().fadeOut(500);
+          });
       });
     </script>
   </head>
 
   <body>
-    <div>
+    <div id="content">
       <p id="main">
         <img src="img/shoesMain.jpg" alt="신발메인이미지" />
       </p>
-      <dl>
-        <dt>민첩성과 통기성 그리고 안정성까지</dt>
-        <dd>
+      <div>
+        <h3>민첩성과 통기성 그리고 안정성까지</h3>
+        <p>
           FKFQ40 [판지오] 아라크네 니트 슈즈는 100% 니트소재 및 파이론 중창으로
           제작되었습니다. 아라크네 니트 슈즈를 통해 가벼운 민첩성, 시원한
           통기성, 발과 무릎의 안정성 그리고 스포츠와 캐주얼에서의 뛰어난
           패션성까지 느낄 수 있습니다.
-        </dd>
-      </dl>
+        </p>
+      </div>
       <p id="tooltip">
         <img src="img/shoes.png" alt="신발이미지" />
       </p>
