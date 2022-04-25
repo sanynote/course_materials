@@ -4,6 +4,7 @@
     <title>animate</title>
     <meta charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/jquery.color.js"></script>
     <style>
       * {
         margin: 0;
@@ -111,32 +112,37 @@
             + function 제외
 
             + 제출 시, 어떤것이 변화되지 않는지 작성하기
+
+            [문제점]
+
+                : 배경색상이 바뀌지않음
+                : 이유는 animate는 css가 아니기때문에
         
         */
 
-        $("#box2").animate(
-          {
-            width: "200px",
-            height: "200px",
-            left: "500px",
-            opacity: "0.5",
-            backgroundColor: "yellow",
-          },
-          2000,
-          "linear"
-        );
-
-        $("#box2").animate(
-          {
-            width: "100px",
-            height: "100px",
-            left: "20px",
-            opacity: "1",
-            backgroundColor: "red",
-          },
-          1500,
-          "linear"
-        );
+        $("#box2")
+          .animate(
+            {
+              width: "200px",
+              height: "200px",
+              left: "500px",
+              opacity: "0.5",
+              backgroundColor: "rgba(255,255,0,1)",
+            },
+            2000,
+            "linear"
+          )
+          .animate(
+            {
+              width: "100px",
+              height: "100px",
+              left: "20px",
+              opacity: "1",
+              backgroundColor: "rgba(200,0,0,1)",
+            },
+            1500,
+            "linear"
+          );
       });
     </script>
   </head>

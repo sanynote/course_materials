@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>shoes</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body,
+      dl,
+      dt,
+      dd {
+        margin: 0;
+        padding: 0;
+      }
+
+      #wrap {
+        width: 100%;
+      }
+
+      dl {
+        width: 600px;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      dl img {
+        width: 100%;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      dl dd {
+        width: 260px;
+        height: 150px;
+        font-size: 12px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        line-height: 1.8em;
+      }
+
+      /*
+
+        [만약 dd를 offset으로 만들경우]
+
+        dd의 absolute는 position:relative 부모요소의 영향을 받아 거리값이 
+        만들어질 수 있음
+
+            : 상대거리만큼 움직이는 offset().left나 offset().top의 경우
+            부모나 담아주는 영역의 값이 상속되기때문에 독립으로 사용하기 위하여 설정해야한다.
+
+            [너비값이나 높이값 만들기 기능 참고]
+            : 부모가 떨어진 거리 + border값 + padding + margin 값 빼기 더하기
+            등으로 값을 계산하여 만들 수 있음
+      
+      */
+      dd strong {
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      /* 브라우저 전체를 따라다니기위하여 독립으로 설정, 이미지 사이즈 참고하여 설정 */
+      /*
+        이미지 사이즈 참고하여 설정
+        absolute의 경우, 상대와 겹치는것이 쉽기때문에 영역을 크게 잡고 설정하는것이 아니라 
+        필요한 영역으 사용하고있는지 확인하여 작업하기
+
+        중요:
+            width:100%에 outline:1px solid red를 설정하여 확인하면 이미지와 영역이 겹쳐있는것을 알 수 있음
+      */
+      .shoes {
+        width: 200px;
+        height: 225px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .shoes img {
+        width: 100%;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        /*
+            [기능만들기]
+
+                1) dd에 있는 strong에 마우스 올리면 shoes 이미지가 옆에 나타나도록 만들기
+                2) .desc 부분이 slideUp이 되거나 slideDown이 되도록 만들기
+
+                마우스 올렸을 때 :
+                    mouseover는 상대를 기다리지않기때문에 빠름, 깜빡거림 (stop이 있기때문에 over를 많이 쓰긴 함)
+                    mouseenter는 상대를 기다리지않기때문에 느림
+
+                    현재 예제에서는 상대들의 기능을 기다려야하기때문에 mouseenter도 좋지만
+                    반응속도때문에 mouseover와 stop 사용하기
+
+                마우스 내렸을 때 :
+                    : mouseout는 상대를 기다리지않기때문에 작업속도가 빠름
+                    : mouseleave는 상대를 기다리기때문에 작업속도가 느림
+
+            [중요]
+                effect 기능은 서로 명칭이 다르고 기능이 달라도 상호보완이 가능함
+                hide, slideDown 같이 사용해도 문제 없음
+                slideUp, fadeIn 같이 사용해도 문제 없음
+
+                * 다른걸로 사라지고, 다른 기능으로 나타나도 문제가 없음
+                * effect는 서로 duration과 easing 효과를 공유할 수 있음
+
+
+        */
+
+        /*
+            [매우중요] 이벤트 전과 후 구분하기
+       
+        */
+
+        //1) 마우스 올리기 전에 설명글, 작은 신발 이미지 숨기기
+        $(".desc, .shoes").hide();
+
+        //2) 마우스 올리면 dd strong 옆에 신발이미지 나타나게 만들기
+
+        $("dd strong")
+          .mouseover(function () {
+            $(".desc").slideDown(300);
+
+            $(".shoes").stop().fideIn().css({
+              /*
+                left: $(this).offset().left.width() + 20 + "px",
+                top: $(this).offset().top - 50 + "px",*/
+              left: "100px",
+              top: "100px",
+            });
+          })
+          .mouseout(function () {
+            $(".shoes").stop().fadeOut(500);
+            $(".desc").stop().slideUp(300);
+          });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <dl>
+        <dt><img src="img/shoesMain.jpg" alt="신발메인이미지" /></dt>
+        <dd>
+          <strong>민첩성과 통기성 그리고 안정성까지</strong>
+          <span class="desc">
+            FKFQ40 [판지오] 아라크네 니트 슈즈는 100% 니트소재 및 파이론
+            중창으로 제작되었습니다. 아라크네 니트 슈즈를 통해 가벼운 민첩성,
+            시원한 통기성, 발과 무릎의 안정성 그리고 스포츠와 캐주얼에서의
+            뛰어난 패션성까지 느낄 수 있습니다.
+          </span>
+        </dd>
+      </dl>
+    </div>
+
+    <p class="shoes">
+      <img src="img/shoes.png" alt="신발이미지" />
+    </p>
+  </body>
+</html>
+
+<!--
+    [position:absolute 로 구성 시 중요사항]
+
+    1) 어느 영역 안에서 배치할 때 사용, position:absolute
+    2) 전체 브라우저를 상대로 배치할 때 사용, position:absolute
+
+    * 상대의 거리만큼 움직이기 위해서는 부모요소가 아닌 바깥에 독립 채로 사용해야한다.
+
+    정리)
+        상대의 거리만큼 움직이는 작업을 하다보면, "생각보다 많은 거리가 만들어지거나
+        영역이 제대로 설정되지 않는 경우" 가 생기는 데 이는 .. "부모요소의 relative"로 떨어진
+        거리가 문제가 될 수 있기때문에 브라우저 전체를 상대로 움직일때는 현재처럼 
+        wrap 영역 바깥에 설정해야 될수도 있다.
+
+    * tooltip이나 skipNav 같은 경우
+
+-->

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>sliding_window</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style-type: none;
+      }
+
+      #content {
+        width: 900px;
+        margin: 0 auto;
+        background-color: pink;
+        position: relative;
+        overflow: hidden;
+      }
+
+      h1 {
+        width: 600px;
+        margin: 0 auto;
+      }
+      h1 img {
+        width: 100%;
+      }
+
+      ul {
+        width: 1800px;
+        height: 477px;
+      }
+
+      .img {
+        width: 900px;
+        float: left;
+        position: absolute;
+        left: 0;
+        top: 150px;
+      }
+      .img img {
+        width: 100%;
+      }
+
+      ul:after {
+        content: "";
+        display: block;
+        overflow: hidden;
+      }
+
+      #behind {
+        width: 900px;
+        height: 475px;
+        position: absolute;
+        left: 0;
+        top: 220px;
+        background-color: rgba(0, 0, 0, 0);
+        text-indent: -9999px;
+      }
+
+      #behind .left {
+        width: 50%;
+        height: 100%;
+        float: left;
+      }
+      #behind .right {
+        width: 50%;
+        height: 100%;
+        float: left;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $(".left").click(function () {
+          $("li").stop().animate({ left: "+=900px" }, 0, "swing");
+        });
+
+        $(".right").click(function () {
+          $("li").stop().animate({ left: "-=900px" }, 0, "swing");
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="content">
+      <h1><img src="img/logo.png" alt="로고이미지" /></h1>
+      <ul>
+        <li class="img">
+          <img src="img/a00.jpg" alt="영화이미지0" />
+        </li>
+        <li class="img">
+          <img src="img/a01.jpg" alt="영화이미지1" />
+        </li>
+      </ul>
+      <div id="behind">
+        <p class="left">left</p>
+        <p class="right">right</p>
+      </div>
+    </div>
+  </body>
+</html>
