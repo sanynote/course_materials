@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>DOMControl_ALL</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+      .htmlEtc p {
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+        text-align: center;
+        line-height: 200px;
+        border-radius: 30px;
+      }
+    </style>
+    <script>
+      /*
+        1) 두번째 문법 사용하기
+
+        [두번째 문법 안에 문제 풀기]
+
+            * 공간에 접근한다면 lt gt
+            * 나열된 객체들 중에서 찾을때는 prev next 사용
+
+            ############################ DOM0 ############################
+
+            1) DOM0에서 li중 홀수인것만 선택하여 배경색상 초록색 적용하기
+            2) h1을 클릭하면 DOM0에서 li중 짝수인것만 선택하여 핑크색 적용하기
+
+            3) DOM0에서 li요소 중 마지막 것 클릭하면, 3번째 이전요소들에 테두리 1px dashed blue 적용하기
+            4) DOM0에서 li 요소 중 4번째 이후 요소들에 높이값 100px 적용하기
+
+            ########################## DOM1 ############################
+      
+      */
+      $(document).ready(function () {
+        $("#DOM0 li:odd").css({ backgroundColor: "green" });
+
+        $("h1").click(function () {
+          $("#DOM0 li:even").css({ backgroundColor: "pink" });
+        });
+
+        $("#DOM0 li:last").click(function () {
+          $("#DOM0 li:lt(2)").css({ border: "1px dashed blue" });
+        });
+
+        $("#DOM0 li:gt(3)").css({ height: "100px" });
+
+        // 1) OM1 에서 li요소 중 2의 배수 찾아서 배경색상 오렌지
+        $("#DOM1 li:nth-child(2n)").css({ backgroundColor: "orange" });
+
+        /*
+            [매우중요_내용찾기]
+            2) btn0을 클릭하면 "APPLE"라는 "내용"을 포함하는 값, 배경색상 아쿠아, 글자색상 빨간색,글자 굵게
+                : 지금까지는 공간, 태그, id, class 등의 속성을 사용함
+                : 현재의 값은 일부 내용을 포함하는 값을 찾을때 사용하는 "중요"속성
+
+        */
+        $("#btn0").click(function () {
+          $("#DOM1 li:contains(APPLE)").css({
+            backgroundColor: "orange",
+            color: "red",
+            fontWeight: "bold",
+          });
+        });
+
+        /*
+            3) DOM1에서 span 태그가 있을 경우, fadeTo 적용하기
+        */
+        $("#DOM1 li:has(span)").fadeTo(500, "0.3");
+
+        /*
+            [매우중요_속해있는것은 알지만 자녀인지 형제인지 어떻게 되어있는지 잘 알지 못할때 사용]
+
+            1) 기본적인 접근방식 (this) 사용시
+
+                $(this).children(".son");
+                $(this .son): 이런식으로 잡을 수 없기때문에 위와 같은 방법으로 대상을 선택함
+
+                2) 아래보고 문제 풀기
+                    : ul부터 img까지 children 방식으로 접근하기
+
+                    <ul>
+                        <li>
+                            <a>
+                                <img>
+                            </a>
+                        </li>
+                    </ul>
+                    $("ul").children("li").children("a").children("img")
+                    $("ul").children("li a img")
+
+                    중요: find 방식은?
+                            : 어디에 속해있는지 알 수 있음
+                            : 위처럼 자녀로있는지, 자녀에 자녀로 있는지 어떤 형태인지는 알 수 없음
+                            :$("ul").find("img")로 찾을 수 있음
+
+                [정리_활용하기]
+
+                    1) 어느 영역에 있는지 알 수는 있지만 정확하게 찾는 대상이 어떤 형태로 존재하는지
+                    알기 어려울때 사용하는 속성이 find
+
+                    2) 어느 영역에있는지 정확하게 모를 경우, body, wrap 을 대상으로 찾을 수 있음
+
+                    장점: 디테일하게 선택하지않아도 선택이 가능함
+                    단점: 디테일하지 안기때문에 대상을 찾지못하면 무한 loop 현상에 빠질 수 있음
+
+        */
+        $("#DOM1")
+          .find("a")
+          .css({ twxtDecoration: "underline", fontSize: "40px" });
+
+        /*########################## DOM2 ############################*/
+        // 1) btn1을 클릭하면 .text 의 글자 바뀌도록 만들기
+
+        $("#btn1").click(function () {
+          $(".text").text("글씨 바꾸기 성공");
+        });
+
+        // 2) 대상의 뒤에 연결할 때 사용하는 속성, append
+        $(".append").append(": 현재의 글을 대상의 뒤에 연결해서 붙일 수 있음");
+
+        // 3) 대상의 앞에 연결할 때 사용하는 속성, prepend
+        $(".prepend").prepend("02) 대상의 앞에 연결해서 붙일 수 있음");
+
+        /*########################## [매우중요] #########################*/
+        /*
+            [주의사항]
+
+                사용방법:대상.html(대상 안에 html구조를 작성할 수 있음)
+
+                1) 담고있는 기존의 객체가 있다면 지워지거나 사라질 수 있기때문에 주의하기
+                2) 담아야하는 대상이 인라인요소이거나 작은부피의 태그일 경우,
+                기능적용이 되면서 문제가 생길 수 있음
+
+                    <span>      담아줄 대상
+                        <p></p> 이벤트에 의해서 만들어진 객체
+                    </span>
+
+                심각한 오류 : 부모요소나 담아주는 객체의 크기를 모르고 구조를 작성할 경우, 문제가 발생함
+
+                div 태그를 사용하는 이유는?
+                    + 어떤 객체가 기능에 의하여 출력될 지 알 수 없기때문에 div 태그를 많이 사용할 수 밖에 없음
+                    + div 태그는 어떠한 객체도 감을 수 있기때문에 거의 오류가 없음
+                    + div 태그로만 만들면 페이지가 무거워지는 단점이 존재함
+        */
+        // li 태그 (htmlEtc)
+        $(".htmlEtc").html(
+          "<p><a htef='http://www.google.com' title='구글'/>구글</p>"
+        );
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>DOMControl:Document Object Model</h1>
+    <p>
+      화면에 등장하는 모든 객체들을 컨트롤 할 수 있음 (빈칸이나 공백도 객체)
+    </p>
+    <hr />
+
+    <h2>(*) 공간을 선택하는 선택자</h2>
+    <ul id="DOM0">
+      <li>모든 공간은 0번부터 시작</li>
+      <li>홀수인 것 선택하기 li:odd(공간의 홀수 개념)</li>
+      <li>짝수인 것 선택하기 li:even(공간의 짝수 개념)</li>
+      <li>첫번째인 것 선택하기 li:first, li:eq(0), li:nth-child(1)</li>
+      <li>마지막인 것 선택하기 li:last</li>
+      <li>
+        * 매우중요) 마지막 요소는 중간값이 추가되거나 삭제될 수 있기때문에<br />
+        eq나 nth-child로 적용하기 어려움 해당하는 값이 없거나 의미가 달라질 수
+        있음
+      </li>
+      <li>3번째 이전요소 , li:lt(2), 0(첫번째), 1(두번째), 2(세번째)</li>
+      <li>2번째 이후요소, li:gt(1)</li>
+      <li>중요) li,gt는 자신을 포함하지 않고 계산이 됨</li>
+      <li>
+        중요) 삼성엔지니어링 사이트에서는 검사를 통해 확인해보면 "조건주석문"
+        에서 위의 내용을 알 수 있음
+      </li>
+    </ul>
+
+    <hr />
+
+    <h2>탐색 선택자</h2>
+    <p>
+      <button id="btn0">버튼0</button>
+    </p>
+    <ul id="DOM1">
+      <li>DOM1에서 li요소 중 2의 배수 선택</li>
+      <li>DOM1에서 li요소 중 ["APPLE"] 값이 포함된 값 선택하기</li>
+      <li>
+        <span> DOM1에서 li 요소 중 [span]이 포함된 갑 선택 </span>
+      </li>
+      <li>
+        <a href="#none" title="링크요소">
+          DOM1에서 li요소 중 하위요소가 a인 것 선택하기
+        </a>
+      </li>
+    </ul>
+    <hr />
+
+    <h2>[*]속성 선택자</h2>
+    <p>
+      <button id="btn1">버튼1</button>
+    </p>
+    <h3 class="text">jQuery,javascript</h3>
+    <ul id="DOM2">
+      <li class="append">01) append</li>
+      <li class="prepend">prepend</li>
+      <li class="htmlEtc">03) htmlEtc</li>
+    </ul>
+  </body>
+</html>
