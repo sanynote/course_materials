@@ -81,9 +81,7 @@
         left: 0;
         top: 0;
       }
-      .shoes img {
-        width: 100%;
-      }
+      
     </style>
     <script>
       $(document).ready(function () {
@@ -127,14 +125,11 @@
 
         $("dd strong")
           .mouseover(function () {
-            $(".desc").slideDown(300);
-
-            $(".shoes").stop().fideIn().css({
-              /*
-                left: $(this).offset().left.width() + 20 + "px",
-                top: $(this).offset().top - 50 + "px",*/
-              left: "100px",
-              top: "100px",
+            $(".desc").stop().slideDown(300);
+            $(".shoes").stop().fadeIn().css({
+                left: $(this).offset().left+$(this).width() + 20 + "px",
+                top: $(this).offset().top - 50 + "px",
+             
             });
           })
           .mouseout(function () {
@@ -181,6 +176,6 @@
         거리가 문제가 될 수 있기때문에 브라우저 전체를 상대로 움직일때는 현재처럼 
         wrap 영역 바깥에 설정해야 될수도 있다.
 
-    * tooltip이나 skipNav 같은 경우
+    * tooltip이나 skipNav 같은 경우, 어딘가에 속하지않고 분해하여 독립인채로 사용하는 경우가 많음
 
 -->
