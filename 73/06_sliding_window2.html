@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>sliding_window1</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		li{list-style:none;}
+		html{height:100%;}
+
+		body{margin:0; padding:0;
+			background-image:-webkit-linear-gradient(top, #000 0%, #111 80%, darkred 100%);
+			background-image:-moz-linear-gradient(top, #000 0%, #111 80%, darkred 100%);
+			background-image:-o-linear-gradient(top, #000 0%, #111 80%, darkred 100%);
+			background-image:-ms-linear-gradient(top, #000 0%, #111 80%, darkred 100%);
+		}
+
+		h1{padding:80px 0 40px; text-align:center;}
+
+		#screen{width:800px; height:420px; border:5px solid #ccc; margin:0 auto;
+		position:relative; overflow:hidden;}
+		
+		/*ul 태그 (필름역할)*/
+		#film{width:3200px;}
+
+		/*li 태그 (장면역할)*/
+		/* 태그를 li로 사용하면 상속문제가 있어서 class 명으로 작업함!*/
+		#film .scene{width:800px; float:left;}
+
+
+		/*################## 버튼 만들기 ##################*/
+
+		#btn p{width:50px; height:100px;  position:absolute; top:50%;
+		transform:translatey(-50%); /*left:0;*/}
+		#btn p img{width:100%; height:100%;}
+
+		#btn .prevBtn{left:0;}
+		#btn .nextBtn{right:0;}
+
+		/*
+			[position의 특징]
+				
+				1) position은 공통영역에서 작업한 좌표가 개별 영역에 영향을 줌!
+				2) css에서도 유일하게 공통영역의 값이 개별 작업시 변경이 되지 않음!
+
+				3) 미디어 쿼리 처럼 조건이 바뀌어야 제대로 된 작업이 가능함!
+
+				* 공통에서 left로 작업했다면 개별작업시에도 left에서 움직여야 함!
+				* 단! 미디어 쿼리 처럼 특별한 조건(해상도에 맞추는) 이  있다면 right 적용가능!
+
+
+				[css 해결하기]
+					* 공통에서 사용될 좌표와 개별로 사용할 좌표를 따로 지정하면 특별한 조건을
+					사용하지 않아도 작업이 가능하다!
+		*/
+
+		#film:after{content:""; display:block; clear:both;}
+
+	</style>
+	<script>
+		$(document).ready(function(){
+			/*
+				문제1) next 버튼 클릭하면 한장면씩 나오도록 만들기
+			*/
+			$("#film").prepend($("scene:last"));
+			$("#film").css({"marginLeft":"-800px"})
+
+			$(".nextBtn").click(function(){
+				$("#film").animate({"marginLeft":"-=800px"},500,"swing",function(){
+					/*문제점: 계속 빠지는 문제 발생*/
+
+					/*문제2) 필름의 맨 뒤로 첫 장면 보내기!*/
+					/* 장면들 중에서 첫장면 맨 뒤로 보내기*/
+					$("#film").append( $(".scene:eq(0)") );
+					/*
+						문제점: 첫장면 뒤로 보내기 해도 계속 빠지는 문제 발생
+							* 첫장면을 뒤로 보내기가 되야 3번으로 해결 가능!
+						
+						문제3 최종해결)
+							빠지는 속성이 뭔지 확인하고, 멈추기
+					*/
+					$("#film").css({"marginLeft":"-800px"});
+				});
+			
+			});
+
+			/* 최종문제4) 이전 버튼 만들기*/
+			/*첫 장면에 빈칸이 없도록 만들기*/
+
+			/*
+				[주의사항]
+
+					1) 대상:last 부분은, eq나 nth-child로 설정하지 않도록 한다.
+					2) .scene:eq(3)			, li태그가 추가되거나 삭제되었을때 해당하는 공간이 인식되지않음
+					3) .scene:nth-child		, li태그가 추가되거나 삭제되었을때 해당하는 번호가 인식되지않음
+					
+					* 중요) 마지막요소는 공간이나 숫자로 작성하기보다 last로 잡는것이 효과적이다.
+			*/
+			
+			/*
+				앞에 이미지가 없어서 빈칸이 먼저 출력된다. 
+				-> 앞 공간 이용하기 (overflow:hidden으로 숨기면 사용중인 공간이 보이지 않음)
+
+				tip) 이미지는 크고 duration이 길면
+						프레임 저하 현상으로 이미지가 일그러지거나 균열이 가는것처럼 보임
+						-> overflow:hidden으로 해결하기
+
+			*/
+			$(".prevBtn").click(function(){
+				$("#film").animate({"marginLeft":"+=800px"},500,"swing",function(){
+					
+					/* scene 중에서 맨 뒷장면 앞으로 오도록 만들기 */
+					$("#film").prepend( $(".scene:last") );
+
+					$("#film").css({"marginLeft":"-800px"});
+				});
+			
+			});
+
+		
+		});
+	</script>
+
+ </head>
+ <body>
+	<h1><img src="img/logo.png" alt="logo"/></h1>
+	<div id="screen">
+		<ul id="film">
+			<li class="scene">	
+				<img src="img/a00.jpg" alt="img0"/>
+			</li>
+			<li class="scene">
+				<img src="img/a01.jpg" alt="img1"/>
+			</li>
+			<li class="scene">
+				<img src="img/a02.jpg" alt="img2"/>
+			</li>
+			<li class="scene">
+				<img src="img/a03.jpg" alt="img3"/>
+			</li>
+		</ul>
+		<div id="btn">
+			<p class="nextBtn">
+				<img src="img/next_shadow.png" alt="다음버튼"/>
+			</p>
+			<p class="prevBtn">
+				<img src="img/prev_shadow.png" alt="이전버튼"/>
+			</p>
+		</div>
+	</div>
+ </body>
+</html>
+<!--
+	+ 화면에 보여주기만 하는 부분 : screen
+	+ 모든 장면을 모아주는 부분 : film
+	+ 한 장면 , 한장면의 영역  : scene
+-->

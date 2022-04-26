@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>sliding_window</title>
+        <meta charset="utf-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <style>
+            *{margin:0; padding:0;}
+            li{list-style-type:none;}
+            body{margin:0; padding:0; 
+                background-image:-webkit-linear-gradient(top, #000 0%, #111 80%, darked 100%);
+                background-image:-moz-linear-gradient(top, #000 0%, #111 80%, darked 100%);
+                background-image:-o-linear-gradient(top, #000 0%, #111 80%, darked 100%);
+                background-image:-ms-linear-gradient(top, #000 0%, #111 80%, darked 100%);
+            }
+
+            h1{padding:80px 0 40px; text-align:center;}
+            #screen{width:1610px; height:420px; margin:0 auto;}
+
+            /*
+                [확인하기]
+                    img 태그는 인라인이지만 옆으로 나열되지 못하고있음
+                    원은 부모가 되는 film이 이미지태그 2장을 담지못하는 문제 발생
+
+                    + 자녀요소를 담을 수 있는 객체는 부모밖에 없음
+                    + 부모크기가 제대로 표현되지 않으면 자녀를 전부 담아주기 어려움
+
+                        : 장면2장을 담을 수 있는 충분한 길이값이 필요함
+                        : 이미지는 2장 
+                        : 2장을 합친 크기는 1600px
+
+                [문제점]
+                    부모를 1600px로 설정해도 담기지않음
+                    이유는? 
+                        DOM을 형성하는 과정에서 부모자녀를 작성하다보면 "들여쓰기" 를 할 수 밖에 없음
+                        : 빈칸 5px 생성
+                        : 구형 브라우저의 경우 5px 이상 생성될 수 있음
+            */
+
+            .film{width:1610px;}
+
+        </style>
+        <script>
+            $(document).ready(function(){
+                /*
+                    [작업순서]
+
+                        1) scene0을 클릭하면 scene1이 나오도록 만들기
+                        2) scene1을 클릭하면 scene0이 나오도록 만들기
+
+                    [매우중요]
+
+                        모든 장면을 묶어주고있는 대상은 film
+                            + 해당하는 장면을 보여주거나 밀어주려면 film을 잡아당기고 밀어주기
+                */
+
+                $(".scene0").click(function(){
+                    $(".film").css({"marginLeft":"-805px"});
+                });
+
+                $(".scene1").click(function(){
+                    $(".film").css({"marginLeft":"0"});
+                });
+            })
+        </script>
+
+
+    </head>
+
+    <body>
+        <h1><img src="img/logo.png" alt="logo"/></h1>
+        <ul id="screen">
+            <li class="film">
+                <img class="scene0" src="img/a00.jpg" alt="img0"/>
+                <img class="scene1" src="img/a01.jpg" alt="img1"/>
+            </li>
+        </ul>
+    </body>
+</html>
+<!--
+    + 화면에 보여주기만 하는 부분 : screen
+    + 모든 장면을 모아주는 부분: film
+    + 한 장면, 한 장면의 영역 : scene
+
+
+-->
