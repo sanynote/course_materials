@@ -97,8 +97,11 @@
         /*웹정보 관련*/
         $(".tab li a").bind("click focusin", function () {
           $(".panel li").hide();
-          $(this).attr("href", "show");
+          // 내가 만든 답 $(this).attr("href", "show");
+          // 선생님의 답  $($(this).attr("href")).show();
 
+          $($(this).attr("href")).show();
+          
           /*
             문제)
               현재 a에 연결된 href에 접근하여 show보여주기
@@ -107,6 +110,12 @@
           $(".tab li a").removeClass();
           $(this).addClass("selected");
         });
+
+       
+            
+            
+
+            
 
         /*
 				[전체적인 문제점]
