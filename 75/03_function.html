@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>function</title>
+        <meta charset="utf-8"/>
+
+        <script>
+            function userBtn(){
+
+                alert("함수 안에 있는 메서드");
+                /*
+                    [중요]
+                        : 함수 안에 메서드가 없으면 기능을 할 수 없기때문에 비어있는 함수가 되어버림
+                        : 기능하지 않는 함수
+
+                    [함수를 사용하는 이유]
+                        : 단순하고 심플한 기능도 만들 수 있지만 다양하고 복장합 기능도 만들 수 있음
+
+                    [중요]
+                        : 이벤트에 작성된 함수명과 실제로 기능이 구현되어야 하는 함수명이 같아야 제대로 기능적용이 가능함
+                        : 이름은 같아도 대문자소문자 다르면 적용되지않음
+
+                    [매우중요]
+                        :: 제이쿼리 기본문법들도 기능들을 표현하는 큰 함수영역
+                    
+                    [javascript의 function과 제이쿼리 문법]
+
+                        1) function userBtn(){}
+                        2) $(document).ready(function(){})
+
+                        : 1번과 2번 의 크기는 비슷, 서로 담을 수 없음
+
+                */
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <h3>함수 메서드</h3>
+        <div> 함수
+            <a href="http://www.google.com" title="구글">구글</a> : 기능이 되는 부분이 (메서드)
+        </div>
+
+        <h3>01) 클릭하면 메서드 실행되도록 만들기</h3>
+        <p>
+            위에서 보면 a태그가 직접 실행된 상태
+        </p>
+        <p>
+            스스로 기능을 가지는 메서드들 : submit, reset, alert, confirm, prompt<br/>
+            사용자가 기능을 부여하지 않아도, 조건을 작성하지 않아도 자신의 기능을 표현하는 요소들
+        </p>
+        <p>
+            스스로 기능을 가지지 않는 요소들 (사용자가 직접 기능을 적용하면 가능함)<br/>
+            button div p span
+        </p>
+        <input id="button0" type="button" value="클릭" title="클릭" onclick="alert('메서드');"/>
+
+        <h3>02) 함수를 이용하여 메서드가 실행되도록 만들기</h3>
+        <p>
+            위에서 보면 div가 함수고 div를 클릭하면 그안의 메서드 a가 작동되도록 하는 원리
+        </p>
+        <input id="button1" type="button" value="클릭" title="클릭" onclick="userBtn();"/>
+    </body>
+</html>

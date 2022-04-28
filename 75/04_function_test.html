@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>function</title>
+        <meta charset="utf-8"/>
+
+        <script>
+            function pet(){
+                var pet = prompt("내가 키우는 강아지 이름");
+                alert("제가 키우는 강아지는 "+pet+" 입니다.");
+                
+            }
+            function fav(){
+                var fav = prompt("내가 좋아하는 동물은");
+                document.write("내가 좋아하는 동물은 "+fav+"");
+
+            }
+
+            function food(){
+                var food = prompt("내가 좋아하는 음식은");
+                alert("제가 좋아하는 음식은 "+food+" 입니다.");
+
+            }
+
+            function me(){
+                var name = prompt("내 이름은");
+                var blo = prompt("내 혈액형은");
+                var sex = prompt("내 성별은");
+                var hob = prompt("내 취미는");
+                var col = prompt("내가 좋아하는 색깔은");
+
+                document.write("내 이름은 "+name+"");
+                document.write("내 혈액형은 "+blo+"");
+                document.write("내 성별은 "+sex+"");
+                document.write("내 취미는 "+hob+"");
+                document.write("내가 좋아하는 색깔은 "+col+"");
+
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <h1>function_test1(함수 메서드)</h1>
+        <p>아래문제들은 input 태그로 버튼 만들어서 문제풀기 (중요) val 확인 (id 중복)</p>
+        <p>함수명 작성시, 숫자가 앞에 있지않도록 만들기, 소문자와 합성어 위주로 작성하기</p>
+        <hr/>
+
+        <h2>함수가 아닌, "메서드가 작동" 되도록 만들기</h2>
+        <p>아래 input 태그 만들고, 클릭하면 알림창 나타나도록 만들기 (클릭 성공)</p>
+        <input id="button0" type="button" value="클릭" title="클릭" onclick="alert('클릭성공');"/>
+
+        <h2>함수만들기, 알림창 띄우기</h2>
+        <p>클릭하면 함수 안의 알림창 나타나도록 만들기 (제가 키우는 강아지는 () 입니다. 나타나도록 만들기)</p>
+        <input id="button1" type="button" value="클릭" title="클릭" onclick="pet();"/>
+
+        <h2>함수만들기, 입력창띄우기 (좋아하는 동물은?) 문서에 출력받기</h2>
+        <input id="button2" type="button" value="클릭" title="클릭" onclick="fav();"/>
+
+        <h2>함수만들기, 입력창띄우기 (좋아하는 음식은?) 알림창에 좋아하는 음식은 000입니다. 띄우기</h2>
+        <input id="button3" type="button" value="클릭" title="클릭" onclick="food();"/>
+
+        <h2>함수만들기, 입력창띄우기</h2>
+        <p>아래 내용 각각 활성화되도록 만들기</p>
+        <p>
+            + javascript는 웹의 모든 기능 구현 가능
+            + jQuery는 javascript + query의 합성어
+            + javascript, jQuery는 기능파트
+            + 웹 접근성과 웹 표준은 기능구현 시 필수요소
+        </p>
+
+        <h2>함수만들기, 아래 나열된 작업하기</h2>
+        <ol>
+            <li>함수만들기</li>
+            <li>이름 입력창 띄우기</li>
+            <li>혈액형 입력창 띄우기</li>
+            <li>성별</li>
+            <li>취미</li>
+            <li>좋아하는 색상</li>
+            <li>위에 입력받은 내용들 문서에 출력되도록 만들기</li>
+
+        </ol>
+        <input id="button4" type="button" value="클릭" title="클릭" onclick="me();"/>
+        
+        
+        
+    </body>
+</html>
