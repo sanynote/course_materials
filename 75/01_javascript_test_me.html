@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title> javascript_test </title>
+        <meta charset="utf-8"/>
+        <script>
+
+            document.write("<h2>javascript_test 문제: 아래 p태그, 주석글에 문제풀기<h2/>");
+            document.write("<hr/>");
+            document.write("<h3> 아래 본인이름 입력받고, 문서에 test 문제 풀이 : 000 출력받기<h3/>");
+
+            /*
+                : 자동차면 입력받기
+                : 입력한 자동차가 000가 맞습니까? 맞으면 확인버튼
+                : 000 이 맞습니다.
+            
+            */
+            var car = prompt("자동차명은?");
+            confirm(car+" 맞습니까? 맞으면 확인버튼");
+
+            document.write("<h3>매우중요) 03) 아래 주석글에 java와 javascript 차이점 작성하기 (2가지 이상 작성하기)<h3/>");
+            /*
+                java는 자료형이라는 작업부터 공부한다. javascript는 자료형을 표현하지 않아도 된다.
+                java는 컴파일 된 소스만 읽는다. javascript는 컴파일 되어있지 않아도 읽는다.
+            */
+            document.write("<h3>04) 현재 클릭한 대상이 a라면 클릭한 대상의 title에 접근하는 방법 작성하기<h3/>");
+            // $("a").attr("title")
+            /*
+                $("a").click(function(){
+                    $(this).attr("title");
+                })
+            */
+            
+            document.write("<h3>05) 아래 순서대로 문제 풀기<h3/>");
+
+            /*
+                국가명 입력받기
+                입력받은 국가는 000입니다. 알림창 띄우기
+
+            */
+            var nation = prompt("국가명은?");
+            alert("입력받은 국가는 "+nation+" 입니다.");
+
+            document.write("<h3>06) 어떠한 대상에서 일정한 글자를 찾을때 사용했던 탐색선택자는?<h3/>");
+            /*
+                ex) APPLE
+
+                    $("li:contains(찾을글자)"), 찾을글자 탐색할 때 사용하는 중요속성
+            
+            */
+
+            document.write("<h3>07) 클릭한 대상이 li라면, 첫번째 li를 대상으로 부모에 접근하는 방법 작성하기<h3/>");
+            /*
+            $("li").click(function(){
+                $("li:eq(0)").parent()
+            });*/
+
+            document.write("<h3>08) 대상.children, 대상.find 차이점 구분하기<h3/>");
+            // children은 대상의 자녀요소 로 대상이 좁혀지지만, find는 그런 것에 상관없이 바로 찾아질 수 있다.
+            /*
+                [정리]
+
+                    <ul>
+                        <li>
+                            <strong>글자표현</strong>
+                        </li>
+                    </ul>
+
+                    $("ul").click(function(){
+                        1) $(this li) 옆과같이 예약 안에서 속하는 개념을 만들 수 없음
+                        2) $(this).children("li").children("strong");
+                            strong 선택을 위해 자녀에 자녀까지 들어가야하는 문제가 생김
+                        3) $(this).find("strong")
+                            탐색선택자
+                    })
+            */
+            document.write("<h3>09) 알림창, 입력창, 확인창 앞에 제외된 값은?<h3/>");
+            // window
+
+            document.write("<h3>10) 문자와 숫자, 변수를 구분하는 이유는?<h3/>");
+            // javascript는 계산식 페이지, 계산식을 표현해야하기때문에 구분한다.
+            // 모두 다 다른속성, 숫자끼리 계산이 가능해야 함 (모두 사용목적이 다르기때문에 구분하여 사용함)
+            // 변수에 함수나 메서드를 담고있다면 따로 처리할 수 있음
+
+
+            
+            document.write("<h3> 11) 처리파트가 필요한 이유는?<h3/>");
+            // 처리해야하기때문에
+            
+            document.write("<h3> 12) xhtml문에서 cdata 구문을 만드는 이유는? 주석글에 내용 작성하기<h3/>");
+            // CDATA 영역의 값들은 태그도 문자로 인식할 수 있도록 만듦. 문자열 처리하기
+
+
+            document.write("<h3> 13) cdata에서 c는? 무엇의 약자 표현일까?<h3/>");
+            //character
+
+            document.write("<h3> 14) 아래 문제에서 숫자 구분하여 표현하기 (문제에 붙어있는 숫자도 구분하기)<h3/>");
+            document.write("<p>0) 모든 숫자는 1부터 시작하지만 공간을 0부터 시작한다. 배열에서 0은 매우 중요하다<p/>");
+            document.write("<p>1) 웹 구조상 가장 우선되는 1차 영역 body 영역이다.<p/>");
+            document.write("<p>2) style 영역은 2차 영역으로 body 영역 1차 영역을 꾸며주고 편집하는 작업을 담당한다<p/>");
+            document.write("<p>3) javascript, jQuery는 각각 3차,4차 영역으로 기능구현시 매우 중요한 영역이다.<p/>");
+
+            document.write("<p>"+0+") 모든 숫자는 "+1+"부터 시작하지만 공간을 "+0+"부터 시작한다. 배열에서 "+0+"은 매우 중요하다<p/>");
+            document.write("<p>"+1+") 웹 구조상 가장 우선되는 "+1+"차 영역 body 영역이다.<p/>");
+            document.write("<p>"+2+") style 영역은 "+2+"차 영역으로 body 영역 "+1+"차 영역을 꾸며주고 편집하는 작업을 담당한다<p/>");
+            document.write("<p>"+3+") javascript, jQuery는 각각 "+3+"차,"+4+"차 영역으로 기능구현시 매우 중요한 영역이다.<p/>");
+
+            document.write("<h3> 15) 변수를 출력문보다 아래 작성할 경우, 생길 수 있는 문제는?<h3/>");
+            // 순서의 문제때문에 값이 출력되지 않을 수 있다. undefined
+
+            document.write("<h3> 16) 클릭한 대상이 li이고, 부모의 다음요소를 대상으로 선택하는 방법 작성하기<h3/>");
+            /*
+            $("li").click(function(){
+                $(this).parent().next()
+            });*/
+
+            document.write("<h3> 17) 상대의 거리만큼 움직일때 사용하는 속성은?<h3/>");
+            // offset 
+
+            document.write("<h3> 18) 매우중요) 배정연산자란? 주석글에 답 작성하기<h3/>");
+            /*
+                배정되어 있는 연산을 한 후에 결과에 대입 연산을 하는 것. += || -= 이런 형태
+            */
+        
+            document.write("<h3> 19) 마지막 요소를 선택할 때 eq방법이나 nth-child 방법보다 last를 사용하는 이유는? 주석글 이용<h3/>");
+            // 마지막 숫자가 계속 바뀔 여지가 있기때문에, 중간에 요소가 추가되거나 삭제되면 그 번호가 바뀔 가능성이 많다.
+
+            document.write("<h3> 20) xhtml에서 script 영역시 작성시 필수속성은?<h3/>");
+            // script type="text/javascript"
+
+            document.write("<h3> 21) 매우중요) 메서드와 함수에 대하여 찾아보기 (차이점)<h3/>");
+
+            /*
+                메서드는 클래스 및 객체(object)와 연관되어 있는 함수이다.
+                클래스 및 객체와 연관되어 있는 것이라면 메서드고, 그것들과 상관없이 독립적으로 존재하는 것은 함수. 
+                함수가 메서드보다 더 큰 개념이다.
+            */
+
+            document.write("<p> 조건) java 개념이 아니라, javascript 개념으로 찾아보고, (완전처음)인 대상에게 설명하듯 작성하기 (주석글)<p/>");
+            
+            document.write("<h3>+++++++++++++++ [아래문제풀기] ++++++++++++<h3/>");
+            document.write("<h3>이름 나이 국어 영어 수학점수 입력받기<h3/>");
+            var name = prompt("이름은?");
+            var age = prompt("나이는?");
+            var kor = prompt("국어점수는?");
+            var eng = prompt("영어점수는?");
+            var mat = prompt("수학점수는?");
+            var sum = Number(kor) + Number(eng)+ Number(mat);
+            var ave = Number(sum) / 3
+
+
+            document.write("<h3>각각 문서에 출력받기 이름 :000, 나이:000, 총점: 평균:<h3/>");
+            document.write("<h3>제 이름은 "+name+" 입니다<h3/>");
+            document.write("<h3>제 나이는 "+age+" 입니다<h3/>");
+            document.write("<h3>제 국어점수는 "+kor+" 입니다<h3/>");
+            document.write("<h3>제 영어점수는 "+eng+" 입니다<h3/>");
+            document.write("<h3>제 수학점수는 "+mat+" 입니다<h3/>");
+            document.write("<h3>제 총점은 "+sum+" 입니다<h3/>");
+            document.write("<h3>제 평균은 "+ave+" 입니다<h3/>");
+
+            document.write("<p>중요) 총점과 평균은 직접 계산하는 게 아니라, 변수+변수처럼 계산되어 표현되어야 함<p/>");
+            document.write("<h3>매우중요) 어느 부분에서 문제가 생기는 지 반드시 확인하고, 아래 주석글에 작성하기 (진도와 연결됨)<h3/>");
+        </script>
+
+
+    </head>
+
+    <body>
+
+    </body>
+</html>
