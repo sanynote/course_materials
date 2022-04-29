@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> new document </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        #content{width:400px; border:1px solid #aaa; padding:15px;}
+        h2{background-color:lightblue; text-align:center;}
+        p{padding:10px 0;}
+        #button{padding:5px;}
+    </style>
+    <script>
+        function contBtn(){
+            //작동확인 alert
+            // 클릭하면 id속성의 content에 접근하기
+
+            var cont = document.getElementById("content");
+            console.log(cont);
+
+            /*
+                [정리]
+                    1) id 객체로 만든 객체들은 모두 직접 사용이 가능함
+                    2) id 객체로 만든것은 해당하는 객체를 직접 사용하겠다는 의미와 같음
+
+                [매우중요]
+                    * id로 만든 객체통해 모두 접근 가능
+                    * css처럼 꾸며주기위해서 호출이 아니고, 해당하는 객체 모두를 컨트롤 할 수 있도록 js에서 id객체로 만듦
+                    
+                [문제]
+                    useid 접근하기
+                    console.log 확인
+
+                    jQuery
+                        대상.val
+
+                    javascript
+                        대상.value
+            */
+
+            var userid = document.getElementById("userid");
+            console.log(userid);
+
+            userid.value="아이디를 입력하세요";
+        }
+    </script>
+	
+	
+ </head>
+
+ <body>
+	<h3>DOMControl</h3>
+    <p>
+        jQuery의 DOMControl은 javascript에서 가져올 개념이기때문에 javascript에서 모두 사용가능
+    </p>
+    <p>
+        jQuery :: lt gt even odd children find append prepend
+    </p>
+    <p>
+        javascript and jQuery의 DOM을 사용하는 이유는?
+        javascript만 유일하게 w3c의 규칙을 따르고있음
+    </p>
+    
+    <div id="content">
+        <h2>DOMControl</h2>
+        <p>
+            <label for="userid">ID</label>
+            <input type="text" id="userid" title="userid"/>
+        </p>
+        <p>
+            <input type="button" id="button" value="확인" title="확인" onclick="contBtn();"/>
+        </p>
+    </div>
+ </body>
+</html>
