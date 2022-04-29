@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> score </title>
+	<meta charset="utf-8"/>
+	<script>
+
+        /*
+            1) score 함수 만들기
+            2) 클릭했을때 작동되는지 알림창 띄워보기
+            3) 숫자 입력 5개 받을 수 있도록 입력창과 변수 활용하기
+            4) 총점, 평균(입력받은 숫자로 총점 평균 계산)
+            5) 처리과정통해 총점, 평균만들기
+            6) console 통해 typeof 사용하여 입력된 데이터 속성 무엇인지 확인
+            7) 소수점 2째까지 표기, 문서에 출력받기
+        */
+
+
+        function score(){
+
+            alert("score");
+        
+            var mus = parseInt(prompt("음악점수를 입력하세요."));
+            var art = parseInt(prompt("미술점수를 입력하세요."));
+            var kor	= parseInt(prompt("국어점수를 입력하세요."));
+            var eng = parseInt(prompt("영어점수를 입력하세요."));
+            var math = parseInt(prompt("수학점수를 입력하세요."));
+            
+            console.log(typeof(mus));
+
+            /*
+                [처리파트]
+
+                    : 총점,평균 계산하는 값 만들기
+
+                [새로운 변수와 기존변수 사용하기]
+
+                    : 새로운 변수를 사용한다면, 기존에 작성되어있던 데이터는 그대로 유지가 되어버림
+                    : 만약 기존의 데이텨를 대신하여 실시간 값을 바꾸려면 기존의 변수를 다시 사용하는 방법도 중요한 방법 중 하나
+            */
+
+            var total = mus+art+kor+eng+math;
+            
+            var avg = total /5;
+            
+
+            total = total.toFixed(2);
+            avg = avg.toFixed(2);
+            alert("done");
+
+            /*
+                [파싱]
+
+                    작업에서 해당하는 내용만 추출,바깥쪽은 모두 분쇄
+
+            */
+
+
+            document.write("내 음악점수는 " + mus + "/ 내 미술점수는 " + art + "내 국어점수는 " + kor + "내 영어점수는 " + eng + "내 수학점수는 " + math + "내 총합계점수는 " + total + "내 평균점수는 " + avg);
+            
+        }
+
+    </script>
+	
+ </head>
+
+ <body>
+    <h2>score 만들기</h2>
+    <p>아래 input 태그 만들기 (규칙맞추기), score라는 함수랑 연결하기</p>
+    <input id="score" type="button" value="클릭" title="클릭" onclick="score();"/>
+ </body>
+</html>

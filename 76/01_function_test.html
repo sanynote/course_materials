@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>function</title>
+    <meta charset="utf-8" />
+
+    <script>
+      function animal() {
+        var animal = prompt("내가 키우는 강아지 이름");
+        alert("제가 키우는 강아지는 " + pet + " 입니다.");
+      }
+      function likeAni() {
+        var like = prompt("내가 좋아하는 동물은");
+        document.write("내가 좋아하는 동물은 " + like + "");
+        /*
+            정리
+            공간은 생겼는데 입력하지않고 넘기면 null 뜸(알 수 없는 공백)
+            * not null 입력받은 공간이 비워져있다면 더 이상 입력을 받을 수 없기때문에
+            빈 공간으로 처리하지 않으려고 작성함
+        */
+      }
+
+      function likeFood() {
+        var food = prompt("내가 좋아하는 음식은");
+        alert("제가 좋아하는 음식은 " + food + " 입니다.");
+      }
+
+      /*
+        * function 하나씩 수분한 함수들은 모두 "지역"
+        * 공통에서 위에서 아래로 뿌려주는 작업을 "전역"이라고한다.
+      */
+
+    function alert0() {
+        alert("선자매는");
+        alert("선지");
+        alert("선희");
+        alert("선정");
+        
+    }
+
+      function myDesc() {
+        var desc0 = prompt("내 이름은");
+        var desc1 = prompt("내 혈액형은");
+        var desc2 = prompt("내 성별은");
+        var desc3 = prompt("내 취미는");
+        var desc4 = prompt("내가 좋아하는 색깔은");
+
+        document.write("내 이름은 " + desc0 + "/ 혈액형은 " + desc1 + "/성별은 " + desc2 + "/취미는 " + desc3 + "/ 좋아하는 색깔은 " + desc4);
+      }
+
+        /*
+            [함수와 메서드]
+
+                1) 스스로 기능을 하는 요소들을 "메서드"라고 한다.
+                    대표적인 메서드 : submit(전송), 유효성 검사를 통해서 제대로 입력이 되었는지, 요구사항에 맞춰서 기입이 되었는지 확인하는 부분이 필요함
+
+                        : 전송하기 전에 유효성 검사와 요구사항에 맞는 작업을 우선 확인한다
+
+                2) alert(서버작업시 || 기능작업시 오류를 확인할 때 사용할 수 있음)
+                3) confirm (확인과 취소 버튼을 가지고 사용자 테스트, 사용자 확인 등을 할 때 기능작업을 할 수 있음)
+
+                [함수]
+
+                    : 함수는 "지역으로 사용되거나 전역으로 사용될 수 있음"
+                    : 대다수 함수는 각각의 기능을 서로 다르게 구현하기때문에 "지역"으로 사용되는 경우가 많음
+                    : 함수는 다루는 목적들이 모두 달라서 해당하는 목적에 맞는 이름으로 작성하는것이 가장 좋음
+                    : 변수나 함수 사용시 "기능명, 메서드명, 예약어, 가장 앞에 숫자사용"시 주의해야한다.
+        */
+    </script>
+  </head>
+
+  <body>
+    <h1>function_test1(함수 메서드)</h1>
+    <p>
+      아래문제들은 input 태그로 버튼 만들어서 문제풀기 (중요) val 확인 (id 중복)
+    </p>
+    <p>
+      함수명 작성시, 숫자가 앞에 있지않도록 만들기, 소문자와 합성어 위주로
+      작성하기
+    </p>
+    <hr />
+
+    <h2>함수가 아닌, "메서드가 작동" 되도록 만들기</h2>
+    <p>아래 input 태그 만들고, 클릭하면 알림창 나타나도록 만들기 (클릭 성공)</p>
+    <input id="btn1" type="button" value="클릭1"
+      title="클릭1"
+      onclick="alert('클릭성공');"
+    />
+
+    <h2>함수만들기, 알림창 띄우기</h2>
+    <p>
+      클릭하면 함수 안의 알림창 나타나도록 만들기 (제가 키우는 강아지는 ()
+      입니다. 나타나도록 만들기)
+    </p>
+    <input
+      id="btn2"
+      type="button"
+      value="클릭2"
+      title="클릭2"
+      onclick="animal();"
+    />
+
+    <h2>함수만들기, 입력창띄우기 (좋아하는 동물은?) 문서에 출력받기</h2>
+    <input
+      id="btn3"
+      type="button"
+      value="클릭3"
+      title="클릭3"
+      onclick="likeAni();"
+    />
+
+    <h2>
+      함수만들기, 입력창띄우기 (좋아하는 음식은?) 알림창에 좋아하는 음식은
+      000입니다. 띄우기
+    </h2>
+    <input
+      id="btn4"
+      type="button"
+      value="클릭4"
+      title="클릭4"
+      onclick="likeFood();"
+    />
+
+    <input
+      id="btn5"
+      type="button"
+      value="클릭5"
+      title="클릭5"
+      onclick="alert0();"
+    />
+
+    <h2>함수만들기, 입력창띄우기</h2>
+    <p>아래 내용 각각 활성화되도록 만들기</p>
+    <p>
+      + javascript는 웹의 모든 기능 구현 가능 + jQuery는 javascript + query의
+      합성어 + javascript, jQuery는 기능파트 + 웹 접근성과 웹 표준은 기능구현 시
+      필수요소
+    </p>
+
+    <h2>함수만들기, 아래 나열된 작업하기</h2>
+    <ol>
+      <li>함수만들기</li>
+      <li>이름 입력창 띄우기</li>
+      <li>혈액형 입력창 띄우기</li>
+      <li>성별</li>
+      <li>취미</li>
+      <li>좋아하는 색상</li>
+      <li>위에 입력받은 내용들 문서에 출력되도록 만들기</li>
+    </ol>
+    <input
+      id="btn6"
+      type="button"
+      value="클릭6"
+      title="클릭6"
+      onclick="myDesc();"
+    />
+  </body>
+</html>
