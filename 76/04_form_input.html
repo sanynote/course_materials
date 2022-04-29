@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title> form_input </title>
+        <meta charset="utf-8"/>
+        <style>
+            *{margin:0; padding:0;}
+            body{margin:0; padding:0;}
+            img{border:none;}
+
+            #wrap{width:100%;}
+
+            form{width:300px; border:1px solid #ccc; margin:50px;}
+            fieldset{border:none;}
+            legend{display:none;}
+
+            h2{background-color:blue; color:#fff; font-size:14px; text-align:center; padding:10px 0;}
+
+            p{margin:10px;}
+            p label{display:inline-block; width:100px; background-color:#e1e1e1; line-height:30px; text-transform:uppercase; text-indent:10px;}
+            p input{height:28px;outline:1px solid #ccc; vertical-align:bottom;}
+
+            #btnArea{width:100%; height:30px; text-align:center;}
+            #btnArea input{padding:0 7px; cursor:pointer;}
+
+            /*
+                [input,label 사용시 중요사항]
+
+                    : inline-block 사용시, 알 수 없는 여백을 가지는데 해당하는 공간의 값이 정확하지 않아서
+                    위아래로 어긋나는 경우가 종종 발생함
+
+                    : 빠르게 배치할때는 label,input 모두 인라인속성이므로 vertical-align으로 배치가 가능하다
+                        : top middle bottom
+            
+            */
+            
+
+
+
+        </style>
+
+        <script>
+            function chkBtn(){
+            /*
+
+            var test0 = prompt("이름을 입력하세요");
+            var test1 = prompt("아이디를 입력하세요");
+            var test2 = prompt("비밀번호를 입력하세요");
+            var test3 = prompt("이메일을 입력하세요");
+            var test4 = prompt("전화번호를 입력하세요");
+            
+            
+
+            var username = document.getElementById("username");
+            username.value=test0;
+            
+            */
+
+            /*
+                : id는 중복해서 사용할 수 없기때문에 이름을 가지고 모든 정보를 확인할 수 있음
+                : php 에서는 중복되지않는 번호를 만들어서 해당하는 필드의 정보를 확인할 수 있음
+
+
+                [javascript의 jQuery 특징]
+
+                    var a = 0 처럼 javascript는 담아주는 표현으로 =을 사용하는 경우가 많음
+                    jQuery는 $("a")처럼 () 담는 표현이 많음
+            
+            */
+
+            var username = document.getElementById("username");
+            var userid = document.getElementById("userid");
+            var userpw = document.getElementById("userpw");
+            var useremail = document.getElementById("useremail");
+            var userphone = document.getElementById("userphone");
+            
+
+            username.value=prompt("이름을 입력하세요");
+            userid.value = prompt("아이디를 입력하세요");
+            userpw.value = prompt("비밀번호를 입력하세요");
+            userpw.type="password";
+
+            useremail.value = prompt("이메일을 입력하세요");
+            // userphone.value = prompt("전화번호를 입력하세요");
+            userphone.placeholder="010-123-4567";
+        }
+
+        </script>
+
+
+    </head>
+
+    <body>
+        <div id="wrap">
+            <h2>회원정보</h2>
+        
+            <form action="#none" method="POST">
+                <fieldset>
+                    <legend>회원정보</legend>
+                    <p>
+                        <label for="username">name: </label>
+                        <input id="username" type="text" name="username"/>
+                        <!--
+                            매우중요)
+                                id가 username이라면 name, for, mysql(table) field명까지 
+                                모두 동일하게 맞아야 값이 저장될 수 있다
+                        -->
+                        
+                    </p>
+                    <p>
+                        <label for="userid">id: </label><input id="userid" type="text" name="userid"/>
+                        
+                    </p>
+                    <p>
+                        <label for="userpw">pw: </label><input id="userpw" type="text" name="userpw"/>
+                        
+                    </p>
+                    <p>
+                        <label for="useremail">email: </label><input id="useremail" type="email" name="useremail"/>
+                    </p>
+                    <p>
+                        <label for="userphone">phone: </label><input id="userphone" type="tel" name="userphone"/>
+                        
+                    </p>
+    
+                    <div id="btnArea">
+                        <input id="btn" type="button" value="확인" title="확인" onclick="chkBtn();"/>
+                    </div>
+
+                </fieldset>
+
+
+            </form>
+        </div>
+
+    </body>
+</html>

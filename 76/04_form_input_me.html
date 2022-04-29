@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title> form_input </title>
+        <meta charset="utf-8"/>
+        <style>
+            *{margin:0; padding:0;}
+            body{margin:0; padding:0;}
+
+            #content{width:350px; margin:50px;}
+            form{width:308px; border:1px solid #ccc; padding:5px 20px;}
+            h3{width:100%; background-color:blue; color:#fff; text-align:center;}
+
+            p{width:350px; height:35px; margin-top:10px;}
+            label{display:block; width:100px; height:100%; background-color:#ccc; float:left; line-height:35px; text-transform:uppercase; text-indent:5px;}
+            p input{display:block; width:200px;height:100%; border:none; outline:1px solid #ccc;  margin-left:10px; float:left; text-indent:10px;}
+
+            form span{display:block; width:100%; text-align:center; padding:10px 0;}
+            span input{width:50px;}
+            
+
+
+
+        </style>
+
+        <script>
+            function test(){
+
+            var test0 = prompt("이름을 입력하세요");
+            var test1 = prompt("아이디를 입력하세요");
+            var test2 = prompt("비밀번호를 입력하세요");
+            var test3 = prompt("이메일을 입력하세요");
+            var test4 = prompt("전화번호를 입력하세요");
+            
+            
+
+            var name = document.getElementById("name");
+            name.value=test0;
+
+            var userid = document.getElementById("userid");
+            userid.value=test1;
+
+            var userpw = document.getElementById("userpw");
+            userpw.value=test2;
+
+            var email = document.getElementById("email");
+            email.value=test3;
+
+            var phone = document.getElementById("phone");
+            phone.value=test4;
+        }
+
+        </script>
+
+
+    </head>
+
+    <body>
+        <div id="content">
+            <h3>회원정보</h3>
+            <form action="#" method="post">
+                
+                <p>
+                    <label for="name">name: </label><input id="name" type="text" name="name"/>
+                    
+                </p>
+                <p>
+                    <label for="userid">id: </label><input id="userid" type="text" name="userid"/>
+                    
+                </p>
+                <p>
+                    <label for="userpw">pw: </label><input id="userpw" type="password" name="userpw"/>
+                    
+                </p>
+                <p>
+                    <label for="email">email: </label><input id="email" type="email" name="email"/>
+                </p>
+                <p>
+                    <label for="phone">phone: </label><input id="phone" type="tel" name="phone"/>
+                    
+                </p>
+
+                <span>
+                    <input id="btn" type="button" value="확인" title="확인" onclick="test();"/>
+                </span>
+
+            </form>
+        </div>
+
+    </body>
+</html>
