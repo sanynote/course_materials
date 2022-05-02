@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> switch </title>
+	<meta charset="utf-8"/>
+    <script>
+        /*
+            [제어문]
+                : 화면에 있는 모든 DOM들 (형제, 부모,태그, id, class 등등)을 제어할 수 있는 구문
+            [if문]
+                1) 기본문법
+                    if(조건){참 (true)일 경우}
+                    else{거짓(false)일 경우}
+
+                2) && 동시조건, ||는 조건, else if 조건
+
+            [switch문]
+
+                switch (재료 값 (변수)){
+                    case "토마토"   :   케챱
+                    case "바나나"   :   바나나우유
+
+                    case "애플"     : 아이폰, 잼
+                    case "삼성"     : 주식
+                    case "엘지"     : 가전
+
+                }
+
+                :: 재료를 통해서 여러가지 경우의 수를 확인할 수 있음
+                :: if문보다는 간단하지만 여러가지 경우의 수를 따져볼 수 있음
+
+
+        */
+/*
+        var text ="a";
+
+        switch(text){
+            case"a" : document.write("재료값은 a 입니다.<br/></br>")
+
+        }
+*/
+        /*
+            [응용문제]
+                입력창을 이용하여 a,b,c 각각 입력받기
+
+                    재료가 a일 경우, 문서에 입력받은 값은 a 입니다. 출력받기
+                    재료가 b일 경우, 문서에 입력받은 값은 b 입니다. 출력받기
+                    재료가 c일 경우, 문서에 입력받은 값은 c 입니다. 출력받기
+
+                :: 각각 a b c 입력해보고 어떠한 현상이 발견되는지 이메일 작성해서 보내주기
+                :: 해결하지 않아도 상관없음
+
+        */
+
+        var text =prompt("a b c  입력받기");
+        
+        switch(text){
+            case"a" : document.write("입력받은 값은 a 입니다.</br>"); break;
+            case"b" : document.write("입력받은 값은 b 입니다.</br>"); break;
+            case"c" : document.write("입력받은 값은 c 입니다.</br>"); break;
+            default: document.write("해당하는 값이 없습니다."); break;
+
+        }
+
+        /*
+            [switch 문의 특징]
+
+            + 입력받은 값이 a라면, a b c 모두 출력됨
+            + 입력받은 값이 b라면, b c 가 출력됨
+            + 입력받은 값이 c라면, c 만 출력됨
+
+            * 해당하는 위치에서 아래로 출력됨, 위로는 출력되지 않음
+
+            [멈추는 속성]
+
+                1) slideUp, slideDown 이 멈추지않고 움직일때 사용한 속성은? stop()
+                2) return false (돌려받는 값이 거짓이라 강제종료가 되는 의미)
+                3) 수식 안에서 빠져나오는 개념 break
+
+            
+
+        */
+       
+    </script>
+	
+	
+ </head>
+
+ <body>
+
+ </body>
+</html>

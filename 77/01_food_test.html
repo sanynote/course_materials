@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> food_test </title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		div{text-align:center; margin-top:150px;}
+		img{cursor:pointer;}
+	</style>
+	<script>
+		/*
+			[함수 영역 안에 적용되어야 하는것과 아닌것들 구분하기]
+
+			1) 알림창, 입력창, 확인창, 브라우저가 활성화되면 강제로 실행되는 "윈도우" 창
+			2) "클릭 전" 에 알림창 확인
+				알림창 문구
+					안녕하세요 음식배달입니다.
+					로고를 클릭하세요
+
+			3) 문제점
+				: alert, prompt, confirm 창은 window에서 활성되는 window 창이기때문에 br 태그가 적용되지 않음
+				: br태그는, 태그 안에서 인라인 요소를 끊기 위하려 사용되는 태그
+				: alert,prompt,confirm "프로그램 되어있는 창"에 문구를 썼기때문에 br태그가 롸면 그대로 출력됨
+				: window 창, 프로그램되어있는 기능에서 줄 바꿈하기
+
+			4) 해결
+				: window 창에서는 enter를 대신하는 \n 값이 있음
+
+		
+		*/
+		// 클릭 전 알림창 띄우기
+		alert("안녕하세요\n음식배달입니다.\n로고를 클릭하세요");
+
+		function logoClick(){
+			// 01) 정상작동 확인 alert();
+			/*
+				02) 로고 클릭하면 입력창 띄우기 : 문구,고객님의 성함을 입력하세요
+				03) 000 님을 위한 맞춤상품입니다
+			*/
+			var name = prompt("고객님의 성함을 입력하세요");
+			alert(name+"님을 위한 맞춤 상품입니다.");
+
+			/*
+				04) 로고 이미지가 해당하는 음식 이미지로 변경되도록 만들기
+					중요) 이미지 태그를 다른 상품 이미지로 변경하기 위하여 "id" 객체로 만들기
+						id는 중복되지 않는 이름으로 사용할 수 있고, id 값을 통해서 해당하는 태그의 모든 속성을 컨트롤 할 수 있음
+			*/
+			/*
+				05) img 태그를 id 객체로 만들기 (변수에 담기)
+					console.log 통해서 잘 접근하는지 확인하기
+
+			*/
+			var logo = document.getElementById("logo");
+			console.log(logo);
+
+			/*
+				06) id로 만들었기때문에 해당하는 태그의 모든 속성에 접근이 가능함
+
+					정리) 
+						input 태그의 경우, id type name value title 모두 접근가능함
+						select 태그의 경우, id name value 접근 가능함
+
+						js value로 접근
+						jQuery val로 접근
+			*/
+			logo.src = "img/2.gif";
+
+			/*
+
+			아래의 방식은 재활용하지 않고, 빠르게 한 줄로  표현할 때 사용하는 방식
+			단순하게 입력받거나 출력받기위해 사용하는 표현
+			document.getElementById("logo").src = "img/2.gif";
+			변수에 담아주는 이유는?
+			-> 
+			1) 해당하는 아이디 객체나 태그 class로 만들어 온 객체들을 변수에 담아서
+			간단한 작업은 물론, 복잡한 수식의 작업도 할 수 있도록 보관함
+			2) 빠르게 재활용하기위하여 변수에 담기
+
+			*/
+		}
+		
+
+
+	</script>
+	
+	
+ </head>
+
+ <body>
+	<div>
+		<img id="logo" src="img/logo.jpg" alt="로고" onclick="logoClick();"/>
+	</div>
+ </body>
+</html>
