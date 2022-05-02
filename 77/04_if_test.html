@@ -13,17 +13,19 @@
 
         */
             var test1 = prompt("숫자를 입력하세요");
-            if(test1 >= 100){document.write("입력받은 숫자가 100보다 크거나 같습니다.<br/>");}
-            else{document.write("100보다 작습니다.");}
+            if(test1 >= 100){document.write("입력받은 숫자는 "+test1+"으로 100보다 크거나 같습니다.<br/>");}
+            else{document.write("입력받은 숫자는 "+test1+"으로 비교하는값과 다릅니다.");}
         /*
             [응용문제2]
                 소문자와 비교하기
                     사과의 스펠링을 입력하세요
                     만약에 사과의 스펠링이 맞다면 맞습니다. 확인창 띄우기
         */
-            var test2 = prompt("사과의 스펠링을 입력하세요");
-            console.log("test2");
-            if(test2 == "apple"){alert("맞습니다.<br/>");}
+            var apple = prompt("사과의 스펠링을 입력하세요");
+            if(apple == "apple"){confirm("사과의 스펠링이 맞으면 확인버튼 클릭<br/>");}
+            else{
+                alert("사과의 스펠링이 아닙니다.");
+            }
 
         /*
             [응용문제 2_ 활용하기]
