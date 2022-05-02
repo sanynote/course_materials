@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> switch_test </title>
+	<meta charset="utf-8"/>
+    <script>
+        /*
+            [응용문제1]
+
+                a나 A를 입력받으면 apple 입니다. 문서에 출력받기
+                b나 B를 입력받으면 banana입니다. 문서에 출력받기
+                c나 C를 입력받으면 coconut입니다.문서에 출력받기
+                
+                해당하는 값이 없으면 해당하는 항목이 없습니다. 문서에 출력받기
+
+                중요) 해당하는 수식이 없을때도 b해당하는 영역 안에서 빠져나오도록 만들기
+        */
+        var fruit =prompt("a b c  입력받기");
+        
+        switch(fruit){
+            case"a" || "A" : document.write("apple 입니다.</br>"); break;
+            case"b" || "B" : document.write("banana입니다.</br>"); break;
+            case"c" || "C" : document.write("coconut입니다</br>"); break;
+            
+            default: document.write("해당하는 항목이 없습니다."); break;
+
+        }
+
+        /*
+            [응용문제2]
+
+                매우중요)
+                    숫자와 비교하기
+
+                    숫자 1 을 입력하면 숫자1입니다. 출력 (2,3도)
+
+                    출력되지 않는다면, console.log로 확인하고 어떤 식으로 해결했는지 작성하기
+
+        */
+
+        var num =parseInt(prompt("1 2 3  입력받기"));
+        
+        switch(num){
+            case 1 : document.write("숫자 1입니다.</br>"); break;
+            console.log(typeof(num));
+            case 2 : document.write("숫자 2입니다.</br>"); break;
+            case 3 : document.write("숫자 3입니다.</br>"); break;
+
+            
+            default: document.write("해당하는 숫자가 없습니다."); break;
+
+           
+
+        }
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+	
+ </body>
+</html>
