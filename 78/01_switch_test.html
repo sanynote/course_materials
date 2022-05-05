@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> switch_test </title>
+	<meta charset="utf-8"/>
+    <script>
+        /*
+            [제어문]
+
+                : if, switch
+                : switch 업이도 if로 해결 가능해서 if가 대표적
+
+                :if문에서 100과 비교..
+                    속성을 바꾸지않아도 비교가 가능함
+
+                : switch문에서는 숫자와 비교시 속성까지 같아야 비교가 가능함
+        
+        */
+        /*
+            [멈추는 기능]
+
+                1) switch문에서 바깥으로 나올때 break
+                2) jQuery에서 wave현상, 깜빡이는 현상, stop
+                3) 강제종료의 의미 return false
+                    (어떤 수식 안에서 강제종료되어버림)
+
+                * stop , return false는 반복문 안에서 사용되면 항상 멈추려고 함
+
+                * 4) return false는 (컴퓨터 파워를 끄는것과 같음), 수식에서 잘못 사용할 경우, 화면 출력이 어려움
+
+            [switch문 활용하기]
+
+                1) 재료값이 매우 중요함 (변수), 안에 뭐가 있는지 살펴보는 작업
+                2) case : 변수 안에 무엇이 들어있는지 정확하게 알기 어렵기때문에 "경우 수" 를 나열하기 위한 작업
+                    (선물상자 안에 무엇이 들어있을까? 생각하는 부분)
+
+                case "보석"
+                case "과자"
+                case "태블릿 pc"
+
+                * default에서도 break 작성
+                    break 가 없으면 해당하는 switch문 안에 머물기때문에 다음 연산을 처리할 수 없음
+
+                * return false (강제종료), 다음 수식을 연결하는것이 아니라. 작성된 수식 안에서 멈춤
+                * break는 다음 수식이 있다면 해당하는 수식에서 빠져나와서 다음 값을 연결할 수 있음
+
+
+        */
+        /*
+            [응용문제1]
+
+                a나 A를 입력받으면 apple 입니다. 문서에 출력받기
+                b나 B를 입력받으면 banana입니다. 문서에 출력받기
+                c나 C를 입력받으면 coconut입니다.문서에 출력받기
+                
+                해당하는 값이 없으면 해당하는 항목이 없습니다. 문서에 출력받기
+
+                중요) 해당하는 수식이 없을때도 b해당하는 영역 안에서 빠져나오도록 만들기
+        */
+        var text =prompt("문자를 입력하세요","ex) A B C 또는 a b c");
+        
+        switch(text){
+            case"a" :
+            case"A" : document.write("apple 입니다.</br>"); break;
+            case"b" :
+            case"B" : document.write("banana입니다.</br>"); break;
+            case"c" :
+            case"C" : document.write("coconut입니다</br>"); break;
+            
+            default: document.write("해당하는 항목이 없습니다."); break;
+
+        }
+
+        /*
+            [응용문제2]
+
+                매우중요)
+                    숫자와 비교하기
+
+                    숫자 1 을 입력하면 숫자1입니다. 출력 (2,3도)
+                    : 경우의 수가 없을 경우 "default" 제외 가능
+                    : switch문 안에서는 경우의 수가 없을 경우, default 작성보다 
+                    수식 안에 있지 않고 나오도록 만드는 break가 중요함
+
+        */
+
+        var numb =prompt("숫자입력:","ex) 1 2 3 ...");
+        console.log(typeof(numb));
+
+        /*
+            출력되지 않는다면, console.log로 확인하고 어떤 식으로 해결했는지 작성하기
+
+                    [프로그램 처리방법]
+                        : 입력 처리 출력
+                        : 입력과 출력이 기본 표현방법
+                        : 처리파트는 중간의 수식을 다시 한 번 처리해주는 영역 (파트)
+
+                    [정리]
+
+                        if문에서는 숫자 100과 비교했을 때 다른 값으로 처리하지 않아도 비교가 가능했음
+
+                    [console로 확인]
+                        : string 구조인 것 확인가능
+                        : 입력 출력 어디서 문제?
+                            -> 출력은 제대로 되기때문에 입력에서 문제
+
+                        : switch문에서는 재료의 "속성"까지 모두 같아야 제대로 표현가능
+        
+        */
+
+        // 처리파트에서 해결
+        /*
+            기존 변수에 다시 담아주기
+            새로운 변수를 사용하면 switch문의 재료값이 달라져야 하기때문에 기존 변수를 이용하여 담아주고 처리함
+
+            [소수점]
+                변수.toFixed(2)
+        */
+
+        numb = parseInt(numb);
+        console.log(typeof(numb));
+        
+        switch(numb){
+            case 1 : document.write("숫자 1입니다.</br>"); break;
+            // console.log(typeof(numb));
+            case 2 : document.write("숫자 2입니다.</br>"); break;
+            case 3 : document.write("숫자 3입니다.</br>"); break;
+
+            
+            default: document.write("해당하는 숫자가 없습니다."); break;
+
+           
+
+        }
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+	
+ </body>
+</html>

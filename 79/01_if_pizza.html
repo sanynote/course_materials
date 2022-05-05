@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> pizza </title>
+	<meta charset="utf-8"/>
+   <style>
+      *{margin:0; padding:0;}
+      body{margin:0; padding:0;}
+      
+      #wrap{width:600px; margin:30px; border:1px dashed #f30;}
+
+      h3{background-color:#f30; color:#fff; text-align:center; line-height:40px; letter-spacing:10px;}
+
+   
+      .img{width:96%; padding:0 2%;}
+      .img img{width:100%;}
+      
+      #priceArea{padding:30px;}
+      #pricArea p{margin:10px 0; overflow:hidden;}
+
+      
+      label{display:block; width:100px; font-size:14px; float:left;}
+      /* display: block , float:left */
+      label, input, select{height:30px; line-height:30px;}
+      #price{ border:none; font-size:20px; width:100px; text-align:right;}
+      /*
+         [placeholder VS value]
+
+            1) placeholder는 클릭한 순간 예시문이 사라지기때문에 계산 어려움
+            2) value의 경우, 클릭해서 사라지는 값이 아니라 실제하는 값으로 계산식이나 수식표현에 많이 사용됨
+      */
+
+      #num{width:123px;}
+      #result{width:150px; font-size:20px; border:none; text-align:right;}
+      input[type="button"]{padding:0 10px;}
+   
+      
+
+   </style>
+
+   <script>
+
+
+      function total(){
+
+         // 1) 확인하기 alert();
+         /*
+            2) 총 합계 만들기
+               예)
+                  a = a+2  , 기본적으로 script는 뒤의 값을 계산해서 앞으로 담아주는 방식
+
+            [input 태그의 속성 사용하기]
+
+               input 태그에는 속성이 많기때문에 계산이 가능한 속성 확인하기
+                  input 태그의 id/type 에는 28800원을 쓸 수가 없다. -> value || title(대체텍스트로 사용하기때문에 편리하지는 않음)
+                  
+         
+            [input 태그 확인하기]
+               결과 = 판매가 * 수량
+
+               1)
+               결과 부분에 해당하는 input       id 객체로 만들기
+               판매가 부분에 해당하는 input     id 객체로 만들기
+               수량 부분에 해당하는 input       id 객체로 만들기
+
+               2) 전체 id로 접근가능한지 확인하기
+               3) 결과부분 value에 보여주기
+                  결과.value = 판매가.value * 수량.value
+
+         */
+
+         var price = document.getElementById("price");
+         var num = document.getElementById("num");
+         var result = document.getElementById("result");
+
+         result.value = price.value * num.value;
+         // console.log(num);
+
+
+         /*
+            [매우중요_작성시 주의사항]
+            var price = document.getElementById("price");
+               : id를 통해 주변 모든 속성등 접근 할 수 있음
+
+               ex) 
+                  price.value
+                  price.title
+                  price.type
+
+            var price = document.getElementById("price").value 
+            -> 실컷 id를 만들어놓고 value만 쓰겠다는 것, 다른속성에 접근 어려움
+
+         */
+
+         /*
+
+            : 판매가 * 수량은 잘 계산되지만 문제는 ... 제품이 선택되어있지않음
+
+            아래문제 해결하기
+               1) select 태그에 접근할 수 있도록 id 객체 만들고, console.log 확인
+               2) select 태그의 option들은 자녀요소가 아니라 자신이 가지고있는 아이템들
+
+                  select의 option 자녀가 아님
+                  select의 option은 묵음처리가 되서 선택되지않음
+                  select의 매우중요 value
+
+                  : select.value 선택
+                  : option.value 없음 (자녀요소아니고, 선택도 어려움)
+
+                  참고) video태그의 경우, source 태그가 있음
+                     source는 선택할 수 없음
+
+                     video.src로 선택할 수 있음
+         
+         */
+
+         var menuSelect = document.getElementById("menuSelect");
+         console.log(menuSelect);
+
+         /*
+            : 아래문제 해결하기 6
+               menuSelect의 value로 접근하여 제품이 아닌 요소들(이름)과 같다면
+               제품을 선택하세요 라는 알림창 띄우기
+
+            : 문제해결 7
+               수량부분이 비워져있다면 수량을 입력하세요 알림창 띄우기
+         */
+      
+         var menuSelect = document.getElementById("menuSelect")
+         console.log(menuSelect);
+
+
+         /*
+            ver-1 : else if
+
+            if(menuSelect.value == "typeSelect"){
+            alert("제품을 선택하세요.");}
+
+            else if(menuSelect.value == "divide"){
+            alert("아래 제품을 선택하세요.");}
+
+         */
+         
+         // ver -2 : or || 
+         if(menuSelect.value == "typeSelect" || menuSelect.value == "divide"){
+            alert("제품을 선택하세요.");
+            
+            return false;
+         }
+         
+
+         var num = document.getElementById("num")
+
+         if(num.value == ""){
+         alert("수량을 입력하세요.");}
+
+         /*
+            [페이지 확인하기]
+
+               회원가입시
+                  id (input)        : 필수
+                  pw
+                  name
+
+                  : 위에 있는 input들은 선택해 사용하는것이 아니라 필수
+                  : if 사용해야함
+
+               그 중 하나 선택 (이름 선택)
+                  if (name=="한글"){}
+                  else if(name=="영문"){}
+                  else if(name=="한자"){}
+
+                  : 비슷한 종류로 나열하고, 대체가 가능한 속성을 선택할 때 사용되는 방법
+
+
+            [해결]
+
+               1) if문은 반드시 활성화가 되는 구문
+               2) 현재 페이지에서 수량,제품 모두 필수라서 if 필요
+
+               3) 알림창 2개 모두 활성화 되기때문에
+                  위의 구문이 끝나면서 멈추기
+                     return false 작성
+
+               4) script 에서는 작성되는 순서 하다로 출력되거나 입력되는것이 나타나지 않을 수 있음
+
+               5) switch 처럼 사용되는 영역에서는 return false를 사용하면
+               수식구문 자체가 돌아가지 않기때문에 break를 사용함
+
+               6) 어떤 구문에서 사용하느냐에 따라서 return false || break를 사용함
+               7) 강제로 뜨는 경우 위의 수식을 멈추기 위해 return false를 사용함
+               * 많이 사용되면 컴퓨터 강제종료와 같아서 꼭 필요한 부분에 사용해야 제대로 사용할 수 있음
+
+            ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            : if 문 사용시, else if 를 사용할 수 있는지 반드시 확인하기
+            : || (or) 방식은 너무 단순하게 처리가 되서 디테일한 작업이 어려움.
+         
+         */
+   
+         
+      };
+
+  
+   </script>
+	
+	
+ </head>
+
+ <body>
+   <div id="wrap">
+      <h3>pizza</h3>
+      <p class="img">
+         <img src="img/pizza.gif" alt="이미지"/>
+      </p>
+      <div id="priceArea">
+         <p>
+            <label for="price">판매가</label><input id="price" type="text" value="28800" readonly/>원
+            <!--
+               [작업시 중요사항]
+
+               1) 28800원 계산이 되어야하는 부분이기때문에 숫자만 사용하기
+               2) 28800원이고 작성되어있으면 "원" 때문에 계산이 어려움
+               3) 판매가와 계산되어야하는 부분이기때문에 input 태그 지워지지 않도록 보호하기
+            -->
+         </p>
+         <p>
+            <label for="menuSelect">제품</label>
+            <select id="menuSelect">
+               <option value="typeSelect">------------ 피자선택 ------------</option>
+               <option value="divide">========================</option>
+               <option value="콤비네이션 피자">콤비네이션 피자</option>
+               <option value="페페로니 피자">페페로니 피자</option>
+               <option value="하와이안 피자">하와이안 피자</option>
+               <option value="불고기 피자">불고기 피자</option>
+               <option value="포테이토 피자">포테이토 피자</option>
+               <option value="고구마 피자">고구마 피자</option>
+            </select>
+         </p>
+         <p><label for="num">수량:</label><input id="num" type="number" min="1"/></p>
+         <p>
+            <input id="button" type="button" title="합계" value="합계" onclick="total();"/>
+            <input id="result" type="text" title="총합계" readonly/>원
+            <!-- 총 결제금액이 지워지지 않도록 readonly 설정-->
+         </p>
+      </div>
+      
+   </div>
+ </body>
+</html>
+<!--
+   [웹 표준]
+      24가지 규칙이 있음 (ppt 자료 확인, 초당 3~50회 깜빡이지않도록 만들기)
+
+   [form, input 다루는 페이지에서는 유효성 검사]
+
+      1) 새로운 회원가입시 필수
+         + 아이디 비밀번호(필수정보 빈칸인지 아닌지 확인하기)
+         + required (javascript 대신 html5 사용해도 문제가 없음)
+
+      2) 판매 사이트
+         + 수량부분에서 "마이너스" 가 나오지 않도록 만들기
+         + 계산이 되어야하는 부분은 지워지지않도록 만들기
+
+-->

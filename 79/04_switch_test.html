@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> switch_test </title>
+	<meta charset="utf-8"/>
+   <style>
+      *{margin:0; padding:0;}
+      body{margin:0; padding:0;}
+      
+      #content{width:360px; margin:0 auto;}
+      h3{font-size:20px; padding:20px 0; text-transform:uppercase;}
+
+      form{width:100%;}
+      form p{width:100%; height:40px; line-height:40px; margin:2px 0; background-color:#efefef;}
+      
+      form p label{display:inline-block; width:120px;background-color:#e7e7e7; text-indent:15px;}
+      form p input{width:220px; height:30px; border:1px solid #ccc; text-indent:16px;}
+
+      form p input[type="button"]{background-color:#e7e7e7; border:1px solid #aaa; text-indent:0; }
+      form p input[type="button"]:hover{background-color:#aaa; color:#fff; cursor:pointer;}
+
+      
+   </style>
+   
+   <script>
+      function total(){
+
+         var result = document.getElementById("result");
+         var num1 = document.getElementById("num1");
+         var oper = document.getElementById("oper");
+         var num2 = document.getElementById("num2");
+
+         /*
+            1) else if 방식 사용하기
+               : 같은 input 공간에서 경우의 수가 생겼기때문에 else if로 또 다른 조건이 있다면
+               나열하여 작성
+
+            2) or 방식은 현재 예제에서 사용하기 어려움
+               oper.value == "+" || oper.value == "_" 로 나열하면 결과를 다르게 만들어낼 수 없음
+         */
+         
+         // ver - 1 : if문
+         if(oper.value == "+"){
+            result.value = parseInt(num1.value) + parseInt(num2.value);
+         }
+         else if(cal.value == "-"){
+            result.value = parseInt(num1.value) - parseInt(num2.value);
+         }
+         else if(cal.value == "*"){
+            result.value = parseInt(num1.value) * parseInt(num2.value);
+         }
+         else if(cal.value == "/"){
+            result.value = parseInt(num1.value) / parseInt(num2.value);
+         }
+      }
+
+
+      /*
+      // ver - 2 : switch문
+
+         매우중요) 재료에 의한 경우의 수를 따지는 구문, 재료값이 매우 중요함
+         위 if문을 보면 oper.value로 해당하는 값을 넘겨받는것을 알 수 있음
+         : if 에서는 태그에 접근하는 방식으로 접근함
+
+         switch(oper) 옆 방식은, .value로 넘어오는 재료값을 확인하는것이 아니라
+         oper라는 변수만 심어놓고 작업하는 방식 (비교값이 변수인지, .value인지를 확인)
+
+         switch(oper.value){
+            case "+" : result.value = (parseInt(num1.value) + parseInt(num2.value)); break;
+            case "-" : result.value = (parseInt(num1.value) - parseInt(num2.value)); break;
+            case "*" : result.value = (parseInt(num1.value) * parseInt(num2.value)); break;
+            case "/" : result.value = (parseInt(num1.value) / parseInt(num2.value)); break;
+         }
+      };*/
+      
+   </script>
+	
+	
+ </head>
+
+ <body>
+	<div id="content">
+      <h3>javascript_switch</h3>
+      <form action="#" method="get">
+         <p>
+            <input id="button" title="계산하기" value="계산하기" onclick="total();"/>
+            <!--
+               현재 input의 경우, 스스로 넘길 정보가 없기때문에 name 필요없음
+               컨트롤 할 대상이 아니라면 id 제외 가능
+
+            -->
+         </p>
+         <p><label for="num1">숫자입력1:</label><input id="num1" type="number" name="num1"/></p>
+         <p><label for="oper">연산자입력:</label><input id="oper" type="text" name="oper"/></p>
+         <p><label for="num2">숫자입력2:</label><input id="num2" type="number" name="num2"/></p>
+         <p><label for="result">결과값:</label><input id="result" type="text" name="result" readonly/></p>
+      </form>
+   </div>
+ </body>
+</html>
+<!--
+1) 태그에 접근하기 위하여 id
+2) input 태그 사용하기
+3) 계산하기 눌렀을때 계산됨
+4) 연산자: + - * /
+
+5) + 일 경우,  - 일 경우, * 일 경우, / 일 경우
+6) switch 권장,  if문 사용해도 상관없음
+
+-->

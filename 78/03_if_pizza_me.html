@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> pizza </title>
+	<meta charset="utf-8"/>
+   <style>
+      *{margin:0; padding:0;}
+      body{margin:0; padding:0;}
+      img{border:none;}
+
+
+      form{width:600px; border:1px dotted red; margin:50px;}
+      fieldset{border:none;}
+      legend{display:none;}
+      h3{width:100%; background-color:red; color:#fff; text-align:center; line-height:40px; height:40px; }
+
+   
+      form .img{width:600px;}
+      .img img{width:90%; margin-left:5%;}
+
+      
+      p label, span{display:inline-block; width:100px; line-height:30px; text-indent:10px;}
+      p input, select{width:200px;height:28px; border:1px solid #ccc;}
+      p input{ margin-left:6px;}
+
+      div{padding-left:30px;}
+
+      #btnArea{padding-left:0; width:100%; height:30px;}
+      #btnArea input{padding:0 7px; margin-left:7px; cursor:pointer;}
+      #btnArea p{display:inline-block; width:250px; text-align:right;}
+
+      
+
+   </style>
+
+   <script>
+
+      function chkBtn(){
+         var btn = document.getElementById("btnArea");
+
+         for(var index=28800; index<200000; index=index*("#btnArea input")){
+
+               ("#btnArea p").write(index);
+         };
+
+
+            var userid = document.getElementById("userid");
+            console.log(userid);
+
+            userid.value="아이디를 입력하세요";
+      };
+
+
+  
+   </script>
+	
+	
+ </head>
+
+ <body>
+   <form action="#" method="get">
+      <fieldset>
+         <legend>pizza</legend>
+         <h3>pizza</h3>
+         <p class="img">
+            <img src="img/pizza.gif" alt="피자"/>
+         </p>
+
+         <div>
+
+            <p><label id="price">판매가</label><input id="price" type="text" name="price" value="28800원"/></p>
+            <span>상품</span>
+            <select id="pizza">
+               <option value="구분선" id="line">==============</option>
+               <option value="페페로니 피자">페페로니 피자</option>
+               <option value="하와이안 피자">하와이안 피자</option>
+               <option value="불고기 피자">불고기 피자</option>
+               <option value="포테이토 피자">포테이토 피자</option>
+               <option value="고구마 피자">고구마 피자</option>
+            </select>
+         
+            <p><label id="quen">수량:</label><input id="quen" type="number" name="quen"/></p>
+
+            <div id="btnArea">
+               <input id="btn" type="button" value="합계" title="합계" onclick="chkBtn();"/>
+               <p>원</p>
+            </div>
+         </div>
+      </fieldset>
+
+   </form>
+ </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> switch_test </title>
+	<meta charset="utf-8"/>
+   <style>
+      *{margin:0; padding:0;}
+      body{margin:0; padding:0;}
+      
+      #wrap{width:400px; margin:0 auto;}
+      h3{line-height:40px; text-transform:uppercase;}
+
+      p{margin-top:3px;background-color:#efefef;}
+      label{display:block; width:140px; height:40px; line-height:40px; float:left; text-indent:10px;}
+      input{border:none; width:250px; height:34px; line-height:34px; margin-top:3px;  background-color:#fff;}
+
+      input[type="button"]{background-color:#ccc;}
+      p:after{content:""; display:block; clear:both;}
+      
+   </style>
+   
+   <script>
+      function btn(){
+
+         var num1 = document.getElementById("num1");
+         var num2 = document.getElementById("num2");
+         var result = document.getElementById("result");
+         var cal = document.getElementById("cal");
+
+         if(cal.value == "+"){
+            result.value = parseInt(num1.value) + parseInt(num2.value);
+         }
+         else if(cal.value == "-"){
+               result.value = parseInt(num1.value) - parseInt(num2.value);
+         }
+         else if(cal.value == "*"){
+               result.value = parseInt(num1.value) * parseInt(num2.value);
+         }
+         else if(cal.value == "/"){
+               result.value = parseInt(num1.value) / parseInt(num2.value);
+         }
+      }
+      /*
+
+      function btn(){
+         var num1 = document.getElementById("num1");
+         var num2 = document.getElementById("num2");
+         var result = document.getElementById("result");
+         var cal = document.getElementById("cal");
+      
+         var test = cal.value
+         switch(test){
+               case "+" : result.value = (parseInt(num1.value) + parseInt(num2.value)); break;
+               case "-" : result.value = (parseInt(num1.value) - parseInt(num2.value)); break;
+               case "*" : result.value = (num1.value * num2.value); break;
+               default : alert("숫자를 입력해주세요."); break;
+         }
+        }*/
+      
+   </script>
+	
+	
+ </head>
+
+ <body>
+	<div id="wrap">
+      <h3>javascript_switch</h3>
+      <div>
+         <p>
+            <input id="button" type="button" title="합계" value="계산하기" onclick="btn();"/>
+         </p>
+         <p><label for="num1">숫자입력1:</label><input id="num1" type="number"/></p>
+         <p><label for="cal">연산자입력:</label><input id="cal" type="text"/></p>
+         <p><label for="num2">숫자입력2:</label><input id="num2" type="number"/></p>
+         <p><label for="result">결과값:</label><input id="result" type="text" readonly/></p>
+      </div>
+   </div>
+ </body>
+</html>
+<!--
+1) 태그에 접근하기 위하여 id
+2) input 태그 사용하기
+3) 계산하기 눌렀을때 계산됨
+4) 연산자: + - * /
+
+5) + 일 경우,  - 일 경우, * 일 경우, / 일 경우
+6) switch 권장,  if문 사용해도 상관없음
+
+-->
