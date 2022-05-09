@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> time </title>
+	<meta charset="utf-8"/>
+	<script>
+        document.write("<h2>time함수, 시간설정</h2>");
+
+        var today = new Data();
+        var year = today.getFullYear();
+
+        document.write("연도: "+year+" <br/>");
+
+        var month = today.getMonth();
+        month = month+1;
+
+        document.write("월:"+month+"<br/>");
+
+        var date = today.getDate();
+        document.write("날짜:"+date+"<br/>");
+
+        var hours = today.getHours();
+        document.write("시간:"+hours+"<br/>");
+
+        var minutes = today.getMinutes();
+        document.write("분:"+minutes+"<br/>");
+
+        today.getSeconds();
+        document.write("초:"+seconds+"<br/>");
+        
+    </script>
+    
+ </head>
+
+ <body>
+
+  
+ </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> do while </title>
+	<meta charset="utf-8"/>
+	<script>
+    /*
+        [do while문_기본문법] -> 참일때 반복이 되는 것
+
+            do{
+
+            }while();
+
+            : 일단 기능을 구현하고, 나중에 조건을 확인함
+            : 기능을 구현하고, 마지막에 조건확인 후 조건에 맞으면 (참) 반복이 발생함
+
+    */
+
+    document.write("<h2>do_while문 기본 사용방법</h2>");
+
+    do{
+        var ans = prompt("a입력:");
+    }while(ans =="a" || ans =="A");
+
+    // 문제 1) coconut 입력받고, 참이면 반복시키기
+    do{
+        var coco = prompt("coconut입력:");
+    }while(coco =="coconut");
+
+    // 문제 2) ok나 OK를 입력받으면, 반복시키기
+    do{
+        var ok = prompt("ok 입력:");
+    }while(ok =="ok" || ok =="OK");
+
+
+    // 문제 3) yes 나 YES 를 입력하면 멈추게만들기
+    /*
+    do{
+        var y = prompt("yes 입력:");
+    }while(y !="yes" || y !="YES");
+    
+    문제점: 참을 넣든, 거짓을 넣든 반복문이 작동됨. 멈추기 어려움 -> 잘못된 수식표현
+    
+    */
+
+    do{
+        var y = prompt("yes 입력:");
+    }while(!(y =="yes" || y =="YES"));
+    // 참의 값을 "전체"로 묶어주고 해당하는 한 묶음을 거짓으로 만들어야하는 문제였음
+
+    </script>
+
+    <script>
+
+        document.write("<h2>응용문제1<h2>");
+        // apple 또는 APPLE 또는 Apple을 입력받으면 반복문 멈추기
+        do{
+            var test1 = prompt("apple 또는 APPLE 또는 Apple을 입력:");
+        }while(!(test1 =="apple" || test1 =="APPLE" || test1 =="Apple"));
+
+        document.write("<h2>응용문제2<h2>");
+        /*
+            확인버튼을 클릭하세요. 확인창 띄우기
+                :확인 (true)
+                :취소 (false)
+
+                : 확인버튼 누르면 반복문 멈추기
+        */
+        do{
+            var test2 = confirm("확인버튼을 클릭하세요.");
+        }while(test2 == false);
+
+        document.write("<h2>응용문제3<h2>");
+        /*
+            : 입력한 값이 70보다 작거나 같고, 100보다 클 경우 반복되도록 만들기
+
+            힌트) 수식표현을 해보고 범위가 만들어지는지 확인해야 함
+            , 현재 문제는 반복시키는것이 목적이 아니라 멈추는 범위를 만드는것이 매우 중요
+
+        */
+        do{
+            var test3 = prompt("숫자를 입력하세요.");
+        }while(test3 <=70 && test3 > 100);
+        // 반복문 멈추기 test3 > 70 && test3 <=100
+
+        document.write("<h2>응용문제4<h2>");
+        /*
+            : 입력창에 0~7세 사이의 아이나이 입력받기
+                : 해당하는 나이의 아이는 반복문 멈추도록 만들기
+
+            중요) 조건범위표현
+            
+        */
+        do{
+            var test4 = prompt("0~7세 사이의 아이나이 입력하기");
+        }while(!(test4 >=0 && test4 <= 7));
+
+        /*
+            jQuery에서 변수 사용하기 (참고)
+
+                var ul = $("ul");
+                var liW = $("ul li").width();
+        */
+    </script>
+	
+ </head>
+
+ <body>
+	
+ </body>
+</html>
