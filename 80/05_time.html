@@ -6,13 +6,15 @@
 	<script>
         document.write("<h2>time함수, 시간설정</h2>");
 
-        var today = new Data();
+        var today = new Date();
         var year = today.getFullYear();
+        //getYear() 예전버전
 
         document.write("연도: "+year+" <br/>");
 
         var month = today.getMonth();
         month = month+1;
+        // 0월 시작함, 월이 현재 보다 하나 낮음
 
         document.write("월:"+month+"<br/>");
 
@@ -25,7 +27,7 @@
         var minutes = today.getMinutes();
         document.write("분:"+minutes+"<br/>");
 
-        today.getSeconds();
+        var seconds = today.getSeconds();
         document.write("초:"+seconds+"<br/>");
         
     </script>
