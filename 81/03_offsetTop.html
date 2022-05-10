@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> offsetTop </title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0; background-color:#333;}
+        li{list-style-type:none;}
+
+        div{width:100%;}
+        ul{width:800px; margin:0 auto;}
+        li{width:798px; height:398px; overflow:hidden; margin:20px 0; border:1px solid #ddd;}
+        li img{width:100%;}
+
+        /* 이벤트 클래스로 움직일 객체 */
+        p{width:0; height:0; text-align:center; line-height:0; font-size:0; 
+            background-color:rgba(0,0,180,0.5); color:#fff; text-transform:uppercase;
+            position:absolute; left:0; top:0;}
+
+        /* 이벤트 클래스로 분해하기 */
+        .adds{width:800px; height:400px; line-height:400px; font-size:16px;}
+    </style>
+
+    <script>
+    /* 
+        [제이쿼리 문법 and 자바스크립트 함수]
+
+            ver-1~4까지 문법과 자바스크립트 함수는 크기가 같아서 서로 담을 수 없음
+
+            jQuery(document).ready(function(){});
+            funstion text(){}
+    */
+    $(document).ready(function(){
+        /*
+            1) li에 마우스 올리면 현재 올린 li에 p태그 나타나게 만들기
+            2) 마우스 떨어지면 p태그 사라지게 만들기
+
+            [이벤트_마우스 올리는 기능]
+
+                + mouseover     , 1차 영역까지만 접근(반응속도가 매우 빠름)
+                + mouseenter    , 자녀요소가 있다면 기다려줄 수 있음(반응속도가 조근 느림)
+                + hover         , (script,css)
+
+        */
+        
+        $("li").mouseover(function(){
+            /*
+            $("p").css({"left":"100px","top":"100px"}) 로 위치값 먹는지 확인
+            */
+            
+            /*
+                [매우중요]
+                    1) 변수에 담으면 과정의 값을 알기 어려워서 transition 사용 어려움
+                        -> animate 사용
+                    2) 변수에 담지않고 jQuery 1단계처럼 직접 대입하면 transition 사용가능
+            */
+
+            var offLeft = $(this).offset().left;
+            var offTop = $(this).offset().top;
+            
+            /*
+            $("p").addClass("adds").css({
+                "left": offLeft,
+                "top": offTop 
+            */    
+            /*
+                [변수에 담지않고 사용하면 transition 사용가능]
+                "left": $(this).offset().left,
+                "top": $(this).offset().top     
+            */
+
+            // css를 animate로 바꿈
+
+            $("p").show().addClass("adds").animate({
+            "left": offLeft,
+            "top": offTop     
+            },500).mouseout(function(){
+            $("p").hide();
+        });
+
+            /*
+                1) 내렸을때 파란박스 숨기기 (hide)
+
+                2) 다시 올렸을때 나타나게 만들기
+                    -> li태그가 사라졌을까? p태그가 사라졌기때문에 p에 show
+
+            */
+            /*
+                [문제점]
+
+                    1) 내렸을 때 hide 사라졌다면 다시 나타나도록 만들기
+                        p태그가 사라졌기때문에 p태그 show()
+
+                    2) 깜빡이는 문제는?
+                        파란색 박스가 없을때는 li에 올리는 게 맞지만
+                        파란색 박스가 나타나면 마우스는 파란색 박스 위에 있기때문에
+                        이미 li를 벗어난 상태
+
+                        부모와 자녀는 다른것처럼 li와 p태그는 다름
+
+                        [해결]
+
+                            깜빡이는 문제는 li에서 마우스가 떠나면이 아니라 
+                            p(파란박스) 에서 마우스가 떠나도록 만들어야 해결이 가능함
+
+            */
+
+        });
+
+        /*
+        $("p").css({"left":"100px","top":"100px"}) 로 위치값 먹는지 확인
+        */
+        
+    });
+
+ 
+    </script>
+	
+	
+ </head>
+
+ <body>
+
+    <div>
+        <ul>
+            <li>
+                <img src="img/01.jpg" alt="이미지1"/>
+            </li>
+            <li>
+                <img src="img/02.jpg" alt="이미지2"/>
+            </li>
+            <li>
+                <img src="img/03.jpg" alt="이미지3"/>
+            </li>
+            <li>
+                <img src="img/04.jpg" alt="이미지4"/>
+            </li>
+        </ul>
+    </div>
+    <p>image</p>
+ </body>
+</html>
+<!--
+    [상대를 따라다니도록 만들기위해서 설계하기]
+
+    1) 따라다니는 객체는 브라우저 어디서든 움직일 수 있어야하기때문에
+        어디 안에 작성하지 않는다.
+    2) 따라다니는 객체가 absolute라면 부모요소에 relative가 설정되었을 때
+        브라우저를 따라다니지 않고 relative가 설정된 부모를 따라다님
+
+    3) 브라우저 전체를 상대로 움직여야 하는 객체는 wrap 영역 바깥쪽에 독립적으로 설계하기도 함
+
+-->
