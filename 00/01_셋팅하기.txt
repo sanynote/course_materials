@@ -42,4 +42,4 @@
 05) 저장,확인 클릭
 
 +카카오톡 방호벽 풀기
-서비스 블록커 kakaotalk 선택해제하고 확인
+process blocker -> kakaotalk 선택해제하고 확인
