@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> email </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+
+        p{display:inline-block;}
+
+    </style>
+
+    <script>
+        function btn(){
+            var select = document.getElementById("select");
+            var email = document.getElementById("useremail");
+            
+            switch(select.value){
+            case"이메일선택" : email.value = "이메일선택"; break;
+            case"google.com" : email.value = "google.com"; break;
+            case"naver.com" : email.value = "naver.com"; break;
+            case"daum.net" : email.value = "daum.net"; break;
+            case"직접입력" : email.value = ""; break;
+        }
+    
+        }
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <p><input id="userid" type="text" placeholder="아이디 입력"/></p>
+    <p>@</p>
+    <p><input id="useremail" type="text" /></p>
+    <select id="select" onclick="btn();">
+        <option value="이메일선택">이메일선택</option>
+        <option value="google.com">google.com</option>
+        <option value="naver.com">naver.com</option>
+        <option value="daum.net">daum.net</option>
+        <option value="직접입력">직접입력</option>
+    </select>
+ </body>
+</html>

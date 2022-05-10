@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> dunkin </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style-type:none;}
+
+        #content{width:900px; margin:0 auto;}
+        h3{color:#cc0; line-height:100px; text-align:center; font-size:24px;}
+        ul{width:890px; height:240px;border:1px solid #ff0;}
+        li{width:178px; float:left;}
+        li img{width:100%;}
+
+        ul:after{content:""; display:block; clear:both;}
+
+        p{width:100px;}
+        #btn{padding:0 20px; margin:15px 0;}
+
+        .img{width:150px;}
+        .img img{width:100%;}
+
+        .extra{width:175px;}
+        .extra input{width:100%;}
+
+        
+
+
+    </style>
+
+    <script>
+        function btn(){
+
+            do{
+                var num = prompt("메뉴에 적혀있는 번호를 입력하세요");
+            }while(!(num >= 1 && num < 6));
+
+            var food = document.getElementById("food");
+            
+            switch(num){
+            case"1" : alert(" 던킨 글레이즈드를 선택하였습니다. "); food.src = "img/best1.jpg"; break;
+            case"2" : alert(" 크림치즈베이글을 선택하였습니다. "); food.src = "img/best2.jpg"; break;
+            case"3" : alert(" 모닝콤보를 선택하였습니다. "); food.src = "img/best3.jpg"; break;
+            case"4" : alert(" 아메리카노를 선택하였습니다. "); food.src = "img/best4.png"; break;
+            case"5" : alert(" 핫초코를 선택하였습니다. "); food.src = "img/best5.png"; break;
+
+            }
+            do{
+                var drink = prompt("음료를 추가주문 하시겠습니까?");
+            }while(!(drink == "y" || drink == "Y" || drink == "n" || drink == "N"));
+
+            var extra = document.getElementById("extra");
+
+            switch(drink){
+            case"y" : 
+            case"Y" : alert("++++++ 음료메뉴 ++++++ 아메리카노 카페라떼 카푸치노 아이스티 밀크티"); extra.value = prompt("원하는 음료를 입력하세요"); break;
+
+            }
+
+        }
+
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div id="content">
+        <h3>던킨 TOP 메뉴판</h3>
+        <ul>
+            <li><img src="img/best1.jpg" alt="도넛1"/></li>
+            <li><img src="img/best2.jpg" alt="도넛2"/></li>
+            <li><img src="img/best3.jpg" alt="도넛3"/></li>
+            <li><img src="img/best4.png" alt="도넛4"/></li>
+            <li><img src="img/best5.png" alt="도넛5"/></li>
+        </ul>
+        <p><input id="btn" type="button" value="주문버튼" onclick="btn();"/></p>
+        <p class="img"><img id="food" src="img/order.png" alt="도넛5"/></p>
+        <p class="extra"><input id="extra" type="text"/></p>
+    </div>
+ </body>
+</html>

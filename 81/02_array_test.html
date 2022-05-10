@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>array_test</title>
+     <meta charset="utf-8"/>
+     <script>
+
+        /*
+            1) animal 만들기 : dog, cat, duck, pig 담아주고 대입받은 동물은 000 입니다.
+            문서에 출력받기
+
+            중요) for문 활용하여 출력받기
+        */   
+
+        var animal = ["dog","cat","duck","pig"];
+
+        for(var i=0;i<4;i++){
+            document.write("대입받은 동물은 "+animal[i]+" 입니다.<br/>");
+        }
+
+        /*
+            2) cat이나 dog 만들기 : 이름, 나이, 몸무게 (숫자 아닌 문자형태로 만들기)
+
+            for문으로 출력받기
+        */
+
+        var dog = ["하트","14살","8kg"];
+
+        for(var i=0;i<3;i++){
+            document.write("이 강아지의 정보는, "+dog[i]+" 입니다.<br/>");
+        }
+
+        /*
+            3) sports 만들기
+                축구,야구,농구 등등 7개 종목 나열하기
+
+                for문 활용해 출력받기
+        */
+
+        var sports = ["축구","야구","농구","수영","검도","아이스하키","피구"];
+
+        for(var i=0;i<sports.length;i++){
+            document.write("이 운동의 이름은 "+sports[i]+" 입니다.<br/>");
+        }
+
+        document.write("<h2>연관배열로 문제풀기</h2>");
+        /*
+            1) ap를 호출하면 apple
+                ba banana
+                co coconut
+        
+        */
+        var fruits={"ap":"apple","ba":"banana","co":"coconut"};
+        document.write("연관배열 호출하기:"+fruits.ap+"<br/>");
+        document.write("연관배열 호출하기:"+fruits.ba+"<br/>");
+        document.write("연관배열 호출하기:"+fruits.co+"<br/>");
+        
+
+        /*
+            2) i를 호출하면 운영체제는 ios입니다.
+                a를 호출하면 운영체제는 android 입니다.
+        
+        */
+        var com={"i":"ios","a":"android"};
+        document.write("운영체제는"+com.i+" 입니다.<br/>");
+        document.write("운영체제는"+com.a+" 입니다.<br/>");
+        
+        /*
+            3) ms를 호출하면 이 엔진을 사용하는 브라우저는 edge입니다.
+                webkit를 호출하면 이 엔진을 사용하는 브라우저는 chrome입니다.
+                moz를 호출하면 이 엔진을 사용하는 브라우저는 firefox입니다.
+                o를 호출하면 이 엔진을 사용하는 브라우저는 opera입니다.
+        
+        */
+
+        document.write("<h2>연관배열과 순차배열 함께 사용해 문제풀기</h2>");
+
+        /*
+            1) 연관배열 만들기
+            a에 100, b에 100 대입받기
+
+            2) 순차배열 만들기
+                plus공간, minus 공간 만들기
+
+            [중요]
+                plus 공간에 연관배열 a b 더해지도록 만들기
+                minus 공간에 연관배열 a와 b가 빼기가 되도록 만들기
+
+            각각 문서에 plus 공간을 호출하면 더하기가 된 값이, 
+            minus 공간을 호출하면 뺀 값이 출력되도록 만들기
+
+                : 더하기값은 000 입니다.
+                : 빼기 값은 000입니다.
+        */
+        var test={"a":100,"b":100};
+        var test2=["plus","minus"];
+
+        test2[0]=test.a+test.b;
+        document.write("더하기 값은 "+test2[0]+"입니다.<br/>");
+
+        test2[1]=test.a-test.b;
+        document.write("빼기 값은 "+test2[1]+"입니다.<br/>");
+        
+     </script>
+ </head>
+
+ <body>
+
+ </body>
+</html>
