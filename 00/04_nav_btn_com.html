@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>nav_btn_com</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0; color:#333; font-size:12px; line-height:1.3em;}
+        li{list-style-type:none;}
+        a:link, a:visited{color:#333; text-decoration:none;}
+        a:hover, a:focus{color:#000; text-decoration:underline;}
+
+        .gnbView{width:44px; height:44px; overflow:hidden;}
+        .gnbView a{display:block; width:100%; height:100%; background-color:#ccc;
+        background-image:url("img/bt_menu_mobile.jpg"); background-position:0 0;}
+
+        .gnbMob{width:250px; height:400px; background-color:#888;
+        position:absolute; left:0; top:44px; z-index:7; padding-top:20px;}
+
+        .gnbMov li{width:100%; }
+        .gnbMov a{display:block; width:230px; background-color:#333; color:#fff;
+        padding:10px; border-bottom:1px solid #ccc;}
+    </style>
+
+    <script>
+        /*
+            1) 제이쿼리 두번째 문법
+            2) .gnbView a 를 클릭하면 .gnbMob 가 animate되면서 나타나게 만들기
+            시간 100 효과 linear
+
+            3) 버튼모양이 =에서 X모양으로 나타나게 만들기
+        */
+
+        $(document).ready(function () {
+        
+            $(".gnbMob").hide()
+            $(".gnbView a").click(function(){
+                $(".gnbMob").show().animate(100,"linear");
+            })
+        
+        });
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div class="gnbView">
+        <a href="#none" title="btn">
+
+        </a>
+        <nav class="gnb">
+            <ul class="gnbMob">
+                <li>
+                    <a aref="none" title="company">company</a>
+                </li>
+                <li>
+                    <a aref="none" title="service">service</a>
+                </li>
+                <li>
+                    <a aref="none" title="contact">contact</a>
+                </li>
+                <li>
+                    <a aref="none" title="gallery">gallery</a>
+                </li>
+                <li>
+                    <a aref="none" title="sitemap">sitemap</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+ </body>
+</html>

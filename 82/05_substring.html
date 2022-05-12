@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> while indexOf </title>
+	<meta charset="utf-8"/>
+    <style>
+
+    </style>
+
+    <script>
+
+            // 응용문제
+
+            /*
+                [수식표현]
+                1) 입력창 띄우기
+                2)
+                    while(-1과 비교하기){
+                        1) 해당하는 값이 없기때문에 반복시키기
+                        2) 해당하는 영역 안에서 다시 입력받기
+                            -을 넣고 입력받으면 수식 멈춤
+
+                            * if switch 없음
+                            * 조건변수와 맞춰서 확인하기
+                    }
+            */
+/*
+            var call = prompt("전화번호를 - 을 사용하여 입력하세요")
+            var i = call.indexOf("-")
+
+            
+            while(i == "-1"){
+                alert("-을 사용하여 다시 입력하세요"); break;
+            }
+
+            call = prompt("전화번호를 - 을 사용하여 입력하세요")
+            while(i != "-1"){
+                alert(call); break;
+            }
+            document.write(call);
+*/
+
+
+
+/*
+        
+        [ver -1]
+            var phone = prompt("전화번호를 - 을 사용하여 입력하세요")
+            while(phone.indexOf("-")<0){
+                phone = prompt("-을 사용하여 다시 입력하세요");
+            }
+
+            alert("올바른 입력입니다.");
+*/
+            /*
+                phone2 = prompt("-을 사용하여 다시 입력하세요");
+                참의 값을 입력해도 while문 안에서 못 빠져나옴
+
+                :비교값이 phone이라,phone2로 비교하면 계속 반복일어남
+
+                :while문은 어떤 변수가 들어와도, 비교값과 같다면 항상 비교가능
+                *** 비교할 수 있는 변수와 같은지 확인하기
+            */
+
+            // [ver-2]
+            for(;;){
+                var phone = prompt("전화번호를 - 을 사용하여 입력하세요")
+
+                if(phone.indexOf("-") == -1){
+                    alert("-을 사용하여 다시 입력하세요");
+                } else{
+                    alert("올바른 입력입니다."); break;
+                }
+
+            }
+
+            /*######################## 문자열자르기 #####################*/
+
+            // 대상.substring
+
+            var imgs = "image/01.jpg";
+
+            /*
+                [중요]
+                    대상.length 는 숫자 1부터 세어주는 값
+                    대상.substring은 공간을 자르는 개념
+
+                    : imgs 에서 숫자 01만 잘라내기
+
+                    [정리]
+
+                    1) 대상.substring(시작점,어디전까지) == 조건은 for문과 같음
+                    2) 거리를 확인하고 여기"전"까지 사용하는 거리입니다. 잘라주기
+                        -> 그래서 (6,7)로 자르면 0만 나옴
+
+            */
+
+            var imgSub = imgs.substring(6,8); // 01만 남은상태
+
+            document.write("잘라진 숫자는 "+imgSub+" 입니다.");
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+
+ </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>nav_btn_com</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+            body{margin:0; padding:0; color:#333; font-size:12px; line-height:1.3em;}
+            li{list-style:none;}
+
+            a:link,a:visited{color:#333; text-decoration:none;}
+            a:hover,a:focus{color:#f00; text-decoration:underline;}
+
+            .gnbView{width:44px; height:44px; overflow:hidden;}
+            .gnbView a{display:block; width:100%; height:100%; background-color:#ccc; background-image:url("img/bt_menu_mobile.jpg"); background-position:0 0;}
+            .gnbMob{width:250px; height:400px; background-color:#888; position:absolute; left:-250px; top:44px; z-index:7; padding-top:20px;}
+
+            .gnbMob li{width:100%;}
+            .gnbMob a{display:block; width:230px; background-image:none; background-color:#333; color:#fff; padding:10px; border-bottom:1px solid #ccc;}
+
+    </style>
+
+    <script>
+        /*
+            1) 제이쿼리 두번째 문법
+            2) .gnbView a 를 클릭하면 .gnbMob 가 animate되면서 나타나게 만들기
+            시간 100 효과 linear
+
+            3) 버튼모양이 =에서 X모양으로 나타나게 만들기
+        */
+
+    $(document).ready(function () {
+
+        /*
+        1) toggle 이벤트로 해결되지 않을때
+        2) 제어문을 통해서 해결이 가능함!
+
+        * toggle 이벤트가 적용되지 않는 이유는?
+
+                대상은 한명인데 지시는 양쪽으로 움직여야 하는 지시가 내려졌을때..
+                기준이 없기 떄문에 작동하지 않음!
+
+        3) 제어를 통해서 값을 만들 수 있음
+
+                : 상대가 왼쪽에 있다면 오른쪽으로 움직이기
+                : 오른쪽에 있다면 왼쪽으로 움직이기
+
+        [전역과 지역]
+
+                Q : (".gnbView a").click인 지역일까? 전역일까?
+                A : 위에 값을 클릭하지 않으면 작동하지 않기 떄문에 해당하는 지역을 클릭했을때만 작동함!
+                    : "지역 함수"
+
+                Q : var now라고 만든 값은?
+                A : 클릭 이벤트나 다른 이벤트 안에 넣어 두지 않고, 모든 지역에 영향을 줄 수 있기 때문에 "전역 변수"
+
+                [매우중요] 아래 항목 확인하기
+                var now
+                $(".gnbView a").click(function(){
+
+                });
+
+                : gnbView a 위에 now 값은 모든 지역에 영향을 주는 전역 값
+                : 클릭하고 상관없이 문서가 준비가 되면 만들어짐
+
+
+    */
+
+    // 전역, 어느 지역이든 가져다 사용할 수 있음
+        var now = true;
+
+        $(".gnbView a").click(function(){
+
+            // 현재 대상을 클릭하면 now 상태를 확인하고 전역의 값과 같다면 비교해서 작동이 일어남
+            if(now == true){
+                $(".gnbMob").animate({ "left": "0" },100,"linear");
+                $(this).css({"backgroundPosition":"0 100%"});
+
+                // 다시 클릭했을때 거짓의 값 || 비교한 값과 달라져야 아래의 값이 작동함
+                now=false;
+            } else{
+                $(".gnbMob").animate({ "left": "-250px" },100,"linear");
+                $(this).css({"backgroundPosition":"0 0"});
+
+                // 다시 클릭했을때 , 위의 true 값이 작동하려면 다시 true를 담아줘야 작동됨
+                now=true;
+            }
+        });
+        
+    });
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div class="gnbView">
+        <a href="#none" title="btn">
+
+        </a>
+        <nav class="gnb">
+            <ul class="gnbMob">
+                <li>
+                    <a aref="none" title="company">company</a>
+                </li>
+                <li>
+                    <a aref="none" title="service">service</a>
+                </li>
+                <li>
+                    <a aref="none" title="contact">contact</a>
+                </li>
+                <li>
+                    <a aref="none" title="gallery">gallery</a>
+                </li>
+                <li>
+                    <a aref="none" title="sitemap">sitemap</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+ </body>
+</html>

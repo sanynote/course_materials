@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> chkBtn </title>
+	<meta charset="utf-8"/>
+    <script>
+        /*
+            [작업순서]
+                0) 동의 버튼을 클릭하면 chkBtn(input) "체크"되도록 만들기
+                1) 함수 작동되는지 확인
+                2) chkBtn, input 태그 id 객체로 만들기, console.log 확인하기
+
+                    + input 태그에 접근하기위하여 ID 객체로 만들기
+                    + 체크가 되어있지않다면 체크가 되어있지않습니다. 확인창 띄우기
+                    + 체크가 되어있다면 이미 체크되어있습ㄴ비다. 알림창 띄우기
+
+                3) input의 속성에 접근하기
+                    + value
+                    + title
+                    + readOnly
+                    + checked
+
+                4) checked와 비교하기
+
+                    체크가 되어있지 않다면 false
+                    체크가 되어있다면 true
+
+                참고)
+                    chkBtn.value            value 속성에 접근
+                    chkBtn.checked          true false와 비교
+
+                [문제]
+                    1) chkBtn.checked 속성이 false와 같다면..
+                        체크하시겠습니까? 체크 하시려면 확인버튼 클릭하세요 (확인창 띄우기)
+
+                        : 확인창에서 확인을 눌렀을때         chkBtn에 체크되어있도록 만들기
+
+                            [추가작업]
+                                : 체크를 확인하였습니다. 알림창띄우기 
+                                : 네이버 사이트로 이동하기
+
+                        : 취소버튼을 누르면                     취소버튼을 확인하였습니다. 알림창 띄우기
+
+                    2) 아니라면 ... (체크가 되어있다는 의미)
+                        이미 체크되어있습니다. 알림창 띄우기
+        
+        */
+        function chk(){
+            var chkBtn = document.getElementById("chkBtn");
+            // console.log(chkBtn);
+
+            // 문제
+
+            if(chkBtn.checked == false){
+                var test = confirm("체크하시겠습니까? 체크 하시려면 확인버튼 클릭하세요");
+
+                if(test == true){
+                    chkBtn.checked = true
+                    alert("체크를 확인하였습니다.");
+                    location.href="http://www.naver.com";
+                } else{
+                    alert("취소버튼을 확인하였습니다.");
+                }
+            } else{
+                alert("이미 체크되어있습니다.");
+            }
+        }
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <button onclick="chk();">동의</button>
+    <input id="chkBtn" type="checkbox" title="체크"/>
+ </body>
+</html>

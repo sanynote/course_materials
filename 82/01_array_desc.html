@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> array_desc </title>
+	<meta charset="utf-8"/>
+
+    <script>
+
+        var data1 = {"no1":100,"no2":200,"no3":300};
+        var data2 = [0,1,2,3]
+
+        data2[0] = data1.no1+data1.no3;
+        data2[1] = data1.no3-data1.no2-data1.no1;
+        data2[2] = data1.no1+data1.no2;
+        data2[3] = data1.no2-data1.no1;
+
+
+        /*
+            [중요]
+                : 입력파트에서는 각각 다른 값을 저장하기 때문에 for를 사용하기 어려움
+                : 출력파트에서는 0 1 2 3 순서대로 출력받기때문에 for를 사용할 수 있음
+        */
+        
+        for(var i=0; i<data2.length; i++){
+            document.write("결과 값은 "+data2[i]+"<br/>");
+        }
+
+        document.write("<h2>STEP02_new 연산자를 이용하는 배열</h2>")
+        
+        // new Date (시간함수)
+
+        var data = new Array();
+        data[0] = 100;
+        data[1] = 80;
+
+        /*
+            [new Array 사용하기]
+
+                :: new를 이용한 배열 방식은 처음부터 순차배열이나, 연관배열처럼 나열해두고 사용하는것이 아니라
+                사용자가 저장하기 위하여 필요한만큼 만들어서 사용하는 방식
+
+                :: 순차배열(공간값), 연관배열(연상되는 값) 해당하는 값만큼 나열해야하지만 new Array는 갯수의 문제가 없음
+                :: 순차배열이나 연관배열은 어떤 이름을 사용하고있고, 어떤 값으로 저장되고있는지위로 올라가거나
+                중간에 만들어진 값들로 확인해야하는 번거로움이 있음
+
+                :: new Array는 아무데서나 선언할 수 있고, new Array 선언된 배열이름은 어디서든 사용가능함
+                
+                [장점]
+                    1) 필요할때마다 만들기때문에 배열공간에 대한 낭비가 없음
+                    2) 순차배열의 경우 몇 개를 사용할 지 모르기때문에 남거나 모자랄 수 있음
+                    3) 아무데서나 사용이 가능함
+
+                [단점]
+                    1) 몇 개를 만들었는지 한 번에 확인하기 어려움
+                    2) 이미 사용중인 배열공간을 사용할 확률도 있기때문에 기존의 데이터가 사라징 우려가 높음
+
+                [정리]
+                    보관하면서 안전하게 저장하기위해서는 연관배열이나 순차배열이 좋고
+                    빠르게 임시적으로 보관하거나 이동하기 위해서는 new Array 방식이 좋다
+
+        */
+
+        data[2] = 85;
+        data[3] = 90;
+        data[4] = 75;
+
+        document.write("<h2>new Array를 사용하여 몇 개를 사용중인지 확인하기</h2>")
+
+        /*
+            [매우 중요_ new Array 몇 개를 사용했는지 확인하는 방법]
+
+                배열이름을 알고, 길이값을 알아내는 대상.length만 알고있으면 반복문을 통해
+                사용중인 값 전체 데이터를 알 수 있음
+
+                : for while 등을 사용하여 출력받을 수 있음
+        */
+
+        for(var i=0; i<data.length; i++){
+            document.write(i+")new Array 갯수 확인하기:"+data[i]+"<br/>");
+        }
+
+        document.write("<h2>STEP03_오름차순,내림차순</h2>");
+
+        /*
+            오름차순 : 75 80 85 90 100
+            내림차순 : 100 90 85 80 75
+        */
+
+        document.write("오름차순 정렬: "+data.sort(function(a,b){return a-b})+"<br/>")
+        document.write("내림차순 정렬: "+data.sort(function(a,b){return b-a})+"<br/>")
+
+        num1 = parseInt(3.14);
+        document.write(num1+"<br/>")
+
+        num2 = parseFloat(3.14);
+        document.write(num2+"<br/>")
+
+        /*
+            [1] Int
+
+
+            [2] float는 소수점을 표현하는 자료형
+
+                : "초기값" 형태에서 소수점을 받을 수 있음
+                : "정수" 형태도 받을 수 있음
+                : "분쇄하여 소수점" 표현이 가능함
+
+                parseFloat(대상): 대상을 분쇄하여 소수점 형태로 바꿀때 사용
+
+                    ex) 0.1 / 0.5 / 0.25 ...
+
+                장점: 소수점, 정수표현 모두 가능하다.
+                단점: 모든 값을 소수점으로 읽으려하기때문에 매우 느림
+                    + 3 이라면, 정수여도 3이 아니라 3.0으로 읽을 수 있기때문에 느리다.
+
+        */
+
+        /*
+            [응용문제3]
+                1) num3 변수만들기
+                2) num3 = Number(3.14);
+        */
+
+        var num3 = Number(3.14);
+        document.write(num3)
+
+        /*
+            [Number 방식의 장점과 단점]
+                장점: parseInt 보다는 느리고 parseFloat보다는 빠름(화면에 보이는대로 읽어서)
+                단점: js 를 사용하는 언어에ㅓ만 사용할 수 있음
+
+            [정리]
+                1) c언어,java,php,jsp,asp 등에서는 int float char 등과 같은 자료형을 사용하기때문에
+                처리속도를 제외하고 Number보다 중요함
+
+                2) php에서는 cmd (shell)에서도 int나 char 등이 사용됨 소수점 표현 어려움
+                    프로그래밍에서는 자료형을 중요하게 보기때문에 int char double float 등을 익혀두는것이 중요하다.
+
+
+        */
+
+
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+	
+ </body>
+</html>

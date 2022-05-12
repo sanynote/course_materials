@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> javascript의 마우스 이벤트 </title>
+	<meta charset="utf-8"/>
+
+	
+ </head>
+
+ <body>
+    <h2>javascript의 마우스 이벤트</h2>
+    <input id="click" type="button" value="클릭" title="클릭" onclick="onClkBtn();"/>
+    <script>
+        function onClkBtn(){
+            alert("클릭되는 이벤트");
+        }
+    </script>
+
+    <input id="dblBtn" type="button" value="더블클릭" title="더블클릭" ondblclick="onDblBtn();"/>
+    <script>
+        function onDblBtn(){
+            alert("더블 클릭되는 이벤트");
+        }
+    </script>
+
+    <input id="mouseMove" type="button" value="마우스가 움직일때 발생하는 이벤트" title="마우스 움직이기" onmousemove="onMove();"/>
+    <script>
+        function onMove(){
+            alert("대상에서 마우스가 움직일때 발생하는 이벤트");
+        }
+    </script>
+
+    <input id="mouseOut" type="button" value="마우스가 아웃되면 발생하는 이벤트" title="마우스 아웃" onmouseout="onOut();"/>
+    <script>
+        function onOut(){
+            alert("대상에서 마우스가 떨어지면 발생하는 이벤트");
+        }
+    </script>
+
+    <h3>onmouseup: 해당하는 값을 누르고있다가 해당하는 대상에서 마우스가 업이 되면 발생하는 이벤트</h3>
+    <input id="mouseUp" type="button" value="마우스 업" title="마우스 업" onmouseup="onmouseUp();"/>
+    <script>
+        function onmouseUp(){
+            alert("마우스 업 성공");
+        }
+    </script>
+
+
+ </body>
+</html>

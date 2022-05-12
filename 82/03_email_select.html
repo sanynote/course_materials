@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> email </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+
+        p{display:inline-block;}
+
+    </style>
+
+    <script>
+        function emailSct(){
+            /*
+                [작업순서]
+
+                    1) select 태그 id로 만들기, input중에 email id 만들기
+                    2) select.value가 email로 넘어가도록 만들기
+
+                    ex) email.value = select.value
+            */
+            
+            var emailSel = document.getElementById("emailSel");
+            var email = document.getElementById("email");
+
+            // consol.log(emailSel);
+            // consol.log(email);
+            
+            switch(emailSel.value){
+                case"google.com" : 
+                case"naver.com" : 
+                case"daum.net" : email.value = emailSel.value; email.readOnly=true; break;
+                case"directs" : email.value = ""; email.focus(); email.readOnly=false; break;
+        }
+
+        /*
+
+            [readonly 적용하기]
+                (readOnly=true; 사용)
+                (readOnly=false; 해제)
+                
+            [onclick, focus 이벤트의 충돌]
+
+                직접 입력을 선택하면 focus가 email(input)으로 이동
+
+                : 이 때 select 태그를 다시 선택하면 동시에 focus가 두군데로 잡혀야하는 문제때문에 select가 열리지 않음
+
+
+            [해결]
+
+                : click을 다른 이벤트로 대체하기
+                : 선택사항이 자주 바뀔때 사용하는 이벤트로 대체
+                    onchange (선택한 정보의 값으로 바꿔줄 수 있음)
+        */
+    
+        }
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+
+    <form action="#none" method="get">
+        <input id="userid" type="text" name="userid" placeholder="아이디 입력" title="아이디 입력"/> @
+        <input id="email" type="text" name="email" title="email"/>
+        <select id="emailSel" onchange="emailSct();">
+            <option value="emailSelect">이메일선택</option>
+            <option value="google.com">google.com</option>
+            <option value="naver.com">naver.com</option>
+            <option value="daum.net">daum.net</option>
+            <option value="directs">직접입력</option>
+        </select>
+
+
+    </form>
+    
+   
+ </body>
+</html>

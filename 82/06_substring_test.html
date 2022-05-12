@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> substring_test </title>
+	<meta charset="utf-8"/>
+    <style>
+
+    </style>
+
+    <script>
+        /*######################## 문자열자르기 #####################*/
+
+        // 대상.substring
+
+        var imgs = "image/01.jpg";
+
+        /*
+            [중요]
+                대상.length 는 숫자 1부터 세어주는 값
+                대상.substring은 공간을 자르는 개념
+
+                : imgs 에서 숫자 01만 잘라내기
+
+                [정리]
+
+                1) 대상.substring(시작점,어디전까지) == 조건은 for문과 같음
+                2) 거리를 확인하고 여기"전"까지 사용하는 거리입니다. 잘라주기
+                    -> 그래서 (6,7)로 자르면 0만 나옴
+
+        */
+/*
+        var imgSub = imgs.substring(6,8); // 01만 남은상태
+        document.write("잘라진 숫자는 "+imgSub+" 입니다.");
+*/
+
+
+        // ############ 응용문제 ###########
+
+        var imgs = "images/b01.png"
+
+        /*
+            [응용문제1]
+
+                1) 위의 변수에 png 값 잘라내기
+                2) 중간 처리과정에서 기존 변수에 담아도되고, 새로운 변수에 담아도 상관 없음
+                3) 문서에 출력받기
+
+        */
+
+        var imgSub1 = imgs.substring(11,14);
+        document.write("응용문제1번의 답은 "+imgSub1+" 입니다.<br/>");
+
+        /*
+            [응용문제2]
+
+                4) b01값 잘라내기, 문서에 출력받기
+                    * (중간처리과정에서 담아주기)
+        */
+
+        var imgSub2 = imgs.substring(7,10);
+        document.write("응용문제2번의 답은 "+imgSub2+" 입니다.<br/><br/>");
+
+        /*
+            [응용문제3]
+
+                1) 순차배열 만들기
+                    : 아래 나열된 값들 담아주기
+                    "images/img1.jpg","images/img2.jpg","images/img3.jpg","images/img4.jpg"
+
+                2) 순차배열 공간 호출하여 숫자만 잘라내기
+                    1,2,3,4 문서에 출력받기
+
+                    ex) imgArea[0].substring()
+                    (images/img1.jpg)
+
+                3) 2번에서 자른 값 담아주기
+                    중요) new Array를 사용하여 담아주기
+                    + 변수 사용해서 담아도 상관없음
+                
+                4) for문 사용하여 출력받기
+                    하나씩 출력받아도 됨
+        */
+
+        var test = ["images/img1.jpg","images/img2.jpg","images/img3.jpg","images/img4.jpg"]
+        var test1 = new Array();
+        for(var i=0; i<test.length; i++){
+            test[i] = test[i].substring(10,11);
+            test1[i] = test[i]
+        }
+
+        document.write(test1);
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+
+ </body>
+</html>
