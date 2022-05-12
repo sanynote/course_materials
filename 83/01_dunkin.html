@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> dunkin </title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style-type:none;}
+
+        #wrap{width:870px; margin:0 auto;}
+        h1{color:#f2cb61; padding:30px 0; text-align:center;}
+
+        ul{width:780px; border:1px solid #f2cb61; margin:0 auto;}
+        ul li{width:140px; display:inline-block; margin-left:10px;}
+
+        .button{margin:20px 0 10px 45px;}
+        input[type="button"]{cursor:pointer; padding:0 10px;}
+
+        #content{width:780px; margin:0 auto;}
+        #content input{width:300px; height:30px;}
+
+
+    </style>
+
+    <script>
+        function mSelect(){
+            //alert();
+            /*
+                [작업순서]
+
+                    1) 입력받은 메뉴에서 1~5 를 제외한 나머지 값, 무한 반복 시키기
+                    2) 입력한 번호에 맞는 제품이미지로 변경하기
+                        (로고가 id 객체로 만들어져있어야함)
+
+                        1번을 입력하면 던킨~ 선택하였습니다. 알림창 띄우고 이미지변경 5번까지 반복
+            */
+
+            do{
+                var sct = prompt("메뉴에 적혀있는 번호를 입력하세요","예) 숫자만 입력, 1~5까지 중 입력");
+            }while(!(sct > 0 && sct < 6));
+
+
+            // 로고가 해당하는 이미지(제품)으로 바뀌도록 id 객체로 만들기
+            var logo = document.getElementById("logo");
+            console.log(logo);
+
+            /*
+                [문제점]
+                    1) switch문 안으로 숫자가 넘어가지 않는 문제 발생
+                    2) if문은 속성변경은 안해도 계산이 처리되었지만 
+                    switch문은 재료값의 속성까지 확인하기때문에 속성이 조금이라도 다르면 넘어가지 않음
+
+                [처리과정 만들기로 해결]
+                    : 속성을 숫자로 바꿔서 처리하기
+
+                [정리]
+                    switch문을 id로 만든 logo보다 아래 둔 것은?
+                        : switch 문 안에서 조건이 맞으면 변경이 되어야 하기때문..
+                        : 웹은 위에서 아래로 읽어주고, 변수도 위에 선언된것을 아래서 사용할 수 있음
+            */
+        
+            // 처리과정 만들기
+            sct = parseInt(sct);
+            
+            switch(sct){
+                case 1 : alert(" 던킨 글레이즈드를 선택하였습니다. "); logo.src = "img/best1.jpg"; break;
+                case 2 : alert(" 크림치즈베이글을 선택하였습니다. "); logo.src = "img/best2.jpg"; break;
+                case 3 : alert(" 모닝콤보를 선택하였습니다. "); logo.src = "img/best3.jpg"; break;
+                case 4 : alert(" 아메리카노를 선택하였습니다. "); logo.src = "img/best4.png"; break;
+                case 5 : alert(" 핫초코를 선택하였습니다. "); logo.src = "img/best5.png"; break;
+
+            }
+
+            /*
+                [Q. 왜 default 값을 안 만드시나요?]
+
+                    do while 문으로 1~5까지만 입력받아올 수 있기때문에 그 외의 값은 만들 필요 없음
+
+                        + switch에서 default 필요 없음
+                        + if else도 필요없음
+            */
+
+            do{
+                var addSel = prompt("음료를 추가주문 하시겠습니까? 예) Y y N n");
+            }while(!(addSel == "y" || addSel == "Y" || addSel == "n" || addSel == "N"));
+
+            
+
+            if(addSel == "y" || addSel == "Y"){
+                alert("++++++ 음료메뉴 ++++++\n아메리카노\n 카페라떼\n 카푸치노\n 아이스티\n 밀크티")
+                var result = document.getElementById("result");
+                var menu = prompt("음료 추가 주문:");
+                result.value = "추가주문한 음료:" + menu;
+            } else{
+                alert("추가주문을 취소하였습니다.");
+            }
+
+        }
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div id="wrap">
+        <h1>던킨 TOP 메뉴판</h1>
+        <ul>
+            <li><img src="img/best1.jpg" alt="도넛1"/></li>
+            <li><img src="img/best2.jpg" alt="도넛2"/></li>
+            <li><img src="img/best3.jpg" alt="도넛3"/></li>
+            <li><img src="img/best4.png" alt="도넛4"/></li>
+            <li><img src="img/best5.png" alt="도넛5"/></li>
+        </ul>
+        <p class="button"><input id="menu" type="button" value="주문버튼" title="주문버튼" onclick="mSelect();"/></p>
+        <div id="content">
+            <p><img id="logo" src="img/order.png" alt="로고"/></p>
+            <p><input id="result" type="text" title="추가주문" readonly/></p>
+        </div>
+       
+    </div>
+ </body>
+</html>
