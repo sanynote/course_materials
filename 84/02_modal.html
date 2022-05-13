@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> modal </title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style:none;}
+        img{border:none;}
+        /*
+            1) 구형 브라우저에서는 img에 border 생성됨
+            2) a 태그에 생기는것이 아니라 img 태그에 생기는 것
+
+            [tip]
+                : video, input select button img iframe
+                : 위 나열된 있는 인라인들은 스스로 너비와 높이를 가진다
+                : 위 인라인 요소들은 크기를 가지는 요소들로 frame을 가지고있음
+                : 구형브라우저에서 frame들이 보일때가 있음 , 특히 img 태그
+                : border:none을 해결
+        */
+
+        #content{width:980px; margin:50px auto;}
+        ul{width:100%}
+        ul li{display:inline-block; width:320px;}
+        li a img{width:100%;}
+        
+        #view{width:720px; height:480px; border:5px solid #000; 
+        position:absolute; left:50%; transform:translate(-50%,-50%);
+        box-shadow:10px 10px 10px rgba(0,0,0,0.5); z-index:1;}
+
+        #full{width:100%; height:100%; background-color:rgba(0,0,0,0.5);
+        position:fixed; left:0; top:0;}
+
+        /*
+            [정리]
+                1) position:fixed는 부모나 형제요소에 담아둘 수 없음
+                단독으로 사용하고, 브라우저 전체를 상대로 영역을 차지할 때 주로 사용
+
+                2) position:absolute는 브라우저 전체를 상대로 설정할 수 있지만
+                부모와 relative가 생기면 브라우저를 따라가지 못함
+        
+        */
+
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            // 1) view, full 숨기기 (이게 화면 위에있어서 아래 이미지가 클릭되지않음)
+            $("#view,#full").hide()
+
+            /*
+                2) ul li 대상, 클릭
+                3) 클릭하면 문제 생김
+
+                [중요]
+                    
+                    : alert prompt confirm window 창들로 무조건 출력이 되
+                    : a submit reset 등등의 태그들도 무조건 작동하는 태그들
+
+                    : 무조건 작동하는 태그들의 기능들을 멈추기 위해서는
+                        -> return false
+
+                [강제로 멈추기]
+                    return false의 경우, 처음이나 중간에 작성하면 처음부터 작동하지 않기때문에
+                    수식의 끝에 작성하도록 한다.
+            */
+            $("ul li").click(function(){
+
+                var test = $(this).children("a").attr("href").substring(6,7);
+                
+                // view는 무슨 태그? div
+                $("#view").html("<p><img src='img/c0"+test+".jpg' alt='모달'/></p>")
+                /*
+                    뭘 눌러도 c01이 출력됨
+                    해당하는 이미지의 고유번호가 필요함
+                    해결: a 태그의 속성이나 img 태그의 속성을 사용하여 해결
+                */
+
+                // 4) view full 다시 나타나게 만들기
+
+                $("#view,#full").show()
+                return false;
+            });
+
+            $("#view,#full").click(function(){
+                $("#view,#full").hide()
+            });
+
+            /*
+                5) view와 full 영역 클릭하면 view, full 숨기기
+                6) 현재 클릭한 li의 자녀인 a의 속성 href 접근하기, substring 숫자 잘라내기
+                    변수에 담기
+                    알림창으로 변수에 담은 값 확인하고 제출하기
+            */
+
+        })
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div id="content">
+        <ul>
+            <li>
+                <a href="img/c01.jpg" title="모달">
+                    <img src="img/c01.jpg" alt="모달"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/c02.jpg" title="모달">
+                    <img src="img/c02.jpg" alt="모달"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/c03.jpg" title="모달">
+                    <img src="img/c03.jpg" alt="모달"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/c04.jpg" title="모달">
+                    <img src="img/c04.jpg" alt="모달"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/c05.jpg" title="모달">
+                    <img src="img/c05.jpg" alt="모달"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/c06.jpg" title="모달">
+                    <img src="img/c06.jpg" alt="모달"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="view"></div>
+    <div id="full"></div>
+ </body>
+</html>

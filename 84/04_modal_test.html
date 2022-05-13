@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> modal </title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style:none;}
+        img{border:none;}
+
+        #content{width:500px; margin:50px auto;}
+        
+        p{width:500px;}
+        p a img{width:100%;}
+
+
+    </style>
+
+    <script>
+/*
+        $(document).ready(function(){
+
+            var num = Math.floor(Math.random()*10);
+
+            if(num > 0 && num < 7){
+                $("p").children("a").children("img").attr("src","img/image0"+num+".jpg")
+            } else{
+                $("p").children("a").children("img").attr("src","img/image01.jpg")
+            }
+        
+        })
+*/
+/*
+            do{
+                $("p").children("a").children("img").attr("src","img/image0"+num+".jpg")
+            }while(!(num > 0 && num < 7));
+*/
+        
+        
+
+        window.onload = function(){
+			var num = Math.floor(Math.random()*10);
+            var hi = document.getElementById("hi");
+
+            if(num > 0 && num < 7){
+                hi.innerHTML = "<img src='img/image0"+num+".jpg' alt='이미지1'/>"
+            } else{
+                hi.innerHTML = "<img src='img/image01.jpg' alt='이미지1'/>"
+            }
+
+		}
+
+        
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div id="content">
+        <p>
+            <a id="hi" href="img/image01.jpg" title="이미지1">
+                <img src="img/image01.jpg" alt="이미지1"/>
+            </a>
+        </p>
+    </div>
+    
+ </body>
+</html>

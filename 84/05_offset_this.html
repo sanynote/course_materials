@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>offset this</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style-type:none;}
+
+        div{width:1200px; margin:0 auto;}
+        ul{width:100%;}
+        ul li{width:400px; height:260px; outline:1px solid #ccc; margin:20px 0; float:left; overflow:hidden;}
+        ul li img{width:500px;}
+
+        ul li:last-child{float:none; width:600px; height:360px; margin:0 auto;}
+        ul li:last-child img{width:600px;}
+        ul:after{content:""; display:block; clear:both;}
+
+        /*############### 움직일 객체 만들기 ###############*/
+        p{width:0; height:0; line-height:0; font-size:0; text-align:center;
+        background-color:rgba(0,0,180,0.5); color:#fff; text-transform:uppercase;
+        position:absolute; left:0; top:0;}
+
+        /*
+            [이벤트 클래스의 한계]
+
+                1) css에서는 상대크기나 상대위치에 맞춰서 움직이고, 변경하기 어려움
+                2) css에서는 일정한 크기, 동일한 위치값을 가져오기는 편리함
+
+            .adds 이벤트클래스 사용하기 어려움
+        
+        */
+    
+
+
+
+    </style>
+	
+    <script>
+        $(document).ready(function(){
+            /*
+                [작업순서]
+
+                    1) li에 마우스 올리면 p태그가 해당하는 li크기에 맞춰서 변경되도록 만들기
+                    2) 해당하는 위치로 이동하도록 만들기
+            
+            */
+
+            /*
+                1) 마우스 올리기전에 배열 만들기
+                    주의) 마우스를 올리고 안에 new Array 작성하면, 올릴때만 만들어짐
+            */
+
+            var dates = new Array();
+            $("li").mouseover(function(){
+
+                /*
+                    2) 매우중요) 현재의 대상의 값을 알아야하기때문에 누구에게 올렸는지 이벤트가 중요함
+                        this를 사용하기 위해서는 이벤크 안에 넣어야 지금 선택한 대상의 위치값, 크기 들을 알 수 있음
+                */
+
+                /*
+                    3) 글씨 바꾸기
+                */
+
+                var txt = $(this).children("img").attr("alt");
+                datas[0] = $(this).width();
+                datas[1] = $(this).height();
+                datas[2] = $(this).offset().left;
+                datas[3] = $(this).offset().top;
+                datas[4] = "16px";
+
+                $("p").show().animate({
+                    "width":datas[0],"height":datas[1],"left":datas[2],"top":datas[3],"fontSize":datas[4],"lineHeight":datas[1]+"px"
+                },500).text(txt).mouseout(function(){
+                    $("p").hide();
+                })
+
+
+            })
+        })
+    </script>
+	
+ </head>
+
+ <body>
+    <div>
+        <ul>
+            <li>
+                <img src="img/01.jpg" alt="용"/>
+            </li>
+            <li>
+                <img src="img/02.jpg" alt="DRAGON"/>
+            </li>
+            <li>
+                <img src="img/03.jpg" alt="NO3"/>
+            </li>
+            <li>
+                <img src="img/04.jpg" alt="한문"/>
+            </li>
+        </ul>
+
+    </div>
+    <p></p>
+
+ </body>
+</html>

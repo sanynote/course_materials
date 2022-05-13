@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>size</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+
+		h3{width:100%; height:50px;}
+		p{width:500px; height:400px; background-color:blue; margin:0 auto;}
+	</style>
+	<script>
+		$(document).ready(function(){
+			/*
+				[지역변수, 전역변수]
+					
+					1) mediaQuery를 예를 들면, 스마트폰 세로버전, 스마트폰 가로버전, 태블릿pc
+					각각의 해상도에서만 작업이 가능함! (지역)
+
+					2) 일반 pc를 공통으로 만들거나 초기값을 공통으로 만들어서 모든 지역에 적용가능하게
+					만들어 주는 것을 "전역" 이라고 한다!
+
+				[jQuery에서 변수지정하기]
+					
+					var 변수명		( var box = "a")		, javascript , jQuery 모두 사용가능!
+					$변수명			($box = "a")			, 주로 jQuery에서만 사용가능!
+					변수명			(box = "a")			, jQuery에서만 사용가능!
+																	, javascript에서 위와 같이 사용하면 정의 되어 있지 않은 변수로 출력됨!
+			*/
+			
+			$(window).resize(function(){
+				
+				/*
+					[중요]
+					1) 전체문서는 body영역
+					2) body의 width를 확인하고 영역을 구분할 수 있음!
+				*/
+
+				bodyW = $("body").width();
+
+				$("h3").html(bodyW);
+				$("p").css({"width":bodyW});
+
+				/*
+					모바일 가로 사이즈 : 481~767
+					모바일 세로 사이즈 : 320~480
+
+					[매우중요]
+
+					* window.resize는 창 크기가 바뀔 때 발생하는 이벤트!
+					* 바뀌기 전에는 발생하지 않음
+
+					* else 조건에 없는 범위까지 설정하지 않으면 기존의 값으로 돌아가지 않을 수 있음!
+					* script는 마지막 값으로 유지되는 특징이 있음!
+				*/
+				if(bodyW>=481 && bodyW <=767){
+					$("p").css({"backgroundColor":"red"});
+				}
+				else if(bodyW>=320 && bodyW<=480){
+					$("p").css({"backgroundColor":"gold"});
+				}
+				else{
+					$("p").css({"backgroundColor":"blue"});
+				}
+
+			});
+
+		});
+	</script>
+ </head>
+ <body>
+	<div>
+		<h3></h3>
+		<p></p>
+	</div>
+ </body>
+</html>
