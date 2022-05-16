@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>DOMControl</title>
+	<meta charset="utf-8"/>
+	
+ </head>
+ <body>
+	<h3>대상의 값 바꾸기 (구조 변경하기)</h3>
+	<p>
+		jQuery(대상.html())
+		javascript (대상.innerHTML="")
+	</p>
+
+	<input id="button" type="button" value="결과확인" title="결과" onclick="result();"/>
+	<p id="siteMove">사이트 이동</p>
+
+	<h4>tagName 1-0</h4>
+	<h4>tagName 1-1</h4>
+	<h4>tagName 1-2</h4>
+	<h4>tagName 1-3</h4>
+	<h4>tagName 1-4</h4>
+
+	<script>
+		/* 1) result 함수가 정상작동되는지 확인하기 */
+		/* 2) siteMove id 객체로 만들기, console.log로 접근가능한지 확인하기 */
+
+		function result(){
+			// alert("랄랄");
+			var site = document.getElementById("siteMove");
+			// console.log(site);
+
+			/*
+				[1] 대상 안의 구조 바꾸기
+
+					jQuery 버전:
+						$("#result").html("<p>대상안의 구조 바꿀때 사용하는 속성</p>");
+
+					js버전:
+						대상.innerHTML = "대상안에 담아중 html 작성하기"
+
+				[매우중요]
+
+					대상 안의 구조작성시, 대상 안에서 구조를 직접 설계하고 넣는 개념이라, 대상이 어떤 객체인지가 매우 중요함
+
+					[주의사항]
+
+						1) 기존값이 사라지기때문에 주의해야 함
+						2) 담아주는 객체가 담아줄 수 있는 상태인지 확인하기
+
+							ex) 바깥쪽에 대상은 인라인요소이고, 이벤트로 작성된 객체는 블록일경우, 구조상 맞지않음
+							
+						3) 블록 구조여도 담아줄 수 있는 상태인지 확인하기
+							p태그 안에 div 사용가능? p태그에는 div 넣을 수 없음
+
+					[정리_사이트넘기기]
+						location.href
+			
+			*/
+
+			site.innerHTML = "<a href='http://www.google.com' title='구글'>구글</a>"
+
+			/*
+				[2] h4 태그들에 접근하기
+					: id 객체가 없기때문에 접근 어려움
+
+				[중요]
+					id가 아닌 "태그"에 접근하기
+					h4 태그에 접근하기
+
+				[주의사항]
+					1) script에서는 태그를 만들 수 있기때문에 변수명을 태그명으로 쓸 때 주의하기
+					2) "객체들"에 접근하기때문에 s가 작성되어야 한다.
+						document.getElementById()			, id는 페이지당 이름을 한 번만 사용함. 그래서 s 없음
+						document.getElementsByTagName()		, 페이지당 같은 이름의 태그가 많기때문에 s
+
+			
+			*/
+
+			var hh4 = document.getElementsByTagName("h4");
+			console.log(hh4);
+			// 순차배열 방식으로 접근 가능함 (0,1,2,3...)
+
+			hh4[0].innerHTML="sportsCar";
+			hh4[1].innerHTML="audi";
+			hh4[2].innerHTML="AudiKorea";
+
+			hh4[4].innerHTML="<a href='http://www.audi.co.kr' title='아우디'>아우디</a>";
+
+		};
+	</script>
+	<!--
+		ul li (애플 엘지 샤오미)
+
+		ul li (HTC ASUS DELL)
+
+		위처럼 2개의 ul 각각 만들고 아래에 input 태그로 버튼 만들기
+		이름은 chn의 이름으로 만들기 (change라는 예약어가 있을 수 있으므로 주의)
+		: 위에 만들어진 chn 버튼 클릭하면 ASUS -> SAMASUNG
+
+	-->
+
+	<ul id="dom0">
+		<li>애플</li>
+		<li>엘지</li>
+		<li>샤오미</li>
+	</ul>
+
+	<ul id="dom1">
+		<li>HTC</li>
+		<li>ASUS</li>
+		<li>DELL</li>
+	</ul>
+
+	<input id="chn" type="button" value="바꾸기" title="바꾸기" onclick="chn();"/>
+	<script>
+		// chn 영역
+
+		function chn(){
+			// alert("gg");
+			var lis = document.getElementsByTagName("li");
+			console.log(lis);
+
+			lis[4].innerHTML="SAMSUNG";
+
+			var dom1 = document.getElementById("dom1");
+			console.log(dom1);
+
+			/*
+				[정리]
+					select 태그는 optio value에 접근하기가 편리했으나
+					ul li는 접근이 쉽지않음
+
+					: 해당하는 객체에 접근하기위해서는 id 객체로 영역을 만들어서 표기하는것이 매우 중요함
+			*/
+			var lis = dom1.getElementsByTagName("li");
+			// console.log(lis);
+
+			lis[1].innerHTML="SAMSUNG";
+		}
+	</script>
+ </body>
+</html>
