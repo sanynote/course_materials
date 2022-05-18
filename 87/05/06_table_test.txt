@@ -1,0 +1,100 @@
+1) mysql 접속하기
+
+///////////////////////////////////////////////////
+
+mysql -uroot -p
+
+//////////////////////////////////////////////////
+
+2) 한글 키보드 입력될 수 있도록 셋팅하기
+
+//////////////////////////////////////////////////
+
+set character set euckr;
+
+//////////////////////////////////////////////////
+
+3) db있는지 확인하기
+
+//////////////////////////////////////////////////
+
+SHOW DATABASES;
+
+//////////////////////////////////////////////////
+
+4) db1 사용하기
+
+//////////////////////////////////////////////////
+
+use db1; 
+
+//////////////////////////////////////////////////
+
+5) table들 확인하기
+
+//////////////////////////////////////////////////
+
+SHOW TABLES;
+
+//////////////////////////////////////////////////
+
+6) table 만들기
+
+stdscore 테이블 만들기
+	
+	+ no name kor eng math total avg 제작하기
+	+ no 필드는 자동증가 설정하기, 유일한 키 설정하기
+	+ name 필드, 자료형 문자열 셋팅 (50)
+	+ 나머지 필드는 모두 int 로 설정하기
+	+ not null (알수없는 공간으로 남기지않기위한 중요작업)
+
+	(문자열 셋팅하기)
+
+//////////////////////////////////////////////////
+
+CREATE TABLE stdscore
+(no int not null auto_increment primary key, name varchar(50) not null, kor int not null,eng int not null,math int not null,total int not null,avg int not null)
+default charset=utf8;
+
+
+//////////////////////////////////////////////////
+
+7) table 구조 (정보) 확인하기
+
+//////////////////////////////////////////////////
+
+DESC stdscore;
+
+
+
+:: 09_table_test_com.txt 파일 제출
+
+
+++++++++++++++++++++++++++++++++++++++++
+
+1) 새로 접속하기
+2) 로그인하기
+3) 한글 키보드 셋팅하기
+
+4) db들 있는지 확인하기
+5) db2 만들기
+6) db2 사용하기
+
+7) carDesc 테이블 만들기
+	+ no, carname, carprice, caryear
+	+ no 필드 자동증가, 유일한 키 설정하기
+	+ carname, caryear 필드는 문자열 셋팅하기 (50)
+	+ carprice는 int 설정하기
+	+ not null
+
+	+ 문자열 셋팅주의
+
+CREATE TABLE carDesc
+(no int not null auto_increment primary key, carname varchar(50) not null, carprice int not null,caryear varchar(50) not null)
+default charset=utf8;
+
+8) carDesc의 정보 확인하기
+
+
+:: 10_carDesc_com.txt 제출하기
+	
