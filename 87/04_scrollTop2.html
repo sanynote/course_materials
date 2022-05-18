@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> html5_basic </title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+
+        #wrap{width:100%;}
+        #wrap p{width:100%; height:30px; line-height:30px; background-color:#000; text-align:center;}
+        #wrap p a{color:#fff; padding:0 20px;}
+
+        .area{width:100%;}
+        .area0{background-color:#c77;}
+        .area1{background-color:#7f7;}
+        .area2{background-color:#77f;}
+        .area3{background-color:#ccc;}
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+            $(".area").css({"height":$(window).height()});
+
+            $("#wrap a:eq(0)").bind("click focus",function(){
+                var area0 = $(".area0").offset().top;
+                $("body,html").animate({scrollTop:area0},500);
+            });
+
+            $("#wrap a:eq(1)").bind("click focus",function(){
+                var area1 = $(".area1").offset().top;
+                $("body,html").animate({scrollTop:area1},500);
+            });
+
+            $("#wrap a:eq(2)").bind("click focus",function(){
+                var area2 = $(".area2").offset().top;
+                $("body,html").animate({scrollTop:area2},500);
+            });
+            $("#wrap a:eq(3)").bind("click focus",function(){
+                var area3 = $(".area3").offset().top;
+                $("body,html").animate({scrollTop:area3},500);
+            });
+            
+        })
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div id="wrap">
+        <p>
+            <a href="#" title="area0">area0</a>
+            <a href="#" title="area1">area1</a>
+            <a href="#" title="area2">area2</a>
+            <a href="#" title="area3">area3</a>
+        </p>
+        <div class="area area0">sectionArea0</div>
+        <div class="area area1">sectionArea1</div>
+        <div class="area area2">sectionArea2</div>
+        <div class="area area3">sectionArea3</div>
+    </div>
+ </body>
+</html>
+

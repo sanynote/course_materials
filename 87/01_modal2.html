@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> modal2 </title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style:none;}
+        img{border:none;}
+
+
+        ul{width:980px; margin:50px auto 0;}
+
+        ul li{display:inline-block; width:230px; height:125px;}
+        li a img{width:100%;}
+        
+        #view{width:670px; height:300px; border:5px solid #fff; 
+        position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+        box-shadow:10px 10px 10px rgba(0,0,0,0.5); z-index:7;}
+
+        #full{width:100%; height:100%; background-color:rgba(0,0,0,0.5);
+        position:fixed; left:0; top:0;}
+
+       
+
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+            $("body").append("<div id='view'></div><div id='full'></div>");
+            
+            $("#view,#full").hide()
+            
+            $("ul li a").click(function(){
+
+                /*
+                    [substring 활용하기]
+
+                        1) href에 접근하여 이미지 자르기
+                            img/ad1.jpg     == 6,7로 자르면 1이 잘림
+                            img/ad10.jpg    == 6,8로 자르면 10이 잘림
+
+                            자릿수가 달라지면 자르는 부분에서 문제가 발생
+
+                        2) 속성 중 alt나 title 활용하여 잘라내기
+
+                */
+
+                var num = $(this).attr("title").substring(3);
+  
+                $("#view").html("<img src='img/ad"+num+".jpg' alt='이미지'/>")
+                $("#view,#full").show()
+                return false;
+            });
+
+            $("#view,#full").click(function(){
+                $("#view,#full").hide()
+            });
+
+
+        })
+
+    </script>
+	
+	
+ </head>
+
+ <body>
+    <div id="content">
+        <ul>
+            <li>
+                <a href="img/ad1.jpg" title="이미지1">
+                    <img src="img/ad1.jpg" alt="이미지1"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad2.jpg" title="이미지2">
+                    <img src="img/ad2.jpg" alt="이미지2"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad3.jpg" title="이미지3">
+                    <img src="img/ad3.jpg" alt="이미지3"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad4.jpg" title="이미지4">
+                    <img src="img/ad4.jpg" alt="이미지4"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad5.jpg" title="이미지5">
+                    <img src="img/ad5.jpg" alt="이미지5"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad6.jpg" title="이미지6">
+                    <img src="img/ad6.jpg" alt="이미지6"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad7.jpg" title="이미지7">
+                    <img src="img/ad7.jpg" alt="이미지7"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad8.jpg" title="이미지8">
+                    <img src="img/ad8.jpg" alt="이미지8"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad9.jpg" title="이미지9">
+                    <img src="img/ad9.jpg" alt="이미지9"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad10.jpg" title="이미지10">
+                    <img src="img/ad10.jpg" alt="이미지10"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad11.jpg" title="이미지11">
+                    <img src="img/ad11.jpg" alt="이미지11"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad12.jpg" title="이미지12">
+                    <img src="img/ad12.jpg" alt="이미지12"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad13.jpg" title="이미지13">
+                    <img src="img/ad13.jpg" alt="이미지13"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad14.jpg" title="이미지14">
+                    <img src="img/ad14.jpg" alt="이미지14"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad15.jpg" title="이미지15">
+                    <img src="img/ad15.jpg" alt="이미지15"/>
+                </a>
+            </li>
+            <li>
+                <a href="img/ad16.jpg" title="이미지16">
+                    <img src="img/ad16.jpg" alt="이미지16"/>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+ </body>
+</html>
+
