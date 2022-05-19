@@ -1,0 +1,196 @@
+
+1) mysql 접속하기
+
+///////////////////////////////////////////////////
+
+mysql -uroot -p
+
+//////////////////////////////////////////////////
+
+2) 한글 키보드 입력될 수 있도록 셋팅하기
+
+//////////////////////////////////////////////////
+
+set character set euckr;
+
+//////////////////////////////////////////////////
+
+3) stdscore 어느 db에 있는지 조회하기
+
+//////////////////////////////////////////////////
+[조회하기]
+	[매우중요] db에 들어가서 어디에 테이블이 있는지 확인하기
+	SHOW DATABASES;
+	use db3;
+	
+	show tables; -> 찾는 테이블이 없음
+	use db1;
+	show tables;
+
+//////////////////////////////////////////////////
+
+4) stdscore 테이블 (구조,정보) 확인하기
+
+//////////////////////////////////////////////////
+
+DESC stdscore;
+
+//////////////////////////////////////////////////
+
+5) 필드명 맞춰서 기입하기
+
+	:: 자료형 확인
+	:: 문자숫자표현 주의
+
+	name kor eng math
+	red 100 99 88
+	blue 88 77 66
+	pink 50 30 77
+ 
+	/*
+		[정리]
+			사용중인 필드들은 name kor eng math total avg
+			사용해야하는 필드만 호출가능 name math만 호출가능
+
+		[주의사항]
+			(name, total) 필드만 호출할 경우, 나열된 순서대로 호출하면 문제 없음
+			(total, name) 역순으로 호출하거나 잘못된 순서로 호출할경우, 인식되지않는 문제가 발생할 수 있음
+
+		[중요]
+			kor, avg 처럼 필요한 필드만 호출가능, 단 순서만 잘 지키기
+			kor 하나만도 호출가능
+	
+	*/
+
+INSERT INTO stdscore
+(name, kor, eng, math)
+VALUES
+('red', '100', '99', '88'),
+('blue', '88', '77', '66'),
+('pink','50', '30', '77');
+
+6) 기입된 내용들 확인하기
+
+SELECT * FROM stdscore;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+[no 필드]
+
+: no 필드는 자동증가, 유일한 키 설정이 되어있기때문에 값을 입력하고 확인하면
+자동으로 숫자가 증가되어있는것을 알 수 있음
+: 번호가 1~3까지 기입되어있고, 2번이 나중에 삭제되면 자동증가 개념으로 4번부터 새로 기입된다.
+: 비워진 번호는 채우지 않음
+
+[대입되는 값, 필드명 구분하기]
+
+필드명은 제목처럼 확인하는 부분, 대입되는 값은 필드명에 맞춰 대입되기때문에
+"숫자"나 "문자"나 "변수" 모두 싱글 커텐셜이나 더블커텐셜을 사용한다.
+
+[모든 정보를 조회할때 사용하는 구문]
+
+select * from 테이블명
+	: from 앞쪽은 모두 필드를 호출하는 영역
+	: *을 사용할 경우, 모든 필드를 호출해달라는 의미
+
+tip) from 뒤쪽으로는 주로 조건절이라고 해서 조건에 맞는 값을 만들때 사용
++++++++++++++++++++++++++++++++++++
+
+추가
+
+1) 다시접속
+2) 키보드셋팅
+3) milk 테이블 찾기
+4) 해당하는 필드에 맞춰서 기입하기
+
+	바나나우유 1500
+	딸기 1200
+	초코에몽 1800
+	네스퀵 1000
+
+INSERT INTO milk
+(mname, mprice)
+VALUES
+('바나나우유','1500'),
+('딸기우유','1200'),
+('초코에몽','1800'),
+('네스퀵','1000');
+
+
+5) 기입된 내용들 확인하기
+
+SELECT * FROM milk;
+
+* 제출하기 02_table_insert_com.html
+
+
+
+Setting environment for using XAMPP for Windows.
+USER@DESKTOP-DHIUDD1 c:\xampp
+# mysql -uroot -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 11
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> set character set euckr;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [(none)]> use db1;
+Database changed
+MariaDB [db1]> show tables;
++---------------+
+| Tables_in_db1 |
++---------------+
+| milk          |
+| stdscore      |
++---------------+
+2 rows in set (0.003 sec)
+
+MariaDB [db1]> desc milk;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| no     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| mname  | varchar(50) | NO   |     | NULL    |                |
+| mprice | int(11)     | NO   |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+3 rows in set (0.009 sec)
+
+MariaDB [db1]> INSERT INTO milk
+    -> (mname, mprice)
+    -> values
+    -> ('바나나우유','1500'),
+    -> ('딸기우유','1200'),
+    -> ('초코에몽','1800'),
+    -> ('네스퀵','1000');
+Query OK, 4 rows affected (0.009 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> SELECT * FROM milk;
++----+------------+--------+
+| no | mname      | mprice |
++----+------------+--------+
+|  1 | 초코우유          |   1200 |
+|  2 | 바나나우유          |   1500 |
+|  3 | 딸기우유           |   1200 |
+|  4 | 초코에몽          |   1800 |
+|  5 | 네스퀵          |   1000 |
++----+------------+--------+
+5 rows in set (0.002 sec)
+
+MariaDB [db1]> desc milk;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| no     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| mname  | varchar(50) | NO   |     | NULL    |                |
+| mprice | int(11)     | NO   |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+3 rows in set (0.005 sec)
+
+MariaDB [db1]>

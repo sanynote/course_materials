@@ -1,0 +1,412 @@
+
+1) mysql 접속하기
+
+///////////////////////////////////////////////////
+
+mysql -uroot -p
+
+//////////////////////////////////////////////////
+
+2) 한글 키보드 입력될 수 있도록 셋팅하기
+
+//////////////////////////////////////////////////
+
+set character set euckr;
+
+//////////////////////////////////////////////////
+
+3) db들 확인하기
+
+show databases;
+
+//////////////////////////////////////////////////
+
+4) color 테이블 있는지 확인하기
+
+show tables;
+use db1;
+show tables;
+use db2;
+show tables;
+use db3;
+show tables;
+
+//////////////////////////////////////////////////
+
+5) color 테이블 만들기 (db3에)
+	(매우중요) 기본문자열 셋팅하기)
+
+use db3;
+
+create table color
+(no int not null auto_increment primary key, ccno int not null, ccname varchar(30) not null,ccnum int not null)
+default charset=utf8;
+
+6) 필드명 맞춰서 기입하기
+
+	no ccno ccname ccnum 작성
+	+ no 필드는 자동증가, 유일한 키 설정하기
+	+ ccname 자료형 문자열로 표기 (30)
+	+ 나머지는 숫자표현
+	+ not null 표현 중요
+
+
+7) 필드명에 맞춰서  내용들 기입하기
+
+'레드', 10
+'옐로우', 2
+'블루', 8
+'핑크', 7
+'그린', 5
+
+insert into color
+(ccname, ccnum)
+values
+('레드', '10'),('옐로우', '2'),('블루', '8'),('핑크', '7'),('그린', '5');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+8) 기입된 내용 확인하기
+
+select * from color;
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1) cardesc 테이블 조회하기
+	
+	use db2;
+	show tables;
+	use db3;
+	show tables;
+
+	select * from cardesc;
+	: 비어있을경우 정보가 없기때문에 필드명도 확인할 수 없음
+	: 테이블 정보 확인하기
+
+	desc cardesc;
+
+
+2) 아래 필드에 맞춰서 기입하기 (중요(자료형 확인하기,필드명 확인하기))
+
+
+	carname, carprice, caryear
+	아우디, 8000,2019
+	그랜져, 5000, 2020
+	아반떼, 3500, 2017
+	소나타, 4500, 2021
+	캐스퍼, 2000, 2020
+
+	INSERT INTO cardesc
+	(carname, carprice, caryear)
+	VALUES
+	('아우디', '8000','2019'),('그랜져', '5000','2020'),('아반떼', '3500','2017'),('소나타', '4500','2021'),('캐스퍼', '2000','2020');
+	
+3) 기입된 내용들 확인하기
+
+select * from cardesc;
+
++++++++++++++++++++++++++++++++++++
+
+
+1) foods 테이블 조회하기
+
+
+	use db3;
+	show tables;
+
+	select * from foods;
+	: 비어있기때문에 정보 확인하기
+
+	desc foods;
+
+////////////////////////////////////////////////////////////////////////////////
+2) 아래 필드에 맞춰서 기입하기 (자료형, 필드명 확인하기)
+
+fname	fprice	fnum		fyear
+콩국수	8000		1		2022
+라면		3000		3		2020
+떡볶이	2500		2		2019
+짬뽕		4000		1		2021
+
+	INSERT INTO foods
+	(fname, fprice, fnum, fyear)
+	VALUES
+	('콩국수', '8000','1','2022'),
+	('라면', '3000','3','2020'),
+	('떡볶이', '2500','2','2019'),
+	('짬뽕', '4000','1','2021');
+
+3) 기입된 내용 확인하기
+
+SELECT * FROM foods;
+
+++++++++++++++++++++++++++++++++++++++++++
+1) comp 테이블 조회하기
+
+use db2;
+desc comp;
+
+////////////////////////////////////////////////////////////
+2) 아래 필드에 맞춰서 기입하기 (자료형, 필드명 확인하기)
+
+	name	cpu		ram		mainboard		year		price
+	gram	intel		8gb		intel				2021	120
+	macpro	arm		8gb		apl				2020	150
+	macair	arm		4gb		apl				2019	120
+	asus		amd		16gb	intel				2021	95
+
+	INSERT INTO comp
+	(name, cpu, ram, mainboard, year, price)
+	VALUES
+	('gram', 'intel','8gb','intel','2021','120'),
+	('macpro','arm','8gb','apl','2020','150'),
+	('macair','arm','4gb','apl','2019','120'),
+	('asus','amd','16gb','intel','2021','95');
+
+
+3) 기입된 내용 확인하기
+
+SELECT * FROM comp;
+
+
+* 제출하기 04_table_insert_com.text
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Setting environment for using XAMPP for Windows.
+USER@DESKTOP-DHIUDD1 c:\xampp
+# mysql -uroot -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 12
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> set character set euckr;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [(none)]>
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| db2                |
+| db3                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+8 rows in set (0.004 sec)
+
+MariaDB [(none)]> use db1;
+Database changed
+MariaDB [db1]> show tables;
++---------------+
+| Tables_in_db1 |
++---------------+
+| milk          |
+| stdscore      |
++---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [db1]> use db2;
+Database changed
+MariaDB [db2]> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| cardesc       |
+| comp          |
++---------------+
+2 rows in set (0.002 sec)
+
+MariaDB [db2]> use db3;
+Database changed
+MariaDB [db3]> show tables;
++---------------+
+| Tables_in_db3 |
++---------------+
+| foods         |
++---------------+
+1 row in set (0.001 sec)
+
+MariaDB [db3]> CREATE TABLE color
+    -> (no int not null auto_increment primary key, ccno int not null, ccname varchar(30) not null,ccnum int not null)
+    -> default charset=utf8;
+Query OK, 0 rows affected (0.046 sec)
+
+MariaDB [db3]> INSERT INTO color
+    -> (ccname, ccnum)
+    -> VALUES
+    -> ('레드', '10'),
+    -> ('옐로우', '2'),
+    -> ('블루', '8'),
+    -> ('핑크', '7'),
+    -> ('그린', '5');
+Query OK, 5 rows affected, 1 warning (0.010 sec)
+Records: 5  Duplicates: 0  Warnings: 1
+
+MariaDB [db3]> SELECT * FROM color;
++----+------+--------+-------+
+| no | ccno | ccname | ccnum |
++----+------+--------+-------+
+|  1 |    0 | 레드       |    10 |
+|  2 |    0 | 옐로우      |     2 |
+|  3 |    0 | 블루       |     8 |
+|  4 |    0 | 핑크      |     7 |
+|  5 |    0 | 그린      |     5 |
++----+------+--------+-------+
+5 rows in set (0.003 sec)
+
+MariaDB [db3]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| db2                |
+| db3                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+8 rows in set (0.001 sec)
+
+MariaDB [db3]> use db2;
+Database changed
+MariaDB [db2]> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| cardesc       |
+| comp          |
++---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [db2]> INSERT INTO cardesc
+    ->  (carname, carprice, caryear)
+    ->  VALUES
+    ->  ('아우디', '8000','2019'),
+    ->  ('그랜져', '5000','2020'),
+    ->  ('아반떼', '3500','2017'),
+    ->  ('소나타', '4500','2021'),
+    ->  ('캐스퍼', '2000','2020');
+Query OK, 5 rows affected (0.013 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [db2]> SELECT * FROM cardesc;
++----+---------+----------+---------+
+| no | carname | carprice | caryear |
++----+---------+----------+---------+
+|  1 | 아우디       |     8000 | 2019    |
+|  2 | 그랜져       |     5000 | 2020    |
+|  3 | 아반떼      |     3500 | 2017    |
+|  4 | 소나타      |     4500 | 2021    |
+|  5 | 캐스퍼       |     2000 | 2020    |
++----+---------+----------+---------+
+5 rows in set (0.001 sec)
+
+MariaDB [db2]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| db2                |
+| db3                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+8 rows in set (0.001 sec)
+
+MariaDB [db2]> use db3;
+Database changed
+MariaDB [db3]> show tables;
++---------------+
+| Tables_in_db3 |
++---------------+
+| color         |
+| foods         |
++---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [db3]> INSERT INTO foods
+    ->  (fname, fprice, fnum, fyear)
+    ->  VALUES
+    ->  ('콩국수', '8000','1','2022'),
+    ->  ('라면', '3000','3','2020'),
+    ->  ('떡볶이', '2500','2','2019'),
+    ->  ('짬뽕', '4000','1','2021');
+Query OK, 4 rows affected (0.006 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [db3]> SELECT * FROM foods;
++----+--------+-------+--------+------+
+| no | fname  | fyear | fprice | fnum |
++----+--------+-------+--------+------+
+|  1 | 콩국수      | 2022  |   8000 |    1 |
+|  2 | 라면       | 2020  |   3000 |    3 |
+|  3 | 떡볶이       | 2019  |   2500 |    2 |
+|  4 | 짬뽕      | 2021  |   4000 |    1 |
++----+--------+-------+--------+------+
+4 rows in set (0.000 sec)
+
+MariaDB [db3]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| db2                |
+| db3                |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+8 rows in set (0.002 sec)
+
+MariaDB [db3]> use db2;
+Database changed
+MariaDB [db2]> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| cardesc       |
+| comp          |
++---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [db2]> INSERT INTO comp
+    ->  (name, cpu, ram, mainboard, year, price)
+    ->  VALUES
+    ->  ('gram', 'intel','8gb','intel','2021','120'),
+    ->  ('macpro', 'arm','8gb','apl','2020','150'),
+    ->  ('macair', 'arm','4gb','apl','2019','120'),
+    ->  ('asus', 'amd','16gb','intel','2021','95');
+Query OK, 4 rows affected (0.014 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [db2]> SELECT * FROM comp;
++----+--------+-------+------+-----------+------+-------+
+| no | name   | cpu   | ram  | mainboard | year | price |
++----+--------+-------+------+-----------+------+-------+
+|  1 | gram   | intel | 8gb  | intel     | 2021 |   120 |
+|  2 | macpro | arm   | 8gb  | apl       | 2020 |   150 |
+|  3 | macair | arm   | 4gb  | apl       | 2019 |   120 |
+|  4 | asus   | amd   | 16gb | intel     | 2021 |    95 |
++----+--------+-------+------+-----------+------+-------+
+4 rows in set (0.000 sec)
+
+MariaDB [db2]>

@@ -1,0 +1,171 @@
+1) 셋팅하기
+
+mysql -uroot -p
+set character set euckr;
+
+//////////////////////////////////////////////////
+
+2) db1 사용하기
+
+show databases;
+use db1;
+
+show tables;
+(같은 이름의 테이블을 만들 수 없음)
+
+//////////////////////////////////////////////////
+
+3) joinmember 만들기
+	+ no name age email
+	+ age no 만 int
+	+ 문자열은 50
+
+	+ 공간설정주의, 문자열 셋팅
+
+create table joinmember
+(no int not null auto_increment primary key, name varchar(50) not null,age int not null,email varchar(50) not null)
+default charset=utf8;
+
+4) 필드명 맞춰서 기입하기
+
+	green,	20,	greenit@green.com
+	red,		10,	red@naver.com
+	blue	,	20,	blue@daum.net
+	pink,		15,	pink@nate.com
+	gold	,	90,	gold@naver.com
+
+insert into joinmember
+(name, age, email)
+values
+('green', '20','greenit@green.com'),('red', '10','red@naver.com'),('blue', '20','blue@daum.net'),('pink', '15','pink@nate.com'),('gold', '90','gold@naver.com');
+
+////////////////////////////////////////////////////////////////
+
+5) 기입된 값 확인하기
+
+select * from joinmember;
+
+///////////////////////////////////////////////////////////////
+	
+
+1) sports라는 데이터베이스 만들기
+
+CREATE DATABASE sports DEFAULT CHARSET=UTF8;
+show databases;
+use sports;
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+2) todayGame 테이블 만들기
+	+ no 종목 대회 중계 장소
+	+ 공간 셋팅 주의
+	+ 문자열 50
+	+ 기본 문자열 셋팅하기
+
+create table todayGame
+(no int not null auto_increment primary key, 종목 varchar(50) not null,대회 varchar(50) not null,중계 varchar(50) not null,장소 varchar(50) not null)
+default charset=utf8;
+
+3) 필드에 맞춰서 기입하기
+
+	골프, KLPGA20222,	sporttv,	군산
+	농구, NBA, sbs	,	메디슨 스퀘어가든
+	양궁, 국가대표 선발전, sporttv, at센터
+	테니스, 2022년 전국대회, kbs, 양구테니스파크
+
+insert into todayGame
+(종목, 대회, 중계, 장소)
+values
+('골프', 'KLPGA20222','sporttv','군산'),
+('농구', 'NBA','sbs','메디슨 스퀘어가든'),
+('양궁', '국가대표 선발전','sporttv','at센터'),
+('테니스', '2022년 전국대회','kbs','양구테니스파크');
+
+//////////////////////////////////////////////////////////////////
+
+
+4) 기입된 값 확인하기
+
+select * from todayGame;
+
+* joinmember_sports_com.txt 제출하기
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+Setting environment for using XAMPP for Windows.
+USER@DESKTOP-DHIUDD1 c:\xampp
+# mysql -uroot -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 13
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> set character set euckr;
+Query OK, 0 rows affected (0.003 sec)
+
+MariaDB [(none)]> use db1;
+Database changed
+MariaDB [db1]> create table joinmember
+    -> (no int not null auto_increment primary key, name varchar(50) not null,age int not null,email varchar(50) not nul
+l)
+    -> default charset=utf8;
+Query OK, 0 rows affected (0.078 sec)
+
+MariaDB [db1]> insert into joinmember
+    -> (name, age, email)
+    -> values
+    -> ('green', '20','greenit@green.com'),('red', '10','red@naver.com'),('blue', '20','blue@daum.net'),('pink', '15','p
+ink@nate.com'),('gold', '90','gold@naver.com');
+Query OK, 5 rows affected (0.016 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> select * from joinmember;
++----+-------+-----+-------------------+
+| no | name  | age | email             |
++----+-------+-----+-------------------+
+|  1 | green |  20 | greenit@green.com |
+|  2 | red   |  10 | red@naver.com     |
+|  3 | blue  |  20 | blue@daum.net     |
+|  4 | pink  |  15 | pink@nate.com     |
+|  5 | gold  |  90 | gold@naver.com    |
++----+-------+-----+-------------------+
+5 rows in set (0.004 sec)
+
+MariaDB [db1]> CREATE DATABASE sports DEFAULT CHARSET=UTF8;
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [db1]> use sports;
+Database changed
+MariaDB [sports]> create table todayGame
+    -> (no int not null auto_increment primary key, 종목 varchar(50) not null,대회 varchar(50) not null,중계 varchar(50)
+ not null,장소 varchar(50) not null)
+    -> default charset=utf8;
+Query OK, 0 rows affected (0.032 sec)
+
+MariaDB [sports]> insert into todayGame
+    -> (종목, 대회, 중계, 장소)
+    -> values
+    -> ('골프', 'KLPGA20222','sporttv','군산'),
+    -> ('농구', 'NBA','sbs','메디슨 스퀘어가든'),
+    -> ('양궁', '국가대표 선발전','sporttv','at센터'),
+    -> ('테니스', '2022년 전국대회','kbs','양구테니스파크');
+Query OK, 4 rows affected (0.008 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [sports]> select * from todayGame;
++----+--------+-----------------+---------+-------------------+
+| no | 종목       | 대회               | 중계       | 장소                  |
++----+--------+-----------------+---------+-------------------+
+|  1 | 골프       | KLPGA20222      | sporttv | 군산                  |
+|  2 | 농구       | NBA             | sbs     | 메디슨 스퀘어가든               |
+|  3 | 양궁       | 국가대표 선발전              | sporttv | at센터                |
+|  4 | 테니스     | 2022년 전국대회          | kbs     | 양구테니스파크             |
++----+--------+-----------------+---------+-------------------+
+4 rows in set (0.003 sec)
+
+MariaDB [sports]>
