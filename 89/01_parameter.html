@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>parameter</title>
+	<meta charset="utf-8"/>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+
+		.box1{border:3px dotted #f0c; padding:30px; margin:30px auto; text-align:center;}
+		.box2{width:200px; height:200px; border-radius:100px; background-color:green;
+		text-align:center; line-height:200px; color:#fff; transition:transform 0.5s;}
+
+		.box2:hover{transform:scale(0.6);}
+	</style>
+	<script>
+
+
+		window.onload =function(){
+			
+			var box = document.getElementById("box");
+			
+			// 변수로 만든 박스 모든 지역에 리턴해서 뿌려주는 작업!
+			return box;
+		}
+
+		function colorBtn(fontColor){
+			
+			// console.log(box);
+			
+			box.style.color = fontColor;
+		}
+
+		function colorBg(bgColor){
+
+			box.style.backgroundColor = bgColor;
+		}
+
+
+		function styleW(sizeW){
+			box.style.width=sizeW;
+		}
+
+
+
+		function style3s(blue,yellow,pxSize){
+			box.style.backgroundColor =blue;
+			box.style.color=yellow;
+			box.style.fontSize=pxSize;
+		}
+
+
+		function classBx(classNm){
+			
+			/* jQuery는 addClass, removeClass */
+			/* jQuery 에서는 class가 추가가 되지만, 
+				javascript에서의 className은 클래스의 이름이 바뀜! 추가 되지 않음 */
+			box.className = classNm;
+		}
+	</script>
+ </head>
+ <body>
+	<h2>parameter : 재료값 넘기기</h2>
+	<div id="box" class="box1">parameter</div>
+	<input id="btn0" type="button" value="fontRed" title="글자색상 빨간색" onclick="colorBtn('red');"/>
+
+
+	<!--
+		[응용문제1]
+			1) value 값이 fontBlue인 input 태그 만들고, blue 넘겨 주기, 클릭하면 글자색상 파란색으로 변경되도록 만들기
+			2) value 값이 fontPurple인 input 태그 만들고, purple 넘겨주기, 클릭하면 글자색상이 purple로 변경되도록 만들기
+			3) value 값이 fontPink인 input 태그 만들고, pink 넘겨주기, 클릭하면 글자색상이 pink로 변경되도록 만들기
+			4) value 값이 fontOrange인 input 태그 만들고, orange 넘겨주기, 클릭하면 글자색상이 orange로 변경되도록 만들기
+	-->
+	<input id="btn1" type="button" value="fontBlue" title="글자색상 파란색" onclick="colorBtn('blue');"/>
+	<input id="btn2" type="button" value="fontPurple" title="글자색상 보라색" onclick="colorBtn('purple');"/>
+	<input id="btn3" type="button" value="fontPink" title="글자색상 핑크색" onclick="colorBtn('pink');"/>
+	<input id="btn4" type="button" value="fontOrange" title="글자색상 오렌지색" onclick="colorBtn('orange');"/>
+
+	
+	
+
+	<!--
+		[응용문제2]
+			1) function 새로 만들기
+			2) 재료값 pink 넘겨주기, box의 배경색상 pink 바뀌도록 만들기 
+			2) 재료값 gold 넘겨주기, box의 배경색상 gold 바뀌도록 만들기 
+			2) 재료값 gray 넘겨주기, box의 배경색상 gray 바뀌도록 만들기 
+			2) 재료값 aqua 넘겨주기, box의 배경색상 aqua 바뀌도록 만들기 
+	-->
+
+	<input  type="button" value="bgPink" title="배경색상 핑크" onclick="colorBg('pink');"/>
+	<input  type="button" value="bgGold" title="배경색상 골드" onclick="colorBg('gold');"/>
+	<input  type="button" value="bgGray" title="배경색상 회색" onclick="colorBg('gray');"/>
+	<input  type="button" value="bgAqua" title="배경색상 아쿠아" onclick="colorBg('aqua');"/>
+
+
+	<!--
+		[응용문제3]
+			
+			1) function 새로 만들기
+			2) 재료값 25% 넘겨주기, box의 너비가 25% 가 되도록 만들기
+			3) 재료값 70% 넘겨주기, box의 너비가 70% 가 되도록 만들기
+			4) 재료값 100% 넘겨주기, box의 너비가 100% 가 되도록 만들기
+	-->
+
+	<input  type="button" value="w25"  onclick="styleW('25%');"/>
+	<input  type="button" value="w70"  onclick="styleW('70%');"/>
+	<input  type="button" value="w100"  onclick="styleW('100%');"/>
+
+	<!--
+		[응용문제4]
+			
+			1) function 새로 만들기
+			2) 재료값 200px과 노란색 넘기기
+			참고) 여러개의 재료값을 넘길때 ('재료값1', '재료값2')
+	-->
+
+	<!--
+		[응용문제5]
+
+			1) function 새로 만들기
+			2) 재료값으로 배경색상 파란색, 글자색상 노란색, 글자크기 25px 넘겨주기
+	
+	-->
+
+	<input  type="button" value="style3s"  onclick="style3s('blue','yellow','25px');"/>
+
+
+	<input  type="button" value="classBox1"  onclick="classBx('box1');"/>
+	<input  type="button" value="classBox2"  onclick="classBx('box2');"/>
+
+ </body>
+</html>

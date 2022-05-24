@@ -1,0 +1,241 @@
+
+Setting environment for using XAMPP for Windows.
+Administrator@524-t c:\xampp
+# mysql -uroot -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 265
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> set character set euckr;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [(none)]> use db1;
+Database changed
+MariaDB [db1]> show tables;
++---------------+
+| Tables_in_db1 |
++---------------+
+| joinmember    |
+| milk          |
+| stdscore      |
++---------------+
+3 rows in set (0.001 sec)
+
+MariaDB [db1]> select * from joinmember;
++----+---------+-----+-------------------+
+| no | name    | age | email             |
++----+---------+-----+-------------------+
+|  1 | greenit |  20 | greenit@green.com |
+|  2 | red     |  10 | red@naver.com     |
+|  3 | blue    |  20 | blue@daum.net     |
+|  4 | pink    |  15 | pink@nate.com     |
+|  5 | gold    |  90 | gold@naver.com    |
++----+---------+-----+-------------------+
+5 rows in set (0.000 sec)
+
+MariaDB [db1]> desc joinmember;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| no    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50) | NO   |     | NULL    |                |
+| age   | int(11)     | NO   |     | NULL    |                |
+| email | varchar(50) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+4 rows in set (0.007 sec)
+
+MariaDB [db1]> ALTER TABLE joinmember
+    -> CHANGE name username VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> ALTER TABLE joinmember
+    -> CHANGE age userage INT NOT NULL;
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> ALTER TABLE joinmember
+    -> CHANGE email useremail VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> select * from joinmember;
++----+----------+---------+-------------------+
+| no | username | userage | useremail         |
++----+----------+---------+-------------------+
+|  1 | greenit  |      20 | greenit@green.com |
+|  2 | red      |      10 | red@naver.com     |
+|  3 | blue     |      20 | blue@daum.net     |
+|  4 | pink     |      15 | pink@nate.com     |
+|  5 | gold     |      90 | gold@naver.com    |
++----+----------+---------+-------------------+
+5 rows in set (0.000 sec)
+
+MariaDB [db1]> ALTER TABLE joinmember
+    -> ADD userid VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> ALTER TABLE joinmember
+    -> ADD userpass VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.008 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> ALTER TABLE joinmember
+    -> ADD userphone VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.006 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> select * from joinmember;
++----+----------+---------+-------------------+--------+----------+-----------+
+| no | username | userage | useremail         | userid | userpass | userphone |
++----+----------+---------+-------------------+--------+----------+-----------+
+|  1 | greenit  |      20 | greenit@green.com |        |          |           |
+|  2 | red      |      10 | red@naver.com     |        |          |           |
+|  3 | blue     |      20 | blue@daum.net     |        |          |           |
+|  4 | pink     |      15 | pink@nate.com     |        |          |           |
+|  5 | gold     |      90 | gold@naver.com    |        |          |           |
++----+----------+---------+-------------------+--------+----------+-----------+
+5 rows in set (0.000 sec)
+
+MariaDB [db1]> use db2;
+Database changed
+MariaDB [db2]> show tables;
++---------------+
+| Tables_in_db2 |
++---------------+
+| cardesc       |
+| comp          |
++---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [db2]> select * from comp;
++----+--------+-------+------+-----------+------+-------+-------+
+| no | name   | cpu   | ram  | mainboard | year | price | color |
++----+--------+-------+------+-----------+------+-------+-------+
+|  1 | gram   | intel | 8gb  | intel     | 2021 |   120 |       |
+|  2 | macpro | arm   | 8gb  | apl       | 2020 |   150 |       |
+|  3 | macair | arm   | 4gb  | apl       | 2019 |   120 |       |
+|  4 | asus   | amd   | 16gb | intel     | 2021 |    95 |       |
++----+--------+-------+------+-----------+------+-------+-------+
+4 rows in set (0.000 sec)
+
+MariaDB [db2]> ALTER TABLE comp
+    -> DROP color;
+Query OK, 0 rows affected (0.008 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db2]> select * from comp;
++----+--------+-------+------+-----------+------+-------+
+| no | name   | cpu   | ram  | mainboard | year | price |
++----+--------+-------+------+-----------+------+-------+
+|  1 | gram   | intel | 8gb  | intel     | 2021 |   120 |
+|  2 | macpro | arm   | 8gb  | apl       | 2020 |   150 |
+|  3 | macair | arm   | 4gb  | apl       | 2019 |   120 |
+|  4 | asus   | amd   | 16gb | intel     | 2021 |    95 |
++----+--------+-------+------+-----------+------+-------+
+4 rows in set (0.000 sec)
+
+MariaDB [db2]> ALTER TABLE comp
+    -> DROP year;
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db2]> select * from comp;
++----+--------+-------+------+-----------+-------+
+| no | name   | cpu   | ram  | mainboard | price |
++----+--------+-------+------+-----------+-------+
+|  1 | gram   | intel | 8gb  | intel     |   120 |
+|  2 | macpro | arm   | 8gb  | apl       |   150 |
+|  3 | macair | arm   | 4gb  | apl       |   120 |
+|  4 | asus   | amd   | 16gb | intel     |    95 |
++----+--------+-------+------+-----------+-------+
+4 rows in set (0.000 sec)
+
+MariaDB [db2]> ALTER TABLE comp
+    -> CHANGE mainboard mboard VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.006 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db2]> select * from comp;
++----+--------+-------+------+--------+-------+
+| no | name   | cpu   | ram  | mboard | price |
++----+--------+-------+------+--------+-------+
+|  1 | gram   | intel | 8gb  | intel  |   120 |
+|  2 | macpro | arm   | 8gb  | apl    |   150 |
+|  3 | macair | arm   | 4gb  | apl    |   120 |
+|  4 | asus   | amd   | 16gb | intel  |    95 |
++----+--------+-------+------+--------+-------+
+4 rows in set (0.000 sec)
+
+MariaDB [db2]> use db3;
+Database changed
+MariaDB [db3]> show tables;
++---------------+
+| Tables_in_db3 |
++---------------+
+| color         |
+| foods         |
++---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [db3]> select *from foods;
++----+--------+--------+------+--------+
+| no | fname  | fprice | fnum | fyear  |
++----+--------+--------+------+--------+
+|  1 | 콩국수      |   8000 |    1 | 2022년   |
+|  2 | 라면       |   3000 |    3 | 2020년   |
+|  3 | 떡볶이       |   2500 |    2 | 2019년   |
+|  4 | 짬뽕      |   4000 |    1 | 2021년   |
++----+--------+--------+------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [db3]> desc foods;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| no     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| fname  | varchar(30) | NO   |     | NULL    |                |
+| fprice | int(11)     | NO   |     | NULL    |                |
+| fnum   | int(11)     | NO   |     | NULL    |                |
+| fyear  | varchar(30) | NO   |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+5 rows in set (0.006 sec)
+
+MariaDB [db3]> ALTER TABLE foods
+    -> CHANGE fname name VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.006 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db3]> ALTER TABLE foods
+    -> CHANGE fprice price INT NOT NULL;
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db3]> ALTER TABLE foods
+    -> CHANGE fnum num INT NOT NULL;
+Query OK, 0 rows affected (0.007 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db3]> select *from foods;
++----+--------+-------+-----+--------+
+| no | name   | price | num | fyear  |
++----+--------+-------+-----+--------+
+|  1 | 콩국수      |  8000 |   1 | 2022년   |
+|  2 | 라면       |  3000 |   3 | 2020년   |
+|  3 | 떡볶이       |  2500 |   2 | 2019년   |
+|  4 | 짬뽕      |  4000 |   1 | 2021년   |
++----+--------+-------+-----+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [db3]> ALTER TABLE foods
+    -> DROP fyear;
+Query OK, 0 rows affected (0.005 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db3]>

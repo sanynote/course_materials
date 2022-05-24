@@ -1,0 +1,128 @@
+1) 접속하기
+mysql -uroot -p
+
+2) 키보드 셋팅하기
+set character set euckr;
+
+
+3) joinmember 조회하기
+
+use db1;
+
+show tables;
+select *from joinmember;
+
+
+
+4) 이름이 red인 값을 찾아서 userid를 red 저장되도록 만들기
+
+UPDATE  joinmember
+SET userid='red' WHERE username='red';
+
+
+5) username이  blue이고, userage가 20인 값을 찾아서 uerphone 부분을 010-123-4567 기입되도록 만들기
+중요) WHERE 기준으로 앞쪽은 필드, 필드, 뒤쪽으로는  필드='입력' AND 필드 = '입력'
+
+
+UPDATE joinmember
+SET userphone='010-123-4567' WHERE username='blue' AND userage='20';
+
+
+6) 이름이 gold이고, no가 5인 값 찾아서 userphone 010-111-1234 가입되록 만들기
+
+UPDATE joinmember
+SET userphone='010-111-1234' WHERE username='gold' AND no='5';
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+7) milk 테이블 찾아서 새로 기입하기	
+	하얀우유, 1000
+	메론우유, 1800
+
+
+INSERT INTO milk
+(mname, mprice)
+VALUES
+('하얀우유','1000'),
+('메론우유','1800');
+
+
+8) stdscore 테이블 찾아서 새로 기입하기
+	orange,	99	55	77
+	aquq	,	80	77	62
+
+
+INSERT INTO stdscore
+(name, kor, eng, math)
+VALUES
+('orange','99','55','77'),
+('aqua','80','77','62');
+	
+
+9) 이름이 blue이고, 넘버가 2인 값 찾아서 총점이 기입되도록 만들기
+	참고: total = kor+eng+math
+
+
+	UPDATE stdscore
+	SET total = kor+eng+math WHERE name='blue' AND no='2';
+
+
+10) 이름이 red이고, 넘버가 1인 값 찾아서 총점 기입되도록 만들기
+	이름이 red이고, 넘버가 1인 값 찾아서 평균 기입되도록 만들기
+
+	UPDATE stdscore
+	SET total = kor+eng+math WHERE name='red' AND no='1';
+
+
+	UPDATE stdscore
+	SET avg= total/3 WHERE name='red' AND no='1';
+
+
+	* 총점이 작성된 후, 평균이 있어야 하기 때문에 순서 잘 지키기!
+
+11)	이름이 pink 값 찾아서 10번 처럼 총점과 평균 기입되도록 만들기
+
+	UPDATE stdscore
+	SET total = kor+eng+math WHERE name='pink';
+
+
+	UPDATE stdscore
+	SET avg= total/3 WHERE name='pink';
+
+[매우중요]
+
+	1) 총점을 계산한 이후에 평균이 나오기 때문에 총점 부터 계산하기
+	2) 작성을 하다보면 동명이인 있을 수 있기 때문에 일련 번호, 
+	즉, 중복되지 않는 no 필드가 매우 중요함!
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+[DELETE 사용하기]
+
+DELETE FROM 테이블명
+: 테이블을 전부 삭제할 때 사용!
+
+DELETE FROM joinmember;
+: joinmember 테이블을 지워 버릴 수 있음!
+
+
+[아래 문법을 제일 많이 사용함!]
+
+DELETE FROM joinmember WHERE username='greenit';
+: 해당하는 조건에 맞는 데이터만 지울때 사용하는 문법
+
+: 번호가 사라져도 다시 inser into로 증가되면 5번이 마지막 일때..
+지워진 해당하는 번호를 채우지 않고..6번 부터 증가 됨!
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+[응용문제]
+
+[정리]
+	: 해당하는 정보를 지울 때는 delete를 사용하여 조건에 맞는 값을 지울 수 있음!
+	: 현재 처럼 필드를 지울 때는 ALTER라는 개념을 사용하여 지울 수 있음!
+
+: milk 테이블에서 memail 지우기
+
+ALTER TABLE milk
+DROP memail;

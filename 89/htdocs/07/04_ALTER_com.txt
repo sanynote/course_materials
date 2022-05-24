@@ -1,0 +1,161 @@
+
+Setting environment for using XAMPP for Windows.
+Administrator@524-t c:\xampp
+# mysql -uroot -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 224
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> set character set euckr;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| db2                |
+| db3                |
+| dbs1               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sports             |
+| test               |
++--------------------+
+10 rows in set (0.000 sec)
+
+MariaDB [(none)]> use db3;
+Database changed
+MariaDB [db3]> show tables;
++---------------+
+| Tables_in_db3 |
++---------------+
+| color         |
+| foods         |
++---------------+
+2 rows in set (0.000 sec)
+
+MariaDB [db3]> use db1;
+Database changed
+MariaDB [db1]> show tables;
++---------------+
+| Tables_in_db1 |
++---------------+
+| joinmember    |
+| milk          |
+| stdscore      |
++---------------+
+3 rows in set (0.000 sec)
+
+MariaDB [db1]> SELECT * FROM milk;
++----+------------+--------+
+| no | mname      | mprice |
++----+------------+--------+
+|  1 | 초코우유          |   1200 |
+|  2 | 바나나우유          |   1500 |
+|  3 | 딸기우유           |   1200 |
+|  4 | 초코에몽          |   1800 |
+|  5 | 네스퀵          |   1000 |
++----+------------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [db1]> ALTER TABLE milk
+    -> ADD oorder VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.008 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> SELECT * FROM milk;
++----+------------+--------+--------+
+| no | mname      | mprice | oorder |
++----+------------+--------+--------+
+|  1 | 초코우유          |   1200 |        |
+|  2 | 바나나우유          |   1500 |        |
+|  3 | 딸기우유           |   1200 |        |
+|  4 | 초코에몽          |   1800 |        |
+|  5 | 네스퀵          |   1000 |        |
++----+------------+--------+--------+
+5 rows in set (0.000 sec)
+
+MariaDB [db1]> alter table milk
+    -> add memail varchar(30) not null;
+Query OK, 0 rows affected (0.008 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db1]> SELECT * FROM milk;
++----+------------+--------+--------+--------+
+| no | mname      | mprice | oorder | memail |
++----+------------+--------+--------+--------+
+|  1 | 초코우유          |   1200 |        |        |
+|  2 | 바나나우유          |   1500 |        |        |
+|  3 | 딸기우유           |   1200 |        |        |
+|  4 | 초코에몽          |   1800 |        |        |
+|  5 | 네스퀵          |   1000 |        |        |
++----+------------+--------+--------+--------+
+5 rows in set (0.000 sec)
+
+MariaDB [db1]> use db2;
+Database changed
+MariaDB [db2]> alter table cardesc
+    -> add carcolor varchar(20) not null;
+Query OK, 0 rows affected (0.006 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db2]> select * from cardesc;
++----+---------+----------+---------+----------+
+| no | carname | carprice | caryear | carcolor |
++----+---------+----------+---------+----------+
+|  1 | 아우디       |     8000 | 2019    |          |
+|  2 | 그렌져       |     5000 | 2020    |          |
+|  3 | 아반떼      |     3500 | 2017    |          |
+|  4 | 소나타      |     4500 | 2021    |          |
+|  5 | 캐스퍼       |     2000 | 2020    |          |
++----+---------+----------+---------+----------+
+5 rows in set (0.000 sec)
+
+MariaDB [db2]> alter table comp
+    -> add color varchar(40) not null;
+Query OK, 0 rows affected (0.008 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db2]> select * from comp;
++----+--------+-------+------+-----------+------+-------+-------+
+| no | name   | cpu   | ram  | mainboard | year | price | color |
++----+--------+-------+------+-----------+------+-------+-------+
+|  1 | gram   | intel | 8gb  | intel     | 2021 |   120 |       |
+|  2 | macpro | arm   | 8gb  | apl       | 2020 |   150 |       |
+|  3 | macair | arm   | 4gb  | apl       | 2019 |   120 |       |
+|  4 | asus   | amd   | 16gb | intel     | 2021 |    95 |       |
++----+--------+-------+------+-----------+------+-------+-------+
+4 rows in set (0.000 sec)
+
+MariaDB [db2]> use sports;
+Database changed
+MariaDB [sports]> alter table todaygame
+    -> add 시간 varchar(30) not null;
+Query OK, 0 rows affected (0.008 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sports]> alter table todaygame
+    -> add 기록 varchar(40) not null;
+Query OK, 0 rows affected (0.008 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sports]> select * from todaygame;
++----+--------+-----------------+---------+--------------------+------+------+
+| no | 종목       | 대회               | 중계       | 장소                   | 시간    | 기록     |
++----+--------+-----------------+---------+--------------------+------+------+
+|  1 | 골프       | KLPGA2022       | sporttv | 군산                   |      |      |
+|  2 | 농구       | NBA             | sbs     | 메디슨 스퀘어 가든                |      |      |
+|  3 | 양궁       | 국가대표 선발전              | sporttv | at센터                 |      |      |
+|  4 | 테니스     | 2022년 전국대회          | kbs     | 양구테니스 파크             |      |      |
++----+--------+-----------------+---------+--------------------+------+------+
+4 rows in set (0.000 sec)
+
+MariaDB [sports]>

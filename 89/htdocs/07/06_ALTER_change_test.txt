@@ -1,0 +1,116 @@
+1) 접속하기
+2) 키보드 셋팅하기
+
+mysql -uroot -p
+set character set euckr;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+3) joinmember 테이블 조회하기
+
+
+use db1;
+show tables;
+select * from joinmember;
+
+
+4) name, age, email 필드를 각각 username, userage, useremail 필드로 변경하기
+
+ALTER TABLE joinmember
+CHANGE name username VARCHAR(50) NOT NULL;
+
+
+중요) 문자열로 처리했는지, 숫자로 처리했는지 확인이 불가능할 때는
+desc joinmember 조회하기 (필드정보를 확인할 수 있음!)
+
+
+ALTER TABLE joinmember
+CHANGE age userage INT NOT NULL;
+
+
+ALTER TABLE joinmember
+CHANGE email useremail VARCHAR(50) NOT NULL;
+
+
+
+SELECT * FROM joinmember;
+
+
+5) userid, userpass, userphone 필드 추가하기 (문자열 표현으로 (50) 작성 )
+
+ALTER TABLE joinmember
+ADD userid VARCHAR(50) NOT NULL;
+
+
+ALTER TABLE joinmember
+ADD userpass VARCHAR(50) NOT NULL;
+
+
+ALTER TABLE joinmember
+ADD userphone VARCHAR(50) NOT NULL;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+6) comp 테이블 조회하기
+
+use db2;
+show tables;
+
+
+select * from comp;
+
+7) color 필드 삭제하기
+
+ALTER TABLE comp
+DROP color;
+
+
+8) year 필드 삭제하기
+
+ALTER TABLE comp
+DROP year;
+
+
+9) mainboard 필드명 mboard로 변경하기 (자료형 50, 공간 표현 주의하기)
+
+ALTER TABLE comp
+CHANGE mainboard mboard VARCHAR(50) NOT NULL;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+10) foods 테이블 조회하기
+
+use db3;
+show tables;
+
+select *from foods;
+
+
+11) fname, fprice, fnum 각각 name, price, num 으로 변경하기
+(문자의 경우엔  50개 작성, num의 경우엔 int)
+
+ALTER TABLE foods
+CHANGE fname name VARCHAR(50) NOT NULL;
+
+
+[정리] fprice 는 정보를 정확하게 알지 못 하기 때문에 
+desc foods로 구조(정보) 확인
+
+
+ALTER TABLE foods
+CHANGE fprice price INT NOT NULL;
+
+ALTER TABLE foods
+CHANGE fnum num INT NOT NULL;
+
+
+12) fyear 필드 삭제하기
+
+ALTER TABLE foods
+DROP fyear;
+
+
+* 07_ALTER_CHANGE_com.txt 제출하기
