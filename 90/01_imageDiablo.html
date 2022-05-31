@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>imageDiablo</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0; background-color:#333;}
+		li{list-style:none;}
+
+		h2{text-align:center; padding:50px 0; text-transform:uppercase;
+		font-size:26px; color:#4a909c;}
+
+		div{width:1200px; height:435px; margin:50px auto 0; 
+		outline:5px solid #1a1d43;
+		position:relative; overflow:hidden;}
+
+		ul{width:100%;}
+		ul li{width:300px; height:435px; background-color:rgba(250,0,0,1); /*float:left;*/
+		position:absolute; left:0; top:0; outline:1px solid #1a1d43;
+		background-size:100% 100%; transition:all .7s ease .2s;}
+		/* li가 움직일때 부드럽게 처리 되기 위하여 transition 처리함 */
+
+
+		/*
+			[css 검수 과정시 중요]
+			
+			1) float와 absolute 사용한다면... absolute값 때문에 float가 무시당함!
+			2) fixed도 float를 무시하기 때문에 주의해야 함!
+
+			[현재 작업]
+				
+				joker 아래서 harleyQuinn 이미지가 나오고 그 아래서 deadshot이 나와야 함!
+				position 특징상 , 가장 하단의 이미지가 가장 위에 있음!
+		*/
+
+		.w0{background-image:url("img/joker.jpg"); z-index:3;}
+		.w1{background-image:url("img/harleyQuinn.jpg"); z-index:2;}
+		.w2{background-image:url("img/deadshot.jpg"); z-index:1;}
+
+		.w3 img{width:100%; transition:all .7s ease .2s;}
+		/* 터뜨릴때 부드럽게 처리하기 */
+
+
+		/*
+			[매우중요_상대거리 이용하기]
+		
+				:: 대상.offset().left ,  대상.offset().top 을 사용할 경우, 
+
+				1) 현재 div태그를 확인해보면, position:relative로 기준점 역할을 담당하는 것을 알 수 있음!
+				부모가 떨어진 거리만큼 상속 받을 수 있음!
+
+				2) offset().left나 offset().top의 기능은 부모에서 상속받는 값을 없애기 위하여..
+				독립요소로 구성해야 함!
+		*/
+
+	</style>
+	<script>
+		$(document).ready(function(){
+			
+			$("ul li").mouseover(function(){
+				/*
+					[작업방법1]
+						
+						: eq(0)에 올리면 eq(1)에 해당하는 값이 아래서 나타나게 만들기
+
+					[작업방법2]
+						
+						: 제어문을 사용하여 0과 같다면 .w1이 옆으로 움직이도록 만들기
+				*/
+
+				/*
+					3) 속성에 접근하여 문자열 자르기 (숫자 가져오기)
+					중요) id, class 모두 속성에 포함됨!
+				*/
+
+
+				var num = $(this).attr("class").substring(1);
+
+				/*
+					4) 이미지의 너비 가져오기
+						지금 올린 li의 너비만큼 가져오기
+				*/
+
+				var liW = $(this).width();
+
+				/*
+					5) num이 0과 같다면 아래서 할리퀸 이미지 나타나도록 만들기
+				*/
+
+				if(num==0){
+					$(".w1").css({"left":liW});
+				}
+				else if(num==1){
+					$(".w2").css({"left":liW*2});
+				}
+				else{
+					$(".w3").css({"left":liW*3});
+
+					/*추가 ) w3에 마우스 올리면 터지듯이 나타나게 만들기*/
+					$(".w3 img").mouseover(function(){
+						$("div").css({"overflow":"visible"});
+						$(this).parent().css({"backgroundImage":"url('img/diablo.jpg')"});
+						$(this).css({"transform":"scale(1.5)", "opacity":"0"});
+					});
+				}
+
+
+
+			});
+		
+		});
+
+	</script>
+ </head>
+ <body>
+	<h2>image diablo</h2>
+	<div>
+		<ul>
+			<li class="w0"></li>
+			<li class="w1"></li>
+			<li class="w2"></li>
+			<li class="w3">
+				<img src="img/diablo.jpg" alt="디아블로 이미지"/>
+			</li>
+		</ul>
+	</div>
+ </body>
+</html>
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> join_form </title>
+	<meta charset="utf-8"/>
+
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        #content{width:430px; margin:0 auto;}
+        form{width:100%; padding:0 25px; border:1px solid #ccc;}
+        fieldset{border:none; }
+        legend{text-align:center; height:70px; line-height:70px;}
+        p{width:100%;height:40px; margin-top:20px;}
+        label{display:inline-block; width:100px; height:40px; text-align:center;border:1px solid #ccc; background-color:#efefef;}
+        input{display:inline-block; width:300px; height:36px;}
+
+
+
+        /*############# 개별작업 ###########*/
+
+        #content .finding input{width:150px;}
+
+        #more{width:100%;}
+
+        #content .address{margin-top:20px;}
+
+        #btn{text-align:center;}
+        #btn input{width:100px;}
+
+
+    </style>
+
+ </head>
+
+ <body>
+    <div id="content">
+        <form action="#none" method="post">
+            <fieldset>
+                <legend>회원가입</legend>
+                <p>
+                    <label for="userid">아이디</label><input id="userid" type="text" name="userid" placeholder="10자까지 입력가능"/>
+                </p>
+
+                <p>
+                    <span>* 아이디 중복체크</span><input id="check" type="button" name="check">
+                </p>
+                <p>
+                    <label for="userpass">비밀번호</label><input id="userpass" type="password" name="userpass" placeholder="8자까지 입력가능"/>
+                </p>
+                <p>
+                    <label for="username">이름</label><input id="username" type="text" name="username"/>
+                </p>
+                <p>
+                    <label for="email">이메일</label><input id="email" type="email" name="email"/>
+                </p>
+                <p>
+                    <label for="phone">전화번호</label><input id="phone" type="tel" name="phone" placeholder="010-123-4567"/>
+                </p>
+                <p class="finding">
+                    <input id="newNum" type="text" name="newNum" placeholder="새로운 우편번호"/>
+                    <input id="findBtn" type="button" name="findBtn" vlaue="우편번호 찾기"/>
+                    
+                </p>
+                <div class="address">
+                    <label for="detail">상세주소</label><input id="detail" type="text" name="detail"/>-
+                    <input id="more" type="text" name="more"/>
+                </div>
+                
+                <p id="btn">
+                    <input type="submit" value="가입하기" title="가입하기"/>
+                    <input type="reset" value="다시쓰기" title="다시쓰기"/>
+                </p>
+            </fieldset>
+            
+        </form>
+    </div>
+ </body>
+</html>
+

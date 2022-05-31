@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>pen</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+        img{border:none;}
+
+        #content{width:100%;}
+        .penArea{width:50px; height:650px; margin:50px auto; position:relative;}
+        .cap{width:30px; position:absolute; left:0; top:0;}
+        .cap img{width:100%;}
+
+        .lead{width:2px; height:45px; background-color:#aaa; position:absolute; left:13px; top:365px; /*z-index:2;*/}
+
+        .pen{width:26px; position:absolute; top:45px;}
+        .pen img{width:100%; height:100%;}
+
+
+	</style>
+	<script>
+        /*
+            [작업순서]
+
+                1) 샤프심 뚜겅 클릭하면 눌리듯이 만들고, 마우스가 업이 되면 다시 돌아오도록 만들기
+                2) 샤프심이 길어지도록 만들기, 빠져나오도록 만들기, 다시 클릭하면 원래대로 돌아오도록 만들기
+
+            [이벤트 기능확인]
+
+                + click : 클릭은 마우스의 업과 다운을 따로 만들 수 없음
+                + mousedown, 마우스를 누르고있을때를 만들 수 있음
+                + mouseup, 마우스에서 손을 뗐을때를 만들 수 있음
+
+        */
+
+        $(document).ready(function(){
+
+            var count = 0;
+
+            $(".cap").mousedown(function(){
+                $(this).css({"top":"10px"});
+
+                if(count==0){
+                $(".lead").css({"height":"45px","top":"365px","transform":"rotate(0deg)"});
+                count = 1;
+                } 
+                else if(count==1){
+                $(".lead").css({"height":"50px"});
+                count = 2;
+                } 
+                else if(count==2){
+                $(".lead").css({"height":"56px"});
+                count = 3;
+                } 
+                else if(count==3){
+                $(".lead").css({"height":"65px"});
+                count = 4;
+                } 
+                else if(count==4){
+                $(".lead").css({"height":"75px"});
+                count = 5;
+                } 
+                else if(count==5){
+                $(".lead").css({"top":"420px","transform":"rotate(-4deg)"});
+                count = 0;
+                }
+            }).mouseup(function(){
+                $(this).css({"top":"0px"});
+            });
+
+        });
+	</script>
+ </head>
+ <body>
+	
+	<div id="content">
+		<div class="penArea">
+            <p class="cap">
+                <img src="img/cap.png" alt="cap"/>
+            </p>
+            <p class="lead">
+            
+            </p>
+            <p class="pen">
+                <img src="img/pen.png" alt="pen"/>
+            </p>
+
+        </div>
+	</div>
+ </body>
+</html>
+

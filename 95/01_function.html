@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>function</title>
+	<meta charset="utf-8"/>
+
+    <script>
+        /*
+            [중요]
+
+                자극을 주는 이벤트가 없을때 함수는 스스로 기능을 하기 어렵다.
+                : 이벤트가 없어도 작동하는 속성, alert, confirm, prompt 
+        
+        */
+
+        //function nums(){return 5+2; }
+        //alert(nums());
+
+        /*
+            [함수 호출의 중요성]
+
+            1) nums
+                : 조건이 되는 () 괄호부터 기능이 되는 { }까지 읽어야하기때문에 안의 구조가 출력됨
+
+            2) nums()
+                : 조건이 되는 () 괄호까지 읽었기때문에 { } 기능이 되는 괄호만 구현가능
+        
+        */
+        
+        // var text = function(){ return 3+4; }
+        // alert(text());
+        
+
+        /*
+            [명시적 함수, 익명적 함수]
+
+                1) function nums(){}
+                    : nums 라는 이름이 있는 함수로, 위와 같이 이름이 있는 함수를 "명시적 함수"라고 한다.
+
+                    function nums(){return 5+2; }
+                    alert(nums());
+
+                2) var text= function(){}
+                    : 위의 함수는 직접적임 이름이 없고, 임시로 변수를 빌려다 사용하기때문에 "익명적 함수" 라고 한다.
+
+                    var text = function(){ return 3+4; }
+                    alert(text());
+
+            [자기호출함수]
+
+                (function test(){alert("자기호출함수");})();
+        */
+
+        // (function test(){alert("자기호출함수");})();
+
+        function test0(){ return 5*2;};
+        alert(test0());
+
+        var test1 = function (){ return 6+4;};
+        alert(test1());
+    </script>
+
+ </head>
+
+ <body>
+    <div id="content">
+        
+    </div>
+ </body>
+</html>
+
