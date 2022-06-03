@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>this_value</title>
+	<meta charset="utf-8"/>
+	<script>
+		
+		var allData="";
+
+		function texts(texts){
+			
+			var winD = document.getElementById("winDows");
+			// console.log(winD);
+
+			allData = allData+texts;
+			winD.innerHTML = allData;
+		
+		}
+
+	</script>
+
+ </head>
+ <body>
+	<p id="winDows"></p>
+	<input value="a" type="button" onclick="texts(this.value);"/>
+	<input value="b" type="button" onclick="texts(this.value);"/>
+	<input value="c" type="button" onclick="texts(this.value);"/>
+	<input value="d" type="button" onclick="texts(this.value);"/>
+	<input value="e" type="button" onclick="texts(this.value);"/>
+ </body>
+</html>
+

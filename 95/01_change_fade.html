@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>change_fade</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		li{list-style-type:none;}
+		img{border:none;}
+
+			#wrap{width:100%;}
+		/*################ carChoose ##############*/
+			#carChoose{width:1000px; margin:0 auto;}
+			#carChoose h2{text-align:center; line-height:100px;}
+			#colorChip{width:315px;margin-right:85px; float:left;}
+			/*
+				이미지 크기 55px * 55px 
+				40*7 == 280px + 35(marign-right) == 315px
+			*/
+			#colorChip li{float:left; margin-right:5px; width:40px; cursor:pointer;}
+			#colorChip li img{width:100%;}
+
+			#carGallery{width:600px; height:345px;float:left;
+			/*position:relative;*/
+			background-image:url("img/photocopier1.jpg"); background-position:center; background-size:100%; background-repeat:no-repeat;}
+			#carGallery li{width:100%;/* position:absolute; left:0; top:0;*/}
+			#carGallery li img{width:100%;}
+
+			#colorChip:after{content:""; display:block; clear:both;}
+			#carChoose:after{content:""; display:block; clear:both;}
+	</style>
+	<script>
+		$(document).ready(function(){
+			/* a를 누르면 이미지가 변함..무슨 이미지가? carGallery의 백그라운드 이미지가*/
+			// 클릭을 한 이미지와 이어줘야하는것같은데
+			$("#colorChip li:eq(0)").click(function(){
+				$("#carGallery").css({"backgroundImage":"url('img/photocopier1.jpg')"});
+				//$("#carGallery").html("<img src=' "+$(this).find("img").attr("src")+" ' alt='car'/>")
+			});
+
+			$("#colorChip li:eq(1)").click(function(){
+				$("#carGallery").css({"backgroundImage":"url('img/photocopier2.jpg')"});
+			});
+
+			$("#colorChip li:eq(2)").click(function(){
+				$("#carGallery").css({"backgroundImage":"url('img/photocopier3.jpg')"});
+			});
+
+			$("#colorChip li:eq(3)").click(function(){
+				$("#carGallery").css({"backgroundImage":"url('img/photocopier4.jpg')"});
+			});
+
+			$("#colorChip li:eq(4)").click(function(){
+				$("#carGallery").css({"backgroundImage":"url('img/photocopier5.jpg')"});
+			});
+
+			$("#colorChip li:eq(5)").click(function(){
+				$("#carGallery").css({"backgroundImage":"url('img/photocopier6.jpg')"});
+			});
+
+			$("#colorChip li:eq(6)").click(function(){
+				$("#carGallery").css({"backgroundImage":"url('img/photocopier7.jpg')"});
+			});
+		});
+	</script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="carChoose">
+			<h2>gallery</h2>
+			<ul id="colorChip">
+				<li>
+					<img src="img/menu_icon1.jpg" alt="color1"/>
+				</li>
+				<li>
+					<img src="img/menu_icon2.jpg" alt="color2"/>
+				</li>
+				<li>
+					<img src="img/menu_icon3.jpg" alt="color3"/>
+				</li>
+				<li>
+					<img src="img/menu_icon4.jpg" alt="color4"/>
+				</li>
+				<li>
+					<img src="img/menu_icon5.jpg" alt="color5"/>
+				</li>
+				<li>
+					<img src="img/menu_icon6.jpg" alt="color6"/>
+				</li>
+				<li>
+					<img src="img/menu_icon7.jpg" alt="color7"/>
+				</li>
+			</ul>
+			
+			<div id="carGallery">
+			</div>
+			
+			<!--<ul id="carGallery">
+				<li>
+					<img src="img/photocopier1.jpg" alt="car1"/>
+				</li>
+				<li>
+					<img src="img/photocopier2.jpg" alt="car2"/>
+				</li>
+				<li>
+					<img src="img/photocopier3.jpg" alt="car3"/>
+				</li>
+				<li>
+					<img src="img/photocopier4.jpg" alt="car4"/>
+				</li>
+				<li>
+					<img src="img/photocopier5.jpg" alt="car5"/>
+				</li>
+				<li>
+					<img src="img/photocopier6.jpg" alt="car6"/>
+				</li>
+				<li>
+					<img src="img/photocopier7.jpg" alt="car7"/>
+				</li>
+			</ul>-->
+		</div>
+	</div>
+ </body>
+</html>
