@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>time(시간함수)</title>
+	<meta charset="utf-8"/>
+	<script>
+		var today = new Date();
+
+        var year = today.getFullYear();
+
+		document.write("연도: "+year+"<br/>");
+
+        var month = today.getMonth();
+        // 0부터 시작하기때문에 1이 부족함
+
+        month = month+1;
+        document.write("월: "+month+"<br/>");
+
+        var date = today.getDate();
+        document.write("날짜: "+date+"<br/>");
+
+        var hours = today.getHours();
+        document.write("시간: "+hours+"<br/>");
+
+        var minutes = today.getMinutes();
+        document.write("분: "+minutes+"<br/>");
+
+        var seconds = today.getSeconds();
+        document.write("초: "+seconds+"<br/>");
+
+
+		
+
+	</script>
+ </head>
+ <body>
+
+ </body>
+</html>

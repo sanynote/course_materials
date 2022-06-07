@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>calc</title>
+	<meta charset="utf-8"/>
+	
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		
+        div{width:162px; margin:50px auto;}
+        #result{width:153px; height:28px; border:1px solid #333; margin:3px; text-align:center;}
+        input{width:30px; height:30px; margin:3px;}
+
+		
+	</style>
+
+	<script>
+        // 01) value값 나열하는 파트
+        var data="";
+        function inputData(nums){
+            data = data+nums;
+            document.getElementById("result").innerHTML = data;
+        }
+
+        // 02) 계산이 되는 함수 파트
+        function calcData(){
+            data = eval(data);
+            document.getElementById("result").innerHTML = data;
+        }
+
+        function totalClear(){
+            data="";
+            document.getElementById("result").innerHTML = data;
+
+        }
+		
+	</script>
+
+ </head>
+ <body>
+	<div>
+		<p id="result"></p>
+		
+		<input type="button" value="1" onclick="inputData(this.value);"/>
+        <input type="button" value="2" onclick="inputData(this.value);"/>
+        <input type="button" value="3" onclick="inputData(this.value);"/>
+        <input type="button" value="4" onclick="inputData(this.value);"/>
+        <input type="button" value="5" onclick="inputData(this.value);"/>
+        <input type="button" value="6" onclick="inputData(this.value);"/>
+        <input type="button" value="-" onclick="inputData(this.value);"/>
+        <input type="button" value="7" onclick="inputData(this.value);"/>
+        <input type="button" value="8" onclick="inputData(this.value);"/>
+        <input type="button" value="9" onclick="inputData(this.value);"/>
+        <input type="button" value="*" onclick="inputData(this.value);"/>
+        <input type="button" value="0" onclick="inputData(this.value);"/>
+        <input type="button" value="." onclick="inputData(this.value);"/>
+        <input type="button" value="=" onclick="calcData();"/>
+        <input type="button" value="/" onclick="inputData(this.value);"/>
+        <input type="button" value="clear" style="width:100px; text-align:center;" onclick="totalClear();"/>
+        <!-- clear라는 예약어가 있기때문에 가능하지 않을 수 있음-->
+        
+	</div>
+ </body>
+</html>

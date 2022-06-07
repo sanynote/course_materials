@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>change_fade</title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		li{list-style:none;}
+
+		#mainGallery{width:980px; margin:0 auto;}
+		h2{padding:20px 0; text-align:center;}
+
+		#iconArea{width:390px; float:left;}
+		#iconArea li{width:30px; height:30px; display:inline-block;}
+		#iconArea li img{width:100%;}
+
+		#window{width:590px; float:left;}
+		#window img{width:500px; position:absolute;}
+
+
+		#mainGallery:after{content:""; display:block; clear:both;}
+	</style>
+	<script>
+		$(document).ready(function(){
+			
+			$("#iconArea li a").click(function(){
+				
+				var num = $(this).attr("title").substring(4);
+				// alert(num);
+
+				/*	fade 가 아닌 버전
+					
+					$("#window").children("img").attr("src","img/photocopier"+num+".jpg");
+				
+				*/
+				/*
+					+ fadeIn의 기능
+						화면에 없을때 나타나는 기능
+						화면에 없을때 나타나기 때문에 빈칸 먼저 보임
+
+
+					+ fadeOut의 기능
+						화면에 있을때 사라지는 기능!
+						기본적으로 화면에 있는 대상을 사라지게 하기 때문에 빈칸없이 부드럽게 처리할 수 있음!
+				*/
+
+				$("#window").children("img").before("<img src='img/photocopier"+num+".jpg' alt='자동차 이미지'/>");
+
+				/*
+					[정리]
+
+					: 대상.before는 해당하는 대상위로 해당하는 값을 쌓일때 사용하는 속성!
+					: after는 아래로 깔리기 때문에 쌓이는 이미지가 보이지 않음! 
+
+					[작업]
+						현재 호출한 이미지 위로 클릭한 번호의 이미지가 위로 올라가고 기존 이미지는 아래로
+						배치시키기!
+
+
+					[문제점]
+						새로 클릭한 이미지는 위로 보이고, 기존 이미지는 사라져야 함!
+						아래 값이 최신이기 때문에 before로 올린 이미지가 보이지 않음!
+
+					[해결]
+						아래 쌓이는 이미지 없애기
+				*/
+
+				$("#window img:last").fadeOut(500,function(){
+					/*
+						문제점:
+							처음에는 last를 인식하지만, 동시에 여러장의 이미지를 인식하는 문제 때문에 
+							last를 정확하게 알지 못함
+
+							: position:absolute 해제 하고 확인 해보면, 이미지가 여러장이 위에 겹겹이 쌓이는 것을 알 수 있음!
+
+						해결:
+							클릭하고 사라질때 마다 last 지우면서 해결하기!
+					*/
+					$(this).remove();
+				});
+		
+				return false;
+			});
+		
+		});
+	</script>
+ </head>
+ <body>
+	<div id="mainGallery">
+		<h2>gallery</h2>
+		<div id="iconArea">
+			<ul>
+				<li>
+					<a href="img/menu_icon1.jpg" title="icon1">
+						<img src="img/menu_icon1.jpg" alt="icon1"/>
+					</a>
+				</li>
+				<li>
+					<a href="img/menu_icon2.jpg" title="icon2">
+						<img src="img/menu_icon2.jpg" alt="icon2"/>
+					</a>
+				</li>
+				<li>
+					<a href="img/menu_icon3.jpg" title="icon3">
+						<img src="img/menu_icon3.jpg" alt="icon3"/>
+					</a>
+				</li>
+				<li>
+					<a href="img/menu_icon4.jpg" title="icon4">
+						<img src="img/menu_icon4.jpg" alt="icon4"/>
+					</a>
+				</li>
+				<li>
+					<a href="img/menu_icon5.jpg" title="icon5">
+						<img src="img/menu_icon5.jpg" alt="icon5"/>
+					</a>
+				</li>
+				<li>
+					<a href="img/menu_icon6.jpg" title="icon6">
+						<img src="img/menu_icon6.jpg" alt="icon6"/>
+					</a>
+				</li>
+				<li>
+					<a href="img/menu_icon7.jpg" title="icon7">
+						<img src="img/menu_icon7.jpg" alt="icon7"/>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="window">
+			<img src="img/photocopier1.jpg" alt="자동차 이미지"/>
+		</div>
+	</div>
+ </body>
+</html>

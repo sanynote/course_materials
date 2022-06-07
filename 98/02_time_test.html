@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>time(시간함수)</title>
+	<meta charset="utf-8"/>
+	<script>
+
+        function onlyTime(){
+
+        /*
+            12시가 넘으면 오후 1시 출력
+            12시 안넘으면 오전 12시 출력
+
+        */
+		var today = new Date();        
+
+        var hours = today.getHours();
+
+        var minutes = today.getMinutes();
+
+        var seconds = today.getSeconds();
+
+        if(hours>12){
+            hours = "오후" +(hours-12);
+        }
+        else{
+            hours = "오전" +hours;
+
+
+        }
+
+        var myTime = hours+"시 "+minutes+"분 "+seconds+" 초";
+
+        document.title=myTime;
+
+    }  
+
+    // setInterval(function(){onlyTime();}, 1000);
+    // setInterval(function(){alert("나타나라");},1000);
+
+    /*
+        [정리]
+            setInterval은 몇 초에 한번씩 클릭되는 기능
+
+        [기본문법]
+            setInterval(function(){클릭할대상}, duration);
+            setInterval(function(){alert("나타나라");},1000);
+
+        [장점]
+            사용자가 직접 클릭하지 않아도 지정해준 시간동안 알아서 자동클릭
+
+        [단점]
+
+            1) 초를 짧게 설정하면 사용자가 컨트롤을 할 수 없음
+                : 짧은 시간에 계속해서 활성화됨
+
+                + 슬라이딩 윈도우에서는 5초~8초 정도를 설정하여 다음 장면이 넘어가도록 만듦
+                + 기본저으로 사용하는 값은 3초에 한번씩 한 장면이 넘어가도록 설정하고있음
+                + 접근성 부분에서 5~8초를 쓰기 어렵다면, 재생과 멈춤 버튼을 사용하도록 한다.
+
+            2) 사용자와 setInterval 이벤트가 동시에 적용되어 클릭기능이 제대로 사용되지 못할수도있음
+                + setInterval을 과용하게되면 페이지가 무겁게 느껴지고, 컨트롤이 제대로 되지않는다
+
+            3) 중요)
+                페이지를 컨트롤할 수 있도록 설정하기위하여 멈춤과 재생 버튼을 제공함
+    */
+
+    // setTimeout(function(){alert("안녕");}, 1000);
+    // setTimeout(function(){대상}, duration);
+
+    /*
+        [setInterval을 지우는 기능]
+
+            clearInterval(function(){해제할대상});
+    */
+		
+
+	</script>
+ </head>
+ <body>
+
+ </body>
+</html>

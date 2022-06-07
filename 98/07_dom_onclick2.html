@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>dom2 방식</title>
+	<meta charset="utf-8"/>
+	
+ </head>
+ <body>
+	
+	<h3>DOM1방식, 태그에 직접 적용하는 방식</h3>
+	<p><input type="button" value="메서드" onclick="alert('알림창!');"/></p>
+	
+	<h3>DOM2방식, script 영역에서 사용하는 방식</h3>
+	<p><input id="btn" type="button" value="함수"/></p>
+	<script>
+		/*문제: 위에 만들어진 id="btn" , id객체로 만들고, console.log로 확인하기*/
+		/*
+			중요: 만들어질 수도 있지만 만들어지지 않을 수 있음
+				이유는?	이벤트가 없기 때문에 만들어지지 않을 수 있음!
+				jQuery의 기본 문서들은 이벤트를 가지고 있음! (ver1~ver4)
+				: 제이쿼리의 문서가 준비가 되면 기능구현 해주세요.
+		*/
+		window.onload=function(){
+			var btn = document.getElementById("btn");
+			// console.log(btn);
+
+			btn.onclick=function(){ alert("클릭"); }
+		}
+	</script>
+ </body>
+</html>
+
