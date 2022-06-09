@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>slidingWindow_media</title>
+  <meta charset="utf-8"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+		*{margin:0; padding:0;}
+		html{height:100%;}
+		body{
+			margin:0; padding:0; 
+			background-image:-webkit-linear-gradient(top, #000 0%, #111 80%, darkred 100%);
+			background-image:-moz-linear-gradient(top, #000 0%, #111 80%, darkred 100%);
+			background-image:-o-linear-gradient(top, #000 0%, #111 80%, darkred 100%);
+			background-image:-ms-linear-gradient(top, #000 0%, #111 80%, darkred 100%);
+		}
+		
+		li{list-style:none;}
+		img{border:none;}
+		
+		/*수정*/
+		h1{width:500px; margin:0 auto; padding:80px 0 40px;}
+		h1 img{width:100%;}
+		
+		/*1920px이면 1920px*/
+		#screen{max-width:800px; width:100%;/* height:420px; */margin:0 auto; border:5px solid #ccc;
+		position:relative; overflow:hidden;}
+
+		#film{width:400%;}
+
+		/*자녀요소가 볼 때 부모요소는 항상 100%로 인지함, 400%여도 100%, 80%여도 100% */
+		#film .scene{width:25%; float:left;}
+		
+		/*추가) 줄어드는 사이즈에 맞춰서 이미지가 변경되도록 100% 설정하기*/
+		#film .scene img{width:100%;}
+
+		#btn p{width:50px; height:100px; position:absolute; top:50%; transform:translatey(-50%);}
+		#btn p img{width:100%; height:100%;}
+
+		#btn .prevBtn{left:0;}
+		#btn .nextBtn{right:0;}
+
+
+		#film:after{content:""; display:block; clear:both;}
+  </style>
+  <script>
+		
+	$(document).ready(function(){
+
+			$("#film").prepend( $(".scene:last") );
+			$("#film").css({"marginLeft":"-100%"});
+			
+			$(".nextBtn").click(function(){
+				$("#film").animate({"marginLeft":"-=100%"},500,"swing",function(){
+					$("#film").append( $(".scene:eq(0)") );
+					$("#film").css({"marginLeft":"-100%"});
+				});
+			});
+
+			$(".prevBtn").click(function(){
+				$("#film").animate({"marginLeft":"+=100%"},500,"swing",function(){
+					$("#film").prepend( $(".scene:last") );
+					$("#film").css({"marginLeft":"-100%"});
+				});
+			});
+		
+		/*################### 자동클릭 ##################*/
+			var sel = setInterval(function(){ $(".nextBtn").click(); },3000);
+
+		/*################### 자동클릭 멈추기 ##################*/
+			/*로고를 클릭하면 멈추게 만들기*/
+			$("h1 img").click(function(){
+				clearInterval(sel);
+			});
+	});
+  </script>
+ </head>
+ <body>
+	<h1><img src="img/logo.png" alt="logo"/></h1>  
+	<div id="screen">
+		<ul id="film">
+			<li class="scene">
+				<img src="img/a00.jpg" alt="img0"/>
+			</li>
+			<li class="scene">
+				<img src="img/a01.jpg" alt="img1"/>
+			</li>
+			<li class="scene">
+				<img src="img/a02.jpg" alt="img2"/>
+			</li>
+			<li class="scene">
+				<img src="img/a03.jpg" alt="img3"/>
+			</li>
+		</ul>
+		<div id="btn">
+			<p class="nextBtn">
+				<img src="img/next_shadow.png" alt="다음버튼" class="next"/>
+			</p>
+			<p class="prevBtn">
+				<img src="img/prev_shadow.png" alt="이전버튼" class="prev"/>
+			</p>
+		</div>
+	</div>
+ </body>
+</html>

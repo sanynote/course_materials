@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>movie</title>
+	<meta charset="utf-8"/>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        #wrap{width:800px; margin:0 auto;}
+
+        h2,h3{text-align:center; margin:10px;}
+        h3{padding:10px 0; background-color:#e1e1e1;}
+
+        #imgs{width:100%;}
+        #imgs img{width:100%;}
+
+        input{width:40px; height:40px; margin:10px 5px;}
+    </style>
+	<script>
+        function seat( num ){
+            var inputs = document.getElementById("A"+num);
+            // console.log(inputs);
+
+            if(inputs.value=="예약"){
+                alert("예약이 완료되어거나 선택이 불가합니다");
+
+            }
+            else{
+                alert("예약이 가능합니다");
+
+                do{
+                    var ans= prompt("좌석을 예매하시겠습니까?", "예시) Y/N");
+                }while(!(ans=="Y" || ans=="y" || ans=="N" || ans=="n"));
+
+                if(ans=="y" || ans=="Y"){
+                    alert("예약이 완료되었습니다");
+                    inputs.value="예약";
+                    inputs.style.backgroundColor="#fff";
+                    inputs.style.border="1px solid #f00";
+                }
+                else{
+                    alert("예약이 취소되었습니다"); 
+                }
+                
+            }
+
+        }
+
+	</script>
+ </head>
+ <body>
+    <div id="wrap">
+        <h2>CINEMA 영화관</h2>
+        <h3>SCREEN</h3>
+        <p id="imgs">
+            <img src="img/movie.jpg" alt="메인이미지"/>
+        </p>
+        <input id="A0" type="button" value="A0" onclick="seat(0);"/>
+        <input id="A1" type="button" value="A1" onclick="seat(1);"/>
+        <input id="A2" type="button" value="A2" onclick="seat(2);"/>
+        <input id="A3" type="button" value="A3" onclick="seat(3);"/>
+        <input id="A4" type="button" value="A4" onclick="seat(4);"/>
+        <input id="A5" type="button" value="A5" onclick="seat(5);"/>
+        <input id="A6" type="button" value="A6" onclick="seat(6);"/>
+        <input id="A7" type="button" value="A7" onclick="seat(7);"/>
+        <input id="A8" type="button" value="A8" onclick="seat(8);"/>
+        <input id="A9" type="button" value="A9" onclick="seat(9);"/>
+        <input id="A10" type="button" value="A10" onclick="seat(10);"/>
+        <input id="A11" type="button" value="A11" onclick="seat(11);"/>
+        <input id="A12" type="button" value="A12" onclick="seat(12);"/>
+        <input id="A13" type="button" value="A13" onclick="seat(13);"/>
+        <input id="A14" type="button" value="A14" onclick="seat(14);"/>
+        <input id="A15" type="button" value="A15" onclick="seat(15);"/>
+        <input id="A16" type="button" value="A16" onclick="seat(16);"/>
+        <input id="A17" type="button" value="A17" onclick="seat(17);"/>
+    </div>
+ </body>
+</html>

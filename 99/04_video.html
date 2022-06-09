@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> score </title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        h1{text-align:center;}
+
+        div{width:720px; height:405px; margin:50px auto; position:relative;}
+        div video{width:100%;}
+
+        div p{width:100px; height:100px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
+        div p img{width:100%; height:100%; cursor:pointer;}
+
+    </style>
+
+    <script>
+        function playBtns(){
+
+            var mov = document.getElementById("movies");
+            // console.log(mov);
+
+            // 비디오가 멈춰있다면 재생되도록 만들기
+            if(mov.paused==true){
+                mov.play();
+
+            }
+            else{
+                mov.pause();
+            }
+        }
+    </script>
+
+	
+	
+ </head>
+
+ <body>
+    <h1>플레이 버튼 클릭하면 비디오가 재생되도록 만들기</h1>
+    <div>
+        <video id="movies">
+            <source src="iPhone6s.mp4" type="video/mp4"/>
+        </video>
+        <p>
+            <img id="playBtn" src="img/playBtn.png" alt="플레이버튼" onclick="playBtns()"/>
+        </p>
+    </div>
+ </body>
+</html>

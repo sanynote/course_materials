@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> score </title>
+	<meta charset="utf-8"/>
+
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        #scoreForm{width:300px; margin:20px;}
+        #scoreForm p{padding:10px; border-bottom:1px solid #ccc;}
+        #scoreForm label{display:inline-block; width:100px; text-align:center;}
+        
+    </style>
+
+    <script>
+        function result(){
+            /*
+                sports
+            
+                sports[0]
+                    : 담긴 값이 없기때문에 축구공간 출력
+
+                sports[0] = "한국"
+                    : 축구라는 폴더에 한국을 담음, 한국이 출력됨
+            */
+
+            var score = ["name","kor","eng","math","total","avg","pass","level"];
+
+            /*
+                [매우중요]
+                    score[0] 이름공간 호출하여 id 객체로 만든 name 값 저장
+                    score[1] 국어공간 호출하여 id 객체로 만든 kor 값 저장
+
+                score[0] = document.getElementById("name");
+                score[1] = document.getElementById("kor");
+            */
+
+            for(var i=0; i<score.length; i++)
+            score[i] = document.getElementById(score[i]);
+
+        }
+
+        // console.log(score[5]);
+
+        /*
+            [정리]
+
+                :score[0] = document.getElementById(score[0]);
+                : name 공간 호출 = 아이디 객체로 만들 값 호출 (폴더명 (id값 동일하게 맞춤))
+        */
+
+        /*############# 빈칸일경우, 알림창 띄우기 ############*/
+        if(score[0].value ==""){
+            alert("이름을 입력하세요");
+            score[0].focus();
+
+        }
+        else if(score[1].value ==""){
+            alert("국어점수를 입력하세요");
+            score[1].focus();
+        }
+        else if(score[2].value ==""){
+            alert("영어점수를 입력하세요");
+            score[2].focus();
+        }
+        else if(score[3].value ==""){
+            alert("수학점수를 입력하세요");
+            score[3].focus();
+        }
+
+        /*################ 총합계 ###############*/
+        /*
+            [배열공간 이용하기]
+
+                1) total = kor + eng + math
+                2) 
+                    score[4].value = score[1].value +score[2].value +score[3].value;
+        */
+
+        score[4].value = score[1].value + score[2].value + score[3].value;
+    </script>
+
+	
+	
+ </head>
+
+ <body>
+    <form action="#" method="post" id="scoreForm">
+        <p>
+            <input id="btn" type="button" value="결과확인" title="확인" onclick="result();"/>
+
+        </p>
+        <p>
+            <label for="name">학생이름</label>
+            <input id="name" type="text" name="name"/>
+        </p>
+        <p>
+            <label for="kor">국어</label>
+            <input id="kor" type="text" name="kor"/>
+        </p>
+        <p>
+            <label for="eng">영어</label>
+            <input id="eng" type="text" name="eng"/>
+        </p>
+        <p>
+            <label for="math">수학</label>
+            <input id="math" type="text" name="math"/>
+        </p>
+        <p>
+            <label for="total">총점</label>
+            <input id="total" type="text" name="total"/>
+        </p>
+        <p>
+            <label for="avg">평균</label>
+            <input id="avg" type="text" name="avg"/>
+        </p>
+        <p>
+            <label for="pass">합격여부</label>
+            <input id="pass" type="text" name="pass"/>
+        </p>
+        <p>
+            <label for="level">등급</label>
+            <input id="level" type="text" name="level"/>
+        </p>
+        
+    </form>
+ </body>
+</html>

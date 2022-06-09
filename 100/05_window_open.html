@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>window open</title>
+	<meta charset="utf-8"/>
+	
+	<style>
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0;}
+		li{list-style:none;}
+		a:link, a:visited{color:#333; text-decoration:none;}
+
+		#selectArea{width:200px; margin:50px; position:relative;}
+		#inputs{width:100%; height:24px; border:1px solid #ccc; position:relative; border-radius:5px;}
+		
+		#inputs .text{width:176px; height:24px; font-size:14px; text-indent:10px;}
+		#inputs p{width:22px; height:22px; background-color:#ccc; font-size:12px; text-align:center; line-height:22px; position:absolute; right:0; top:0; border-left:2px solid #eee; border-bottom:2px solid #aaa; cursor:pointer; border-radius:0 5px 5px 0;}
+
+		#menu{width:100%; position:absolute; left:0; top:24px;}
+		#menu ul{border:1px solid #ccc; border-radius:5px;}
+		#menu li{text-align:center; font-size:12px; line-height:24px; border-bottom:1px solid #ccc;}
+
+	</style>
+	
+ </head>
+
+ <body>
+	<h2>window_open</h2>
+    <a href="http://www.naver.com" title="네이버" onclick="windowOpen1();">네이버로 이동</a>
+
+    <script>
+        function windowOpen1(){
+
+            /*
+                팝업창
+                주소, 이름, 사양
+                window.open(URL,NAME,SPEC);
+            */
+            
+            window.open("http://www.naver.com","네이버","width=250, height=250");
+
+        }
+	</script>
+
+    <h2>window_open2</h2>
+    <a href="#none" title="구글" onclick="windowOpen2();">구글로 이동</a>
+
+    <script>
+        function windowOpen2(){
+
+            /*
+                name 부분에 blank를 작성하면 누를때마다 새창에서 출력받을 수 있음
+                url 부분에 img/background.jpg로 이미지를 가져올수도있음
+            */
+            
+            window.open("http://www.google.com","_blank","width=300, height=300, left=50,top=50");
+
+        }
+	</script>
+ </body>
+</html>

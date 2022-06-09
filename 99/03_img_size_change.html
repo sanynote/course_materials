@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title>img_size_change</title>
+	<meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        li{list-style-type:none;}
+        img{border:none;}
+        a:link, a:visited{text-decoration:none;}
+
+        h1{text-align:center; padding:20px 0; text-transform:uppercase; letter-spacing:5px;}
+
+        ul{width:1280px; margin:0 auto;}
+        ul li{width:200px; height:150px; margin-left:10px; margin-bottom:10px; float:left; overflow:hidden;}
+
+        .window{width:600px; height:200px; border:5px solid #ccc; margin:20px auto 0; /*transition:all 0.5s;*/}
+
+        ul:after{content:""; display:block; clear:both;}
+    </style>
+	
+    <script>
+        $(document).ready(function(){
+            $("ul li").click(function(){
+                
+                var num = $(this).find("img").attr("src").substring(5,6);
+                // alert(num);
+
+                $(".window").html("<img src='img/0"+num+".jpg' alt='이미지'/>");
+
+                imgW = $(".window img").width();
+                imgH = $(".window img").height();
+
+                alert(imgH);
+                $(".window").css({"width":imgW, "height":imgH, "boxShadow":"5px 5px 10px rgba(0,0,0,0.5)","transform":"translateY(-120px)"});
+
+                return false;
+            })
+        })
+    </script>
+ </head>
+ <body>
+    <h1>size_change</h1>
+    <ul>
+        <li class="img1">
+            <a href="img/01.jpg" title="이미지링크1">
+                <img src="img/01.jpg" alt="이미지1"/>
+            </a>
+        </li>
+        <li class="img2">
+            <a href="img/02.jpg" title="이미지링크2">
+                <img src="img/02.jpg" alt="이미지2"/>
+            </a>
+        </li>
+        <li class="img3">
+            <a href="img/03.jpg" title="이미지링크3">
+                <img src="img/03.jpg" alt="이미지3"/>
+            </a>
+        </li>
+        <li class="img4">
+            <a href="img/04.jpg" title="이미지링크4">
+                <img src="img/04.jpg" alt="이미지4"/>
+            </a>
+        </li>
+        <li class="img5">
+            <a href="img/05.jpg" title="이미지링크5">
+                <img src="img/05.jpg" alt="이미지5"/>
+            </a>
+        </li>
+        <li class="img6">
+            <a href="img/06.jpg" title="이미지링크6">
+                <img src="img/06.jpg" alt="이미지6"/>
+            </a>
+        </li>
+        
+    </ul>
+    <div class="window">
+
+    </div>
+ </body>
+</html>

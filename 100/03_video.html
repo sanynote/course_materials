@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+	<title> score </title>
+	<meta charset="utf-8"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <style>
+        *{margin:0; padding:0;}
+        body{margin:0; padding:0;}
+        h1{text-align:center;}
+
+        div{width:720px; height:405px; margin:50px auto; position:relative;}
+        div video{width:100%;}
+
+        div p{width:100px; height:100px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
+        div p img{width:100%; height:100%; cursor:pointer;}
+
+    </style>
+
+    <script>
+        function playBtns(){
+
+            /*
+                [내용정리]
+
+                    [jQuery]
+
+                        jQuery(document).ready(function(){})
+                        $(document).ready(function(){})
+
+                        : 위에 문법들 모두 걸어줄 대상이 없기때문에 문서 자체에 이벤트를 걸어서 처리해줌
+
+                    [javascript]
+
+                        window.onload = function(){}
+
+                            : 브라우저를 화면에 띄웠을때 이벤트를 걸기위하여 사용함
+                            : 제이쿼리의 문법은 한 페이지에 여러개 사용이 가능하지만, window=onload는 한페이지에서 한번만 사용할 수 있음
+
+                        function playBtns(){}
+
+                            : jQuery의 기본 문법과 영역의 크기가 비슷하고, 한 페이지에 여러번 사용이 가능함
+                            : 제이쿼리의 기본문법과 크기가 비슷하기때문에 서로 담을때 고장나거나 안전하지 않을 수 있음
+            */
+            var mov = document.getElementById("movies");
+            // console.log(mov);
+
+            // 1) 비디오 영역에 마우스 올리면 버튼 나타나게 만들기, 내리면 사라지게 만들기
+            $("div").mouseover(function(){
+                $("p").show();
+
+            }).mouseout(function(){
+                $("p").hide();
+            })
+
+            // 2) 비디오가 멈춰있다면 재생되도록 만들고, 버튼은 멈춤버튼으로 바뀌게 만들기
+            // 3) 비디오가 재생된다면 멈추게 만들고, 버튼은 재생 버튼으로 바뀌게 만들기
+
+            if(mov.paused == true){
+                mov.play();
+                $("#playBtn").attr("src","img/stopBtn.png");
+            }
+            else{
+                mov.pause();
+                $("#playBtn").attr("src","img/playBtn.png");
+            }
+
+        }
+    </script>
+
+	
+	
+ </head>
+
+ <body>
+    <h1>플레이 버튼 클릭하면 비디오가 재생되도록 만들기</h1>
+    <div>
+        <video id="movies">
+            <source src="iPhone6s.mp4" type="video/mp4"/>
+        </video>
+        <p>
+            <img id="playBtn" src="img/playBtn.png" alt="플레이버튼" onclick="playBtns()"/>
+        </p>
+    </div>
+ </body>
+</html>
